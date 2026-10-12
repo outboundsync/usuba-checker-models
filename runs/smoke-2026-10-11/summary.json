@@ -1,0 +1,370 @@
+{
+ "stock": {
+  "validate_pass": "31/56",
+  "per_task": {
+   "build_from_spec": "13/27",
+   "add_panel": "3/6",
+   "chunk_manifest_entry": "2/5",
+   "chunk_component": "8/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "2/5"
+  },
+  "full_plugin_pass": "16/33",
+  "qml_files": 51,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 4
+ },
+ "tuned": {
+  "validate_pass": "13/56",
+  "per_task": {
+   "build_from_spec": "0/27",
+   "add_panel": "0/6",
+   "chunk_manifest_entry": "4/5",
+   "chunk_component": "1/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "5/5"
+  },
+  "full_plugin_pass": "0/33",
+  "qml_files": 0,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 50
+ },
+ "claude-opus-5.5": {
+  "validate_pass": "34/56",
+  "per_task": {
+   "build_from_spec": "11/27",
+   "add_panel": "5/6",
+   "chunk_manifest_entry": "5/5",
+   "chunk_component": "5/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "5/5"
+  },
+  "full_plugin_pass": "16/33",
+  "qml_files": 50,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 4
+ },
+ "claude-sonnet-5.5": {
+  "validate_pass": "35/56",
+  "per_task": {
+   "build_from_spec": "8/27",
+   "add_panel": "5/6",
+   "chunk_manifest_entry": "4/5",
+   "chunk_component": "10/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "5/5"
+  },
+  "full_plugin_pass": "13/33",
+  "qml_files": 62,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 5
+ },
+ "deepseek-v4-pro-0813": {
+  "validate_pass": "28/56",
+  "per_task": {
+   "build_from_spec": "7/27",
+   "add_panel": "2/6",
+   "chunk_manifest_entry": "4/5",
+   "chunk_component": "7/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "5/5"
+  },
+  "full_plugin_pass": "9/33",
+  "qml_files": 53,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 5
+ },
+ "gemini-3.1-pro-preview": {
+  "validate_pass": "37/56",
+  "per_task": {
+   "build_from_spec": "11/27",
+   "add_panel": "5/6",
+   "chunk_manifest_entry": "4/5",
+   "chunk_component": "10/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "4/5"
+  },
+  "full_plugin_pass": "16/33",
+  "qml_files": 75,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 1
+ },
+ "gpt-5.6-sol": {
+  "validate_pass": "40/56",
+  "per_task": {
+   "build_from_spec": "13/27",
+   "add_panel": "6/6",
+   "chunk_manifest_entry": "5/5",
+   "chunk_component": "8/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "5/5"
+  },
+  "full_plugin_pass": "19/33",
+  "qml_files": 56,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 0
+ },
+ "grok-4.3": {
+  "validate_pass": "32/56",
+  "per_task": {
+   "build_from_spec": "6/27",
+   "add_panel": "6/6",
+   "chunk_manifest_entry": "3/5",
+   "chunk_component": "10/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "4/5"
+  },
+  "full_plugin_pass": "12/33",
+  "qml_files": 59,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 0
+ },
+ "grok-build-0.1": {
+  "validate_pass": "36/56",
+  "per_task": {
+   "build_from_spec": "8/27",
+   "add_panel": "6/6",
+   "chunk_manifest_entry": "4/5",
+   "chunk_component": "10/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "5/5"
+  },
+  "full_plugin_pass": "14/33",
+  "qml_files": 67,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 0
+ },
+ "kimi-k3": {
+  "validate_pass": "9/56",
+  "per_task": {
+   "build_from_spec": "1/27",
+   "add_panel": "0/6",
+   "chunk_manifest_entry": "1/5",
+   "chunk_component": "1/10",
+   "chunk_add_kind": "2/3",
+   "fix_manifest": "4/5"
+  },
+  "full_plugin_pass": "1/33",
+  "qml_files": 4,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 46
+ },
+ "qwen-2.5-coder-32b-instruct": {
+  "validate_pass": "0/56",
+  "per_task": {
+   "build_from_spec": "0/27",
+   "add_panel": "0/6",
+   "chunk_manifest_entry": "0/5",
+   "chunk_component": "0/10",
+   "chunk_add_kind": "0/3",
+   "fix_manifest": "0/5"
+  },
+  "full_plugin_pass": "0/33",
+  "qml_files": 0,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 0
+ },
+ "qwen3-coder": {
+  "validate_pass": "29/56",
+  "per_task": {
+   "build_from_spec": "4/27",
+   "add_panel": "6/6",
+   "chunk_manifest_entry": "1/5",
+   "chunk_component": "10/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "5/5"
+  },
+  "full_plugin_pass": "10/33",
+  "qml_files": 61,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 0
+ },
+ "stock_rp1.05": {
+  "validate_pass": "23/56",
+  "per_task": {
+   "build_from_spec": "12/27",
+   "add_panel": "2/6",
+   "chunk_manifest_entry": "1/5",
+   "chunk_component": "4/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "1/5"
+  },
+  "full_plugin_pass": "14/33",
+  "qml_files": 39,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 0
+ },
+ "stock_rp1.1": {
+  "validate_pass": "4/56",
+  "per_task": {
+   "build_from_spec": "0/27",
+   "add_panel": "2/6",
+   "chunk_manifest_entry": "0/5",
+   "chunk_component": "0/10",
+   "chunk_add_kind": "0/3",
+   "fix_manifest": "2/5"
+  },
+  "full_plugin_pass": "2/33",
+  "qml_files": 8,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 0
+ },
+ "tuned_a": {
+  "validate_pass": "11/56",
+  "per_task": {
+   "build_from_spec": "0/27",
+   "add_panel": "0/6",
+   "chunk_manifest_entry": "4/5",
+   "chunk_component": "1/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "3/5"
+  },
+  "full_plugin_pass": "0/33",
+  "qml_files": 0,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 50
+ },
+ "tuned_merged": {
+  "validate_pass": "13/56",
+  "per_task": {
+   "build_from_spec": "0/27",
+   "add_panel": "0/6",
+   "chunk_manifest_entry": "5/5",
+   "chunk_component": "1/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "4/5"
+  },
+  "full_plugin_pass": "0/33",
+  "qml_files": 0,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 50
+ },
+ "tuned_merged_rp1.1": {
+  "validate_pass": "18/56",
+  "per_task": {
+   "build_from_spec": "4/27",
+   "add_panel": "2/6",
+   "chunk_manifest_entry": "3/5",
+   "chunk_component": "2/10",
+   "chunk_add_kind": "2/3",
+   "fix_manifest": "5/5"
+  },
+  "full_plugin_pass": "6/33",
+  "qml_files": 11,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 42
+ },
+ "tuned_rft": {
+  "validate_pass": "42/56",
+  "per_task": {
+   "build_from_spec": "13/27",
+   "add_panel": "6/6",
+   "chunk_manifest_entry": "5/5",
+   "chunk_component": "10/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "5/5"
+  },
+  "full_plugin_pass": "19/33",
+  "qml_files": 62,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 2
+ },
+ "tuned_rp1.05": {
+  "validate_pass": "13/56",
+  "per_task": {
+   "build_from_spec": "0/27",
+   "add_panel": "0/6",
+   "chunk_manifest_entry": "5/5",
+   "chunk_component": "0/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "5/5"
+  },
+  "full_plugin_pass": "0/33",
+  "qml_files": 0,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 51
+ },
+ "tuned_v2": {
+  "validate_pass": "13/56",
+  "per_task": {
+   "build_from_spec": "0/27",
+   "add_panel": "0/6",
+   "chunk_manifest_entry": "5/5",
+   "chunk_component": "0/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "5/5"
+  },
+  "full_plugin_pass": "0/33",
+  "qml_files": 0,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 51
+ },
+ "tuned_v2_sampled": {
+  "validate_pass": "24/56",
+  "per_task": {
+   "build_from_spec": "7/27",
+   "add_panel": "0/6",
+   "chunk_manifest_entry": "5/5",
+   "chunk_component": "4/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "5/5"
+  },
+  "full_plugin_pass": "7/33",
+  "qml_files": 18,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 39
+ },
+ "tuned_v3": {
+  "validate_pass": "11/56",
+  "per_task": {
+   "build_from_spec": "1/27",
+   "add_panel": "0/6",
+   "chunk_manifest_entry": "4/5",
+   "chunk_component": "0/10",
+   "chunk_add_kind": "2/3",
+   "fix_manifest": "4/5"
+  },
+  "full_plugin_pass": "1/33",
+  "qml_files": 1,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 50
+ },
+ "tuned_v4": {
+  "validate_pass": "11/56",
+  "per_task": {
+   "build_from_spec": "0/27",
+   "add_panel": "2/6",
+   "chunk_manifest_entry": "3/5",
+   "chunk_component": "0/10",
+   "chunk_add_kind": "2/3",
+   "fix_manifest": "4/5"
+  },
+  "full_plugin_pass": "2/33",
+  "qml_files": 7,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 45
+ }
+}

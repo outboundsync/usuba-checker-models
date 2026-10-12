@@ -1,0 +1,506 @@
+[
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "missing manifest.json in /tmp/tmp_207h33w",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "missing manifest.json in /tmp/tmprxpxut9l",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": true,
+  "err": null,
+  "qml": 3,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "missing manifest.json in /tmp/tmpm9fb_fup",
+  "qml": 4,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "kind 'bar-widget' requires an 'entryPoints.barWidget' to load",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "kind 'bar-widget' requires an 'entryPoints.barWidget' to load",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "add_panel",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "kind 'bar-widget' requires an 'entryPoints.barWidget' to load",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "kind 'bar-widget' requires an 'entryPoints.barWidget' to load",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "add_panel",
+  "pass_": false,
+  "err": "missing manifest.json in /tmp/tmpygt1xeke",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "kind 'bar-widget' requires an 'entryPoints.barWidget' to load",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "kind 'bar-widget' requires an 'entryPoints.barWidget' to load",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "add_panel",
+  "pass_": false,
+  "err": "missing manifest.json in /tmp/tmpk0tnj9xk",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "missing manifest.json in /tmp/tmpuhjsph8w",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "kind 'bar-widget' requires an 'entryPoints.barWidget' to load",
+  "qml": 2,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "kind 'bar-widget' requires an 'entryPoints.barWidget' to load",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "missing manifest.json in /tmp/tmphfgbxdh2",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "add_panel",
+  "pass_": true,
+  "err": null,
+  "qml": 3,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "missing manifest.json in /tmp/tmpbdswjbim",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "kind 'bar-widget' requires an 'entryPoints.barWidget' to load",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "kind 'bar-widget' requires an 'entryPoints.barWidget' to load",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "add_panel",
+  "pass_": false,
+  "err": "missing manifest.json in /tmp/tmpd6j3f2fo",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "no files parsed",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "add_panel",
+  "pass_": false,
+  "err": "no files parsed",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "missing manifest.json in /tmp/tmpfqsrvagx",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": true,
+  "err": null,
+  "qml": 2,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "missing manifest.json in /tmp/tmp3nzpwl82",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "no files parsed",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": false,
+  "err": "no files parsed",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": false,
+  "err": "no files parsed",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_manifest_entry",
+  "pass_": false,
+  "err": "no files parsed",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_add_kind:bar",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_add_kind:service",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_add_kind:menu",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": false,
+  "err": "no files parsed",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "fix_manifest:reserved_id",
+  "pass_": true,
+  "err": null,
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "fix_manifest:bad_path_dotdot",
+  "pass_": true,
+  "err": null,
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "fix_manifest:reserved_id",
+  "pass_": true,
+  "err": null,
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "fix_manifest:bad_path_absolute",
+  "pass_": true,
+  "err": null,
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "fix_manifest:reserved_id",
+  "pass_": true,
+  "err": null,
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ }
+]

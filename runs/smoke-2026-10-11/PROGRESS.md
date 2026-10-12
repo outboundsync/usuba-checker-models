@@ -1,0 +1,21 @@
+- 2026-10-12 02:50 step1 masking OK: labels == assistant+<|im_end|>\n, pad=<|endoftext|>(151643)!=eos(151645), train max 23789 tok (<24576), none cut. NOTE 8 holdout golds >16k tok.
+- 2026-10-12 02:51 rented vast 55525618 (A100 SXM4 $1.07/h)
+- 2026-10-12 03:03 step2 overfit: adapter_v2 (vLLM bf16 base) loops on 3/3 TRAIN prompts (877x repeated import line, 67-148k chars, finish=length); stock stops cleanly -> pipeline broken, not underfit. Files runs/fix/
+- 2026-10-12 03:36 config a (HF+PEFT bf16 r16a32 lr1e-4 2ep cap20k, loss .96->.63) via vLLM LoRA: 11/56 0/33 50 trunc (same loop). BUT HF bf16 greedy w/ same adapter is coherent; holdout NLL tuned<base (e.g. 1.07 vs 1.28). => vLLM LoRA path is the loop source. Next: merge LoRA into bf16 and serve merged.
+- 2026-10-12 03:40 NOTE instance 55525618 was still alive (plus old 55501437 omarchy-smoke). adapter_a saved to runs/fix/adapter_a; merged_a vLLM gen running
+- 2026-10-12 03:50 merged_a served by vLLM (no LoRA), temp0: STILL loops (50 trunc, identical Io.Io.Io). Suspect: HF generate silently applies Qwen generation_config repetition_penalty=1.05, vLLM explicit SamplingParams does not. Running vLLM merged + rp1.05 to confirm.
+- 2026-10-12 03:50 destroyed stray 55501437 (omarchy-smoke). Running vLLM merged rp1.1 (Qwen gen_config default) then stock rp1.1
+- 2026-10-12 04:02 tuned_merged_rp1.1 18/56 6/33 42 trunc -> loop is model behavior, not serving. Real cause: gold answers are 19-74k-char files (stock writes ~3k and stops); tuned 7B learns to write huge files and drifts into enumerations/loops. Trying rejection-sampled self-distillation (stock samples on TRAIN prompts that pass validator).
+- 2026-10-12 04:11 RFT set runs/fix/train_rft.jsonl: 156 stock-passing samples + 13 short gold, 29 dropped. Training config b (HF bf16 r16a32 lr1e-4 2ep) -> merge -> vLLM greedy
+- 2026-10-12 04:26 SUCCESS tuned_rft (adapter runs/fix/adapter_b, merged bf16 + vLLM greedy): 42/56, 19/33 full, 2 trunc, 0 qmllint errs. Instance 55525618 destroyed. Panel not run: no OpenRouter/Anthropic/OpenAI/Google/DeepSeek/Moonshot keys in env (ROUTER_API_KEY is not OpenRouter, 401).
+- 2026-10-12 05:24 panel started via OpenRouter (gen_or.py/panel.sh, costs -> panel_costs.txt); Opus 5.5 held until spend checked
+- 2026-10-12 05:43 [14B] rented vast 55547075 (A100 SXM4 Utah $0.935/h), image vllm/vllm-openai:v0.10.1.1
+- 2026-10-12 05:49 panel done/partial: OpenRouter account credit exhausted ($38.49 of $40 account-wide) -> 402s on opus/gpt/sonnet/kimi; qwen2.5-32b blocked by account ZDR setting (only Cloudflare endpoint). Scored.
+- 2026-10-12 05:49 [14B] scripts in runs/fix14 (train_hf/merge with 14B base, gen14.py, build_rft14.py); scorer eval_14b.py = eval_local.py restricted to argv names, writes summary_14b.json only. Remote: downloading 14B, then stock holdout greedy + 6x train samples
+- 2026-10-12 05:51 credit added; rerunning errored rows (rerun_or.py) for sonnet, gpt-sol, kimi then opus
+- 2026-10-12 05:54 [14B] fixed env (pip peft had pulled transformers 5.x; pinned transformers 4.55.2 peft 0.17.1); stock gen restarted
+- 2026-10-12 06:02 [14B] stock14b scored: 24/56, full 6/33 (build_from_spec 0/27), 1 trunc, 0 qmllint errs. Train-sample gen (198x6) running
+- 2026-10-12 06:09 [14B] rebuilt RFT from 14B stock's own samples (198 train prompts x6, T0.7): runs/fix14/train_rft14b.jsonl = 129 shortest-passing samples + 21 short gold, 48 dropped (150 rows vs 169 for 7B; 14B stock often omits entryPoints). Training b14 (HF bf16 LoRA r16a32 lr1e-4 2ep, cap 24576) -> merge -> vLLM greedy, chained remotely
+- 2026-10-12 06:20 [14B] b14 trained (150/150 rows, 76 steps, loss .116->.058, peak 48.6GB), merged; tuned14b holdout gen running
+- 2026-10-12 06:26 [14B] RESULT tuned14b 42/56, full 19/33, 0 trunc, 0 qmllint errs (stock14b 24/56, 6/33, 1 trunc, 0 errs). Scores: scores_stock14b.json scores_tuned14b.json summary_14b.json; adapter runs/fix14/adapter_b14. Instance 55547075 destroyed, instance list = 0.
+- 2026-10-12 06:26 [14B] Vast spend this run ~$0.79 (credit 92.21 -> 91.43; may settle slightly higher)

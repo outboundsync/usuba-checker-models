@@ -1,0 +1,70 @@
+"""Score stock vs tuned holdout generations with validator/validate.py + pyside6-qmllint (syntax only).
+Full-plugin tasks (build_from_spec, add_panel) are validated standalone. Tree tasks (chunk_*, fix_manifest)
+are validated on a stub tree: sibling files named in the prompt + reference-answer files as empty/real placeholders,
+with the model's files overlaid on top (manifest validity + entry point existence)."""
+import json,os,re,sys,subprocess,tempfile,collections
+V=os.path.abspath('../../validator'); sys.path.insert(0,V)
+from validate import validate_files
+from build_parse import parse
+QL=os.path.abspath('../../.venv/bin/pyside6-qmllint')
+hold=[json.loads(l) for l in open('../../data/holdout.jsonl')]
+def lint(files):
+    n=bad=errs=0
+    with tempfile.TemporaryDirectory() as t:
+        for p,c in files.items():
+            if not p.endswith('.qml') or '..' in p or p.startswith('/'): continue
+            fp=os.path.join(t,p); os.makedirs(os.path.dirname(fp),exist_ok=True); open(fp,'w').write(c); n+=1
+            try: r=subprocess.run([QL,'--bare','--disable-plugins','all',fp],capture_output=True,text=True,timeout=30); k=(r.stdout+r.stderr).count('[syntax]')
+            except subprocess.TimeoutExpired: k=1
+            errs+=k; bad+=k>0
+    return n,bad,errs
+res={}
+import glob
+NAMES=[n for n in ['stock','tuned'] if os.path.exists(f'gen_{n}.jsonl')]+sorted(f[4:-6] for f in glob.glob('gen_*.jsonl') if f[4:-6] not in('stock','tuned'))
+for name in NAMES:
+    rows=[json.loads(l) for l in open(f'gen_{name}.jsonl')]; out=[]
+    for h,g in zip(hold,rows):
+        task=h['task'].split(':')[0]; files=parse(g['output'])
+        full=task in('build_from_spec','add_panel')
+        if full or not h['meta'].get('validate_tree') and task!='fix_manifest': tree=dict(files)
+        else:
+            tree={m.group(1):'x\n' for m in re.finditer(r'^- (\S+) \(\d+ KB\)',h['messages'][1]['content'],re.M)}
+            ref=parse(h['messages'][2]['content'])
+            um=re.search(r'Other files in the folder: (.*)',h['messages'][1]['content'])
+            if um: tree.update({p.strip():'x\n' for p in um.group(1).split(',') if p.strip()})
+            pm=re.search(r'```json\n(.*?)\n```',h['messages'][1]['content'],re.S)
+            if pm and task!='fix_manifest': tree['manifest.json']=pm.group(1)+'\n'
+            for p in ref: tree.setdefault(p,'x\n')
+            if task=='fix_manifest':  # stub tree = reference files except manifest
+                tree.update({p:'x\n' for p in ref if p!='manifest.json'}); tree.pop('manifest.json',None)
+            tree.update(files)
+            if 'manifest.json' not in tree and 'manifest.json' in ref: tree['manifest.json']=ref['manifest.json']
+        safe={p:c for p,c in tree.items() if '..' not in p and not p.startswith('/')}
+        err=validate_files(safe) if files else 'no files parsed'
+        n,bad,errs=lint(files)
+        out.append(dict(task=h['task'],pass_=err is None,err=err,qml=n,qml_bad=bad,syntax_errs=errs,finish=g['finish']))
+    res[name]=out
+    json.dump(out,open(f'scores_{name}.json','w'),indent=1)
+def summ(o):
+    c=collections.defaultdict(lambda:[0,0])
+    for r in o: t=r['task'].split(':')[0]; c[t][0]+=r['pass_']; c[t][1]+=1
+    return dict(validate_pass=f"{sum(r['pass_'] for r in o)}/{len(o)}",per_task={k:f'{a}/{b}' for k,(a,b) in c.items()},
+      full_plugin_pass=f"{sum(r['pass_'] for r in o if r['task'] in('build_from_spec','add_panel'))}/{sum(r['task'] in('build_from_spec','add_panel') for r in o)}",
+      qml_files=sum(r['qml'] for r in o),qml_files_with_syntax_err=sum(r['qml_bad'] for r in o),qmllint_syntax_errors=sum(r['syntax_errs'] for r in o),
+      truncated=sum(r['finish']=='length' for r in o))
+S={k:summ(v) for k,v in res.items()}; json.dump(S,open('summary.json','w'),indent=1); print(json.dumps(S,indent=1))
+# side-by-side samples
+os.makedirs('samples',exist_ok=True)
+pick=[]
+for t in ['build_from_spec','add_panel','fix_manifest','chunk_manifest_entry','chunk_component']:
+    for i,h in enumerate(hold):
+        if h['task'].startswith(t) and len({res[n][i]['pass_'] for n in res})>1: pick.append(i);break
+for i,h in enumerate(hold):
+    if len(pick)>=3: break
+    if i not in pick: pick.append(i)
+for j,i in enumerate(pick[:3]):
+    g={n:json.loads(open(f'gen_{n}.jsonl').readlines()[i])['output'] for n in res}
+    open(f'samples/sample{j+1}_{hold[i]["task"].replace(":","-")}.md','w').write(
+      f"# Holdout #{i} — {hold[i]['task']}\n\n## Prompt\n{hold[i]['messages'][1]['content']}\n\n"+
+      "".join(f"## {n.upper()} — validate: {'PASS' if res[n][i]['pass_'] else 'FAIL ('+str(res[n][i]['err'])+')'}, qmllint syntax errors: {res[n][i]['syntax_errs']}\n\n{g[n]}\n\n" for n in res)+
+      f"## REFERENCE\n\n{hold[i]['messages'][2]['content']}\n")

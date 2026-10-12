@@ -1,0 +1,3699 @@
+[
+ {
+  "id": "acrogenesis.ai-account-switcher",
+  "repo": "https://github.com/acrogenesis/omarchy-ai-account-switcher",
+  "commit": "dd217a0eeaf57856dadd5b48b0bfebfc6c3f62c7",
+  "stars": 1,
+  "commits": 12,
+  "author": "acrogenesis",
+  "core": true,
+  "coreCommits": 45,
+  "authorPlugins": 3,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 acrogenesis"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-27T19:33:40Z"
+ },
+ {
+  "id": "acrogenesis.breakout",
+  "repo": "https://github.com/acrogenesis/omarchy-breakout",
+  "commit": "535f276f9a57d3a634dd1e09fd7a41215e5aae36",
+  "stars": 2,
+  "commits": 16,
+  "author": "acrogenesis",
+  "core": true,
+  "coreCommits": 45,
+  "authorPlugins": 3,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 acrogenesis"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-08-22T02:08:10Z"
+ },
+ {
+  "id": "acrogenesis.theme-scheduler",
+  "repo": "https://github.com/acrogenesis/omarchy-theme-scheduler",
+  "commit": "54c2f0a83b9da6b1a81abb80a06728dc6b2e8003",
+  "stars": 1,
+  "commits": 11,
+  "author": "acrogenesis",
+  "core": true,
+  "coreCommits": 45,
+  "authorPlugins": 3,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Adrian Rangel",
+   "Copyright (c) 2026 Dan Milne"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-08-17T05:37:02Z"
+ },
+ {
+  "id": "agx.screen-time",
+  "repo": "https://github.com/ax1g/quickshell-screentime-plugin",
+  "commit": "2c7b75abde55b23ee6d6e1356797c8f50f60b8a1",
+  "stars": 38,
+  "commits": 380,
+  "author": "ax1g",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar widget",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 agx"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-04T14:01:27Z"
+ },
+ {
+  "id": "akitaonrails.ai-usagebar",
+  "repo": "https://github.com/akitaonrails/ai-usagebar",
+  "commit": "578ff5fcfdf858adc3235428d97a16026c459730",
+  "stars": 640,
+  "commits": 1335,
+  "author": "akitaonrails",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 AkitaOnRails"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [
+   "omarchy/icons/LICENSE-lobe-icons.txt"
+  ],
+  "bucket": "train",
+  "updated": "2026-10-11T04:04:53Z"
+ },
+ {
+  "id": "akshar.radio-atlas",
+  "repo": "https://github.com/AksharP5/omarchy-radio-atlas",
+  "commit": "06fa683e862514e38aaba1a8b9530708b4c1cfeb",
+  "stars": 89,
+  "commits": 67,
+  "author": "aksharp5",
+  "core": false,
+  "coreCommits": 5,
+  "authorPlugins": 1,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Akshar Patel"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [
+   "assets/NOTICE.md"
+  ],
+  "bucket": "train",
+  "updated": "2026-10-11T02:36:16Z"
+ },
+ {
+  "id": "animated.dock",
+  "repo": "https://github.com/Davedes83/animated-dock",
+  "commit": "f19f43712b490998ef35eddcff222b371879a4e1",
+  "stars": 23,
+  "commits": 41,
+  "author": "davedes83",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 7,
+  "kind": "Panel",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Davedes83"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-02T18:09:10Z"
+ },
+ {
+  "id": "arisgysel-design.quick-dock",
+  "repo": "https://github.com/arisgysel-design/omarchy-quick-dock",
+  "commit": "73706ae4eb2671416c1f803b2ba12847c9d2bccb",
+  "stars": 0,
+  "commits": 2,
+  "author": "arisgysel-design",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Plugin",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Aris Gysel"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-16T17:56:57Z"
+ },
+ {
+  "id": "b.everything",
+  "repo": "https://github.com/brianblakely/omarchy-everything",
+  "commit": "32572dfa8f3e1aa2a8f8bd396100f3592077d611",
+  "stars": 24,
+  "commits": 39,
+  "author": "brianblakely",
+  "core": false,
+  "coreCommits": 3,
+  "authorPlugins": 12,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Brian Blakely"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-20T18:56:17Z"
+ },
+ {
+  "id": "b.okomart",
+  "repo": "https://github.com/brianblakely/omarchy-plugins",
+  "commit": "c8ff3b2f5377c72c8a854c6183617602f904ee62",
+  "stars": 67,
+  "commits": 200,
+  "author": "brianblakely",
+  "core": false,
+  "coreCommits": 3,
+  "authorPlugins": 12,
+  "kind": "Panel",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Brian Blakely"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-08-25T17:19:56Z"
+ },
+ {
+  "id": "better_salted.bar",
+  "repo": "https://github.com/salted-sorbet/better_salted.bar",
+  "commit": "cb3d05062e40d4ac36d840f99d5cdcbed57c7b5c",
+  "stars": 1,
+  "commits": 11,
+  "author": "salted-sorbet",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 7,
+  "kind": "Bar",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 salted-sorbet"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-08-25T18:15:45Z"
+ },
+ {
+  "id": "bit-dev.bar",
+  "repo": "https://github.com/Crayonan/omarchy-bar",
+  "commit": "1f24d2397e6eed8ac44bad8c5578f1041cfa3596",
+  "stars": 0,
+  "commits": 3,
+  "author": "crayonan",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 2,
+  "kind": "Bar",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Bit Dev"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-11T03:39:27Z"
+ },
+ {
+  "id": "bobbynicholas.omaland",
+  "repo": "https://github.com/bobby-nicholas/omaland",
+  "commit": "48d1c64acd78cd3a2862ccaad17c8045be3dda38",
+  "stars": 54,
+  "commits": 17,
+  "author": "bobby-nicholas",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Panel",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Bobby Nicholas"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-25T16:48:43Z"
+ },
+ {
+  "id": "charlieras262.floating-bar",
+  "repo": "https://github.com/Charlieras262/omarchy-floating-bar",
+  "commit": "5e7dc23421f1f774e5c329cc2397b5825900b75e",
+  "stars": 2,
+  "commits": 14,
+  "author": "charlieras262",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 3,
+  "kind": "Bar",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Charlieras262"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-08-28T01:48:06Z"
+ },
+ {
+  "id": "com.omastorm.radar",
+  "repo": "https://github.com/wesleygrimes/omastorm",
+  "commit": "2504ebcd7be7c537b49dc58da439a345dedbae28",
+  "stars": 154,
+  "commits": 136,
+  "author": "wesleygrimes",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Wes Grimes"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-11T03:56:12Z"
+ },
+ {
+  "id": "crmne.hyprmoncfg",
+  "repo": "https://github.com/crmne/omarchy-hyprmoncfg",
+  "commit": "193e5611f934eec42460ef75f3f46c2a8bd0252a",
+  "stars": 123,
+  "commits": 102,
+  "author": "crmne",
+  "core": false,
+  "coreCommits": 1,
+  "authorPlugins": 9,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Carmine Paolino"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-03T13:21:31Z"
+ },
+ {
+  "id": "crmne.mpris",
+  "repo": "https://github.com/crmne/omarchy-mpris",
+  "commit": "ef8e3e737830ad409fd954d4273f2a3caee20a1b",
+  "stars": 19,
+  "commits": 24,
+  "author": "crmne",
+  "core": false,
+  "coreCommits": 1,
+  "authorPlugins": 9,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Carmine Paolino"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-03T13:09:59Z"
+ },
+ {
+  "id": "crmne.omacal",
+  "repo": "https://github.com/crmne/omacal",
+  "commit": "f299b2affa9b86c7b813821d0b5b832d17f0765b",
+  "stars": 19,
+  "commits": 32,
+  "author": "crmne",
+  "core": false,
+  "coreCommits": 1,
+  "authorPlugins": 9,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Carmine Paolino"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-03T13:01:10Z"
+ },
+ {
+  "id": "crmne.omastats",
+  "repo": "https://github.com/crmne/omastats",
+  "commit": "e884c28040ac1a3df4a3e1ef9b33d858a736cfdd",
+  "stars": 35,
+  "commits": 45,
+  "author": "crmne",
+  "core": false,
+  "coreCommits": 1,
+  "authorPlugins": 9,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Carmine Paolino"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-03T13:05:15Z"
+ },
+ {
+  "id": "cylon58.paste-layer",
+  "repo": "https://github.com/cylon58/omasnippet",
+  "commit": "14356e48b61211df4259edc3dfa543856b6a0d89",
+  "stars": 0,
+  "commits": 1,
+  "author": "cylon58",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 6,
+  "kind": "Plugin",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Geoff"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-21T13:49:14Z"
+ },
+ {
+  "id": "davedes.omcontrol",
+  "repo": "https://github.com/Davedes83/OmaControl",
+  "commit": "de2fd9d3a981b81a176393aca949129d4bdf72a3",
+  "stars": 22,
+  "commits": 62,
+  "author": "davedes83",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 7,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Davedes83"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-03T11:47:54Z"
+ },
+ {
+  "id": "dev.ilegna.xcompose",
+  "repo": "https://github.com/marlonangeli/omarchy-xcompose",
+  "commit": "da22284ba3d5037dd6a1d1e790e241e2c1b45d17",
+  "stars": 1,
+  "commits": 34,
+  "author": "marlonangeli",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Plugin",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Marlon Angeli"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-17T19:36:12Z"
+ },
+ {
+  "id": "dev.reuk.beam",
+  "repo": "https://github.com/RohitKaushal7/omarchy-beam",
+  "commit": "ffa1a10e25af3e9ce59f62bc63e47cd244dd1c0f",
+  "stars": 0,
+  "commits": 32,
+  "author": "rohitkaushal7",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 4,
+  "kind": "Plugin",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Rohit Kaushal"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-24T18:28:05Z"
+ },
+ {
+  "id": "evindor.keystroke",
+  "repo": "https://github.com/evindor/keystroke",
+  "commit": "b7a10ca7fb4e4644244b50d29b7b4d16f9db46ff",
+  "stars": 60,
+  "commits": 197,
+  "author": "evindor",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 3,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) David Heinemeier Hansson",
+   "Copyright (c) 2026 Keystroke contributors"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "reference-only (fork: LICENSE names only DHH, no fork-author copyright)",
+  "updated": "2026-10-09T10:58:38Z"
+ },
+ {
+  "id": "fab.pillbar",
+  "repo": "https://github.com/fillmefab4/Pillbar",
+  "commit": "c0805be509f07c04800303db048a0bff6efb3f28",
+  "stars": 3,
+  "commits": 4,
+  "author": "fillmefab4",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 fab"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-08-27T06:12:28Z"
+ },
+ {
+  "id": "felixzsh.widget-islands",
+  "repo": "https://github.com/felixzsh/omarchy-widget-islands",
+  "commit": "bea464cebc9dc3ed06375be847db1e467f9c09ea",
+  "stars": 1,
+  "commits": 282,
+  "author": "felixzsh",
+  "core": false,
+  "coreCommits": 3,
+  "authorPlugins": 3,
+  "kind": "Bar",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Felix"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-11T02:23:50Z"
+ },
+ {
+  "id": "fkcodes.key-promoter",
+  "repo": "https://github.com/ForrestKnight/omarchy-key-promoter",
+  "commit": "21c2b7184a33d800132ac2b6fb66aa31ae70de9a",
+  "stars": 84,
+  "commits": 9,
+  "author": "forrestknight",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Service",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Forrest Knight"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-07T19:54:00Z"
+ },
+ {
+  "id": "floating-waybar",
+  "repo": "https://github.com/TECHNOCRAFT27/floating-waybar",
+  "commit": "d68a3f35084350ccf3b8a06c45648dd4fbe2ef34",
+  "stars": 1,
+  "commits": 4,
+  "author": "technocraft27",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 2,
+  "kind": "Bar",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 TECHNOCRAFT27"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-21T15:11:53Z"
+ },
+ {
+  "id": "gladimdim.config-sync",
+  "repo": "https://github.com/gladimdim/omarchy-config-sync-plugin",
+  "commit": "7f543a2fb1afaba4a5614f752eb127b30d55b4cc",
+  "stars": 39,
+  "commits": 71,
+  "author": "gladimdim",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 6,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Dmytro Gladkyi"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-27T08:57:51Z"
+ },
+ {
+  "id": "glass-bar-omarchy",
+  "repo": "https://github.com/Pmacdon15/glass-bar-omarchy",
+  "commit": "6660283b0edb8b37f9aa61b6f99b275340ad6dcb",
+  "stars": 0,
+  "commits": 11,
+  "author": "pmacdon15",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 2,
+  "kind": "Bar",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Pmacdon15"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-09T23:28:42Z"
+ },
+ {
+  "id": "grantabell.three-state-bar",
+  "repo": "https://github.com/GrantAbell/Omarchy-Three-State-Bar",
+  "commit": "c1c49ba5f9a31e8e9ce32c6c01dd482fbdb8d099",
+  "stars": 0,
+  "commits": 3,
+  "author": "grantabell",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 4,
+  "kind": "Bar",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) David Heinemeier Hansson"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "reference-only (fork: LICENSE names only DHH, no fork-author copyright)",
+  "updated": "2026-09-15T23:48:00Z"
+ },
+ {
+  "id": "gustavo.notchbar",
+  "repo": "https://github.com/GuustTaillieu/gustavo.notchbar",
+  "commit": "e68c53a64971bc28a85882de42890f505b140ef3",
+  "stars": 1,
+  "commits": 27,
+  "author": "guusttaillieu",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null,
+   null,
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Guust Taillieu"
+  ],
+  "manifests": [
+   "manifest.json",
+   "companion/gustavo.notifications/manifest.json",
+   "companion/gustavo.menu/manifest.json"
+  ],
+  "validator": [
+   "pass",
+   "pass",
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-15T10:29:01Z"
+ },
+ {
+  "id": "hancore.voxtype-enhance",
+  "repo": "https://github.com/iamcheyan/omarchy-voxtype-enhance",
+  "commit": "47226f6ffcdd5268689dc7b0755dd55380a553ba",
+  "stars": 29,
+  "commits": 27,
+  "author": "iamcheyan",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 7,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 HANCORE"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-24T14:13:52Z"
+ },
+ {
+  "id": "hass",
+  "repo": "https://github.com/konradk/hass",
+  "commit": "56f1dcdd201e39cbe116d3cbe2cb22b40f394b9b",
+  "stars": 41,
+  "commits": 30,
+  "author": "konradk",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 2,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Konrad Kruk"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [
+   "./vendor",
+   "vendor/LICENSE.websockets"
+  ],
+  "bucket": "train",
+  "updated": "2026-09-03T20:10:34Z"
+ },
+ {
+  "id": "huacnlee.which-key",
+  "repo": "https://github.com/huacnlee/omarchy-which-key",
+  "commit": "fba0cdb472c90eb5a4e8bb5113030d087024a805",
+  "stars": 25,
+  "commits": 44,
+  "author": "huacnlee",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 4,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Jason Lee"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-16T14:01:22Z"
+ },
+ {
+  "id": "intemporel",
+  "repo": "https://github.com/pomartel/intemporel",
+  "commit": "b5f306499eca5cdd79f418f6c7b89b4f6058ffe5",
+  "stars": 3,
+  "commits": 52,
+  "author": "pomartel",
+  "core": true,
+  "coreCommits": 19,
+  "authorPlugins": 1,
+  "kind": "Bar widget",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Pierre Olivier Martel"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-28T19:57:13Z"
+ },
+ {
+  "id": "io.github.adamritter.surface-studio",
+  "repo": "https://github.com/adamritter/omarchy-surface-studio",
+  "commit": "2e6afe162967e4c559659213fbf7d9b69756747a",
+  "stars": 0,
+  "commits": 17,
+  "author": "adamritter",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 3,
+  "kind": "Bar",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) David Heinemeier Hansson"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "reference-only (fork: LICENSE names only DHH, no fork-author copyright)",
+  "updated": "2026-09-10T13:04:31Z"
+ },
+ {
+  "id": "io.github.amitcpatel.omabar-drawer",
+  "repo": "https://github.com/amitcpatel/omabar-drawer",
+  "commit": "4d0a8fd68ab47d9e4c60ae0f1f2468fa105719b2",
+  "stars": 1,
+  "commits": 9,
+  "author": "amitcpatel",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 5,
+  "kind": "Bar",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Amit Patel",
+   "Copyright (c) David Heinemeier Hansson"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-08-21T14:58:01Z"
+ },
+ {
+  "id": "io.github.ayumad.clear-bar",
+  "repo": "https://github.com/Ayumad/omarchy-clear-bar",
+  "commit": "a056b26ba7c1724e987bfa68a9d63b8e70617598",
+  "stars": 0,
+  "commits": 4,
+  "author": "ayumad",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 2,
+  "kind": "Bar",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Ayumad"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-10T03:16:54Z"
+ },
+ {
+  "id": "io.github.cylon58.myomarchy",
+  "repo": "https://github.com/cylon58/myomarchy",
+  "commit": "cefca9f5853bfa3d97e3e3d6aa7bcd7e6c4a366f",
+  "stars": 0,
+  "commits": 4,
+  "author": "cylon58",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 6,
+  "kind": "Plugin",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 cylon58"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-05T21:06:15Z"
+ },
+ {
+  "id": "io.github.deunnis.lacquer",
+  "repo": "https://github.com/Deunnis/omarchy-lacquer",
+  "commit": "177acbd52eede955b3ec8eb422cc0c36158dd7a5",
+  "stars": 44,
+  "commits": 97,
+  "author": "deunnis",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 6,
+  "kind": "Panel",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Deunnis",
+   "Copyright (c) 2026 Bobby Nicholas"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-27T13:26:33Z"
+ },
+ {
+  "id": "io.github.elevate08.qs-bitwarden-cli",
+  "repo": "https://github.com/Elevate08/qs-bitwarden-cli",
+  "commit": "18b72b153780094961654b0a4911ef2bd922c356",
+  "stars": 33,
+  "commits": 489,
+  "author": "elevate08",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 2,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 David Spencer"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-09T21:30:57Z"
+ },
+ {
+  "id": "io.github.fab679.xmb",
+  "repo": "https://github.com/fab679/omarchy-xmb",
+  "commit": "4199780f4a1156e96e7dcb463feeee9956404fc9",
+  "stars": 2,
+  "commits": 8,
+  "author": "fab679",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 2,
+  "kind": "Plugin",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 fab679"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-27T11:23:46Z"
+ },
+ {
+  "id": "io.github.grechman.dynamic-bar",
+  "repo": "https://github.com/grechman/dynamic-bar",
+  "commit": "438a43d062632c9f17f468bcbc8b8d6e8b5a8284",
+  "stars": 1,
+  "commits": 34,
+  "author": "grechman",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar",
+  "catalogLicense": "GPL-3.0-or-later",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "GPL-3.0",
+  "manifestLicense": [
+   "GPL-3.0-or-later"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>",
+   "copyright on the Program, and are irrevocable provided the stated"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [
+   "assets/fonts",
+   "assets/runcat/LICENSE",
+   "assets/fonts/ActionsIsland-Regular.ttf",
+   "assets/fonts/T3Island-Regular.ttf"
+  ],
+  "bucket": "reference-only (copyleft)",
+  "updated": "2026-10-09T03:19:15Z"
+ },
+ {
+  "id": "io.github.grichard99.omaproton-vpn",
+  "repo": "https://github.com/grichard99/omaproton-vpn",
+  "commit": "7db0d72234d38bcc727c261e720c1429e4d81f6e",
+  "stars": 62,
+  "commits": 155,
+  "author": "grichard99",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 grichard99"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-02T19:49:25Z"
+ },
+ {
+  "id": "io.github.gskrt.expanding-top-bar",
+  "repo": "https://github.com/GSkrt/omarchy-expanding-top-bar",
+  "commit": "d60554670ace228f09327ff26b3e9e229a27bbaa",
+  "stars": 0,
+  "commits": 12,
+  "author": "gskrt",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 3,
+  "kind": "Bar",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Gregor Skrt"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-18T11:45:06Z"
+ },
+ {
+  "id": "io.github.guiestrela.glassbar",
+  "repo": "https://github.com/guiestrela/glassbar",
+  "commit": "7828d35e5c50f5bef9f8db86db3786ea1cd06ffe",
+  "stars": 3,
+  "commits": 27,
+  "author": "guiestrela",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 5,
+  "kind": "Bar",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Guiestrela"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-04T17:18:07Z"
+ },
+ {
+  "id": "io.github.hightech89.command-center",
+  "repo": "https://github.com/Hightech89/omarchy-command-center",
+  "commit": "053331fd4bbc436a80332fda8dce283e2a3f4578",
+  "stars": 0,
+  "commits": 14,
+  "author": "hightech89",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Plugin",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Hightech89"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-04T19:48:37Z"
+ },
+ {
+  "id": "io.github.ilyazar.syncthing",
+  "repo": "https://github.com/omarchy-QOL/syncshell",
+  "commit": "cbe6703dd9ef3a65e75324ae697e34b25dde4abd",
+  "stars": 39,
+  "commits": 450,
+  "author": "omarchy-qol",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 5,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT AND MPL-2.0 AND OFL-1.1 AND BSD-3-Clause",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT AND MPL-2.0 AND OFL-1.1 AND BSD-3-Clause",
+   null,
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 IlyaZar"
+  ],
+  "manifests": [
+   "manifest.json",
+   "integrations/caelestia/manifest.json",
+   "integrations/illogical-impulse/manifest.json"
+  ],
+  "validator": [
+   "pass",
+   "manifest missing required field 'id'",
+   "manifest missing required field 'id'"
+  ],
+  "vendored": [
+   "packaging/bundled/LICENSE.golang",
+   "assets/LICENSE.md",
+   "webui/gui/syncshell-modern/vendor",
+   "webui/gui/syncshell-modern/LICENSE.syncthing",
+   "webui/gui/syncshell-modern/vendor/bootstrap/fonts",
+   "webui/gui/syncshell-modern/vendor/bootstrap/LICENSE"
+  ],
+  "bucket": "exclude-unclear (license field mismatch)",
+  "updated": "2026-10-06T19:32:24Z"
+ },
+ {
+  "id": "io.github.jondkinney.omapop",
+  "repo": "https://github.com/jondkinney/omapop",
+  "commit": "7d6b1aa0e5cb14f7d8bf24f9e78ffcad5deb00f7",
+  "stars": 90,
+  "commits": 53,
+  "author": "jondkinney",
+  "core": false,
+  "coreCommits": 3,
+  "authorPlugins": 8,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Jon Kinney"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-10T07:45:04Z"
+ },
+ {
+  "id": "io.github.letsfg.flights",
+  "repo": "https://github.com/LetsFG/LetsFG",
+  "commit": "85068c93053b825595cf02ae0e39c1078a90bf2a",
+  "stars": 2135,
+  "commits": 802,
+  "author": "letsfg",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 LetsFG (MENTAL BALANCE sp. z o.o.)"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [
+   "sdk/python/LICENSE",
+   "integrations/hermes/LICENSE",
+   "integrations/openclaw/LICENSE",
+   "assets/Kalam-Bold.ttf",
+   "assets/Lexend.ttf",
+   "assets/icons/LICENSE"
+  ],
+  "bucket": "train",
+  "updated": "2026-10-11T07:34:20Z"
+ },
+ {
+  "id": "io.github.lexeko.tilelane",
+  "repo": "https://github.com/lexeko/tilelane",
+  "commit": "a3f9368ba716c406155a852473fcb1c5b6261e99",
+  "stars": 0,
+  "commits": 24,
+  "author": "lexeko",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT",
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Alexey Konoplev"
+  ],
+  "manifests": [
+   "manifest.json",
+   "tests/fixtures/dynamic-widget/manifest.json"
+  ],
+  "validator": [
+   "pass",
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-08T04:37:01Z"
+ },
+ {
+  "id": "io.github.lijiawei0305-pixel.mihomo",
+  "repo": "https://github.com/lijiawei0305-pixel/omarchy-mihomo-plugin",
+  "commit": "29ec02c55d016a43d0ce62a622af2b61e03e9c23",
+  "stars": 58,
+  "commits": 36,
+  "author": "lijiawei0305-pixel",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 lijiawei0305-pixel"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-08T04:53:15Z"
+ },
+ {
+  "id": "io.github.loedn.workspace-router",
+  "repo": "https://github.com/Loedn/omarchy-workspace-router",
+  "commit": "003d4dae90a9ad05b2bc45c237aa8c5db69b8f5a",
+  "stars": 0,
+  "commits": 4,
+  "author": "loedn",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Plugin",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Loedn"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-23T14:41:44Z"
+ },
+ {
+  "id": "io.github.mbvlabs.omniscope",
+  "repo": "https://github.com/mbvlabs/omniscope",
+  "commit": "b4ef69affa57bacc36a0bcd6f789abe5d686af78",
+  "stars": 1,
+  "commits": 11,
+  "author": "mbvlabs",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Plugin",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 mbvlabs"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-13T15:39:59Z"
+ },
+ {
+  "id": "io.github.mtolhuys.fathom",
+  "repo": "https://github.com/mtolhuys/fathom",
+  "commit": "a7fc3f9cc7dff6a7187797d4a02d6506565adde4",
+  "stars": 44,
+  "commits": 60,
+  "author": "mtolhuys",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 7,
+  "kind": "Overlay",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Maarten Tolhuijs"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-01T22:24:57Z"
+ },
+ {
+  "id": "io.github.mtolhuys.omacrunch",
+  "repo": "https://github.com/mtolhuys/omacrunch",
+  "commit": "b8bed58c4423a3bef564310c52b7640f79159957",
+  "stars": 0,
+  "commits": 56,
+  "author": "mtolhuys",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 7,
+  "kind": "Bar",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Maarten Tolhuijs"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [
+   "omakit/NOTICE"
+  ],
+  "bucket": "train",
+  "updated": "2026-10-02T05:02:45Z"
+ },
+ {
+  "id": "io.github.pdfrg.amla",
+  "repo": "https://github.com/pdfrg/amla",
+  "commit": "5b49d0369b2138b6646addc54100692cd242ab49",
+  "stars": 2,
+  "commits": 116,
+  "author": "pdfrg",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 2,
+  "kind": "Plugin",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 pdfrg"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-16T18:56:03Z"
+ },
+ {
+  "id": "io.github.rk4500.adaptive-bar",
+  "repo": "https://github.com/rk4500/omarchy-adaptive-bar",
+  "commit": "5ee086973bdfaac1cf0d09e40c1a9f4d109eaff1",
+  "stars": 1,
+  "commits": 16,
+  "author": "rk4500",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 2,
+  "kind": "Bar",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) David Heinemeier Hansson (original Omarchy shell plugin code)",
+   "Copyright (c) 2026 Rudra Krishna (modifications)"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "reference-only (fork: LICENSE names only DHH, no fork-author copyright)",
+  "updated": "2026-10-07T14:21:25Z"
+ },
+ {
+  "id": "io.github.sa1ntmar0on.xmb-enhanced",
+  "repo": "https://github.com/Sa1ntMar0on/XMB-Enhanced",
+  "commit": "954c81f431c0ec4d356af093e22e9f8bf9db8730",
+  "stars": 2,
+  "commits": 21,
+  "author": "sa1ntmar0on",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Plugin",
+  "catalogLicense": "GPL-2.0",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "NONCOMMERCIAL",
+  "manifestLicense": [
+   "GPL-2.0"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (C) 2026 Sa1ntMar0on",
+   "Copyright (C) 1989, 1991 Free Software Foundation, Inc.,"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "exclude (custom/unclear)",
+  "updated": "2026-10-07T08:30:20Z"
+ },
+ {
+  "id": "io.github.saikomantisu.commandbar",
+  "repo": "https://github.com/Saikomantisu/omarchy-commandbar",
+  "commit": "5cff403868c0a91673328cd969c01d7a343bddd8",
+  "stars": 25,
+  "commits": 39,
+  "author": "saikomantisu",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 5,
+  "kind": "Overlay",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Saikomantisu"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-10T17:03:37Z"
+ },
+ {
+  "id": "io.github.sirjul1337.lock-explorer",
+  "repo": "https://github.com/SirJul1337/omarchy-lock-explorer",
+  "commit": "7faf2cce10e3008f69ad12d66273c81886e4a834",
+  "stars": 204,
+  "commits": 206,
+  "author": "sirjul1337",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Overlay",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 SirJul1337"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-09T19:22:19Z"
+ },
+ {
+  "id": "io.github.twiking.omasettings",
+  "repo": "https://github.com/twiking/omasettings",
+  "commit": "72cfe1640aaece2fef39e4dd155289510f07b2a8",
+  "stars": 46,
+  "commits": 151,
+  "author": "twiking",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 2,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Tobias Wiking"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-06T15:07:10Z"
+ },
+ {
+  "id": "io.github.tyrichards.tray",
+  "repo": "https://github.com/TyRichards/omarchy-tray",
+  "commit": "5c0d9a9f0efcf151f93b5cf991916221671d1601",
+  "stars": 49,
+  "commits": 36,
+  "author": "tyrichards",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 7,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Ty Richards"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-25T19:53:21Z"
+ },
+ {
+  "id": "io.github.whitehades.topbar-peek",
+  "repo": "https://github.com/WhiteHades/omarchy-topbar-peek",
+  "commit": "bd6aea99641f05ef2036a01ae177b7c102b39c4c",
+  "stars": 0,
+  "commits": 7,
+  "author": "whitehades",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 WhiteHades",
+   "Copyright (c) 2026 Eric van Riet Paap"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-16T18:14:05Z"
+ },
+ {
+  "id": "io.github.x3me.nexthop",
+  "repo": "https://github.com/x3me/omarchy-nexthop",
+  "commit": "132dba95bd9ef62d3205ff944ab6855a927318f6",
+  "stars": 61,
+  "commits": 120,
+  "author": "x3me",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Extreme Labs"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-25T14:48:17Z"
+ },
+ {
+  "id": "jankeesvw.clippy",
+  "repo": "https://github.com/jankeesvw/omarchy-clippy",
+  "commit": "2d21c70baeb15858b7e6efd628ad476b0d97d153",
+  "stars": 26,
+  "commits": 20,
+  "author": "jankeesvw",
+  "core": false,
+  "coreCommits": 1,
+  "authorPlugins": 18,
+  "kind": "Service",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Jankees van Woezik"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-09T13:59:01Z"
+ },
+ {
+  "id": "jankeesvw.herdr",
+  "repo": "https://github.com/jankeesvw/omarchy-herdr",
+  "commit": "7e1ceea54df68b5d0c215d3a185f136d30ba1a6d",
+  "stars": 54,
+  "commits": 35,
+  "author": "jankeesvw",
+  "core": false,
+  "coreCommits": 1,
+  "authorPlugins": 18,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Jankees van Woezik"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-09T18:04:48Z"
+ },
+ {
+  "id": "jankeesvw.notification-center",
+  "repo": "https://github.com/jankeesvw/omarchy-notification-center",
+  "commit": "85b2fc72b58d3be2ce1287a68dd117e6939a17fa",
+  "stars": 68,
+  "commits": 37,
+  "author": "jankeesvw",
+  "core": false,
+  "coreCommits": 1,
+  "authorPlugins": 18,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Jankees van Woezik"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-09T18:47:51Z"
+ },
+ {
+  "id": "jankeesvw.tesla",
+  "repo": "https://github.com/jankeesvw/omarchy-tesla",
+  "commit": "7f6f3494a52080592558905cfe58c61ee19dc46e",
+  "stars": 75,
+  "commits": 23,
+  "author": "jankeesvw",
+  "core": false,
+  "coreCommits": 1,
+  "authorPlugins": 18,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Jankees van Woezik"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-09T13:59:21Z"
+ },
+ {
+  "id": "jankeesvw.time-machine",
+  "repo": "https://github.com/jankeesvw/omarchy-time-machine",
+  "commit": "b410b29c8fd616811e84e2a9d38744b583836ed7",
+  "stars": 124,
+  "commits": 33,
+  "author": "jankeesvw",
+  "core": false,
+  "coreCommits": 1,
+  "authorPlugins": 18,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Jankees van Woezik"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-09T18:47:46Z"
+ },
+ {
+  "id": "jankeesvw.unifi-protect",
+  "repo": "https://github.com/jankeesvw/omarchy-unifi-protect",
+  "commit": "bb04e95e68267cac5bf8e8be8e7de622e8b44770",
+  "stars": 20,
+  "commits": 32,
+  "author": "jankeesvw",
+  "core": false,
+  "coreCommits": 1,
+  "authorPlugins": 18,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Jankees van Woezik"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-09T13:59:23Z"
+ },
+ {
+  "id": "jankeesvw.workspace-name",
+  "repo": "https://github.com/jankeesvw/omarchy-workspace-name",
+  "commit": "8e9de7f6752f38a37633d8375e875727770c89b7",
+  "stars": 29,
+  "commits": 27,
+  "author": "jankeesvw",
+  "core": false,
+  "coreCommits": 1,
+  "authorPlugins": 18,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Jankees van Woezik"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-09T18:35:28Z"
+ },
+ {
+  "id": "jesseburlamaque.omarchy-find",
+  "repo": "https://github.com/jesseburlamaque/omarchy-find",
+  "commit": "08a88babc1578a3a83749450e8d91a6bd7094886",
+  "stars": 37,
+  "commits": 75,
+  "author": "jesseburlamaque",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 3,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Jess\u00e9 Burlamaque"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-14T02:07:18Z"
+ },
+ {
+  "id": "josejaguirre.bar",
+  "repo": "https://github.com/josejaguirre/omarchy-custom-bar",
+  "commit": "6c81dd96561ad821e7280e8ca9152376c43c01f1",
+  "stars": 3,
+  "commits": 10,
+  "author": "josejaguirre",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Jose Aguirre"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-06T02:11:23Z"
+ },
+ {
+  "id": "kc.omarchy-menubar-manager",
+  "repo": "https://github.com/kevclarkco/omarchy-menubar-manager",
+  "commit": "4ee4d72e4e832a6e7aa0ed09e316174ac0e985d0",
+  "stars": 4,
+  "commits": 37,
+  "author": "kevclarkco",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 kc"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-09T13:04:24Z"
+ },
+ {
+  "id": "lobo.islands",
+  "repo": "https://github.com/DanielLob-o/Islands",
+  "commit": "b32146fec8cdb8336e8317eb8002f7378c5d6355",
+  "stars": 4,
+  "commits": 7,
+  "author": "daniellob-o",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 3,
+  "kind": "Bar",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Daniel Lobo",
+   "Copyright (c) David Heinemeier Hansson"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-07T19:10:55Z"
+ },
+ {
+  "id": "local.prayer-times",
+  "repo": "https://github.com/husamemadH/omarchy-quattro-prayer-times",
+  "commit": "70e8f4d6227fac4fb11afa9d8ef722f0e44636a1",
+  "stars": 44,
+  "commits": 35,
+  "author": "husamemadh",
+  "core": false,
+  "coreCommits": 6,
+  "authorPlugins": 1,
+  "kind": "Bar widget",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Husam Emad"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-08-31T13:49:55Z"
+ },
+ {
+  "id": "matthewjaybarr.app-grid",
+  "repo": "https://github.com/matthewjaybarr-png/omarchy-app-grid",
+  "commit": "a9aafbb17a2f28cb9c967d64ab0667ec42b86c8d",
+  "stars": 0,
+  "commits": 25,
+  "author": "matthewjaybarr-png",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Plugin",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Matt Barr"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-08T23:09:48Z"
+ },
+ {
+  "id": "md.lifeos.doubao-say",
+  "repo": "https://github.com/quanru/doubao-say",
+  "commit": "a1afb0da6156f8291c34cfd1013d6e9054a693fa",
+  "stars": 73,
+  "commits": 228,
+  "author": "quanru",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Service",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 doubao-say contributors",
+   "Copyright (c) 2026 lilong7676"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-10T03:36:32Z"
+ },
+ {
+  "id": "mirador",
+  "repo": "https://github.com/sanjyay/Mirador",
+  "commit": "0cdf936ddda5a9022059aa6ebe8387eb40ea61fd",
+  "stars": 39,
+  "commits": 108,
+  "author": "sanjyay",
+  "core": false,
+  "coreCommits": 1,
+  "authorPlugins": 8,
+  "kind": "Overlay",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 sanjyay"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-08T16:34:07Z"
+ },
+ {
+  "id": "mscurtescu.island-bar",
+  "repo": "https://github.com/mscurtescu/omarchy-island-bar",
+  "commit": "9a4041a8e95cf6ff53099992d91e8003ee30e4d5",
+  "stars": 12,
+  "commits": 29,
+  "author": "mscurtescu",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) David Heinemeier Hansson",
+   "Copyright (c) 2026 Marius Scurtescu"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "reference-only (fork: LICENSE names only DHH, no fork-author copyright)",
+  "updated": "2026-09-15T22:48:13Z"
+ },
+ {
+  "id": "netmojo.omdrop",
+  "repo": "https://github.com/brentkearney/omdrop-plugin",
+  "commit": "cf93519c255a77b27919835ec0f2bff88ae0bb1d",
+  "stars": 91,
+  "commits": 186,
+  "author": "brentkearney",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Brent Kearney"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-10T20:22:43Z"
+ },
+ {
+  "id": "njpatel.omapager",
+  "repo": "https://github.com/ryanrhughes/omapager",
+  "commit": "c389e73516828d18f26e8efec2127c0c3dc3cb97",
+  "stars": 87,
+  "commits": 106,
+  "author": "ryanrhughes",
+  "core": true,
+  "coreCommits": 821,
+  "authorPlugins": 1,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Neil Jagdish Patel"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-09T13:07:34Z"
+ },
+ {
+  "id": "noodlesploder.celeste",
+  "repo": "https://github.com/NoodleSploder/omarchy-celeste",
+  "commit": "a0ccf9cb48237e29515da64319aaa39b9c77939e",
+  "stars": 0,
+  "commits": 29,
+  "author": "noodlesploder",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar",
+  "catalogLicense": "GPL-3.0-or-later",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "GPL-3.0",
+  "manifestLicense": [
+   "GPL-3.0-or-later"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>",
+   "copyright on the Program, and are irrevocable provided the stated"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "reference-only (copyleft)",
+  "updated": "2026-09-17T16:49:03Z"
+ },
+ {
+  "id": "nosignal.motion-wallpaper",
+  "repo": "https://github.com/28allday/Motion-Wallpaper-Omarchy",
+  "commit": "bacebacf7886c5c68f11aa22c68863d8d7051848",
+  "stars": 29,
+  "commits": 55,
+  "author": "28allday",
+  "core": false,
+  "coreCommits": 4,
+  "authorPlugins": 14,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Gavin Nugent"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-19T12:38:15Z"
+ },
+ {
+  "id": "nosignal.quattrolitaire",
+  "repo": "https://github.com/28allday/Quattrolitaire",
+  "commit": "e17d21a5c8945b71c5a7606ab84cc7962208f956",
+  "stars": 30,
+  "commits": 6,
+  "author": "28allday",
+  "core": false,
+  "coreCommits": 4,
+  "authorPlugins": 14,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Gavin Nugent"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-08-17T19:23:46Z"
+ },
+ {
+  "id": "olauncher",
+  "repo": "https://github.com/hisnameismarco/OLauncher",
+  "commit": "f06224714fa0580cd73b322953f005b397b0fa5b",
+  "stars": 11,
+  "commits": 16,
+  "author": "hisnameismarco",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 2,
+  "kind": "Plugin",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "GPL-3.0",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>",
+   "copyright on the Program, and are irrevocable provided the stated"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "reference-only (copyleft)",
+  "updated": "2026-09-21T18:49:03Z"
+ },
+ {
+  "id": "omacale.bar",
+  "repo": "https://github.com/AyushKr2003/omacale",
+  "commit": "49c61dae05aa97e108b27d9ca51d710807a610ef",
+  "stars": 60,
+  "commits": 198,
+  "author": "ayushkr2003",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 3,
+  "kind": "Bar",
+  "catalogLicense": "GPL-3.0-only",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "GPL-3.0",
+  "manifestLicense": [
+   "GPL-3.0-only"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>",
+   "copyright on the Program, and are irrevocable provided the stated"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [
+   "assets/fonts",
+   "assets/fonts/Rubik.ttf",
+   "assets/fonts/GoogleSansFlex.ttf"
+  ],
+  "bucket": "reference-only (copyleft)",
+  "updated": "2026-10-11T08:42:36Z"
+ },
+ {
+  "id": "omadock",
+  "repo": "https://github.com/thepathless/omadock",
+  "commit": "dac18c835a48b47e946a493f01747363be89d1a6",
+  "stars": 46,
+  "commits": 544,
+  "author": "thepathless",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 2,
+  "kind": "Overlay",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 thepathless"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [
+   "./fonts",
+   "fonts/Silkscreen-Regular.ttf"
+  ],
+  "bucket": "train",
+  "updated": "2026-10-11T09:14:42Z"
+ },
+ {
+  "id": "omamail",
+  "repo": "https://github.com/huacnlee/omamail",
+  "commit": "c8d57c325933342a32dbd7f617589c4e9737029f",
+  "stars": 293,
+  "commits": 290,
+  "author": "huacnlee",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 4,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Jason Lee <REDACTED_EMAIL>"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [
+   "app/assets/fonts",
+   "app/assets/fonts/SymbolsNerdFontMono-Regular.ttf"
+  ],
+  "bucket": "train",
+  "updated": "2026-10-11T10:40:59Z"
+ },
+ {
+  "id": "omaplug",
+  "repo": "https://github.com/fross100/omaplug",
+  "commit": "64df56e876846247ded550890c52b7b190776b3e",
+  "stars": 76,
+  "commits": 165,
+  "author": "fross100",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Fross"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-06T01:54:22Z"
+ },
+ {
+  "id": "omarctalia.launcher",
+  "repo": "https://github.com/DaphnisDuck/omarctalia-launcher",
+  "commit": "16b49843d844f7be938e86d468678941edfaca08",
+  "stars": 0,
+  "commits": 15,
+  "author": "daphnisduck",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Plugin",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Steve (DaphnisDuck)"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-08T19:15:28Z"
+ },
+ {
+  "id": "ozgun.primary-bar",
+  "repo": "https://github.com/metalciaga/omarchy-primary-bar",
+  "commit": "0ee7b6d8f5fd0d9e18cdf9ac93f7e3862eecabab",
+  "stars": 1,
+  "commits": 2,
+  "author": "metalciaga",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Ozgun Ozkok"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-16T10:17:37Z"
+ },
+ {
+  "id": "palccod.omas",
+  "repo": "https://github.com/Palccod/Omas",
+  "commit": "2e49dbdd26c4ec8c20c22f5323d1b4583298f2ed",
+  "stars": 1,
+  "commits": 25,
+  "author": "palccod",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 4,
+  "kind": "Plugin",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 palccod"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-08-29T17:08:39Z"
+ },
+ {
+  "id": "pix.bar",
+  "repo": "https://github.com/pxllbt/better-bar",
+  "commit": "d148b188bd1ab3214745a116caf00ee4ed73c7a4",
+  "stars": 2,
+  "commits": 62,
+  "author": "pxllbt",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 2,
+  "kind": "Bar",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 amanhex"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-11T10:55:35Z"
+ },
+ {
+  "id": "pretty.omagen",
+  "repo": "https://github.com/prettyletto/omagen",
+  "commit": "1a00ad2708e851f23c1a517404aa2924763e7041",
+  "stars": 50,
+  "commits": 213,
+  "author": "prettyletto",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 2,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Prettyletto"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-27T17:11:02Z"
+ },
+ {
+  "id": "robzolkos.github",
+  "repo": "https://github.com/robzolkos/omarchy-github",
+  "commit": "6f361a45ee928119fbb73d26ca2173b9266a9e73",
+  "stars": 61,
+  "commits": 43,
+  "author": "robzolkos",
+  "core": false,
+  "coreCommits": 8,
+  "authorPlugins": 2,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Rob Zolkos"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-16T17:06:48Z"
+ },
+ {
+  "id": "rosakodu.dock",
+  "repo": "https://github.com/rosakodu/omarchy-dock",
+  "commit": "5d39dfa32f8ef73c53c114dd610ce82ec817b126",
+  "stars": 45,
+  "commits": 175,
+  "author": "rosakodu",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 2,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 rosakodu"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-09T11:22:09Z"
+ },
+ {
+  "id": "salted.bar",
+  "repo": "https://github.com/salted-sorbet/salted.bar",
+  "commit": "e40b897ad6bdb19a1f508ec47d66528ed855767d",
+  "stars": 0,
+  "commits": 14,
+  "author": "salted-sorbet",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 7,
+  "kind": "Bar",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 salted-sorbet"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-08-21T02:47:26Z"
+ },
+ {
+  "id": "sanjyay.peekbar",
+  "repo": "https://github.com/sanjyay/peekbar",
+  "commit": "45d46beaf19fd41f9886f895296e7f29815ab538",
+  "stars": 1,
+  "commits": 18,
+  "author": "sanjyay",
+  "core": false,
+  "coreCommits": 1,
+  "authorPlugins": 8,
+  "kind": "Bar",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 sanjyay"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-14T17:07:07Z"
+ },
+ {
+  "id": "scottjones.flush-bar",
+  "repo": "https://github.com/scottjones/omarchy-flush-bar",
+  "commit": "b62a65df4fda26ae82c95d07b74251caf63fea42",
+  "stars": 2,
+  "commits": 10,
+  "author": "scottjones",
+  "core": true,
+  "coreCommits": 12,
+  "authorPlugins": 1,
+  "kind": "Service",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Scott Jones"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-20T19:54:18Z"
+ },
+ {
+  "id": "sgruendel.airq",
+  "repo": "https://github.com/sgruendel/omarchy-airq",
+  "commit": "18e05141be00637fd640f50b8ddd2e3a3c4acaba",
+  "stars": 0,
+  "commits": 15,
+  "author": "sgruendel",
+  "core": true,
+  "coreCommits": 19,
+  "authorPlugins": 2,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Stefan Gr\u00fcndel"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-27T07:17:28Z"
+ },
+ {
+  "id": "sgruendel.fzf",
+  "repo": "https://github.com/sgruendel/omarchy-fzf",
+  "commit": "920ef76a3b972ef9a5203551164c05b3aaebbb25",
+  "stars": 2,
+  "commits": 11,
+  "author": "sgruendel",
+  "core": true,
+  "coreCommits": 19,
+  "authorPlugins": 2,
+  "kind": "Overlay",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Stefan Gr\u00fcndel"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-27T08:26:23Z"
+ },
+ {
+  "id": "slcode777.omaconv",
+  "repo": "https://github.com/SLcode777/omaconv",
+  "commit": "1cca7b85b8f91b7d1e3c0efb236e903a1ef156f2",
+  "stars": 2,
+  "commits": 26,
+  "author": "slcode777",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 4,
+  "kind": "Plugin",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 SLcode777"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-08-18T06:15:35Z"
+ },
+ {
+  "id": "stappmus.activity-monitor",
+  "repo": "https://github.com/stappmus/omarchy-activity-monitor",
+  "commit": "b25a98c7ff2a688ab74d86d2be42249e2db2f9cf",
+  "stars": 42,
+  "commits": 22,
+  "author": "stappmus",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 6,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) David Heinemeier Hansson",
+   "Copyright (c) 2026 Kristoffer Haugland"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-08-31T08:15:14Z"
+ },
+ {
+  "id": "surface.tablet",
+  "repo": "https://github.com/varlet99/omarchy-tablet",
+  "commit": "9a828bc97c7a2d3d730e860282faded102c3be90",
+  "stars": 1,
+  "commits": 4,
+  "author": "varlet99",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Charles Rivest"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-28T03:58:10Z"
+ },
+ {
+  "id": "tahayvr.postcard",
+  "repo": "https://github.com/tahayvr/postcard",
+  "commit": "3a3081686a69b361dacfd60e4bdb23074010134d",
+  "stars": 79,
+  "commits": 133,
+  "author": "tahayvr",
+  "core": true,
+  "coreCommits": 19,
+  "authorPlugins": 1,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Taha Hossein Nejad"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-08T07:02:31Z"
+ },
+ {
+  "id": "tech.greyforge.reprieve",
+  "repo": "https://github.com/GreyforgeLabs/reprieve",
+  "commit": "e023e29d2d3084cd8d7c5998f7dae6f89e6ce635",
+  "stars": 38,
+  "commits": 26,
+  "author": "greyforgelabs",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 3,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Greyforge Labs"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-04T19:31:02Z"
+ },
+ {
+  "id": "thefreshoffice.speaker-calibrator",
+  "repo": "https://github.com/thefreshoffice/omarchy-speaker-calibrator",
+  "commit": "b142b0208cc086adc53dbdad78a73207a3075854",
+  "stars": 45,
+  "commits": 138,
+  "author": "thefreshoffice",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 2,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Slimbook user and Codex"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-22T21:52:31Z"
+ },
+ {
+  "id": "tmn73.calendar",
+  "repo": "https://github.com/tmn73/omarchy-calendar",
+  "commit": "a190d1bcc2e6eb1c0e6c9130e3872fcdd6a292c8",
+  "stars": 40,
+  "commits": 75,
+  "author": "tmn73",
+  "core": false,
+  "coreCommits": 2,
+  "authorPlugins": 3,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 tmn73",
+   "Copyright (c) Omarchy contributors (portions derived from the built-in clock plugin)"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-09T15:57:25Z"
+ },
+ {
+  "id": "tornikegomareli.spaces",
+  "repo": "https://github.com/tornikegomareli/omarchy-spaces",
+  "commit": "9747f1f6ca5533a441bba24b7b292c2cde502a2a",
+  "stars": 189,
+  "commits": 70,
+  "author": "tornikegomareli",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar widget",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Tornike Gomareli"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-08T23:45:28Z"
+ },
+ {
+  "id": "videinfra.omarunner",
+  "repo": "https://github.com/thevideinfra/omarunner",
+  "commit": "f65b07681fe17ed8c86543ccf832192e2e15b659",
+  "stars": 0,
+  "commits": 73,
+  "author": "thevideinfra",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 3,
+  "kind": "Plugin",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 thevideinfra"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-10-10T02:57:11Z"
+ },
+ {
+  "id": "vimarchy",
+  "repo": "https://github.com/clickety-clacks/vimarchy",
+  "commit": "30601976903821a82097ab568f10aae56564c32f",
+  "stars": 59,
+  "commits": 57,
+  "author": "clickety-clacks",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 2,
+  "kind": "Overlay",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Mike Manzano"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-21T21:33:38Z"
+ },
+ {
+  "id": "voyagen.oma-gradient-topbar",
+  "repo": "https://github.com/voyagen/oma-gradient-topbar",
+  "commit": "4b314f3e5547abbd3a6b3cbac4b5d32662012f5a",
+  "stars": 0,
+  "commits": 1,
+  "author": "voyagen",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 2,
+  "kind": "Bar",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) David Heinemeier Hansson",
+   "Copyright (c) 2026 Voyagen"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "reference-only (fork: LICENSE names only DHH, no fork-author copyright)",
+  "updated": "2026-09-27T07:08:50Z"
+ },
+ {
+  "id": "yamz8.omanki",
+  "repo": "https://github.com/yamz8/omanki",
+  "commit": "3b7f0f1075233b8531492f5186080ccc7395774f",
+  "stars": 35,
+  "commits": 57,
+  "author": "yamz8",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 9,
+  "kind": "Bar widget",
+  "catalogLicense": "MIT",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   "MIT"
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 yamz8"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-20T12:07:20Z"
+ },
+ {
+  "id": "zeru.portwatch",
+  "repo": "https://github.com/ZerubbabelT/portwatch",
+  "commit": "9878e488a4c7d90977a0944258e336756ac1768e",
+  "stars": 46,
+  "commits": 18,
+  "author": "zerubbabelt",
+  "core": false,
+  "coreCommits": 0,
+  "authorPlugins": 1,
+  "kind": "Bar widget",
+  "catalogLicense": "See repository",
+  "licenseFile": "LICENSE",
+  "licenseVerified": "MIT",
+  "manifestLicense": [
+   null
+  ],
+  "packageLicense": null,
+  "copyright": [
+   "Copyright (c) 2026 Zerubbabel"
+  ],
+  "manifests": [
+   "manifest.json"
+  ],
+  "validator": [
+   "pass"
+  ],
+  "vendored": [],
+  "bucket": "train",
+  "updated": "2026-09-23T14:44:46Z"
+ }
+]

@@ -1,0 +1,34 @@
+{
+ "stock14b": {
+  "validate_pass": "24/56",
+  "per_task": {
+   "build_from_spec": "0/27",
+   "add_panel": "6/6",
+   "chunk_manifest_entry": "0/5",
+   "chunk_component": "10/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "5/5"
+  },
+  "full_plugin_pass": "6/33",
+  "qml_files": 71,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 1
+ },
+ "tuned14b": {
+  "validate_pass": "42/56",
+  "per_task": {
+   "build_from_spec": "13/27",
+   "add_panel": "6/6",
+   "chunk_manifest_entry": "5/5",
+   "chunk_component": "10/10",
+   "chunk_add_kind": "3/3",
+   "fix_manifest": "5/5"
+  },
+  "full_plugin_pass": "19/33",
+  "qml_files": 56,
+  "qml_files_with_syntax_err": 0,
+  "qmllint_syntax_errors": 0,
+  "truncated": 0
+ }
+}

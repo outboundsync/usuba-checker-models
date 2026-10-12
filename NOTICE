@@ -1,0 +1,61 @@
+NOTICE — Omarchy Specialist seed dataset
+
+Training text is derived from the sources below. Every source's LICENSE file was read at the pinned commit; all are MIT.
+MIT requires the copyright notice and permission notice in all copies or substantial portions: ship this file and sources/licenses/* with the dataset and with the model.
+
+- basecamp/omarchy @ 9480d1b6a98156314dbabe6bfef08f39f8b9cd07 — MIT — Copyright (c) David Heinemeier Hansson
+- kenhara/omarchy-compliantish @ fed359460d0a1d0ef0b537cac8ad37c443e18432 — MIT — Copyright (c) 2026 Harris Kenny
+- kenhara/omarchy-encyclopedic @ 3b122bf2a3af05daabc16b2e4c8222292f1a9bd0 — MIT — Copyright (c) 2026 Harris Kenny
+- kenhara/omarchy-enricherino @ 38c830cb930a19ae4f550eb8748bb701556dd6d9 — MIT — Copyright (c) 2026 Harris Kenny
+- kenhara/omarchy-rocketlauncher @ e2e0061b40e3f99224270048246889c1e237f709 — MIT — Copyright (c) 2026 Harris Kenny
+- kenhara/omarchy-scriptural @ 5b478a575f01921fdc0bb4f3f75d36d018b77b32 — MIT — Copyright (c) 2026 Harris Kenny
+- kenhara/omarchy-sparklekeys @ 157f9f8de950c3abd5c34e8674e42360ccbfcfc4 — MIT — Copyright (c) 2026 Harris Kenny
+- 28allday/Quattrolitaire @ e17d21a5c8945b71c5a7606ab84cc7962208f956 — MIT — Copyright (c) 2026 Gavin Nugent
+- acrogenesis/omarchy-ai-account-switcher @ dd217a0eeaf57856dadd5b48b0bfebfc6c3f62c7 — MIT — Copyright (c) 2026 acrogenesis
+- acrogenesis/omarchy-theme-scheduler @ 54c2f0a83b9da6b1a81abb80a06728dc6b2e8003 — MIT — Copyright (c) 2026 Adrian Rangel
+- amitcpatel/omabar-drawer @ 4d0a8fd68ab47d9e4c60ae0f1f2468fa105719b2 — MIT — Copyright (c) 2026 Amit Patel
+- Ayumad/omarchy-clear-bar @ a056b26ba7c1724e987bfa68a9d63b8e70617598 — MIT — Copyright (c) 2026 Ayumad
+- bobby-nicholas/omaland @ 48d1c64acd78cd3a2862ccaad17c8045be3dda38 — MIT — Copyright (c) 2026 Bobby Nicholas
+- Charlieras262/omarchy-floating-bar @ 5e7dc23421f1f774e5c329cc2397b5825900b75e — MIT — Copyright (c) 2026 Charlieras262
+- clickety-clacks/vimarchy @ 30601976903821a82097ab568f10aae56564c32f — MIT — Copyright (c) 2026 Mike Manzano
+- Crayonan/omarchy-bar @ 1f24d2397e6eed8ac44bad8c5578f1041cfa3596 — MIT — Copyright (c) 2026 Bit Dev
+- crmne/omarchy-mpris @ ef8e3e737830ad409fd954d4273f2a3caee20a1b — MIT — Copyright (c) 2026 Carmine Paolino
+- cylon58/myomarchy @ cefca9f5853bfa3d97e3e3d6aa7bcd7e6c4a366f — MIT — Copyright (c) 2026 cylon58
+- cylon58/omasnippet @ 14356e48b61211df4259edc3dfa543856b6a0d89 — MIT — Copyright (c) 2026 Geoff
+- DanielLob-o/Islands @ b32146fec8cdb8336e8317eb8002f7378c5d6355 — MIT — Copyright (c) 2026 Daniel Lobo
+- fab679/omarchy-xmb @ 4199780f4a1156e96e7dcb463feeee9956404fc9 — MIT — Copyright (c) 2026 fab679
+- felixzsh/omarchy-widget-islands @ bea464cebc9dc3ed06375be847db1e467f9c09ea — MIT — Copyright (c) 2026 Felix
+- fillmefab4/Pillbar @ c0805be509f07c04800303db048a0bff6efb3f28 — MIT — Copyright (c) 2026 fab
+- ForrestKnight/omarchy-key-promoter @ 21c2b7184a33d800132ac2b6fb66aa31ae70de9a — MIT — Copyright (c) 2026 Forrest Knight
+- GSkrt/omarchy-expanding-top-bar @ d60554670ace228f09327ff26b3e9e229a27bbaa — MIT — Copyright (c) 2026 Gregor Skrt
+- guiestrela/glassbar @ 7828d35e5c50f5bef9f8db86db3786ea1cd06ffe — MIT — Copyright (c) 2026 Guiestrela
+- GuustTaillieu/gustavo.notchbar @ e68c53a64971bc28a85882de42890f505b140ef3 — MIT — Copyright (c) 2026 Guust Taillieu
+- huacnlee/omarchy-which-key @ fba0cdb472c90eb5a4e8bb5113030d087024a805 — MIT — Copyright (c) 2026 Jason Lee
+- husamemadH/omarchy-quattro-prayer-times @ 70e8f4d6227fac4fb11afa9d8ef722f0e44636a1 — MIT — Copyright (c) 2026 Husam Emad
+- iamcheyan/omarchy-voxtype-enhance @ 47226f6ffcdd5268689dc7b0755dd55380a553ba — MIT — Copyright (c) 2026 HANCORE
+- jankeesvw/omarchy-tesla @ 7f6f3494a52080592558905cfe58c61ee19dc46e — MIT — Copyright (c) 2026 Jankees van Woezik
+- jankeesvw/omarchy-time-machine @ b410b29c8fd616811e84e2a9d38744b583836ed7 — MIT — Copyright (c) 2026 Jankees van Woezik
+- josejaguirre/omarchy-custom-bar @ 6c81dd96561ad821e7280e8ca9152376c43c01f1 — MIT — Copyright (c) 2026 Jose Aguirre
+- kevclarkco/omarchy-menubar-manager @ 4ee4d72e4e832a6e7aa0ed09e316174ac0e985d0 — MIT — Copyright (c) 2026 kc
+- marlonangeli/omarchy-xcompose @ da22284ba3d5037dd6a1d1e790e241e2c1b45d17 — MIT — Copyright (c) 2026 Marlon Angeli
+- mbvlabs/omniscope @ b4ef69affa57bacc36a0bcd6f789abe5d686af78 — MIT — Copyright (c) 2026 mbvlabs
+- metalciaga/omarchy-primary-bar @ 0ee7b6d8f5fd0d9e18cdf9ac93f7e3862eecabab — MIT — Copyright (c) 2026 Ozgun Ozkok
+- mtolhuys/omacrunch @ b8bed58c4423a3bef564310c52b7640f79159957 — MIT — Copyright (c) 2026 Maarten Tolhuijs
+- Palccod/Omas @ 2e49dbdd26c4ec8c20c22f5323d1b4583298f2ed — MIT — Copyright (c) 2026 palccod
+- pdfrg/amla @ 5b49d0369b2138b6646addc54100692cd242ab49 — MIT — Copyright (c) 2026 pdfrg
+- Pmacdon15/glass-bar-omarchy @ 6660283b0edb8b37f9aa61b6f99b275340ad6dcb — MIT — Copyright (c) 2026 Pmacdon15
+- pomartel/intemporel @ b5f306499eca5cdd79f418f6c7b89b4f6058ffe5 — MIT — Copyright (c) 2026 Pierre Olivier Martel
+- pxllbt/better-bar @ d148b188bd1ab3214745a116caf00ee4ed73c7a4 — MIT — Copyright (c) 2026 amanhex
+- RohitKaushal7/omarchy-beam @ ffa1a10e25af3e9ce59f62bc63e47cd244dd1c0f — MIT — Copyright (c) 2026 Rohit Kaushal
+- salted-sorbet/better_salted.bar @ cb3d05062e40d4ac36d840f99d5cdcbed57c7b5c — MIT — Copyright (c) 2026 salted-sorbet
+- salted-sorbet/salted.bar @ e40b897ad6bdb19a1f508ec47d66528ed855767d — MIT — Copyright (c) 2026 salted-sorbet
+- sanjyay/peekbar @ 45d46beaf19fd41f9886f895296e7f29815ab538 — MIT — Copyright (c) 2026 sanjyay
+- scottjones/omarchy-flush-bar @ b62a65df4fda26ae82c95d07b74251caf63fea42 — MIT — Copyright (c) 2026 Scott Jones
+- sgruendel/omarchy-airq @ 18e05141be00637fd640f50b8ddd2e3a3c4acaba — MIT — Copyright (c) 2026 Stefan Gründel
+- sgruendel/omarchy-fzf @ 920ef76a3b972ef9a5203551164c05b3aaebbb25 — MIT — Copyright (c) 2026 Stefan Gründel
+- SLcode777/omaconv @ 1cca7b85b8f91b7d1e3c0efb236e903a1ef156f2 — MIT — Copyright (c) 2026 SLcode777
+- TECHNOCRAFT27/floating-waybar @ d68a3f35084350ccf3b8a06c45648dd4fbe2ef34 — MIT — Copyright (c) 2026 TECHNOCRAFT27
+- thevideinfra/omarunner @ f65b07681fe17ed8c86543ccf832192e2e15b659 — MIT — Copyright (c) 2026 thevideinfra
+- varlet99/omarchy-tablet @ 9a828bc97c7a2d3d730e860282faded102c3be90 — MIT — Copyright (c) 2026 Charles Rivest
+- ZerubbabelT/portwatch @ 9878e488a4c7d90977a0944258e336756ac1768e — MIT — Copyright (c) 2026 Zerubbabel
+- (vendored inside mtolhuys/omacrunch) mtolhuys/omakit @ 2a3b95629518dfbdaa880bf528ce2ce495b27b45 — MIT — Copyright (c) 2026 Maarten Tolhuijs

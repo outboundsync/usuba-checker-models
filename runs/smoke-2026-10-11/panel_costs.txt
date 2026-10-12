@@ -1,0 +1,8 @@
+qwen/qwen-2.5-coder-32b-instruct in 0 out 0 cost_usd 0 errors 56
+qwen/qwen3-coder in 21922 out 53682 cost_usd 0.0814 errors 0
+google/gemini-3.1-pro-preview in 24623 out 302485 cost_usd 3.6791 errors 1
+openai/gpt-5.6-sol in 3090 out 110588 cost_usd 1.1121 errors 40
+anthropic/claude-opus-5.5 in 4001 out 112216 cost_usd 2.2603 errors 42
+anthropic/claude-sonnet-5.5 in 973 out 8700 cost_usd 0.0889 errors 54
+deepseek/deepseek-v4-pro-0813 in 24034 out 268211 cost_usd 0.9624 errors 0
+moonshotai/kimi-k3 in 4686 out 223605 cost_usd 3.1344 errors 41

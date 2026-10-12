@@ -1,0 +1,506 @@
+[
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "entry point file not found: 'Background.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "entry point file not found: 'Background.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "entry point file not found: 'Overlay.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "entry point file not found: 'Service.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "entry point file not found: 'Service.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "entry point file not found: 'BarWidget.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "entry point file not found: 'BarWidget.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "add_panel",
+  "pass_": false,
+  "err": "entry point file not found: 'Panel.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "entry point file not found: 'BarWidget.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "add_panel",
+  "pass_": false,
+  "err": "entry point file not found: 'Panel.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "entry point file not found: 'BarWidget.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "entry point file not found: 'Bar.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "add_panel",
+  "pass_": false,
+  "err": "entry point file not found: 'Panel.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "entry point file not found: 'Panel.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "entry point file not found: 'BarWidget.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "entry point file not found: 'BarWidget.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "add_panel",
+  "pass_": false,
+  "err": "entry point file not found: 'BarWidget.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": true,
+  "err": null,
+  "qml": 3,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": true,
+  "err": null,
+  "qml": 2,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "add_panel",
+  "pass_": false,
+  "err": "entry point file not found: 'BarWidget.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "entry point file not found: 'BarWidget.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "add_panel",
+  "pass_": false,
+  "err": "entry point file not found: 'Panel.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "no files parsed",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "entry point file not found: 'Panel.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "missing manifest.json in /tmp/tmpyb9b141u",
+  "qml": 2,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "kind 'service' requires an 'entryPoints.service' to load",
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "no files parsed",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "build_from_spec",
+  "pass_": false,
+  "err": "entry point file not found: 'Bar.qml'",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "err": null,
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": false,
+  "err": "no files parsed",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "err": null,
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": true,
+  "err": null,
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "err": null,
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": false,
+  "err": "no files parsed",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "err": null,
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": false,
+  "err": "no files parsed",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": false,
+  "err": "no files parsed",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "chunk_add_kind:bar",
+  "pass_": true,
+  "err": null,
+  "qml": 1,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "chunk_add_kind:service",
+  "pass_": true,
+  "err": null,
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "chunk_add_kind:menu",
+  "pass_": true,
+  "err": null,
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": false,
+  "err": "no files parsed",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "chunk_component",
+  "pass_": false,
+  "err": "no files parsed",
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "length"
+ },
+ {
+  "task": "fix_manifest:reserved_id",
+  "pass_": true,
+  "err": null,
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "fix_manifest:bad_path_dotdot",
+  "pass_": true,
+  "err": null,
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "fix_manifest:reserved_id",
+  "pass_": true,
+  "err": null,
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "fix_manifest:bad_path_absolute",
+  "pass_": true,
+  "err": null,
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ },
+ {
+  "task": "fix_manifest:reserved_id",
+  "pass_": true,
+  "err": null,
+  "qml": 0,
+  "qml_bad": 0,
+  "syntax_errs": 0,
+  "finish": "stop"
+ }
+]

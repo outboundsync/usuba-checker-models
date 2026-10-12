@@ -1,0 +1,6 @@
+row 31 stop cost 0.040 spent 0.040
+row 25 stop cost 0.069 spent 0.109
+row 37 stop cost 0.121 spent 0.230
+row 49 stop cost 0.062 spent 0.291
+row 34 stop cost 0.077 spent 0.368
+SUMMARY deepseek-v4-pro-0813 todo 5 rerun 5 still_length 0 spent 0.368 stop None
