@@ -1,0 +1,105 @@
+{
+ "threshold": "answer line-set jaccard >= 0.7",
+ "removed": [
+  32,
+  33,
+  34,
+  35,
+  42,
+  43,
+  44
+ ],
+ "pairs": [
+  {
+   "holdout_i": 32,
+   "task": "build_from_spec",
+   "plugin": "sanjyay.peekbar/",
+   "repo": "https://github.com/sanjyay/peekbar",
+   "train_i": 164,
+   "train_task": "build_from_spec",
+   "train_repo": "https://github.com/fillmefab4/Pillbar",
+   "train_plugin": "fab.pillbar/",
+   "answer_line_overlap": 0.959,
+   "answer_line_jaccard": 0.791,
+   "max_prompt_jaccard8": 0.0
+  },
+  {
+   "holdout_i": 33,
+   "task": "chunk_manifest_entry",
+   "plugin": "salted.bar/",
+   "repo": "https://github.com/salted-sorbet/salted.bar",
+   "train_i": 139,
+   "train_task": "chunk_manifest_entry",
+   "train_repo": "https://github.com/Charlieras262/omarchy-floating-bar",
+   "train_plugin": "charlieras262.floating-bar/",
+   "answer_line_overlap": 0.924,
+   "answer_line_jaccard": 0.825,
+   "max_prompt_jaccard8": 0.624
+  },
+  {
+   "holdout_i": 34,
+   "task": "chunk_component",
+   "plugin": "salted.bar/",
+   "repo": "https://github.com/salted-sorbet/salted.bar",
+   "train_i": 122,
+   "train_task": "chunk_component",
+   "train_repo": "https://github.com/guiestrela/glassbar",
+   "train_plugin": "io.github.guiestrela.glassbar/",
+   "answer_line_overlap": 1.0,
+   "answer_line_jaccard": 1.0,
+   "max_prompt_jaccard8": 0.516
+  },
+  {
+   "holdout_i": 35,
+   "task": "chunk_component",
+   "plugin": "salted.bar/",
+   "repo": "https://github.com/salted-sorbet/salted.bar",
+   "train_i": 123,
+   "train_task": "chunk_component",
+   "train_repo": "https://github.com/guiestrela/glassbar",
+   "train_plugin": "io.github.guiestrela.glassbar/",
+   "answer_line_overlap": 0.996,
+   "answer_line_jaccard": 0.966,
+   "max_prompt_jaccard8": 0.595
+  },
+  {
+   "holdout_i": 42,
+   "task": "chunk_manifest_entry",
+   "plugin": "floating-waybar/",
+   "repo": "https://github.com/TECHNOCRAFT27/floating-waybar",
+   "train_i": 157,
+   "train_task": "chunk_manifest_entry",
+   "train_repo": "https://github.com/Pmacdon15/glass-bar-omarchy",
+   "train_plugin": "glass-bar-omarchy/",
+   "answer_line_overlap": 0.916,
+   "answer_line_jaccard": 0.747,
+   "max_prompt_jaccard8": 0.572
+  },
+  {
+   "holdout_i": 43,
+   "task": "chunk_component",
+   "plugin": "floating-waybar/",
+   "repo": "https://github.com/TECHNOCRAFT27/floating-waybar",
+   "train_i": 122,
+   "train_task": "chunk_component",
+   "train_repo": "https://github.com/guiestrela/glassbar",
+   "train_plugin": "io.github.guiestrela.glassbar/",
+   "answer_line_overlap": 1.0,
+   "answer_line_jaccard": 0.998,
+   "max_prompt_jaccard8": 0.431
+  },
+  {
+   "holdout_i": 44,
+   "task": "chunk_component",
+   "plugin": "floating-waybar/",
+   "repo": "https://github.com/TECHNOCRAFT27/floating-waybar",
+   "train_i": 123,
+   "train_task": "chunk_component",
+   "train_repo": "https://github.com/guiestrela/glassbar",
+   "train_plugin": "io.github.guiestrela.glassbar/",
+   "answer_line_overlap": 1.0,
+   "answer_line_jaccard": 1.0,
+   "max_prompt_jaccard8": 0.431
+  }
+ ]
+}

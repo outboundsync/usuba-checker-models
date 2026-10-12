@@ -9,6 +9,7 @@ import rescore, functest
 from build_parse import parse
 def tree_dir(h):
     m = h["meta"]
+    if m["origin"] == "house": return "/workspace/" + m["repo"].rstrip("/").split("/")[-1] + ("" if m["plugin_path"] in (".", "") else "/" + m["plugin_path"])
     return ("/opt/ft/omarchy/" if m["origin"] == "first-party" else ROOT + "/sources/repos/") + m["plugin_path"]
 rescore.tree_dir = tree_dir
 def cached(files):

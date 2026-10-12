@@ -1,0 +1,1192 @@
+[
+ {
+  "id": "yuters.flight-radar",
+  "repo": "https://github.com/yuters/omarchy-flight-radar",
+  "commit": "0a984a8e1342bb395a8976c974ecba4b8d263f23",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Martin"
+  ],
+  "excluded": null,
+  "rows": 1
+ },
+ {
+  "id": "tmn73.calendar",
+  "repo": "https://github.com/tmn73/omarchy-calendar",
+  "commit": "a190d1bcc2e6eb1c0e6c9130e3872fcdd6a292c8",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 tmn73",
+   "Copyright (c) Omarchy contributors (portions derived from the built-in clock plugin)"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "hass",
+  "repo": "https://github.com/konradk/hass",
+  "commit": "56f1dcdd201e39cbe116d3cbe2cb22b40f394b9b",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Konrad Kruk"
+  ],
+  "excluded": null,
+  "rows": 7
+ },
+ {
+  "id": "ilyazar.btop",
+  "repo": "https://github.com/omarchy-QOL/omarchy-btop-activity",
+  "commit": "4270da9d94c0304fa62625a83d162aa6122b7050",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Ilya Zarubin"
+  ],
+  "excluded": null,
+  "rows": 4
+ },
+ {
+  "id": "mdick.cloudflare",
+  "repo": "https://github.com/meirdick/omarchy-cloudflare",
+  "commit": "e37afbd52fd889b333e12cdcd94ffd0cdf9edb67",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 mdick85"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "crmne.hyprmoncfg",
+  "repo": "https://github.com/crmne/omarchy-hyprmoncfg",
+  "commit": "193e5611f934eec42460ef75f3f46c2a8bd0252a",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Carmine Paolino"
+  ],
+  "excluded": null,
+  "rows": 4
+ },
+ {
+  "id": "sh.lerd.glance",
+  "repo": "https://github.com/lerd-env/lerd-omarchy-glance",
+  "commit": "1843935c368328ebff34fe1db99722778d6831dd",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) David Heinemeier Hansson",
+   "Copyright (c) 2026 George Dumitrescu"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "io.github.woogy7.vitals",
+  "repo": "https://github.com/Woogy7/omarchy-vitals",
+  "commit": "e67a0a7776d8cd6bc02358671ba37e09bf47a65e",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Woogy7"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "io.github.salemsayed.omaprayers",
+  "repo": "https://github.com/salemsayed/omaprayers",
+  "commit": "e101d4c251397ad71d7bd1fe5b6184b6050afa26",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Salem Sayed"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "andrewbacon.canon",
+  "repo": "https://github.com/RamenPacket84/canon",
+  "commit": "51a27c15636e7199a20bb83da026f7ff9384457c",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Ramen Packet"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "ussego.otoru",
+  "repo": "https://github.com/ussego/otoru",
+  "commit": "ddcb6c8add91f05c8d9f545e45254725239e6812",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 ussego"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "farangkao.emojis-nerd",
+  "repo": "https://github.com/farangkao/omarchy-emojis-nerd",
+  "commit": "bda347615e3b0ee92d02d1ca2fb0d488709afddb",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 farangkao"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "io.github.thisisgm.discord",
+  "repo": "https://github.com/thisisgm/omarchy-discord",
+  "commit": "08e0bf89a96d0b5d923aa207d914a349ce4d5eaf",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 GM"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "yogeshojha.patro",
+  "repo": "https://github.com/yogeshojha/patro",
+  "commit": "9c070942c6849a4fffc8110568f72820f365ba74",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Yogesh Ojha"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "io.github.this-is-npc.dockmarchy",
+  "repo": "https://github.com/This-Is-NPC/dockmarchy",
+  "commit": "14ac95cbdffb40834e74cab1bb92387909b67c03",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 This_Is_NPC"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "io.github.andressm415.omaprox",
+  "repo": "https://github.com/AndresSM415/omaprox",
+  "commit": "a14a336584a11729910995ecaed4e2645dacbc02",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 AndresSM415"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "blizl.voxtype-osd",
+  "repo": "https://github.com/Blizl/Omarchy-Voxtype-OSD",
+  "commit": "4283c22b3e8e7a4e3e24453952758b62667c231a",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Blizl Labs LLC"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "leyanora.plugincontainers",
+  "repo": "https://github.com/Leyanora/omarchy-plugin-containers",
+  "commit": "74830976a97530fc1922fd00c9c8331e6bb0e4d0",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Leyanora"
+  ],
+  "excluded": null,
+  "rows": 5
+ },
+ {
+  "id": "io.github.thisisgm.cliampui",
+  "repo": "https://github.com/thisisgm/omarchy-cliampui",
+  "commit": "8dab211c74689150eda74a59f45d0d42d10e7e11",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 GM"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "wian47.removable-drives",
+  "repo": "https://github.com/Wian47/omarchy-removable-drives",
+  "commit": "f46384be00f030e67d6be10d5e60bf6a20a8001d",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Wian Schoeman"
+  ],
+  "excluded": null,
+  "rows": 1
+ },
+ {
+  "id": "io.github.cahva.rdp-manager",
+  "repo": "https://github.com/cahva/omarchy-rdp-manager",
+  "commit": "5f5ef489dd94a2a41e826665599054e748ba3ebd",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 cahva"
+  ],
+  "excluded": null,
+  "rows": 5
+ },
+ {
+  "id": "io.github.salemsayed.omawarden",
+  "repo": "https://github.com/salemsayed/omawarden",
+  "commit": "ddf146bcaa5e497c10b4467ac23622a71b880edc",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Salem Sayed"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "ogarza.weather",
+  "repo": "https://github.com/ogarza/omarchyweathereffects",
+  "commit": "a9859fcb0c96a2b862e7c9cdeaf5d7175680f5f2",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 ogarza"
+  ],
+  "excluded": null,
+  "rows": 5
+ },
+ {
+  "id": "omarchy-philips-hue",
+  "repo": "https://github.com/sethchev/omarchy-philips-hue",
+  "commit": "701878fc3be43d94ea71e2a9801847431d76a1be",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 sethchev"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "luca.obsidian-daily",
+  "repo": "https://github.com/LucaNerlich/obsidian-daily-qs",
+  "commit": "0f65f5fa1558aa9e20eb7bc01f76e7610f1cdc53",
+  "license": "Apache-2.0",
+  "copyright": [
+   "copyright license to reproduce, prepare Derivative Works of,",
+   "(c) You must retain, in the Source form of any Derivative Works"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "io.github.rodrix2000.chess",
+  "repo": "https://github.com/rodrix2000/omarchy-chess",
+  "commit": "063c9a950500bad8f9deb8bd981bafaa70e22ebb",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Rudy Rodriguez"
+  ],
+  "excluded": null,
+  "rows": 6
+ },
+ {
+  "id": "io.github.calebhat.weather",
+  "repo": "https://github.com/calebhat/omarchy-weather",
+  "commit": "f1f3ce66e00e93489ce4086d6641b71471321966",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 calebhat",
+   "Copyright (c) 2026 Kyle Greenan"
+  ],
+  "excluded": null,
+  "rows": 4
+ },
+ {
+  "id": "jobo.big-cheese",
+  "repo": "https://github.com/OldJobobo/big-cheese",
+  "commit": "86ea5f7d5ca68b5d642bd07817b9aae1269e04fe",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 J. S. Brown"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "nosignal.motion-wallpaper",
+  "repo": "https://github.com/28allday/Motion-Wallpaper-Omarchy",
+  "commit": "bacebacf7886c5c68f11aa22c68863d8d7051848",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Gavin Nugent"
+  ],
+  "excluded": null,
+  "rows": 4
+ },
+ {
+  "id": "omaplug",
+  "repo": "https://github.com/fross100/omaplug",
+  "commit": "64df56e876846247ded550890c52b7b190776b3e",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Fross"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "io.github.ilkaydnc.omargb",
+  "repo": "https://github.com/ilkaydnc/omargb",
+  "commit": "fd6d093f039d5b9514b94285a137fe683643953b",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Ilkay Dinc"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "io.github.thecdrz.pebble",
+  "repo": "https://github.com/thecdrz/omarchy-pebble",
+  "commit": "80a5cc12fef5f599e9149b74f7c3902fab467c90",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 thecdrz"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "tenzin.auto-workspace",
+  "repo": "https://github.com/yesheytenzin/auto-workspace",
+  "commit": "8259f7353f9e0cd5df36342d78836724043e87c4",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 tenzin"
+  ],
+  "excluded": null,
+  "rows": 5
+ },
+ {
+  "id": "gotar.omarchy-themes",
+  "repo": "https://github.com/gotar/omarchy-themes",
+  "commit": "e443eea5e9d0860aee1f6b4bf4b5b868ea40a6fa",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 gotar"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "ryanyogan.omatop",
+  "repo": "https://github.com/ryanyogan/omarchy-omatop",
+  "commit": "d8c4bae56290d77355ac6588f35a4b09c18694cd",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Ryan Yogan"
+  ],
+  "excluded": null,
+  "rows": 7
+ },
+ {
+  "id": "io.github.joaodrp.controld",
+  "repo": "https://github.com/joaodrp/omarchy-controld-panel",
+  "commit": "f602575d49e1896069013abc2fc39e5e9c931231",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Jo\u00e3o Pereira"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "io.github.tyrichards.omaski",
+  "repo": "https://github.com/TyRichards/omarchy-omaski",
+  "commit": "ea6c4c721374603c3dc5252814aa4b2f853af23c",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Ty Richards"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "kenhara.rocketlauncher",
+  "repo": "https://github.com/kenhara/omarchy-rocketlauncher",
+  "commit": "e2e0061b40e3f99224270048246889c1e237f709",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Harris Kenny"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "io.github.grichard99.omaproton-vpn",
+  "repo": "https://github.com/grichard99/omaproton-vpn",
+  "commit": "7db0d72234d38bcc727c261e720c1429e4d81f6e",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 grichard99"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "josh2c.protonpass",
+  "repo": "https://github.com/josh2c/omarchy-protonpass",
+  "commit": "0b6863e90b5e133e674736ffe1f6bcbf4a52decc",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Josh Garcia"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "yamz8.omanki",
+  "repo": "https://github.com/yamz8/omanki",
+  "commit": "3b7f0f1075233b8531492f5186080ccc7395774f",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 yamz8"
+  ],
+  "excluded": null,
+  "rows": 5
+ },
+ {
+  "id": "dev.android-mirroring",
+  "repo": "https://github.com/camburalex/android-mirroring-omarchy",
+  "commit": "303081c2bf43b2a35cdae303f3bbb1b2cbdf9683",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Omarchy Android Mirroring contributors"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "omalive",
+  "repo": "https://github.com/nikbos/Omalive",
+  "commit": "755750131c17f61d8e0704eb74d66e2ee3f22ee2",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Nik"
+  ],
+  "excluded": null,
+  "rows": 4
+ },
+ {
+  "id": "custom.media",
+  "repo": "https://github.com/Clifford-Baidoo/Omarchy-music-flow",
+  "commit": "42c312d8ceb6ad9893b28c62c3cf9b5513f60d24",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Clifford Baidoo"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "com.bryon.omarchy-menu-prefixes",
+  "repo": "https://github.com/BryonLewis/omarchy-menu-prefixes",
+  "commit": "66d1142d47ac0f147a8d79451a0664b04fe9e23a",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2025 37signals, LLC (Omarchy and its built-in omarchy.menu plugin)",
+   "Copyright (c) 2026 bryon (omarchy-menu-prefixes additions)"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "jrmmhm.pocket",
+  "repo": "https://github.com/jrmmhm/omarchy-pocket",
+  "commit": "81c90494f812c9f58a66e8a0e68a78c59197c1c0",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 jrmmhm"
+  ],
+  "excluded": null,
+  "rows": 1
+ },
+ {
+  "id": "com.windscribe.vpn",
+  "repo": "https://github.com/yegors/windscribe-omarchy",
+  "commit": "6a582e0218b08afc01aaa2c4bc7f53e4fc441326",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Windscribe Limited"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "io.github.x3me.nexthop",
+  "repo": "https://github.com/x3me/omarchy-nexthop",
+  "commit": "132dba95bd9ef62d3205ff944ab6855a927318f6",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Extreme Labs"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "io.github.mtolhuys.sidecar",
+  "repo": "https://github.com/mtolhuys/omarchy-sidecar",
+  "commit": "93800d2c8dbb8771d71b24721765f4c8709f6d55",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Omarchy Sidecar contributors"
+  ],
+  "excluded": null,
+  "rows": 5
+ },
+ {
+  "id": "io.github.expri-commits.anki-theme",
+  "repo": "https://github.com/Expri-commits/omarchy-anki-theme",
+  "commit": "d808120c5be3d13c86024796e3cdaa7fb64ecf08",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Expri"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "io.github.mtolhuys.news-radar",
+  "repo": "https://github.com/mtolhuys/omarchy-news-radar",
+  "commit": "755b5748d3b817509d947e0d9c74b6b01252a951",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Maarten Tolhuijs"
+  ],
+  "excluded": null,
+  "rows": 4
+ },
+ {
+  "id": "io.github.rdoupe.pixelbuds",
+  "repo": "https://github.com/rdoupe/omarchy-pixelbuds",
+  "commit": "da912eca9cb4d64191157acfffff0199458e4435",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Ryan Doupe"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "gladimdim.config-sync",
+  "repo": "https://github.com/gladimdim/omarchy-config-sync-plugin",
+  "commit": "7f543a2fb1afaba4a5614f752eb127b30d55b4cc",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Dmytro Gladkyi"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "dc.q",
+  "repo": "https://github.com/dobrician/omarchy-queue",
+  "commit": "3bee8cbd1a780576e6c46342698569506ab70b4e",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Sridhar Katakam",
+   "Copyright (c) 2026 Ciprian Dobrea"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "io.github.baranskyi.omavoice",
+  "repo": "https://github.com/baranskyi/omavoice",
+  "commit": "d91962f43d1a0b5dc03844b8df5daa9583e95611",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Slava Baranskyi"
+  ],
+  "excluded": null,
+  "rows": 5
+ },
+ {
+  "id": "io.github.majesticio.cliamped",
+  "repo": "https://github.com/majesticio/omarchy-cliamped-plugin",
+  "commit": "7b2bad88e9e8eb053fe4943523fef5e9015c4e72",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 majesticio"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "gladimdim.ai-limits",
+  "repo": "https://github.com/gladimdim/omarchy-ai-usage-bar",
+  "commit": "a1dc1ba03a933a17a031780139beb1cf826c1d27",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Dmytro Gladkyi"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "ablanco.notethis",
+  "repo": "https://github.com/andresblancomorales/have-you-note-this",
+  "commit": "385d6ab95c3e2eb867bb6d872e81a05a14b62a12",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Andres Blanco"
+  ],
+  "excluded": null,
+  "rows": 5
+ },
+ {
+  "id": "josejaguirre.bar",
+  "repo": "https://github.com/josejaguirre/omarchy-custom-bar",
+  "commit": "6c81dd96561ad821e7280e8ca9152376c43c01f1",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Jose Aguirre"
+  ],
+  "excluded": null,
+  "rows": 0
+ },
+ {
+  "id": "kc.omarchy-menubar-manager",
+  "repo": "https://github.com/kevclarkco/omarchy-menubar-manager",
+  "commit": "4ee4d72e4e832a6e7aa0ed09e316174ac0e985d0",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 kc"
+  ],
+  "excluded": null,
+  "rows": 1
+ },
+ {
+  "id": "io.github.codesmith28.omalt-tab",
+  "repo": "https://github.com/Codesmith28/omalt-tab",
+  "commit": "4ff9723690e577b89e236b9ea1666a352d812f75",
+  "license": "Apache-2.0",
+  "copyright": [
+   "copyright license to reproduce, prepare Derivative Works of,",
+   "(c) You must retain, in the Source form of any Derivative Works"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "io.github.tnep4.recast",
+  "repo": "https://github.com/TNEP4/recast",
+  "commit": "e6d940770ce0e159f6fcfff6bac0346462c8da41",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 nictouron"
+  ],
+  "excluded": null,
+  "rows": 1
+ },
+ {
+  "id": "atoslins.dualsense",
+  "repo": "https://github.com/atoslins/omarchy-plugin-dualsense",
+  "commit": "d82981f56bc99a45c1ea8a06c8a993a65fa8218a",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Atos Lins"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "firstpick.skill-manager",
+  "repo": "https://github.com/Firstp1ck/omarchy-skill-manager",
+  "commit": "5eb8a66094b27dab9dd754294423462906f0fc81",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Firstpick"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "oliwier.agent-skills-manager",
+  "repo": "https://github.com/oliwier-xiao/agent-skills-manager",
+  "commit": "b5525c03b704a714fe52bfbc27bdc59ec29c2c6b",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 oliwier-xiao"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "marcford.gmessages",
+  "repo": "https://github.com/MarcFord/gmessages-omarchy-plugin",
+  "commit": "ec821ce86c09b1a1107ed9feeceb252322ce951b",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Marc Ford"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "io.github.claudsondouglas.arcdock",
+  "repo": "https://github.com/claudsondouglas/arc.dock",
+  "commit": "dd919eb6257cc7ae1264d77821f7273ad0cf7050",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Claudson"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "dorian.voice",
+  "repo": "https://github.com/dorianorellanobbap/omarchy-jarvis",
+  "commit": "8094739c264d4f9d7232e3a889d026665175ad28",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Dorian"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "ekollof.osk",
+  "repo": "https://github.com/ekollof/omarchy-osk",
+  "commit": "33bb3e51db6a8a2585566bdbbe97af2af183f48c",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 ekollof"
+  ],
+  "excluded": null,
+  "rows": 5
+ },
+ {
+  "id": "io.github.pantherdev2024.quartermaster",
+  "repo": "https://github.com/pantherdev2024/Quartermaster",
+  "commit": "f7945a1cb2ed917a467a82b62136c70eca039e7d",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 pantherdev2024"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "thefreshoffice.speaker-calibrator",
+  "repo": "https://github.com/thefreshoffice/omarchy-speaker-calibrator",
+  "commit": "b142b0208cc086adc53dbdad78a73207a3075854",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Slimbook user and Codex"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "marcho78.magnify-dock",
+  "repo": "https://github.com/marcho78/omarchy-magnify-dock",
+  "commit": "ccc934f8a1dbfb42cd1017a3d04603a0de524e85",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Wisang Drillian Geni (wdg)"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "onelegdave.omadroid",
+  "repo": "https://github.com/onelegdave/omadroid",
+  "commit": "5c6366bd1bfd390da81ff6e0344f28bf05ad5faf",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 OneLegDave"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "skal.bar",
+  "repo": "https://github.com/outcrop-labs/skal-bar",
+  "commit": "21b19079565714a7bbeb6a6fbed844395cb0d36d",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Outcrop Labs",
+   "Copyright (c) David Heinemeier Hansson (bar engine, tray, and widget code"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "rblalock.panel-notes",
+  "repo": "https://github.com/rblalock/omarchy-panel-notes",
+  "commit": "23dbb7c76bdf6960e89e63c5781d7d2d77d05dae",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Rick Blalock"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "io.github.hominluo.google-drive",
+  "repo": "https://github.com/hominluo/omarchy-google-drive",
+  "commit": "4729ec50e4a85393d122d91d1fe45f107d2cf8e2",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Homin Luo",
+   "Copyright (c) 2026 Wesley Cole"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "widget.torrents",
+  "repo": "https://github.com/Xfedis/omarchy-torrents",
+  "commit": "5ee786567f0470b6b47fcb112236dbaf285e3919",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Xfedis"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "de.gransoftware.yank",
+  "repo": "https://github.com/gran-software-solutions/yank-omarchy-plugin",
+  "commit": "79ba08a5b8c7fa537fe2a5a6972a980362480fc5",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Gran Software Solutions"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "ozz1ee.hermbot",
+  "repo": "https://github.com/ozz1ee-dev/omarchy-hermbot",
+  "commit": "c7368f118c37c0a4cf798c7cf52865b8fcbace6a",
+  "license": "Apache-2.0",
+  "copyright": [
+   "copyright license to reproduce, prepare Derivative Works of,",
+   "(c) You must retain, in the Source form of any Derivative Works"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "donnie.homelab-mesh",
+  "repo": "https://github.com/DonnieFi/OmarPlugs",
+  "commit": "91993056f95a4940e7a84a7d4dabb93b5eaa908e",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Donnie Fiander"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "hermes.companion",
+  "repo": "https://github.com/PSthelyBlog/omarchy-hermes-companion",
+  "commit": "cb89b84f61fc6cbecfe1d51199f9abe72fc8da7a",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Philippe Sthely"
+  ],
+  "excluded": null,
+  "rows": 5
+ },
+ {
+  "id": "ai-usage.notch",
+  "repo": "https://github.com/Bappoz/omarchy-ai-usage",
+  "commit": "4e4126174b39c17f3deaacdf7dd72bdf12947b55",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Omarchy AI Usage contributors"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "se.mindfulstack.omascape",
+  "repo": "https://github.com/Mindful-Stack/omascape",
+  "commit": "7ab8b8fbe7a0a1e2daced3d48f146c8d436738f5",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Mindful Stack"
+  ],
+  "excluded": null,
+  "rows": 4
+ },
+ {
+  "id": "io.github.tenfingerseddy.voicebind",
+  "repo": "https://github.com/tenfingerseddy/voicebind",
+  "commit": "9f275ed04726f99b5786d2bc4fe3e2278919ccc4",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Kane Snyder and Voicebind contributors"
+  ],
+  "excluded": null,
+  "rows": 5
+ },
+ {
+  "id": "mohamedmansour.finance",
+  "repo": "https://github.com/mohamedmansour/omafinance",
+  "commit": "ef96ada5fdc1c17c1564a9ad45db9985bb6d0eaf",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 mohamedmansour"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "dev.nur.omasum",
+  "repo": "https://github.com/nursahketene/omasum",
+  "commit": "3c96a991ac4e77ac88eb3f499fca84dd99815c2e",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Nur Ketene"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "turbinebmw.omaview",
+  "repo": "https://github.com/turbineBMW/Omaview",
+  "commit": "3072eaafa11b42ad9051ef6ad7664fadccefdb01",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 turbinebmw"
+  ],
+  "excluded": null,
+  "rows": 4
+ },
+ {
+  "id": "jmthomas00.vantage",
+  "repo": "https://github.com/JMThomas00/omarchy-vantage",
+  "commit": "50afe7e073aee10ebfcc08d865bd30c07d0b38c9",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Jordan Thomas"
+  ],
+  "excluded": null,
+  "rows": 5
+ },
+ {
+  "id": "io.github.saikomantisu.commandbar",
+  "repo": "https://github.com/Saikomantisu/omarchy-commandbar",
+  "commit": "5cff403868c0a91673328cd969c01d7a343bddd8",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Saikomantisu"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "io.github.mtolhuys.fathom",
+  "repo": "https://github.com/mtolhuys/fathom",
+  "commit": "a7fc3f9cc7dff6a7187797d4a02d6506565adde4",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Maarten Tolhuijs"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "io.github.dmitry-solomadin.omastocks",
+  "repo": "https://github.com/dmitry-solomadin/omastocks",
+  "commit": "77bb933e2ed393ce41efdca773d89631d44bcd3d",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Dmitry Solomadin"
+  ],
+  "excluded": null,
+  "rows": 5
+ },
+ {
+  "id": "chyld.vault-sync",
+  "repo": "https://github.com/chyld/omarchy-vault-sync",
+  "commit": "53d33c1667682c654cb62ba0f2d9cca491c5af71",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Chyld Medford"
+  ],
+  "excluded": null,
+  "rows": 5
+ },
+ {
+  "id": "omarchy-menu-omni",
+  "repo": "https://github.com/filip-spaldon/omarchy-menu",
+  "commit": "01430609e7371fbde9af516a2f4e99ef0bd2c1a9",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 filippaldo (Omarchy Menu Omni modifications)",
+   "Copyright (c) David Heinemeier Hansson"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "tornikegomareli.spaces",
+  "repo": "https://github.com/tornikegomareli/omarchy-spaces",
+  "commit": "9747f1f6ca5533a441bba24b7b292c2cde502a2a",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Tornike Gomareli"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "io.github.swiizerkuh.afterglow",
+  "repo": "https://github.com/SwiizerKuh/omarchy-afterglow",
+  "commit": "75065d733be772eb773f53b58a30b2fd15cc16c8",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 SwiizerKuh"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "io.github.rblalock.omarchy-replay",
+  "repo": "https://github.com/rblalock/omarchy-replay",
+  "commit": "004b012f77096959dbb5b83e00a02485cc50b55d",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Rick Blalock"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "io.github.fabandrade88.omawidgets",
+  "repo": "https://github.com/fabandrade88/OmaWidgets",
+  "commit": "7ffd6e2ef6ac4fd9e276921948f1b2db2106e15d",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Fabricio Oliveira de Andrade"
+  ],
+  "excluded": null,
+  "rows": 6
+ },
+ {
+  "id": "staruxian.lifeos",
+  "repo": "https://github.com/staruxian/lifeos",
+  "commit": "db4b6d489b7c736fadcfce6ccfa0a99741c8e5f6",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Khurshed Ziyovaddinov"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "ttt.odrive",
+  "repo": "https://github.com/TiniTinyTerminator/ODrive",
+  "commit": "c17c4219e6b9c08c5a175060af1fde8429f1d10e",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 TiniTinyTerminator"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "io.github.5h3rd1l.omasearch",
+  "repo": "https://github.com/5h3rd1l/omaSearch",
+  "commit": "a002289c04dff552fd9c73ef2bd7d7be838ca271",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Ali Shabdar (omAsk, the project omaSearch is based on)",
+   "Copyright (c) 2026 Rubas Ali"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "sebasgl23.ytmusic",
+  "repo": "https://github.com/Sebasgl23/omarchy-ytmusic",
+  "commit": "e80a0c2fdd552f794b7714850099cf49b11d3db9",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 sebasgl23"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "cx.yeet.yeet-ai",
+  "repo": "https://github.com/yeet-src/omarchy-yeet-ai",
+  "commit": "782f1b243a8c1c0191df0ef92d08dbb71c962098",
+  "license": "Apache-2.0",
+  "copyright": [
+   "copyright license to reproduce, prepare Derivative Works of,",
+   "(c) You must retain, in the Source form of any Derivative Works"
+  ],
+  "excluded": null,
+  "rows": 3
+ },
+ {
+  "id": "io.github.slogonomo.live-doom",
+  "repo": "https://github.com/slogonomo/live-doom",
+  "commit": "82f9c7dfa2663925c34c3ffc59ec112058f8058e",
+  "license": "ISC",
+  "copyright": [
+   "Copyright (C) 2026 slogonomo and Live Doom contributors"
+  ],
+  "excluded": null,
+  "rows": 4
+ },
+ {
+  "id": "io.github.jondkinney.omapop",
+  "repo": "https://github.com/jondkinney/omapop",
+  "commit": "7d6b1aa0e5cb14f7d8bf24f9e78ffcad5deb00f7",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Jon Kinney"
+  ],
+  "excluded": null,
+  "rows": 4
+ },
+ {
+  "id": "io.github.hancore-linux.traffic-board",
+  "repo": "https://github.com/HANCORE-linux/GitHub-Traffic-Board",
+  "commit": "0ee98296825b7d8f4629903a32e85249a2523c87",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 HANCORE-linux"
+  ],
+  "excluded": null,
+  "rows": 2
+ },
+ {
+  "id": "yasserdo.laser",
+  "repo": "https://github.com/iYassr/omarchy-laser",
+  "commit": "735a6de8952f58b5c63cf995a1f55156e947987f",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Yasser"
+  ],
+  "excluded": null,
+  "rows": 5
+ },
+ {
+  "id": "renanmt.switch-magic",
+  "repo": "https://github.com/renanmt/switch-magic",
+  "commit": "f6fd92d928c0bb2a22965e3e68152543ddcf4626",
+  "license": "MIT",
+  "copyright": [
+   "Copyright (c) 2026 Renan Tonheiro"
+  ],
+  "excluded": null,
+  "rows": 3
+ }
+]

@@ -1,0 +1,1938 @@
+[
+ {
+  "i": 0,
+  "task": "chunk_manifest_entry",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "rt-other"
+  ],
+  "static_fails": [],
+  "runtime_errors": [
+   "WARN scene: QML QQuickImage at Panel.qml[1497:5]: Cannot open: assets/claude.svg",
+   "WARN scene: QML QQuickImage at Panel.qml[1497:5]: Cannot open: assets/codex.svg",
+   "WARN scene: QML QQuickImage at Panel.qml[1497:5]: Cannot open: assets/grok.svg"
+  ]
+ },
+ {
+  "i": 1,
+  "task": "chunk_component",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "rt-other"
+  ],
+  "static_fails": [],
+  "runtime_errors": [
+   "WARN scene: QML QQuickImage at Panel.qml[1497:5]: Cannot open: assets/claude.svg",
+   "WARN scene: QML QQuickImage at Panel.qml[1497:5]: Cannot open: assets/codex.svg",
+   "WARN scene: QML QQuickImage at Panel.qml[1497:5]: Cannot open: assets/grok.svg"
+  ]
+ },
+ {
+  "i": 2,
+  "task": "chunk_component",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "rt-other"
+  ],
+  "static_fails": [],
+  "runtime_errors": [
+   "WARN scene: QML QQuickImage at Panel.qml[1497:5]: Cannot open: assets/claude.svg",
+   "WARN scene: QML QQuickImage at Panel.qml[1497:5]: Cannot open: assets/codex.svg",
+   "WARN scene: QML QQuickImage at Panel.qml[1497:5]: Cannot open: assets/grok.svg"
+  ]
+ },
+ {
+  "i": 3,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 4,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 5,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 6,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 7,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 8,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 9,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 10,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 11,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 12,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 13,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 14,
+  "task": "build_from_spec",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "bad-import",
+   "dangerous-write"
+  ],
+  "static_fails": [
+   "bad-import: LockFeedSurface.qml: unknown module Owe.LockFeed",
+   "dangerous-write: Service.qml: writes/shell-outs alongside protected path /etc/pam.d/omarchy-lock-password"
+  ],
+  "runtime_errors": []
+ },
+ {
+  "i": 15,
+  "task": "build_from_spec",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "bad-import",
+   "dangerous-write"
+  ],
+  "static_fails": [
+   "bad-import: LockFeedSurface.qml: unknown module Owe.LockFeed",
+   "dangerous-write: Service.qml: writes/shell-outs alongside protected path /etc/pam.d/omarchy-lock-password"
+  ],
+  "runtime_errors": []
+ },
+ {
+  "i": 16,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 17,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 18,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 19,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 20,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 21,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 22,
+  "task": "add_panel",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 23,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 24,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 25,
+  "task": "add_panel",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 26,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 27,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 28,
+  "task": "add_panel",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 29,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 30,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 31,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 32,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 33,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 34,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 35,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 36,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 37,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 38,
+  "task": "build_from_spec",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "dangerous-cmd"
+  ],
+  "static_fails": [
+   "dangerous-cmd: Service.qml: runs sudo/pkexec"
+  ],
+  "runtime_errors": []
+ },
+ {
+  "i": 39,
+  "task": "build_from_spec",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "dangerous-cmd"
+  ],
+  "static_fails": [
+   "dangerous-cmd: Service.qml: runs sudo/pkexec"
+  ],
+  "runtime_errors": []
+ },
+ {
+  "i": 40,
+  "task": "add_panel",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "dangerous-cmd"
+  ],
+  "static_fails": [
+   "dangerous-cmd: Service.qml: runs sudo/pkexec"
+  ],
+  "runtime_errors": []
+ },
+ {
+  "i": 41,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 42,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 43,
+  "task": "build_from_spec",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "dangerous-write"
+  ],
+  "static_fails": [
+   "dangerous-write: PolkitAgent.qml: writes/shell-outs alongside protected path /etc/pam.d/polkit-1"
+  ],
+  "runtime_errors": []
+ },
+ {
+  "i": 44,
+  "task": "build_from_spec",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "dangerous-write"
+  ],
+  "static_fails": [
+   "dangerous-write: PolkitAgent.qml: writes/shell-outs alongside protected path /etc/pam.d/polkit-1"
+  ],
+  "runtime_errors": []
+ },
+ {
+  "i": 45,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 46,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 47,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 48,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 49,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 50,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 51,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 52,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 53,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 54,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 55,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 56,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 57,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 58,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 59,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 60,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 61,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 62,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 63,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 64,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 65,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 66,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 67,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 68,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 69,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 70,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 71,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 72,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 73,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 74,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 75,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 76,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 77,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 78,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 79,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 80,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 81,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 82,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 83,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 84,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 85,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 86,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 87,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 88,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 89,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 90,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 91,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 92,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 93,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 94,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 95,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 96,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 97,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 98,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 99,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 100,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 101,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 102,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 103,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 104,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 105,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 106,
+  "task": "add_panel",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 107,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 108,
+  "task": "add_panel",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 109,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 110,
+  "task": "add_panel",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 111,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 112,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 113,
+  "task": "add_panel",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 114,
+  "task": "build_from_spec",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "rt-other"
+  ],
+  "static_fails": [],
+  "runtime_errors": [
+   "WARN scene: QML QQuickImage* at Panel.qml[1239:9]: Cannot open: cards/table.png",
+   "WARN scene: QML QQuickImage at Panel.qml[1382:17]: Cannot open: cards/back.png",
+   "WARN scene: QML QQuickImage at Panel.qml[1382:17]: Cannot open: cards/back.png",
+   "WARN scene: QML QQuickImage at Panel.qml[1382:17]: Cannot open: cards/back.png",
+   "WARN scene: QML QQuickImage at Panel.qml[1382:17]: Cannot open: cards/back.png",
+   "WARN scene: QML QQuickImage at Panel.qml[1382:17]: Cannot open: cards/back.png"
+  ]
+ },
+ {
+  "i": 115,
+  "task": "add_panel",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "rt-other"
+  ],
+  "static_fails": [],
+  "runtime_errors": [
+   "WARN scene: QML QQuickImage* at Panel.qml[1239:9]: Cannot open: cards/table.png",
+   "WARN scene: QML QQuickImage at Panel.qml[1382:17]: Cannot open: cards/back.png",
+   "WARN scene: QML QQuickImage at Panel.qml[1382:17]: Cannot open: cards/back.png",
+   "WARN scene: QML QQuickImage at Panel.qml[1382:17]: Cannot open: cards/back.png",
+   "WARN scene: QML QQuickImage at Panel.qml[1382:17]: Cannot open: cards/back.png",
+   "WARN scene: QML QQuickImage at Panel.qml[1382:17]: Cannot open: cards/back.png"
+  ]
+ },
+ {
+  "i": 116,
+  "task": "build_from_spec",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "dangerous-cmd"
+  ],
+  "static_fails": [
+   "dangerous-cmd: scripts/voxtype-config.py: runs sudo/pkexec"
+  ],
+  "runtime_errors": []
+ },
+ {
+  "i": 117,
+  "task": "add_panel",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "dangerous-cmd"
+  ],
+  "static_fails": [
+   "dangerous-cmd: scripts/voxtype-config.py: runs sudo/pkexec"
+  ],
+  "runtime_errors": []
+ },
+ {
+  "i": 118,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 119,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 120,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 121,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 122,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 123,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 124,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 125,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 126,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 127,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 128,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 129,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 130,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 131,
+  "task": "chunk_add_kind:bar",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 132,
+  "task": "chunk_add_kind:service",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 133,
+  "task": "chunk_add_kind:menu",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 134,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 135,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 136,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 137,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 138,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 139,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 140,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 141,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 142,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 143,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 144,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 145,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 146,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 147,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 148,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 149,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 150,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 151,
+  "task": "build_from_spec",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "rt-dangerous-write"
+  ],
+  "static_fails": [],
+  "runtime_errors": [
+   "wrote outside plugin data dirs: ~/.config/hypr/bindings.lua"
+  ]
+ },
+ {
+  "i": 152,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 153,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 154,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 155,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 156,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 157,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 158,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 159,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 160,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 161,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 162,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 163,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 164,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 165,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 166,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 167,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 168,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 169,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 170,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 171,
+  "task": "chunk_entry_file",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 172,
+  "task": "chunk_add_kind:menu",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 173,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 174,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 175,
+  "task": "build_from_spec",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 176,
+  "task": "chunk_manifest_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 177,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 178,
+  "task": "chunk_component",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 179,
+  "task": "fix_manifest:bad_path_absolute",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "rt-not-instantiated",
+   "rt-other"
+  ],
+  "static_fails": [],
+  "runtime_errors": [
+   "WARN scene: Main.qml[-1:-1]: No such file or directory",
+   "menu never instantiated after summon (status=None)"
+  ]
+ },
+ {
+  "i": 180,
+  "task": "fix_manifest:missing_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 181,
+  "task": "fix_manifest:schema_string",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 182,
+  "task": "fix_manifest:missing_entry_file",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 183,
+  "task": "fix_manifest:bad_default_section",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "rt-load-failed",
+   "rt-not-instantiated",
+   "rt-other"
+  ],
+  "static_fails": [],
+  "runtime_errors": [
+   "WARN qml: Plugin widget nosignal.quattrolitaire failed: BarWidget.qml: No such file or directory",
+   "WARN scene: Panel.qml[-1:-1]: No such file or directory",
+   "WARN qml: Plugin widget nosignal.quattrolitaire failed: BarWidget.qml: No such file or directory",
+   "WARN qml: Plugin widget nosignal.quattrolitaire failed: BarWidget.qml: No such file or directory",
+   "bar-widget component never registered (load failed)",
+   "panel never instantiated after summon (status=None)"
+  ]
+ },
+ {
+  "i": 184,
+  "task": "fix_manifest:symlink",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 185,
+  "task": "fix_manifest:bad_path_dotdot",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "rt-load-failed",
+   "rt-other"
+  ],
+  "static_fails": [],
+  "runtime_errors": [
+   "WARN scene: Bar.qml[-1:-1]: No such file or directory",
+   "WARN qml: bar option ozgun.primary-bar failed to load, falling back to omarchy.bar",
+   "WARN scene: Bar.qml[-1:-1]: No such file or directory",
+   "WARN qml: bar option ozgun.primary-bar failed to load, falling back to omarchy.bar"
+  ]
+ },
+ {
+  "i": 186,
+  "task": "fix_manifest:missing_entry",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "rt-load-failed",
+   "rt-other"
+  ],
+  "static_fails": [],
+  "runtime_errors": [
+   "WARN scene: Bar.qml[-1:-1]: No such file or directory",
+   "WARN qml: bar option better_salted.bar failed to load, falling back to omarchy.bar",
+   "WARN scene: Bar.qml[-1:-1]: No such file or directory",
+   "WARN qml: bar option better_salted.bar failed to load, falling back to omarchy.bar"
+  ]
+ },
+ {
+  "i": 187,
+  "task": "fix_manifest:schema_string",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "rt-load-failed",
+   "rt-not-instantiated",
+   "rt-other"
+  ],
+  "static_fails": [],
+  "runtime_errors": [
+   "WARN qml: service plugin load failed for io.github.mtolhuys.omacrunch: Service.qml: No such file or directory",
+   "WARN qml: service plugin load failed for io.github.mtolhuys.omacrunch: Service.qml: No such file or directory",
+   "WARN scene: Bar.qml[-1:-1]: No such file or directory",
+   "WARN qml: bar option io.github.mtolhuys.omacrunch failed to load, falling back to omarchy.bar",
+   "WARN scene: Bar.qml[-1:-1]: No such file or directory",
+   "WARN qml: bar option io.github.mtolhuys.omacrunch failed to load, falling back to omarchy.bar"
+  ]
+ },
+ {
+  "i": 188,
+  "task": "fix_manifest:missing_entry_file",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "rt-load-failed",
+   "rt-not-instantiated",
+   "rt-other"
+  ],
+  "static_fails": [],
+  "runtime_errors": [
+   "WARN qml: Plugin widget huacnlee.which-key failed: widget.qml: No such file or directory",
+   "WARN scene: WhichKey.qml[-1:-1]: No such file or directory",
+   "WARN qml: Plugin widget huacnlee.which-key failed: widget.qml: No such file or directory",
+   "WARN qml: Plugin widget huacnlee.which-key failed: widget.qml: No such file or directory",
+   "bar-widget component never registered (load failed)",
+   "overlay never instantiated after summon (status=None)"
+  ]
+ },
+ {
+  "i": 189,
+  "task": "fix_manifest:bad_default_section",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 190,
+  "task": "fix_manifest:symlink",
+  "pass_": true,
+  "abs_pass": false,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 191,
+  "task": "fix_manifest:bad_path_dotdot",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "rt-other"
+  ],
+  "static_fails": [],
+  "runtime_errors": [
+   "WARN scene: QML QQuickImage at Panel.qml[1497:5]: Cannot open: assets/claude.svg",
+   "WARN scene: QML QQuickImage at Panel.qml[1497:5]: Cannot open: assets/codex.svg",
+   "WARN scene: QML QQuickImage at Panel.qml[1497:5]: Cannot open: assets/grok.svg"
+  ]
+ },
+ {
+  "i": 192,
+  "task": "fix_manifest:bad_path_absolute",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "rt-not-instantiated",
+   "rt-other"
+  ],
+  "static_fails": [],
+  "runtime_errors": [
+   "WARN scene: Xmb.qml[-1:-1]: No such file or directory",
+   "menu never instantiated after summon (status=None)"
+  ]
+ },
+ {
+  "i": 193,
+  "task": "fix_manifest:missing_entry",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 194,
+  "task": "fix_manifest:schema_string",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 195,
+  "task": "fix_manifest:missing_entry_file",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 196,
+  "task": "fix_manifest:bad_default_section",
+  "pass_": true,
+  "abs_pass": true,
+  "categories": [],
+  "static_fails": [],
+  "runtime_errors": []
+ },
+ {
+  "i": 197,
+  "task": "fix_manifest:symlink",
+  "pass_": false,
+  "abs_pass": false,
+  "categories": [
+   "rt-load-failed",
+   "rt-other"
+  ],
+  "static_fails": [],
+  "runtime_errors": [
+   "WARN qml: Plugin widget acrogenesis.ai-account-switcher failed: BarWidget.qml: No such file or directory",
+   "WARN qml: Plugin widget acrogenesis.ai-account-switcher failed: BarWidget.qml: No such file or directory",
+   "bar-widget component never registered (load failed)"
+  ]
+ }
+]
