@@ -1,0 +1,25 @@
+entryPoints_fixed 0
+('omarchy_builtin', '>8192 answer tokens') 7
+('omarchy_builtin', 'already in training (9480d1b snapshot)') 7
+('omarchy_builtin', 'functest fail: dangerous-cmd,exec-unknown-binary') 1
+('omarchy_builtin', 'functest fail: dangerous-write') 3
+('omarchy_builtin', 'functest fail: placeholder-ui') 1
+('omarchy_builtin', 'functest fail: rt-zero-size') 1
+('omarchy_builtin', 'holdout plugin (first-party path)') 8
+('omarchy_builtin', 'kept') 6
+('omarchy_builtin', 'near-dup holdout answer') 2
+('omarchy_builtin', 'not in the 4.0.4 tree') 2
+('train_w2', 'add_panel', '>8192 answer tokens') 38
+('train_w2', 'add_panel', 'kept') 67
+('train_w2', 'build_from_spec', '>8192 answer tokens') 117
+('train_w2', 'build_from_spec', 'kept') 228
+('train_w2', 'chunk_add_kind', '>8192 answer tokens') 3
+('train_w2', 'chunk_add_kind', 'kept') 49
+('train_w2', 'chunk_component', '>8192 answer tokens') 29
+('train_w2', 'chunk_component', 'kept') 209
+('train_w2', 'chunk_component', 'near-dup holdout answer') 3
+('train_w2', 'chunk_entry_file', '>8192 answer tokens') 4
+('train_w2', 'chunk_entry_file', 'kept') 8
+('train_w2', 'chunk_manifest_entry', '>8192 answer tokens') 12
+('train_w2', 'chunk_manifest_entry', 'kept') 46
+TOTAL 619 Counter({'build_from_spec': 240, 'chunk_component': 209, 'add_panel': 67, 'chunk_add_kind': 49, 'chunk_manifest_entry': 46, 'chunk_entry_file': 8}) answer tok p50 4589 p95 7763 max 8143

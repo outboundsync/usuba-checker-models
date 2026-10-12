@@ -1,0 +1,369 @@
+{
+ "omarchy.active-window": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": [
+   "WARN qml: summon: no live bar widget for: acme.active-window",
+   "bar-widget has zero size [0, 0] (conditionally hidden by design)"
+  ]
+ },
+ "omarchy.agents": {
+  "pass_": false,
+  "cats": [
+   "dangerous-write"
+  ],
+  "static": [
+   [
+    "dangerous-write",
+    "Main.qml: writes/shell-outs alongside protected path /etc/hostname"
+   ],
+   [
+    "dangerous-write",
+    "Main.qml: FileView writes \"/etc/hostname\""
+   ]
+  ],
+  "rt": [],
+  "soft": [
+   "WARN scene: QML IpcHandler at Panel.qml[327:3]: Handler was registered but will not be used because another handler is registered for target omarchy.agents",
+   "bar-widget has zero size [0, 0] (conditionally hidden by design)"
+  ]
+ },
+ "omarchy.audio": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": []
+ },
+ "omarchy.background": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": [
+   "WARN scene: QML IpcHandler at Background.qml[131:3]: Handler was registered but will not be used because another handler is registered for target background",
+   "WARN scene: QML QQuickImage at Background.qml[221:7]: Cannot open: file:///opt/ft/runs/radgadu58/home/user/state/omarchy/current/background"
+  ]
+ },
+ "omarchy.bar": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": []
+ },
+ "omarchy.battery": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": []
+ },
+ "omarchy.bluetooth": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": [
+   "WARN scene: QML IpcHandler at Panel.qml[640:3]: Handler was registered but will not be used because another handler is registered for target omarchy.bluetooth",
+   "bar-widget has zero size [0, 0] (conditionally hidden by design)"
+  ]
+ },
+ "omarchy.clipboard": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": []
+ },
+ "omarchy.clock": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": [
+   "WARN scene: QML IpcHandler at BarWidget.qml[129:3]: Handler was registered but will not be used because another handler is registered for target omarchy.clock"
+  ]
+ },
+ "omarchy.disk-speedtest": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": []
+ },
+ "omarchy.monitor": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": [
+   "WARN scene: QML IpcHandler at Panel.qml[220:3]: Handler was registered but will not be used because another handler is registered for target omarchy.monitor"
+  ]
+ },
+ "omarchy.dropbox": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": []
+ },
+ "omarchy.elsewhen": {
+  "missing": "'manifest.json'"
+ },
+ "omarchy.emojis": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": []
+ },
+ "omarchy.idle": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": [
+   "WARN scene: QML IpcHandler at Service.qml[338:3]: Handler was registered but will not be used because another handler is registered for target idle"
+  ]
+ },
+ "omarchy.image-picker": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": []
+ },
+ "omarchy.indicators": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": [
+   "WARN scene: QML IpcHandler at Indicators.qml[168:3]: Handler was registered but will not be used because another handler is registered for target omarchy.indicators",
+   "WARN qml: summon: no live bar widget for: acme.indicators",
+   "plugin reported external-state failure: WARN qml: Indicator loader error Dictation file:///opt/ft/runs/r0vqxptgc/home/user/omarchy/plugins/indicators/Dictation.qml",
+   "plugin reported external-state failure: WARN qml: Indicator loader error ScreenRecording file:///opt/ft/runs/r0vqxptgc/home/user/omarchy/plugins/indicators/ScreenRecording.qml",
+   "plugin reported external-state failure: WARN qml: Indicator loader error Reminder file:///opt/ft/runs/r0vqxptgc/home/user/omarchy/plugins/indicators/Reminder.qml"
+  ]
+ },
+ "omarchy.keyboard-layout": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": [
+   "WARN qml: summon: no live bar widget for: acme.keyboard-layout",
+   "bar-widget has zero size [0, 0]",
+   "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px) (conditionally hidden by design)"
+  ]
+ },
+ "omarchy.lock": {
+  "pass_": false,
+  "cats": [
+   "dangerous-write"
+  ],
+  "static": [
+   [
+    "dangerous-write",
+    "Service.qml: writes/shell-outs alongside protected path /etc/pam.d/omarchy-lock-password"
+   ]
+  ],
+  "rt": [],
+  "soft": [
+   "WARN scene: QML IpcHandler at Service.qml[510:3]: Handler was registered but will not be used because another handler is registered for target lock"
+  ]
+ },
+ "omarchy.media": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": [
+   "WARN scene: QML IpcHandler at Service.qml[476:3]: Handler was registered but will not be used because another handler is registered for target media",
+   "WARN qml: summon: no live bar widget for: acme.media",
+   "bar-widget has zero size [0, 0] (conditionally hidden by design)"
+  ]
+ },
+ "omarchy.microphone": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": [
+   "WARN qml: summon: no live bar widget for: acme.microphone",
+   "bar-widget has zero size [0, 0] (conditionally hidden by design)"
+  ]
+ },
+ "omarchy.network": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": [
+   "WARN scene: QML IpcHandler at Panel.qml[210:3]: Handler was registered but will not be used because another handler is registered for target omarchy.network"
+  ]
+ },
+ "omarchy.nightlight": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": [
+   "WARN scene: QML IpcHandler at Service.qml[88:3]: Handler was registered but will not be used because another handler is registered for target nightlight"
+  ]
+ },
+ "omarchy.notifications": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": [
+   "WARN scene: QML IpcHandler at Service.qml[857:3]: Handler was registered but will not be used because another handler is registered for target notifications"
+  ]
+ },
+ "omarchy.menu": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": []
+ },
+ "omarchy.system-update": {
+  "pass_": false,
+  "cats": [
+   "rt-zero-size"
+  ],
+  "static": [],
+  "rt": [
+   "bar-widget has zero size [0, 0]"
+  ],
+  "soft": [
+   "WARN scene: QML IpcHandler at SystemUpdate.qml[27:3]: Handler was registered but will not be used because another handler is registered for target omarchy.system-update",
+   "WARN qml: summon: no live bar widget for: acme.system-update"
+  ]
+ },
+ "omarchy.osd": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": []
+ },
+ "omarchy.polkit": {
+  "pass_": false,
+  "cats": [
+   "dangerous-write"
+  ],
+  "static": [
+   [
+    "dangerous-write",
+    "PolkitAgent.qml: writes/shell-outs alongside protected path /etc/pam.d/polkit-1"
+   ]
+  ],
+  "rt": [],
+  "soft": []
+ },
+ "omarchy.power": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": [
+   "WARN scene: QML IpcHandler at Panel.qml[177:3]: Handler was registered but will not be used because another handler is registered for target omarchy.power",
+   "WARN scene: QML Panel at Panel.qml[9:1]: Binding loop detected for property \"opened\":",
+   "bar-widget has zero size [0, 0] (conditionally hidden by design)"
+  ]
+ },
+ "omarchy.reminders": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": []
+ },
+ "omarchy.remote-session": {
+  "missing": "'manifest.json'"
+ },
+ "omarchy.spacer": {
+  "pass_": false,
+  "cats": [
+   "placeholder-ui"
+  ],
+  "static": [
+   [
+    "placeholder-ui",
+    "trivial plugin: 9 QML lines, no IO, data or interaction"
+   ]
+  ],
+  "rt": [],
+  "soft": [
+   "WARN qml: summon: no live bar widget for: acme.spacer",
+   "bar-widget draws nothing visible on screen (slot 12x26 at x=1012, 0 ink px) (conditionally hidden by design)"
+  ]
+ },
+ "omarchy.speedtest": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": []
+ },
+ "omarchy.tray": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": [
+   "WARN qml: summon: no live bar widget for: acme.tray",
+   "bar-widget has zero size [0, 0] (conditionally hidden by design)"
+  ]
+ },
+ "omarchy.tailscale": {
+  "pass_": false,
+  "cats": [
+   "dangerous-cmd",
+   "exec-unknown-binary"
+  ],
+  "static": [
+   [
+    "dangerous-cmd",
+    "Service.qml: runs sudo/pkexec"
+   ],
+   [
+    "exec-unknown-binary",
+    "Model.js: runs `tailscale` - not an Omarchy/system binary on the Dell and not shipped by the plugin"
+   ]
+  ],
+  "rt": [],
+  "soft": []
+ },
+ "omarchy.weather": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": [
+   "WARN scene: QML IpcHandler at Panel.qml[478:3]: Handler was registered but will not be used because another handler is registered for target omarchy.weather",
+   "bar-widget has zero size [0, 0] (conditionally hidden by design)"
+  ]
+ },
+ "omarchy.wifiqr": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": []
+ },
+ "omarchy.workspaces": {
+  "pass_": true,
+  "cats": [],
+  "static": [],
+  "rt": [],
+  "soft": [
+   "WARN qml: summon: no live bar widget for: acme.workspaces"
+  ]
+ }
+}
