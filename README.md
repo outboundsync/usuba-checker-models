@@ -36,3 +36,34 @@ python functest/rescore.py              # rescore generated outputs into results
 Needs the Omarchy shell runtime deps described in `functest/runtime.py`. API-backed generators read keys only from env vars (`OPENROUTER_API_KEY`, `XAI_API_KEY`); no keys are stored in this repo.
 
 Clone with `git lfs install` first to get the adapter weights.
+
+## Functest v2: Dell-faithful environment (Omarchy 4.0.0.alpha "Quattro")
+
+`python functest/dell_env/setup.py` builds the environment under `/opt/ft/`. The test then runs the **real** Omarchy shell
+(basecamp/omarchy @ c668141, byte-identical to the reference Dell) under Quickshell in bwrap with a private headless sway.
+Pieces:
+- the real catppuccin-latte theme, rendered by `omarchy-theme-set-templates`, plus the JetBrainsMono Nerd Font and Omarchy's fonts.conf
+- a fake Hyprland IPC and `hyprctl` that replay v0.56.2 reply shapes (`functest/fixtures/hyprland-0.56.2`)
+- a PATH of logging shims, one per binary on the Dell; unknown binaries fail to start, as they do on the Dell
+
+Checks added (static: `dell_checks.py`; runtime: `runtime.py`):
+
+| check | static | runtime |
+|---|---|---|
+| exec'd binary must exist on the Dell | `exec-unknown-binary` | `rt-missing-binary` |
+| no undefined/null/NaN/[object Object] in argv or rendered text | `exec-undefined-arg` | `rt-undefined-arg`, `rt-undefined-text` |
+| settings read must be declared in manifest defaults | `settings-undeclared` (flag) | |
+| bar API / Commons singleton members must exist | `bar-api-unknown` (flag), `singleton-unknown` | |
+| shell errors that the no-plugin baseline doesn't have | | `rt-shell-broken`, `rt-plugin-warn` |
+| bar widget visible, inside the screen, nonzero ink, contrast ≥1.15:1 (zero size is soft for Hyprland-driven widgets) | | `rt-offscreen`, `rt-invisible` |
+| replacement bar actually drawn (soft if it uses GPU layer effects the software renderer can't draw) | | `rt-invisible` |
+| gap services (manifest says gaps/flush, ships a gaps setter) must issue `hyprctl keyword general:gaps_*` | | `rt-other` |
+
+Log lines only fail a plugin on TypeError/ReferenceError/syntax/load/missing-file/missing-type errors. "Unable to assign [undefined]",
+read-only-property, deprecation, QSettings and binding-loop warnings are soft, because they show up on the Dell in plugins that work. A plugin's own
+console warnings are hard only when they name a Dell surface (hyprctl/getoption/omarchy-*/theme); "not signed in"/no-network reports are soft.
+Any binary the shell actually launches must exist on stock Omarchy, even when the README documents it (`FT_DOC_DEPS=1` relaxes this).
+
+Anti-tamper: the shell log, probes and screenshots leave the sandbox on the driver's stdout pipe, never as files the
+plugin could rewrite. Results: `batch2_results.json` (15 Dell-verified plugins), `recal_registry.jsonl`,
+`ref49_results.json`, `calibration.json`.

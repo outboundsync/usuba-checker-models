@@ -59,3 +59,14 @@ MIT requires the copyright notice and permission notice in all copies or substan
 - varlet99/omarchy-tablet @ 9a828bc97c7a2d3d730e860282faded102c3be90 — MIT — Copyright (c) 2026 Charles Rivest
 - ZerubbabelT/portwatch @ 9878e488a4c7d90977a0944258e336756ac1768e — MIT — Copyright (c) 2026 Zerubbabel
 - (vendored inside mtolhuys/omacrunch) mtolhuys/omakit @ 2a3b95629518dfbdaa880bf528ce2ce495b27b45 — MIT — Copyright (c) 2026 Maarten Tolhuijs
+
+## functest/ — Dell-faithful functional test (not training text)
+
+- functest/dell_env/omarchy-shell-ref.tar.gz and the shell tree built from it by functest/dell_env/setup.py (shell/, plus the
+  pruned bin/ list functest/dell_env/omarchy_bins.txt and the theme templates rendered by omarchy-theme-set-templates):
+  basecamp/omarchy @ c668141e9c42b13c80c9ca4ea108e11708c5e8a5 (Omarchy 4.0.0.alpha) — MIT — Copyright (c) David Heinemeier Hansson.
+  The shell/ tree is byte-identical to the one on the reference Dell install (git tree aa5180e1…). The only local change is
+  the harness probe (functest/dell_env/ftprobe.qml.part) inserted into shell.qml at test time; it is not shipped as Omarchy code.
+- functest/fixtures/hyprland-0.56.2/: reply *shapes* of `hyprctl -j` (option names/types parsed from src/config/ConfigValues.cpp,
+  sample monitors/clients/workspaces) reproduced from hyprwm/Hyprland v0.56.2 — BSD-3-Clause — Copyright (c) 2022-2026 vaxerski.
+  No Hyprland source code is included.
