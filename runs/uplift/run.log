@@ -525,3 +525,88 @@ qwen3.6-27b 45 chunk_manifest_entry pass@ None $0.079  total $23.31
 qwen3.6-27b 47 chunk_add_kind:service pass@ None $0.059  total $23.37
 qwen3.6-27b 40 chunk_component pass@ None $0.116  total $23.37
 10:30 qwen3.6-27b done n=49 checker_pass_by_round=[5, 8, 9, 9] cost=$1.26 stopped=14
+deepseek-v4-pro 37 chunk_componentclaude-sonnet-5.5 pass@  20None  $0.000 build_from_spec pass@ None budget$0.000 total $23.37
+claude-sonnet-5.5 budget 21 total $23.37
+ build_from_spec pass@ None $0.000 budget claude-sonnet-5.5total $23.37
+ 24 build_from_specclaude-sonnet-5.5 18  build_from_spec pass@pass@ None  $0.000 budgetNone $0.000 budget total $23.37
+ total $23.37
+claude-sonnet-5.5 25 add_panel pass@ None claude-sonnet-5.5 22 $0.000 budget total $23.37build_from_spec pass@
+ None $0.000 budget total $23.37
+claude-sonnet-5.5 24 build_from_spec pass@ None $0.000  total $23.61
+gpt-5.6-sol 7 build_from_spec pass@ None $0.000  total $23.61
+claude-sonnet-5.5 22 build_from_spec pass@ None $0.000  total $23.61
+gpt-5.6-sol 10 build_from_spec pass@ None $0.000  total $23.61
+claude-sonnet-5.5 25 add_panel pass@ None $0.000  total $23.61
+gpt-5.6-sol 9 build_from_spec pass@ None $0.000  total $23.61
+gpt-5.6-sol 12 build_from_spec pass@ None $0.000  total $23.61
+claude-sonnet-5.5 27 build_from_spec pass@ None $0.000  total $23.61
+qwen3.6-27b 5 build_from_spec pass@ None $0.000  total $23.62
+kimi-k3 27 build_from_spec pass@ None $0.000  total $23.62
+kimi-k3 28 build_from_spec pass@ None $0.000  total $23.62
+kimi-k3 36 chunk_manifest_entry pass@ None $0.000  total $23.85
+kimi-k3 31 build_from_spec pass@ None $0.021  total $23.85
+kimi-k3 38 chunk_component pass@ None $0.000  total $23.85
+deepseek-v4-pro 31 build_from_spec pass@ None $0.000  total $23.85
+kimi-k3 37 chunk_component pass@ None $0.000  total $23.85
+claude-sonnet-5.5 18 build_from_spec pass@ None $0.000  total $23.85
+deepseek-v4-pro 15 build_from_spec pass@ None $0.032  total $23.85
+deepseek-v4-pro 40 chunk_component pass@ None $0.000  total $23.85
+claude-sonnet-5.5 20 build_from_spec pass@ None $0.000  total $23.85
+deepseek-v4-pro 26 build_from_spec pass@ None $0.017  total $23.85
+deepseek-v4-pro 41 chunk_component pass@ None $0.000  total $23.88
+gpt-5.6-sol 13 build_from_spec pass@ None $0.000  total $23.93
+deepseek-v4-pro 45 chunk_manifest_entry pass@ None $0.000  total $23.93
+claude-sonnet-5.5 31 build_from_spec pass@ None $0.000  total $23.93
+deepseek-v4-pro 38 chunk_component pass@ None $0.000  total $23.93
+kimi-k3 41 chunk_component pass@ None $0.000  total $23.93
+gpt-5.6-sol 21 build_from_spec pass@ None $0.000  total $23.93
+qwen3.6-27b 0 build_from_spec pass@ None $0.000  total $23.93
+qwen3.6-27b 9 build_from_spec pass@ None $0.003  total $23.93
+qwen3.6-27b 7 build_from_spec pass@ None $0.004  total $23.93
+qwen3.6-27b 13 build_from_spec pass@ None $0.000  total $23.93
+qwen3.6-27b 8 add_panel pass@ None $0.006  total $23.93
+deepseek-v4-pro 30 build_from_spec pass@ None $0.000  total $23.93
+gpt-5.6-sol 29 build_from_spec pass@ None $0.229  total $23.95
+deepseek-v4-pro 37 chunk_component pass@ None $0.000  total $23.95
+gpt-5.6-sol 24 build_from_spec pass@ None $0.000  total $23.95
+claude-sonnet-5.5 37 chunk_component pass@ None $0.000  total $23.95
+claude-sonnet-5.5 29 build_from_spec pass@ None $0.000  total $23.95
+gpt-5.6-sol 17 build_from_spec pass@ None $0.000  total $23.95
+kimi-k3 45 chunk_manifest_entry pass@ None $0.000  total $23.95
+qwen3.6-27b 6 build_from_spec pass@ None $0.026  total $23.95
+deepseek-v4-pro 48 chunk_add_kind:menu pass@ None $0.000  total $23.95
+deepseek-v4-pro 36 chunk_manifest_entry pass@ None $0.000  total $23.95
+deepseek-v4-pro 50 chunk_component pass@ None $0.000  total $23.95
+gpt-5.6-sol 31 build_from_spec pass@ None $0.000  total $23.95
+kimi-k3 24 build_from_spec pass@ None $0.000  total $23.95
+qwen3.6-27b 15 build_from_spec pass@ None $0.000  total $23.95
+kimi-k3 47 chunk_add_kind:service pass@ None $0.000  total $23.95
+qwen3.6-27b 19 add_panel pass@ None $0.000  total $23.95
+deepseek-v4-pro 39 chunk_manifest_entry pass@ None $0.000  total $23.95
+deepseek-v4-pro 47 chunk_add_kind:service pass@ None $0.000  total $23.95
+qwen3.6-27b 3 build_from_spec pass@ None $0.026  total $23.95
+gpt-5.6-sol 18 build_from_spec pass@ None $0.000  total $23.95
+deepseek-v4-pro 55 fix_manifest:reserved_id pass@ None $0.000  total $23.95
+kimi-k3 25 add_panel pass@ None $0.000  total $23.95
+claude-sonnet-5.5 21 build_from_spec pass@ None $0.000  total $23.95
+deepseek-v4-pro 27 build_from_spec pass@ None $0.012  total $23.95
+qwen3.6-27b 2 build_from_spec pass@ None $0.020  total $23.95
+kimi-k3 55 fix_manifest:reserved_id pass@ None $0.000  total $23.95
+claude-sonnet-5.5 40 chunk_component pass@ None $0.000  total $23.95
+gpt-5.6-sol 20 build_from_spec pass@ None $0.000  total $23.95
+kimi-k3 26 build_from_spec pass@ None $0.000  total $23.95
+claude-sonnet-5.5 47 chunk_add_kind:service pass@ None $0.000  total $23.95
+deepseek-v4-pro 49 chunk_component pass@ None $0.000  total $23.95
+10:40 deepseek-v4-pro done n=49 checker_pass_by_round=[5, 6, 8, 8] cost=$0.89 stopped=0
+claude-sonnet-5.5 38 chunk_component pass@ None $0.000  total $23.95
+qwen3.6-27b 14 add_panel pass@ None $0.025  total $23.95
+claude-sonnet-5.5 54 fix_manifest:bad_path_absolute pass@ None $0.000  total $23.95
+10:41 claude-sonnet-5.5 done n=49 checker_pass_by_round=[11, 22, 24, 28] cost=$1.23 stopped=0
+qwen3.6-27b 12 build_from_spec pass@ None $0.000  total $23.95
+kimi-k3 40 chunk_component pass@ None $0.009  total $23.95
+10:41 kimi-k3 done n=49 checker_pass_by_round=[3, 10, 16, 24] cost=$1.01 stopped=0
+gpt-5.6-sol 22 build_from_spec pass@ None $0.000  total $23.95
+qwen3.6-27b 10 build_from_spec pass@ None $0.004  total $23.95
+10:41 qwen3.6-27b done n=49 checker_pass_by_round=[5, 8, 9, 9] cost=$1.37 stopped=0
+gpt-5.6-sol 37 chunk_component pass@ None $0.000  total $23.95
+10:41 gpt-5.6-sol done n=49 checker_pass_by_round=[22, 26, 26, 26] cost=$0.61 stopped=0

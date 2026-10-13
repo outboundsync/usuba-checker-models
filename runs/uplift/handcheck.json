@@ -1,0 +1,378 @@
+{
+ "qwen3-coder": {
+  "13": {
+   "final": "reject",
+   "note": "reads an invented global `SysHost` (battery/cpu/power) inside try/catch; shows '?' forever"
+  },
+  "15": {
+   "final": "reject",
+   "note": "no speed test at all: dials bound to 0, button has no measurement logic"
+  },
+  "19": {
+   "final": "reject",
+   "note": "hardcoded weather (New York, 72, Sunny); no data source"
+  },
+  "31": {
+   "final": "reject",
+   "note": "Quickshell.execDetached({command, onFinished}) - invented object/callback form; the port list never fills"
+  },
+  "27": {
+   "final": "reject",
+   "note": "invented `WindowSystem` singleton behind typeof guards; overlay can never list or focus windows"
+  },
+  "25": {
+   "final": "reject",
+   "note": "panel UI only: static destination list, Start Backup button runs nothing"
+  },
+  "51": {
+   "first": "accept",
+   "note": "manifest fix: namespaced id, otherwise unchanged"
+  },
+  "52": {
+   "first": "accept",
+   "note": "manifest fix: entry point path corrected"
+  },
+  "53": {
+   "first": "accept",
+   "note": "manifest fix: namespaced id"
+  },
+  "54": {
+   "first": "accept",
+   "note": "manifest fix: relative entry point"
+  },
+  "49": {
+   "final": "reject",
+   "note": "tablet.py rewritten from scratch with a different CLI; upstream Service.qml calls `tablet.py daemon/status`"
+  },
+  "41": {
+   "final": "reject",
+   "note": "Singletons/Plugins.qml replaced by an invented registry that spams notify-send and /tmp logs"
+  },
+  "50": {
+   "final": "reject",
+   "note": "HomeContent guesses service members (appsModel, toggleTabletMode) behind typeof guards; app grid stays empty"
+  }
+ },
+ "grok-4.3": {
+  "4": {
+   "final": "accept",
+   "note": "real NotificationServer with DND and history; popup shows real notifications"
+  },
+  "8": {
+   "final": "reject",
+   "note": "hardcoded storage '12.4 GB / 20 GB' and fixed recent-files list; login button only logs"
+  },
+  "3": {
+   "final": "reject",
+   "note": "clipboard history is three hardcoded sample strings"
+  },
+  "14": {
+   "final": "reject",
+   "note": "chip reads UPower, but the panel shows hardcoded 'Battery: 87% (3h 42m)' and 'Balanced'"
+  },
+  "23": {
+   "final": "reject",
+   "note": "verse panel shows a hardcoded John 3:16; no fetch"
+  },
+  "25": {
+   "final": "reject",
+   "note": "snapshot list is hardcoded ListElements; no restic calls"
+  },
+  "9": {
+   "final": "accept",
+   "note": "lenient: brightness slider really drives brightnessctl (initial value hardcoded, lid control absent)"
+  },
+  "19": {
+   "final": "reject",
+   "note": "hardcoded weather (San Francisco, 14C, Partly Cloudy)"
+  },
+  "10": {
+   "final": "accept",
+   "note": "lenient: brightness slider runs brightnessctl set N% (starts at 70 instead of reading current level)"
+  },
+  "15": {
+   "final": "reject",
+   "note": "fake speed test: a Timer animates numbers, no network measurement"
+  },
+  "16": {
+   "final": "reject",
+   "note": "dials bound to 0; nothing measures speed"
+  },
+  "18": {
+   "final": "reject",
+   "note": "hardcoded weather (San Francisco, 18, humidity/wind constants)"
+  },
+  "11": {
+   "final": "reject",
+   "note": "slider only updates a property; brightnessctl is never run"
+  },
+  "20": {
+   "final": "reject",
+   "note": "spec asks for the Midvash verse of the day; ships a fixed list of 7 verses"
+  },
+  "22": {
+   "final": "reject",
+   "note": "same: fixed local verse list instead of Midvash VOTD"
+  },
+  "46": {
+   "final": "reject",
+   "note": "Bar.qml Switch button handler is an empty comment"
+  },
+  "28": {
+   "final": "reject",
+   "note": "writes Hyprland .conf syntax into looknfeel.lua (a Lua file) then hyprctl reload: breaks the user's config"
+  },
+  "49": {
+   "final": "reject",
+   "note": "tablet.py rewritten with a different CLI; upstream Service calls daemon/status"
+  },
+  "54": {
+   "final": "accept",
+   "note": "manifest fix"
+  },
+  "51": {
+   "final": "accept",
+   "note": "manifest fix"
+  },
+  "52": {
+   "final": "accept",
+   "note": "manifest fix"
+  },
+  "53": {
+   "final": "accept",
+   "note": "manifest fix"
+  },
+  "55": {
+   "final": "accept",
+   "note": "manifest fix (namespaced id); extra files harmless"
+  },
+  "45": {
+   "final": "reject",
+   "note": "Bar/Menu/Service use invented root types and members (Service {}, modelData.requestMenu, service.launchSingleApp)"
+  },
+  "48": {
+   "final": "reject",
+   "note": "menu items have empty onTriggered handlers"
+  }
+ },
+ "gpt-5.6-sol": {
+  "0": {
+   "first": "accept",
+   "note": "service: wallpaper from config.json via FileView, click commands via Process"
+  },
+  "1": {
+   "first": "accept",
+   "note": "wallpaper rotation with shipped SVGs, Timer cycle, click Process"
+  },
+  "2": {
+   "first": "accept",
+   "note": "clipboard overlay: list/copy/paste/wipe via real Processes"
+  },
+  "4": {
+   "first": "accept",
+   "note": "real NotificationServer daemon with popups/DND/history (Math.random only for unique keys)"
+  },
+  "5": {
+   "first": "accept",
+   "note": "real NotificationServer daemon with popups, DND, history"
+  },
+  "8": {
+   "first": "accept",
+   "note": "Dropbox status/storage/recent via shipped python helper calling the dropbox CLI; install/login links when absent"
+  },
+  "14": {
+   "first": "accept",
+   "note": "battery/profile/stats via real Processes; powerprofilesctl set"
+  },
+  "15": {
+   "first": "accept",
+   "note": "real Cloudflare speed test via shipped python script"
+  },
+  "16": {
+   "first": "accept",
+   "note": "real Cloudflare speed test via shipped sh script"
+  },
+  "11": {
+   "first": "accept",
+   "note": "brightness and display controls via real commands"
+  },
+  "19": {
+   "first": "accept",
+   "note": "weather from wttr.in via XHR, refreshed on a Timer"
+  },
+  "23": {
+   "first": "accept",
+   "note": "verse of the day fetched live (ourmanna API rather than Midvash; real data)"
+  },
+  "25": {
+   "first": "accept",
+   "note": "restic backups via shipped helper script"
+  },
+  "26": {
+   "first": "accept",
+   "note": "key promoter: python helper reads Hyprland binds and the cursor, shows shortcuts"
+  },
+  "27": {
+   "first": "accept",
+   "note": "vimium hints from hyprctl -j clients/monitors, focus via dispatch"
+  },
+  "28": {
+   "first": "accept",
+   "note": "writes a Lua managed block into ~/.config/hypr/looknfeel.lua via shipped helper, live hyprctl preview"
+  },
+  "36": {
+   "first": "accept",
+   "note": "Beam menu: launcher/actions with real Processes"
+  },
+  "48": {
+   "first": "accept",
+   "note": "menu hosts the plugin's real HomeContent (same approach as upstream)"
+  },
+  "50": {
+   "first": "accept",
+   "note": "app launcher grid from DesktopEntries (no tablet-service integration)"
+  },
+  "54": {
+   "first": "accept",
+   "note": "manifest fix"
+  },
+  "53": {
+   "first": "accept",
+   "note": "manifest fix"
+  },
+  "49": {
+   "first": "reject",
+   "note": "tablet.py rewritten without the `daemon` mode upstream Service.qml starts (prompt only listed sibling names); backend exits"
+  },
+  "3": {
+   "final": "accept",
+   "note": "after feedback: dropped cliphist, ships a wl-paste --watch helper; list/paste/delete via Processes"
+  },
+  "30": {
+   "final": "accept",
+   "note": "after feedback: service runs hyprctl keyword general:gaps_out 0"
+  },
+  "51": {
+   "final": "accept",
+   "note": "manifest fix"
+  },
+  "52": {
+   "final": "accept",
+   "note": "manifest fix"
+  }
+ },
+ "claude-sonnet-5.5": {
+  "0": {
+   "first": "accept",
+   "note": "wallpaper service following ~/.config/omarchy/current/background"
+  },
+  "5": {
+   "first": "accept",
+   "note": "real NotificationServer, DND, history persisted with FileView"
+  },
+  "14": {
+   "first": "accept",
+   "note": "battery/power info read from /sys via FileView"
+  },
+  "15": {
+   "first": "accept",
+   "note": "real Cloudflare speed test via curl"
+  },
+  "16": {
+   "first": "accept",
+   "note": "real Cloudflare speed test via curl"
+  },
+  "23": {
+   "first": "accept",
+   "note": "live Midvash VOTD API via XHR"
+  },
+  "26": {
+   "first": "accept",
+   "note": "reads real binds from hyprctl -j binds"
+  },
+  "30": {
+   "first": "accept",
+   "note": "applies hyprctl monitor addreserved per monitor (valid rule; not hardware-tested)"
+  },
+  "46": {
+   "first": "accept",
+   "note": "lenient: minimal working tablet bar (title + live clock), no fake controls"
+  },
+  "48": {
+   "first": "reject",
+   "note": "menu runs tablet.py tablet/desktop/toggle/keyboard/dictate; real tablet.py only accepts daemon/status, so every item errors"
+  },
+  "49": {
+   "first": "reject",
+   "note": "tablet.py rewrite without `daemon` mode that Service.qml starts"
+  },
+  "1": {
+   "final": "accept",
+   "note": "after feedback: wallpaper service with IPC set/reset/get and transitions"
+  },
+  "4": {
+   "final": "accept",
+   "note": "after feedback: NotificationServer daemon with popups, DND, persisted history"
+  },
+  "8": {
+   "final": "accept",
+   "note": "after feedback: Dropbox status/usage via dropbox CLI + du; shows not-running when absent"
+  },
+  "11": {
+   "final": "accept",
+   "note": "after feedback: brightness via brightnessctl -m / set"
+  },
+  "2": {
+   "final": "accept",
+   "note": "after feedback: clipboard history via wl-paste --watch, re-copy, paste shortcut"
+  },
+  "19": {
+   "final": "accept",
+   "note": "after feedback: weather from wttr.in JSON"
+  },
+  "3": {
+   "final": "accept",
+   "note": "after feedback: clipboard history via wl-paste --watch"
+  },
+  "28": {
+   "final": "accept",
+   "note": "after feedback: Lua managed block written via shipped apply.sh, live preview via hyprctl --batch"
+  },
+  "7": {
+   "final": "accept",
+   "note": "after feedback: Dropbox status + real API space usage via token"
+  },
+  "12": {
+   "final": "accept",
+   "note": "after feedback: battery/profile/CPU/mem from real sources via sh"
+  },
+  "6": {
+   "final": "accept",
+   "note": "after feedback: Dropbox status, sync dir size, API usage"
+  },
+  "45": {
+   "final": "accept",
+   "note": "after feedback: bar reads real `tablet.py status`"
+  },
+  "9": {
+   "final": "accept",
+   "note": "after feedback: brightness via brightnessctl, nightlight via omarchy-toggle-nightlight"
+  },
+  "50": {
+   "final": "accept",
+   "note": "after feedback: app launcher from DesktopEntries with optional service fields"
+  },
+  "53": {
+   "final": "accept",
+   "note": "after feedback: manifest fix"
+  },
+  "52": {
+   "final": "accept",
+   "note": "after feedback: manifest fix"
+  },
+  "36": {
+   "final": "reject",
+   "note": "after feedback the Beam menu was cut down to app search only; actions, maths and web shortcuts from the spec are gone"
+  }
+ }
+}

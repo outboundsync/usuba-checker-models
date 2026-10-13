@@ -31,7 +31,7 @@ for grp, m in MODELS:
     for r in R.values():
         fp = r["first_pass_round"]; last = fp if fp is not None else len(r["rounds"]) - 1; fin = r["rounds"][last]
         h = hc.get(str(r["i"]), {})
-        hf = h.get("first", "") if fp == 0 else ""; hl = h.get("final", "") if fp is not None else ""
+        hf = h.get("first", h.get("final", "")) if fp == 0 else ""; hl = h.get("final", "") if fp is not None else ""
         if fp == 0 and hf == "accept": cat = "works right away"
         elif fp is not None and hl == "accept": cat = "fixed by Checker" if fp > 0 else "works right away"
         elif fp is not None and (hl == "" if fp else hf == ""): cat = "unchecked"

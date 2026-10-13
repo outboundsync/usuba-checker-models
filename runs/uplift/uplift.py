@@ -91,7 +91,7 @@ def model_job(spec):
         if len(G) == 56: G = [G[i] for i in clean]   # full-holdout gen file -> the 49 clean prompts (same as score49.py)
         assert len(G) == 49, (name, len(G)); G = dict(zip(clean, G))
     c0 = [((g.get("usage") or {}).get("cost", 0) or 0) for g in G.values()]
-    est = max(0.03, 2.5 * (sum(c0) / max(1, len(c0)))) if any(c0) else float(os.environ.get("EST_" + name.replace("-", "_").replace(".", "_"), "0.08"))
+    est = max(0.03, 1.5 * (sum(c0) / max(1, len(c0)))) if any(c0) else float(os.environ.get("EST_" + name.replace("-", "_").replace(".", "_"), "0.08"))
     os.makedirs(os.path.join(H, name), exist_ok=True); outp = os.path.join(H, name, "rows.jsonl")
     done = {json.loads(l)["i"] for l in open(outp)} if os.path.exists(outp) else set()
     with cf.ThreadPoolExecutor(12) as ex: list(ex.map(lambda i: run(name, model, G[i], budget, est, outp, i), [i for i in clean if i not in done]))
