@@ -63,7 +63,7 @@ ax.text(REF_HUMAN + 0.3, y - 0.9, f"person-written reference: {REF_HUMAN}/49", f
 ff = [d[3] for d in data if d[0] == "Frontier models"]          # frontier first tries, only from models that finished all 49
 if ff:
     ax.axvspan(min(ff), max(ff), color="#3b6ea8", alpha=0.08, zorder=0)
-    ax.text(min(ff) + 0.3, y - 1.4, f"frontier first tries: {min(ff)}-{max(ff)}/49", fontsize=8, color="#3b6ea8", va="top")
+    ax.text(min(ff) + 0.3, -0.55, f"frontier first tries: {min(ff)}-{max(ff)}/49", fontsize=8, color="#3b6ea8", va="top")
 else: missing_ref = "frontier first-try marker omitted: no frontier model finished all 49"
 ax.grid(axis="x", color="#e6e3dc", lw=0.8); ax.set_axisbelow(True)
 ax.set_xlabel("working plugins out of 49 prompts (checked by hand)", color="#555")

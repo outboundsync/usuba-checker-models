@@ -39,6 +39,18 @@
   "25": {
    "final": "reject",
    "note": "backup button only console.logs"
+  },
+  "9": {
+   "final": "reject",
+   "note": "calls an invented Commons.exec behind a typeof guard; night light uses xrandr (X11, not Wayland)"
+  },
+  "8": {
+   "final": "reject",
+   "note": "Process command set as a string; status, storage and recent files are never fetched"
+  },
+  "20": {
+   "final": "reject",
+   "note": "'Fetching today's verse' but picks from a hardcoded verse list"
   }
  },
  "claude-opus-5.5": {
@@ -185,6 +197,38 @@
   "21": {
    "final": "reject",
    "note": "remoteUrl empty; shows a bundled list of 20 hardcoded verses instead of Midvash"
+  },
+  "30": {
+   "final": "accept",
+   "note": "flush bar reads hyprctl getoption gaps"
+  },
+  "31": {
+   "final": "accept",
+   "note": "ports from a real scan script, stop via kill"
+  },
+  "55": {
+   "final": "accept",
+   "note": "manifest fix; panel reads /proc"
+  },
+  "25": {
+   "final": "accept",
+   "note": "restic via guarded sh commands"
+  },
+  "29": {
+   "final": "accept",
+   "note": "iCal from curl URL or local file"
+  },
+  "39": {
+   "final": "accept",
+   "note": "bar shell hosting the sibling Pill per screen"
+  },
+  "50": {
+   "final": "reject",
+   "note": "quick actions call invented service methods behind typeof guards, else tablet.py subcommands that don't exist (real: daemon/status)"
+  },
+  "47": {
+   "final": "reject",
+   "note": "service runs tablet.py <action> subcommands that don't exist (real: daemon/status)"
   }
  },
  "kimi-k3": {
@@ -271,6 +315,74 @@
   "25": {
    "final": "reject",
    "note": "`restic backup ~` passes a literal '~' (no shell), backup fails"
+  },
+  "27": {
+   "final": "accept",
+   "note": "hints from Hyprland.toplevels, focus via dispatch"
+  },
+  "17": {
+   "final": "accept",
+   "note": "weather via curl wttr.in"
+  },
+  "22": {
+   "final": "accept",
+   "note": "lenient: real verse source (Sefaria calendar API) instead of Midvash"
+  },
+  "24": {
+   "final": "accept",
+   "note": "real restic backup/snapshots"
+  },
+  "29": {
+   "final": "accept",
+   "note": "iCal from local .ics via FileView"
+  },
+  "18": {
+   "final": "accept",
+   "note": "weather via curl wttr.in"
+  },
+  "28": {
+   "final": "accept",
+   "note": "writes Lua hl.config block to looknfeel.lua, live preview via hyprctl --batch"
+  },
+  "21": {
+   "final": "accept",
+   "note": "lenient: real verse source (labs.bible.org votd) instead of Midvash"
+  },
+  "6": {
+   "final": "accept",
+   "note": "Dropbox via real dropbox CLI status/storage/start"
+  },
+  "13": {
+   "final": "accept",
+   "note": "cpu/mem from /proc"
+  },
+  "30": {
+   "final": "accept",
+   "note": "lenient: per-monitor bar with Hyprland workspaces"
+  },
+  "31": {
+   "final": "accept",
+   "note": "ports via ss -tlnp"
+  },
+  "48": {
+   "final": "reject",
+   "note": "menu runs `omarchy-tablet` which does not exist"
+  },
+  "49": {
+   "final": "accept",
+   "note": "tablet.py with daemon mode and socket command server"
+  },
+  "46": {
+   "final": "reject",
+   "note": "bar runs tablet.py toggle/keyboard/launcher; real tablet.py only accepts daemon/status"
+  },
+  "45": {
+   "final": "reject",
+   "note": "service runs tablet.py mode/keyboard/launcher/dictate/back subcommands that don't exist"
+  },
+  "55": {
+   "final": "accept",
+   "note": "manifest fix; powerprofilesctl get/cycle"
   }
  },
  "gemini-3.1-pro": {
@@ -321,6 +433,86 @@
   "12": {
    "final": "accept",
    "note": "script reads /sys battery, powerprofilesctl, /proc/loadavg"
+  },
+  "19": {
+   "final": "reject",
+   "note": "'simulated live data source': temperature hardcoded 72\u00b0F"
+  },
+  "20": {
+   "final": "accept",
+   "note": "lenient: real verse API (labs.bible.org votd) instead of Midvash"
+  },
+  "21": {
+   "final": "accept",
+   "note": "lenient: real verse API (labs.bible.org votd)"
+  },
+  "22": {
+   "final": "accept",
+   "note": "lenient: real verse API (labs.bible.org votd)"
+  },
+  "7": {
+   "final": "reject",
+   "note": "helper script says it mocks storage and recent files"
+  },
+  "16": {
+   "final": "accept",
+   "note": "real curl download/upload speed test"
+  },
+  "6": {
+   "final": "accept",
+   "note": "Dropbox info via bundled python helper calling the dropbox CLI"
+  },
+  "9": {
+   "final": "accept",
+   "note": "brightnessctl get/max/set, dpms off"
+  },
+  "25": {
+   "final": "reject",
+   "note": "backup button only console.logs"
+  },
+  "23": {
+   "final": "accept",
+   "note": "verse via XMLHttpRequest to a midvash endpoint (lenient: endpoint unverified)"
+  },
+  "1": {
+   "final": "reject",
+   "note": "background service has no image source or wallpaper reading; draws nothing real"
+  },
+  "29": {
+   "final": "accept",
+   "note": "iCal fetched from a user-supplied URL/file and parsed"
+  },
+  "36": {
+   "final": "reject",
+   "note": "Beam relies on sibling services/ui APIs behind typeof checks; compatibility unverified, no own actions"
+  },
+  "46": {
+   "final": "reject",
+   "note": "launcher/keyboard buttons only console.log"
+  },
+  "27": {
+   "final": "reject",
+   "note": "no window list or Hyprland calls; overlay does nothing"
+  },
+  "30": {
+   "final": "accept",
+   "note": "lenient: flush-bar config written and read via real shell commands"
+  },
+  "51": {
+   "final": "accept",
+   "note": "manifest fix; snapshots via restic"
+  },
+  "54": {
+   "final": "accept",
+   "note": "manifest fix; gaps via bundled script"
+  },
+  "55": {
+   "final": "accept",
+   "note": "manifest fix"
+  },
+  "50": {
+   "final": "reject",
+   "note": "search and launch only console.log"
   }
  },
  "qwen3-coder": {
@@ -375,6 +567,14 @@
   "50": {
    "final": "reject",
    "note": "HomeContent guesses service members (appsModel, toggleTabletMode) behind typeof guards; app grid stays empty"
+  },
+  "36": {
+   "final": "reject",
+   "note": "calls Engine.submit/requestUpdate/resultsUpdated; sibling services/Engine.qml API not shown, compatibility unverified; no own actions"
+  },
+  "24": {
+   "final": "reject",
+   "note": "creates QML objects inline in JS (var file = FileView {...}) inside try; config/backup never actually run"
   }
  },
  "grok-4.3": {
@@ -481,6 +681,18 @@
   "29": {
    "final": "reject",
    "note": "events are hardcoded examples ('in real use load from .ics')"
+  },
+  "26": {
+   "final": "reject",
+   "note": "parses ~/.config/hypr/hyprland.conf; Omarchy 4 config is Lua, so it finds no binds (real source: hyprctl binds -j)"
+  },
+  "27": {
+   "final": "reject",
+   "note": "hint selection only console.logs; no focus/dispatch"
+  },
+  "30": {
+   "final": "reject",
+   "note": "service only console.logs on a timer; no bar"
   }
  },
  "deepseek-v4-pro": {
@@ -515,6 +727,30 @@
   "16": {
    "final": "accept",
    "note": "speed test via XMLHttpRequest to speed.cloudflare.com"
+  },
+  "22": {
+   "final": "accept",
+   "note": "lenient: real verse API (OurManna daily) instead of Midvash"
+  },
+  "19": {
+   "final": "accept",
+   "note": "weather via curl wttr.in"
+  },
+  "38": {
+   "final": "reject",
+   "note": "hardcoded 3-app list, empty action handlers, opens exec as a file URL"
+  },
+  "39": {
+   "final": "accept",
+   "note": "bar shell hosting the sibling Pill"
+  },
+  "30": {
+   "final": "accept",
+   "note": "lenient: transparent bar with a live clock"
+  },
+  "49": {
+   "final": "reject",
+   "note": "tablet.py rewrite without the `daemon` mode Service.qml starts"
   }
  },
  "gpt-5.6-sol": {
@@ -657,6 +893,38 @@
   "29": {
    "final": "accept",
    "note": "calendar from a configured .ics URL via Process"
+  },
+  "17": {
+   "final": "accept",
+   "note": "weather from wttr.in"
+  },
+  "24": {
+   "final": "accept",
+   "note": "bundled time_machine.py drives real restic init/backup/snapshots/restore"
+  },
+  "46": {
+   "final": "accept",
+   "note": "lenient: minimal tablet bar, no fake controls"
+  },
+  "45": {
+   "final": "reject",
+   "note": "Bar/Menu run tablet.py launcher/keyboard/dictation subcommands that don't exist (real: daemon/status)"
+  },
+  "55": {
+   "final": "accept",
+   "note": "manifest fix; panel uses real commands"
+  },
+  "31": {
+   "final": "accept",
+   "note": "listening ports via real Process"
+  },
+  "39": {
+   "final": "accept",
+   "note": "bar with Hyprland workspaces, dispatch on tap"
+  },
+  "47": {
+   "final": "reject",
+   "note": "service only flips a tabletMode boolean; nothing actually switches mode"
   }
  },
  "claude-sonnet-5.5": {
@@ -783,6 +1051,50 @@
   "22": {
    "final": "reject",
    "note": "feedUrl empty; falls back to hardcoded Verses.js"
+  },
+  "31": {
+   "final": "accept",
+   "note": "ports via ss -ltnp"
+  },
+  "17": {
+   "final": "accept",
+   "note": "weather from wttr.in"
+  },
+  "18": {
+   "final": "accept",
+   "note": "weather from wttr.in via curl"
+  },
+  "27": {
+   "final": "accept",
+   "note": "hints from Hyprland.toplevels, dispatch actions"
+  },
+  "13": {
+   "final": "accept",
+   "note": "battery via FileView on /sys"
+  },
+  "51": {
+   "final": "accept",
+   "note": "manifest fix"
+  },
+  "29": {
+   "final": "accept",
+   "note": "iCal parsed from a local .ics via cat"
+  },
+  "54": {
+   "final": "accept",
+   "note": "manifest fix"
+  },
+  "55": {
+   "final": "accept",
+   "note": "manifest fix; panel"
+  },
+  "21": {
+   "final": "reject",
+   "note": "endpoint empty by default; shows a hardcoded fallback verse list"
+  },
+  "25": {
+   "final": "reject",
+   "note": "panel is an empty shell: no backup, destination or snapshot logic"
   }
  }
 }

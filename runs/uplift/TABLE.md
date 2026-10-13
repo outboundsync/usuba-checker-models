@@ -2,12 +2,12 @@ Source: runs/uplift/results.csv (categories defined in runs/uplift/export.py)
 
 | group | model | first try /49 | after Checker fixes /49 | works right away | fixed by Checker | still buggy | fully broken | spend (fixes) |
 |---|---|---|---|---|---|---|---|---|
-| missing | GPT-5.6 Sol (35/49 finished) | | | | | | | |
-| missing | Claude Opus 5.5 (37/49 finished) | | | | | | | |
-| missing | Claude Sonnet 5.5 (29/49 finished) | | | | | | | |
-| missing | Gemini 3.1 Pro (14/49 finished) | | | | | | | |
-| missing | Grok 4.3 (33/49 finished) | | | | | | | |
-| missing | Qwen3.6 27B (25/49 finished) | | | | | | | |
-| missing | Qwen3-Coder (36/49 finished) | | | | | | | |
-| missing | Kimi K3 (21/49 finished) | | | | | | | |
-| missing | DeepSeek V4 Pro (17/49 finished) | | | | | | | |
+| Frontier models | GPT-5.6 Sol | 21 | 40 | 21 | 19 | 5 | 4 | $4.06 |
+| Frontier models | Claude Opus 5.5 | 17 | 36 | 17 | 19 | 10 | 3 | $7.54 |
+| Frontier models | Claude Sonnet 5.5 | 9 | 35 | 9 | 26 | 11 | 3 | $3.17 |
+| Frontier models | Gemini 3.1 Pro | 2 | 17 | 2 | 15 | 20 | 12 | $6.09 |
+| Frontier models | Grok 4.3 | 3 | 8 | 3 | 5 | 28 | 13 | $0.57 |
+| Open models | Kimi K3 | 3 | 32 | 3 | 29 | 9 | 8 | $2.40 |
+| Open models | DeepSeek V4 Pro | 4 | 10 | 4 | 6 | 12 | 27 | $2.75 |
+| Open models | Qwen3.6 27B | 4 | 5 | 4 | 1 | 14 | 30 | $2.62 |
+| Open models | Qwen3-Coder | 4 | 4 | 4 | 0 | 15 | 30 | $0.31 |
