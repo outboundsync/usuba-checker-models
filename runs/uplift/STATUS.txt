@@ -1,1 +1,2 @@
 10:10 gemini-3.1-pro done n=49 checker_pass_by_round=[4, 8, 8, 9] cost=$1.80 stopped=38
+10:11 gpt-5.6-sol done n=49 checker_pass_by_round=[22, 26, 26, 26] cost=$0.38 stopped=14
