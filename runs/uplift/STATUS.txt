@@ -1,0 +1,1 @@
+10:10 gemini-3.1-pro done n=49 checker_pass_by_round=[4, 8, 8, 9] cost=$1.80 stopped=38
