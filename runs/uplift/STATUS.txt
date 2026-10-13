@@ -6,3 +6,4 @@
 10:15 deepseek-v4-pro done n=49 checker_pass_by_round=[5, 6, 8, 8] cost=$0.93 stopped=17
 10:17 grok-4.3 done n=49 checker_pass_by_round=[6, 15, 20, 25] cost=$0.44 stopped=0
 10:17 qwen3-coder done n=49 checker_pass_by_round=[4, 7, 8, 13] cost=$0.25 stopped=0
+10:30 qwen3.6-27b done n=49 checker_pass_by_round=[5, 8, 9, 9] cost=$1.26 stopped=14
