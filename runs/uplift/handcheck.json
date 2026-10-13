@@ -1,4 +1,328 @@
 {
+ "qwen3.6-27b": {
+  "49": {
+   "first": "reject",
+   "note": "tablet.py rewrite with --mode/--keyboard flags, no `daemon` mode Service.qml starts"
+  },
+  "51": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "52": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "53": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "54": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "1": {
+   "final": "reject",
+   "note": "background source never set (no wallpaper source), draws nothing"
+  },
+  "0": {
+   "final": "reject",
+   "note": "background source never set, draws nothing"
+  },
+  "11": {
+   "final": "reject",
+   "note": "brightness slider hardcoded to 75, calibrate only console.logs"
+  },
+  "16": {
+   "final": "accept",
+   "note": "speed test via requests to speed.cloudflare.com"
+  },
+  "25": {
+   "final": "reject",
+   "note": "backup button only console.logs"
+  }
+ },
+ "claude-opus-5.5": {
+  "0": {
+   "first": "accept",
+   "note": "background service: follows ~/.config/omarchy/current/background via readlink, real click commands"
+  },
+  "1": {
+   "first": "accept",
+   "note": "background service + surface, readlink polling, real transitions"
+  },
+  "4": {
+   "first": "accept",
+   "note": "notification daemon with FileView-persisted history, DND, popups"
+  },
+  "11": {
+   "first": "accept",
+   "note": "brightness via brightnessctl -m / set, monitor toggle via hyprctl"
+  },
+  "15": {
+   "first": "accept",
+   "note": "speed test: real curl downloads/uploads against speed.cloudflare.com"
+  },
+  "14": {
+   "first": "accept",
+   "note": "battery from UPower, cpu/mem from /proc"
+  },
+  "16": {
+   "first": "accept",
+   "note": "speed test: real curl to speed.cloudflare.com __down/__up"
+  },
+  "19": {
+   "first": "accept",
+   "note": "weather from wttr.in j1 via XMLHttpRequest"
+  },
+  "23": {
+   "first": "accept",
+   "note": "verse from midvash API via XMLHttpRequest, error states"
+  },
+  "26": {
+   "first": "accept",
+   "note": "reads hyprctl binds -j, shows the matching shortcut"
+  },
+  "27": {
+   "first": "accept",
+   "note": "hints from Hyprland.toplevels, actions via Hyprland.dispatch"
+  },
+  "28": {
+   "first": "accept",
+   "note": "writes a managed Lua hl.config block to looknfeel.lua, live preview via hyprctl --batch"
+  },
+  "36": {
+   "first": "accept",
+   "note": "Beam: DesktopEntries apps, real omarchy-* actions, web shortcuts, maths via bin/beam.py with local fallback"
+  },
+  "46": {
+   "first": "reject",
+   "note": "bar runs tablet.py toggle/keyboard/dictation; real tablet.py only accepts daemon/status"
+  },
+  "48": {
+   "first": "reject",
+   "note": "menu runs tablet.py toggle/tablet/desktop/keyboard/dictate; real tablet.py only accepts daemon/status"
+  },
+  "51": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "53": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "54": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "52": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "3": {
+   "final": "accept",
+   "note": "clipboard history from wl-paste polling, paste via hyprctl sendshortcut"
+  },
+  "8": {
+   "final": "accept",
+   "note": "Dropbox status via real dropbox CLI when installed, install/login links otherwise"
+  },
+  "2": {
+   "final": "accept",
+   "note": "clipboard history via wl-paste --watch + helper script"
+  },
+  "5": {
+   "final": "accept",
+   "note": "NotificationServer instance with popups"
+  },
+  "6": {
+   "final": "accept",
+   "note": "Dropbox via installed CLI + ~/.dropbox/info.json, real du/find"
+  },
+  "7": {
+   "final": "accept",
+   "note": "Dropbox via dropbox-cli/info.json, real du/find for usage and recent files"
+  },
+  "9": {
+   "final": "accept",
+   "note": "brightnessctl, hyprctl monitors, hyprsunset night light"
+  },
+  "10": {
+   "final": "accept",
+   "note": "brightnessctl read/set, hyprctl monitor controls"
+  },
+  "12": {
+   "final": "accept",
+   "note": "battery FileView on /sys, powerprofilesctl get/set, /proc stats"
+  },
+  "13": {
+   "final": "accept",
+   "note": "battery from /sys, stats via sh"
+  },
+  "17": {
+   "final": "accept",
+   "note": "weather from wttr.in via curl"
+  },
+  "22": {
+   "final": "accept",
+   "note": "verse via curl to a midvash endpoint (lenient: endpoint unverified)"
+  },
+  "24": {
+   "final": "accept",
+   "note": "real restic backup/snapshots/restore"
+  },
+  "45": {
+   "final": "reject",
+   "note": "Bar/Menu run tablet.py mode/keyboard/launcher; real tablet.py only accepts daemon/status"
+  },
+  "49": {
+   "final": "reject",
+   "note": "tablet.py rewrite without the `daemon` mode Service.qml starts"
+  },
+  "20": {
+   "final": "reject",
+   "note": "sourceUrl defaults to empty and the script exits; shows no verse out of the box"
+  },
+  "21": {
+   "final": "reject",
+   "note": "remoteUrl empty; shows a bundled list of 20 hardcoded verses instead of Midvash"
+  }
+ },
+ "kimi-k3": {
+  "52": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "53": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "54": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "4": {
+   "final": "accept",
+   "note": "NotificationServer instance"
+  },
+  "5": {
+   "final": "accept",
+   "note": "NotificationServer instance"
+  },
+  "0": {
+   "final": "accept",
+   "note": "background via real Process, xdg-open"
+  },
+  "11": {
+   "final": "accept",
+   "note": "brightnessctl set from slider"
+  },
+  "8": {
+   "final": "accept",
+   "note": "Dropbox folder checks via df/find"
+  },
+  "14": {
+   "final": "accept",
+   "note": "battery from /sys"
+  },
+  "16": {
+   "final": "accept",
+   "note": "curl speed test against speed.cloudflare.com (lenient: assumes install path)"
+  },
+  "2": {
+   "final": "accept",
+   "note": "clipboard via wl-paste --watch"
+  },
+  "3": {
+   "final": "accept",
+   "note": "clipboard via wl-paste --watch + history file"
+  },
+  "15": {
+   "final": "accept",
+   "note": "curl speed test against speed.cloudflare.com"
+  },
+  "23": {
+   "final": "accept",
+   "note": "verse via curl to midvash (lenient: endpoint unverified)"
+  },
+  "7": {
+   "final": "accept",
+   "note": "Dropbox folder via du/ls"
+  },
+  "9": {
+   "final": "accept",
+   "note": "brightnessctl read/set"
+  },
+  "12": {
+   "final": "accept",
+   "note": "battery /sys, powerprofilesctl, /proc"
+  },
+  "26": {
+   "final": "accept",
+   "note": "reads hyprctl binds -j"
+  },
+  "1": {
+   "final": "reject",
+   "note": "wallpaper property never set; draws nothing"
+  },
+  "19": {
+   "final": "reject",
+   "note": "temperature hardcoded '72\u00b0F'"
+  },
+  "25": {
+   "final": "reject",
+   "note": "`restic backup ~` passes a literal '~' (no shell), backup fails"
+  }
+ },
+ "gemini-3.1-pro": {
+  "11": {
+   "first": "reject",
+   "note": "brightness hardcoded: pill shows '75%', slider value 75 never read from or written to the device"
+  },
+  "49": {
+   "first": "reject",
+   "note": "tablet.py rewrite without the `daemon` mode Service.qml starts"
+  },
+  "52": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "53": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "4": {
+   "final": "reject",
+   "note": "uses NotificationServer as a singleton model; no server instance is created, so no notifications arrive"
+  },
+  "8": {
+   "final": "reject",
+   "note": "timer 'simulates' fetching; logout only console.logs"
+  },
+  "14": {
+   "final": "reject",
+   "note": "battery shown as hardcoded '100%'"
+  },
+  "5": {
+   "final": "reject",
+   "note": "generates random simulated notifications"
+  },
+  "28": {
+   "final": "reject",
+   "note": "writes Hyprland .conf syntax (general { }) into looknfeel.lua"
+  },
+  "17": {
+   "final": "accept",
+   "note": "weather from wttr.in via XMLHttpRequest"
+  },
+  "18": {
+   "final": "accept",
+   "note": "weather from wttr.in via XMLHttpRequest"
+  },
+  "12": {
+   "final": "accept",
+   "note": "script reads /sys battery, powerprofilesctl, /proc/loadavg"
+  }
+ },
  "qwen3-coder": {
   "13": {
    "final": "reject",
@@ -153,6 +477,44 @@
   "48": {
    "final": "reject",
    "note": "menu items have empty onTriggered handlers"
+  },
+  "29": {
+   "final": "reject",
+   "note": "events are hardcoded examples ('in real use load from .ics')"
+  }
+ },
+ "deepseek-v4-pro": {
+  "46": {
+   "first": "reject",
+   "note": "launcher button is a TODO that only console.logs"
+  },
+  "51": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "53": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "52": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "54": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "2": {
+   "final": "reject",
+   "note": "uses an invented Quickshell.Clipboard API"
+  },
+  "23": {
+   "final": "accept",
+   "note": "verse via XMLHttpRequest to a midvash endpoint (lenient: endpoint unverified)"
+  },
+  "16": {
+   "final": "accept",
+   "note": "speed test via XMLHttpRequest to speed.cloudflare.com"
   }
  },
  "gpt-5.6-sol": {
@@ -259,6 +621,42 @@
   "52": {
    "final": "accept",
    "note": "manifest fix"
+  },
+  "6": {
+   "final": "accept",
+   "note": "Dropbox via helper calling the Dropbox API"
+  },
+  "7": {
+   "final": "accept",
+   "note": "Dropbox via bundled data/login scripts"
+  },
+  "9": {
+   "final": "accept",
+   "note": "brightness/monitor via real Processes"
+  },
+  "10": {
+   "final": "accept",
+   "note": "brightnessctl slider, hyprctl monitors"
+  },
+  "12": {
+   "final": "accept",
+   "note": "battery/profile via real status Process, powerprofilesctl set"
+  },
+  "13": {
+   "final": "accept",
+   "note": "battery/profile snapshot Process, powerprofilesctl set"
+  },
+  "18": {
+   "final": "accept",
+   "note": "weather from wttr.in j1"
+  },
+  "21": {
+   "final": "accept",
+   "note": "verse via XMLHttpRequest to a midvash endpoint (lenient: endpoint unverified)"
+  },
+  "29": {
+   "final": "accept",
+   "note": "calendar from a configured .ics URL via Process"
   }
  },
  "claude-sonnet-5.5": {
@@ -373,6 +771,18 @@
   "36": {
    "final": "reject",
    "note": "after feedback the Beam menu was cut down to app search only; actions, maths and web shortcuts from the spec are gone"
+  },
+  "10": {
+   "final": "accept",
+   "note": "brightnessctl read/set, dpms, omarchy-toggle-nightlight"
+  },
+  "20": {
+   "final": "reject",
+   "note": "bundled hardcoded verse list, no Midvash fetch"
+  },
+  "22": {
+   "final": "reject",
+   "note": "feedUrl empty; falls back to hardcoded Verses.js"
   }
  }
 }

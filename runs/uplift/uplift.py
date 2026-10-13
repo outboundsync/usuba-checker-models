@@ -25,19 +25,28 @@ def settle(name, est, cost):
         reserved[0] -= est; state["spent"] += cost; state["by_model"][name] = state["by_model"].get(name, 0) + cost
         json.dump(state, open(LEDGER, "w"), indent=1)
 
+class ApiError(Exception): pass
+DEAD = []                                                     # set on HTTP 402: account out of credit -> stop everything
 def chat(model, msgs, mt=16000):
+    """Returns a real reply or raises ApiError. 402s, HTTP/network errors and empty replies are never returned as answers."""
     b = {"model": model, "messages": msgs, "temperature": 0, "max_tokens": mt, "usage": {"include": True},
          "reasoning": {"effort": "low", "exclude": True}, "provider": PROVIDER}
-    err = ""
-    for a in range(3):
+    err = ""; cost = 0
+    for a in range(6):
+        if DEAD: raise ApiError("stopped: " + DEAD[0])
         try:
             q = urllib.request.Request("https://openrouter.ai/api/v1/chat/completions", json.dumps(b).encode(),
                 {"Authorization": "Bearer " + os.environ["OPENROUTER_API_KEY"], "Content-Type": "application/json"})
             d = json.load(urllib.request.urlopen(q, timeout=600)); c = d["choices"][0]
-            return c["message"]["content"] or "", c["finish_reason"], (d.get("usage") or {}).get("cost", 0) or 0, d.get("provider")
-        except urllib.error.HTTPError as e: err = f"HTTP {e.code} {e.read()[:200]!r}"; time.sleep(5)
-        except Exception as e: err = str(e)[:200]; time.sleep(5)
-    return "", "error:" + err, 0, None
+            cost += (d.get("usage") or {}).get("cost", 0) or 0
+            if (c["message"]["content"] or "").strip(): return c["message"]["content"], c["finish_reason"], cost, d.get("provider")
+            err = f"empty reply finish={c.get('finish_reason')}"
+        except urllib.error.HTTPError as e:
+            err = f"HTTP {e.code} {e.read()[:200]!r}"
+            if e.code == 402: DEAD.append(err); raise ApiError(err)
+        except Exception as e: err = str(e)[:200]
+        time.sleep(5 * (a + 1))
+    raise ApiError(err)
 
 def feedback(r, out, fin):
     Lx = []
@@ -69,8 +78,10 @@ def run(name, model, g0, budget, est, outp, i):
     for k in range(ROUNDS + 1):
         if k:
             with asem:                                   # reserve only once an API slot is held: at most API x est is ever reserved
-                if not reserve(name, est, budget): stopped = "budget"; break
-                out, fin, c, prov = chat(model, msgs)
+                if not reserve(name, est, budget): print(name, i, "budget stop, row left missing", flush=True); return
+                try: out, fin, c, prov = chat(model, msgs)
+                except ApiError as e:
+                    settle(name, est, getattr(e, "cost", 0)); print(name, i, "API error, row left missing:", str(e)[:120], flush=True); return
                 settle(name, est, c); cost += c
         ok, r, lp = grade(i, out, fin)
         rounds.append({"round": k, "output": out, "finish": fin, "pass": ok, "loop": lp, "categories": r.get("categories"),
