@@ -18,3 +18,4 @@
 11:55 claude-sonnet-5.5 done n=29 checker_pass_by_round=[11, 26, 28, 29] cost=$1.14 stopped=0
 11:55 gemini-3.1-pro done n=14 checker_pass_by_round=[4, 10, 11, 12] cost=$1.29 stopped=0
 11:55 qwen3-coder done n=36 checker_pass_by_round=[4, 7, 8, 11] cost=$0.20 stopped=0
+11:55 gpt-5.6-sol done n=35 checker_pass_by_round=[22, 35, 35, 35] cost=$1.18 stopped=0
