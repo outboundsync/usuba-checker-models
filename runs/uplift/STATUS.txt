@@ -11,3 +11,4 @@
 10:41 claude-sonnet-5.5 done n=49 checker_pass_by_round=[11, 22, 24, 28] cost=$1.23 stopped=0
 10:41 kimi-k3 done n=49 checker_pass_by_round=[3, 10, 16, 24] cost=$1.01 stopped=0
 10:41 qwen3.6-27b done n=49 checker_pass_by_round=[5, 8, 9, 9] cost=$1.37 stopped=0
+10:41 gpt-5.6-sol done n=49 checker_pass_by_round=[22, 26, 26, 26] cost=$0.61 stopped=0
