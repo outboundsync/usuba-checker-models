@@ -22,3 +22,4 @@
 11:57 deepseek-v4-pro done n=17 checker_pass_by_round=[5, 6, 8, 8] cost=$0.46 stopped=0
 12:05 qwen3.6-27b done n=25 checker_pass_by_round=[5, 9, 10, 10] cost=$1.02 stopped=0
 12:39 claude-opus-5.5 done n=49 checker_pass_by_round=[19, 37, 42, 44] cost=$7.54 stopped=0
+12:39 gpt-5.6-sol done n=49 checker_pass_by_round=[22, 40, 42, 43] cost=$4.06 stopped=0
