@@ -24,3 +24,4 @@
 12:39 claude-opus-5.5 done n=49 checker_pass_by_round=[19, 37, 42, 44] cost=$7.54 stopped=0
 12:39 gpt-5.6-sol done n=49 checker_pass_by_round=[22, 40, 42, 43] cost=$4.06 stopped=0
 12:45 claude-sonnet-5.5 done n=49 checker_pass_by_round=[11, 31, 39, 42] cost=$3.17 stopped=0
+12:46 qwen3-coder done n=49 checker_pass_by_round=[4, 7, 9, 13] cost=$0.31 stopped=0
