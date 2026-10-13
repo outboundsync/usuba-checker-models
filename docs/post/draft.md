@@ -113,21 +113,23 @@ Why make the standard public? Plugin authors get a clear target and readable fai
 
 ---
 
-## 6. The bitter lesson, in public
+## 6. What specialist models really take
 
-While we were doing this, Brian Armstrong [posted](https://x.com/brian_armstrong/status/2109412046244913643) that Coinbase fine-tuned Qwen3.5-9B on internal data and beat frontier models on fraud prevention, at lower cost. I believe it. Fraud is a high-volume task with a lot of proprietary data.
+While we were doing this, Brian Armstrong [posted](https://x.com/brian_armstrong/status/2109412046244913643) that Coinbase fine-tuned Qwen3.5-9B on internal data and beat frontier models on fraud prevention, at lower cost. I believe it. Fraud is a high-volume task with a lot of proprietary data, and that's exactly where a specialist model can win.
 
-One [reply](https://x.com/trashpandaemoji/status/2109959474978930940), from @trashpandaemoji, matched our week more closely. After three years of fine-tuning small models, they said it's a reliable way to learn the bitter lesson. It's good for high-volume or low-latency tasks, but it isn't cheap, and you end up in a never-ending spiral of dataset work.
+One [reply](https://x.com/trashpandaemoji/status/2109959474978930940), from @trashpandaemoji, described what it takes to get there. After three years of fine-tuning small models for special purposes, they said it's good for high-volume or low-latency tasks, but it isn't cheap, and you end up in a never-ending cycle of dataset work.
 
-That's been our experience too. Every fine-tune sent us back to the data: what to include, how long the targets should be, why the model loops. Meanwhile the frontier models kept getting better. We haven't found a fine-tune that pays for itself on this task yet. What we have found is that the evaluation lasts. The grader and the standard stay useful whichever model wins.
+That matches our experience, and it's useful to know going in. Every fine-tune sent us back to the data: what to include, how long the targets should be, why the model loops. A specialist model isn't a weekend fine-tune. It's an ongoing investment in data and evaluation. The part that lasts is the evaluation: the grader and the standard stay useful whichever model wins, and they're what make a good specialist possible.
 
-On cost: total GPU and API spend so far is modest, tens of dollars, at roughly $3 to $12 per run. The expensive part is the time spent on data and evaluation, not the GPUs.
+On cost: total GPU and API spend so far is modest, tens of dollars, at roughly $3 to $12 per run. The real investment is the time spent on data and evaluation, not the GPUs.
 
 ---
 
 ## What's next, and how you can help
 
-This is ongoing work, and it isn't trivial. Omarchy will keep changing, and every release can change what "working" means. The next job is maintaining and improving the Checker and the standard as Omarchy evolves: new versions of the standard, new rules for each gap we find, and new hardware checks on each release. Beyond that, I want to build a builder-grade model, one that actually helps people ship working plugins, but only once the Checker is solid enough to train against.
+This is ongoing work, and it isn't trivial. Still, our results so far tell us it's worth pursuing with more time and spend. We have a grader that matches real hardware, a clear map of where models fail, and a concrete plan for the Checker. Omarchy will keep changing, and every release can change what "working" means. So the next job is maintaining and improving the Checker and the standard as Omarchy evolves: new versions of the standard, new rules for each gap we find, and new hardware checks on each release. Beyond that, I want to build a builder-grade model, one that actually helps people ship working plugins, but only once the Checker is solid enough to train against.
+
+Long term, a standard for what counts as a working Omarchy plugin probably belongs with Omarchy itself, as an Omacom project. We're happy to build it in the open until then and hand it over in whatever shape makes sense.
 
 If any of this is useful to you, here's what would help most:
 
