@@ -3,3 +3,4 @@
 10:11 claude-opus-5.5 done n=49 checker_pass_by_round=[19, 22, 25, 28] cost=$2.59 stopped=14
 10:12 claude-sonnet-5.5 done n=49 checker_pass_by_round=[11, 22, 24, 28] cost=$1.35 stopped=14
 10:13 kimi-k3 done n=49 checker_pass_by_round=[3, 10, 16, 24] cost=$0.98 stopped=14
+10:15 deepseek-v4-pro done n=49 checker_pass_by_round=[5, 6, 8, 8] cost=$0.93 stopped=17
