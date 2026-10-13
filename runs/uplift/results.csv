@@ -1,0 +1,204 @@
+group,model,prompt_id,task,category,checker_first,checker_final,passing_attempt,attempts,final_finish,final_loop,final_checker_categories,hand_first,hand_final,hand_note,fix_cost_usd,first_answer_path,final_answer_path
+Frontier,claude-opus-5.5,0,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-opus-5.5/answers/0/attempt0,runs/uplift/claude-opus-5.5/answers/0/attempt0
+Frontier,claude-opus-5.5,1,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-opus-5.5/answers/1/attempt0,runs/uplift/claude-opus-5.5/answers/1/attempt0
+Frontier,claude-opus-5.5,2,build_from_spec,unchecked,fail,pass,2,3,stop,False,,,,,0.21018,runs/uplift/claude-opus-5.5/answers/2/attempt0,runs/uplift/claude-opus-5.5/answers/2/attempt2
+Frontier,claude-opus-5.5,3,build_from_spec,unchecked,fail,pass,1,2,stop,False,,,,,0.09906,runs/uplift/claude-opus-5.5/answers/3/attempt0,runs/uplift/claude-opus-5.5/answers/3/attempt1
+Frontier,claude-opus-5.5,4,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-opus-5.5/answers/4/attempt0,runs/uplift/claude-opus-5.5/answers/4/attempt0
+Frontier,claude-opus-5.5,5,build_from_spec,unchecked,fail,pass,3,4,stop,False,,,,,0.35322,runs/uplift/claude-opus-5.5/answers/5/attempt0,runs/uplift/claude-opus-5.5/answers/5/attempt3
+Frontier,claude-opus-5.5,6,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.6319,runs/uplift/claude-opus-5.5/answers/6/attempt0,runs/uplift/claude-opus-5.5/answers/6/attempt3
+Frontier,claude-opus-5.5,7,build_from_spec,fully broken,fail,fail,,3,stop,False,rt-invisible;rt-load-failed,,,,0.48599,runs/uplift/claude-opus-5.5/answers/7/attempt0,runs/uplift/claude-opus-5.5/answers/7/attempt2
+Frontier,claude-opus-5.5,8,add_panel,unchecked,fail,pass,1,2,stop,False,,,,,0.13655,runs/uplift/claude-opus-5.5/answers/8/attempt0,runs/uplift/claude-opus-5.5/answers/8/attempt1
+Frontier,claude-opus-5.5,9,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.42517,runs/uplift/claude-opus-5.5/answers/9/attempt0,runs/uplift/claude-opus-5.5/answers/9/attempt3
+Frontier,claude-opus-5.5,10,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.33589,runs/uplift/claude-opus-5.5/answers/10/attempt0,runs/uplift/claude-opus-5.5/answers/10/attempt3
+Frontier,claude-opus-5.5,11,add_panel,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-opus-5.5/answers/11/attempt0,runs/uplift/claude-opus-5.5/answers/11/attempt0
+Frontier,claude-opus-5.5,12,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.33422,runs/uplift/claude-opus-5.5/answers/12/attempt0,runs/uplift/claude-opus-5.5/answers/12/attempt3
+Frontier,claude-opus-5.5,13,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.30192,runs/uplift/claude-opus-5.5/answers/13/attempt0,runs/uplift/claude-opus-5.5/answers/13/attempt3
+Frontier,claude-opus-5.5,14,add_panel,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-opus-5.5/answers/14/attempt0,runs/uplift/claude-opus-5.5/answers/14/attempt0
+Frontier,claude-opus-5.5,15,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-opus-5.5/answers/15/attempt0,runs/uplift/claude-opus-5.5/answers/15/attempt0
+Frontier,claude-opus-5.5,16,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-opus-5.5/answers/16/attempt0,runs/uplift/claude-opus-5.5/answers/16/attempt0
+Frontier,claude-opus-5.5,17,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.45227,runs/uplift/claude-opus-5.5/answers/17/attempt0,runs/uplift/claude-opus-5.5/answers/17/attempt3
+Frontier,claude-opus-5.5,18,build_from_spec,fully broken,fail,fail,,4,stop,False,no-files-parsed,,,,0.35943,runs/uplift/claude-opus-5.5/answers/18/attempt0,runs/uplift/claude-opus-5.5/answers/18/attempt3
+Frontier,claude-opus-5.5,19,add_panel,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-opus-5.5/answers/19/attempt0,runs/uplift/claude-opus-5.5/answers/19/attempt0
+Frontier,claude-opus-5.5,20,build_from_spec,fully broken,fail,fail,,4,"error:HTTP 402 b'{""error"":{""message"":""This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits."",""code"":402,""metadata"":{""reason"":""in'",False,no-files-parsed,,,,0.21612,runs/uplift/claude-opus-5.5/answers/20/attempt0,runs/uplift/claude-opus-5.5/answers/20/attempt3
+Frontier,claude-opus-5.5,21,build_from_spec,fully broken,fail,fail,,3,stop,False,rt-invisible;rt-load-failed,,,,0.1706,runs/uplift/claude-opus-5.5/answers/21/attempt0,runs/uplift/claude-opus-5.5/answers/21/attempt2
+Frontier,claude-opus-5.5,22,build_from_spec,fully broken,fail,fail,,2,stop,False,rt-invisible;rt-load-failed,,,,0.10693,runs/uplift/claude-opus-5.5/answers/22/attempt0,runs/uplift/claude-opus-5.5/answers/22/attempt1
+Frontier,claude-opus-5.5,23,add_panel,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-opus-5.5/answers/23/attempt0,runs/uplift/claude-opus-5.5/answers/23/attempt0
+Frontier,claude-opus-5.5,24,build_from_spec,fully broken,fail,fail,,1,length,False,no-qml;rt-invisible;rt-load-failed;usuba-USB-T01,,,,0,runs/uplift/claude-opus-5.5/answers/24/attempt0,runs/uplift/claude-opus-5.5/answers/24/attempt0
+Frontier,claude-opus-5.5,25,add_panel,fully broken,fail,fail,,1,length,False,no-files-parsed,,,,0,runs/uplift/claude-opus-5.5/answers/25/attempt0,runs/uplift/claude-opus-5.5/answers/25/attempt0
+Frontier,claude-opus-5.5,26,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-opus-5.5/answers/26/attempt0,runs/uplift/claude-opus-5.5/answers/26/attempt0
+Frontier,claude-opus-5.5,27,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-opus-5.5/answers/27/attempt0,runs/uplift/claude-opus-5.5/answers/27/attempt0
+Frontier,claude-opus-5.5,28,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-opus-5.5/answers/28/attempt0,runs/uplift/claude-opus-5.5/answers/28/attempt0
+Frontier,claude-opus-5.5,30,build_from_spec,still buggy,fail,fail,,1,stop,False,rt-plugin-warn,,,,0,runs/uplift/claude-opus-5.5/answers/30/attempt0,runs/uplift/claude-opus-5.5/answers/30/attempt0
+Frontier,claude-opus-5.5,31,build_from_spec,fully broken,fail,fail,,1,stop,False,rt-invisible;rt-load-failed,,,,0,runs/uplift/claude-opus-5.5/answers/31/attempt0,runs/uplift/claude-opus-5.5/answers/31/attempt0
+Frontier,claude-opus-5.5,36,chunk_manifest_entry,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-opus-5.5/answers/36/attempt0,runs/uplift/claude-opus-5.5/answers/36/attempt0
+Frontier,claude-opus-5.5,46,chunk_add_kind:bar,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-opus-5.5/answers/46/attempt0,runs/uplift/claude-opus-5.5/answers/46/attempt0
+Frontier,claude-opus-5.5,48,chunk_add_kind:menu,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-opus-5.5/answers/48/attempt0,runs/uplift/claude-opus-5.5/answers/48/attempt0
+Frontier,claude-opus-5.5,51,fix_manifest:reserved_id,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-opus-5.5/answers/51/attempt0,runs/uplift/claude-opus-5.5/answers/51/attempt0
+Frontier,claude-sonnet-5.5,0,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-sonnet-5.5/answers/0/attempt0,runs/uplift/claude-sonnet-5.5/answers/0/attempt0
+Frontier,claude-sonnet-5.5,1,build_from_spec,unchecked,fail,pass,1,2,stop,False,,,,,0.02555,runs/uplift/claude-sonnet-5.5/answers/1/attempt0,runs/uplift/claude-sonnet-5.5/answers/1/attempt1
+Frontier,claude-sonnet-5.5,2,build_from_spec,unchecked,fail,pass,2,3,stop,False,,,,,0.12694,runs/uplift/claude-sonnet-5.5/answers/2/attempt0,runs/uplift/claude-sonnet-5.5/answers/2/attempt2
+Frontier,claude-sonnet-5.5,3,build_from_spec,unchecked,fail,pass,3,4,stop,False,,,,,0.1831,runs/uplift/claude-sonnet-5.5/answers/3/attempt0,runs/uplift/claude-sonnet-5.5/answers/3/attempt3
+Frontier,claude-sonnet-5.5,4,build_from_spec,unchecked,fail,pass,1,2,stop,False,,,,,0.05563,runs/uplift/claude-sonnet-5.5/answers/4/attempt0,runs/uplift/claude-sonnet-5.5/answers/4/attempt1
+Frontier,claude-sonnet-5.5,5,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-sonnet-5.5/answers/5/attempt0,runs/uplift/claude-sonnet-5.5/answers/5/attempt0
+Frontier,claude-sonnet-5.5,6,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.26851,runs/uplift/claude-sonnet-5.5/answers/6/attempt0,runs/uplift/claude-sonnet-5.5/answers/6/attempt3
+Frontier,claude-sonnet-5.5,7,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.1952,runs/uplift/claude-sonnet-5.5/answers/7/attempt0,runs/uplift/claude-sonnet-5.5/answers/7/attempt3
+Frontier,claude-sonnet-5.5,8,add_panel,unchecked,fail,pass,1,2,stop,False,,,,,0.09037,runs/uplift/claude-sonnet-5.5/answers/8/attempt0,runs/uplift/claude-sonnet-5.5/answers/8/attempt1
+Frontier,claude-sonnet-5.5,9,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.14157,runs/uplift/claude-sonnet-5.5/answers/9/attempt0,runs/uplift/claude-sonnet-5.5/answers/9/attempt3
+Frontier,claude-sonnet-5.5,10,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.13217,runs/uplift/claude-sonnet-5.5/answers/10/attempt0,runs/uplift/claude-sonnet-5.5/answers/10/attempt3
+Frontier,claude-sonnet-5.5,11,add_panel,unchecked,fail,pass,1,2,stop,False,,,,,0.0491,runs/uplift/claude-sonnet-5.5/answers/11/attempt0,runs/uplift/claude-sonnet-5.5/answers/11/attempt1
+Frontier,claude-sonnet-5.5,12,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.13961,runs/uplift/claude-sonnet-5.5/answers/12/attempt0,runs/uplift/claude-sonnet-5.5/answers/12/attempt3
+Frontier,claude-sonnet-5.5,13,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.12366,runs/uplift/claude-sonnet-5.5/answers/13/attempt0,runs/uplift/claude-sonnet-5.5/answers/13/attempt3
+Frontier,claude-sonnet-5.5,14,add_panel,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-sonnet-5.5/answers/14/attempt0,runs/uplift/claude-sonnet-5.5/answers/14/attempt0
+Frontier,claude-sonnet-5.5,15,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-sonnet-5.5/answers/15/attempt0,runs/uplift/claude-sonnet-5.5/answers/15/attempt0
+Frontier,claude-sonnet-5.5,16,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-sonnet-5.5/answers/16/attempt0,runs/uplift/claude-sonnet-5.5/answers/16/attempt0
+Frontier,claude-sonnet-5.5,17,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.20934,runs/uplift/claude-sonnet-5.5/answers/17/attempt0,runs/uplift/claude-sonnet-5.5/answers/17/attempt3
+Frontier,claude-sonnet-5.5,18,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.18465,runs/uplift/claude-sonnet-5.5/answers/18/attempt0,runs/uplift/claude-sonnet-5.5/answers/18/attempt3
+Frontier,claude-sonnet-5.5,19,add_panel,unchecked,fail,pass,1,2,stop,False,,,,,0.05044,runs/uplift/claude-sonnet-5.5/answers/19/attempt0,runs/uplift/claude-sonnet-5.5/answers/19/attempt1
+Frontier,claude-sonnet-5.5,20,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.10273,runs/uplift/claude-sonnet-5.5/answers/20/attempt0,runs/uplift/claude-sonnet-5.5/answers/20/attempt3
+Frontier,claude-sonnet-5.5,23,add_panel,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-sonnet-5.5/answers/23/attempt0,runs/uplift/claude-sonnet-5.5/answers/23/attempt0
+Frontier,claude-sonnet-5.5,26,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-sonnet-5.5/answers/26/attempt0,runs/uplift/claude-sonnet-5.5/answers/26/attempt0
+Frontier,claude-sonnet-5.5,28,build_from_spec,unchecked,fail,pass,1,2,stop,False,,,,,0.07119,runs/uplift/claude-sonnet-5.5/answers/28/attempt0,runs/uplift/claude-sonnet-5.5/answers/28/attempt1
+Frontier,claude-sonnet-5.5,30,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-sonnet-5.5/answers/30/attempt0,runs/uplift/claude-sonnet-5.5/answers/30/attempt0
+Frontier,claude-sonnet-5.5,31,build_from_spec,fully broken,fail,fail,,1,stop,False,rt-invisible;rt-load-failed,,,,0,runs/uplift/claude-sonnet-5.5/answers/31/attempt0,runs/uplift/claude-sonnet-5.5/answers/31/attempt0
+Frontier,claude-sonnet-5.5,36,chunk_manifest_entry,unchecked,fail,pass,1,2,stop,False,,,,,0.03552,runs/uplift/claude-sonnet-5.5/answers/36/attempt0,runs/uplift/claude-sonnet-5.5/answers/36/attempt1
+Frontier,claude-sonnet-5.5,39,chunk_manifest_entry,fully broken,fail,fail,,1,stop,False,rt-bad-property;rt-load-failed;rt-not-instantiated;rt-shell-broken,,,,0,runs/uplift/claude-sonnet-5.5/answers/39/attempt0,runs/uplift/claude-sonnet-5.5/answers/39/attempt0
+Frontier,claude-sonnet-5.5,46,chunk_add_kind:bar,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/claude-sonnet-5.5/answers/46/attempt0,runs/uplift/claude-sonnet-5.5/answers/46/attempt0
+Frontier,gemini-3.1-pro,0,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-bad-property;rt-load-failed;rt-not-instantiated,,,,0.23962,runs/uplift/gemini-3.1-pro/answers/0/attempt0,runs/uplift/gemini-3.1-pro/answers/0/attempt3
+Frontier,gemini-3.1-pro,1,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-bad-property;rt-load-failed;rt-not-instantiated,,,,0.4152,runs/uplift/gemini-3.1-pro/answers/1/attempt0,runs/uplift/gemini-3.1-pro/answers/1/attempt3
+Frontier,gemini-3.1-pro,2,build_from_spec,fully broken,fail,fail,,4,length,False,no-qml;rt-not-instantiated;rt-other;rt-shell-broken;usuba-USB-T01,,,,0.28433,runs/uplift/gemini-3.1-pro/answers/2/attempt0,runs/uplift/gemini-3.1-pro/answers/2/attempt3
+Frontier,gemini-3.1-pro,3,build_from_spec,fully broken,fail,fail,,4,length,False,no-qml;rt-not-instantiated;rt-other;rt-shell-broken;usuba-USB-T01,,,,0.44113,runs/uplift/gemini-3.1-pro/answers/3/attempt0,runs/uplift/gemini-3.1-pro/answers/3/attempt3
+Frontier,gemini-3.1-pro,4,build_from_spec,unchecked,fail,pass,1,2,stop,False,,,,,0.04515,runs/uplift/gemini-3.1-pro/answers/4/attempt0,runs/uplift/gemini-3.1-pro/answers/4/attempt1
+Frontier,gemini-3.1-pro,5,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-not-instantiated;rt-shell-broken,,,,0.29372,runs/uplift/gemini-3.1-pro/answers/5/attempt0,runs/uplift/gemini-3.1-pro/answers/5/attempt3
+Frontier,gemini-3.1-pro,6,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.28735,runs/uplift/gemini-3.1-pro/answers/6/attempt0,runs/uplift/gemini-3.1-pro/answers/6/attempt3
+Frontier,gemini-3.1-pro,7,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.12059,runs/uplift/gemini-3.1-pro/answers/7/attempt0,runs/uplift/gemini-3.1-pro/answers/7/attempt3
+Frontier,gemini-3.1-pro,8,add_panel,unchecked,fail,pass,1,2,stop,False,,,,,0.03963,runs/uplift/gemini-3.1-pro/answers/8/attempt0,runs/uplift/gemini-3.1-pro/answers/8/attempt1
+Frontier,gemini-3.1-pro,9,build_from_spec,fully broken,fail,fail,,4,length,False,no-qml;rt-invisible;rt-load-failed;usuba-USB-T01,,,,0.26621,runs/uplift/gemini-3.1-pro/answers/9/attempt0,runs/uplift/gemini-3.1-pro/answers/9/attempt3
+Frontier,gemini-3.1-pro,10,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed;usuba-USB-Q01,,,,0.41935,runs/uplift/gemini-3.1-pro/answers/10/attempt0,runs/uplift/gemini-3.1-pro/answers/10/attempt3
+Frontier,gemini-3.1-pro,11,add_panel,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gemini-3.1-pro/answers/11/attempt0,runs/uplift/gemini-3.1-pro/answers/11/attempt0
+Frontier,gemini-3.1-pro,12,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.25796,runs/uplift/gemini-3.1-pro/answers/12/attempt0,runs/uplift/gemini-3.1-pro/answers/12/attempt3
+Frontier,gemini-3.1-pro,13,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed;usuba-USB-A02,,,,0.08535,runs/uplift/gemini-3.1-pro/answers/13/attempt0,runs/uplift/gemini-3.1-pro/answers/13/attempt3
+Frontier,gemini-3.1-pro,14,add_panel,unchecked,fail,pass,3,4,stop,False,,,,,0.09917,runs/uplift/gemini-3.1-pro/answers/14/attempt0,runs/uplift/gemini-3.1-pro/answers/14/attempt3
+Frontier,gemini-3.1-pro,16,build_from_spec,fully broken,fail,fail,,2,stop,False,bad-import;rt-not-instantiated;rt-shell-broken,,,,0.06882,runs/uplift/gemini-3.1-pro/answers/16/attempt0,runs/uplift/gemini-3.1-pro/answers/16/attempt1
+Frontier,gemini-3.1-pro,19,add_panel,fully broken,fail,fail,,1,stop,False,rt-bad-property;rt-invisible;rt-load-failed;rt-other;usuba-USB-H02,,,,0,runs/uplift/gemini-3.1-pro/answers/19/attempt0,runs/uplift/gemini-3.1-pro/answers/19/attempt0
+Frontier,gemini-3.1-pro,21,build_from_spec,fully broken,fail,fail,,1,stop,False,rt-invisible;rt-load-failed,,,,0,runs/uplift/gemini-3.1-pro/answers/21/attempt0,runs/uplift/gemini-3.1-pro/answers/21/attempt0
+Frontier,gemini-3.1-pro,22,build_from_spec,fully broken,fail,fail,,1,stop,False,rt-invisible;rt-load-failed,,,,0,runs/uplift/gemini-3.1-pro/answers/22/attempt0,runs/uplift/gemini-3.1-pro/answers/22/attempt0
+Frontier,gemini-3.1-pro,23,add_panel,fully broken,fail,fail,,1,stop,False,rt-invisible;rt-load-failed,,,,0,runs/uplift/gemini-3.1-pro/answers/23/attempt0,runs/uplift/gemini-3.1-pro/answers/23/attempt0
+Frontier,gemini-3.1-pro,24,build_from_spec,still buggy,fail,fail,,1,stop,False,rt-other;usuba-USB-A01;usuba-USB-B01,,,,0,runs/uplift/gemini-3.1-pro/answers/24/attempt0,runs/uplift/gemini-3.1-pro/answers/24/attempt0
+Frontier,gemini-3.1-pro,25,add_panel,still buggy,fail,fail,,1,stop,False,rt-zero-size,,,,0,runs/uplift/gemini-3.1-pro/answers/25/attempt0,runs/uplift/gemini-3.1-pro/answers/25/attempt0
+Frontier,gemini-3.1-pro,26,build_from_spec,fully broken,fail,fail,,1,error,False,no-files-parsed,,,,0,runs/uplift/gemini-3.1-pro/answers/26/attempt0,runs/uplift/gemini-3.1-pro/answers/26/attempt0
+Frontier,gemini-3.1-pro,27,build_from_spec,fully broken,fail,fail,,1,stop,False,rt-not-instantiated;rt-shell-broken,,,,0,runs/uplift/gemini-3.1-pro/answers/27/attempt0,runs/uplift/gemini-3.1-pro/answers/27/attempt0
+Frontier,gemini-3.1-pro,28,build_from_spec,fully broken,fail,fail,,1,stop,False,rt-load-failed;rt-not-instantiated;rt-shell-broken,,,,0,runs/uplift/gemini-3.1-pro/answers/28/attempt0,runs/uplift/gemini-3.1-pro/answers/28/attempt0
+Frontier,gemini-3.1-pro,29,build_from_spec,fully broken,fail,fail,,1,stop,False,rt-invisible;rt-load-failed,,,,0,runs/uplift/gemini-3.1-pro/answers/29/attempt0,runs/uplift/gemini-3.1-pro/answers/29/attempt0
+Frontier,gemini-3.1-pro,30,build_from_spec,still buggy,fail,fail,,1,stop,False,placeholder-ui,,,,0,runs/uplift/gemini-3.1-pro/answers/30/attempt0,runs/uplift/gemini-3.1-pro/answers/30/attempt0
+Frontier,gemini-3.1-pro,31,build_from_spec,fully broken,fail,fail,,1,stop,False,rt-invisible;rt-load-failed;usuba-USB-Q01,,,,0,runs/uplift/gemini-3.1-pro/answers/31/attempt0,runs/uplift/gemini-3.1-pro/answers/31/attempt0
+Frontier,gemini-3.1-pro,36,chunk_manifest_entry,still buggy,fail,fail,,1,stop,False,usuba-USB-A04,,,,0,runs/uplift/gemini-3.1-pro/answers/36/attempt0,runs/uplift/gemini-3.1-pro/answers/36/attempt0
+Frontier,gemini-3.1-pro,37,chunk_component,fully broken,fail,fail,,1,stop,False,rt-js-error;rt-shell-broken,,,,0,runs/uplift/gemini-3.1-pro/answers/37/attempt0,runs/uplift/gemini-3.1-pro/answers/37/attempt0
+Frontier,gemini-3.1-pro,38,chunk_component,fully broken,fail,fail,,1,stop,False,rt-bad-property;rt-not-instantiated;rt-shell-broken;usuba-USB-A02;usuba-USB-A04,,,,0,runs/uplift/gemini-3.1-pro/answers/38/attempt0,runs/uplift/gemini-3.1-pro/answers/38/attempt0
+Frontier,gemini-3.1-pro,40,chunk_component,fully broken,fail,fail,,1,stop,False,rt-bad-property;rt-load-failed;rt-not-instantiated;rt-other;rt-shell-broken;usuba-USB-A02,,,,0,runs/uplift/gemini-3.1-pro/answers/40/attempt0,runs/uplift/gemini-3.1-pro/answers/40/attempt0
+Frontier,gpt-5.6-sol,0,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/0/attempt0,runs/uplift/gpt-5.6-sol/answers/0/attempt0
+Frontier,gpt-5.6-sol,1,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/1/attempt0,runs/uplift/gpt-5.6-sol/answers/1/attempt0
+Frontier,gpt-5.6-sol,2,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/2/attempt0,runs/uplift/gpt-5.6-sol/answers/2/attempt0
+Frontier,gpt-5.6-sol,3,build_from_spec,unchecked,fail,pass,1,2,stop,False,,,,,0.1249,runs/uplift/gpt-5.6-sol/answers/3/attempt0,runs/uplift/gpt-5.6-sol/answers/3/attempt1
+Frontier,gpt-5.6-sol,4,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/4/attempt0,runs/uplift/gpt-5.6-sol/answers/4/attempt0
+Frontier,gpt-5.6-sol,5,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/5/attempt0,runs/uplift/gpt-5.6-sol/answers/5/attempt0
+Frontier,gpt-5.6-sol,6,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.39547,runs/uplift/gpt-5.6-sol/answers/6/attempt0,runs/uplift/gpt-5.6-sol/answers/6/attempt3
+Frontier,gpt-5.6-sol,7,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.38022,runs/uplift/gpt-5.6-sol/answers/7/attempt0,runs/uplift/gpt-5.6-sol/answers/7/attempt3
+Frontier,gpt-5.6-sol,8,add_panel,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/8/attempt0,runs/uplift/gpt-5.6-sol/answers/8/attempt0
+Frontier,gpt-5.6-sol,9,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.20149,runs/uplift/gpt-5.6-sol/answers/9/attempt0,runs/uplift/gpt-5.6-sol/answers/9/attempt3
+Frontier,gpt-5.6-sol,10,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.26572,runs/uplift/gpt-5.6-sol/answers/10/attempt0,runs/uplift/gpt-5.6-sol/answers/10/attempt3
+Frontier,gpt-5.6-sol,11,add_panel,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/11/attempt0,runs/uplift/gpt-5.6-sol/answers/11/attempt0
+Frontier,gpt-5.6-sol,12,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.27653,runs/uplift/gpt-5.6-sol/answers/12/attempt0,runs/uplift/gpt-5.6-sol/answers/12/attempt3
+Frontier,gpt-5.6-sol,13,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.19248,runs/uplift/gpt-5.6-sol/answers/13/attempt0,runs/uplift/gpt-5.6-sol/answers/13/attempt3
+Frontier,gpt-5.6-sol,14,add_panel,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/14/attempt0,runs/uplift/gpt-5.6-sol/answers/14/attempt0
+Frontier,gpt-5.6-sol,15,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/15/attempt0,runs/uplift/gpt-5.6-sol/answers/15/attempt0
+Frontier,gpt-5.6-sol,16,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/16/attempt0,runs/uplift/gpt-5.6-sol/answers/16/attempt0
+Frontier,gpt-5.6-sol,17,build_from_spec,fully broken,fail,fail,,4,stop,False,not-shell-surface;rt-invisible;rt-load-failed,,,,0.32445,runs/uplift/gpt-5.6-sol/answers/17/attempt0,runs/uplift/gpt-5.6-sol/answers/17/attempt3
+Frontier,gpt-5.6-sol,18,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.27467,runs/uplift/gpt-5.6-sol/answers/18/attempt0,runs/uplift/gpt-5.6-sol/answers/18/attempt3
+Frontier,gpt-5.6-sol,19,add_panel,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/19/attempt0,runs/uplift/gpt-5.6-sol/answers/19/attempt0
+Frontier,gpt-5.6-sol,20,build_from_spec,fully broken,fail,fail,,4,content_filter,False,no-qml;rt-invisible;rt-load-failed;usuba-USB-T01,,,,0,runs/uplift/gpt-5.6-sol/answers/20/attempt0,runs/uplift/gpt-5.6-sol/answers/20/attempt3
+Frontier,gpt-5.6-sol,21,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.26075,runs/uplift/gpt-5.6-sol/answers/21/attempt0,runs/uplift/gpt-5.6-sol/answers/21/attempt3
+Frontier,gpt-5.6-sol,22,build_from_spec,fully broken,fail,fail,,4,content_filter,False,no-qml;rt-invisible;rt-load-failed;usuba-USB-T01,,,,0,runs/uplift/gpt-5.6-sol/answers/22/attempt0,runs/uplift/gpt-5.6-sol/answers/22/attempt3
+Frontier,gpt-5.6-sol,23,add_panel,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/23/attempt0,runs/uplift/gpt-5.6-sol/answers/23/attempt0
+Frontier,gpt-5.6-sol,24,build_from_spec,fully broken,fail,fail,,3,stop,False,rt-invisible;rt-load-failed,,,,0.34803,runs/uplift/gpt-5.6-sol/answers/24/attempt0,runs/uplift/gpt-5.6-sol/answers/24/attempt2
+Frontier,gpt-5.6-sol,25,add_panel,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/25/attempt0,runs/uplift/gpt-5.6-sol/answers/25/attempt0
+Frontier,gpt-5.6-sol,26,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/26/attempt0,runs/uplift/gpt-5.6-sol/answers/26/attempt0
+Frontier,gpt-5.6-sol,27,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/27/attempt0,runs/uplift/gpt-5.6-sol/answers/27/attempt0
+Frontier,gpt-5.6-sol,28,build_from_spec,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/28/attempt0,runs/uplift/gpt-5.6-sol/answers/28/attempt0
+Frontier,gpt-5.6-sol,30,build_from_spec,unchecked,fail,pass,1,2,stop,False,,,,,0.01813,runs/uplift/gpt-5.6-sol/answers/30/attempt0,runs/uplift/gpt-5.6-sol/answers/30/attempt1
+Frontier,gpt-5.6-sol,36,chunk_manifest_entry,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/36/attempt0,runs/uplift/gpt-5.6-sol/answers/36/attempt0
+Frontier,gpt-5.6-sol,48,chunk_add_kind:menu,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/48/attempt0,runs/uplift/gpt-5.6-sol/answers/48/attempt0
+Frontier,gpt-5.6-sol,49,chunk_component,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/49/attempt0,runs/uplift/gpt-5.6-sol/answers/49/attempt0
+Frontier,gpt-5.6-sol,50,chunk_component,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/gpt-5.6-sol/answers/50/attempt0,runs/uplift/gpt-5.6-sol/answers/50/attempt0
+Frontier,grok-4.3,0,build_from_spec,still buggy,fail,fail,,4,stop,False,rt-js-error,,,,0.01469,runs/uplift/grok-4.3/answers/0/attempt0,runs/uplift/grok-4.3/answers/0/attempt3
+Frontier,grok-4.3,1,build_from_spec,still buggy,fail,fail,,4,stop,False,rt-js-error,,,,0.01505,runs/uplift/grok-4.3/answers/1/attempt0,runs/uplift/grok-4.3/answers/1/attempt3
+Frontier,grok-4.3,2,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-manifest-rejected,,,,0.019,runs/uplift/grok-4.3/answers/2/attempt0,runs/uplift/grok-4.3/answers/2/attempt3
+Frontier,grok-4.3,3,build_from_spec,unchecked,fail,pass,2,3,stop,False,,,,,0.01156,runs/uplift/grok-4.3/answers/3/attempt0,runs/uplift/grok-4.3/answers/3/attempt2
+Frontier,grok-4.3,4,build_from_spec,unchecked,fail,pass,1,2,stop,False,,,,,0.00381,runs/uplift/grok-4.3/answers/4/attempt0,runs/uplift/grok-4.3/answers/4/attempt1
+Frontier,grok-4.3,5,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-manifest-rejected,,,,0.01514,runs/uplift/grok-4.3/answers/5/attempt0,runs/uplift/grok-4.3/answers/5/attempt3
+Frontier,grok-4.3,6,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-manifest-rejected,,,,0.01281,runs/uplift/grok-4.3/answers/6/attempt0,runs/uplift/grok-4.3/answers/6/attempt3
+Frontier,grok-4.3,7,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-manifest-rejected,,,,0.01933,runs/uplift/grok-4.3/answers/7/attempt0,runs/uplift/grok-4.3/answers/7/attempt3
+Frontier,grok-4.3,8,add_panel,unchecked,fail,pass,1,2,stop,False,,,,,0.00636,runs/uplift/grok-4.3/answers/8/attempt0,runs/uplift/grok-4.3/answers/8/attempt1
+Frontier,grok-4.3,9,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.01623,runs/uplift/grok-4.3/answers/9/attempt0,runs/uplift/grok-4.3/answers/9/attempt3
+Frontier,grok-4.3,10,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.0158,runs/uplift/grok-4.3/answers/10/attempt0,runs/uplift/grok-4.3/answers/10/attempt3
+Frontier,grok-4.3,11,add_panel,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.02154,runs/uplift/grok-4.3/answers/11/attempt0,runs/uplift/grok-4.3/answers/11/attempt3
+Frontier,grok-4.3,12,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.0129,runs/uplift/grok-4.3/answers/12/attempt0,runs/uplift/grok-4.3/answers/12/attempt3
+Frontier,grok-4.3,13,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.01522,runs/uplift/grok-4.3/answers/13/attempt0,runs/uplift/grok-4.3/answers/13/attempt3
+Frontier,grok-4.3,14,add_panel,unchecked,fail,pass,1,2,stop,False,,,,,0.00482,runs/uplift/grok-4.3/answers/14/attempt0,runs/uplift/grok-4.3/answers/14/attempt1
+Frontier,grok-4.3,23,add_panel,unchecked,fail,pass,1,2,stop,False,,,,,0.0069,runs/uplift/grok-4.3/answers/23/attempt0,runs/uplift/grok-4.3/answers/23/attempt1
+Frontier,grok-4.3,25,add_panel,unchecked,pass,pass,0,1,stop,False,,,,,0,runs/uplift/grok-4.3/answers/25/attempt0,runs/uplift/grok-4.3/answers/25/attempt0
+Open,deepseek-v4-pro,0,build_from_spec,still buggy,fail,fail,,4,stop,False,rt-other,,,,0.04011,runs/uplift/deepseek-v4-pro/answers/0/attempt0,runs/uplift/deepseek-v4-pro/answers/0/attempt3
+Open,deepseek-v4-pro,1,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-not-instantiated;rt-unresolved-type/import;usuba-USB-Q01,,,,0.08394,runs/uplift/deepseek-v4-pro/answers/1/attempt0,runs/uplift/deepseek-v4-pro/answers/1/attempt3
+Open,deepseek-v4-pro,2,build_from_spec,unchecked,fail,pass,2,3,stop,False,,,,,0.01067,runs/uplift/deepseek-v4-pro/answers/2/attempt0,runs/uplift/deepseek-v4-pro/answers/2/attempt2
+Open,deepseek-v4-pro,3,build_from_spec,fully broken,fail,fail,,4,length,False,no-files-parsed,,,,0.0595,runs/uplift/deepseek-v4-pro/answers/3/attempt0,runs/uplift/deepseek-v4-pro/answers/3/attempt3
+Open,deepseek-v4-pro,4,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-load-failed;rt-not-instantiated;rt-unresolved-type/import;usuba-USB-Q01,,,,0.02138,runs/uplift/deepseek-v4-pro/answers/4/attempt0,runs/uplift/deepseek-v4-pro/answers/4/attempt3
+Open,deepseek-v4-pro,5,build_from_spec,still buggy,fail,fail,,4,stop,False,rt-js-error,,,,0.04676,runs/uplift/deepseek-v4-pro/answers/5/attempt0,runs/uplift/deepseek-v4-pro/answers/5/attempt3
+Open,deepseek-v4-pro,6,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.03828,runs/uplift/deepseek-v4-pro/answers/6/attempt0,runs/uplift/deepseek-v4-pro/answers/6/attempt3
+Open,deepseek-v4-pro,7,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed;usuba-USB-A02;usuba-USB-A04,,,,0.02573,runs/uplift/deepseek-v4-pro/answers/7/attempt0,runs/uplift/deepseek-v4-pro/answers/7/attempt3
+Open,deepseek-v4-pro,8,add_panel,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.03517,runs/uplift/deepseek-v4-pro/answers/8/attempt0,runs/uplift/deepseek-v4-pro/answers/8/attempt3
+Open,deepseek-v4-pro,9,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed;usuba-USB-Q01,,,,0.02476,runs/uplift/deepseek-v4-pro/answers/9/attempt0,runs/uplift/deepseek-v4-pro/answers/9/attempt3
+Open,deepseek-v4-pro,10,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.0222,runs/uplift/deepseek-v4-pro/answers/10/attempt0,runs/uplift/deepseek-v4-pro/answers/10/attempt3
+Open,deepseek-v4-pro,11,add_panel,fully broken,fail,fail,,4,stop,False,rt-bad-property;rt-invisible;rt-load-failed,,,,0.04528,runs/uplift/deepseek-v4-pro/answers/11/attempt0,runs/uplift/deepseek-v4-pro/answers/11/attempt3
+Open,deepseek-v4-pro,12,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed;usuba-USB-A01,,,,0.03705,runs/uplift/deepseek-v4-pro/answers/12/attempt0,runs/uplift/deepseek-v4-pro/answers/12/attempt3
+Open,deepseek-v4-pro,23,add_panel,unchecked,fail,pass,1,2,stop,False,,,,,0.01265,runs/uplift/deepseek-v4-pro/answers/23/attempt0,runs/uplift/deepseek-v4-pro/answers/23/attempt1
+Open,kimi-k3,0,build_from_spec,unchecked,fail,pass,1,2,stop,False,,,,,0.0446,runs/uplift/kimi-k3/answers/0/attempt0,runs/uplift/kimi-k3/answers/0/attempt1
+Open,kimi-k3,1,build_from_spec,unchecked,fail,pass,1,2,stop,False,,,,,0.0091,runs/uplift/kimi-k3/answers/1/attempt0,runs/uplift/kimi-k3/answers/1/attempt1
+Open,kimi-k3,2,build_from_spec,unchecked,fail,pass,3,4,stop,False,,,,,0.13081,runs/uplift/kimi-k3/answers/2/attempt0,runs/uplift/kimi-k3/answers/2/attempt3
+Open,kimi-k3,3,build_from_spec,unchecked,fail,pass,3,4,stop,False,,,,,0.1305,runs/uplift/kimi-k3/answers/3/attempt0,runs/uplift/kimi-k3/answers/3/attempt3
+Open,kimi-k3,4,build_from_spec,unchecked,fail,pass,1,2,stop,False,,,,,0.00992,runs/uplift/kimi-k3/answers/4/attempt0,runs/uplift/kimi-k3/answers/4/attempt1
+Open,kimi-k3,5,build_from_spec,unchecked,fail,pass,1,2,stop,False,,,,,0.02134,runs/uplift/kimi-k3/answers/5/attempt0,runs/uplift/kimi-k3/answers/5/attempt1
+Open,kimi-k3,6,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed;usuba-USB-Q01,,,,0.04549,runs/uplift/kimi-k3/answers/6/attempt0,runs/uplift/kimi-k3/answers/6/attempt3
+Open,kimi-k3,7,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed;usuba-USB-Q01,,,,0.04771,runs/uplift/kimi-k3/answers/7/attempt0,runs/uplift/kimi-k3/answers/7/attempt3
+Open,kimi-k3,8,add_panel,unchecked,fail,pass,2,3,stop,False,,,,,0.05751,runs/uplift/kimi-k3/answers/8/attempt0,runs/uplift/kimi-k3/answers/8/attempt2
+Open,kimi-k3,9,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.03328,runs/uplift/kimi-k3/answers/9/attempt0,runs/uplift/kimi-k3/answers/9/attempt3
+Open,kimi-k3,11,add_panel,unchecked,fail,pass,1,2,stop,False,,,,,0.01149,runs/uplift/kimi-k3/answers/11/attempt0,runs/uplift/kimi-k3/answers/11/attempt1
+Open,kimi-k3,12,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.05677,runs/uplift/kimi-k3/answers/12/attempt0,runs/uplift/kimi-k3/answers/12/attempt3
+Open,kimi-k3,13,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.06543,runs/uplift/kimi-k3/answers/13/attempt0,runs/uplift/kimi-k3/answers/13/attempt3
+Open,kimi-k3,14,add_panel,unchecked,fail,pass,2,3,stop,False,,,,,0.04229,runs/uplift/kimi-k3/answers/14/attempt0,runs/uplift/kimi-k3/answers/14/attempt2
+Open,kimi-k3,15,build_from_spec,unchecked,fail,pass,3,4,stop,False,,,,,0.05478,runs/uplift/kimi-k3/answers/15/attempt0,runs/uplift/kimi-k3/answers/15/attempt3
+Open,kimi-k3,16,build_from_spec,unchecked,fail,pass,2,3,stop,False,,,,,0.02349,runs/uplift/kimi-k3/answers/16/attempt0,runs/uplift/kimi-k3/answers/16/attempt2
+Open,kimi-k3,17,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.0624,runs/uplift/kimi-k3/answers/17/attempt0,runs/uplift/kimi-k3/answers/17/attempt3
+Open,kimi-k3,18,build_from_spec,fully broken,fail,fail,,2,stop,False,rt-invisible;rt-load-failed,,,,0.01024,runs/uplift/kimi-k3/answers/18/attempt0,runs/uplift/kimi-k3/answers/18/attempt1
+Open,kimi-k3,19,add_panel,unchecked,fail,pass,1,2,stop,False,,,,,0.0119,runs/uplift/kimi-k3/answers/19/attempt0,runs/uplift/kimi-k3/answers/19/attempt1
+Open,kimi-k3,22,build_from_spec,fully broken,fail,fail,,2,stop,False,rt-invisible;rt-load-failed;usuba-USB-H07,,,,0.00817,runs/uplift/kimi-k3/answers/22/attempt0,runs/uplift/kimi-k3/answers/22/attempt1
+Open,kimi-k3,23,add_panel,unchecked,fail,pass,1,2,stop,False,,,,,0.02361,runs/uplift/kimi-k3/answers/23/attempt0,runs/uplift/kimi-k3/answers/23/attempt1
+Open,kimi-k3,25,add_panel,fully broken,fail,fail,,1,length,False,no-files-parsed,,,,0,runs/uplift/kimi-k3/answers/25/attempt0,runs/uplift/kimi-k3/answers/25/attempt0
+Open,kimi-k3,27,build_from_spec,fully broken,fail,fail,,1,length,False,no-files-parsed,,,,0,runs/uplift/kimi-k3/answers/27/attempt0,runs/uplift/kimi-k3/answers/27/attempt0
+Open,kimi-k3,36,chunk_manifest_entry,fully broken,fail,fail,,1,length,False,no-files-parsed,,,,0,runs/uplift/kimi-k3/answers/36/attempt0,runs/uplift/kimi-k3/answers/36/attempt0
+Open,kimi-k3,37,chunk_component,fully broken,fail,fail,,1,length,False,no-files-parsed,,,,0,runs/uplift/kimi-k3/answers/37/attempt0,runs/uplift/kimi-k3/answers/37/attempt0
+Open,kimi-k3,38,chunk_component,fully broken,fail,fail,,1,length,False,no-files-parsed,,,,0,runs/uplift/kimi-k3/answers/38/attempt0,runs/uplift/kimi-k3/answers/38/attempt0
+Open,kimi-k3,41,chunk_component,fully broken,fail,fail,,1,length,False,no-files-parsed,,,,0,runs/uplift/kimi-k3/answers/41/attempt0,runs/uplift/kimi-k3/answers/41/attempt0
+Open,qwen3-coder,0,build_from_spec,fully broken,fail,fail,,4,stop,False,not-shell-surface;rt-not-instantiated,,,,0.00324,runs/uplift/qwen3-coder/answers/0/attempt0,runs/uplift/qwen3-coder/answers/0/attempt3
+Open,qwen3-coder,1,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-manifest-rejected,,,,0.004,runs/uplift/qwen3-coder/answers/1/attempt0,runs/uplift/qwen3-coder/answers/1/attempt3
+Open,qwen3-coder,2,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-not-instantiated;rt-qml-syntax;rt-shell-broken;usuba-USB-A01;usuba-USB-Q01,,,,0.00721,runs/uplift/qwen3-coder/answers/2/attempt0,runs/uplift/qwen3-coder/answers/2/attempt3
+Open,qwen3-coder,3,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-not-instantiated;rt-shell-broken;usuba-USB-A02;usuba-USB-A04,,,,0.00629,runs/uplift/qwen3-coder/answers/3/attempt0,runs/uplift/qwen3-coder/answers/3/attempt3
+Open,qwen3-coder,4,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-manifest-rejected;usuba-USB-J01,,,,0.00846,runs/uplift/qwen3-coder/answers/4/attempt0,runs/uplift/qwen3-coder/answers/4/attempt3
+Open,qwen3-coder,5,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-manifest-rejected,,,,0.00608,runs/uplift/qwen3-coder/answers/5/attempt0,runs/uplift/qwen3-coder/answers/5/attempt3
+Open,qwen3-coder,6,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed;usuba-USB-A02;usuba-USB-A04,,,,0.00968,runs/uplift/qwen3-coder/answers/6/attempt0,runs/uplift/qwen3-coder/answers/6/attempt3
+Open,qwen3-coder,7,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-manifest-rejected,,,,0.01798,runs/uplift/qwen3-coder/answers/7/attempt0,runs/uplift/qwen3-coder/answers/7/attempt3
+Open,qwen3-coder,8,add_panel,fully broken,fail,fail,,4,stop,False,exec-unknown-binary;rt-invisible;rt-load-failed;usuba-USB-A01,,,,0.01597,runs/uplift/qwen3-coder/answers/8/attempt0,runs/uplift/qwen3-coder/answers/8/attempt3
+Open,qwen3-coder,9,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-manifest-rejected,,,,0.00422,runs/uplift/qwen3-coder/answers/9/attempt0,runs/uplift/qwen3-coder/answers/9/attempt3
+Open,qwen3-coder,10,build_from_spec,fully broken,fail,fail,,4,stop,False,exec-unknown-binary;rt-manifest-rejected;usuba-USB-B02,,,,0.00542,runs/uplift/qwen3-coder/answers/10/attempt0,runs/uplift/qwen3-coder/answers/10/attempt3
+Open,qwen3-coder,11,add_panel,fully broken,fail,fail,,4,stop,False,rt-invisible;rt-load-failed,,,,0.00611,runs/uplift/qwen3-coder/answers/11/attempt0,runs/uplift/qwen3-coder/answers/11/attempt3
+Open,qwen3.6-27b,1,build_from_spec,unchecked,fail,pass,1,2,stop,False,,,,,0.02374,runs/uplift/qwen3.6-27b/answers/1/attempt0,runs/uplift/qwen3.6-27b/answers/1/attempt1
+Open,qwen3.6-27b,4,build_from_spec,fully broken,fail,fail,,4,stop,False,rt-shell-broken;usuba-USB-J01,,,,0.0202,runs/uplift/qwen3.6-27b/answers/4/attempt0,runs/uplift/qwen3.6-27b/answers/4/attempt3
+Open,qwen3.6-27b,11,add_panel,unchecked,fail,pass,2,3,stop,False,,,,,0.03634,runs/uplift/qwen3.6-27b/answers/11/attempt0,runs/uplift/qwen3.6-27b/answers/11/attempt2

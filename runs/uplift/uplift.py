@@ -68,9 +68,10 @@ def run(name, model, g0, budget, est, outp, i):
     rounds = []; cost = 0; stopped = None
     for k in range(ROUNDS + 1):
         if k:
-            if not reserve(name, est, budget): stopped = "budget"; break
-            with asem: out, fin, c, prov = chat(model, msgs)
-            settle(name, est, c); cost += c
+            with asem:                                   # reserve only once an API slot is held: at most API x est is ever reserved
+                if not reserve(name, est, budget): stopped = "budget"; break
+                out, fin, c, prov = chat(model, msgs)
+                settle(name, est, c); cost += c
         ok, r, lp = grade(i, out, fin)
         rounds.append({"round": k, "output": out, "finish": fin, "pass": ok, "loop": lp, "categories": r.get("categories"),
                        "reasons": r.get("reasons"), "static_fails": r.get("static_fails"), "runtime_errors": r.get("runtime_errors"), "soft": r.get("soft"), "files": r.get("files")})
