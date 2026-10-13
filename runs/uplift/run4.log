@@ -1,0 +1,2 @@
+qwen3.6-27b 5 build_from_spec pass@ None $0.031  total $49.09
+13:26 qwen3.6-27b done n=49 checker_pass_by_round=[5, 9, 10, 13] cost=$2.62 stopped=0

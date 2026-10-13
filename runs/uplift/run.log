@@ -1,0 +1,612 @@
+claude-sonnet-5.5 0 build_from_spec pass@ 0 $0.000  total $0.00
+claude-opus-5.5 0 build_from_spec pass@ 0 $0.000  total $0.00
+gpt-5.6-sol 0 build_from_spec pass@ 0 $0.000  total $0.00
+claude-opus-5.5 1 build_from_spec pass@ 0 $0.000  total $0.00
+gpt-5.6-sol 1 build_from_spec pass@ 0 $0.000  total $0.00
+gpt-5.6-sol 2 build_from_spec pass@ 0 $0.000  total $0.00
+claude-sonnet-5.5 5 build_from_spec pass@ 0 $0.000  total $0.00
+claude-opus-5.5 4 build_from_spec pass@ 0 $0.000  total $0.00
+gpt-5.6-sol 4 build_from_spec pass@ 0 $0.000  total $0.00
+gpt-5.6-sol 5 build_from_spec pass@ 0 $0.000  total $0.00
+gpt-5.6-sol 8 add_panel pass@ 0 $0.000  total $0.02
+claude-opus-5.5 11 add_panel pass@ 0 $0.000  total $0.05
+claude-opus-5.5 15 build_from_spec pass@ 0 $0.000  total $0.05
+claude-sonnet-5.5 1 build_from_spec pass@ 1 $0.026  total $0.19
+claude-opus-5.5 14 add_panel pass@ 0 $0.000  total $0.19
+gpt-5.6-sol 14 add_panel pass@ 0 $0.000  total $0.19
+gpt-5.6-sol 15 build_from_spec pass@ 0 $0.000  total $0.19
+gemini-3.1-pro 11 add_panel pass@ 0 $0.000  total $0.19
+claude-opus-5.5 16 build_from_spec pass@ 0 $0.000  total $0.19
+kimi-k3 4 build_from_spec pass@ 1 $0.010  total $0.32
+kimi-k3 1 build_from_spec pass@ 1 $0.009  total $0.32
+claude-sonnet-5.5 14 add_panel pass@ 0 $0.000  total $0.52
+gpt-5.6-sol 16 build_from_spec pass@ 0 $0.000  total $0.52
+gpt-5.6-sol 11 add_panel pass@ 0 $0.000gpt-5.6-sol  19 add_panel total $0.52
+ pass@ 0 $0.000  total $0.52
+kimi-k3 0 build_from_spec pass@ 1 $0.045  total $0.57
+kimi-k3 5 build_from_spec pass@ 1 $0.021  total $0.57
+grok-4.3 4 build_from_spec pass@ 1 $0.004  total $0.73
+claude-sonnet-5.5 15 build_from_spec pass@ 0 $0.000  total $1.35claude-sonnet-5.5
+ 4 build_from_spec pass@ 1 $0.056  total $1.35
+gemini-3.1-pro 4 build_from_spec pass@ 1 $0.045  total $1.51
+kimi-k3 11 add_panel pass@ 1 $0.011  total $1.71
+gpt-5.6-sol 3 build_from_spec pass@ 1 $0.125  total $1.71
+grok-4.3 8 add_panel pass@ 1 $0.006  total $1.71
+claude-sonnet-5.5 16 build_from_spec pass@ 0 $0.000  total $1.71
+claude-opus-5.5 3 build_from_spec pass@ 1 $0.099  total $1.84
+claude-sonnet-5.5 8 add_panel pass@ gpt-5.6-sol 1 $0.09023   add_paneltotal $2.35
+ pass@ 0 $0.000  total $2.35
+gemini-3.1-pro 8 add_panel pass@ 1 $0.040  total $2.35
+claude-opus-5.5 19 add_panel pass@ 0 $0.000  total $2.36
+claude-sonnet-5.5 11 add_panel pass@ 1 $0.049  total $2.36
+claude-opus-5.5 8 add_panel pass@ 1 $0.137  total $3.35
+deepseek-v4-pro 2 build_from_spec pass@ 2 $0.011  total $4.07
+kimi-k3 8 add_panel pass@ 2 $0.058  total $4.88
+grok-4.3 3 build_from_spec pass@ 2 $0.012  total $5.20
+claude-sonnet-5.5 2 build_from_spec pass@ 2 $0.127  total $5.21
+claude-opus-5.5 2 build_from_spec pass@ 2 $0.210  total $6.26
+claude-sonnet-5.5 19 add_panel pass@ 1 $0.050  total $6.87
+qwen3-coder 5 build_from_spec pass@ None $0.006  total $7.69
+qwen3-coder 1 build_from_spec pass@ None $0.004  total $7.69
+deepseek-v4-pro 0 build_from_spec pass@ None $0.040  total $8.08
+qwen3-coder 0 build_from_spec pass@ None $0.003  total $8.09
+kimi-k3 7 build_from_spec pass@ None $0.048  total $8.09
+qwen3-coder 4 build_from_spec pass@ None $0.008  total $8.09
+grok-4.3 0 build_from_spec pass@ None $0.015  total $8.09
+qwen3-coder 3 build_from_spec pass@ None $0.006  total $8.47
+kimi-k3 9 build_from_spec pass@ None $0.033  total $8.52
+qwen3-coder 2 build_from_spec pass@ None $0.007  total $8.62
+deepseek-v4-pro 4 build_from_spec pass@ None $0.021  total $8.91
+grok-4.3 1 build_from_spec pass@ None $0.015  total $8.94
+grok-4.3 2 build_from_spec pass@ None $0.019  total $9.33
+qwen3-coder 6 build_from_spec pass@ None $0.010  total $9.33
+grok-4.3 5 build_from_spec pass@ None $0.015  total $9.33
+kimi-k3 14 add_panel pass@ 2 $0.042  total $9.33
+grok-4.3 14 add_panel pass@ 1 $0.005  total $9.50
+qwen3-coder 10 build_from_spec pass@ None $0.005  total $9.50
+qwen3-coder 7 build_from_spec pass@ None $0.018  total $9.55
+qwen3-coder 9 build_from_spec pass@ None $0.004  total $9.55
+kimi-k3 6 build_from_spec pass@ None $0.045  total $9.62
+deepseek-v4-pro 3 build_from_spec pass@ None $0.060  total $9.69
+grok-4.3 6 build_from_spec pass@ None $0.013  total $9.69
+qwen3-coder 11 add_panel pass@ None $0.006  total $9.69
+deepseek-v4-pro 8 add_panel pass@ None $0.035  total $9.83
+deepseek-v4-pro 5 build_from_spec pass@ None $0.047  total $9.83
+deepseek-v4-pro 7 build_from_spec pass@ None $0.026  total $9.83
+qwen3.6-27b 1 build_from_spec pass@ 1 $0.024  total $9.97
+deepseek-v4-pro 1 build_from_spec pass@ None $0.084  total $10.29
+claude-sonnet-5.5 3 build_from_spec pass@ 3 $0.183  total $10.29
+qwen3-coder 8 add_panel pass@ None $0.016  total $10.29
+grok-4.3 10 build_from_spec pass@ None $0.016  total $10.29
+grok-4.3 7 build_from_spec pass@ None $0.019  total $10.32
+kimi-k3 16 build_from_spec pass@ 2 $0.023  total $10.34
+gemini-3.1-pro 0 build_from_spec pass@ None $0.240  total $10.39
+kimi-k3 2 build_from_spec pass@ 3 $0.131  total $10.39claude-sonnet-5.5 23 
+add_panel pass@ 0 $0.000  total $10.39
+deepseek-v4-pro 10 build_from_spec pass@ None $0.022  total $10.46
+deepseek-v4-pro 9 build_from_spec pass@ None $0.025  total $10.46
+claude-sonnet-5.5 9 build_from_spec pass@ None $0.142  total $10.49
+grok-4.3 9 build_from_spec pass@ None $0.016  total $10.49
+claude-sonnet-5.5 7 build_from_spec pass@ None $0.195  total $10.62
+deepseek-v4-pro 11 add_panel pass@ None $0.045  total $10.73
+gemini-3.1-pro 7 build_from_spec pass@ None $0.121  total $10.77
+claude-sonnet-5.5 26 build_from_spec pass@ 0 $0.000  total $10.77
+claude-sonnet-5.5 6 build_from_spec pass@ None $0.269  total $10.77
+claude-sonnet-5.5 10 build_from_spec pass@ None $0.132  total $11.32
+claude-sonnet-5.5 13 build_from_spec pass@ None $0.124  total $11.36
+deepseek-v4-pro 6 build_from_spec pass@ None $0.038  total $11.37
+claude-opus-5.5 7 build_from_spec pass@ None $0.486 budget total $11.37
+claude-sonnet-5.5 30 build_from_spec pass@ 0 $0.000  total $11.45
+grok-4.3 11 add_panel pass@ None $0.022  total $11.45
+claude-opus-5.5 23 add_panel pass@ 0 $0.000  total $11.45
+claude-opus-5.5 5 build_from_spec pass@ 3 $0.353  total $11.45
+claude-opus-5.5 24 build_from_spec pass@ None $0.000 budget total $11.45
+claude-sonnet-5.5 31 build_from_spec pass@ None $0.000 budget total $11.45
+claude-opus-5.5 25 add_panel pass@ None claude-opus-5.5 26$0.000 budget  total $11.45build_from_spec
+ pass@ 0 $0.000  total $11.45
+claude-sonnet-5.5 12 build_from_spec pass@ None $0.140  total $11.55
+claude-opus-5.5 27 build_from_spec pass@ 0 $0.000  total $11.55
+claude-opus-5.5 28 build_from_spec pass@ 0 $0.000  total $11.55
+gpt-5.6-sol 9 build_from_spec pass@ None $0.201  total $11.56
+gpt-5.6-sol 13 build_from_spec pass@ None $0.192  total $11.67
+claude-opus-5.5 30 build_from_spec pass@ None $0.000 budget total $11.67
+gpt-5.6-sol 25 add_panel pass@ 0 $0.000  total $11.77
+gpt-5.6-sol 10 build_from_spec pass@ None $0.266  total $11.78
+gpt-5.6-sol 26 build_from_spec pass@ 0 $0.000  total $11.78
+claude-opus-5.5 31 build_from_spec pass@ None $0.000 budget total $11.78
+claude-opus-5.5 22 build_from_spec pass@ None $0.107 budget total $11.83
+gpt-5.6-sol 27 build_from_spec pass@ 0 $0.000  total $11.83
+gpt-5.6-sol 28 build_from_spec pass@ 0 $0.000  total $11.93
+claude-opus-5.5 36 chunk_manifest_entry pass@ 0 $0.000  total $11.94
+gpt-5.6-sol 7 build_from_spec pass@ None $0.380  total $11.97
+gpt-5.6-sol 12 build_from_spec pass@ None $0.277  total $11.98
+gemini-3.1-pro 6 build_from_spec pass@ None $0.287  total $12.10
+gpt-5.6-sol 36 chunk_manifest_entry pass@ 0 $0.000  total $12.19
+gpt-5.6-sol 6 build_from_spec pass@ None $0.395  total $12.42
+kimi-k3 19 add_panel pass@ 1 $0.012  total $12.42
+kimi-k3 18 build_from_spec pass@ None $0.010 budget total $12.43
+kimi-k3 25 add_panel pass@ None $0.000 budget claude-opus-5.5 21 total $12.63
+build_from_spec pass@ None $0.171 budget total $12.63
+kimi-k3 3 build_from_spec pass@ 3 $0.130  total $12.66
+gpt-5.6-sol 24 build_from_spec pass@ None $0.348 budget total $12.66
+claude-opus-5.5 10 build_from_spec pass@ None $0.336  total $12.83
+kimi-k3 27 build_from_spec pass@ None $0.000 budget total $12.83
+gemini-3.1-pro 5 build_from_spec pass@ None $0.294  total $12.83
+gpt-5.6-sol 20 build_from_spec pass@ None $0.000  total $13.05
+gpt-5.6-sol 17 build_from_spec pass@ None $0.324  total $13.68
+kimi-k3 13 build_from_spec pass@ None $0.065  total $13.68
+kimi-k3 15 build_from_spec pass@ 3 $0.055  total $13.68
+gpt-5.6-sol 22 build_from_spec pass@ None $0.000  total $13.92
+qwen3.6-27b 4 build_from_spec pass@ None $0.020  total $14.02
+claude-opus-5.5 13 build_from_spec pass@ None $0.302  total $14.27
+claude-opus-5.5 12 build_from_spec pass@ None $0.334  total $14.50
+gemini-3.1-pro 2 build_from_spec pass@ None $0.284  total $14.50
+kimi-k3 12 build_from_spec pass@ None $0.057  total $14.50
+gpt-5.6-sol 18claude-opus-5.5 18 build_from_spec pass@ None $0.359  build_from_spec  pass@total $15.26 None
+ $0.275  total $15.26claude-opus-5.5 9 
+build_from_spec pass@ None $0.425  total $15.26
+gemini-3.1-pro 13 build_from_spec pass@ None $0.085  total $15.28
+gpt-5.6-sol 21 build_from_spec pass@ None $0.261  total $15.28
+grok-4.3 12 build_from_spec pass@ None $0.013  total $15.40
+gemini-3.1-pro 9 build_from_spec pass@ None $0.266  total $15.40
+gemini-3.1-pro 3 build_from_spec pass@ None $0.441  total $15.40
+claude-sonnet-5.5 17 build_from_spec pass@ None $0.209  total $15.55
+gemini-3.1-pro 19 add_panel pass@ None $0.000 budget total $15.55
+gpt-5.6-sol 48 chunk_add_kind:menu pass@ 0 $0.000  total $15.55
+kimi-k3 23 add_panel pass@ 1 $0.024  total $15.56
+claude-opus-5.5 17 build_from_spec pass@ None $0.452  total $15.77
+grok-4.3 23 add_panel pass@ 1 $0.007  total $15.77
+claude-opus-5.5 46 chunk_add_kind:bar pass@ 0 $0.000  total $15.77
+claude-opus-5.5 6 build_from_spec pass@ None $0.632  total $15.97
+grok-4.3 13 build_from_spec pass@ None $0.015  total $15.97
+gemini-3.1-pro 1 build_from_spec pass@ None $0.415  total $16.01
+gemini-3.1-pro 12 build_from_spec pass@ None $0.258  total $16.01
+grok-4.3 25 add_panel pass@ 0 $0.000  total $16.11
+gemini-3.1-pro 21gemini-3.1-pro 22  build_from_specbuild_from_spec pass@ None $0.000  budget pass@total $16.11
+ None $0.000 budget total $16.11
+kimi-k3 22 build_from_spec pass@ None $0.008 budget total $16.11
+claude-sonnet-5.5 20 build_from_spec pass@ None $0.103  total $16.11
+gemini-3.1-pro 23 add_panel pass@ None $0.000 budget total $16.11
+kimi-k3 36 chunk_manifest_entry pass@ None $0.000 budget total $16.11
+deepseek-v4-pro 23 add_panel pass@ 1 $0.013  total $16.12
+claude-sonnet-5.5 18 build_from_spec pass@ None $0.185  total $16.19
+claude-opus-5.5 48 chunk_add_kind:menu pass@ 0 $0.000  total $16.19
+claude-sonnet-5.5 28 build_from_spec pass@ 1 $0.071  total $16.19
+gpt-5.6-sol 49 chunk_component pass@ 0 $0.000  total $16.20
+claude-sonnet-5.5 36 chunk_manifest_entry pass@ 1 $0.036  total $16.20
+gemini-3.1-pro 25 add_panel pass@ None $0.000 budget total $16.20
+gemini-3.1-pro 24 build_from_spec pass@ None $0.000 budget total $16.20
+gemini-3.1-pro 14 add_panel pass@ 3 $0.099  total $16.20
+claude-opus-5.5 51 fix_manifest:reserved_id pass@ 0 $0.000  total $16.20
+gemini-3.1-pro 26 build_from_spec pass@ None $0.000 budget total $16.20
+kimi-k3 37 chunk_componentgemini-3.1-pro pass@  None 27$0.000  budget total $16.20
+build_from_spec pass@ None $0.000 budget total $16.20
+gpt-5.6-sol 30 build_from_spec pass@ 1 $0.018  total $16.20
+claude-sonnet-5.5 39 chunk_manifest_entry pass@ None $0.000 budget total $16.20
+deepseek-v4-pro 12 build_from_spec pass@ None $0.037 kimi-k3  total $16.20
+38gemini-3.1-pro 28  build_from_specchunk_component  pass@ None $0.000 pass@budget  total $16.20None $0.000 
+budget total $16.20
+kimi-k3 17 build_from_spec pass@ None $0.062  total $16.20
+gemini-3.1-pro 16 build_from_spec pass@ None $0.069 budget total $16.41
+qwen3.6-27b 11 add_panel pass@ 2 $0.036  total $16.41
+claude-opus-5.5 20 build_from_spec pass@ None $0.216  total $16.62
+gpt-5.6-sol 50 chunk_component pass@ 0 $0.000  total $16.63
+gemini-3.1-pro 29 build_from_spec pass@ None $0.000 budget total $16.67
+gemini-3.1-pro 30 build_from_spec pass@ None $0.000 budget total $16.67
+gemini-3.1-pro 31 build_from_spec pass@ None $0.000 budget total $16.67
+gemini-3.1-pro 10 build_from_spec pass@ None $0.419  total $16.71
+gemini-3.1-pro 40 chunk_component pass@ None $0.000 budget total $16.73
+gemini-3.1-pro 36 chunk_manifest_entry pass@ None $0.000 budget total $16.74
+gemini-3.1-pro 37 chunk_component pass@ None $0.000 budget total $16.74
+claude-sonnet-5.5 46 chunk_add_kind:bar pass@ 0 $0.000  total $16.74
+kimi-k3 41 chunk_component pass@ gemini-3.1-pro None38 chunk_component  $0.000 pass@ Nonebudget  total $16.74
+$0.000 budget total $16.74
+gemini-3.1-pro 18 build_from_spec pass@ None $0.000 budget total $17.00
+gemini-3.1-pro 39 chunk_manifest_entry pass@ None $0.000 budget total $17.00
+claude-opus-5.5 53 fix_manifest:reserved_id pass@ 0 $0.000  total $17.02
+gemini-3.1-pro 17 build_from_spec pass@ None $0.049 budget total $17.07
+claude-opus-5.5 54 fix_manifest:bad_path_absolute pass@ 0 $0.000  total $17.08
+gemini-3.1-pro 45 chunk_manifest_entry pass@ None $0.000 budget total $17.46
+gemini-3.1-pro 15 build_from_spec pass@ None $0.000 budget total $17.46
+gpt-5.6-sol 7 build_from_spec pass@ None $0.000 budget qwen3.6-27b 0 kimi-k3 build_from_spec pass@ Nonetotal $17.46 
+claude-sonnet-5.524 $0.00018  build_from_spec budget total $17.46pass@ None 
+ build_from_spec $0.000pass@  None $0.000 budgetclaude-opus-5.5budget total $17.46
+  total $17.46
+12 build_from_spec pass@ None $0.000claude-sonnet-5.5 20 build_from_spec pass@ None  $0.000 budget total $17.46
+budgetgemini-3.1-pro  17 total $17.46build_from_spec
+gpt-5.6-sol  9 build_from_spec pass@pass@ None None $0.000 $0.000 budget total $17.46
+ budget total $17.46
+kimi-k3 26 build_from_spec pass@ None $0.000 budget total $17.46
+claude-opus-5.5 13 qwen3.6-27bbuild_from_spec pass@  2None $0.000 budget total $17.46 
+build_from_spec pass@ None $0.000 gemini-3.1-probudget total $17.46
+ 19qwen3.6-27b 3 build_from_spec pass@ add_panel  gpt-5.6-solNonepass@  None$0.000  budget total $17.46
+10  build_from_spec pass@ None $0.000$0.000 budget total $17.46 claude-opus-5.5 17budget total $17.46
+
+ build_from_spec pass@ gpt-5.6-solNone  12$0.000  budgetclaude-sonnet-5.5 build_from_spec22  build_from_spec pass@ None pass@ None $0.000 budget $0.000total $17.46 
+total $17.46 
+budget total $17.46
+gemini-3.1-pro 20 build_from_spec pass@ None $0.000 budget total $17.46
+claude-sonnet-5.5 21 build_from_spec claude-opus-5.5pass@  20None  build_from_spec pass@$0.000  budgetNone  total $17.46
+$0.000claude-sonnet-5.5  24 build_from_spec pass@ budgetNone gemini-3.1-pro 21 total $17.46 
+$0.000build_from_spec budget total $17.46
+ pass@ None qwen3.6-27b$0.000  budget5 total $17.46
+claude-opus-5.5 build_from_spec 21 build_from_spec pass@  pass@ None $0.000None  budget total $17.46
+$0.000gpt-5.6-sol 13 budget  build_from_spectotal $17.46
+ pass@claude-sonnet-5.5  qwen3.6-27b 6 None 25build_from_spec $0.000 add_panel  pass@kimi-k3 28budget total $17.46
+ build_from_spec pass@  pass@None None  $0.000None $0.000 $0.000budget budget total $17.46 
+total $17.46 
+budgetqwen3.6-27b 7  build_from_specgpt-5.6-sol 17 total $17.46build_from_spec pass@  
+pass@ claude-opus-5.5None None$0.000 budget  total $17.4622 build_from_spec pass@ 
+ None $0.000 claude-opus-5.5$0.000budget   24 build_from_specbudgettotal $17.46
+ claude-opus-5.5  total $17.46
+29pass@ None $0.000 budget total $17.46
+ gpt-5.6-sol 18 build_from_spec pass@build_from_spec  None qwen3.6-27b 9 pass@ build_from_spec Nonepass@ None $0.000  budget$0.000claude-sonnet-5.5$0.000 budget   budgetqwen3.6-27b27 build_from_spec   pass@ total $17.46 total $17.46
+
+8 add_panelNone total $17.46
+$0.000 pass@ gpt-5.6-solbudget None 20  $0.000 budgetbuild_from_spec pass@ None  total $17.46
+ $0.000 budget gpt-5.6-sol 21total $17.46
+total $17.46 build_from_spec 
+gpt-5.6-solpass@ 22 build_from_spec pass@ None  None $0.000$0.000 budget gemini-3.1-pro 22 total $17.46budget
+  total $17.46build_from_spec
+ pass@ Noneclaude-opus-5.5 $0.000 budget total $17.46 
+31 build_from_specqwen3.6-27b pass@  10None  $0.000build_from_spec pass@  None budget total $17.46$0.000 claude-sonnet-5.5
+budget total $17.46
+ 29 build_from_spec claude-opus-5.5 37 chunk_componentqwen3.6-27b 13 pass@ None  build_from_spec pass@pass@ None$0.000  None  qwen3.6-27b 12 $0.000budget total $17.46$0.000
+build_from_spec   pass@budget  budgetNone $0.000 budget total $17.46
+ total $17.46
+total $17.46
+gpt-5.6-sol 24 build_from_spec pass@gpt-5.6-sol  None31 build_from_spec pass@ $0.000 None $0.000 budget total $17.46
+ budget total $17.46
+gpt-5.6-sol 29 build_from_spec pass@qwen3.6-27b 14  None $0.000add_panel  pass@budgetgemini-3.1-pro 23 add_panel None  $0.000 pass@ gpt-5.6-sol  total $17.46None 37 chunk_componentclaude-sonnet-5.5 31 build_from_spec  pass@budget total $17.46
+
+$0.000 None $0.000 pass@ None $0.000 budgetbudget total $17.46
+qwen3.6-27b  total $17.46
+ budget total $17.4615 build_from_spec pass@ 
+None $0.000 budget total $17.46
+claude-sonnet-5.5 37 chunk_component pass@ Noneqwen3.6-27b  $0.00019 add_panel  budgetpass@ None  $0.000 budget total $17.50total $17.50
+
+claude-opus-5.5 38 chunk_component pass@ None $0.000 budget total $17.50
+claude-sonnet-5.5 38 chunk_component pass@ None $0.000 budget total $17.50
+gpt-5.6-sol 54 fix_manifest:bad_path_absolute pass@ 0 $0.000  total $18.40
+gpt-5.6-sol 53 fix_manifest:reserved_id pass@ 0 $0.000  total $18.40
+grok-4.3 9 build_from_spec pass@ 1 $0.005  total $18.60
+claude-opus-5.5 52 fix_manifest:bad_path_dotdot pass@ 0 $0.000  total $18.60
+grok-4.3 19 add_panel pass@ 1 $0.005  total $18.61
+grok-4.3 10 build_from_spec pass@ 1 $0.004  total $18.76
+grok-4.3 15 build_from_spec pass@ 1 $0.006  total $18.98
+qwen3-coder 13 build_from_spec pass@ 1 $0.002  total $19.41
+claude-sonnet-5.5 7 build_from_spec pass@ 1 $0.044  total $19.42
+gemini-3.1-pro 5 build_from_spec pass@ 1 $0.045  total $19.63
+claude-sonnet-5.5 12 build_from_spec pass@ 1 $0.038  total $19.65
+claude-sonnet-5.5 6 build_from_spec pass@ 1 $0.090  total $19.65
+qwen3.6-27b 16 build_from_spec pass@ 1 $0.004  total $20.14
+gemini-3.1-pro 29 build_from_spec pass@ None $0.000 budget total $20.14
+gemini-3.1-pro 0 build_from_spec pass@ None $0.195 budget total $20.14
+gpt-5.6-sol 51 fix_manifest:reserved_id pass@ 1 $0.009  total $20.14
+gemini-3.1-pro 28 build_from_spec pass@ 1 $0.039  total $20.18
+kimi-k3 7 build_from_spec pass@ 2 $0.022  total $20.23
+gemini-3.1-pro 31 build_from_spec pass@ None $0.043 budget total $20.23
+grok-4.3 16 build_from_spec pass@ 2 $0.009  total $20.23
+gpt-5.6-sol 52 fix_manifest:bad_path_dotdot pass@ 1 $0.011  total $20.23
+kimi-k3 9 build_from_spec pass@ 2 $0.027  total $20.32
+gemini-3.1-pro 1 build_from_spec pass@ None $0.195 budget total $20.34
+claude-opus-5.5 45 chunk_manifest_entry pass@ 1 $0.167  total $20.34
+gemini-3.1-pro 40 chunk_component pass@ None $0.000 budget total $20.35
+gemini-3.1-pro 7 build_from_spec pass@ None $0.000 budget total $20.42
+gemini-3.1-pro 51 fix_manifest:reserved_id pass@ None $0.000 budget total $20.42
+claude-sonnet-5.5 48 chunk_add_kind:menu pass@ 0 $0.000  total $20.57
+grok-4.3 18 build_from_spec pass@ 2 $0.012  total $20.60
+kimi-k3 12 build_from_spec pass@ 2 $0.023  total $20.63
+gemini-3.1-pro 10 build_from_spec pass@ None $0.195 budget total $20.63
+claude-sonnet-5.5 49 chunk_component pass@ 0 $0.000  total $20.69
+gemini-3.1-pro 12 build_from_specgemini-3.1-pro pass@ None $0.000  46 chunk_add_kind:barbudget  total $20.70pass@
+ None $0.000 budget total $20.70
+gemini-3.1-pro 13 build_from_spec pass@ None $0.000 budget total $20.78
+gemini-3.1-pro 47 chunk_add_kind:service pass@ None $0.000 budget total $20.85
+gemini-3.1-pro 6 build_from_spec pass@ None $0.049 budget total $20.85
+gemini-3.1-pro 41 chunk_component pass@ None $0.000 budget total $20.85
+gemini-3.1-pro 48 chunk_add_kind:menu pass@ None $0.000 budget total $20.85
+deepseek-v4-pro 16 build_from_spec pass@ 2 $0.014  total $20.85
+kimi-k3 31 build_from_spec pass@ None $0.000 budget total $20.85
+kimi-k3 40 chunk_component pass@ None $0.000 budget total $20.85
+kimi-k3 45 chunk_manifest_entry pass@ None $0.000 budget total $20.85
+claude-opus-5.5 55 fix_manifest:reserved_id pass@ None $0.000 budget total $20.85
+claude-sonnet-5.5 40 chunk_component pass@ None $0.091 budget deepseek-v4-pro 15 total $20.85build_from_spec pass@ 
+None $0.018 budget total $20.85
+gemini-3.1-pro 49 chunk_component pass@ 0 $0.000  total $20.85
+gemini-3.1-pro 9 build_from_spec pass@ None $0.064 budget total $20.86
+grok-4.3 21 build_from_spec pass@ None $0.016  total $20.86
+gemini-3.1-pro 50 chunk_component pass@ None $0.000 budget total $20.86
+claude-sonnet-5.5 47 chunk_add_kind:service pass@ None $0.025 budget total $20.93
+claude-opus-5.5 10 build_from_spec pass@ 2 $0.085  total $20.93
+claude-sonnet-5.5 54 fix_manifest:bad_path_absolute pass@ None $0.000 budget total $20.93
+qwen3-coder 11 add_panel pass@ None $0.005  total $20.93
+gemini-3.1-pro 52 fix_manifest:bad_path_dotdot pass@ 0 $0.000  total $20.93
+grok-4.3 11 add_panel pass@ 3 $0.016  total $20.93
+qwen3.6-27b 25 add_panel pass@ 1 $0.018  total $20.93
+grok-4.3 12 build_from_spec pass@ None $0.015  total $20.97
+claude-sonnet-5.5 45 chunk_manifest_entry pass@ 2 $0.080  total $20.97
+deepseek-v4-pro 7 build_from_spec pass@ None $0.030  total $21.02
+gemini-3.1-pro 53 fix_manifest:reserved_id pass@ 0 $0.000  total $21.02
+grok-4.3 20 build_from_spec pass@ 3 $0.017  total $21.02
+deepseek-v4-pro 9 build_from_spec pass@ None $0.020  total $21.02
+deepseek-v4-pro 10 build_from_spec pass@ None $0.015  total $21.02
+qwen3-coder 15 build_from_spec pass@ 3 $0.006  total $21.46
+kimi-k3 17 build_from_spec pass@ None $0.021 qwen3-coder 6  total $21.46
+build_from_spec pass@ None $0.009  total $21.46
+grok-4.3 13 build_from_spec pass@ None $0.015  total $21.46
+gemini-3.1-pro 54 fix_manifest:bad_path_absolute pass@ None $0.000 budget total $21.46
+gemini-3.1-pro 55 fix_manifest:reserved_id pass@ None $0.000 budget total $21.46
+10:10 gemini-3.1-pro done n=49 checker_pass_by_round=[4, 8, 8, 9] cost=$1.80 stopped=38
+qwen3-coder 14 add_panel pass@ None $0.004  total $21.46
+kimi-k3 18 build_from_specdeepseek-v4-pro  8 add_panel pass@ 3 pass@$0.016   None total $21.50$0.052
+  total $21.50
+claude-sonnet-5.5 9 build_from_spec pass@ 3 $0.034  total $21.50
+claude-sonnet-5.5 13 build_from_spec pass@ None $0.000 claude-sonnet-5.5  total $21.5010
+ build_from_spec pass@claude-opus-5.5 None $0.021 9 build_from_spec   total $21.50
+pass@ None $0.000  total $21.50
+gpt-5.6-sol 6 build_from_spec pass@ None $0.000  total $21.50
+deepseek-v4-pro 4 build_from_spec pass@ None $0.042  total $21.50
+qwen3-coder 8 add_panel pass@ None $0.014  total $21.50
+kimi-k3 6 build_from_spec pass@ 3 $0.030  total $21.50
+claude-sonnet-5.5 17 build_from_speckimi-k3 pass@  22None build_from_spec pass@  $0.000None $0.008    total $21.50total $21.50
+
+qwen3-coder 16 build_from_spec pass@ None $0.007 qwen3.6-27b  total $21.50
+21 build_from_spec pass@ None $0.007  kimi-k3 21 total $21.50
+build_from_spec pass@ None $0.008qwen3-coder   total $21.50
+17 build_from_spec pass@ gpt-5.6-solNone  $0.004 38  chunk_componenttotal $21.50 
+pass@ None $0.000  total $21.50
+claude-opus-5.5 39 chunk_manifest_entry pass@ None $0.000  total $21.50
+qwen3-coder 12 build_from_spec pass@ Nonedeepseek-v4-pro 11 add_panel pass@  $0.007 None  $0.031 total $21.52
+ total $21.52
+gpt-5.6-sol 47 chunk_add_kind:service pass@ None $0.000  qwen3-coder 18 total $21.52
+build_from_spec pass@ None $0.006  total $21.52
+claude-opus-5.5 47 chunk_add_kind:service pass@ gpt-5.6-solNone $0.000  total $21.74
+gpt-5.6-sol 40 chunk_component  39 chunk_manifest_entry pass@pass@  None None $0.000  total $21.74
+$0.000  total $21.74
+kimi-k3 13 build_from_spec pass@ 3 $0.031  total $21.74
+kimi-k3 20 build_from_spec pass@ None $0.080  total $21.74
+gpt-5.6-sol 46 chunk_add_kind:bar pass@ None $0.000  total $21.74
+claude-opus-5.5 50 chunk_componentdeepseek-v4-pro 14  pass@ Noneadd_panel deepseek-v4-propass@ $0.000  total $21.74
+  claude-sonnet-5.5None 5013 chunk_component   build_from_spec $0.024pass@pass@    None $0.0141 total $21.74 $0.050  
+total $21.74
+ total $21.74
+qwen3-coder 20 build_from_spec pass@ None $0.004  total $21.76
+claude-opus-5.5 6 build_from_spec pass@ 3 $0.160  total $21.76
+gpt-5.6-sol 45 chunk_manifest_entry pass@ None $0.108  total $21.76
+deepseek-v4-pro 12 build_from_spec pass@ None $0.036  total $21.76
+qwen3-coder 19 add_panel pass@ 3 $0.006  total $21.76
+grok-4.3 17 build_from_spec pass@ None $0.013  total $21.76
+gpt-5.6-sol 41 chunk_component pass@ None $0.106  total $21.76
+claude-opus-5.5 49 chunk_component pass@ 2 $0.432  total $21.76
+grok-4.3 22 build_from_spec pass@ 2 $0.005  total $21.76
+claude-opus-5.5 41 chunk_component pass@ None $0.150  total $21.76
+claude-sonnet-5.5 39 chunk_manifest_entry pass@ None $0.016  total $21.76
+deepseek-v4-pro 6 build_from_spec pass@ None $0.064  total $21.76
+kimi-k3 10 build_from_spec pass@ None $0.062  total $21.76
+kimi-k3 52 fix_manifest:bad_path_dotdot pass@ 0 $0.000  total $21.76
+kimi-k3 53 fix_manifest:reserved_id pass@ 0 $0.000  total $21.76
+claude-opus-5.5 40 chunk_component pass@ None $0.224  total $21.76
+qwen3-coder 21 build_from_spec pass@ None $0.003  total $21.76
+kimi-k3 54 fix_manifest:bad_path_absolute pass@ 0 $0.000  total $21.76
+kimi-k3 55 fix_manifest:reserved_id pass@ None $0.000 budget total $21.76
+kimi-k3 47 chunk_add_kind:service pass@ None $0.000 budget total $21.76
+kimi-k3 29 build_from_spec pass@ None $0.047  total $21.76
+gpt-5.6-sol 55 fix_manifest:reserved_id pass@ None $0.000  total $21.81
+10:11 gpt-5.6-sol done n=49 checker_pass_by_round=[22, 26, 26, 26] cost=$0.38 stopped=14
+grok-4.3 27 build_from_spec pass@ None $0.006  total $21.81
+grok-4.3 26 build_from_spec pass@ None $0.005  total $21.81
+qwen3.6-27b 18 build_from_spec pass@ None $0.024  total $21.81
+claude-opus-5.5 7 build_from_spec pass@ 3 $0.211  total $21.81
+10:11 claude-opus-5.5 done n=49 checker_pass_by_round=[19, 22, 25, 28] cost=$2.59 stopped=14
+claude-sonnet-5.5 41 chunk_component pass@ None $0.132  total $21.89
+grok-4.3 24 build_from_spec pass@ None $0.000  total $21.89
+grok-4.3 46 chunk_add_kind:bar pass@ 0 $0.000  total $21.89
+qwen3.6-27b 26 build_from_spec pass@ None $0.023  total $21.89
+kimi-k3 30 build_from_spec pass@ None $0.000  total $21.89
+qwen3.6-27b 20 build_from_spec pass@ None $0.027  total $21.90
+claude-sonnet-5.5 53 fix_manifest:reserved_id pass@ 3 $0.008  total $21.92
+claude-sonnet-5.5 52 fix_manifest:bad_path_dotdot pass@ 3 $0.012  total $21.93
+claude-sonnet-5.5 51 fix_manifest:reserved_id pass@ None $0.021  total $21.93
+grok-4.3 28 build_from_spec pass@ 3 $0.015  total $21.98
+qwen3-coder 31 build_from_spec pass@ 1 $0.002  total $22.01
+qwen3-coder 22 build_from_spec pass@ None $0.003  total $22.03
+qwen3.6-27b 22 build_from_spec pass@ None $0.036  total $22.03
+kimi-k3 39 chunk_manifest_entry pass@ None $0.010  total $22.05
+claude-sonnet-5.5 55 fix_manifest:reserved_id pass@ Nonekimi-k3  $0.000  total $22.09
+kimi-k3 49 chunk_component50 pass@  chunk_component Nonepass@  $0.000 None $0.000   total $22.09total $22.09
+
+10:12 claude-sonnet-5.5 done n=49 checker_pass_by_round=[11, 22, 24, 28] cost=$1.35 stopped=14
+grok-4.3 37 chunk_component pass@ None $0.005  kimi-k3total $22.19 
+51 fix_manifest:reserved_id pass@ None deepseek-v4-pro 20 $0.000  total $22.19
+build_from_spec pass@ None $0.000  total $22.19
+kimi-k3 46 chunk_add_kind:bar pass@ 3 $0.012  total $22.19
+deepseek-v4-pro 19 add_panel pass@ None $0.013  total $22.19
+grok-4.3 36 chunk_manifest_entry pass@ None $0.010  total $22.23
+deepseek-v4-pro 18 build_from_spec pass@ None $0.018  total $22.23
+qwen3-coder 29 build_from_spec pass@ None $0.002  total $22.26
+grok-4.3 29 build_from_spec pass@ None $0.010  total $22.26
+deepseek-v4-pro 21 build_from_spec pass@ None $0.011  total $22.26
+qwen3-coder 24 build_from_spec pass@ None $0.001  total $22.26
+qwen3-coder 30 build_from_spec pass@ None $0.002  total $22.26
+grok-4.3 49 chunk_component pass@ 0 $0.000  total $22.35
+kimi-k3 48 chunk_add_kind:menu pass@ 3 $0.011  total $22.36
+10:13 kimi-k3 done n=49 checker_pass_by_round=[3, 10, 16, 24] cost=$0.98 stopped=14
+qwen3-coder 26 build_from_spec pass@ None $0.004  total $22.41
+grok-4.3 30 build_from_spec pass@ None $0.003  total $22.43
+grok-4.3 38 chunk_component pass@ None $0.007  total $22.43
+grok-4.3 54 fix_manifest:bad_path_absolute pass@ 0 $0.000  total $22.43
+qwen3-coder 36 chunk_manifest_entry pass@ None $0.002  total $22.44
+deepseek-v4-pro 25 add_panel pass@ None $0.012  total $22.44
+qwen3-coder 23 add_panel pass@ None $0.006  total $22.44
+grok-4.3 39 chunk_manifest_entry pass@ None $0.006  total $22.44
+deepseek-v4-pro 36 chunk_manifest_entry pass@ None $0.000 budget total $22.44
+qwen3-coder 37 chunk_component pass@ None $0.005  total $22.46
+deepseek-v4-pro 17 build_from_spec pass@ None $0.080  total $22.46
+grok-4.3 51 fix_manifest:reserved_id pass@ 0 $0.000deepseek-v4-pro  37  chunk_componenttotal $22.48
+ pass@ None $0.000 budget total $22.48
+grok-4.3 31 build_from_spec pass@ None $0.006  total $22.55
+deepseek-v4-pro 24 build_from_spec pass@ qwen3-coder 27None $0.013 build_from_spec pass@ 3  $0.006  total $22.57 
+total $22.57
+qwen3-coder 28 build_from_spec pass@ None $0.011  total $22.57
+qwen3-coder 25 add_panel pass@ 3 $0.003  total $22.58
+deepseek-v4-pro 22 build_from_spec pass@ None $0.020  total $22.58
+grok-4.3 45 chunk_manifest_entrydeepseek-v4-pro pass@  3 27 build_from_spec pass@$0.010 None  $0.048 total $22.58
+ budget total $22.58
+grok-4.3 52 fix_manifest:bad_path_dotdot pass@ 0 $0.000  total $22.58
+deepseek-v4-pro 38 chunk_component pass@ None $0.000 budget total $22.58
+deepseek-v4-pro 26 build_from_spec pass@ None $0.017 budget total $22.58
+deepseek-v4-pro 28 build_from_spec pass@ None $0.037  total $22.58
+qwen3.6-27b 24 build_from_spec pass@ None $0.047  total $22.58
+deepseek-v4-pro 39 chunk_manifest_entry pass@ None $0.000 budget total $22.58
+deepseek-v4-pro 40 chunk_component pass@ None $0.000 budget total $22.58
+deepseek-v4-pro 41 chunk_component pass@ None $0.000 budget total $22.58
+deepseek-v4-pro 29 build_from_spec pass@ None $0.027  total $22.62
+deepseek-v4-pro 30 build_from_spec pass@ None $0.008deepseek-v4-pro 45 budget total $22.64
+ chunk_manifest_entry pass@ None $0.000 budgetdeepseek-v4-pro  31 build_from_spec pass@ None total $22.64
+$0.013 budget total $22.64
+qwen3.6-27b 31 build_from_spec pass@ None $0.019  total $22.64
+qwen3-coder 51 fix_manifest:reserved_id pass@ 0 $0.000  total $22.64
+qwen3.6-27b 28 build_from_spec pass@ None $0.077  total $22.65
+qwen3-coder 52 fix_manifest:bad_path_dotdot pass@ 0 $0.000  total $22.65
+deepseek-v4-pro 46 chunk_add_kind:bar pass@ 0 $0.000  total $22.65
+grok-4.3 47 chunk_add_kind:service pass@ None $0.009  total $22.65
+deepseek-v4-pro 47 chunk_add_kind:service pass@ None $0.000 budget total $22.65
+grok-4.3qwen3.6-27b 41  29chunk_component pass@  build_from_spec pass@ NoneNone $0.057   total $22.65
+$0.007  total $22.65
+deepseek-v4-pro 48 deepseek-v4-prochunk_add_kind:menu  pass@49  None chunk_component$0.000 budget pass@ None $0.000  budgettotal $22.65
+ total $22.65
+deepseek-v4-pro 50 chunk_component pass@ None $0.000 budget total $22.65
+qwen3.6-27b 36 chunk_manifest_entry pass@ None $0.006  total $22.65
+deepseek-v4-pro 51 fix_manifest:reserved_id pass@ 0 $0.000  total $22.65
+deepseek-v4-pro 53 fix_manifest:reserved_id pass@ 0 $0.000  total $22.65
+deepseek-v4-pro 52 fix_manifest:bad_path_dotdot pass@ 0 $0.000  total $22.65
+deepseek-v4-pro 54 fix_manifest:bad_path_absolute pass@ 0 $0.000  total $22.65
+grok-4.3 40 chunk_component pass@ None $0.020  total $22.65
+grok-4.3 53 fix_manifest:reserved_id pass@ 1 $0.004  total $22.66
+deepseek-v4-pro 55 fix_manifest:reserved_id pass@ None $0.000 budget total $22.66
+10:15 deepseek-v4-pro done n=49 checker_pass_by_round=[5, 6, 8, 8] cost=$0.93 stopped=17
+qwen3-coder 53 fix_manifest:reserved_id pass@ 0 $0.000  total $22.67
+qwen3-coder 54 fix_manifest:bad_path_absolute pass@ 0 $0.000  total $22.67
+qwen3-coder 38 chunk_component pass@ None $0.007  total $22.68
+qwen3-coder 39 chunk_manifest_entry pass@ None $0.005  total $22.68
+qwen3-coder 49 chunk_component pass@ 1 $0.004  total $22.68
+grok-4.3 48 chunk_add_kind:menu pass@ 3 $0.015  total $22.68
+grok-4.3 55 fix_manifest:reserved_id pass@ 2 $0.009  total $22.70
+qwen3-coder 48 chunk_add_kind:menu pass@ None $0.004  total $22.73
+qwen3.6-27b 17 build_from_spec pass@ None $0.053  total $22.74
+qwen3-coder 41 chunk_component pass@ 2 $0.007  total $22.74
+qwen3-coder 40 chunk_component pass@ None $0.006  total $22.75
+qwen3-coder 45 chunk_manifest_entry pass@ None $0.009  total $22.75
+qwen3-coder 47 chunk_add_kind:service pass@ None $0.004  total $22.75
+grok-4.3 50 chunk_component pass@ None $0.024  total $22.75
+10:17 grok-4.3 done n=49 checker_pass_by_round=[6, 15, 20, 25] cost=$0.44 stopped=0
+qwen3-coder 55 fix_manifest:reserved_id pass@ None $0.004  total $22.75
+qwen3-coder 46 chunk_add_kind:bar pass@ None $0.004  total $22.75
+qwen3-coder 50 chunk_component pass@ 3 $0.009  total $22.75
+10:17 qwen3-coder done n=49 checker_pass_by_round=[4, 7, 8, 13] cost=$0.25 stopped=0
+qwen3.6-27b 23 add_panel pass@ None $0.056  total $22.77
+qwen3.6-27b 49 chunk_component pass@ 0 $0.000  total $22.82
+qwen3.6-27b 30 build_from_spec pass@ None $0.000  total $22.85
+qwen3.6-27b 51 fix_manifest:reserved_id pass@ 0 $0.000  total $22.85
+qwen3.6-27b 52 fix_manifest:bad_path_dotdot pass@ 0 $0.000  total $22.85
+qwen3.6-27b 53 fix_manifest:reserved_id pass@ 0 $0.000  total $22.85
+qwen3.6-27b 54 fix_manifest:bad_path_absolute pass@ 0 $0.000  total $22.85
+qwen3.6-27b 27 build_from_spec pass@ None $0.094  total $22.97
+qwen3.6-27b 38 chunk_component pass@ None $0.074  total $23.00
+qwen3.6-27b 39 chunk_manifest_entry pass@ None $0.041  total $23.03
+qwen3.6-27b 37 chunk_component pass@ None $0.025  total $23.08
+qwen3.6-27b 46 chunk_add_kind:bar pass@ None $0.039  total $23.10
+qwen3.6-27b 48 chunk_add_kind:menu pass@ None $0.038  total $23.13
+qwen3.6-27b 50 chunk_component pass@ None $0.037  total $23.17
+qwen3.6-27b 55 fix_manifest:reserved_id pass@ None $0.046  total $23.22
+qwen3.6-27b 41 chunk_component pass@ None $0.077  total $23.26
+qwen3.6-27b 45 chunk_manifest_entry pass@ None $0.079  total $23.31
+qwen3.6-27b 47 chunk_add_kind:service pass@ None $0.059  total $23.37
+qwen3.6-27b 40 chunk_component pass@ None $0.116  total $23.37
+10:30 qwen3.6-27b done n=49 checker_pass_by_round=[5, 8, 9, 9] cost=$1.26 stopped=14
+deepseek-v4-pro 37 chunk_componentclaude-sonnet-5.5 pass@  20None  $0.000 build_from_spec pass@ None budget$0.000 total $23.37
+claude-sonnet-5.5 budget 21 total $23.37
+ build_from_spec pass@ None $0.000 budget claude-sonnet-5.5total $23.37
+ 24 build_from_specclaude-sonnet-5.5 18  build_from_spec pass@pass@ None  $0.000 budgetNone $0.000 budget total $23.37
+ total $23.37
+claude-sonnet-5.5 25 add_panel pass@ None claude-sonnet-5.5 22 $0.000 budget total $23.37build_from_spec pass@
+ None $0.000 budget total $23.37
+claude-sonnet-5.5 24 build_from_spec pass@ None $0.000  total $23.61
+gpt-5.6-sol 7 build_from_spec pass@ None $0.000  total $23.61
+claude-sonnet-5.5 22 build_from_spec pass@ None $0.000  total $23.61
+gpt-5.6-sol 10 build_from_spec pass@ None $0.000  total $23.61
+claude-sonnet-5.5 25 add_panel pass@ None $0.000  total $23.61
+gpt-5.6-sol 9 build_from_spec pass@ None $0.000  total $23.61
+gpt-5.6-sol 12 build_from_spec pass@ None $0.000  total $23.61
+claude-sonnet-5.5 27 build_from_spec pass@ None $0.000  total $23.61
+qwen3.6-27b 5 build_from_spec pass@ None $0.000  total $23.62
+kimi-k3 27 build_from_spec pass@ None $0.000  total $23.62
+kimi-k3 28 build_from_spec pass@ None $0.000  total $23.62
+kimi-k3 36 chunk_manifest_entry pass@ None $0.000  total $23.85
+kimi-k3 31 build_from_spec pass@ None $0.021  total $23.85
+kimi-k3 38 chunk_component pass@ None $0.000  total $23.85
+deepseek-v4-pro 31 build_from_spec pass@ None $0.000  total $23.85
+kimi-k3 37 chunk_component pass@ None $0.000  total $23.85
+claude-sonnet-5.5 18 build_from_spec pass@ None $0.000  total $23.85
+deepseek-v4-pro 15 build_from_spec pass@ None $0.032  total $23.85
+deepseek-v4-pro 40 chunk_component pass@ None $0.000  total $23.85
+claude-sonnet-5.5 20 build_from_spec pass@ None $0.000  total $23.85
+deepseek-v4-pro 26 build_from_spec pass@ None $0.017  total $23.85
+deepseek-v4-pro 41 chunk_component pass@ None $0.000  total $23.88
+gpt-5.6-sol 13 build_from_spec pass@ None $0.000  total $23.93
+deepseek-v4-pro 45 chunk_manifest_entry pass@ None $0.000  total $23.93
+claude-sonnet-5.5 31 build_from_spec pass@ None $0.000  total $23.93
+deepseek-v4-pro 38 chunk_component pass@ None $0.000  total $23.93
+kimi-k3 41 chunk_component pass@ None $0.000  total $23.93
+gpt-5.6-sol 21 build_from_spec pass@ None $0.000  total $23.93
+qwen3.6-27b 0 build_from_spec pass@ None $0.000  total $23.93
+qwen3.6-27b 9 build_from_spec pass@ None $0.003  total $23.93
+qwen3.6-27b 7 build_from_spec pass@ None $0.004  total $23.93
+qwen3.6-27b 13 build_from_spec pass@ None $0.000  total $23.93
+qwen3.6-27b 8 add_panel pass@ None $0.006  total $23.93
+deepseek-v4-pro 30 build_from_spec pass@ None $0.000  total $23.93
+gpt-5.6-sol 29 build_from_spec pass@ None $0.229  total $23.95
+deepseek-v4-pro 37 chunk_component pass@ None $0.000  total $23.95
+gpt-5.6-sol 24 build_from_spec pass@ None $0.000  total $23.95
+claude-sonnet-5.5 37 chunk_component pass@ None $0.000  total $23.95
+claude-sonnet-5.5 29 build_from_spec pass@ None $0.000  total $23.95
+gpt-5.6-sol 17 build_from_spec pass@ None $0.000  total $23.95
+kimi-k3 45 chunk_manifest_entry pass@ None $0.000  total $23.95
+qwen3.6-27b 6 build_from_spec pass@ None $0.026  total $23.95
+deepseek-v4-pro 48 chunk_add_kind:menu pass@ None $0.000  total $23.95
+deepseek-v4-pro 36 chunk_manifest_entry pass@ None $0.000  total $23.95
+deepseek-v4-pro 50 chunk_component pass@ None $0.000  total $23.95
+gpt-5.6-sol 31 build_from_spec pass@ None $0.000  total $23.95
+kimi-k3 24 build_from_spec pass@ None $0.000  total $23.95
+qwen3.6-27b 15 build_from_spec pass@ None $0.000  total $23.95
+kimi-k3 47 chunk_add_kind:service pass@ None $0.000  total $23.95
+qwen3.6-27b 19 add_panel pass@ None $0.000  total $23.95
+deepseek-v4-pro 39 chunk_manifest_entry pass@ None $0.000  total $23.95
+deepseek-v4-pro 47 chunk_add_kind:service pass@ None $0.000  total $23.95
+qwen3.6-27b 3 build_from_spec pass@ None $0.026  total $23.95
+gpt-5.6-sol 18 build_from_spec pass@ None $0.000  total $23.95
+deepseek-v4-pro 55 fix_manifest:reserved_id pass@ None $0.000  total $23.95
+kimi-k3 25 add_panel pass@ None $0.000  total $23.95
+claude-sonnet-5.5 21 build_from_spec pass@ None $0.000  total $23.95
+deepseek-v4-pro 27 build_from_spec pass@ None $0.012  total $23.95
+qwen3.6-27b 2 build_from_spec pass@ None $0.020  total $23.95
+kimi-k3 55 fix_manifest:reserved_id pass@ None $0.000  total $23.95
+claude-sonnet-5.5 40 chunk_component pass@ None $0.000  total $23.95
+gpt-5.6-sol 20 build_from_spec pass@ None $0.000  total $23.95
+kimi-k3 26 build_from_spec pass@ None $0.000  total $23.95
+claude-sonnet-5.5 47 chunk_add_kind:service pass@ None $0.000  total $23.95
+deepseek-v4-pro 49 chunk_component pass@ None $0.000  total $23.95
+10:40 deepseek-v4-pro done n=49 checker_pass_by_round=[5, 6, 8, 8] cost=$0.89 stopped=0
+claude-sonnet-5.5 38 chunk_component pass@ None $0.000  total $23.95
+qwen3.6-27b 14 add_panel pass@ None $0.025  total $23.95
+claude-sonnet-5.5 54 fix_manifest:bad_path_absolute pass@ None $0.000  total $23.95
+10:41 claude-sonnet-5.5 done n=49 checker_pass_by_round=[11, 22, 24, 28] cost=$1.23 stopped=0
+qwen3.6-27b 12 build_from_spec pass@ None $0.000  total $23.95
+kimi-k3 40 chunk_component pass@ None $0.009  total $23.95
+10:41 kimi-k3 done n=49 checker_pass_by_round=[3, 10, 16, 24] cost=$1.01 stopped=0
+gpt-5.6-sol 22 build_from_spec pass@ None $0.000  total $23.95
+qwen3.6-27b 10 build_from_spec pass@ None $0.004  total $23.95
+10:41 qwen3.6-27b done n=49 checker_pass_by_round=[5, 8, 9, 9] cost=$1.37 stopped=0
+gpt-5.6-sol 37 chunk_component pass@ None $0.000  total $23.95
+10:41 gpt-5.6-sol done n=49 checker_pass_by_round=[22, 26, 26, 26] cost=$0.61 stopped=0

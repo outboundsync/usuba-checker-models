@@ -1,0 +1,237 @@
+claude-sonnet-5.5 9 build_from_spec pass@ 1 $0.039  total $24.60
+claude-opus-5.5 6 build_from_spec pass@ 1 $0.201  total $25.01
+claude-sonnet-5.5 10 build_from_spec pass@ 1 $0.047  total $25.06
+claude-opus-5.5 7 build_from_spec pass@ 1 $0.228  total $25.77
+claude-opus-5.5 9 build_from_spec pass@ 1 $0.151  total $25.77
+gpt-5.6-sol 6 build_from_spec pass@ 1 $0.148  total $25.98
+gemini-3.1-pro 17 build_from_spec pass@ 1 $0.042  total $25.98
+grok-4.3 29 build_from_spec pass@ 1 $0.005  total $25.98
+kimi-k3 25 add_panel pass@ 1 $0.018  total $26.38
+claude-opus-5.5 10 build_from_spec pass@ 1 $0.132  total $26.38
+qwen3.6-27b 0 build_from_spec pass@ 1 $0.016  total $26.57
+kimi-k3 26 build_from_spec pass@ 1 $0.013  total $26.57
+gpt-5.6-sol 7 build_from_spec pass@ 1 $0.159  total $26.72
+gemini-3.1-pro 18 build_from_spec pass@ 1 $0.033  total $26.72
+claude-opus-5.5 12 build_from_spec pass@ 1 $0.103  total $26.72
+gpt-5.6-sol 9 build_from_spec pass@ 1 $0.076  total $26.88
+claude-sonnet-5.5 20 build_from_spec pass@ 1 $0.028  total $26.99
+claude-opus-5.5 13 build_from_spec pass@ 1 $0.081  total $26.99
+gpt-5.6-sol 10 build_from_spec pass@ 1 $0.099  total $27.12
+claude-opus-5.5 17 build_from_spec pass@ 1 $0.120  total $27.25
+gpt-5.6-sol 12 build_from_spec pass@ 1 $0.090  total $27.38
+claude-sonnet-5.5 22 build_from_spec pass@ 1 $0.039  total $27.62
+claude-opus-5.5 20 build_from_spec pass@ 1 $0.100  total $27.62
+gpt-5.6-sol 13 build_from_spec pass@ 1 $0.071  total $27.63
+claude-opus-5.5 21 build_from_spec pass@ 1 $0.089  total $27.88
+gpt-5.6-sol 18 build_from_spec pass@ 1 $0.085  total $28.03
+claude-opus-5.5 24 build_from_spec pass@ 1 $0.060  total $28.03
+claude-opus-5.5 22 build_from_spec pass@ 1 $0.106  total $28.16
+gpt-5.6-sol 22 budget stop, row left missing
+qwen3.6-27b 14 budget stop, row left missing
+gpt-5.6-sol 24 budget stop, row left missing
+grok-4.3 38 budget stop, row left missing
+grok-4.3 37 budget stop, row left missing
+qwen3.6-27b 18 budget stop, row left missing
+grok-4.3 36 budget stop, row left missing
+kimi-k3 6 budget stop, row left missing
+kimi-k3 30 budget stop, row left missing
+kimi-k3 31 budget stop, row left missing
+kimi-k3 36 budget stop, row left missing
+kimi-k3 37 budget stop, row left missing
+kimi-k3 38 budget stop, row left missing
+kimi-k3 39 budget stop, row left missing
+kimi-k3 40 budget stop, row left missing
+kimi-k3 41 budget stop, row left missing
+gemini-3.1-pro 9 budget stop, row left missing
+gemini-3.1-pro 6 budget stop, row left missing
+grok-4.3 17 budget stop, row left missing
+kimi-k3 20 budget stop, row left missing
+grok-4.3 22 budget stop, row left missing
+grok-4.3 24 budget stop, row left missing
+gemini-3.1-pro 1 budget stop, row left missing
+grok-4.3 26 budget stop, row left missing
+gemini-3.1-pro 13 budget stop, row left missing
+kimi-k3 21 budget stop, row left missing
+gpt-5.6-sol 21 build_from_spec pass@ 1 $0.090  total $28.36
+kimi-k3 22 budget stop, row left missing
+kimi-k3 48 budget stop, row left missing
+kimi-k3 49 budget stop, row left missing
+kimi-k3 50 budget stop, row left missing
+gemini-3.1-pro 0 budget stop, row left missing
+claude-opus-5.5 29 budget stop, row left missing
+kimi-k3 24 budget stop, row left missing
+grok-4.3 28 budget stop, row left missing
+claude-sonnet-5.5 13 budget stop, row left missing
+gemini-3.1-pro 16 budget stop, row left missing
+gemini-3.1-pro 26 budget stop, row left missing
+claude-opus-5.5 31 budget stop, row left missing
+gemini-3.1-pro 12 build_from_spec pass@ 2 $0.220  total $28.53
+gemini-3.1-pro 19 budget stop, row left missing
+kimi-k3 28 budget stop, row left missing
+claude-opus-5.5 37 budget stop, row left missing
+gemini-3.1-pro 15 budget stop, row left missing
+claude-sonnet-5.5 17 budget stop, row left missing
+qwen3-coder 21 budget stop, row left missing
+grok-4.3 39 budget stop, row left missing
+grok-4.3 30 budget stop, row left missing
+qwen3.6-27b 15 budget stop, row left missing
+kimi-k3 29 budget stop, row left missing
+gpt-5.6-sol 31 budget stop, row left missing
+gemini-3.1-pro 20 budget stop, row left missing
+claude-opus-5.5 38 budget stop, row left missing
+deepseek-v4-pro 17 budget stop, row left missing
+claude-sonnet-5.5 18 budget stop, row left missing
+qwen3.6-27b 20 budget stop, row left missing
+gpt-5.6-sol 37 budget stop, row left missing
+kimi-k3 27 budget stop, row left missing
+qwen3-coder 22 budget stop, row left missing
+claude-sonnet-5.5 38 budget stop, row left missing
+claude-opus-5.5 39 budget stop, row left missing
+gpt-5.6-sol 38 budget stop, row left missing
+deepseek-v4-pro 18 budget stop, row left missing
+deepseek-v4-pro 19 budget stop, row left missing
+claude-sonnet-5.5 21 budget stop, row left missing
+gpt-5.6-sol 39 budget stop, row left missing
+deepseek-v4-pro 20 budget stop, row left missing
+claude-opus-5.5 40 budget stop, row left missing
+qwen3.6-27b 2 budget stop, row left missing
+qwen3-coder 24 budget stop, row left missing
+claude-sonnet-5.5 39 budget stop, row left missing
+claude-opus-5.5 41 budget stop, row left missing
+claude-sonnet-5.5 24 budget stop, row left missing
+gpt-5.6-sol 40 budget stop, row left missing
+qwen3-coder 23 budget stop, row left missing
+qwen3-coder 25 budget stop, row left missing
+qwen3.6-27b 3 budget stop, row left missing
+gpt-5.6-sol 17 budget stop, row left missing
+claude-sonnet-5.5 25 budget stop, row left missing
+claude-opus-5.5 47 budget stop, row left missing
+qwen3-coder 26 budget stop, row left missing
+qwen3.6-27b 6 budget stop, row left missing
+claude-opus-5.5 50 budget stop, row left missing
+claude-opus-5.5 55 budget stop, row left missing
+gpt-5.6-sol 20 budget stop, row left missing
+claude-sonnet-5.5 29 budget stop, row left missing
+claude-opus-5.5 25 budget stop, row left missing
+gpt-5.6-sol 41 budget stop, row left missing
+qwen3-coder 29 budget stop, row left missing
+claude-sonnet-5.5 27 budget stop, row left missing
+qwen3-coder 37 budget stop, row left missing
+qwen3.6-27b 19 budget stop, row left missing
+grok-4.3 40 budget stop, row left missing
+grok-4.3 41 budget stop, row left missing
+kimi-k3 17 budget stop, row left missing
+kimi-k3 13 budget stop, row left missing
+deepseek-v4-pro 6 budget stop, row left missing
+kimi-k3 10 budget stop, row left missing
+kimi-k3 18 budget stop, row left missing
+deepseek-v4-pro 4 budget stop, row left missing
+gemini-3.1-pro 7 budget stop, row left missing
+gemini-3.1-pro 10 budget stop, row left missing
+gemini-3.1-pro 21 budget stop, row left missing
+gemini-3.1-pro 22 budget stop, row left missing
+grok-4.3 47 budget stop, row left missing
+gpt-5.6-sol 46 budget stop, row left missing
+gpt-5.6-sol 45 budget stop, row left missing
+gemini-3.1-pro 23 budget stop, row left missing
+gemini-3.1-pro 24 budget stop, row left missing
+gpt-5.6-sol 47 budget stop, row left missing
+kimi-k3 47 budget stop, row left missing
+grok-4.3 45 budget stop, row left missing
+qwen3-coder 36 budget stop, row left missing
+kimi-k3 45 budget stop, row left missing
+qwen3.6-27b 5 budget stop, row left missing
+kimi-k3 46 budget stop, row left missing
+deepseek-v4-pro 13 budget stop, row left missing
+claude-sonnet-5.5 31 budget stop, row left missing
+grok-4.3 27 budget stop, row left missing
+kimi-k3 51 budget stop, row left missing
+claude-sonnet-5.5 37 budget stop, row left missing
+gemini-3.1-pro 25 budget stop, row left missing
+kimi-k3 55 budget stop, row left missing
+qwen3.6-27b 7 budget stop, row left missing
+qwen3.6-27b 10 budget stop, row left missing
+deepseek-v4-pro 12 budget stop, row left missing
+qwen3-coder 14 budget stop, row left missing
+claude-opus-5.5 30 budget stop, row left missing
+gemini-3.1-pro 27 budget stop, row left missing
+claude-sonnet-5.5 40 budget stop, row left missing
+qwen3.6-27b 9 budget stop, row left missing
+deepseek-v4-pro 11 budget stop, row left missing
+gemini-3.1-pro 29 budget stop, row left missing
+gemini-3.1-pro 30 budget stop, row left missing
+gemini-3.1-pro 31 budget stop, row left missing
+grok-4.3 31 budget stop, row left missing
+gpt-5.6-sol 55 budget stop, row left missing
+deepseek-v4-pro 21 budget stop, row left missing
+gemini-3.1-pro 36 budget stop, row left missing
+qwen3.6-27b 21 budget stop, row left missing
+claude-sonnet-5.5 47 budget stop, row left missing
+deepseek-v4-pro 22 budget stop, row left missing
+11:55 kimi-k3 done n=21 checker_pass_by_round=[3, 12, 18, 21] cost=$0.67 stopped=0
+11:55 grok-4.3 done n=33 checker_pass_by_round=[6, 16, 20, 23] cost=$0.31 stopped=0
+11:55 claude-opus-5.5 done n=37 checker_pass_by_round=[19, 33, 35, 36] cost=$3.13 stopped=0
+qwen3-coder 39 budget stop, row left missing
+deepseek-v4-pro 25 budget stop, row left missing
+deepseek-v4-pro 37 budget stop, row left missing
+deepseek-v4-pro 36 budget stop, row left missing
+deepseek-v4-pro 38 budget stop, row left missing
+claude-sonnet-5.5 55 budget stop, row left missing
+qwen3.6-27b 26 budget stop, row left missing
+claude-sonnet-5.5 51 budget stop, row left missing
+qwen3.6-27b 28 budget stop, row left missing
+deepseek-v4-pro 26 budget stop, row left missing
+deepseek-v4-pro 27 budget stop, row left missing
+gemini-3.1-pro 37 budget stop, row left missing
+qwen3-coder 15 budget stop, row left missing
+gemini-3.1-pro 38 budget stop, row left missing
+claude-sonnet-5.5 54 budget stop, row left missing
+gemini-3.1-pro 45 budget stop, row left missing
+qwen3.6-27b 30 budget stop, row left missing
+gemini-3.1-pro 39 budget stop, row left missing
+gemini-3.1-pro 46 budget stop, row left missing
+qwen3.6-27b 31 budget stop, row left missing
+deepseek-v4-pro 28 budget stop, row left missing
+deepseek-v4-pro 29 budget stop, row left missing
+gemini-3.1-pro 40 budget stop, row left missing
+gemini-3.1-pro 47 budget stop, row left missing
+deepseek-v4-pro 30 budget stop, row left missing
+deepseek-v4-pro 49 budget stop, row left missing
+qwen3.6-27b 37 budget stop, row left missing
+deepseek-v4-pro 31 budget stop, row left missing
+qwen3.6-27b 36 budget stop, row left missing
+gemini-3.1-pro 54 budget stop, row left missing
+gemini-3.1-pro 51 budget stop, row left missing
+deepseek-v4-pro 24 budget stop, row left missing
+qwen3.6-27b 22 budget stop, row left missing
+qwen3.6-27b 39 budget stop, row left missing
+deepseek-v4-pro 39 budget stop, row left missing
+deepseek-v4-pro 40 budget stop, row left missing
+qwen3.6-27b 8 budget stop, row left missing
+claude-sonnet-5.5 53 budget stop, row left missing
+gemini-3.1-pro 48 budget stop, row left missing
+gemini-3.1-pro 55 budget stop, row left missing
+deepseek-v4-pro 45 budget stop, row left missing
+deepseek-v4-pro 41 budget stop, row left missing
+deepseek-v4-pro 47 budget stop, row left missing
+deepseek-v4-pro 48 budget stop, row left missing
+gemini-3.1-pro 50 budget stop, row left missing
+deepseek-v4-pro 50 budget stop, row left missing
+deepseek-v4-pro 55 budget stop, row left missing
+claude-sonnet-5.5 41 budget stop, row left missing
+claude-sonnet-5.5 52 budget stop, row left missing
+11:55 claude-sonnet-5.5 done n=29 checker_pass_by_round=[11, 26, 28, 29] cost=$1.14 stopped=0
+gemini-3.1-pro 41 budget stop, row left missing
+11:55 gemini-3.1-pro done n=14 checker_pass_by_round=[4, 10, 11, 12] cost=$1.29 stopped=0
+qwen3-coder 17 budget stop, row left missing
+11:55 qwen3-coder done n=36 checker_pass_by_round=[4, 7, 8, 11] cost=$0.20 stopped=0
+deepseek-v4-pro 15 budget stop, row left missing
+deepseek-v4-pro 14 add_panel pass@ None $0.059  total $28.81
+gpt-5.6-sol 29 build_from_spec pass@ 1 $0.200  total $28.81
+11:55 gpt-5.6-sol done n=35 checker_pass_by_round=[22, 35, 35, 35] cost=$1.18 stopped=0
+qwen3.6-27b 12 budget stop, row left missing
+qwen3.6-27b 13 budget stop, row left missing
+deepseek-v4-pro 10 build_from_spec pass@ None $0.026  total $28.87
+11:57 deepseek-v4-pro done n=17 checker_pass_by_round=[5, 6, 8, 8] cost=$0.46 stopped=0
+qwen3.6-27b 24 build_from_spec pass@ None $0.080  total $28.95
+12:05 qwen3.6-27b done n=25 checker_pass_by_round=[5, 9, 10, 10] cost=$1.02 stopped=0

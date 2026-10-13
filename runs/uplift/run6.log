@@ -1,0 +1,100 @@
+grok-4.7 1 API error, row left missing: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16000 token
+grok-4.7 0 API error, row left missing: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16000 token
+gemini-4-argon 1 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 0 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 3 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 3 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 4 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 5 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 2 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 2 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 7 build_from_spec pass@ 0 $0.000  total $52.57
+gemini-4-argon 6 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 6 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 4 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 5 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 8 add_panel pass@ 0 $0.000  total $52.57
+gemini-4-argon 9 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 10 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 11 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 12 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 13 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 10 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 7 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 11 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 14 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 8 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 9 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 12 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 13 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 14 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 16 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 16 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 18 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 15 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 17 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 17 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 19 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 15 build_from_spec pass@ 0 $0.000  total $52.57
+grok-4.7 21 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 22 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 18 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 23 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 19 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 24 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 21 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 26 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 20 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 20 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 22 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 27 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 23 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 31 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 26 build_from_spec pass@ 0 $0.000  total $52.57
+grok-4.7 29 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 24 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 30 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 36 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 31 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 37 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 38 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 25 add_panel pass@ 0 $0.000  total $52.57
+grok-4.7 25 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 28 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 27 build_from_spec pass@ 0 $0.000  total $52.57
+grok-4.7 40 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 28 build_from_spec pass@ 0 $0.000  total $52.57
+gemini-4-argon 30 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 29 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 36 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 37 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 38 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 48 chunk_add_kind:menu pass@ 0 $0.000  total $52.57
+grok-4.7 39 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 45 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 45 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 46 chunk_add_kind:bar pass@ 0 $0.000  total $52.57
+grok-4.7 50 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 39 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 48 chunk_add_kind:menu pass@ 0 $0.000  total $52.57
+grok-4.7 47 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 51 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 46 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 41 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 47 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 53 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 40 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 54 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 49 chunk_component pass@ 0 $0.000  total $52.57
+grok-4.7 52 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 53 fix_manifest:reserved_id pass@ 0 $0.000  total $52.57
+gemini-4-argon 52 fix_manifest:bad_path_dotdot pass@ 0 $0.000  total $52.57
+gemini-4-argon 54 fix_manifest:bad_path_absolute pass@ 0 $0.000  total $52.57
+gemini-4-argon 51 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+grok-4.7 55 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+13:56 grok-4.7 done n=5 checker_pass_by_round=[5, 5, 5, 5] cost=$0.00 stopped=0
+gemini-4-argon 49 chunk_component pass@ 0 $0.000  total $52.57
+gemini-4-argon 55 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 50 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+gemini-4-argon 41 API error, row left missing: stopped: HTTP 402 b'{"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 16
+13:56 gemini-4-argon done n=10 checker_pass_by_round=[10, 10, 10, 10] cost=$0.00 stopped=0
