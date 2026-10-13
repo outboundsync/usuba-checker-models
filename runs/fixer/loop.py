@@ -18,7 +18,7 @@ done = {json.loads(l)["i"] for l in open(outp)} if os.path.exists(outp) else set
 
 def chat(msgs):
     b = {"model": MODEL, "messages": msgs, "temperature": 0, "max_tokens": 16000, "usage": {"include": True},
-         "reasoning": {"effort": "low", "exclude": True}, "provider": {"sort": "throughput"}}
+         "reasoning": {"effort": "low", "exclude": True}, "provider": {"sort": "throughput", "zdr": True, "data_collection": "deny"}}
     err = ""
     for a in range(2):
         try:
