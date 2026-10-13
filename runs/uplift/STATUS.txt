@@ -32,3 +32,4 @@
 13:26 qwen3.6-27b done n=49 checker_pass_by_round=[5, 9, 10, 13] cost=$2.62 stopped=0
 13:56 grok-4.7 done n=5 checker_pass_by_round=[5, 5, 5, 5] cost=$0.00 stopped=0
 13:56 gemini-4-argon done n=10 checker_pass_by_round=[10, 10, 10, 10] cost=$0.00 stopped=0
+14:45 muse-wonder done n=49 checker_pass_by_round=[17, 38, 41, 42] cost=$6.72 stopped=0
