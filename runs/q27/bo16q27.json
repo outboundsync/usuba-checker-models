@@ -1,0 +1,151 @@
+{
+ "bo16_q27": {
+  "k": 16,
+  "summary": {
+   "build_from_spec": {
+    "prompts": 32,
+    "pass_at_1": 0.062,
+    "pass_at_k": "15/32",
+    "trunc_rate": 0.311,
+    "loop_rate": 0.293
+   },
+   "ALL": {
+    "prompts": 32,
+    "pass_at_1": 0.062,
+    "pass_at_k": "15/32",
+    "trunc_rate": 0.311,
+    "loop_rate": 0.293
+   }
+  },
+  "per_prompt": [
+   {
+    "task": "build_from_spec",
+    "passes": 1
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 3
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 0
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 2
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 4
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 0
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 1
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 1
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 0
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 1
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 0
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 2
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 0
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 0
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 0
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 2
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 0
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 1
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 0
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 5
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 0
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 1
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 0
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 2
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 0
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 0
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 0
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 0
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 0
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 3
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 3
+   },
+   {
+    "task": "build_from_spec",
+    "passes": 0
+   }
+  ]
+ }
+}

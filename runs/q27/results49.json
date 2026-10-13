@@ -1,0 +1,1654 @@
+{
+ "models": {
+  "q27": {
+   "new_overall": "7/49",
+   "new_full_plugin": "2/32",
+   "per_task": {
+    "build_from_spec": "2/26",
+    "add_panel": "0/6",
+    "chunk_manifest_entry": "0/3",
+    "chunk_component": "0/6",
+    "chunk_add_kind": "1/3",
+    "fix_manifest": "4/5"
+   },
+   "failure_categories": {
+    "rt-other": 19,
+    "rt-load-failed": 18,
+    "no-qml": 16,
+    "rt-not-instantiated": 15,
+    "rt-shell-broken": 9,
+    "rt-invisible": 7,
+    "no-files-parsed": 6,
+    "rt-bad-property": 4,
+    "rt-js-error": 3,
+    "rt-unresolved-type/import": 3,
+    "exec-unknown-binary": 2,
+    "rt-undefined-arg": 2,
+    "singleton-unknown": 1,
+    "bad-import": 1,
+    "fix-id-not-namespaced": 1
+   },
+   "truncated": 31,
+   "looping": 31,
+   "median_chars": 61746
+  }
+ },
+ "rows": {
+  "q27": [
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-qml",
+     "rt-load-failed",
+     "rt-not-instantiated"
+    ],
+    "finish": "length",
+    "static_fails": [
+     "no-qml: plugin contains no QML file"
+    ],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for acme.background: Service.qml: No such file or directory",
+     "WARN qml: service plugin load failed for acme.background: Service.qml: No such file or directory",
+     "service instance not created"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "service": false
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 63184,
+    "loop": true
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-qml",
+     "rt-load-failed",
+     "rt-not-instantiated"
+    ],
+    "finish": "length",
+    "static_fails": [
+     "no-qml: plugin contains no QML file"
+    ],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for acme.background: Service.qml: No such file or directory",
+     "WARN qml: service plugin load failed for acme.background: Service.qml: No such file or directory",
+     "service instance not created"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "service": false
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 82394,
+    "loop": true
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-qml",
+     "rt-not-instantiated",
+     "rt-other",
+     "rt-shell-broken"
+    ],
+    "finish": "length",
+    "static_fails": [
+     "no-qml: plugin contains no QML file"
+    ],
+    "runtime_errors": [
+     "WARN scene: Overlay.qml[-1:-1]: No such file or directory",
+     "shell broke with plugin installed: WARN scene: @shell.qml[1357:-1]: ReferenceError: errorString is not defined",
+     "overlay never instantiated after summon (status=None)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 62777,
+    "loop": true
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-qml",
+     "rt-not-instantiated",
+     "rt-other",
+     "rt-shell-broken"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "no-qml: plugin contains no QML file"
+    ],
+    "runtime_errors": [
+     "WARN scene: Overlay.qml[-1:-1]: No such file or directory",
+     "shell broke with plugin installed: WARN scene: @shell.qml[1357:-1]: ReferenceError: errorString is not defined",
+     "overlay never instantiated after summon (status=None)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null
+    },
+    "soft": [],
+    "files": [
+     "Model.js",
+     "manifest.json"
+    ],
+    "chars": 14621,
+    "loop": true
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-qml",
+     "rt-load-failed",
+     "rt-not-instantiated"
+    ],
+    "finish": "length",
+    "static_fails": [
+     "no-qml: plugin contains no QML file"
+    ],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for acme.notifications: Service.qml: No such file or directory",
+     "WARN qml: service plugin load failed for acme.notifications: Service.qml: No such file or directory",
+     "service instance not created"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "service": false
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 73345,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-qml",
+     "rt-load-failed",
+     "rt-not-instantiated"
+    ],
+    "finish": "length",
+    "static_fails": [
+     "no-qml: plugin contains no QML file"
+    ],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for acme.notifications: Service.qml: No such file or directory",
+     "WARN qml: service plugin load failed for acme.notifications: Service.qml: No such file or directory",
+     "service instance not created"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "service": false
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 67089,
+    "loop": true
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-qml",
+     "rt-invisible",
+     "rt-load-failed",
+     "rt-other"
+    ],
+    "finish": "length",
+    "static_fails": [
+     "no-qml: plugin contains no QML file"
+    ],
+    "runtime_errors": [
+     "WARN qml: Plugin widget acme.dropbox failed: BarWidget.qml: No such file or directory",
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1016, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: acme.dropbox"
+    ],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 78389,
+    "loop": true
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-bad-property",
+     "rt-load-failed",
+     "singleton-unknown"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "singleton-unknown: BarWidget.qml: Border.surfacePopup does not exist in the real qs.Commons Border singleton"
+    ],
+    "runtime_errors": [
+     "WARN qml: Plugin widget acme.dropbox failed: BarWidget.qml:188:5: Cannot assign to non-existent property \"shadow\"",
+     "bar-widget component never registered (load failed)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: acme.dropbox",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1016, 0 ink px) (conditionally hidden by design)"
+    ],
+    "files": [
+     "BarWidget.qml",
+     "Panel.qml",
+     "manifest.json"
+    ],
+    "chars": 22447,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "exec-unknown-binary",
+     "rt-js-error"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "exec-unknown-binary: PanelContent.qml: runs `dropbox` - not an Omarchy/system binary on the Dell and not shipped by the plugin"
+    ],
+    "runtime_errors": [
+     "WARN scene: Panel.qml[25:-1]: TypeError: Property 'statusText' of object [object Object] is not a function"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      27,
+      26
+     ],
+     "widget_slot": [
+      27,
+      26
+     ],
+     "widget_x": 1016,
+     "panel_opened": true,
+     "texts": [
+      "\uf270",
+      "\uf270",
+      "\uf270"
+     ],
+     "widget_ink": 62,
+     "widget_contrast": 7.06
+    },
+    "soft": [
+     "WARN scene: PanelContent.qml[11:1]: PanelContent is instantiated recursively",
+     "exec: `/opt/ft/runs/rfabtfdb1/home/user/omarchy/plugins/acme.dropbox/dropbox-status` failed to start in the box (exists on the Dell)",
+     "exec: `/opt/ft/runs/rfabtfdb1/home/user/omarchy/plugins/acme.dropbox/dropbox-status` failed to start in the box (exists on the Dell)",
+     "exec: `/opt/ft/runs/rfabtfdb1/home/user/omarchy/plugins/acme.dropbox/dropbox-status` failed to start in the box (exists on the Dell)"
+    ],
+    "files": [
+     "Model.js",
+     "Panel.qml",
+     "PanelContent.qml",
+     "manifest.json"
+    ],
+    "chars": 14383,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-other"
+    ],
+    "finish": "length",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN scene: Panel.qml[-1:-1]: No such file or directory"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      29,
+      26
+     ],
+     "widget_slot": [
+      29,
+      26
+     ],
+     "widget_x": 1016,
+     "panel_opened": false,
+     "texts": [
+      "\udb80\udf79",
+      "\udb80\udf79"
+     ],
+     "widget_ink": 52,
+     "widget_contrast": 7.06
+    },
+    "soft": [],
+    "files": [
+     "BarWidget.qml",
+     "manifest.json"
+    ],
+    "chars": 61453,
+    "loop": true
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-other"
+    ],
+    "finish": "length",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN scene: Panel.qml[-1:-1]: No such file or directory"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      29,
+      26
+     ],
+     "widget_slot": [
+      29,
+      26
+     ],
+     "widget_x": 1016,
+     "panel_opened": false,
+     "texts": [
+      "\udb80\udf79",
+      "\udb80\udf79"
+     ],
+     "widget_ink": 52,
+     "widget_contrast": 7.06
+    },
+    "soft": [],
+    "files": [
+     "BarWidget.qml",
+     "Model.js",
+     "manifest.json"
+    ],
+    "chars": 63419,
+    "loop": true
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "rt-bad-property",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN qml: Plugin widget acme.monitor failed: Panel.qml:201:13: Cannot assign to non-existent property \"onReleased\"",
+     "bar-widget component never registered (load failed)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: acme.monitor",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1016, 0 ink px) (conditionally hidden by design)"
+    ],
+    "files": [
+     "Panel.qml",
+     "manifest.json"
+    ],
+    "chars": 8705,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: Panel.qml: Quickshell module Quickshell.Services.PowerManagement does not exist"
+    ],
+    "runtime_errors": [
+     "WARN scene: Panel.qml[5:1]: module \"Quickshell.Services.PowerManagement\" is not installed"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      24,
+      26
+     ],
+     "widget_slot": [
+      24,
+      26
+     ],
+     "widget_x": 1016,
+     "panel_opened": false,
+     "texts": [
+      "\udb80\udc84",
+      "\udb80\udc84"
+     ],
+     "widget_ink": 67,
+     "widget_contrast": 7.06
+    },
+    "soft": [],
+    "files": [
+     "BarWidget.qml",
+     "Model.js",
+     "Panel.qml",
+     "manifest.json"
+    ],
+    "chars": 18638,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-undefined-arg"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "exec: `bash -c` hit 'command not found' (exit 127) on the Dell PATH: 'omarchy power profile get'",
+     "exec: `bash -c` hit 'command not found' (exit 127) on the Dell PATH: 'omarchy power stats'",
+     "exec: `bash -c` hit 'command not found' (exit 127) on the Dell PATH: 'omarchy power status'"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      27,
+      26
+     ],
+     "widget_slot": [
+      27,
+      26
+     ],
+     "widget_x": 1016,
+     "panel_opened": false,
+     "texts": [
+      "\udb80\udc8e",
+      "\udb80\udc8e",
+      "\udb80\udc8e"
+     ],
+     "widget_ink": 50,
+     "widget_contrast": 7.06
+    },
+    "soft": [],
+    "files": [
+     "Model.js",
+     "Panel.qml",
+     "manifest.json"
+    ],
+    "chars": 11640,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "length",
+    "chars": 79478,
+    "loop": true
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "exec-unknown-binary",
+     "rt-undefined-arg"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "exec-unknown-binary: Panel.qml: sh -c runs `iperf3` - not an Omarchy/system binary on the Dell"
+    ],
+    "runtime_errors": [
+     "exec: `bash -c` hit 'command not found' (exit 127) on the Dell PATH: \"iperf3 -c 'cloud-ipfs.io' -t 8\""
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 0,
+      "h": 0
+     }
+    },
+    "soft": [
+     "WARN scene: Panel.qml[153:17]: Unable to assign [undefined] to double",
+     "WARN scene: Panel.qml[153:17]: Unable to assign [undefined] to double"
+    ],
+    "files": [
+     "Panel.qml",
+     "manifest.json"
+    ],
+    "chars": 7942,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-qml",
+     "rt-not-instantiated",
+     "rt-other",
+     "rt-shell-broken"
+    ],
+    "finish": "length",
+    "static_fails": [
+     "no-qml: plugin contains no QML file"
+    ],
+    "runtime_errors": [
+     "WARN scene: Panel.qml[-1:-1]: No such file or directory",
+     "shell broke with plugin installed: WARN scene: @shell.qml[1357:-1]: ReferenceError: errorString is not defined",
+     "panel never instantiated after summon (status=None)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 59973,
+    "loop": true
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      25,
+      26
+     ],
+     "widget_slot": [
+      25,
+      26
+     ],
+     "widget_x": 1016,
+     "panel_opened": false,
+     "texts": [
+      "\u2014",
+      "\u2014"
+     ],
+     "widget_ink": 8,
+     "widget_contrast": 7.06
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: acme.weather",
+     "plugin reported external-state failure: WARN qml: omarchy.weather: ignoring bad weather payload: SyntaxError: JSON.parse: Parse error",
+     "plugin reported external-state failure: WARN qml: omarchy.weather: ignoring bad weather payload: SyntaxError: JSON.parse: Parse error"
+    ],
+    "files": [
+     "BarWidget.qml",
+     "Panel.qml",
+     "manifest.json"
+    ],
+    "chars": 11298,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-bad-property",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN qml: Plugin widget acme.weather failed: BarWidget.qml:295:17: Cannot assign to non-existent property \"horizontalAlignment\"",
+     "bar-widget component never registered (load failed)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: acme.weather",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1016, 0 ink px) (conditionally hidden by design)"
+    ],
+    "files": [
+     "BarWidget.qml",
+     "manifest.json"
+    ],
+    "chars": 12486,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "rt-invisible",
+     "rt-other"
+    ],
+    "finish": "length",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN scene: Panel.qml[-1:-1]: No such file or directory",
+     "bar-widget draws nothing visible on screen (slot 15x26 at x=1016, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      15,
+      26
+     ],
+     "widget_slot": [
+      15,
+      26
+     ],
+     "widget_x": 1016,
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN scene: BarWidget.qml[94:5]: Unable to assign [undefined] to QString",
+     "WARN scene: BarWidget.qml[93:5]: Unable to assign [undefined] to QString",
+     "exec: `/opt/ft/runs/rwhtqmy2j/home/user/omarchy/plugins/acme.weather/bin/omarchy-weather` failed to start in the box (exists on the Dell)"
+    ],
+    "files": [
+     "BarWidget.qml",
+     "manifest.json"
+    ],
+    "chars": 63551,
+    "loop": true
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-bad-property",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN qml: Plugin widget kenhara.scriptural failed: BarWidget.qml:184:5: Cannot assign to non-existent property \"contentHeight\"",
+     "bar-widget component never registered (load failed)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: kenhara.scriptural",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1016, 0 ink px) (conditionally hidden by design)"
+    ],
+    "files": [
+     "BarWidget.qml",
+     "fetch-verse",
+     "manifest.json"
+    ],
+    "chars": 8898,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-qml",
+     "rt-invisible",
+     "rt-load-failed",
+     "rt-other"
+    ],
+    "finish": "length",
+    "static_fails": [
+     "no-qml: plugin contains no QML file"
+    ],
+    "runtime_errors": [
+     "WARN qml: Plugin widget kenhara.scriptural failed: BarWidget.qml: No such file or directory",
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1016, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: kenhara.scriptural"
+    ],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 73715,
+    "loop": true
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-qml",
+     "rt-invisible",
+     "rt-load-failed",
+     "rt-other"
+    ],
+    "finish": "length",
+    "static_fails": [
+     "no-qml: plugin contains no QML file"
+    ],
+    "runtime_errors": [
+     "WARN qml: Plugin widget kenhara.scriptural failed: BarWidget.qml: No such file or directory",
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1016, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: kenhara.scriptural"
+    ],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 65458,
+    "loop": true
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "rt-invisible",
+     "rt-other"
+    ],
+    "finish": "length",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN scene: Panel.qml[-1:-1]: No such file or directory",
+     "bar-widget draws nothing visible on screen (slot 17x26 at x=1016, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      17,
+      26
+     ],
+     "widget_slot": [
+      17,
+      26
+     ],
+     "widget_x": 1016,
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [],
+    "files": [
+     "BarWidget.qml",
+     "manifest.json"
+    ],
+    "chars": 62957,
+    "loop": true
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-qml",
+     "rt-invisible",
+     "rt-load-failed",
+     "rt-other"
+    ],
+    "finish": "length",
+    "static_fails": [
+     "no-qml: plugin contains no QML file"
+    ],
+    "runtime_errors": [
+     "WARN qml: Plugin widget jankeesvw.time-machine failed: BarWidget.qml: No such file or directory",
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1016, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: jankeesvw.time-machine"
+    ],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 66041,
+    "loop": true
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "no-qml",
+     "rt-invisible",
+     "rt-load-failed",
+     "rt-other"
+    ],
+    "finish": "length",
+    "static_fails": [
+     "no-qml: plugin contains no QML file"
+    ],
+    "runtime_errors": [
+     "WARN qml: Plugin widget jankeesvw.time-machine failed: Panel.qml: No such file or directory",
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1016, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: jankeesvw.time-machine"
+    ],
+    "files": [
+     "Model.js",
+     "manifest.json"
+    ],
+    "chars": 63458,
+    "loop": true
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-qml",
+     "rt-load-failed",
+     "rt-not-instantiated"
+    ],
+    "finish": "length",
+    "static_fails": [
+     "no-qml: plugin contains no QML file"
+    ],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for fkcodes.key-promoter: Service.qml: No such file or directory",
+     "WARN qml: service plugin load failed for fkcodes.key-promoter: Service.qml: No such file or directory",
+     "service instance not created"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "service": false
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 64961,
+    "loop": true
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-qml",
+     "rt-not-instantiated",
+     "rt-other",
+     "rt-shell-broken"
+    ],
+    "finish": "length",
+    "static_fails": [
+     "no-qml: plugin contains no QML file"
+    ],
+    "runtime_errors": [
+     "WARN scene: Overlay.qml[-1:-1]: No such file or directory",
+     "shell broke with plugin installed: WARN scene: @shell.qml[1357:-1]: ReferenceError: errorString is not defined",
+     "overlay never instantiated after summon (status=None)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 94622,
+    "loop": true
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-qml",
+     "rt-load-failed",
+     "rt-not-instantiated",
+     "rt-other",
+     "rt-shell-broken"
+    ],
+    "finish": "length",
+    "static_fails": [
+     "no-qml: plugin contains no QML file"
+    ],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for bobbynicholas.omaland: Service.qml: No such file or directory",
+     "WARN qml: service plugin load failed for bobbynicholas.omaland: Service.qml: No such file or directory",
+     "WARN scene: Panel.qml[-1:-1]: No such file or directory",
+     "shell broke with plugin installed: WARN scene: @shell.qml[1357:-1]: ReferenceError: errorString is not defined",
+     "panel never instantiated after summon (status=None)",
+     "service instance not created"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null,
+     "service": false
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 64940,
+    "loop": true
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-other"
+    ],
+    "finish": "length",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN scene: Panel.qml[-1:-1]: No such file or directory"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      25,
+      26
+     ],
+     "widget_slot": [
+      25,
+      26
+     ],
+     "widget_x": 1016,
+     "panel_opened": false,
+     "texts": [
+      "\u2014",
+      "\u2014"
+     ],
+     "widget_ink": 8,
+     "widget_contrast": 7.06
+    },
+    "soft": [],
+    "files": [
+     "BarWidget.qml",
+     "CalendarModel.js",
+     "manifest.json"
+    ],
+    "chars": 61746,
+    "loop": true
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-qml",
+     "rt-load-failed",
+     "rt-not-instantiated"
+    ],
+    "finish": "length",
+    "static_fails": [
+     "no-qml: plugin contains no QML file"
+    ],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for scottjones.flush-bar: Service.qml: No such file or directory",
+     "WARN qml: service plugin load failed for scottjones.flush-bar: Service.qml: No such file or directory",
+     "service instance not created"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "service": false
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 32103,
+    "loop": true
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      27,
+      26
+     ],
+     "widget_slot": [
+      27,
+      26
+     ],
+     "widget_x": 1016,
+     "panel_opened": true,
+     "texts": [
+      "\udb80\udf17",
+      "\udb80\udf17"
+     ],
+     "widget_ink": 61,
+     "widget_contrast": 6.95
+    },
+    "soft": [],
+    "files": [
+     "BarWidget.qml",
+     "manifest.json"
+    ],
+    "chars": 7391,
+    "loop": false
+   },
+   {
+    "task": "chunk_manifest_entry",
+    "pass_": false,
+    "categories": [
+     "rt-not-instantiated",
+     "rt-other",
+     "rt-shell-broken"
+    ],
+    "finish": "length",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN scene: Beam.qml[-1:-1]: No such file or directory",
+     "shell broke with plugin installed: WARN scene: @shell.qml[1357:-1]: ReferenceError: errorString is not defined",
+     "menu never instantiated after summon (status=None)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 85207,
+    "loop": true
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "length",
+    "chars": 61026,
+    "loop": true
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "rt-not-instantiated",
+     "rt-other",
+     "rt-shell-broken",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN scene: Beam.qml[804:11]: Type SettingsView unavailable",
+     "WARN scene: ui/SettingsView.qml[127:3]: PanelWindow is not a type",
+     "shell broke with plugin installed: WARN scene: @shell.qml[1357:-1]: ReferenceError: errorString is not defined",
+     "menu never instantiated after summon (status=None)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null
+    },
+    "soft": [],
+    "files": [
+     "ui/SettingsView.qml"
+    ],
+    "chars": 7282,
+    "loop": false
+   },
+   {
+    "task": "chunk_manifest_entry",
+    "pass_": false,
+    "categories": [
+     "rt-load-failed",
+     "rt-not-instantiated",
+     "rt-other",
+     "rt-shell-broken"
+    ],
+    "finish": "length",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN scene: shell.qml[-1:-1]: No such file or directory",
+     "WARN qml: bar option pix.bar failed to load, falling back to omarchy.bar",
+     "WARN scene: shell.qml[-1:-1]: No such file or directory",
+     "WARN qml: bar option pix.bar failed to load, falling back to omarchy.bar",
+     "shell broke with plugin installed: WARN qml: bar option pix.bar failed to load, falling back to omarchy.bar",
+     "bar option not active (activeBarId=pix.bar)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "bar_active": false
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 64649,
+    "loop": true
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "length",
+    "chars": 65753,
+    "loop": true
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "length",
+    "chars": 63953,
+    "loop": true
+   },
+   {
+    "task": "chunk_manifest_entry",
+    "pass_": false,
+    "categories": [
+     "rt-load-failed",
+     "rt-not-instantiated",
+     "rt-other",
+     "rt-shell-broken"
+    ],
+    "finish": "length",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for surface.tablet: Service.qml: No such file or directory",
+     "WARN qml: service plugin load failed for surface.tablet: Service.qml: No such file or directory",
+     "WARN scene: Bar.qml[-1:-1]: No such file or directory",
+     "WARN qml: bar option surface.tablet failed to load, falling back to omarchy.bar",
+     "WARN scene: Bar.qml[-1:-1]: No such file or directory",
+     "WARN qml: bar option surface.tablet failed to load, falling back to omarchy.bar",
+     "WARN qml: service plugin load failed for surface.tablet: Service.qml: No such file or directory",
+     "WARN scene: Menu.qml[-1:-1]: No such file or directory"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null,
+     "service": false,
+     "bar_active": false
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 47625,
+    "loop": true
+   },
+   {
+    "task": "chunk_add_kind:bar",
+    "pass_": false,
+    "categories": [
+     "rt-js-error"
+    ],
+    "finish": "length",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 0,
+      "h": 0
+     },
+     "service": true,
+     "bar_active": true,
+     "bar_ink": {
+      "top": 2278,
+      "bottom": 284,
+      "left": 2496,
+      "right": 2496
+     }
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 94212,
+    "loop": true
+   },
+   {
+    "task": "chunk_add_kind:service",
+    "pass_": true,
+    "categories": [],
+    "finish": "length",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 0,
+      "h": 0
+     },
+     "service": true,
+     "bar_active": true,
+     "bar_ink": {
+      "top": 2278,
+      "bottom": 284,
+      "left": 2496,
+      "right": 2496
+     }
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 71479,
+    "loop": true
+   },
+   {
+    "task": "chunk_add_kind:menu",
+    "pass_": false,
+    "categories": [
+     "rt-js-error"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [
+      "\udb80\udf79",
+      "\udb80\udf79",
+      "\udb80\udf79"
+     ],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 27,
+      "h": 26
+     },
+     "service": true,
+     "bar_active": true,
+     "bar_ink": {
+      "top": 2278,
+      "bottom": 284,
+      "left": 2496,
+      "right": 2496
+     }
+    },
+    "soft": [],
+    "files": [
+     "Menu.qml",
+     "manifest.json"
+    ],
+    "chars": 8782,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "length",
+    "chars": 59825,
+    "loop": true
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "length",
+    "chars": 83553,
+    "loop": true
+   },
+   {
+    "task": "fix_manifest:reserved_id",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      23,
+      26
+     ],
+     "widget_slot": [
+      23,
+      26
+     ],
+     "widget_x": 1012,
+     "panel_opened": true,
+     "texts": [
+      "\uf1da"
+     ],
+     "widget_ink": 80,
+     "widget_contrast": 12.58
+    },
+    "soft": [
+     "exec: `/opt/ft/runs/r0dcmpp04/home/user/omarchy/plugins/jankees.time-machine/bin/omarchy-time-machine` failed to start in the box (exists on the Dell)",
+     "exec: `/opt/ft/runs/r0dcmpp04/home/user/omarchy/plugins/jankees.time-machine/bin/omarchy-time-machine` failed to start in the box (exists on the Dell)"
+    ],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 663,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:bad_path_dotdot",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "bar_active": true,
+     "bar_ink": {
+      "top": 0,
+      "bottom": 203,
+      "left": 0,
+      "right": 0
+     }
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 321,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:reserved_id",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 0,
+      "h": 0
+     },
+     "service": true,
+     "bar_active": true,
+     "bar_ink": {
+      "top": 132,
+      "bottom": 0,
+      "left": 2496,
+      "right": 2496
+     }
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 488,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:bad_path_absolute",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "service": true
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 321,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:reserved_id",
+    "pass_": false,
+    "categories": [
+     "fix-id-not-namespaced",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "fix-id-not-namespaced: manifest id 'power' is not a namespaced, non-reserved id"
+    ],
+    "runtime_errors": [
+     "WARN qml: Plugin widget power failed: Panel.qml:178:3: ShellIpc is not a type"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: power",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px) (conditionally hidden by design)"
+    ],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 450,
+    "loop": false
+   }
+  ]
+ }
+}
