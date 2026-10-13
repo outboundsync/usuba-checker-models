@@ -1,0 +1,1869 @@
+{
+ "models": {
+  "qwen3.6-27b": {
+   "new_overall": "7/49",
+   "new_full_plugin": "1/32",
+   "per_task": {
+    "build_from_spec": "0/26",
+    "add_panel": "1/6",
+    "chunk_manifest_entry": "0/3",
+    "chunk_component": "1/6",
+    "chunk_add_kind": "1/3",
+    "fix_manifest": "4/5"
+   },
+   "failure_categories": {
+    "bad-import": 22,
+    "rt-load-failed": 21,
+    "rt-not-instantiated": 17,
+    "rt-invisible": 15,
+    "rt-unresolved-type/import": 12,
+    "rt-shell-broken": 12,
+    "rt-other": 5,
+    "placeholder-ui": 4,
+    "fake-api": 4,
+    "rt-manifest-rejected": 3,
+    "rt-zero-size": 3,
+    "rt-bad-property": 3,
+    "rt-qml-syntax": 2,
+    "rt-js-error": 2,
+    "fake-data": 2,
+    "not-shell-surface": 1,
+    "dangerous-write": 1,
+    "entry-not-qml": 1
+   },
+   "truncated": 0,
+   "looping": 0,
+   "median_chars": 4019
+  }
+ },
+ "rows": {
+  "qwen3.6-27b": [
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "placeholder-ui",
+     "rt-not-instantiated",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: service.qml: unknown module org.kde.quickshell.core",
+     "bad-import: service.qml: unknown module org.kde.quickshell.shell",
+     "placeholder-ui: all 2 UI handlers are empty/console.log no-ops: onStarted, onTriggered"
+    ],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for acme.background: service.qml:4:1: module \"org.kde.quickshell.shell\" is not installed",
+     "service.qml:3:1: module \"org.kde.quickshell.core\" is not installed",
+     "WARN qml: service plugin load failed for acme.background: service.qml:4:1: module \"org.kde.quickshell.shell\" is not installed",
+     "service.qml:3:1: module \"org.kde.quickshell.core\" is not installed",
+     "service instance not created"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "service": false
+    },
+    "soft": [],
+    "files": [
+     "README.md",
+     "manifest.json",
+     "service.qml"
+    ],
+    "chars": 3607,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-not-instantiated",
+     "rt-qml-syntax"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for acme.background: service/main.qml:69:36: Expected token `;'",
+     "WARN qml: service plugin load failed for acme.background: service/main.qml:69:36: Expected token `;'",
+     "service instance not created"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "service": false
+    },
+    "soft": [],
+    "files": [
+     "manifest.json",
+     "service/main.qml"
+    ],
+    "chars": 2342,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-manifest-rejected"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: overlay/Clipboard.qml: unknown module org.kde.quickshell.core"
+    ],
+    "runtime_errors": [
+     "PluginRegistry rejected/didn't discover the plugin"
+    ],
+    "runtime_checks": {
+     "registered": false,
+     "texts": []
+    },
+    "soft": [
+     "WARN qml: PluginRegistry: missing required field 'entryPoints' at /opt/ft/runs/rbkdrwqnx/home/user/omarchy/plugins/acme.clipboard/manifest.json"
+    ],
+    "files": [
+     "manifest.json",
+     "overlay/Clipboard.qml"
+    ],
+    "chars": 3534,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "not-shell-surface",
+     "rt-js-error"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "not-shell-surface: overlay/Clipboard.qml: entry root is Window (desktop app window, not a Quickshell/Omarchy surface)"
+    ],
+    "runtime_errors": [
+     "WARN scene: overlay/Clipboard.qml[20:-1]: TypeError: Cannot read property 'textChanged' of undefined"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [
+      "Clipboard History",
+      "Clear",
+      "Clear",
+      "Clear"
+     ],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 320,
+      "h": 400
+     }
+    },
+    "soft": [
+     "WARN scene: overlay/Clipboard.qml[76:-1]: ReferenceError: control is not defined"
+    ],
+    "files": [
+     "manifest.json",
+     "overlay/Clipboard.qml"
+    ],
+    "chars": 3561,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "placeholder-ui",
+     "rt-not-instantiated",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: src/NotificationService.qml: unknown module QtQuick.Models",
+     "placeholder-ui: all 1 UI handlers are empty/console.log no-ops: onCompleted"
+    ],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for acme.notifications: src/NotificationService.qml:2:1: module \"QtQuick.Models\" is not installed",
+     "WARN qml: service plugin load failed for acme.notifications: src/NotificationService.qml:2:1: module \"QtQuick.Models\" is not installed",
+     "service instance not created"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "service": false
+    },
+    "soft": [],
+    "files": [
+     "manifest.json",
+     "src/NotificationService.qml"
+    ],
+    "chars": 4019,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-manifest-rejected"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: service/main.qml: unknown module QtDBus",
+     "bad-import: service/main.qml: unknown module org.kde.quickshell.core"
+    ],
+    "runtime_errors": [
+     "PluginRegistry rejected/didn't discover the plugin"
+    ],
+    "runtime_checks": {
+     "registered": false,
+     "texts": []
+    },
+    "soft": [
+     "WARN qml: PluginRegistry: missing required field 'entryPoints' at /opt/ft/runs/r4kpmo597/home/user/omarchy/plugins/acme.notifications/manifest.json"
+    ],
+    "files": [
+     "manifest.json",
+     "service/main.qml"
+    ],
+    "chars": 5140,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin acme.dropbox has no barWidget entry point",
+     "WARN qml: Plugin acme.dropbox has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: acme.dropbox"
+    ],
+    "files": [
+     "bar-widget/main.qml",
+     "manifest.json"
+    ],
+    "chars": 4517,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: Dropbox.qml: unknown module org.Quickshell"
+    ],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin acme.dropbox has no barWidget entry point",
+     "WARN qml: Plugin acme.dropbox has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: acme.dropbox"
+    ],
+    "files": [
+     "Dropbox.qml",
+     "manifest.json"
+    ],
+    "chars": 4776,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "rt-zero-size"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "bar-widget has zero size [0, 0]"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [
+      "D",
+      "Synced"
+     ]
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: acme.dropbox"
+    ],
+    "files": [
+     "DropboxPanel.qml",
+     "Panel.qml",
+     "manifest.json"
+    ],
+    "chars": 7561,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: bar-widget/main.qml: unknown module QtQuick.Process"
+    ],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin acme.monitor has no barWidget entry point",
+     "WARN qml: Plugin acme.monitor has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: acme.monitor"
+    ],
+    "files": [
+     "bar-widget/main.qml",
+     "manifest.json"
+    ],
+    "chars": 3106,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "placeholder-ui",
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "placeholder-ui: all 1 UI handlers are empty/console.log no-ops: onClicked"
+    ],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin acme.monitor has no barWidget entry point",
+     "WARN qml: Plugin acme.monitor has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: acme.monitor"
+    ],
+    "files": [
+     "manifest.json",
+     "src/bar-widget/main.qml"
+    ],
+    "chars": 1780,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-invisible",
+     "rt-load-failed",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: Panel.qml: unknown module org.omarchy"
+    ],
+    "runtime_errors": [
+     "WARN qml: Plugin widget acme.monitor failed: Panel.qml:4:1: module \"org.omarchy\" is not installed",
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: acme.monitor"
+    ],
+    "files": [
+     "DisplayPanel.qml",
+     "Panel.qml",
+     "manifest.json"
+    ],
+    "chars": 2796,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-other"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: acme.power/widget.qml: unknown module org.kde.quickshell.core",
+     "bad-import: acme.power/widget.qml: unknown module org.kde.quickshell.components"
+    ],
+    "runtime_errors": [
+     "no valid manifest.json"
+    ],
+    "runtime_checks": null,
+    "soft": [],
+    "files": [
+     "acme.power/README.md",
+     "acme.power/manifest.json",
+     "acme.power/widget.qml"
+    ],
+    "chars": 3530,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: bar-widget.qml: unknown module org.quickshell"
+    ],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin acme.power has no barWidget entry point",
+     "WARN qml: Plugin acme.power has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: acme.power"
+    ],
+    "files": [
+     "bar-widget.qml",
+     "manifest.json"
+    ],
+    "chars": 3448,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "fake-data",
+     "rt-zero-size"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "fake-data: random numbers as data"
+    ],
+    "runtime_errors": [
+     "bar-widget has zero size [0, 0]"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [
+      "\u26a1",
+      "85%"
+     ]
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: acme.power"
+    ],
+    "files": [
+     "Panel.qml",
+     "PowerPanel.qml",
+     "manifest.json"
+    ],
+    "chars": 3721,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "fake-data",
+     "rt-bad-property",
+     "rt-not-instantiated",
+     "rt-shell-broken"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "fake-data: random numbers as data"
+    ],
+    "runtime_errors": [
+     "WARN scene: panel/SpeedTest.qml[9:5]: Cannot assign to non-existent property \"padding\"",
+     "shell broke with plugin installed: WARN scene: @shell.qml[1357:-1]: ReferenceError: errorString is not defined",
+     "panel never instantiated after summon (status=None)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null
+    },
+    "soft": [],
+    "files": [
+     "manifest.json",
+     "panel/SpeedTest.qml"
+    ],
+    "chars": 5394,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "fake-api",
+     "rt-not-instantiated",
+     "rt-shell-broken",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: panel.qml: unknown module omarchy.panel",
+     "fake-api: panel.qml: made-up omarchy JS/QML API"
+    ],
+    "runtime_errors": [
+     "WARN scene: panel.qml[4:1]: module \"omarchy.panel\" is not installed",
+     "shell broke with plugin installed: WARN scene: @shell.qml[1357:-1]: ReferenceError: errorString is not defined",
+     "panel never instantiated after summon (status=None)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null
+    },
+    "soft": [],
+    "files": [
+     "Dial.qml",
+     "manifest.json",
+     "panel.qml"
+    ],
+    "chars": 3998,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin acme.weather has no barWidget entry point",
+     "WARN qml: Plugin acme.weather has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: acme.weather"
+    ],
+    "files": [
+     "main.qml",
+     "manifest.json"
+    ],
+    "chars": 2975,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin acme.weather has no barWidget entry point",
+     "WARN qml: Plugin acme.weather has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: acme.weather"
+    ],
+    "files": [
+     "bar-widget.qml",
+     "manifest.json"
+    ],
+    "chars": 3885,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "rt-zero-size"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "bar-widget has zero size [0, 0]"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [
+      "22\u00b0C Sunny"
+     ]
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: acme.weather"
+    ],
+    "files": [
+     "BarWidget.qml",
+     "WeatherPanel.qml",
+     "manifest.json",
+     "weatherSettings.qml"
+    ],
+    "chars": 3258,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin kenhara.scriptural has no barWidget entry point",
+     "WARN qml: Plugin kenhara.scriptural has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: kenhara.scriptural"
+    ],
+    "files": [
+     "bar-widget/Scriptural.qml",
+     "manifest.json"
+    ],
+    "chars": 4735,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: main.qml: unknown module org.kde.quickshell.utils"
+    ],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin kenhara.scriptural has no barWidget entry point",
+     "WARN qml: Plugin kenhara.scriptural has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: kenhara.scriptural"
+    ],
+    "files": [
+     "main.qml",
+     "manifest.json"
+    ],
+    "chars": 4836,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin kenhara.scriptural has no barWidget entry point",
+     "WARN qml: Plugin kenhara.scriptural has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: kenhara.scriptural"
+    ],
+    "files": [
+     "bar-widget.qml",
+     "manifest.json"
+    ],
+    "chars": 4333,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "fake-api",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: BarWidget.qml: unknown module org.kde.kirigami",
+     "fake-api: BarWidget.qml: browser fetch()",
+     "bad-import: ScripturalPanel.qml: unknown module org.kde.kirigami"
+    ],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin widget kenhara.scriptural failed: BarWidget.qml:4:1: \"qrc:/qt/qml/omarchy\": no such directory",
+     "WARN qml: summon: no live bar widget for: kenhara.scriptural",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px) (conditionally hidden by design)"
+    ],
+    "files": [
+     "BarWidget.qml",
+     "ScripturalPanel.qml",
+     "manifest.json"
+    ],
+    "chars": 5653,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: main.qml: unknown module org.kde.quickshell"
+    ],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin jankeesvw.time-machine has no barWidget entry point",
+     "WARN qml: Plugin jankeesvw.time-machine has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: jankeesvw.time-machine"
+    ],
+    "files": [
+     "main.qml",
+     "manifest.json"
+    ],
+    "chars": 10072,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      120,
+      32
+     ],
+     "widget_slot": [
+      120,
+      32
+     ],
+     "widget_x": 1012,
+     "panel_opened": false,
+     "texts": [
+      "\u23f1 Time Machine"
+     ],
+     "widget_ink": 354,
+     "widget_contrast": 18.57
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: jankeesvw.time-machine"
+    ],
+    "files": [
+     "Panel.qml",
+     "TimeMachinePanel.qml",
+     "manifest.json"
+    ],
+    "chars": 4545,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-manifest-rejected"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: service/main.qml: unknown module org.Quickshell",
+     "bad-import: service/main.qml: unknown module org.Quickshell.Notifications"
+    ],
+    "runtime_errors": [
+     "PluginRegistry rejected/didn't discover the plugin"
+    ],
+    "runtime_checks": {
+     "registered": false,
+     "texts": []
+    },
+    "soft": [
+     "WARN qml: PluginRegistry: missing required field 'entryPoints' at /opt/ft/runs/r19yg8h0i/home/user/omarchy/plugins/fkcodes.key-promoter/manifest.json"
+    ],
+    "files": [
+     "manifest.json",
+     "service/main.qml"
+    ],
+    "chars": 2481,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-js-error"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN scene: entrypoints/overlay.qml[125:-1]: ReferenceError: keyHint is not defined",
+     "WARN scene: entrypoints/overlay.qml[125:-1]: ReferenceError: keyHint is not defined",
+     "WARN scene: entrypoints/overlay.qml[125:-1]: ReferenceError: keyHint is not defined",
+     "WARN scene: entrypoints/overlay.qml[125:-1]: ReferenceError: keyHint is not defined",
+     "WARN scene: entrypoints/overlay.qml[125:-1]: ReferenceError: keyHint is not defined",
+     "WARN scene: entrypoints/overlay.qml[125:-1]: ReferenceError: keyHint is not defined",
+     "WARN scene: entrypoints/overlay.qml[125:-1]: ReferenceError: keyHint is not defined"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 0,
+      "h": 0
+     }
+    },
+    "soft": [
+     "WARN scene: entrypoints/overlay.qml[106:-1]: ReferenceError: selected is not defined",
+     "WARN scene: entrypoints/overlay.qml[121:-1]: ReferenceError: selected is not defined",
+     "WARN scene: entrypoints/overlay.qml[127:-1]: ReferenceError: selected is not defined",
+     "WARN scene: entrypoints/overlay.qml[138:-1]: ReferenceError: selected is not defined"
+    ],
+    "files": [
+     "entrypoints/overlay.qml",
+     "manifest.json"
+    ],
+    "chars": 5136,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "dangerous-write",
+     "entry-not-qml",
+     "fake-api",
+     "rt-not-instantiated",
+     "rt-shell-broken"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "entry-not-qml: entryPoints.service = entryPoints/service.js (Quickshell loads QML only)",
+     "fake-api: entryPoints/service.js: ES module import",
+     "fake-api: entryPoints/service.js: node process.env",
+     "dangerous-write: entryPoints/service.js: writes/shell-outs alongside protected path ${process.env.HOME}/.config/hypr/looknfeel.lua"
+    ],
+    "runtime_errors": [
+     "shell broke with plugin installed: WARN scene: @shell.qml[1357:-1]: ReferenceError: errorString is not defined",
+     "panel never instantiated after summon (status=None)",
+     "service instance not created"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null,
+     "service": false
+    },
+    "soft": [
+     "WARN qml: service plugin load failed for bobbynicholas.omaland: entryPoints/service.js:1:1: Expected a qualified name id or a string literal",
+     "WARN qml: service plugin load failed for bobbynicholas.omaland: entryPoints/service.js:1:1: Expected a qualified name id or a string literal",
+     "WARN scene: entryPoints/panel.qml[1:1]: module \"Quickshell\" version 1.0 is not installed"
+    ],
+    "files": [
+     "entryPoints/panel.qml",
+     "entryPoints/service.js",
+     "manifest.json"
+    ],
+    "chars": 6622,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin com.user.intemporel has no barWidget entry point",
+     "WARN qml: Plugin com.user.intemporel has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: com.user.intemporel"
+    ],
+    "files": [
+     "bar-widget/Intemporel.qml",
+     "bar-widget/icalParser.js",
+     "manifest.json"
+    ],
+    "chars": 6056,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-bad-property",
+     "rt-not-instantiated"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for scottjones.flush-bar: service.qml:13:5: Cannot assign to non-existent property \"acceptDrops\"",
+     "WARN qml: service plugin load failed for scottjones.flush-bar: service.qml:13:5: Cannot assign to non-existent property \"acceptDrops\"",
+     "service instance not created"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "service": false
+    },
+    "soft": [],
+    "files": [
+     "manifest.json",
+     "service.qml"
+    ],
+    "chars": 863,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin zeru.portwatch has no barWidget entry point",
+     "WARN qml: Plugin zeru.portwatch has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: zeru.portwatch"
+    ],
+    "files": [
+     "bar-widget/main.qml",
+     "manifest.json"
+    ],
+    "chars": 4045,
+    "loop": false
+   },
+   {
+    "task": "chunk_manifest_entry",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-not-instantiated",
+     "rt-shell-broken",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: Beam.qml: unknown module org.omarchy.shell"
+    ],
+    "runtime_errors": [
+     "WARN scene: Beam.qml[4:1]: module \"org.omarchy.shell\" is not installed",
+     "shell broke with plugin installed: WARN scene: @shell.qml[1357:-1]: ReferenceError: errorString is not defined",
+     "menu never instantiated after summon (status=None)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null
+    },
+    "soft": [],
+    "files": [
+     "Beam.qml",
+     "manifest.json"
+    ],
+    "chars": 5293,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "fake-api",
+     "rt-not-instantiated",
+     "rt-qml-syntax",
+     "rt-shell-broken"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "fake-api: lib/menu.js: ES module import"
+    ],
+    "runtime_errors": [
+     "WARN scene: lib/menu.js[1:1]: Unexpected token `import'",
+     "WARN scene: lib/menu.js[1:32]: Unexpected token `string literal'",
+     "WARN scene: lib/menu.js[2:1]: Unexpected token `import'",
+     "WARN scene: lib/menu.js[2:47]: Unexpected token `string literal'",
+     "WARN scene: lib/menu.js[3:1]: Unexpected token `import'",
+     "WARN scene: lib/menu.js[3:28]: Unexpected token `string literal'",
+     "WARN scene: lib/menu.js[4:1]: Unexpected token `import'",
+     "WARN scene: lib/menu.js[4:29]: Unexpected token `string literal'"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null
+    },
+    "soft": [
+     "WARN scene: Beam.qml[9:1]: Script lib/menu.js unavailable"
+    ],
+    "files": [
+     "lib/menu.js"
+    ],
+    "chars": 8971,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "rt-bad-property",
+     "rt-not-instantiated",
+     "rt-other",
+     "rt-shell-broken"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN scene: Beam.qml[804:11]: Type SettingsView unavailable",
+     "WARN scene: ui/SettingsView.qml[17:5]: Cannot assign to non-existent property \"focus\"",
+     "shell broke with plugin installed: WARN scene: @shell.qml[1357:-1]: ReferenceError: errorString is not defined",
+     "menu never instantiated after summon (status=None)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null
+    },
+    "soft": [],
+    "files": [
+     "ui/SettingsView.qml"
+    ],
+    "chars": 11083,
+    "loop": false
+   },
+   {
+    "task": "chunk_manifest_entry",
+    "pass_": false,
+    "categories": [
+     "rt-load-failed",
+     "rt-not-instantiated",
+     "rt-shell-broken"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN qml: bar option pix.bar failed to load, falling back to omarchy.bar",
+     "WARN qml: bar option pix.bar failed to load, falling back to omarchy.bar",
+     "shell broke with plugin installed: WARN qml: bar option pix.bar failed to load, falling back to omarchy.bar",
+     "bar option not active (activeBarId=pix.bar)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "bar_active": false
+    },
+    "soft": [
+     "WARN scene: shell.qml[2:1]: module \"Quickshell\" version 1.0 is not installed",
+     "WARN scene: shell.qml[2:1]: module \"Quickshell\" version 1.0 is not installed"
+    ],
+    "files": [
+     "manifest.json",
+     "shell.qml"
+    ],
+    "chars": 12679,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-load-failed",
+     "rt-not-instantiated",
+     "rt-other",
+     "rt-shell-broken",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: surfaces/WifiSurface.qml: unknown module org.kde.quickshell",
+     "bad-import: surfaces/WifiSurface.qml: unknown module org.kde.quickshell.components"
+    ],
+    "runtime_errors": [
+     "WARN scene: shell.qml[865:17]: Type Pill unavailable",
+     "WARN scene: Pill.qml[3172:26]: Type WifiSurface unavailable",
+     "WARN scene: surfaces/WifiSurface.qml[5:1]: module \"org.kde.quickshell.components\" is not installed",
+     "WARN scene: surfaces/WifiSurface.qml[4:1]: module \"org.kde.quickshell\" is not installed",
+     "WARN qml: bar option pix.bar failed to load, falling back to omarchy.bar",
+     "shell broke with plugin installed: WARN qml: bar option pix.bar failed to load, falling back to omarchy.bar",
+     "bar option not active (activeBarId=omarchy.bar)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "bar_active": false
+    },
+    "soft": [],
+    "files": [
+     "surfaces/WifiSurface.qml"
+    ],
+    "chars": 15866,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-load-failed",
+     "rt-not-instantiated",
+     "rt-other",
+     "rt-shell-broken",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: Singletons/Plugins.qml: unknown module org.kde.quickshell.core"
+    ],
+    "runtime_errors": [
+     "WARN scene: shell.qml[865:17]: Type Pill unavailable",
+     "WARN scene: Pill.qml[1101:5]: Type LiquidGlass unavailable",
+     "WARN scene: components/LiquidGlass.qml[147:5]: Type ActiveBorderRing unavailable",
+     "WARN scene: components/ActiveBorderRing.qml[-1:-1]: Type Backlight unavailable",
+     "WARN scene: Singletons/Backlight.qml[-1:-1]: Type Battery unavailable",
+     "WARN scene: Singletons/Battery.qml[-1:-1]: Type Cava unavailable",
+     "WARN scene: Singletons/Cava.qml[-1:-1]: Type Cliphist unavailable",
+     "WARN scene: Singletons/Cliphist.qml[-1:-1]: Type Config unavailable"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "bar_active": false
+    },
+    "soft": [],
+    "files": [
+     "Singletons/Plugins.qml"
+    ],
+    "chars": 5457,
+    "loop": false
+   },
+   {
+    "task": "chunk_manifest_entry",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-load-failed",
+     "rt-not-instantiated",
+     "rt-shell-broken",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: Bar.qml: unknown module org.Quickshell",
+     "bad-import: Service.qml: unknown module QtQuick.Process",
+     "bad-import: Service.qml: unknown module org.Quickshell",
+     "bad-import: Menu.qml: unknown module org.Quickshell"
+    ],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for surface.tablet: Service.qml:3:1: module \"org.Quickshell\" is not installed",
+     "Service.qml:2:1: module \"QtQuick.Process\" is not installed",
+     "WARN qml: service plugin load failed for surface.tablet: Service.qml:3:1: module \"org.Quickshell\" is not installed",
+     "Service.qml:2:1: module \"QtQuick.Process\" is not installed",
+     "WARN scene: Bar.qml[3:1]: module \"org.Quickshell\" is not installed",
+     "WARN qml: bar option surface.tablet failed to load, falling back to omarchy.bar",
+     "WARN scene: Bar.qml[3:1]: module \"org.Quickshell\" is not installed",
+     "WARN qml: bar option surface.tablet failed to load, falling back to omarchy.bar"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null,
+     "service": false,
+     "bar_active": false
+    },
+    "soft": [],
+    "files": [
+     "Bar.qml",
+     "Menu.qml",
+     "Service.qml",
+     "manifest.json"
+    ],
+    "chars": 6789,
+    "loop": false
+   },
+   {
+    "task": "chunk_add_kind:bar",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-load-failed",
+     "rt-not-instantiated",
+     "rt-shell-broken",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: Bar.qml: unknown module org.kde.quickshell"
+    ],
+    "runtime_errors": [
+     "WARN scene: Bar.qml[3:1]: module \"org.kde.quickshell\" is not installed",
+     "WARN qml: bar option surface.tablet failed to load, falling back to omarchy.bar",
+     "WARN scene: Bar.qml[3:1]: module \"org.kde.quickshell\" is not installed",
+     "WARN qml: bar option surface.tablet failed to load, falling back to omarchy.bar",
+     "shell broke with plugin installed: WARN qml: bar option surface.tablet failed to load, falling back to omarchy.bar",
+     "bar option not active (activeBarId=surface.tablet)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 0,
+      "h": 0
+     },
+     "service": true,
+     "bar_active": false
+    },
+    "soft": [],
+    "files": [
+     "Bar.qml",
+     "manifest.json"
+    ],
+    "chars": 1168,
+    "loop": false
+   },
+   {
+    "task": "chunk_add_kind:service",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-not-instantiated",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: Service.qml: unknown module org.kde.quickshell.core",
+     "bad-import: Service.qml: unknown module org.kde.quickshell.shell"
+    ],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for surface.tablet: Service.qml:3:1: module \"org.kde.quickshell.shell\" is not installed",
+     "Service.qml:2:1: module \"org.kde.quickshell.core\" is not installed",
+     "WARN qml: service plugin load failed for surface.tablet: Service.qml:3:1: module \"org.kde.quickshell.shell\" is not installed",
+     "Service.qml:2:1: module \"org.kde.quickshell.core\" is not installed",
+     "WARN qml: service plugin load failed for surface.tablet: Service.qml:3:1: module \"org.kde.quickshell.shell\" is not installed",
+     "Service.qml:2:1: module \"org.kde.quickshell.core\" is not installed",
+     "service instance not created"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 0,
+      "h": 0
+     },
+     "service": false,
+     "bar_active": true,
+     "bar_ink": {
+      "top": 132,
+      "bottom": 0,
+      "left": 2496,
+      "right": 2496
+     }
+    },
+    "soft": [],
+    "files": [
+     "Service.qml",
+     "manifest.json"
+    ],
+    "chars": 1281,
+    "loop": false
+   },
+   {
+    "task": "chunk_add_kind:menu",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 200,
+      "h": 109
+     },
+     "service": true,
+     "bar_active": true,
+     "bar_ink": {
+      "top": 2278,
+      "bottom": 284,
+      "left": 2496,
+      "right": 2496
+     }
+    },
+    "soft": [],
+    "files": [
+     "Menu.qml",
+     "manifest.json"
+    ],
+    "chars": 1656,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 0,
+      "h": 0
+     },
+     "service": true,
+     "bar_active": true,
+     "bar_ink": {
+      "top": 132,
+      "bottom": 0,
+      "left": 2496,
+      "right": 2496
+     }
+    },
+    "soft": [],
+    "files": [
+     "tablet.py"
+    ],
+    "chars": 15353,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-load-failed",
+     "rt-not-instantiated",
+     "rt-other",
+     "rt-shell-broken",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: HomeContent.qml: unknown module org.kde.quickshell",
+     "bad-import: HomeContent.qml: unknown module org.kde.quickshell.components",
+     "bad-import: HomeContent.qml: unknown module org.kde.quickshell.shell",
+     "bad-import: HomeContent.qml: unknown module org.kde.quickshell.plugins"
+    ],
+    "runtime_errors": [
+     "WARN scene: Bar.qml[242:38]: Type HomeContent unavailable",
+     "WARN scene: HomeContent.qml[7:1]: module \"org.kde.quickshell.plugins\" is not installed",
+     "WARN scene: HomeContent.qml[6:1]: module \"org.kde.quickshell.shell\" is not installed",
+     "WARN scene: HomeContent.qml[5:1]: module \"org.kde.quickshell.components\" is not installed",
+     "WARN scene: HomeContent.qml[4:1]: module \"org.kde.quickshell\" is not installed",
+     "WARN qml: bar option surface.tablet failed to load, falling back to omarchy.bar",
+     "WARN scene: Bar.qml[242:38]: Type HomeContent unavailable",
+     "WARN scene: HomeContent.qml[7:1]: module \"org.kde.quickshell.plugins\" is not installed"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 0,
+      "h": 0
+     },
+     "service": true,
+     "bar_active": false
+    },
+    "soft": [],
+    "files": [
+     "HomeContent.qml"
+    ],
+    "chars": 6594,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:reserved_id",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      23,
+      26
+     ],
+     "widget_slot": [
+      23,
+      26
+     ],
+     "widget_x": 1012,
+     "panel_opened": true,
+     "texts": [
+      "\uf1da"
+     ],
+     "widget_ink": 80,
+     "widget_contrast": 12.58
+    },
+    "soft": [
+     "exec: `/opt/ft/runs/r3wufx9kj/home/user/omarchy/plugins/io.github.jankeesvw.time-machine/bin/omarchy-time-machine` failed to start in the box (exists on the ",
+     "exec: `/opt/ft/runs/r3wufx9kj/home/user/omarchy/plugins/io.github.jankeesvw.time-machine/bin/omarchy-time-machine` failed to start in the box (exists on the "
+    ],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 675,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:bad_path_dotdot",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "bar_active": true,
+     "bar_ink": {
+      "top": 0,
+      "bottom": 203,
+      "left": 0,
+      "right": 0
+     }
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 321,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:reserved_id",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 0,
+      "h": 0
+     },
+     "service": true,
+     "bar_active": true,
+     "bar_ink": {
+      "top": 132,
+      "bottom": 0,
+      "left": 2496,
+      "right": 2496
+     }
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 1375,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:bad_path_absolute",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "service": true
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 321,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:reserved_id",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "placeholder-ui",
+     "rt-invisible",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: Panel.qml: unknown module org.kde.quickshell.core",
+     "bad-import: Panel.qml: unknown module org.kde.quickshell.plugins",
+     "placeholder-ui: trivial plugin: 23 QML lines, no IO, data or interaction"
+    ],
+    "runtime_errors": [
+     "WARN qml: Plugin widget com.user.power failed: Panel.qml:4:1: module \"org.kde.quickshell.plugins\" is not installed",
+     "Panel.qml:3:1: module \"org.kde.quickshell.core\" is not installed",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: com.user.power"
+    ],
+    "files": [
+     "Model.js",
+     "Panel.qml",
+     "manifest.json"
+    ],
+    "chars": 2305,
+    "loop": false
+   }
+  ]
+ }
+}

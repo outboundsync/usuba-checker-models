@@ -1,0 +1,782 @@
+{
+ "models": {
+  "qwen3.8-27b": {
+   "new_overall": "4/49",
+   "new_full_plugin": "0/32",
+   "per_task": {
+    "build_from_spec": "0/26",
+    "add_panel": "0/6",
+    "chunk_manifest_entry": "0/3",
+    "chunk_component": "0/6",
+    "chunk_add_kind": "0/3",
+    "fix_manifest": "4/5"
+   },
+   "failure_categories": {
+    "no-files-parsed": 38,
+    "rt-manifest-rejected": 3,
+    "rt-zero-size": 2,
+    "not-shell-surface": 1,
+    "rt-invisible": 1,
+    "rt-load-failed": 1,
+    "bad-import": 1,
+    "rt-js-error": 1,
+    "fix-id-not-namespaced": 1,
+    "rt-unresolved-type/import": 1
+   },
+   "truncated": 0,
+   "looping": 0,
+   "median_chars": 10435
+  }
+ },
+ "rows": {
+  "qwen3.8-27b": [
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 19123,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 12863,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 13463,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 9770,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "not-shell-surface",
+     "rt-manifest-rejected"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "not-shell-surface: src/service.qml: entry root is ApplicationWindow (desktop app window, not a Quickshell/Omarchy surface)"
+    ],
+    "runtime_errors": [
+     "PluginRegistry rejected/didn't discover the plugin"
+    ],
+    "runtime_checks": {
+     "registered": false,
+     "texts": []
+    },
+    "soft": [
+     "WARN qml: PluginRegistry: kinds must be a non-empty array at /opt/ft/runs/rvgym6uc6/home/user/omarchy/plugins/acme.notifications/manifest.json"
+    ],
+    "files": [
+     "manifest.json",
+     "src/lib/NotificationDaemon.qml",
+     "src/lib/NotificationDelegate.qml",
+     "src/lib/NotificationPopup.qml",
+     "src/lib/PopupStack.qml",
+     "src/lib/Utils.qml",
+     "src/service.qml"
+    ],
+    "chars": 16509,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 25683,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin acme.dropbox has no barWidget entry point",
+     "WARN qml: Plugin acme.dropbox has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: acme.dropbox"
+    ],
+    "files": [
+     "manifest.json",
+     "src/BarWidget.qml",
+     "src/DropboxService.qml",
+     "src/RecentFiles.qml",
+     "src/StatusIndicator.qml",
+     "src/StorageBar.qml"
+    ],
+    "chars": 12667,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 12617,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 11200,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 6028,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 5898,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "rt-zero-size"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "bar-widget has zero size [0, 0]"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": []
+    },
+    "soft": [
+     "WARN scene: QML QQuickImage at Panel.qml[13:5]: Cannot open: qrc:/icons/display.svg",
+     "WARN qml: summon: no live bar widget for: acme.monitor"
+    ],
+    "files": [
+     "DisplayPanel.qml",
+     "Panel.qml",
+     "icons/brightness-high.svg",
+     "icons/brightness-low.svg",
+     "icons/display.svg",
+     "manifest.json"
+    ],
+    "chars": 10706,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 4009,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 7239,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 14353,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 8999,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 8496,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-manifest-rejected"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: src/Weather.qml: unknown module QtQuick.Xml"
+    ],
+    "runtime_errors": [
+     "PluginRegistry rejected/didn't discover the plugin"
+    ],
+    "runtime_checks": {
+     "registered": false,
+     "texts": []
+    },
+    "soft": [
+     "WARN qml: PluginRegistry: missing required field 'entryPoints' at /opt/ft/runs/rx3pl_mw5/home/user/omarchy/plugins/acme.weather/manifest.json"
+    ],
+    "files": [
+     "manifest.json",
+     "src/Weather.qml"
+    ],
+    "chars": 6338,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 8264,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 9686,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 11045,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 40230,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 36047,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 10435,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 17110,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "rt-js-error",
+     "rt-zero-size"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN scene: Panel.qml[32:9]: TypeError: Cannot read property 'height' of undefined",
+     "bar-widget has zero size [0, 0]"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [
+      "\ud83d\udd50",
+      "Time Machine"
+     ]
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: jankeesvw.time-machine"
+    ],
+    "files": [
+     "Panel.qml",
+     "TimeMachinePanel.qml",
+     "bin/restic.sh",
+     "bin/setup.sh",
+     "config.json",
+     "manifest.json"
+    ],
+    "chars": 22388,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 16007,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 15958,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 27983,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 48895,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 2602,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "rt-manifest-rejected"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "PluginRegistry rejected/didn't discover the plugin"
+    ],
+    "runtime_checks": {
+     "registered": false,
+     "texts": []
+    },
+    "soft": [
+     "WARN qml: PluginRegistry: missing required field 'entryPoints' at /opt/ft/runs/rl31gbfi0/home/user/omarchy/plugins/zeru.portwatch/manifest.json"
+    ],
+    "files": [
+     "bar/PortWatch.qml",
+     "manifest.json"
+    ],
+    "chars": 8463,
+    "loop": false
+   },
+   {
+    "task": "chunk_manifest_entry",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 6842,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 9295,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 23013,
+    "loop": false
+   },
+   {
+    "task": "chunk_manifest_entry",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 14544,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 40152,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 15099,
+    "loop": false
+   },
+   {
+    "task": "chunk_manifest_entry",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 7380,
+    "loop": false
+   },
+   {
+    "task": "chunk_add_kind:bar",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 2070,
+    "loop": false
+   },
+   {
+    "task": "chunk_add_kind:service",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 5316,
+    "loop": false
+   },
+   {
+    "task": "chunk_add_kind:menu",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 1975,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 28999,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "no-files-parsed"
+    ],
+    "finish": "stop",
+    "chars": 9063,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:reserved_id",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      23,
+      26
+     ],
+     "widget_slot": [
+      23,
+      26
+     ],
+     "widget_x": 1012,
+     "panel_opened": true,
+     "texts": [
+      "\uf1da"
+     ],
+     "widget_ink": 80,
+     "widget_contrast": 12.58
+    },
+    "soft": [
+     "exec: `/opt/ft/runs/rhrx95r5d/home/user/omarchy/plugins/jankeesvw.time-machine/bin/omarchy-time-machine` failed to start in the box (exists on the Dell)",
+     "exec: `/opt/ft/runs/rhrx95r5d/home/user/omarchy/plugins/jankeesvw.time-machine/bin/omarchy-time-machine` failed to start in the box (exists on the Dell)"
+    ],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 1107,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:bad_path_dotdot",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "bar_active": true,
+     "bar_ink": {
+      "top": 0,
+      "bottom": 203,
+      "left": 0,
+      "right": 0
+     }
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 799,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:reserved_id",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 0,
+      "h": 0
+     },
+     "service": true,
+     "bar_active": true,
+     "bar_ink": {
+      "top": 132,
+      "bottom": 0,
+      "left": 2496,
+      "right": 2496
+     }
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 1101,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:bad_path_absolute",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "service": true
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 794,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:reserved_id",
+    "pass_": false,
+    "categories": [
+     "fix-id-not-namespaced",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "fix-id-not-namespaced: manifest id 'power' is not a namespaced, non-reserved id"
+    ],
+    "runtime_errors": [
+     "WARN qml: Plugin widget power failed: Panel.qml:178:3: ShellIpc is not a type"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: power",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px) (conditionally hidden by design)"
+    ],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 1080,
+    "loop": false
+   }
+  ]
+ }
+}

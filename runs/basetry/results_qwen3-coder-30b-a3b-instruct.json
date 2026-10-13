@@ -1,0 +1,1721 @@
+{
+ "models": {
+  "qwen3-coder-30b-a3b-instruct": {
+   "new_overall": "4/49",
+   "new_full_plugin": "0/32",
+   "per_task": {
+    "build_from_spec": "0/26",
+    "add_panel": "0/6",
+    "chunk_manifest_entry": "0/3",
+    "chunk_component": "1/6",
+    "chunk_add_kind": "0/3",
+    "fix_manifest": "3/5"
+   },
+   "failure_categories": {
+    "bad-import": 39,
+    "rt-load-failed": 16,
+    "rt-not-instantiated": 14,
+    "rt-other": 14,
+    "rt-shell-broken": 12,
+    "rt-invisible": 11,
+    "rt-unresolved-type/import": 11,
+    "rt-manifest-rejected": 7,
+    "fake-api": 6,
+    "rt-qml-syntax": 3,
+    "placeholder-ui": 3,
+    "fake-data": 3,
+    "not-shell-surface": 3,
+    "rt-js-error": 2,
+    "qt5-api": 1,
+    "entry-not-qml": 1,
+    "fix-id-not-namespaced": 1
+   },
+   "truncated": 0,
+   "looping": 0,
+   "median_chars": 4285
+  }
+ },
+ "rows": {
+  "qwen3-coder-30b-a3b-instruct": [
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "qt5-api",
+     "rt-manifest-rejected"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "qt5-api: service.qml: import QtGraphicalEffects \u2014 Qt5 QtGraphicalEffects (Qt6 = Qt5Compat.GraphicalEffects / QtQuick.Effects)"
+    ],
+    "runtime_errors": [
+     "PluginRegistry rejected/didn't discover the plugin"
+    ],
+    "runtime_checks": {
+     "registered": false,
+     "texts": []
+    },
+    "soft": [
+     "WARN qml: PluginRegistry: missing required field 'entryPoints' at /opt/ft/runs/rmbzp_d03/home/user/omarchy/plugins/acme.background/manifest.json"
+    ],
+    "files": [
+     "manifest.json",
+     "service.qml"
+    ],
+    "chars": 2693,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-not-instantiated",
+     "rt-qml-syntax"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: service.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for acme.background: service.qml:77:15: Expected token `,'",
+     "WARN qml: service plugin load failed for acme.background: service.qml:77:15: Expected token `,'",
+     "service instance not created"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "service": false
+    },
+    "soft": [],
+    "files": [
+     "manifest.json",
+     "service.qml"
+    ],
+    "chars": 2899,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-manifest-rejected"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: overlay.qml: unknown module org.omarchy.shell"
+    ],
+    "runtime_errors": [
+     "PluginRegistry rejected/didn't discover the plugin"
+    ],
+    "runtime_checks": {
+     "registered": false,
+     "texts": []
+    },
+    "soft": [
+     "WARN qml: PluginRegistry: missing required field 'entryPoints' at /opt/ft/runs/r127hx1wi/home/user/omarchy/plugins/acme.clipboard/manifest.json"
+    ],
+    "files": [
+     "manifest.json",
+     "overlay.qml"
+    ],
+    "chars": 5867,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-not-instantiated",
+     "rt-shell-broken"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: overlay.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "shell broke with plugin installed: WARN scene: @shell.qml[1357:-1]: ReferenceError: errorString is not defined",
+     "overlay never instantiated after summon (status=None)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null
+    },
+    "soft": [],
+    "files": [
+     "manifest.json",
+     "overlay.qml"
+    ],
+    "chars": 6483,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "entry-not-qml",
+     "fake-api",
+     "rt-not-instantiated",
+     "rt-qml-syntax"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "entry-not-qml: entryPoints.service = service.js (Quickshell loads QML only)",
+     "fake-api: service.js: node require()",
+     "fake-api: service.js: CommonJS exports",
+     "fake-api: service.js: browser DOM"
+    ],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for acme.notifications: service.js:1:1: Unexpected token `const'",
+     "WARN qml: service plugin load failed for acme.notifications: service.js:1:1: Unexpected token `const'",
+     "service instance not created"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "service": false
+    },
+    "soft": [],
+    "files": [
+     "manifest.json",
+     "service.js",
+     "service.qml"
+    ],
+    "chars": 7094,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "placeholder-ui",
+     "rt-other"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: acme.notifications/service.qml: unknown module Omarchy",
+     "placeholder-ui: all 1 UI handlers are empty/console.log no-ops: onClicked"
+    ],
+    "runtime_errors": [
+     "no valid manifest.json"
+    ],
+    "runtime_checks": null,
+    "soft": [],
+    "files": [
+     "acme.notifications/manifest.json",
+     "acme.notifications/service.js",
+     "acme.notifications/service.qml"
+    ],
+    "chars": 9634,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: widget.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin acme.dropbox has no barWidget entry point",
+     "WARN qml: Plugin acme.dropbox has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: acme.dropbox"
+    ],
+    "files": [
+     "manifest.json",
+     "widget.qml"
+    ],
+    "chars": 7360,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: bar-widget.qml: unknown module Omarchy",
+     "bad-import: dropbox-service.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin acme.dropbox has no barWidget entry point",
+     "WARN qml: Plugin acme.dropbox has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: acme.dropbox"
+    ],
+    "files": [
+     "bar-widget.qml",
+     "dropbox-service.js",
+     "dropbox-service.qml",
+     "manifest.json"
+    ],
+    "chars": 7357,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "fake-data",
+     "rt-other"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: acme.dropbox/Panel.qml: unknown module Omarchy",
+     "fake-data: fake person"
+    ],
+    "runtime_errors": [
+     "no valid manifest.json"
+    ],
+    "runtime_checks": null,
+    "soft": [],
+    "files": [
+     "acme.dropbox/Panel.qml"
+    ],
+    "chars": 10039,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "placeholder-ui",
+     "rt-manifest-rejected"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: bar-widget.qml: unknown module org.kde.plasma.core",
+     "bad-import: bar-widget.qml: unknown module org.kde.plasma.components",
+     "placeholder-ui: all 5 UI handlers are empty/console.log no-ops: onClicked, onValueChanged"
+    ],
+    "runtime_errors": [
+     "PluginRegistry rejected/didn't discover the plugin"
+    ],
+    "runtime_checks": {
+     "registered": false,
+     "texts": []
+    },
+    "soft": [
+     "WARN qml: PluginRegistry: missing required field 'entryPoints' at /opt/ft/runs/ru8_yke2s/home/user/omarchy/plugins/acme.monitor/manifest.json"
+    ],
+    "files": [
+     "bar-widget.qml",
+     "manifest.json"
+    ],
+    "chars": 2582,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: widget.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin acme.monitor has no barWidget entry point",
+     "WARN qml: Plugin acme.monitor has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: acme.monitor"
+    ],
+    "files": [
+     "manifest.json",
+     "widget.qml"
+    ],
+    "chars": 2266,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-other"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: acme.monitor/Panel.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "no valid manifest.json"
+    ],
+    "runtime_checks": null,
+    "soft": [],
+    "files": [
+     "acme.monitor/Panel.qml"
+    ],
+    "chars": 4424,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: widget.qml: unknown module org.kde.plasma.core",
+     "bad-import: widget.qml: unknown module org.kde.plasma.components",
+     "bad-import: widget.qml: unknown module org.kde.kirigami"
+    ],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin acme.power has no barWidget entry point",
+     "WARN qml: Plugin acme.power has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: acme.power"
+    ],
+    "files": [
+     "manifest.json",
+     "widget.qml"
+    ],
+    "chars": 3924,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "fake-data",
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: widget.qml: unknown module org.omarchy",
+     "fake-data: random numbers as data"
+    ],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin acme.power has no barWidget entry point",
+     "WARN qml: Plugin acme.power has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: acme.power"
+    ],
+    "files": [
+     "manifest.json",
+     "widget.qml"
+    ],
+    "chars": 6332,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-other"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: acme.power/Panel.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "no valid manifest.json"
+    ],
+    "runtime_checks": null,
+    "soft": [],
+    "files": [
+     "acme.power/Panel.qml"
+    ],
+    "chars": 4020,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-manifest-rejected"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: panel.qml: unknown module org.omarchy.shell"
+    ],
+    "runtime_errors": [
+     "PluginRegistry rejected/didn't discover the plugin"
+    ],
+    "runtime_checks": {
+     "registered": false,
+     "texts": []
+    },
+    "soft": [
+     "WARN qml: PluginRegistry: missing required field 'entryPoints' at /opt/ft/runs/rxr9h8ol4/home/user/omarchy/plugins/acme.speedtest/manifest.json"
+    ],
+    "files": [
+     "manifest.json",
+     "panel.qml"
+    ],
+    "chars": 4330,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "fake-data",
+     "rt-not-instantiated",
+     "rt-shell-broken",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: panel.qml: unknown module org.omarchy",
+     "fake-data: random numbers as data"
+    ],
+    "runtime_errors": [
+     "WARN scene: panel.qml[4:1]: module \"org.omarchy\" is not installed",
+     "shell broke with plugin installed: WARN scene: @shell.qml[1357:-1]: ReferenceError: errorString is not defined",
+     "panel never instantiated after summon (status=None)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null
+    },
+    "soft": [],
+    "files": [
+     "manifest.json",
+     "panel.qml"
+    ],
+    "chars": 4590,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "fake-api",
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: widget.qml: unknown module omarchy.shell",
+     "fake-api: widget.qml: made-up omarchy JS/QML API"
+    ],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin acme.weather has no barWidget entry point",
+     "WARN qml: Plugin acme.weather has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: acme.weather"
+    ],
+    "files": [
+     "manifest.json",
+     "widget.qml"
+    ],
+    "chars": 4285,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-manifest-rejected"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: bar-widget.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "PluginRegistry rejected/didn't discover the plugin"
+    ],
+    "runtime_checks": {
+     "registered": false,
+     "texts": []
+    },
+    "soft": [
+     "WARN qml: PluginRegistry: missing required field 'entryPoints' at /opt/ft/runs/rf4o_1yde/home/user/omarchy/plugins/acme.weather/manifest.json"
+    ],
+    "files": [
+     "bar-widget.qml",
+     "manifest.json"
+    ],
+    "chars": 3823,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-other"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: acme.weather/BarWidget.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "no valid manifest.json"
+    ],
+    "runtime_checks": null,
+    "soft": [],
+    "files": [
+     "acme.weather/BarWidget.qml"
+    ],
+    "chars": 2835,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: widget.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin kenhara.scriptural has no barWidget entry point",
+     "WARN qml: Plugin kenhara.scriptural has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: kenhara.scriptural"
+    ],
+    "files": [
+     "manifest.json",
+     "widget.qml"
+    ],
+    "chars": 3167,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: widget.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin kenhara.scriptural has no barWidget entry point",
+     "WARN qml: Plugin kenhara.scriptural has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: kenhara.scriptural"
+    ],
+    "files": [
+     "manifest.json",
+     "widget.qml"
+    ],
+    "chars": 4038,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: bar-widget.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin kenhara.scriptural has no barWidget entry point",
+     "WARN qml: Plugin kenhara.scriptural has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: kenhara.scriptural"
+    ],
+    "files": [
+     "bar-widget.qml",
+     "manifest.json"
+    ],
+    "chars": 3241,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-invisible",
+     "rt-load-failed",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: BarWidget.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "WARN qml: Plugin widget kenhara.scriptural failed: BarWidget.qml:3:1: module \"Omarchy\" is not installed",
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: kenhara.scriptural"
+    ],
+    "files": [
+     "BarWidget.qml",
+     "manifest.json"
+    ],
+    "chars": 4912,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-other"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: jankeesvw.time-machine/widget.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "no valid manifest.json"
+    ],
+    "runtime_checks": null,
+    "soft": [],
+    "files": [
+     "jankeesvw.time-machine/manifest.json",
+     "jankeesvw.time-machine/widget.qml"
+    ],
+    "chars": 5491,
+    "loop": false
+   },
+   {
+    "task": "add_panel",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-other"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: jankeesvw.time-machine/Panel.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "no valid manifest.json"
+    ],
+    "runtime_checks": null,
+    "soft": [],
+    "files": [
+     "jankeesvw.time-machine/Panel.qml"
+    ],
+    "chars": 4477,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-manifest-rejected"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: service.qml: unknown module org.omarchy"
+    ],
+    "runtime_errors": [
+     "PluginRegistry rejected/didn't discover the plugin"
+    ],
+    "runtime_checks": {
+     "registered": false,
+     "texts": []
+    },
+    "soft": [
+     "WARN qml: PluginRegistry: missing required field 'entryPoints' at /opt/ft/runs/rx3uaxr35/home/user/omarchy/plugins/fkcodes.key-promoter/manifest.json"
+    ],
+    "files": [
+     "manifest.json",
+     "service.qml"
+    ],
+    "chars": 4702,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-manifest-rejected"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: overlay.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "PluginRegistry rejected/didn't discover the plugin"
+    ],
+    "runtime_checks": {
+     "registered": false,
+     "texts": []
+    },
+    "soft": [
+     "WARN qml: PluginRegistry: missing required field 'entryPoints' at /opt/ft/runs/r25hlsuwr/home/user/omarchy/plugins/com.example.vimarchy/manifest.json"
+    ],
+    "files": [
+     "manifest.json",
+     "overlay.qml"
+    ],
+    "chars": 7500,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "fake-api",
+     "not-shell-surface",
+     "rt-not-instantiated",
+     "rt-shell-broken",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: panel.qml: unknown module Omarchy",
+     "bad-import: service.qml: unknown module Omarchy",
+     "fake-api: service.qml: made-up omarchy JS/QML API",
+     "not-shell-surface: panel.qml: entry root is ApplicationWindow (desktop app window, not a Quickshell/Omarchy surface)"
+    ],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for bobbynicholas.omaland: service.qml:2:1: module \"Omarchy\" is not installed",
+     "WARN qml: service plugin load failed for bobbynicholas.omaland: service.qml:2:1: module \"Omarchy\" is not installed",
+     "WARN scene: panel.qml[4:1]: module \"Omarchy\" is not installed",
+     "shell broke with plugin installed: WARN scene: @shell.qml[1357:-1]: ReferenceError: errorString is not defined",
+     "panel never instantiated after summon (status=None)",
+     "service instance not created"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null,
+     "service": false
+    },
+    "soft": [],
+    "files": [
+     "manifest.json",
+     "panel.qml",
+     "service.qml"
+    ],
+    "chars": 10035,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "placeholder-ui",
+     "rt-other"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: intemporel/widget.qml: unknown module org.omarchy",
+     "placeholder-ui: all 1 UI handlers are empty/console.log no-ops: onTriggered"
+    ],
+    "runtime_errors": [
+     "no valid manifest.json"
+    ],
+    "runtime_checks": null,
+    "soft": [],
+    "files": [
+     "intemporel/manifest.json",
+     "intemporel/widget.qml"
+    ],
+    "chars": 3170,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-other"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: scottjones.flush-bar/service.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "no valid manifest.json"
+    ],
+    "runtime_checks": null,
+    "soft": [],
+    "files": [
+     "scottjones.flush-bar/manifest.json",
+     "scottjones.flush-bar/service.qml"
+    ],
+    "chars": 2084,
+    "loop": false
+   },
+   {
+    "task": "build_from_spec",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-invisible",
+     "rt-load-failed"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: widget.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "bar-widget component never registered (load failed)",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: Plugin zeru.portwatch has no barWidget entry point",
+     "WARN qml: Plugin zeru.portwatch has no barWidget entry point",
+     "WARN qml: summon: no live bar widget for: zeru.portwatch"
+    ],
+    "files": [
+     "manifest.json",
+     "widget.qml"
+    ],
+    "chars": 3927,
+    "loop": false
+   },
+   {
+    "task": "chunk_manifest_entry",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "fake-api",
+     "rt-not-instantiated",
+     "rt-qml-syntax",
+     "rt-shell-broken"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: Beam.qml: unknown module omarchy.shell",
+     "fake-api: Beam.qml: made-up omarchy JS/QML API"
+    ],
+    "runtime_errors": [
+     "WARN scene: Beam.qml[108:29]: Expected token `;'",
+     "shell broke with plugin installed: WARN scene: @shell.qml[1357:-1]: ReferenceError: errorString is not defined",
+     "menu never instantiated after summon (status=None)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null
+    },
+    "soft": [],
+    "files": [
+     "Beam.qml",
+     "manifest.json"
+    ],
+    "chars": 7215,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "rt-js-error",
+     "rt-shell-broken"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN scene: services/MenuSource.qml[57:-1]: TypeError: Property 'searchable' of object [object Object] is not a function",
+     "WARN scene: services/MenuSource.qml[27:-1]: TypeError: Property 'mergeMenuSources' of object [object Object] is not a function",
+     "WARN scene: services/MenuSource.qml[118:-1]: TypeError: Property 'parseMenuJsonc' of object [object Object] is not a function",
+     "WARN scene: services/MenuSource.qml[57:-1]: TypeError: Property 'searchable' of object [object Object] is not a function",
+     "WARN qml: plugin dev.reuk.beam open() threw: TypeError: Property 'guardScript' of object [object Object] is not a function",
+     "WARN scene: services/MenuSource.qml[57:-1]: TypeError: Property 'searchable' of object [object Object] is not a function",
+     "WARN scene: services/MenuSource.qml[27:-1]: TypeError: Property 'mergeMenuSources' of object [object Object] is not a function",
+     "WARN scene: services/MenuSource.qml[118:-1]: TypeError: Property 'parseMenuJsonc' of object [object Object] is not a function"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 0,
+      "h": 0
+     }
+    },
+    "soft": [],
+    "files": [
+     "lib/menu.js"
+    ],
+    "chars": 2654,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "fake-api",
+     "rt-not-instantiated",
+     "rt-other",
+     "rt-shell-broken",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: ui/SettingsView.qml: unknown module omarchy.shell",
+     "fake-api: ui/SettingsView.qml: made-up omarchy JS/QML API"
+    ],
+    "runtime_errors": [
+     "WARN scene: Beam.qml[804:11]: Type SettingsView unavailable",
+     "WARN scene: ui/SettingsView.qml[4:1]: module \"omarchy.shell\" is not installed",
+     "shell broke with plugin installed: WARN scene: @shell.qml[1357:-1]: ReferenceError: errorString is not defined",
+     "menu never instantiated after summon (status=None)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null
+    },
+    "soft": [],
+    "files": [
+     "ui/SettingsView.qml"
+    ],
+    "chars": 7990,
+    "loop": false
+   },
+   {
+    "task": "chunk_manifest_entry",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-other"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: pix.bar/shell.qml: unknown module org.omarchy.shell",
+     "bad-import: pix.bar/shell.qml: relative import ../components/PluginBarApi.qml missing",
+     "bad-import: pix.bar/shell.qml: relative import ../components/OpticalGlyph.qml missing",
+     "bad-import: pix.bar/shell.qml: relative import ../components/Panel.qml missing",
+     "bad-import: pix.bar/shell.qml: relative import ../components/PanelController.qml missing",
+     "bad-import: pix.bar/shell.qml: relative import ../components/PanelHero.qml missing",
+     "bad-import: pix.bar/shell.qml: relative import ../components/PanelSectionHeader.qml missing",
+     "bad-import: pix.bar/shell.qml: relative import ../components/PanelSeparator.qml missing"
+    ],
+    "runtime_errors": [
+     "no valid manifest.json"
+    ],
+    "runtime_checks": null,
+    "soft": [],
+    "files": [
+     "pix.bar/manifest.json",
+     "pix.bar/shell.qml"
+    ],
+    "chars": 12097,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "rt-load-failed",
+     "rt-not-instantiated",
+     "rt-other",
+     "rt-shell-broken"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN scene: shell.qml[865:17]: Type Pill unavailable",
+     "WARN scene: Pill.qml[3172:26]: Type WifiSurface unavailable",
+     "WARN qml: bar option pix.bar failed to load, falling back to omarchy.bar",
+     "shell broke with plugin installed: WARN qml: bar option pix.bar failed to load, falling back to omarchy.bar",
+     "bar option not active (activeBarId=omarchy.bar)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "bar_active": false
+    },
+    "soft": [
+     "WARN scene: surfaces/WifiSurface.qml[4:1]: \"../Components\": no such directory"
+    ],
+    "files": [
+     "surfaces/WifiSurface.qml"
+    ],
+    "chars": 7917,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "fake-api",
+     "rt-load-failed",
+     "rt-not-instantiated",
+     "rt-other",
+     "rt-shell-broken",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: Singletons/Plugins.qml: unknown module org.omarchy.shell",
+     "fake-api: Singletons/Plugins.qml: made-up omarchy JS/QML API"
+    ],
+    "runtime_errors": [
+     "WARN scene: shell.qml[865:17]: Type Pill unavailable",
+     "WARN scene: Pill.qml[1101:5]: Type LiquidGlass unavailable",
+     "WARN scene: components/LiquidGlass.qml[147:5]: Type ActiveBorderRing unavailable",
+     "WARN scene: components/ActiveBorderRing.qml[-1:-1]: Type Backlight unavailable",
+     "WARN scene: Singletons/Backlight.qml[-1:-1]: Type Battery unavailable",
+     "WARN scene: Singletons/Battery.qml[-1:-1]: Type Cava unavailable",
+     "WARN scene: Singletons/Cava.qml[-1:-1]: Type Cliphist unavailable",
+     "WARN scene: Singletons/Cliphist.qml[-1:-1]: Type Config unavailable"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "bar_active": false
+    },
+    "soft": [],
+    "files": [
+     "Singletons/Plugins.qml"
+    ],
+    "chars": 3988,
+    "loop": false
+   },
+   {
+    "task": "chunk_manifest_entry",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "not-shell-surface",
+     "rt-load-failed",
+     "rt-not-instantiated",
+     "rt-shell-broken",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: Bar.qml: unknown module Omarchy",
+     "bad-import: Service.qml: unknown module Omarchy",
+     "bad-import: Menu.qml: unknown module Omarchy",
+     "not-shell-surface: Menu.qml: entry root is ApplicationWindow (desktop app window, not a Quickshell/Omarchy surface)"
+    ],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for surface.tablet: Service.qml:2:1: module \"Omarchy\" is not installed",
+     "WARN qml: service plugin load failed for surface.tablet: Service.qml:2:1: module \"Omarchy\" is not installed",
+     "WARN scene: Bar.qml[3:1]: module \"Omarchy\" is not installed",
+     "WARN qml: bar option surface.tablet failed to load, falling back to omarchy.bar",
+     "WARN scene: Bar.qml[3:1]: module \"Omarchy\" is not installed",
+     "WARN qml: bar option surface.tablet failed to load, falling back to omarchy.bar",
+     "WARN qml: service plugin load failed for surface.tablet: Service.qml:2:1: module \"Omarchy\" is not installed",
+     "WARN scene: Menu.qml[3:1]: module \"Omarchy\" is not installed"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null,
+     "service": false,
+     "bar_active": false
+    },
+    "soft": [],
+    "files": [
+     "Bar.qml",
+     "Menu.qml",
+     "Service.qml",
+     "manifest.json"
+    ],
+    "chars": 6508,
+    "loop": false
+   },
+   {
+    "task": "chunk_add_kind:bar",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-load-failed",
+     "rt-not-instantiated",
+     "rt-shell-broken",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: Bar.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "WARN scene: Bar.qml[3:1]: module \"Omarchy\" is not installed",
+     "WARN qml: bar option surface.tablet failed to load, falling back to omarchy.bar",
+     "WARN scene: Bar.qml[3:1]: module \"Omarchy\" is not installed",
+     "WARN qml: bar option surface.tablet failed to load, falling back to omarchy.bar",
+     "shell broke with plugin installed: WARN qml: bar option surface.tablet failed to load, falling back to omarchy.bar",
+     "bar option not active (activeBarId=surface.tablet)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 0,
+      "h": 0
+     },
+     "service": true,
+     "bar_active": false
+    },
+    "soft": [],
+    "files": [
+     "Bar.qml",
+     "manifest.json"
+    ],
+    "chars": 2237,
+    "loop": false
+   },
+   {
+    "task": "chunk_add_kind:service",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-js-error",
+     "rt-not-instantiated",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: Service.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "WARN qml: service plugin load failed for surface.tablet: Service.qml:2:1: module \"Omarchy\" is not installed",
+     "WARN qml: service plugin load failed for surface.tablet: Service.qml:2:1: module \"Omarchy\" is not installed",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function",
+     "WARN scene: NativeWidget.qml[24:-1]: TypeError: Property 'createObject' of object TypeError: Type error is not a function"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 0,
+      "h": 0
+     },
+     "service": false,
+     "bar_active": true,
+     "bar_ink": {
+      "top": 132,
+      "bottom": 0,
+      "left": 2496,
+      "right": 2496
+     }
+    },
+    "soft": [],
+    "files": [
+     "Service.qml",
+     "manifest.json"
+    ],
+    "chars": 2594,
+    "loop": false
+   },
+   {
+    "task": "chunk_add_kind:menu",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "not-shell-surface",
+     "rt-not-instantiated",
+     "rt-shell-broken",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: Menu.qml: unknown module Omarchy",
+     "not-shell-surface: Menu.qml: entry root is ApplicationWindow (desktop app window, not a Quickshell/Omarchy surface)"
+    ],
+    "runtime_errors": [
+     "WARN scene: Menu.qml[3:1]: module \"Omarchy\" is not installed",
+     "shell broke with plugin installed: WARN scene: @shell.qml[1357:-1]: ReferenceError: errorString is not defined",
+     "menu never instantiated after summon (status=None)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": null,
+     "service": true,
+     "bar_active": true,
+     "bar_ink": {
+      "top": 2278,
+      "bottom": 284,
+      "left": 2496,
+      "right": 2496
+     }
+    },
+    "soft": [],
+    "files": [
+     "Menu.qml",
+     "manifest.json"
+    ],
+    "chars": 2917,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 0,
+      "h": 0
+     },
+     "service": true,
+     "bar_active": true,
+     "bar_ink": {
+      "top": 132,
+      "bottom": 0,
+      "left": 2496,
+      "right": 2496
+     }
+    },
+    "soft": [],
+    "files": [
+     "tablet.py"
+    ],
+    "chars": 8521,
+    "loop": false
+   },
+   {
+    "task": "chunk_component",
+    "pass_": false,
+    "categories": [
+     "bad-import",
+     "rt-load-failed",
+     "rt-not-instantiated",
+     "rt-other",
+     "rt-shell-broken",
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "bad-import: HomeContent.qml: unknown module Omarchy"
+    ],
+    "runtime_errors": [
+     "WARN scene: Bar.qml[242:38]: Type HomeContent unavailable",
+     "WARN scene: HomeContent.qml[4:1]: module \"Omarchy\" is not installed",
+     "WARN qml: bar option surface.tablet failed to load, falling back to omarchy.bar",
+     "WARN scene: Bar.qml[242:38]: Type HomeContent unavailable",
+     "WARN scene: HomeContent.qml[4:1]: module \"Omarchy\" is not installed",
+     "WARN qml: bar option surface.tablet failed to load, falling back to omarchy.bar",
+     "shell broke with plugin installed: WARN qml: bar option surface.tablet failed to load, falling back to omarchy.bar",
+     "bar option not active (activeBarId=surface.tablet)"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 0,
+      "h": 0
+     },
+     "service": true,
+     "bar_active": false
+    },
+    "soft": [],
+    "files": [
+     "HomeContent.qml"
+    ],
+    "chars": 6388,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:reserved_id",
+    "pass_": false,
+    "categories": [
+     "fix-id-not-namespaced"
+    ],
+    "finish": "stop",
+    "static_fails": [
+     "fix-id-not-namespaced: manifest id 'time-machine' is not a namespaced, non-reserved id"
+    ],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": true,
+     "widget_size": [
+      23,
+      26
+     ],
+     "widget_slot": [
+      23,
+      26
+     ],
+     "widget_x": 1012,
+     "panel_opened": true,
+     "texts": [
+      "\uf1da"
+     ],
+     "widget_ink": 80,
+     "widget_contrast": 12.58
+    },
+    "soft": [
+     "exec: `/opt/ft/runs/rqmcjnzfn/home/user/omarchy/plugins/time-machine/bin/omarchy-time-machine` failed to start in the box (exists on the Dell)",
+     "exec: `/opt/ft/runs/rqmcjnzfn/home/user/omarchy/plugins/time-machine/bin/omarchy-time-machine` failed to start in the box (exists on the Dell)"
+    ],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 655,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:bad_path_dotdot",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "bar_active": true,
+     "bar_ink": {
+      "top": 0,
+      "bottom": 203,
+      "left": 0,
+      "right": 0
+     }
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 321,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:reserved_id",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "panel": {
+      "status": 1,
+      "hasItem": true,
+      "w": 0,
+      "h": 0
+     },
+     "service": true,
+     "bar_active": true,
+     "bar_ink": {
+      "top": 132,
+      "bottom": 0,
+      "left": 2496,
+      "right": 2496
+     }
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 489,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:bad_path_absolute",
+    "pass_": true,
+    "categories": [],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [],
+    "runtime_checks": {
+     "registered": true,
+     "texts": [],
+     "service": true
+    },
+    "soft": [],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 321,
+    "loop": false
+   },
+   {
+    "task": "fix_manifest:reserved_id",
+    "pass_": false,
+    "categories": [
+     "rt-unresolved-type/import"
+    ],
+    "finish": "stop",
+    "static_fails": [],
+    "runtime_errors": [
+     "WARN qml: Plugin widget com.example.power failed: Panel.qml:178:3: ShellIpc is not a type"
+    ],
+    "runtime_checks": {
+     "registered": true,
+     "widget_component": false,
+     "widget_size": [
+      0,
+      0
+     ],
+     "widget_slot": [
+      0,
+      0
+     ],
+     "panel_opened": false,
+     "texts": [],
+     "widget_ink": 0,
+     "widget_contrast": 1.0
+    },
+    "soft": [
+     "WARN qml: summon: no live bar widget for: com.example.power",
+     "bar-widget draws nothing visible on screen (slot 0x0 at x=1012, 0 ink px) (conditionally hidden by design)"
+    ],
+    "files": [
+     "manifest.json"
+    ],
+    "chars": 462,
+    "loop": false
+   }
+  ]
+ }
+}
