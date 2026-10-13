@@ -1,0 +1,9 @@
+06:02 start: loop.py written
+06:02 launched base + hand fixer loops (49 each, 3 fix rounds)
+06:03 launched GEPA (24 train build_from_spec non-holdout, 4 iters, GLM-5.3 reflection, seed=hand prompt)
+06:24 base done n=49 pass_by_round=[5, 8, 12, 13] cost=$2.16 wall=1325s
+06:24 hand v1 r0=3 (prompt induced inline Process{} in JS -> syntax errors); launched hand2 with QML-syntax fix
+06:32 GEPA killed: seed eval took ~15 min (1/24 train), iter 1 not done after 15 more min; would blow 60-min budget -> skipped. spend ~$0.7+
+06:32 hand done n=49 pass_by_round=[3, 4, 5, 5] cost=$2.60 wall=1805s
+06:34 GEPA relaunched per Harris (base seed, no wall cap, gen cache, 900s eval deadline) via gepa_chain.sh
+06:36 hand2 done n=49 pass_by_round=[5, 7, 9, 13] cost=$2.39 wall=700s
