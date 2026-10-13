@@ -1,0 +1,16 @@
+bo16_v3 {
+ "build_from_spec": {
+  "prompts": 32,
+  "pass_at_1": 0.031,
+  "pass_at_k": "11/32",
+  "trunc_rate": 0.326,
+  "loop_rate": 0.137
+ },
+ "ALL": {
+  "prompts": 32,
+  "pass_at_1": 0.031,
+  "pass_at_k": "11/32",
+  "trunc_rate": 0.326,
+  "loop_rate": 0.137
+ }
+}
