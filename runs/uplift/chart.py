@@ -14,28 +14,22 @@ OPEN = {"qwen3.6-27b": "Qwen3.6 27B", "qwen3-coder": "Qwen3-Coder", "kimi-k3": "
 LOAD_FAIL = {"no-files-parsed", "manifest", "entry-not-qml", "no-qml", "not-shell-surface", "bad-import", "qt5-api", "qml-syntax",
              "usuba-USB-T01", "usuba-USB-T02", "usuba-USB-Q01", "usuba-USB-A03",
              "rt-load-failed", "rt-unresolved-type/import", "rt-not-instantiated", "rt-manifest-rejected", "rt-qml-syntax", "rt-shell-broken"}
-HC = json.load(open(os.path.join(H, "handcheck.json"))) if os.path.exists(os.path.join(H, "handcheck.json")) else {}
-BG, INK, MUTE = "#fbfaf7", "#222", "#666"
+import csv, collections
+ROWS = list(csv.DictReader(open(os.path.join(H, "results.csv"))))
+missing = []
 def outcomes(m):
-    p = os.path.join(H, m, "rows.jsonl")
-    if not os.path.exists(p): return None
-    R = [json.loads(l) for l in open(p)]
-    if len(R) < 49: return None
-    hc = HC.get(m, {}); o = {"works right away": 0, "fixed by Checker": 0, "still buggy": 0, "fully broken": 0}
-    for r in R:
-        h = hc.get(str(r["i"]), {}); fp = r["first_pass_round"]
-        fin = r["rounds"][fp] if fp is not None else r["rounds"][-1]
-        if fp == 0 and h.get("r0", h.get("final")) is True: o["works right away"] += 1
-        elif fp is not None and h.get("final") is True: o["fixed by Checker"] += 1
-        elif fp is None and (set(fin.get("categories") or []) & LOAD_FAIL or not fin.get("files")): o["fully broken"] += 1
-        else: o["still buggy"] += 1
-    first = sum(1 for r in R if r["rounds"][0]["pass"] and hc.get(str(r["i"]), {}).get("r0", hc.get(str(r["i"]), {}).get("final")) is True)
-    return o, first, o["works right away"] + o["fixed by Checker"], sum(r["cost"] for r in R)
+    R = [r for r in ROWS if r["model"] == m]
+    if len(R) < 49: missing.append(f"{FRONTIER.get(m) or OPEN.get(m)} ({len(R)}/49 finished)"); return None
+    o = collections.Counter(r["category"] for r in R)
+    assert not o.get("unchecked"), (m, "hand check incomplete")
+    first = o["works right away"]; after = first + o["fixed by Checker"]
+    return {k: o[k] for k in ("works right away", "fixed by Checker", "still buggy", "fully broken")}, first, after, sum(float(r["fix_cost_usd"]) for r in R)
 data = []
 for grp, D in (("Frontier models", FRONTIER), ("Open models", OPEN)):
     for m, lab in D.items():
         x = outcomes(m)
         if x: data.append((grp, lab, *x))
+BG, INK, MUTE = "#fbfaf7", "#222", "#666"
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 10})
 def frame(ax):
     ax.set_facecolor(BG)
@@ -65,6 +59,7 @@ ax.scatter([], [], s=50, facecolor=BG, edgecolor="#777", label="first try"); ax.
 ax.legend(loc="lower right", frameon=False)
 fig.suptitle("How many plugins work: first try vs after Checker fixes", x=0.02, ha="left", fontsize=13, weight="bold", color=INK)
 ax.set_title("Up to 3 fix attempts using only the Usuba Checker's feedback · Omarchy 4.0.4", loc="left", fontsize=9, color=MUTE)
+if missing: fig.text(0.02, 0.005, "Missing (did not finish): " + ", ".join(missing), fontsize=8, color=MUTE)
 plt.tight_layout(); plt.savefig(os.path.join(H, "uplift.png"), dpi=150, facecolor=BG); plt.close(fig)
 # (2) stacked 100% bars
 CATS = [("works right away", "#2f7d4f"), ("fixed by Checker", "#8cc79f"), ("still buggy", "#e7b75f"), ("fully broken", "#c8553d")]
@@ -86,8 +81,10 @@ ax.legend(handles=[plt.Rectangle((0, 0), 1, 1, color=col) for _, col in CATS], l
           loc="upper left", bbox_to_anchor=(0, -0.09), fontsize=9)
 fig.suptitle("What happens to each plugin", x=0.02, ha="left", fontsize=13, weight="bold", color=INK)
 ax.set_title("Working = passes the Usuba Checker and a hand check · fully broken = does not load at all", loc="left", fontsize=9, color=MUTE)
+if missing: fig.text(0.02, 0.005, "Missing (did not finish): " + ", ".join(missing), fontsize=8, color=MUTE)
 plt.tight_layout(); plt.savefig(os.path.join(H, "outcomes.png"), dpi=150, facecolor=BG); plt.close(fig)
 md = ["| group | model | first try /49 | after Checker fixes /49 | works right away | fixed by Checker | still buggy | fully broken | spend (fixes) |", "|---|---|---|---|---|---|---|---|---|"]
 for grp, lab, o, first, after, cost in sorted(data, key=lambda d: (d[0], -d[4])):
     md.append(f"| {grp} | {lab} | {first} | {after} | {o['works right away']} | {o['fixed by Checker']} | {o['still buggy']} | {o['fully broken']} | ${cost:.2f} |")
-open(os.path.join(H, "TABLE.md"), "w").write(__doc__ + "\n" + "\n".join(md) + "\n"); print("\n".join(md))
+md += [f"| missing | {x} | | | | | | | |" for x in missing]
+open(os.path.join(H, "TABLE.md"), "w").write("Source: runs/uplift/results.csv (categories defined in runs/uplift/export.py)\n\n" + "\n".join(md) + "\n"); print("\n".join(md))

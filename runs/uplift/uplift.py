@@ -2,7 +2,7 @@
 """Checker uplift: round 0 = existing generation (graded by Usuba Checker v0.1); failing rows get up to 3 fix rounds where ONLY the
 Checker's output goes back to the model. One process, shared OpenRouter spend ledger with a hard stop, <=6 concurrent grader runs.
 usage: uplift.py NAME=openrouter_model=gen.jsonl[=budget] ...   writes runs/uplift/<NAME>/rows.jsonl incrementally."""
-import json, os, sys, threading, time, urllib.request, urllib.error, concurrent.futures as cf
+import json, os, re, sys, threading, time, urllib.request, urllib.error, concurrent.futures as cf
 H = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(os.path.dirname(H))
 sys.path.insert(0, os.path.join(ROOT, "functest")); sys.path.insert(0, os.path.join(ROOT, "runs/clean")); sys.path.insert(0, os.path.join(ROOT, "runs/fixer"))
 import rescore
@@ -46,7 +46,10 @@ def feedback(r, out, fin):
     if "no-files-parsed" in (r.get("categories") or []): Lx.append("No files could be parsed. Return every file as '### relative/path' followed by a fenced code block.")
     for s in (r.get("reasons") or r.get("static_fails") or []): Lx.append(s)
     seen = set()
-    for e in (r.get("runtime_errors") or []):
+    # the shell's own explanation for a load failure ("Plugin x has no barWidget entry point", QML errors) is logged as a warning;
+    # without it "component never registered" is not actionable, so pass plugin-attributed shell warnings through as well
+    soft = [e for e in (r.get("soft") or []) if re.search(r"Plugin |entry point|manifest|is not a type|Cannot assign|ReferenceError|TypeError|SyntaxError|file://|\.qml", e)]
+    for e in (r.get("runtime_errors") or []) + soft:
         if e[:120] in seen: continue
         seen.add(e[:120]); Lx.append("runtime (real omarchy-shell 4.0.4): " + e)
     return ("Usuba Checker (Omarchy 4.0.4 plugin standard v0.1) rejected the answer:\n- " + "\n- ".join(Lx[:14]) +
@@ -70,7 +73,7 @@ def run(name, model, g0, budget, est, outp, i):
             settle(name, est, c); cost += c
         ok, r, lp = grade(i, out, fin)
         rounds.append({"round": k, "output": out, "finish": fin, "pass": ok, "loop": lp, "categories": r.get("categories"),
-                       "reasons": r.get("reasons"), "static_fails": r.get("static_fails"), "runtime_errors": r.get("runtime_errors"), "files": r.get("files")})
+                       "reasons": r.get("reasons"), "static_fails": r.get("static_fails"), "runtime_errors": r.get("runtime_errors"), "soft": r.get("soft"), "files": r.get("files")})
         if ok or k == ROUNDS: break
         msgs = msgs + [{"role": "assistant", "content": out if not lp and len(out) < 60000 else out[:8000] + "\n[... repetitive output removed ...]"},
                        {"role": "user", "content": feedback(r, out, fin)}]
