@@ -28,3 +28,4 @@
 12:47 grok-4.3 done n=49 checker_pass_by_round=[6, 16, 23, 28] cost=$0.57 stopped=0
 12:53 kimi-k3 done n=49 checker_pass_by_round=[3, 15, 31, 38] cost=$2.40 stopped=0
 13:01 gemini-3.1-pro done n=49 checker_pass_by_round=[4, 21, 25, 32] cost=$6.09 stopped=0
+13:03 deepseek-v4-pro done n=49 checker_pass_by_round=[5, 9, 13, 14] cost=$2.75 stopped=0
