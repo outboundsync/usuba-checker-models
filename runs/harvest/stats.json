@@ -1,0 +1,64 @@
+{
+ "counts": {
+  "samples": 398,
+  "sample-grader-pass": 132,
+  "sample-kept": 77,
+  "sample-fail": 266,
+  "sample-sanity-reject": 55,
+  "reject:leaked-reasoning-prose": 8,
+  "reject:invented-api": 26,
+  "reject:console-log-only-handler": 10,
+  "reject:binary-not-on-system": 10,
+  "reject:fake-data": 8,
+  "reject:reserved-id": 4,
+  "reject:unshipped-helper": 2
+ },
+ "prompts_attempted": 100,
+ "prompts_full_N": 99,
+ "prompts_with_verified": 55,
+ "repairs": 73,
+ "pass_by_round_samples": [
+  9,
+  49,
+  80,
+  132
+ ],
+ "spend_usage_cost": 23.58,
+ "tokens": {
+  "verified": {
+   "n": 55,
+   "p50": 1027,
+   "p95": 1975,
+   "max": 3361,
+   "mean": 1150
+  },
+  "repairs_final": {
+   "n": 73,
+   "p50": 1054,
+   "p95": 2190,
+   "max": 3361,
+   "mean": 1164
+  },
+  "train_v3_all": {
+   "n": 619,
+   "p50": 4589,
+   "p95": 7763,
+   "max": 8143,
+   "mean": 4453
+  },
+  "train_v3_same_prompts_ref": {
+   "n": 307,
+   "p50": 5127,
+   "p95": 7766,
+   "max": 8075,
+   "mean": 4837
+  },
+  "train_v3_ref_for_verified_prompts": {
+   "n": 55,
+   "p50": 5126,
+   "p95": 7932,
+   "max": 8075,
+   "mean": 5002
+  }
+ }
+}

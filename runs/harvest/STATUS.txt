@@ -1,0 +1,19 @@
+10-13 06:40 built prompts.jsonl: 307 full-plugin train prompts (0 holdout overlaps found, 0 dupes); OpenRouter key usage before=$47.55
+10-13 06:40 harvest start prompts=307 N=4 rounds=3 cap=$21.0 resume_done=0 spend=$0.00
+10-13 06:43 steering: aborted base-prompt run after 3 samples (kept aside as samples_base_aborted.jsonl); added stricter filters (sh -c bins, manifest-only, invented APIs, fake data, console.log handlers, X11); relaunch with sys_hand2 prompt, tag grader+filters
+10-13 06:43 harvest start prompts=307 N=4 rounds=3 cap=$21.0 resume_done=0 spend=$0.00
+10-13 06:56 harvest progress 100/1228 jobs spend=$6.29
+10-13 06:56 interim spot-check 10 kept: ~4 real; added filters (Quickshell.Window, invented FileView API, resolvedUrl argv, stub setter scripts) which catch 5 of 6 bad ones; continuing
+10-13 07:05 harvest progress 200/1228 jobs spend=$12.61
+10-13 07:13 harvest progress 300/1228 jobs spend=$18.54
+10-13 07:18 harvest progress 400/1228 jobs spend=$21.08
+10-13 07:18 harvest progress 500/1228 jobs spend=$21.08
+10-13 07:18 harvest progress 600/1228 jobs spend=$21.08
+10-13 07:18 harvest progress 700/1228 jobs spend=$21.08
+10-13 07:18 harvest progress 800/1228 jobs spend=$21.08
+10-13 07:18 harvest progress 900/1228 jobs spend=$21.08
+10-13 07:18 harvest progress 1000/1228 jobs spend=$21.08
+10-13 07:18 harvest progress 1100/1228 jobs spend=$21.08
+10-13 07:21 harvest progress 1200/1228 jobs spend=$22.78
+10-13 07:25 harvest done samples=398 prompts=100 passed=132 spend=$23.58 wall=2471s
+10-13 07:26 spot-check 30: 10/30 real (33%); added filters v2 -> verified=55 prompts, repairs=73; spend $23.58 (+$0.05 aborted base run)
