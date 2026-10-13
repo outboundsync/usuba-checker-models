@@ -9,6 +9,7 @@ import rescore
 from loopdet import loopy
 HARD = float(os.environ.get("HARD_STOP", "29")); ROUNDS = 3
 PROVIDER = {"zdr": True, "data_collection": "deny"}       # zero data retention: only ZDR endpoints, no prompt logging/training
+NO_ZDR = {"meta/muse-wonder"}   # Harris approved 2026-10-13: only provider (Meta) is not ZDR; zdr dropped for this model ONLY
 clean = [json.loads(l)["holdout_i"] for l in open(os.path.join(ROOT, "clean/holdout_clean.jsonl"))]
 gsem = threading.Semaphore(int(os.environ.get("GRADERS", "6"))); asem = threading.Semaphore(int(os.environ.get("API", "24")))
 L = threading.Lock(); LEDGER = os.path.join(H, "spend.json")
@@ -30,7 +31,7 @@ DEAD = []                                                     # set on HTTP 402:
 def chat(model, msgs, mt=16000):
     """Returns a real reply or raises ApiError. 402s, HTTP/network errors and empty replies are never returned as answers."""
     b = {"model": model, "messages": msgs, "temperature": 0, "max_tokens": mt, "usage": {"include": True},
-         "reasoning": {"effort": "low", "exclude": True}, "provider": PROVIDER}
+         "reasoning": {"effort": "low", "exclude": True}, "provider": ({k: v for k, v in PROVIDER.items() if k != "zdr"} if model in NO_ZDR else PROVIDER)}
     err = ""; cost = 0
     for a in range(6):
         if DEAD: raise ApiError("stopped: " + DEAD[0])

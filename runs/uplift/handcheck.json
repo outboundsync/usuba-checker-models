@@ -1,4 +1,174 @@
 {
+ "muse-wonder": {
+  "4": {
+   "first": "accept",
+   "note": "real NotificationServer with popups, DND and history"
+  },
+  "2": {
+   "first": "accept",
+   "note": "clipboard list/preview/paste/delete via cliphist + wl-copy Processes"
+  },
+  "8": {
+   "first": "accept",
+   "note": "Dropbox status via dropbox CLI, real du for usage, login link"
+  },
+  "11": {
+   "first": "accept",
+   "note": "brightness via brightnessctl"
+  },
+  "14": {
+   "first": "accept",
+   "note": "battery via UPower, CPU/mem from /proc via FileView, power profile"
+  },
+  "16": {
+   "first": "accept",
+   "note": "real Cloudflare speed test via shipped curl script"
+  },
+  "19": {
+   "first": "reject",
+   "note": "weather is hardcoded ('72\u00b0F'); no forecast fetch at all"
+  },
+  "26": {
+   "first": "accept",
+   "note": "reads hyprctl binds -j, watches hyprctl layers/clients for Walker/menu, notify-send hints"
+  },
+  "27": {
+   "first": "accept",
+   "note": "hints from hyprctl clients -j, actions via hyprctl dispatch"
+  },
+  "28": {
+   "first": "accept",
+   "note": "writes a Lua hl.config managed block to looknfeel.lua, live preview via hyprctl keyword"
+  },
+  "30": {
+   "first": "accept",
+   "note": "lenient: patches the shell's bar window to be transparent and flush (unverified on hardware)"
+  },
+  "46": {
+   "first": "reject",
+   "note": "bar runs tablet.py toggle; real tablet.py only accepts daemon/status"
+  },
+  "48": {
+   "first": "reject",
+   "note": "menu runs tablet.py toggle/tablet/desktop/launcher/layout/keyboard/dictation; real tablet.py only accepts daemon/status"
+  },
+  "49": {
+   "first": "reject",
+   "note": "tablet.py rewrite with a new CLI (mode/keyboard/rotate/...), no `daemon` mode that Service.qml starts"
+  },
+  "50": {
+   "first": "reject",
+   "note": "hardcoded app list (firefox, nautilus, ...) instead of DesktopEntries"
+  },
+  "52": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "53": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "0": {
+   "final": "accept",
+   "note": "wallpapers from ~/Pictures/Wallpapers via find, crossfade, click to cycle"
+  },
+  "1": {
+   "final": "accept",
+   "note": "wallpaper service scanning ~/Pictures/Wallpapers, background surface with transitions"
+  },
+  "3": {
+   "final": "accept",
+   "note": "clipboard history via cliphist list/decode/delete, wl-copy"
+  },
+  "5": {
+   "final": "accept",
+   "note": "real NotificationServer, DND, history persisted with FileView"
+  },
+  "6": {
+   "final": "accept",
+   "note": "Dropbox status/usage/recent via shipped helper script"
+  },
+  "7": {
+   "final": "accept",
+   "note": "Dropbox status via CLI when present, ~/.dropbox/info.json, recent files"
+  },
+  "9": {
+   "final": "accept",
+   "note": "brightness via brightnessctl get/set"
+  },
+  "10": {
+   "final": "accept",
+   "note": "brightness via brightnessctl, display controls via shipped hyprctl script"
+  },
+  "12": {
+   "final": "accept",
+   "note": "battery from /sys, powerprofilesctl, CPU/mem stats"
+  },
+  "13": {
+   "final": "accept",
+   "note": "powerprofilesctl and /proc stats via FileView"
+  },
+  "15": {
+   "final": "accept",
+   "note": "real curl speed test (Cloudflare/CacheFly) via shipped script"
+  },
+  "17": {
+   "final": "accept",
+   "note": "weather from open-meteo via curl"
+  },
+  "20": {
+   "final": "reject",
+   "note": "spec asks for the Midvash verse of the day; ships a fixed Verses.js list"
+  },
+  "21": {
+   "final": "reject",
+   "note": "spec asks for the Midvash verse of the day; picks from a bundled verse list"
+  },
+  "22": {
+   "final": "reject",
+   "note": "spec asks for the Midvash verse of the day; hardcoded verse array"
+  },
+  "23": {
+   "final": "accept",
+   "note": "verse from the Midvash API with bible-api fallback"
+  },
+  "24": {
+   "final": "accept",
+   "note": "restic status/snapshots/backup via shipped script"
+  },
+  "25": {
+   "final": "accept",
+   "note": "real restic backup/snapshots via sh with password file"
+  },
+  "29": {
+   "final": "accept",
+   "note": "iCal from local file/URL parsed in IcalParser.js"
+  },
+  "31": {
+   "final": "accept",
+   "note": "ports via ss -tlnp, stop via kill"
+  },
+  "36": {
+   "final": "reject",
+   "note": "Beam calls guessed sibling lib functions behind typeof checks (AppsLib.filterApps || search, MenuLib.filterItems); compatibility unverified"
+  },
+  "39": {
+   "final": "accept",
+   "note": "bar shell hosting the sibling Pill per screen"
+  },
+  "51": {
+   "final": "accept",
+   "note": "manifest fix; snapshots/backup via restic"
+  },
+  "54": {
+   "final": "accept",
+   "note": "manifest fix; gaps via bundled script"
+  },
+  "55": {
+   "final": "accept",
+   "note": "manifest fix with real powerprofilesctl/battery panel"
+  }
+ },
  "qwen3.6-27b": {
   "49": {
    "first": "reject",
@@ -577,6 +747,160 @@
    "note": "creates QML objects inline in JS (var file = FileView {...}) inside try; config/backup never actually run"
   }
  },
+ "gemini-4-argon": {
+  "7": {
+   "first": "accept",
+   "note": "Dropbox via dropbox-cli / ~/.dropbox/info.json, real du and recent-file scan, start/stop/login wired"
+  },
+  "8": {
+   "first": "accept",
+   "note": "Dropbox status/storage/recent via python probe calling dropbox CLI, info.json, df/du"
+  },
+  "25": {
+   "first": "accept",
+   "note": "real restic init/snapshots/backup/restore via guarded sh, systemd timer for schedule"
+  },
+  "26": {
+   "first": "reject",
+   "note": "hints depend on invented pluginApi.ipc onMenuMessage and pluginApi.runner onCommandLaunched signals (not in the plugin API), so they never fire"
+  },
+  "27": {
+   "first": "accept",
+   "note": "vimium hints from hyprctl clients/monitors -j, actions via hyprctl dispatch"
+  },
+  "48": {
+   "first": "reject",
+   "note": "menu runs tablet.py toggle/keyboard/dictate; real tablet.py only accepts daemon/status"
+  },
+  "49": {
+   "first": "reject",
+   "note": "tablet.py rewrite with toggle/status/mode/home CLI, no `daemon` mode that Service.qml starts"
+  },
+  "52": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "53": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "54": {
+   "first": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "1": {
+   "final": "reject",
+   "note": "currentWallpaper starts empty and nothing reads the Omarchy background; renders no real image"
+  },
+  "2": {
+   "final": "accept",
+   "note": "clipboard history by polling wl-paste, paste via wl-copy"
+  },
+  "3": {
+   "final": "accept",
+   "note": "clipboard history via python wl-paste poller, paste via wl-copy"
+  },
+  "5": {
+   "final": "accept",
+   "note": "real NotificationServer with popups, DND and history panel"
+  },
+  "6": {
+   "final": "accept",
+   "note": "Dropbox account/space/recent via the real Dropbox API with OAuth token refresh"
+  },
+  "9": {
+   "final": "accept",
+   "note": "brightnessctl get/set, hyprctl monitors, DPMS"
+  },
+  "10": {
+   "final": "accept",
+   "note": "brightnessctl, hyprsunset night light check, hyprctl monitors"
+  },
+  "11": {
+   "final": "accept",
+   "note": "brightnessctl set/step, laptop display toggle via real Processes"
+  },
+  "13": {
+   "final": "accept",
+   "note": "battery, powerprofilesctl and meminfo via real Processes"
+  },
+  "14": {
+   "final": "accept",
+   "note": "power panel with real sh/powerprofilesctl stats"
+  },
+  "15": {
+   "final": "accept",
+   "note": "real curl speed test against speed.cloudflare.com (download + upload)"
+  },
+  "16": {
+   "final": "accept",
+   "note": "real Cloudflare ping/download/upload via curl, result cached for the bar"
+  },
+  "17": {
+   "final": "reject",
+   "note": "shows hardcoded sample weather (18\u00b0C, Clear, 52%) until and unless the wttr.in fetch succeeds"
+  },
+  "18": {
+   "final": "accept",
+   "note": "weather from open-meteo"
+  },
+  "20": {
+   "final": "accept",
+   "note": "lenient: real verse API (OurManna daily) instead of Midvash"
+  },
+  "22": {
+   "final": "reject",
+   "note": "spec asks for the Midvash verse of the day; picks a random reference from a bundled Verses.js list"
+  },
+  "24": {
+   "final": "accept",
+   "note": "real restic snapshots/backup on a schedule"
+  },
+  "28": {
+   "final": "reject",
+   "note": "writes a `return { general = {...} }` table into looknfeel.lua (no hl.config, cuts off the file); live preview via Hyprland.dispatch(\"keyword ...\") which is not a dispatcher"
+  },
+  "29": {
+   "final": "accept",
+   "note": "iCal from local/URL sources parsed by a shipped python script"
+  },
+  "30": {
+   "final": "accept",
+   "note": "gaps via hyprctl keyword so the bar sits flush"
+  },
+  "31": {
+   "final": "accept",
+   "note": "ports via ss, stop via kill, open in browser"
+  },
+  "36": {
+   "final": "reject",
+   "note": "Beam calls guessed sibling functions behind typeof checks (Compose.composeResults || compose, Proc.runDetached); compatibility unverified"
+  },
+  "41": {
+   "final": "reject",
+   "note": "Plugins.qml guesses the singleton's API with dozens of alias properties (barWidgets, stripItems, cellIds...)"
+  },
+  "45": {
+   "final": "reject",
+   "note": "Service runs `tablet.py sync`, which doesn't exist (real: daemon/status)"
+  },
+  "47": {
+   "final": "reject",
+   "note": "service runs tablet.py home/switcher/toggle/keyboard subcommands that don't exist (real: daemon/status)"
+  },
+  "50": {
+   "final": "accept",
+   "note": "app launcher grid from DesktopEntries"
+  },
+  "51": {
+   "final": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "55": {
+   "final": "accept",
+   "note": "manifest fix with real battery/powerprofilesctl panel"
+  }
+ },
  "grok-4.3": {
   "4": {
    "final": "accept",
@@ -1095,6 +1419,180 @@
   "25": {
    "final": "reject",
    "note": "panel is an empty shell: no backup, destination or snapshot logic"
+  }
+ },
+ "grok-4.7": {
+  "15": {
+   "first": "accept",
+   "note": "real curl speed test against speed.cloudflare.com (latency, download, upload)"
+  },
+  "28": {
+   "first": "reject",
+   "note": "writes an inert Lua table ending in `return look` into looknfeel.lua (no hl.config call, cuts off the rest of the file); no hyprctl live preview"
+  },
+  "46": {
+   "first": "reject",
+   "note": "bar mode comes from `python3 -c \"print('desktop')\"`: hardcoded state, toggle only echoes"
+  },
+  "48": {
+   "first": "reject",
+   "note": "menu calls service.toggleMode/toggleKeyboard/dictate, which upstream Service.qml doesn't have (it only runs tablet.py daemon/status); every item silently does nothing"
+  },
+  "49": {
+   "first": "reject",
+   "note": "tablet.py rewrite without the `daemon` mode Service.qml starts"
+  },
+  "0": {
+   "final": "reject",
+   "note": "wallpaper is empty and never set from any source; renders a flat colour"
+  },
+  "1": {
+   "final": "reject",
+   "note": "hardcoded /usr/share/backgrounds/gnome/*.jpg paths that don't exist on Omarchy; ignores the current Omarchy background"
+  },
+  "2": {
+   "final": "accept",
+   "note": "clipboard history by polling wl-paste, paste via wl-copy"
+  },
+  "3": {
+   "final": "accept",
+   "note": "clipboard history via shipped script using wl-paste/wl-copy"
+  },
+  "4": {
+   "final": "accept",
+   "note": "real NotificationServer with DND, popups and history"
+  },
+  "5": {
+   "final": "accept",
+   "note": "NotificationServer service with overlay/history/bar sharing a runtime state file"
+  },
+  "6": {
+   "final": "accept",
+   "note": "Dropbox status via dropbox CLI when present, real du/find for usage and recent files"
+  },
+  "7": {
+   "final": "accept",
+   "note": "Dropbox state from ~/.dropbox/info.json via shipped script, real recent files, login link"
+  },
+  "8": {
+   "final": "accept",
+   "note": "Dropbox folder checks and recent files via find, login/account links"
+  },
+  "9": {
+   "final": "reject",
+   "note": "after feedback the slider only changes a number; no brightnessctl or any backlight call"
+  },
+  "10": {
+   "final": "reject",
+   "note": "brightness and night light only flip properties; nothing touches the backlight"
+  },
+  "11": {
+   "final": "accept",
+   "note": "brightness via brightnessctl -m / set"
+  },
+  "12": {
+   "final": "accept",
+   "note": "battery from /sys, powerprofilesctl, /proc/stat and meminfo"
+  },
+  "13": {
+   "final": "accept",
+   "note": "battery from /sys, powerprofilesctl get, CPU/mem stats"
+  },
+  "14": {
+   "final": "accept",
+   "note": "powerprofilesctl get/set, /proc/stat and meminfo"
+  },
+  "16": {
+   "final": "accept",
+   "note": "real curl speed test against speed.cloudflare.com"
+  },
+  "17": {
+   "final": "accept",
+   "note": "weather from wttr.in j1"
+  },
+  "18": {
+   "final": "accept",
+   "note": "weather from open-meteo with ipwho.is location"
+  },
+  "19": {
+   "final": "accept",
+   "note": "weather service via open-meteo geocoding + forecast"
+  },
+  "20": {
+   "final": "reject",
+   "note": "spec asks for the Midvash verse of the day; ships a fixed Verses.js list"
+  },
+  "21": {
+   "final": "accept",
+   "note": "lenient: real verse API (OurManna daily) instead of Midvash"
+  },
+  "22": {
+   "final": "reject",
+   "note": "spec asks for the Midvash verse of the day; ships a hardcoded verse array"
+  },
+  "23": {
+   "final": "accept",
+   "note": "verse via Midvash endpoint with bible-api/OurManna fallbacks"
+  },
+  "25": {
+   "final": "accept",
+   "note": "restic backup/snapshots/restore via real Process"
+  },
+  "26": {
+   "final": "accept",
+   "note": "reads hyprctl binds -j, watches Hyprland events for menu launchers"
+  },
+  "27": {
+   "final": "accept",
+   "note": "hints from hyprctl clients -j, actions via hyprctl dispatch"
+  },
+  "29": {
+   "final": "accept",
+   "note": "iCal parsed from a local .ics via FileView, QtCore imported"
+  },
+  "30": {
+   "final": "accept",
+   "note": "lenient: transparent flush bar per screen with config/state files"
+  },
+  "31": {
+   "final": "accept",
+   "note": "ports via ss -lntp, stop via kill"
+  },
+  "36": {
+   "final": "reject",
+   "note": "Beam relies on guessed sibling APIs (appItem.apps || items || model) with no own actions, maths or web logic"
+  },
+  "39": {
+   "final": "reject",
+   "note": "after feedback the bar drops the existing Pill/Commons siblings and is just a clock island"
+  },
+  "47": {
+   "final": "reject",
+   "note": "service runs tablet.py tablet/desktop subcommands that don't exist (real: daemon/status)"
+  },
+  "50": {
+   "final": "reject",
+   "note": "hardcoded GNOME app list (gedit, rhythmbox, gnome-control-center) not on Omarchy; no DesktopEntries"
+  },
+  "51": {
+   "final": "reject",
+   "note": "manifest fix but overwrites the plugin's Panel/store files with empty stubs"
+  },
+  "52": {
+   "final": "accept",
+   "note": "manifest fix: valid id/path, rest unchanged"
+  },
+  "53": {
+   "final": "reject",
+   "note": "manifest fix but replaces Bar/Service/Menu with stubs (Service only flips a boolean)"
+  },
+  "54": {
+   "final": "accept",
+   "note": "manifest fix; gaps via bundled script"
+  },
+  "55": {
+   "final": "accept",
+   "note": "manifest fix with real battery/powerprofilesctl panel"
   }
  }
 }

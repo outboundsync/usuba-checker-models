@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.join(ROOT, "functest")); import rescore
 LOAD_FAIL = {"no-files-parsed", "manifest", "entry-not-qml", "no-qml", "not-shell-surface", "bad-import", "qt5-api", "qml-syntax",
              "usuba-USB-T01", "usuba-USB-T02", "usuba-USB-Q01", "usuba-USB-A03",
              "rt-load-failed", "rt-unresolved-type/import", "rt-not-instantiated", "rt-manifest-rejected", "rt-qml-syntax", "rt-shell-broken"}
-MODELS = [("Frontier", "gpt-5.6-sol"), ("Frontier", "claude-opus-5.5"), ("Frontier", "claude-sonnet-5.5"), ("Frontier", "gemini-3.1-pro"), ("Frontier", "grok-4.3"),
+MODELS = [("Frontier", "gpt-5.6-sol"), ("Frontier", "claude-opus-5.5"), ("Frontier", "claude-sonnet-5.5"), ("Frontier", "gemini-3.1-pro"), ("Frontier", "grok-4.3"), ("Frontier", "grok-4.7"), ("Frontier", "gemini-4-argon"), ("Frontier", "muse-wonder"),
           ("Open", "qwen3.6-27b"), ("Open", "qwen3-coder"), ("Open", "kimi-k3"), ("Open", "deepseek-v4-pro")]
 HC = json.load(open(os.path.join(H, "handcheck.json"))) if os.path.exists(os.path.join(H, "handcheck.json")) else {}
 def dump(m, i, k, out):

@@ -9,7 +9,8 @@ Truncated and looping answers never count as passes."""
 import json, os
 import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
 H = os.path.dirname(os.path.abspath(__file__))
-FRONTIER = {"gpt-5.6-sol": "GPT-5.6 Sol", "claude-opus-5.5": "Claude Opus 5.5", "claude-sonnet-5.5": "Claude Sonnet 5.5", "gemini-3.1-pro": "Gemini 3.1 Pro", "grok-4.3": "Grok 4.3"}
+FRONTIER = {"gpt-5.6-sol": "GPT-5.6 Sol", "claude-opus-5.5": "Claude Opus 5.5", "claude-sonnet-5.5": "Claude Sonnet 5.5", "gemini-3.1-pro": "Gemini 3.1 Pro", "grok-4.3": "Grok 4.3", "grok-4.7": "Grok 4.7", "gemini-4-argon": "Gemini 4 Argon", "muse-wonder": "Muse Wonder *"}
+NOZDR_NOTE = "* Muse Wonder ran without zero data retention (its only provider, Meta, is not ZDR). All other models ran with ZDR."
 OPEN = {"qwen3.6-27b": "Qwen3.6 27B", "qwen3-coder": "Qwen3-Coder", "kimi-k3": "Kimi K3", "deepseek-v4-pro": "DeepSeek V4 Pro"}
 LOAD_FAIL = {"no-files-parsed", "manifest", "entry-not-qml", "no-qml", "not-shell-surface", "bad-import", "qt5-api", "qml-syntax",
              "usuba-USB-T01", "usuba-USB-T02", "usuba-USB-Q01", "usuba-USB-A03",
@@ -71,8 +72,8 @@ ax.scatter([], [], s=50, facecolor=BG, edgecolor="#777", label="first try"); ax.
 ax.legend(loc="lower right", frameon=False)
 fig.suptitle("How many plugins work: first try vs after Checker fixes", x=0.02, ha="left", fontsize=13, weight="bold", color=INK)
 ax.set_title("Up to 3 fix attempts using only the Usuba Checker's feedback · Omarchy 4.0.4", loc="left", fontsize=9, color=MUTE)
-if not ff: fig.text(0.02, 0.01, missing_ref, fontsize=8, color=MUTE)
-plt.tight_layout(); plt.savefig(os.path.join(H, "uplift.png"), dpi=150, facecolor=BG); plt.close(fig)
+fig.text(0.02, 0.005, NOZDR_NOTE + ("  " + missing_ref if not ff else ""), fontsize=8, color=MUTE)
+plt.tight_layout(rect=(0, 0.03, 1, 1)); plt.savefig(os.path.join(H, "uplift.png"), dpi=150, facecolor=BG); plt.close(fig)
 # (2) stacked 100% bars
 CATS = [("works right away", "#2f7d4f"), ("fixed by Checker", "#8cc79f"), ("still buggy", "#e7b75f"), ("fully broken", "#c8553d")]
 fig, ax = plt.subplots(figsize=(9, 0.45 * (len(data) + len(MISS) + 3) + 1.8)); fig.patch.set_facecolor(BG); frame(ax)
@@ -96,9 +97,10 @@ ax.legend(handles=[plt.Rectangle((0, 0), 1, 1, color=col) for _, col in CATS], l
           loc="upper left", bbox_to_anchor=(0, -0.09), fontsize=9)
 fig.suptitle("What happens to each plugin", x=0.02, ha="left", fontsize=13, weight="bold", color=INK)
 ax.set_title("Working = passes the Usuba Checker and a hand check · fully broken = does not load at all", loc="left", fontsize=9, color=MUTE)
-plt.tight_layout(); plt.savefig(os.path.join(H, "outcomes.png"), dpi=150, facecolor=BG); plt.close(fig)
+fig.text(0.02, 0.005, NOZDR_NOTE, fontsize=8, color=MUTE)
+plt.tight_layout(rect=(0, 0.03, 1, 1)); plt.savefig(os.path.join(H, "outcomes.png"), dpi=150, facecolor=BG); plt.close(fig)
 md = ["| group | model | first try /49 | after Checker fixes /49 | works right away | fixed by Checker | still buggy | fully broken | spend (fixes) |", "|---|---|---|---|---|---|---|---|---|"]
 for grp, lab, o, first, after, cost in sorted(data, key=lambda d: (d[0], -d[4])):
     md.append(f"| {grp} | {lab} | {first} | {after} | {o['works right away']} | {o['fixed by Checker']} | {o['still buggy']} | {o['fully broken']} | ${cost:.2f} |")
 md += [f"| missing | {x} | | | | | | | |" for x in missing]
-open(os.path.join(H, "TABLE.md"), "w").write("Source: runs/uplift/results.csv (categories defined in runs/uplift/export.py)\n\n" + "\n".join(md) + "\n"); print("\n".join(md))
+open(os.path.join(H, "TABLE.md"), "w").write("Source: runs/uplift/results.csv (categories defined in runs/uplift/export.py)\n\n" + "\n".join(md) + "\n\n" + NOZDR_NOTE + "\n"); print("\n".join(md))
