@@ -186,7 +186,7 @@ def dell_candidates(key_ids, st):
             seen.add((cat, txt[:60])); fl.append({k: v for k, v in dict(category=cat, severity=sev, file=fn, finding=txt).items() if v is not None})
         load = r["label"]
         verdict = "changes_requested" if any(x["severity"] == "blocker" for x in fl) else "approve"
-        rep = [(t if isinstance(t, str) else ": ".join(map(str, t)))[:300] for t in (ck.get("static_fails") or [])] + [f"[runtime] {str(t)[:300]}" for t in (ck.get("runtime_errors") or [])]
+        rep = None   # filled in load_code() from the plugin files with train/checker_report.py, the exact report the eval prompt shows
         out[b].append(dict(source=b, repo=norm_repo(r["key"]), plugin_id=r.get("plugin_id"), weight=1.0, local_dir=c["local_dir"], tree_hash=c.get("tree_hash"),
                            checker_report=rep, target=dict(verdict=verdict, load=load, findings=fl),
                            provenance=dict(kind="dell-sweep" + ("+checker-agree" if verified else ""), commit=r.get("commit"), dell_run=d.get("run"), dell_job=d.get("job"),
@@ -196,6 +196,51 @@ def dell_candidates(key_ids, st):
 def load_code(row):
     import functest
     from build_reviewer_scrub import scrub
-    files = functest.read_dir(row["local_dir"])
-    return scrub(code_blob(files)), sorted(file_hashes(files)), manifest_id(files)
+    import checker_report
+    files = {p: c for p, c in functest.read_dir(row["local_dir"]).items() if p not in checker_report.HARNESS_FILES}
+    rep = checker_report.report(files)
+    return scrub(code_blob(files)), sorted(file_hashes(files)), manifest_id(files), [scrub(r) for r in rep] if rep is not None else None
 
+def main():
+    ap = argparse.ArgumentParser(); ap.add_argument("--limit", type=int, default=0); ap.add_argument("--workers", type=int, default=8)
+    ap.add_argument("--out", default=OUT); a = ap.parse_args()
+    rnd = random.Random(1337); st = collections.Counter(); os.makedirs(a.out, exist_ok=True)
+    h_repos, h_ids, h_trees = holdout_fingerprint(); st["holdout_repos"] = len(h_repos); st["holdout_manifest_ids"] = len(h_ids)
+    key_ids = {json.loads(l)["id"] for l in open(os.path.join(ROOT, "functest", "dell_ground_truth.jsonl"))}
+    rows = hancore_examples(st)
+    dc = dell_candidates(key_ids, st)
+    for b, L in sorted(dc.items()):
+        rnd.shuffle(L); st[f"candidates:{b}"] = len(L)
+        rows += L[:CAPS.get(b, len(L))]
+    if a.limit: rnd.shuffle(rows); rows = rows[:a.limit]
+    need = [r for r in rows if "local_dir" in r]
+    with ProcessPoolExecutor(a.workers) as ex:
+        for r, (code, fh, mid, rep) in zip(need, ex.map(load_code, need, chunksize=16)): r["code"], r["_fh"], r["_mid"], r["checker_report"] = code, set(fh), mid, rep
+    kept, seen_code = [], set()
+    for r in rows:
+        if r["repo"] in h_repos: st["excluded_holdout_repo:" + r["source"]] += 1; continue
+        mid = r.get("_mid") or (manifest_id({"manifest.json": m.group(1)}) if (m := re.search(r"### manifest.json\n```\n(.*?)\n```", r["code"], re.S)) else None)
+        if mid and mid.lower() in h_ids: st["excluded_holdout_manifest_id:" + r["source"]] += 1; continue
+        fh = r.get("_fh") or {hashlib.sha1(re.sub(r"\s+", "", blk).encode()).hexdigest() for blk in re.findall(r"### (?!README|LICENSE)[^\n]+\n```\n(.*?)\n```", r["code"], re.S) if blk.strip()}
+        if near_dup(fh, h_trees): st["excluded_holdout_near_dup:" + r["source"]] += 1; continue
+        ch = hashlib.sha1(r["code"].encode()).hexdigest()
+        if ch in seen_code: st["excluded_dup_in_train:" + r["source"]] += 1; continue
+        seen_code.add(ch); kept.append(r)
+    rnd.shuffle(kept)
+    by_repo = collections.defaultdict(list)
+    for r in kept: by_repo[r["repo"]].append(r)
+    repos = sorted(by_repo); rnd.shuffle(repos); nval = max(1, int(len(repos) * 0.03))
+    val_repos = set(repos[:nval])
+    with open(os.path.join(a.out, "train.jsonl"), "w") as ft, open(os.path.join(a.out, "val.jsonl"), "w") as fv:
+        for r in kept:
+            rec = dict(id=f"{r['source']}:{r['repo']}", source=r["source"], weight=r["weight"], provenance=r["provenance"],
+                       messages=prompt.messages(r["code"], r["checker_report"], r["target"]))
+            (fv if r["repo"] in val_repos else ft).write(json.dumps(rec, ensure_ascii=False) + "\n")
+            st[("val:" if r["repo"] in val_repos else "train:") + r["source"]] += 1
+    st["train_total"] = sum(v for k, v in st.items() if k.startswith("train:")); st["val_total"] = sum(v for k, v in st.items() if k.startswith("val:"))
+    cats = collections.Counter(f["category"] for r in kept for f in r["target"]["findings"])
+    man = dict(stats=dict(sorted(st.items())), finding_categories=dict(cats.most_common()), caps=CAPS, seed=1337,
+               exclusions=["eval/hancore_holdout: repo, manifest id, near-dup code tree (>=50% shared file hashes)", "functest/dell_ground_truth.jsonl plugin ids", "exact duplicate code"])
+    man["sha256"] = {f: hashlib.sha256(open(os.path.join(a.out, f), "rb").read()).hexdigest() for f in ("train.jsonl", "val.jsonl")}
+    json.dump(man, open(os.path.join(a.out, "manifest.json"), "w"), indent=1); print(json.dumps(man, indent=1))
+if __name__ == "__main__": main()
