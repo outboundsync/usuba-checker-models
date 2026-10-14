@@ -56,15 +56,19 @@ r2_put() {  # r2_put <local file> <key>; files over $CHUNK go up as numbered par
 }
 sync_once() {  # copies every new/changed remote artifact, verifies sha256, uploads to R2; prints "OK <n files>" when all match
   local L; L=$(LOCAL); mkdir -p "$L"
-  rsh "$REMOTE_LIST | while read f; do sha256sum \"\$f\"; done" > "$L/.remote.sha256.new" || { echo "instance unreachable"; return 2; }
+  rsh "$REMOTE_LIST | grep -v -e '^run.log\$' -e 'train_log.jsonl\$' | while read f; do d=\${f%/*}; case \$f in */checkpoints/step-*) [ -f \$(echo \$f | sed -E 's#(step-[0-9]+)/.*#\\1#')/COMPLETE ] || continue;; esac; sha256sum \"\$f\"; done" > "$L/.remote.sha256.new" || { echo "instance unreachable"; return 2; }
   local bad=0 n=0
   while read -r h f; do
-    n=$((n+1)); [ -f "$L/$f" ] && [ "$(sha256sum "$L/$f" | cut -d' ' -f1)" = "$h" ] && continue
+    n=$((n+1))
+    [ -f "$L/$f" ] && [ "$(sha256sum "$L/$f" | cut -d' ' -f1)" = "$h" ] && continue
     mkdir -p "$(dirname "$L/$f")"; rcp "/workspace/usuba/$f" "$L/$f.part" || { echo "  copy failed: $f"; bad=1; continue; }
     if [ "$(sha256sum "$L/$f.part" | cut -d' ' -f1)" = "$h" ]; then mv "$L/$f.part" "$L/$f"; echo "  synced $f"
       r2_put "$L/$f" "runs/$(IID)/$f" || true   # box copy is the source of truth; R2 failure is reported, not fatal
     else echo "  checksum mismatch (file still being written?): $f"; rm -f "$L/$f.part"; bad=1; fi
   done < "$L/.remote.sha256.new"
+  for f in run.log train/out/usuba-9b-lora/train_log.jsonl; do   # live-appended logs: snapshot copy, never checksum-gated
+    mkdir -p "$(dirname "$L/$f")"; rcp "/workspace/usuba/$f" "$L/$f.snap" 2>/dev/null && mv "$L/$f.snap" "$L/$f" && { r2_put "$L/$f" "runs/$(IID)/$f" >/dev/null || true; }
+  done
   mv "$L/.remote.sha256.new" "$L/remote.sha256"; date -u +%FT%TZ > "$L/last_sync"
   [ $bad = 0 ] && echo "OK $n files" || return 1
 }
@@ -106,7 +110,15 @@ watch)
     echo "[$(date)] sync"; sync_once || true
     L=$(LOCAL); if grep -qE "  (ALL_DONE|SMOKE_DONE|TRAIN_STOPPED)$" "$L/remote.sha256" 2>/dev/null; then   # markers present on the instance now
       echo "run finished; final fetch"; "$0" fetch && echo "FETCH VERIFIED. safe to: train/launch_vast.sh down"; break; fi
-    sleep ${SYNC_EVERY:-600}
+    # heartbeat: no new optimizer step for STALL_MIN (10) minutes -> STALLED + resume via /root/onstart.sh
+    st=$(rsh "tail -n 1 /workspace/usuba/train/out/usuba-9b-lora/train_log.jsonl 2>/dev/null | grep -o '\"step\": [0-9]*'" 2>/dev/null || true)
+    now=$(date +%s); [ "$st" != "${last_st:-x}" ] && { last_st=$st; last_t=$now; }
+    if [ $((now-${last_t:-$now})) -ge $((${STALL_MIN:-10}*60)) ]; then
+      echo "[$(date)] STALLED: no new step since $(date -d @$last_t) ($st); attempting resume"
+      rsh "tmux kill-session -t train 2>/dev/null; pkill -f train_lora.py; sleep 5; rm -f /workspace/usuba/TRAIN_STOPPED; bash /root/onstart.sh" || echo "  resume attempt failed (instance unreachable?)"
+      last_t=$((now+15*60))   # grace for setup + model load before the next stall check
+    fi
+    sleep ${SYNC_EVERY:-120}
   done;;
 sync) sync_once;;
 fetch)
@@ -119,7 +131,7 @@ down)
   if [ $FORCE = 0 ]; then
     L=$(LOCAL); [ -f "$L/FETCH_VERIFIED" ] || { echo "REFUSING: no verified fetch. run: train/launch_vast.sh fetch"; exit 3; }
     # re-check against the instance right now: anything written after the last fetch must be fetched too
-    rsh "$REMOTE_LIST | while read f; do sha256sum \"\$f\"; done" > /tmp/usuba_down_check || { echo "REFUSING: cannot reach instance to verify (use --i-accept-data-loss if it is already gone)"; exit 3; }
+    rsh "$REMOTE_LIST | grep -v -e '^run.log\$' -e 'train_log.jsonl\$' | while read f; do d=\${f%/*}; case \$f in */checkpoints/step-*) [ -f \$(echo \$f | sed -E 's#(step-[0-9]+)/.*#\\1#')/COMPLETE ] || continue;; esac; sha256sum \"\$f\"; done" > /tmp/usuba_down_check || { echo "REFUSING: cannot reach instance to verify (use --i-accept-data-loss if it is already gone)"; exit 3; }
     cmp -s /tmp/usuba_down_check "$L/remote.sha256" || { echo "REFUSING: instance has files not in the verified fetch. run fetch again"; exit 3; }
     ( cd "$L" && sha256sum -c --quiet remote.sha256 ) || { echo "REFUSING: local copy no longer verifies"; exit 3; }
   fi
