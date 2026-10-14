@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the Usuba 9B fine-tune set (chat JSONL) with per-example provenance.
+"""Build the Usuba 9B fine-tune set (v2: see docs/RETRAIN_V2.md) (chat JSONL) with per-example provenance.
 
 Sources
   A. HANCORE reviewer examples (data/hancore_reviewer/examples.jsonl.gz): code + Checker report -> HANCORE findings.
@@ -21,8 +21,14 @@ sys.path[:0] = [H, os.path.join(ROOT, "functest"), os.path.join(ROOT, "hancore")
 import prompt
 SW = os.path.join(ROOT, "dell", "sweep"); OUT = os.path.join(H, "data")
 CODE_CAP, FILE_CAP = 24000, 8000
-CAPS = dict(dell_inuse_missing_binary=450, dell_inuse_close=120, dell_broken_verified=450, dell_works_verified=550)
-FIND_CAP = 1200
+CAPS = dict(dell_inuse_missing_binary=450, dell_inuse_close=120, dell_broken_verified=450, dell_works_verified=2000)
+FIND_CAP = 400          # v2: findings at most 400 chars
+ALSO_CAP = 2            # v2: at most 2 extra categories
+HANCORE_CAP = 2200      # v2: strongest findings first
+# v2 training-mix variants for the GPU A/B. fix_pairs = clean fixed examples (upstream first, then grader-verified model fixes),
+# each paired with its broken parent.
+VARIANTS = dict(A=dict(works=2000, fix_pairs=800, hancore=HANCORE_CAP, target_approve=0.40),
+                B=dict(works=2600, fix_pairs=1400, hancore=HANCORE_CAP, target_approve=0.50))
 
 def norm_repo(s): return s.lower().rstrip("/").removesuffix(".git").split("github.com/")[-1]
 def file_hashes(files):
@@ -81,6 +87,28 @@ def lit(v):
     return v
 
 # ---------- A. HANCORE ----------
+SHA_RE = re.compile(r"`?\b[0-9a-f]{7,40}\b`?")
+BOILER = re.compile(r"(commit|HEAD|validat|baseline|re-?review|security review|reviewed|thanks for|closing after|marketplace validation)", re.I)
+def clean_finding(s):
+    """v2: drop the templated review opener ('Security review at exact commit <sha> found ...', 'At current HEAD <sha>, ...')
+    and every commit SHA, keep the substance, cap at FIND_CAP chars on a sentence boundary when possible."""
+    s = s.strip()
+    s = re.sub(r"^(Security(/supply-chain)? (re-)?review[^.:]*?(at|for|against)[^.:]*?\b[0-9a-f]{7,40}\b`?\s*(found( that)?|:|\.|,)?\s*)", "", s, flags=re.I)
+    s = re.sub(r"^(At|Reviewed|For|On)\s[^,.:]{0,80}?\b[0-9a-f]{7,40}\b`?[,.:]?\s*", "", s)
+    sents = re.split(r"(?<=[.!?])\s+", s)
+    while len(sents) > 1 and SHA_RE.search(sents[0]) and BOILER.search(sents[0]): sents.pop(0)
+    s = " ".join(sents)
+    s = re.sub(r"\s*\(?(at |in |exact |validated |current |reviewed )*(commit|HEAD|revision|sha)\s*`?[0-9a-f]{7,40}`?\)?", "", s, flags=re.I)
+    s = re.sub(r"`[0-9a-f]{7,40}`|\b[0-9a-f]{12,40}\b", "", s)
+    s = re.sub(r"^(Security(/supply-chain)? (re-)?review|Review)( (at|for|of)( (exact|current|validated))*( commit| HEAD)?)?\s*(found( that)?|:)\s*", "", s, flags=re.I)
+    s = re.sub(r"\b(at|of|the)\s+(?=[.,:;)]|across\b)", "", s)
+    s = re.sub(r"\s+([.,:;])", r"\1", s)
+    s = re.sub(r"\s{2,}", " ", s).strip(" ,;:")
+    if s: s = s[0].upper() + s[1:]
+    if len(s) > FIND_CAP:
+        cut = s[:FIND_CAP]; j = max(cut.rfind(". "), cut.rfind("; "))
+        s = cut[:j + 1] if j > FIND_CAP * 0.5 else cut[:FIND_CAP - 1].rstrip() + "…"
+    return s
 def hancore_examples(st):
     rows = []
     for l in gzip.open(os.path.join(ROOT, "data", "hancore_reviewer", "examples.jsonl.gz"), "rt"):
@@ -92,10 +120,11 @@ def hancore_examples(st):
             if f["strength"] in ("closed_no_fix", "stale", "not_planned"): continue
             cats = [c for c in f["categories"] if c != "clean-review-no-blocker"] or ["other"]
             sev = "blocker" if f["strength"] in ("strong", "likely") else "warning"
-            fl.append(dict(category=cats[0], also=cats[1:] or None, severity=sev, file=None, finding=f["finding"][:FIND_CAP]))
+            fl.append(dict(category=cats[0], also=cats[1:1 + ALSO_CAP] or None, severity=sev, file=None, finding=clean_finding(f["finding"])))
         fl = [{k: v for k, v in f.items() if v is not None} for f in fl]
         verdict = "changes_requested" if any(f["severity"] == "blocker" for f in fl) else "approve"
-        rows.append(dict(source="hancore", repo=norm_repo(e["repo"]), plugin_id=None, weight=float(e["weight"]),
+        nstrong = sum(1 for f in tgt["findings"] if f["strength"] == "strong"); nlikely = sum(1 for f in tgt["findings"] if f["strength"] == "likely")
+        rows.append(dict(source="hancore", repo=norm_repo(e["repo"]), plugin_id=None, weight=float(e["weight"]), _rank=(-nstrong, -nlikely, -float(e["weight"])), _commit=e["commit"],
                          code=inp["code"], checker_report=inp.get("checker_report"),
                          target=dict(verdict=verdict, load=None, findings=fl),
                          provenance=dict(kind="hancore-review", commit=e["commit"], strength=e["strength"], threads=lit(e["threads"]),
@@ -170,46 +199,3 @@ def load_code(row):
     files = functest.read_dir(row["local_dir"])
     return scrub(code_blob(files)), sorted(file_hashes(files)), manifest_id(files)
 
-def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--limit", type=int, default=0); ap.add_argument("--workers", type=int, default=8)
-    ap.add_argument("--out", default=OUT); a = ap.parse_args()
-    rnd = random.Random(1337); st = collections.Counter(); os.makedirs(a.out, exist_ok=True)
-    h_repos, h_ids, h_trees = holdout_fingerprint(); st["holdout_repos"] = len(h_repos); st["holdout_manifest_ids"] = len(h_ids)
-    key_ids = {json.loads(l)["id"] for l in open(os.path.join(ROOT, "functest", "dell_ground_truth.jsonl"))}
-    rows = hancore_examples(st)
-    dc = dell_candidates(key_ids, st)
-    for b, L in sorted(dc.items()):
-        rnd.shuffle(L); st[f"candidates:{b}"] = len(L)
-        rows += L[:CAPS.get(b, len(L))]
-    if a.limit: rnd.shuffle(rows); rows = rows[:a.limit]
-    need = [r for r in rows if "local_dir" in r]
-    with ProcessPoolExecutor(a.workers) as ex:
-        for r, (code, fh, mid) in zip(need, ex.map(load_code, need, chunksize=16)): r["code"], r["_fh"], r["_mid"] = code, set(fh), mid
-    kept, seen_code = [], set()
-    for r in rows:
-        if r["repo"] in h_repos: st["excluded_holdout_repo:" + r["source"]] += 1; continue
-        mid = r.get("_mid") or (manifest_id({"manifest.json": m.group(1)}) if (m := re.search(r"### manifest.json\n```\n(.*?)\n```", r["code"], re.S)) else None)
-        if mid and mid.lower() in h_ids: st["excluded_holdout_manifest_id:" + r["source"]] += 1; continue
-        fh = r.get("_fh") or {hashlib.sha1(re.sub(r"\s+", "", blk).encode()).hexdigest() for blk in re.findall(r"### (?!README|LICENSE)[^\n]+\n```\n(.*?)\n```", r["code"], re.S) if blk.strip()}
-        if near_dup(fh, h_trees): st["excluded_holdout_near_dup:" + r["source"]] += 1; continue
-        ch = hashlib.sha1(r["code"].encode()).hexdigest()
-        if ch in seen_code: st["excluded_dup_in_train:" + r["source"]] += 1; continue
-        seen_code.add(ch); kept.append(r)
-    rnd.shuffle(kept)
-    by_repo = collections.defaultdict(list)
-    for r in kept: by_repo[r["repo"]].append(r)
-    repos = sorted(by_repo); rnd.shuffle(repos); nval = max(1, int(len(repos) * 0.03))
-    val_repos = set(repos[:nval])
-    with open(os.path.join(a.out, "train.jsonl"), "w") as ft, open(os.path.join(a.out, "val.jsonl"), "w") as fv:
-        for r in kept:
-            rec = dict(id=f"{r['source']}:{r['repo']}", source=r["source"], weight=r["weight"], provenance=r["provenance"],
-                       messages=prompt.messages(r["code"], r["checker_report"], r["target"]))
-            (fv if r["repo"] in val_repos else ft).write(json.dumps(rec, ensure_ascii=False) + "\n")
-            st[("val:" if r["repo"] in val_repos else "train:") + r["source"]] += 1
-    st["train_total"] = sum(v for k, v in st.items() if k.startswith("train:")); st["val_total"] = sum(v for k, v in st.items() if k.startswith("val:"))
-    cats = collections.Counter(f["category"] for r in kept for f in r["target"]["findings"])
-    man = dict(stats=dict(sorted(st.items())), finding_categories=dict(cats.most_common()), caps=CAPS, seed=1337,
-               exclusions=["eval/hancore_holdout: repo, manifest id, near-dup code tree (>=50% shared file hashes)", "functest/dell_ground_truth.jsonl plugin ids", "exact duplicate code"])
-    man["sha256"] = {f: hashlib.sha256(open(os.path.join(a.out, f), "rb").read()).hexdigest() for f in ("train.jsonl", "val.jsonl")}
-    json.dump(man, open(os.path.join(a.out, "manifest.json"), "w"), indent=1); print(json.dumps(man, indent=1))
-if __name__ == "__main__": main()

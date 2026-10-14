@@ -6,11 +6,14 @@ import argparse, glob, hashlib, json, math, os, random, shutil, signal, sys, tim
 import yaml
 p = argparse.ArgumentParser(); p.add_argument("--config", default="config.yaml"); p.add_argument("--dry-run", action="store_true")
 p.add_argument("--limit", type=int, default=0)
+p.add_argument("--max-steps", type=int, default=0, help="stop after N optimizer steps (CPU smoke test)")
 p.add_argument("--resume", action="store_true", help="continue from the newest complete checkpoint in <output_dir>/checkpoints")
 a = p.parse_args()
 C = yaml.safe_load(open(a.config)); H = os.path.dirname(os.path.abspath(a.config))
 path = lambda x: x if os.path.isabs(x) else os.path.join(H, x)
 from transformers import AutoTokenizer
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import loss_utils
+VW = float(C.get("verdict_token_weight", 1.0))
 tok = AutoTokenizer.from_pretrained(C["base_model"])
 
 def encode(rec):
@@ -20,7 +23,7 @@ def encode(rec):
     if hasattr(prompt_ids, "input_ids"): prompt_ids, full_ids = prompt_ids["input_ids"], full_ids["input_ids"]
     if full_ids[:len(prompt_ids)] != prompt_ids: raise ValueError("chat template prefix mismatch")
     labels = [-100] * len(prompt_ids) + full_ids[len(prompt_ids):]
-    return dict(input_ids=full_ids, labels=labels, weight=float(rec.get("weight", 1.0)) if C.get("use_example_weight") else 1.0, source=rec.get("source"))
+    return dict(input_ids=full_ids, labels=labels, tokw=loss_utils.token_weights(tok, labels, VW), weight=float(rec.get("weight", 1.0)) if C.get("use_example_weight") else 1.0, source=rec.get("source"))
 
 def load(fn):
     rows, dropped, lens = [], 0, []
@@ -35,11 +38,13 @@ t0 = time.time(); train, dtr, ltr = load(C["train_file"]); val, dva, lva = load(
 s = sorted(ltr); tot = sum(min(x, C["max_len"]) for x in ltr)
 stats = dict(train=len(train), train_dropped_overlength=dtr, val=len(val), val_dropped=dva, tok_median=s[len(s)//2], tok_p95=s[int(len(s)*.95)], tok_max=s[-1],
              train_tokens=tot, assistant_tokens=sum(sum(1 for y in r["labels"] if y != -100) for r in train),
+             verdict_token_weight=VW, rows_with_weighted_verdict=sum(1 for r in train if VW != 1.0 and max(r["tokw"]) == VW),
              steps_per_epoch=math.ceil(len(train) / (C["per_device_batch"] * C["grad_accum"])), tokenize_secs=round(time.time() - t0, 1))
 print(json.dumps(stats, indent=1))
 if a.dry_run:
     r = train[0]; lab = [t for t in r["labels"] if t != -100]
     print("--- sample target (decoded from labels) ---\n" + tok.decode(lab)[:600])
+    print("--- verdict tokens (weight %.1f) ---\n%r" % (VW, tok.decode([t for t, w in zip(r["input_ids"], r["tokw"]) if w == VW])))
     json.dump(stats, open(path("dry_run_stats.json"), "w"), indent=1); sys.exit(0)
 
 import torch
@@ -64,8 +69,9 @@ def collate(b):
     ids = torch.tensor([x["input_ids"] + [pad] * (n - len(x["input_ids"])) for x in b])
     lab = torch.tensor([x["labels"] + [-100] * (n - len(x["labels"])) for x in b])
     att = torch.tensor([[1] * len(x["input_ids"]) + [0] * (n - len(x["input_ids"])) for x in b])
-    return ids, lab, att, torch.tensor([x["weight"] for x in b])
-def fwd_loss(ids, lab, att, w):
+    tw = torch.tensor([x["tokw"] + [0.0] * (n - len(x["tokw"])) for x in b])
+    return ids, lab, att, torch.tensor([x["weight"] for x in b]), tw
+def fwd_loss(ids, lab, att, w, tw=None):
     """Only the assistant span (always the sequence tail) goes through lm_head: logits for a 7k-token prompt x 248k vocab
     would cost ~7 GB in fp32 for nothing, since prompt tokens carry no loss."""
     ids, lab, att = ids.to(dev), lab.to(dev), att.to(dev); n = ids.size(1)
@@ -74,7 +80,9 @@ def fwd_loss(ids, lab, att, w):
     logits = model(input_ids=ids, attention_mask=att, logits_to_keep=k).logits      # positions n-k .. n-1
     lg = logits[:, :-1].float(); lb = lab[:, n - k + 1:]
     tl = torch.nn.functional.cross_entropy(lg.reshape(-1, lg.size(-1)), lb.reshape(-1), ignore_index=-100, reduction="none").view(lb.shape)
-    m = (lb != -100).float(); per = (tl * m).sum(1) / m.sum(1).clamp(min=1)
+    m = (lb != -100).float()
+    if tw is None: per = (tl * m).sum(1) / m.sum(1).clamp(min=1)              # plain masked mean (val loss, comparable to v1)
+    else: per = loss_utils.weighted_seq_loss(tl, tw.to(dev)[:, n - k + 1:] * m)   # verdict value tokens x verdict_token_weight
     w = w.to(per.device); return (per * w).sum() / w.sum().clamp(min=1e-6)
 out = path(C["output_dir"]); CK = os.path.join(out, "checkpoints"); os.makedirs(CK, exist_ok=True)
 log = open(os.path.join(out, "train_log.jsonl"), "a")
@@ -131,7 +139,7 @@ signal.signal(signal.SIGTERM, on_signal); signal.signal(signal.SIGINT, on_signal
 def evaluate():
     model.eval(); L = []
     with torch.no_grad():
-        for ids, lab, att, w in vdl: L.append(fwd_loss(ids, lab, att, torch.ones(1)).item())
+        for ids, lab, att, w, tw in vdl: L.append(fwd_loss(ids, lab, att, torch.ones(1)).item())
     model.train(); return sum(L) / len(L)
 start = time.time(); hours0 = state.get("hours", 0.0); model.train(); acc = 0.0
 if state["step"] == 0: print(json.dumps(dict(total_optimizer_steps=total, val_loss_start=evaluate())), flush=True)
@@ -141,9 +149,9 @@ for ep in range(state["epoch"], C["epochs"]):
     g = torch.Generator().manual_seed(C["seed"] + ep)        # same order on resume
     order = torch.randperm(len(train), generator=g).tolist()
     dl = DataLoader([train[i] for i in order], batch_size=C["per_device_batch"], shuffle=False, collate_fn=collate)
-    for i, (ids, lab, att, w) in enumerate(dl):
+    for i, (ids, lab, att, w, tw) in enumerate(dl):
         if i < state["micro"]: continue                       # already trained before the checkpoint
-        loss = fwd_loss(ids, lab, att, w) / C["grad_accum"]
+        loss = fwd_loss(ids, lab, att, w, tw) / C["grad_accum"]
         loss.backward(); acc += loss.item(); state["micro"] = i + 1
         if (i + 1) % C["grad_accum"] and i + 1 != len(dl): continue
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0); opt.step(); sch.step(); opt.zero_grad(); state["step"] += 1
@@ -157,6 +165,7 @@ for ep in range(state["epoch"], C["epochs"]):
         if state["step"] % C["save_every_steps"] == 0: save_ckpt("periodic"); save_adapter("last")
         if state["hours"] > C["max_hours"]: print("max_hours reached: checkpointing before exit", flush=True); stop_and_exit("max_hours", 0)
         if STOP["sig"]: stop_and_exit("signal " + STOP["sig"], 143)
+        if a.max_steps and state["step"] >= a.max_steps: print(f"--max-steps {a.max_steps} reached", flush=True); stop_and_exit("max_steps", 0)
     state["epoch"] = ep + 1; state["micro"] = 0
 rec = dict(step=state["step"], final_val_loss=evaluate()); print(json.dumps(rec)); log.write(json.dumps(rec) + "\n")
 if rec["final_val_loss"] < state["best"]: state["best"] = rec["final_val_loss"]; save_adapter("best")

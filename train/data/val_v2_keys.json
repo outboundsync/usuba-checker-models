@@ -1,0 +1,2106 @@
+{
+"works": [
+{
+"key": "fabiopauli/omarchy-oligarchy-plugin",
+"repo": "fabiopauli/omarchy-oligarchy-plugin",
+"plugin_id": "io.github.fabiopauli.oligarchy-screensaver",
+"label": "works",
+"local_dir": "/workspace/registry_repos/io.github.fabiopauli.oligarchy-screensaver"
+},
+{
+"key": "mariusfanu/omarchy-octopus-agile",
+"repo": "mariusfanu/omarchy-octopus-agile",
+"plugin_id": "io.github.mariusfanu.octopus-agile",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/mariusfanu__omarchy-octopus-agile"
+},
+{
+"key": "janaki-sasidhar/omarchy-codex-lb",
+"repo": "janaki-sasidhar/omarchy-codex-lb",
+"plugin_id": "janaki-sasidhar.codex-lb",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/janaki-sasidhar__omarchy-codex-lb"
+},
+{
+"key": "songlairui/omarchy-grokbot-usage",
+"repo": "songlairui/omarchy-grokbot-usage",
+"plugin_id": "songlairui.grokbot-usage",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/songlairui__omarchy-grokbot-usage"
+},
+{
+"key": "kitsuneforgering/omarchy-glass",
+"repo": "kitsuneforgering/omarchy-glass",
+"plugin_id": "kitsuneforgering.glass",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/kitsuneforgering__omarchy-glass"
+},
+{
+"key": "mrbrooks74/omarchy-netbird",
+"repo": "mrbrooks74/omarchy-netbird",
+"plugin_id": "plugin.netbird",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/mrbrooks74__omarchy-netbird"
+},
+{
+"key": "dennistdk/omarchy-screen-sharing-indicator",
+"repo": "dennistdk/omarchy-screen-sharing-indicator",
+"plugin_id": "io.github.dennistdk.screen-sharing-indicator",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/dennistdk__omarchy-screen-sharing-indicator"
+},
+{
+"key": "dornkimik/gnome-calendar-integration",
+"repo": "dornkimik/gnome-calendar-integration",
+"plugin_id": "dornkimik.gnome-calendar",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/dornkimik__gnome-calendar-integration"
+},
+{
+"key": "irhop/omarchy-mouse-odometer",
+"repo": "irhop/omarchy-mouse-odometer",
+"plugin_id": "io.github.irhop.mouse-odometer",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/irhop__omarchy-mouse-odometer"
+},
+{
+"key": "swheel33/tailbridge",
+"repo": "swheel33/tailbridge",
+"plugin_id": "swheel33.tailbridge",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/swheel33__tailbridge"
+},
+{
+"key": "andresblancomorales/have-you-note-this",
+"repo": "andresblancomorales/have-you-note-this",
+"plugin_id": "ablanco.notethis",
+"label": "works",
+"local_dir": "/workspace/registry_repos/ablanco.notethis"
+},
+{
+"key": "28allday/omarchy-plugin-manager",
+"repo": "28allday/omarchy-plugin-manager",
+"plugin_id": "nosignal.plugin-manager",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/28allday__omarchy-plugin-manager"
+},
+{
+"key": "b404dev/gitbar-omarchy",
+"repo": "b404dev/gitbar-omarchy",
+"plugin_id": "b404dev.gitbar",
+"label": "works",
+"local_dir": "/workspace/registry_repos/b404dev.gitbar"
+},
+{
+"key": "hcduller/omarchy-vpn",
+"repo": "hcduller/omarchy-vpn",
+"plugin_id": "io.github.hcduller.vpn",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/hcduller__omarchy-vpn"
+},
+{
+"key": "foamrider/foamy-teams",
+"repo": "foamrider/foamy-teams",
+"plugin_id": "foamy.teams",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/foamrider__foamy-teams"
+},
+{
+"key": "rpaweb/owlook",
+"repo": "rpaweb/owlook",
+"plugin_id": "owlook.status",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/rpaweb__owlook"
+},
+{
+"key": "28allday/quattrolitaire",
+"repo": "28allday/quattrolitaire",
+"plugin_id": "nosignal.quattrolitaire",
+"label": "works",
+"local_dir": "/workspace/registry_repos/nosignal.quattrolitaire"
+},
+{
+"key": "acooperdev/scratchpad",
+"repo": "acooperdev/scratchpad",
+"plugin_id": "acooper.scratchpad",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/acooperdev__scratchpad"
+},
+{
+"key": "boraoku/ioscamforomarchylinux",
+"repo": "boraoku/ioscamforomarchylinux",
+"plugin_id": "io.github.boraoku.ioscam",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/boraoku__ioscamforomarchylinux"
+},
+{
+"key": "linuxg33k76/omanetmonitor",
+"repo": "linuxg33k76/omanetmonitor",
+"plugin_id": "omanetmonitor",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/linuxg33k76__omanetmonitor"
+},
+{
+"key": "wisangdg/omarecall",
+"repo": "wisangdg/omarecall",
+"plugin_id": "wdg.omarecall",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/wisangdg__omarecall"
+},
+{
+"key": "btey/omarchy-security-hub-plugin",
+"repo": "btey/omarchy-security-hub-plugin",
+"plugin_id": "security-hub",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/btey__omarchy-security-hub-plugin"
+},
+{
+"key": "adg-ub/omarchy-bay-transit-board",
+"repo": "adg-ub/omarchy-bay-transit-board",
+"plugin_id": "io.github.adg-ub.bay-transit-board",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/adg-ub__omarchy-bay-transit-board"
+},
+{
+"key": "mastermendes74/omarchy-appearance",
+"repo": "mastermendes74/omarchy-appearance",
+"plugin_id": "mendestein.appearance",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/mastermendes74__omarchy-appearance"
+},
+{
+"key": "cozidian/omarchy-dnd",
+"repo": "cozidian/omarchy-dnd",
+"plugin_id": "io.github.cozidian.dnd",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/cozidian__omarchy-dnd"
+},
+{
+"key": "underday/omarchy-snooker",
+"repo": "underday/omarchy-snooker",
+"plugin_id": "underday.snooker-calendar",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/underday__omarchy-snooker"
+},
+{
+"key": "tsubaie/omarchy-next-match",
+"repo": "tsubaie/omarchy-next-match",
+"plugin_id": "tsubaie.next-match",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/tsubaie__omarchy-next-match"
+},
+{
+"key": "evanhfw/wsapps",
+"repo": "evanhfw/wsapps",
+"plugin_id": "evan.wsapps",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/evanhfw__wsapps"
+},
+{
+"key": "mads0laden/omarchy-multi-output",
+"repo": "mads0laden/omarchy-multi-output",
+"plugin_id": "omarchy-multi-output",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/mads0laden__omarchy-multi-output"
+},
+{
+"key": "devmobasa/omarchy-calendar-agenda",
+"repo": "devmobasa/omarchy-calendar-agenda",
+"plugin_id": "community.calendar-agenda",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/devmobasa__omarchy-calendar-agenda"
+},
+{
+"key": "dragosol/omarchy-kernel-guard",
+"repo": "dragosol/omarchy-kernel-guard",
+"plugin_id": "io.github.dragosol.kernel-guard",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/dragosol__omarchy-kernel-guard"
+},
+{
+"key": "johnicboom/icestream",
+"repo": "johnicboom/icestream",
+"plugin_id": "com.johnicboom.icestream",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/johnicboom__icestream"
+},
+{
+"key": "argusguardian/omat3code",
+"repo": "argusguardian/omat3code",
+"plugin_id": "io.github.argusguardian.omat3code",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/argusguardian__omat3code"
+},
+{
+"key": "artile/omarchy-ascii-screensaver",
+"repo": "artile/omarchy-ascii-screensaver",
+"plugin_id": "io.github.artile.ascii-screensaver",
+"label": "works",
+"local_dir": "/workspace/registry_repos/io.github.artile.ascii-screensaver"
+},
+{
+"key": "jlugner/omarchy-omaflow",
+"repo": "jlugner/omarchy-omaflow",
+"plugin_id": "jesperlugner.omaflow",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/jlugner__omarchy-omaflow"
+},
+{
+"key": "greyforgelabs/omarchy-grabbar",
+"repo": "greyforgelabs/omarchy-grabbar",
+"plugin_id": "tech.greyforge.grabbar",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/greyforgelabs__omarchy-grabbar"
+},
+{
+"key": "saifomar/so.agent-notch",
+"repo": "saifomar/so.agent-notch",
+"plugin_id": "so.agent-notch",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/saifomar__so.agent-notch"
+},
+{
+"key": "sumdahl/omarchy-plugin-media",
+"repo": "sumdahl/omarchy-plugin-media",
+"plugin_id": "io.github.sumdahl.media",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/sumdahl__omarchy-plugin-media"
+},
+{
+"key": "mtesseract/omarchy-hebrew-keyboard-overlay",
+"repo": "mtesseract/omarchy-hebrew-keyboard-overlay",
+"plugin_id": "silverratio.hebrew-keyboard-overlay",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/mtesseract__omarchy-hebrew-keyboard-overlay"
+},
+{
+"key": "mechurisr/omarchy-media-search",
+"repo": "mechurisr/omarchy-media-search",
+"plugin_id": "mechurisr.media-search",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/mechurisr__omarchy-media-search"
+},
+{
+"key": "mirashif/omarest",
+"repo": "mirashif/omarest",
+"plugin_id": "com.mirashif.omarest",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/mirashif__omarest"
+},
+{
+"key": "offskip-dave/omarchy-jpop-radio",
+"repo": "offskip-dave/omarchy-jpop-radio",
+"plugin_id": "ofs.jradio",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/offskip-dave__omarchy-jpop-radio"
+},
+{
+"key": "grivera82/omarchy-matchday",
+"repo": "grivera82/omarchy-matchday",
+"plugin_id": "grivera.matchday",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/grivera82__omarchy-matchday"
+},
+{
+"key": "cdhananjay/omarchy-menu-auto-open",
+"repo": "cdhananjay/omarchy-menu-auto-open",
+"plugin_id": "cdhananjay.menu-auto-open",
+"label": "works",
+"local_dir": "/workspace/registry_repos/cdhananjay.menu-auto-open"
+},
+{
+"key": "hawzhinomer/timebox",
+"repo": "hawzhinomer/timebox",
+"plugin_id": "hawzhin.timebox",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/hawzhinomer__timebox"
+},
+{
+"key": "andrewf403/omarchy-keyboard-idle",
+"repo": "andrewf403/omarchy-keyboard-idle",
+"plugin_id": "andrewf.keyboard-idle",
+"label": "works",
+"local_dir": "/workspace/registry_repos/andrewf.keyboard-idle"
+},
+{
+"key": "terrifiedbug/omathock",
+"repo": "terrifiedbug/omathock",
+"plugin_id": "io.github.terrifiedbug.omathock",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/terrifiedbug__omathock"
+},
+{
+"key": "meviusisback/omarchy-ente-auth-dropdown",
+"repo": "meviusisback/omarchy-ente-auth-dropdown",
+"plugin_id": "meviusisback.ente-auth",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/meviusisback__omarchy-ente-auth-dropdown"
+},
+{
+"key": "rookepoole/omarchy-systemricer",
+"repo": "rookepoole/omarchy-systemricer",
+"plugin_id": "io.github.rookepoole.systemricer",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/rookepoole__omarchy-systemricer"
+},
+{
+"key": "ekrist1/nordsettings",
+"repo": "ekrist1/nordsettings",
+"plugin_id": "io.github.ekrist1.nordsettings",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/ekrist1__nordsettings"
+},
+{
+"key": "tushar-chauhan/omarchy-wireguard",
+"repo": "tushar-chauhan/omarchy-wireguard",
+"plugin_id": "custom.wireguard",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/tushar-chauhan__omarchy-wireguard"
+},
+{
+"key": "ashiskharel/omarchy-devanagari",
+"repo": "ashiskharel/omarchy-devanagari",
+"plugin_id": "ashis.devanagari",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/ashiskharel__omarchy-devanagari"
+},
+{
+"key": "evertonmj/ever-telemetry",
+"repo": "evertonmj/ever-telemetry",
+"plugin_id": "ever.telemetry",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/evertonmj__ever-telemetry"
+},
+{
+"key": "dkgamer02ai/nova-lock",
+"repo": "dkgamer02ai/nova-lock",
+"plugin_id": "io.github.dkgamer02ai.lock",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/dkgamer02ai__nova-lock"
+},
+{
+"key": "sarr77/scratchpeek",
+"repo": "sarr77/scratchpeek",
+"plugin_id": "sarr.scratchpeek",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/sarr77__scratchpeek"
+},
+{
+"key": "abdulazizalwabel/omarchy-hyprforge",
+"repo": "abdulazizalwabel/omarchy-hyprforge",
+"plugin_id": "aziz.hyprforge",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/abdulazizalwabel__omarchy-hyprforge"
+},
+{
+"key": "thedarkcr0w/omarchy-goxlr",
+"repo": "thedarkcr0w/omarchy-goxlr",
+"plugin_id": "io.github.thedarkcr0w.goxlr",
+"label": "works",
+"local_dir": "/workspace/registry_repos/io.github.thedarkcr0w.goxlr"
+},
+{
+"key": "felixdacraft/omarchy-sony",
+"repo": "felixdacraft/omarchy-sony",
+"plugin_id": "io.github.felixdacraft.omasony",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/felixdacraft__omarchy-sony"
+},
+{
+"key": "woganmay/nature-mood",
+"repo": "woganmay/nature-mood",
+"plugin_id": "woganmay.nature-mood",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/woganmay__nature-mood"
+},
+{
+"key": "jayosays/omagrey",
+"repo": "jayosays/omagrey",
+"plugin_id": "jo.omagrey",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/jayosays__omagrey"
+},
+{
+"key": "diegopluna/omarchy-cassandra",
+"repo": "diegopluna/omarchy-cassandra",
+"plugin_id": "io.github.diegopluna.cassandra",
+"label": "works",
+"local_dir": "/workspace/registry_repos/io.github.diegopluna.cassandra"
+},
+{
+"key": "greyforgelabs/omarchy-cris",
+"repo": "greyforgelabs/omarchy-cris",
+"plugin_id": "greyforge.cris",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/greyforgelabs__omarchy-cris"
+},
+{
+"key": "russellmorton/next-key",
+"repo": "russellmorton/next-key",
+"plugin_id": "next-key",
+"label": "works",
+"local_dir": "/workspace/registry_repos/next-key"
+},
+{
+"key": "freeholder-dev/endurance",
+"repo": "freeholder-dev/endurance",
+"plugin_id": "freeholder.endurance",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/freeholder-dev__endurance"
+},
+{
+"key": "nwarwick/omambience",
+"repo": "nwarwick/omambience",
+"plugin_id": "nwarwick.omambience",
+"label": "works",
+"local_dir": "/workspace/registry_repos/nwarwick.omambience"
+},
+{
+"key": "daniellopez12/just-right-weather",
+"repo": "daniellopez12/just-right-weather",
+"plugin_id": "io.github.daniellopez12.just-right-weather",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/daniellopez12__just-right-weather"
+},
+{
+"key": "glitzypanic/omarchy-runpod-monitor",
+"repo": "glitzypanic/omarchy-runpod-monitor",
+"plugin_id": "io.github.glitzypanic.runpod-monitor",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/glitzypanic__omarchy-runpod-monitor"
+},
+{
+"key": "jeffsauer/mod3-bar-widget",
+"repo": "jeffsauer/mod3-bar-widget",
+"plugin_id": "com.darkhorse-studios.mod3-bar-widget",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/jeffsauer__mod3-bar-widget"
+},
+{
+"key": "lemondropai/omarchy-droid-usage",
+"repo": "lemondropai/omarchy-droid-usage",
+"plugin_id": "io.github.lemondropai.droid-usage",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/lemondropai__omarchy-droid-usage"
+},
+{
+"key": "thevideinfra/omaudiopanel",
+"repo": "thevideinfra/omaudiopanel",
+"plugin_id": "videinfra.omaudiopanel",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/thevideinfra__omaudiopanel"
+},
+{
+"key": "ax1g/quickshell-screentime-plugin",
+"repo": "ax1g/quickshell-screentime-plugin",
+"plugin_id": "agx.screen-time",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/ax1g__quickshell-screentime-plugin"
+},
+{
+"key": "saiiiiiph/update-center",
+"repo": "saiiiiiph/update-center",
+"plugin_id": "io.github.saiiiiiph.update-center",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/saiiiiiph__update-center"
+},
+{
+"key": "terrifiedbug/omaspaces",
+"repo": "terrifiedbug/omaspaces",
+"plugin_id": "io.github.terrifiedbug.omaspaces",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/terrifiedbug__omaspaces"
+},
+{
+"key": "dneighbors/omarchy-plugin-tinkerer-club",
+"repo": "dneighbors/omarchy-plugin-tinkerer-club",
+"plugin_id": "dneighbors.tinkerer-club",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/dneighbors__omarchy-plugin-tinkerer-club"
+},
+{
+"key": "marashiai/omarchy-display",
+"repo": "marashiai/omarchy-display",
+"plugin_id": "omarchy-display",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/marashiai__omarchy-display"
+},
+{
+"key": "alyayman921/omarchy-drawer",
+"repo": "alyayman921/omarchy-drawer",
+"plugin_id": "3lymn.plugin-drawer",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/alyayman921__omarchy-drawer"
+},
+{
+"key": "nwohater/mixtape-omarchy",
+"repo": "nwohater/mixtape-omarchy",
+"plugin_id": "io.github.nwohater.mixtape",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/nwohater__mixtape-omarchy"
+},
+{
+"key": "seunghan91/omarchy-ainote-clock",
+"repo": "seunghan91/omarchy-ainote-clock",
+"plugin_id": "io.github.seunghan91.ainote-clock",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/seunghan91__omarchy-ainote-clock"
+},
+{
+"key": "huangzuo/macbook-auto-brightness-plugin",
+"repo": "huangzuo/macbook-auto-brightness-plugin",
+"plugin_id": "hz.auto-brightness",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/huangzuo__macbook-auto-brightness-plugin"
+},
+{
+"key": "sanjyay/data-budget",
+"repo": "sanjyay/data-budget",
+"plugin_id": "data-budget",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/sanjyay__data-budget"
+},
+{
+"key": "buildscript-dev/omarchy-oneplus-experience",
+"repo": "buildscript-dev/omarchy-oneplus-experience",
+"plugin_id": "io.github.buildscript-dev.oneplus-experience",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/buildscript-dev__omarchy-oneplus-experience"
+},
+{
+"key": "ranjithrajv/omarchy-about-system",
+"repo": "ranjithrajv/omarchy-about-system",
+"plugin_id": "io.github.ranjithraj.about-system",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/ranjithrajv__omarchy-about-system"
+},
+{
+"key": "kb2uka/omarchy-terminal-deck",
+"repo": "kb2uka/omarchy-terminal-deck",
+"plugin_id": "kb2uka.terminal-deck",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/kb2uka__omarchy-terminal-deck"
+},
+{
+"key": "maxart/simple-workspaces",
+"repo": "maxart/simple-workspaces",
+"plugin_id": "io.github.maxart.simple-workspaces",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/maxart__simple-workspaces"
+},
+{
+"key": "paulogeyer/omarchy-vivobook-s14-copilot",
+"repo": "paulogeyer/omarchy-vivobook-s14-copilot",
+"plugin_id": "vivobook.s14-copilot",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/paulogeyer__omarchy-vivobook-s14-copilot"
+},
+{
+"key": "erikburdett/omarchy-rollingshot",
+"repo": "erikburdett/omarchy-rollingshot",
+"plugin_id": "io.github.erikburdett.rollingshot",
+"label": "works",
+"local_dir": "/workspace/registry_repos/io.github.erikburdett.rollingshot"
+},
+{
+"key": "jordanpartridge/omarchy-workspaces",
+"repo": "jordanpartridge/omarchy-workspaces",
+"plugin_id": "jordan.workspaces",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/jordanpartridge__omarchy-workspaces"
+},
+{
+"key": "syaifulmain/omarchy-omashowkeys",
+"repo": "syaifulmain/omarchy-omashowkeys",
+"plugin_id": "syaifulmain.omashowkeys",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/syaifulmain__omarchy-omashowkeys"
+},
+{
+"key": "alkevintan/omacom",
+"repo": "alkevintan/omacom",
+"plugin_id": "com.aktivesolutions.omacom",
+"label": "works",
+"local_dir": "/workspace/registry_repos/com.aktivesolutions.omacom"
+},
+{
+"key": "kzagoris/codex-router-tray-omarchy-plugin",
+"repo": "kzagoris/codex-router-tray-omarchy-plugin",
+"plugin_id": "kzagoris.codex-router-tray",
+"label": "works",
+"local_dir": "/workspace/registry_repos/kzagoris.codex-router-tray"
+},
+{
+"key": "likt0r/omarchy-overview",
+"repo": "likt0r/omarchy-overview",
+"plugin_id": "likt0r.overview",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/likt0r__omarchy-overview"
+},
+{
+"key": "b7s/omarchy-googletranslate",
+"repo": "b7s/omarchy-googletranslate",
+"plugin_id": "b7s.googletranslate",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/b7s__omarchy-googletranslate"
+},
+{
+"key": "adolanium/omarchy-app-homes",
+"repo": "adolanium/omarchy-app-homes",
+"plugin_id": "adolanium.app-homes",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/adolanium__omarchy-app-homes"
+},
+{
+"key": "joshuaswarren/omarchy-remnic",
+"repo": "joshuaswarren/omarchy-remnic",
+"plugin_id": "io.github.joshuaswarren.remnic",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/joshuaswarren__omarchy-remnic"
+},
+{
+"key": "sterre-g/omarchy-keyboard-hud",
+"repo": "sterre-g/omarchy-keyboard-hud",
+"plugin_id": "sterre.keyboard-hud",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/sterre-g__omarchy-keyboard-hud"
+},
+{
+"key": "zakkoo/teams-for-linux-notifications",
+"repo": "zakkoo/teams-for-linux-notifications",
+"plugin_id": "io.github.zakkoo.teams-for-linux-notifications",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/zakkoo__teams-for-linux-notifications"
+},
+{
+"key": "omarchy-qol/omarchy-btop-activity",
+"repo": "omarchy-qol/omarchy-btop-activity",
+"plugin_id": "ilyazar.btop",
+"label": "works",
+"local_dir": "/workspace/registry_repos/ilyazar.btop"
+},
+{
+"key": "pbjorklund/omaip",
+"repo": "pbjorklund/omaip",
+"plugin_id": "pbjorklund.omaip",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/pbjorklund__omaip"
+},
+{
+"key": "cdelcollado/wifiomarchy",
+"repo": "cdelcollado/wifiomarchy",
+"plugin_id": "cdelcollado.network",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/cdelcollado__wifiomarchy"
+},
+{
+"key": "dreamsgarage/omasteelrgb",
+"repo": "dreamsgarage/omasteelrgb",
+"plugin_id": "steelseries.keyboard",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/dreamsgarage__omasteelrgb"
+},
+{
+"key": "mpweaver/omarchy-notion",
+"repo": "mpweaver/omarchy-notion",
+"plugin_id": "user.omarchy-notion",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/mpweaver__omarchy-notion"
+},
+{
+"key": "jurjurijur/omarchy-plugin-pangolin-client",
+"repo": "jurjurijur/omarchy-plugin-pangolin-client",
+"plugin_id": "jurjurijur.pangolin",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/jurjurijur__omarchy-plugin-pangolin-client"
+},
+{
+"key": "sh1d0w/omatrack",
+"repo": "sh1d0w/omatrack",
+"plugin_id": "io.github.sh1d0w.omatrack",
+"label": "works",
+"local_dir": "/workspace/registry_repos/io.github.sh1d0w.omatrack"
+},
+{
+"key": "dariobf/per-display-workspaces",
+"repo": "dariobf/per-display-workspaces",
+"plugin_id": "io.github.dariobf.per-display-workspaces",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/dariobf__per-display-workspaces"
+},
+{
+"key": "dprc137/omarchy-market",
+"repo": "dprc137/omarchy-market",
+"plugin_id": "io.github.dpr.omarchy-market",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/dprc137__omarchy-market"
+},
+{
+"key": "mmsbrggr/omarchy-per-monitor-workspaces",
+"repo": "mmsbrggr/omarchy-per-monitor-workspaces",
+"plugin_id": "mmsbrggr.per-monitor-workspaces",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/mmsbrggr__omarchy-per-monitor-workspaces"
+},
+{
+"key": "grivera82/omarchy-spacex",
+"repo": "grivera82/omarchy-spacex",
+"plugin_id": "grivera.spacex",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/grivera82__omarchy-spacex"
+},
+{
+"key": "manateelazycat/omarchy-desktop-clock",
+"repo": "manateelazycat/omarchy-desktop-clock",
+"plugin_id": "io.github.manateelazycat.desktop-clock",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/manateelazycat__omarchy-desktop-clock"
+},
+{
+"key": "fabean/omarchy-herdr",
+"repo": "fabean/omarchy-herdr",
+"plugin_id": "io.github.fabean.herdr",
+"label": "works",
+"local_dir": "/workspace/registry_repos/io.github.fabean.herdr"
+},
+{
+"key": "dragosol/omarchy-psywall",
+"repo": "dragosol/omarchy-psywall",
+"plugin_id": "io.github.dragosol.psywall",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/dragosol__omarchy-psywall"
+},
+{
+"key": "realgbbb/omarchy-flipnotes",
+"repo": "realgbbb/omarchy-flipnotes",
+"plugin_id": "realgbb.flipnotes",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/realgbbb__omarchy-flipnotes"
+},
+{
+"key": "overstylefr/omarchy-network-rate",
+"repo": "overstylefr/omarchy-network-rate",
+"plugin_id": "tomv.network-rate",
+"label": "works",
+"local_dir": "/workspace/registry_repos/tomv.network-rate"
+},
+{
+"key": "reidenxerx/omarchy-omalang",
+"repo": "reidenxerx/omarchy-omalang",
+"plugin_id": "reidenxerx.keyboard-layout-per-app",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/reidenxerx__omarchy-omalang"
+},
+{
+"key": "davy1ex/omaniri",
+"repo": "davy1ex/omaniri",
+"plugin_id": "io.github.davy1ex.omaniri",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/davy1ex__omaniri"
+},
+{
+"key": "stefanmarantonsson/omarchy-bookmarks",
+"repo": "stefanmarantonsson/omarchy-bookmarks",
+"plugin_id": "stefanmara.bookmarks",
+"label": "works",
+"local_dir": "/workspace/registry_repos/stefanmara.bookmarks"
+},
+{
+"key": "tenfingerseddy/voicebind",
+"repo": "tenfingerseddy/voicebind",
+"plugin_id": "io.github.tenfingerseddy.voicebind",
+"label": "works",
+"local_dir": "/workspace/registry_repos/io.github.tenfingerseddy.voicebind"
+},
+{
+"key": "mattwolfgang/omarchy-ambient-weather",
+"repo": "mattwolfgang/omarchy-ambient-weather",
+"plugin_id": "io.github.mattwolfgang.ambient-weather",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/mattwolfgang__omarchy-ambient-weather"
+},
+{
+"key": "christestet/omarchy-keepassxc",
+"repo": "christestet/omarchy-keepassxc",
+"plugin_id": "christestet.keepassxc",
+"label": "works",
+"local_dir": "/workspace/registry_repos/christestet.keepassxc"
+},
+{
+"key": "jburchel/omarchy-workspace-nameplates",
+"repo": "jburchel/omarchy-workspace-nameplates",
+"plugin_id": "io.github.jburchel.workspace-nameplates",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/jburchel__omarchy-workspace-nameplates"
+},
+{
+"key": "seancurran/tinytray",
+"repo": "seancurran/tinytray",
+"plugin_id": "seancurran.tinypng",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/seancurran__tinytray"
+},
+{
+"key": "mscurtescu/omarchy-island-bar",
+"repo": "mscurtescu/omarchy-island-bar",
+"plugin_id": "mscurtescu.island-bar",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/mscurtescu__omarchy-island-bar"
+},
+{
+"key": "crueber/omarchy-cw-practice",
+"repo": "crueber/omarchy-cw-practice",
+"plugin_id": "crueber.cwpractice",
+"label": "works",
+"local_dir": "/workspace/registry_repos/crueber.cwpractice"
+},
+{
+"key": "sudoapwh/omarchy-readout",
+"repo": "sudoapwh/omarchy-readout",
+"plugin_id": "io.github.sudoapwh.readout",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/sudoapwh__omarchy-readout"
+},
+{
+"key": "ferc10110/omarchy-hypr-rules-studio",
+"repo": "ferc10110/omarchy-hypr-rules-studio",
+"plugin_id": "io.github.ferc10110.hypr-rules-studio",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/ferc10110__omarchy-hypr-rules-studio"
+},
+{
+"key": "the-curious-2025/zmanbar-omarchy",
+"repo": "the-curious-2025/zmanbar-omarchy",
+"plugin_id": "zmanbar",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/the-curious-2025__zmanbar-omarchy"
+},
+{
+"key": "grantabell/omarchy-mic-gain-over-100",
+"repo": "grantabell/omarchy-mic-gain-over-100",
+"plugin_id": "grantabell.mic-gain-audio",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/grantabell__omarchy-mic-gain-over-100"
+},
+{
+"key": "07dcolem/omarchy-meeting-clipboard",
+"repo": "07dcolem/omarchy-meeting-clipboard",
+"plugin_id": "io.github.07dcolem.meeting-clipboard",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/07dcolem__omarchy-meeting-clipboard"
+},
+{
+"key": "0800tim/touchbard",
+"repo": "0800tim/touchbard",
+"plugin_id": "io.github.0800tim.touchbard",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/0800tim__touchbard"
+},
+{
+"key": "ninepointlabs/omarchy-spotify",
+"repo": "ninepointlabs/omarchy-spotify",
+"plugin_id": "ninepointlabs.spotify",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/ninepointlabs__omarchy-spotify"
+},
+{
+"key": "iamfitsum/omarchy-proton-vpn",
+"repo": "iamfitsum/omarchy-proton-vpn",
+"plugin_id": "io.github.iamfitsum.omarchy-proton-vpn",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/iamfitsum__omarchy-proton-vpn"
+},
+{
+"key": "jayosays/omablinker",
+"repo": "jayosays/omablinker",
+"plugin_id": "jayosays.omablinker",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/jayosays__omablinker"
+},
+{
+"key": "techwhispers/omarchy-audio-resolver",
+"repo": "techwhispers/omarchy-audio-resolver",
+"plugin_id": "quazix.audio-resolver",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/techwhispers__omarchy-audio-resolver"
+},
+{
+"key": "ramenpacket84/canon",
+"repo": "ramenpacket84/canon",
+"plugin_id": "andrewbacon.canon",
+"label": "works",
+"local_dir": "/workspace/registry_repos/andrewbacon.canon"
+},
+{
+"key": "syfra3/keyritual",
+"repo": "syfra3/keyritual",
+"plugin_id": "io.github.syfra3.keyritual",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/syfra3__keyritual"
+},
+{
+"key": "trinity-bytes/omarchy-lock-keys-osd",
+"repo": "trinity-bytes/omarchy-lock-keys-osd",
+"plugin_id": "trinity-bytes.lock-keys-osd",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/trinity-bytes__omarchy-lock-keys-osd"
+},
+{
+"key": "grupertal/omarchy-volume-beep",
+"repo": "grupertal/omarchy-volume-beep",
+"plugin_id": "gruper.volume-beep",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/grupertal__omarchy-volume-beep"
+},
+{
+"key": "jestemkarol/bing-wallpaper-omarchy",
+"repo": "jestemkarol/bing-wallpaper-omarchy",
+"plugin_id": "io.github.jestemkarol.bing-wallpaper",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/jestemkarol__bing-wallpaper-omarchy"
+},
+{
+"key": "flyingtulipdotcom/omarchy-ft-bar",
+"repo": "flyingtulipdotcom/omarchy-ft-bar",
+"plugin_id": "flyingtulip.ft-bar",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/flyingtulipdotcom__omarchy-ft-bar"
+},
+{
+"key": "rafaelmellopro/wolp",
+"repo": "rafaelmellopro/wolp",
+"plugin_id": "wolp.pc",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/rafaelmellopro__wolp"
+},
+{
+"key": "markey/omarchy-retina-screenshot",
+"repo": "markey/omarchy-retina-screenshot",
+"plugin_id": "mark.retina-screenshot",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/markey__omarchy-retina-screenshot"
+},
+{
+"key": "tumbleweedlabs/omarchy-klipsch-pcm",
+"repo": "tumbleweedlabs/omarchy-klipsch-pcm",
+"plugin_id": "io.github.tumbleweedlabs.klipsch-pcm",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/tumbleweedlabs__omarchy-klipsch-pcm"
+},
+{
+"key": "nille/omarchy-steam-sniper",
+"repo": "nille/omarchy-steam-sniper",
+"plugin_id": "nille.steam-sniper",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/nille__omarchy-steam-sniper"
+},
+{
+"key": "harshithnadig/omarchy-dynamic-island",
+"repo": "harshithnadig/omarchy-dynamic-island",
+"plugin_id": "harshith.dynamic-island",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/harshithnadig__omarchy-dynamic-island"
+},
+{
+"key": "brvier/quickborgmatic",
+"repo": "brvier/quickborgmatic",
+"plugin_id": "fr.rvier.quickborgmatic",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/brvier__quickborgmatic"
+},
+{
+"key": "ejames-dev/honcho-omarchy-plugin",
+"repo": "ejames-dev/honcho-omarchy-plugin",
+"plugin_id": "io.github.ejames-dev.honcho",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/ejames-dev__honcho-omarchy-plugin"
+},
+{
+"key": "delay/lumen",
+"repo": "delay/lumen",
+"plugin_id": "delay.lumen",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/delay__lumen"
+},
+{
+"key": "patcastle/omarchy-battery-health",
+"repo": "patcastle/omarchy-battery-health",
+"plugin_id": "patcastle.power",
+"label": "works",
+"local_dir": "/workspace/registry_repos/patcastle.power"
+},
+{
+"key": "luxore/omarchy-octoprint",
+"repo": "luxore/omarchy-octoprint",
+"plugin_id": "io.github.luxore.octoprint",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/luxore__omarchy-octoprint"
+},
+{
+"key": "nickpstone/omarchy-quick-settings-plugin",
+"repo": "nickpstone/omarchy-quick-settings-plugin",
+"plugin_id": "nick.quick-settings",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/nickpstone__omarchy-quick-settings-plugin"
+},
+{
+"key": "jocahdj/omaspace",
+"repo": "jocahdj/omaspace",
+"plugin_id": "jocahdj.omaspace",
+"label": "works",
+"local_dir": "/workspace/sweep_repos/jocahdj__omaspace"
+}
+],
+"broken": [
+{
+"key": "tug-benson/omarchy-power-managment",
+"repo": "tug-benson/omarchy-power-managment",
+"plugin_id": "io.github.tug-benson.power-managment",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/tug-benson__omarchy-power-managment"
+},
+{
+"key": "abdullahazmy/abdullah.adhd-pomodoro",
+"repo": "abdullahazmy/abdullah.adhd-pomodoro",
+"plugin_id": "abdullah.adhd-pomodoro",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/abdullahazmy__abdullah.adhd-pomodoro"
+},
+{
+"key": "meviusisback/botty",
+"repo": "meviusisback/botty",
+"plugin_id": "meviusisback.botty",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/meviusisback__botty"
+},
+{
+"key": "adammusa/omarchy-storage-horizon",
+"repo": "adammusa/omarchy-storage-horizon",
+"plugin_id": "izeesoft.storage-horizon",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/adammusa__omarchy-storage-horizon"
+},
+{
+"key": "agata/omasets",
+"repo": "agata/omasets",
+"plugin_id": "io.github.agata.omasets",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/agata__omasets"
+},
+{
+"key": "asdfsnlr/omabrickrace",
+"repo": "asdfsnlr/omabrickrace",
+"plugin_id": "asdfsnlr.omabrickrace",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/asdfsnlr__omabrickrace"
+},
+{
+"key": "qempexe/omarchy-omanager",
+"repo": "qempexe/omarchy-omanager",
+"plugin_id": "io.github.qempexe.omanager",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/qempexe__omarchy-omanager"
+},
+{
+"key": "jvlianodorneles/omabeat",
+"repo": "jvlianodorneles/omabeat",
+"plugin_id": "dorneles.omabeat",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/jvlianodorneles__omabeat"
+},
+{
+"key": "ferc10110/omarchy-save-them-all",
+"repo": "ferc10110/omarchy-save-them-all",
+"plugin_id": "io.github.ferc10110.save-them-all",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/ferc10110__omarchy-save-them-all"
+},
+{
+"key": "badgetobytes/omartillery",
+"repo": "badgetobytes/omartillery",
+"plugin_id": "fstander.omartillery",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/badgetobytes__omartillery"
+},
+{
+"key": "isaact135/omarchy-network-shares",
+"repo": "isaact135/omarchy-network-shares",
+"plugin_id": "isaact135.network-shares",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/isaact135__omarchy-network-shares"
+},
+{
+"key": "thisisgm/omarchy-pods",
+"repo": "thisisgm/omarchy-pods",
+"plugin_id": "io.github.thisisgm.omapods",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/thisisgm__omarchy-pods"
+},
+{
+"key": "thisisrinesi/nagori",
+"repo": "thisisrinesi/nagori",
+"plugin_id": "local.nagori",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/thisisrinesi__nagori"
+},
+{
+"key": "jacob-vincent-mink/omadigest",
+"repo": "jacob-vincent-mink/omadigest",
+"plugin_id": "io.github.jacob-vincent-mink.omadigest",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/jacob-vincent-mink__omadigest"
+},
+{
+"key": "derekross/peridot",
+"repo": "derekross/peridot",
+"plugin_id": "derekross.peridot",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/derekross__peridot"
+},
+{
+"key": "vladkarok/oskar",
+"repo": "vladkarok/oskar",
+"plugin_id": "io.github.vladkarok.oskar",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/vladkarok__oskar"
+},
+{
+"key": "vividhsv/omarchy-pia-vpn",
+"repo": "vividhsv/omarchy-pia-vpn",
+"plugin_id": "pia.omarchy",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/vividhsv__omarchy-pia-vpn"
+},
+{
+"key": "tpatzelt/omarchy-diskspace",
+"repo": "tpatzelt/omarchy-diskspace",
+"plugin_id": "tpatzelt.diskspace",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/tpatzelt__omarchy-diskspace"
+},
+{
+"key": "donnishcomau/snote",
+"repo": "donnishcomau/snote",
+"plugin_id": "io.github.donnishcomau.snote-simplenote",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/donnishcomau__snote"
+},
+{
+"key": "joisephdev/omarchy-obsidian",
+"repo": "joisephdev/omarchy-obsidian",
+"plugin_id": "rperaza.obsidian-notes",
+"label": "broken",
+"local_dir": "/workspace/registry_repos/rperaza.obsidian-notes"
+},
+{
+"key": "komagata/screen-lens",
+"repo": "komagata/screen-lens",
+"plugin_id": "komagata.screen-lens",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/komagata__screen-lens"
+},
+{
+"key": "pdfrg/amla",
+"repo": "pdfrg/amla",
+"plugin_id": "io.github.pdfrg.amla",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/pdfrg__amla"
+},
+{
+"key": "mgldvd/gona-launcher",
+"repo": "mgldvd/gona-launcher",
+"plugin_id": "gona.launcher",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/mgldvd__gona-launcher"
+},
+{
+"key": "seyhunak/omteleprompt",
+"repo": "seyhunak/omteleprompt",
+"plugin_id": "io.github.seyhunakyurek.omteleprompt",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/seyhunak__omteleprompt"
+},
+{
+"key": "wellatleastitried/omarchy-copilot-panel-usage",
+"repo": "wellatleastitried/omarchy-copilot-panel-usage",
+"plugin_id": "wellatleastitried.copilot-panel-usage",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/wellatleastitried__omarchy-copilot-panel-usage"
+},
+{
+"key": "omarchyfans/omarchy-fans-zen-wallpaper",
+"repo": "omarchyfans/omarchy-fans-zen-wallpaper",
+"plugin_id": "fans.omarchy.zen-wallpaper",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/omarchyfans__omarchy-fans-zen-wallpaper"
+},
+{
+"key": "alxwolfenstein97/omavt",
+"repo": "alxwolfenstein97/omavt",
+"plugin_id": "io.github.alxwolfenstein97.omavt",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/alxwolfenstein97__omavt"
+},
+{
+"key": "unipsycho/omarchy-workspace-bands",
+"repo": "unipsycho/omarchy-workspace-bands",
+"plugin_id": "agileautomation.workspace-bands",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/unipsycho__omarchy-workspace-bands"
+},
+{
+"key": "patrickfanella/omarchy-superproductivity",
+"repo": "patrickfanella/omarchy-superproductivity",
+"plugin_id": "patrickfanella.superproductivity",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/patrickfanella__omarchy-superproductivity"
+},
+{
+"key": "djjeane/omarchy-docker-plugin",
+"repo": "djjeane/omarchy-docker-plugin",
+"plugin_id": "djjeane.docker-monitor",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/djjeane__omarchy-docker-plugin"
+},
+{
+"key": "jeremylongshore/omarchy-listening-post-entry",
+"repo": "jeremylongshore/omarchy-listening-post-entry",
+"plugin_id": "io.github.jeremylongshore.listening-post",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/jeremylongshore__omarchy-listening-post-entry"
+},
+{
+"key": "akitaonrails/ai-usagebar",
+"repo": "akitaonrails/ai-usagebar",
+"plugin_id": "akitaonrails.ai-usagebar",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/akitaonrails__ai-usagebar"
+},
+{
+"key": "ccdwyer/omarchy-window-hints",
+"repo": "ccdwyer/omarchy-window-hints",
+"plugin_id": "io.github.chris.window-hints",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/ccdwyer__omarchy-window-hints"
+},
+{
+"key": "smorshenniygus/omaconvert",
+"repo": "smorshenniygus/omaconvert",
+"plugin_id": "io.github.smorshenniygus.omaconvert",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/smorshenniygus__omaconvert"
+},
+{
+"key": "outcrop-labs/skal-title",
+"repo": "outcrop-labs/skal-title",
+"plugin_id": "skal.title",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/outcrop-labs__skal-title"
+},
+{
+"key": "konradk/hark",
+"repo": "konradk/hark",
+"plugin_id": "hark",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/konradk__hark"
+},
+{
+"key": "igarag/omarchy-git-status",
+"repo": "igarag/omarchy-git-status",
+"plugin_id": "nachoaz.git-status",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/igarag__omarchy-git-status"
+},
+{
+"key": "iampoul/omatime",
+"repo": "iampoul/omatime",
+"plugin_id": "io.github.iampoul.omatime",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/iampoul__omatime"
+},
+{
+"key": "afruth/omarchy-xr",
+"repo": "afruth/omarchy-xr",
+"plugin_id": "afruth.omarchy-xr",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/afruth__omarchy-xr"
+},
+{
+"key": "jvlianodorneles/alcalc",
+"repo": "jvlianodorneles/alcalc",
+"plugin_id": "dorneles.alcalc",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/jvlianodorneles__alcalc"
+},
+{
+"key": "marty-schneider/sports-tracker",
+"repo": "marty-schneider/sports-tracker",
+"plugin_id": "io.github.marty-schneider.sports-tracker",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/marty-schneider__sports-tracker"
+},
+{
+"key": "azteriisk/omarchy-idle-manager",
+"repo": "azteriisk/omarchy-idle-manager",
+"plugin_id": "azterisk.idle",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/azteriisk__omarchy-idle-manager"
+},
+{
+"key": "iamcheyan/omarchy-overview-workspaces",
+"repo": "iamcheyan/omarchy-overview-workspaces",
+"plugin_id": "hancore.overview-workspaces",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/iamcheyan__omarchy-overview-workspaces"
+},
+{
+"key": "ggregoro/omarchy-clipboard-cards",
+"repo": "ggregoro/omarchy-clipboard-cards",
+"plugin_id": "ggregoro.clipboard-cards",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/ggregoro__omarchy-clipboard-cards"
+},
+{
+"key": "jmaeder/omarchy-swisstransport",
+"repo": "jmaeder/omarchy-swisstransport",
+"plugin_id": "jmaeder.swisstransport",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/jmaeder__omarchy-swisstransport"
+},
+{
+"key": "jjdizz1l/dizziee.system-updates",
+"repo": "jjdizz1l/dizziee.system-updates",
+"plugin_id": "dizziee.system-updates",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/jjdizz1l__dizziee.system-updates"
+},
+{
+"key": "filipenf/exercise-snacks",
+"repo": "filipenf/exercise-snacks",
+"plugin_id": "filipenf.exercise-snacks",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/filipenf__exercise-snacks"
+},
+{
+"key": "nixfred/infomarchy",
+"repo": "nixfred/infomarchy",
+"plugin_id": "nixfred.infomarchy",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/nixfred__infomarchy"
+},
+{
+"key": "herman6888/newswire-omarchy",
+"repo": "herman6888/newswire-omarchy",
+"plugin_id": "herman.newswire-zh",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/herman6888__newswire-omarchy"
+},
+{
+"key": "zamkara/cleanmacaci",
+"repo": "zamkara/cleanmacaci",
+"plugin_id": "cleaner.zamkara.ati",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/zamkara__cleanmacaci"
+},
+{
+"key": "yoanntlm/omarchy-sail",
+"repo": "yoanntlm/omarchy-sail",
+"plugin_id": "yoanntlm.sail",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/yoanntlm__omarchy-sail"
+},
+{
+"key": "ozdil/omarchy-omastudio",
+"repo": "ozdil/omarchy-omastudio",
+"plugin_id": "ozdil.omastudio",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/ozdil__omarchy-omastudio"
+},
+{
+"key": "sclemance/ragtop",
+"repo": "sclemance/ragtop",
+"plugin_id": "sclemance.ragtop",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/sclemance__ragtop"
+},
+{
+"key": "grantabell/omarchy-lock-fingerprint-on-enter",
+"repo": "grantabell/omarchy-lock-fingerprint-on-enter",
+"plugin_id": "grantabell.lock-fingerprint-on-enter",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/grantabell__omarchy-lock-fingerprint-on-enter"
+},
+{
+"key": "ejuro/omarchy-extended-theme-picker",
+"repo": "ejuro/omarchy-extended-theme-picker",
+"plugin_id": "io.github.ejuro.extended-theme-picker",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/ejuro__omarchy-extended-theme-picker"
+},
+{
+"key": "brucolomer/spame",
+"repo": "brucolomer/spame",
+"plugin_id": "io.github.brucolomer.spame",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/brucolomer__spame"
+},
+{
+"key": "salted-sorbet/salted.crt",
+"repo": "salted-sorbet/salted.crt",
+"plugin_id": "salted.crt",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/salted-sorbet__salted.crt"
+},
+{
+"key": "mb-jambon/omarchy-pods",
+"repo": "mb-jambon/omarchy-pods",
+"plugin_id": "io.github.mb-jambon.omapods",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/mb-jambon__omarchy-pods"
+},
+{
+"key": "staruxian/lifeos",
+"repo": "staruxian/lifeos",
+"plugin_id": "staruxian.lifeos",
+"label": "broken",
+"local_dir": "/workspace/registry_repos/staruxian.lifeos"
+},
+{
+"key": "erikwb/omarchy-blueferry",
+"repo": "erikwb/omarchy-blueferry",
+"plugin_id": "io.weirdware.blueferry",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/erikwb__omarchy-blueferry"
+},
+{
+"key": "cytracon/omarchy-syscare",
+"repo": "cytracon/omarchy-syscare",
+"plugin_id": "io.github.cytracon.syscare",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/cytracon__omarchy-syscare"
+},
+{
+"key": "kabirbhattarai/omarchy-system-pulse",
+"repo": "kabirbhattarai/omarchy-system-pulse",
+"plugin_id": "kb.system-pulse",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/kabirbhattarai__omarchy-system-pulse"
+},
+{
+"key": "alanfrigo/omarchy-openlogi",
+"repo": "alanfrigo/omarchy-openlogi",
+"plugin_id": "alanfrigo.openlogi",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/alanfrigo__omarchy-openlogi"
+},
+{
+"key": "boundsj/ramen",
+"repo": "boundsj/ramen",
+"plugin_id": "boundsj.raman",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/boundsj__ramen"
+},
+{
+"key": "chameleonbr/omarchy_wled",
+"repo": "chameleonbr/omarchy_wled",
+"plugin_id": "avila.wled",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/chameleonbr__omarchy_wled"
+},
+{
+"key": "bottelet/omarchy-slack",
+"repo": "bottelet/omarchy-slack",
+"plugin_id": "bottelet.slack",
+"label": "broken",
+"local_dir": "/workspace/registry_repos/bottelet.slack"
+},
+{
+"key": "nazzarenogiannelli/tuiboard-omarchy-plugin",
+"repo": "nazzarenogiannelli/tuiboard-omarchy-plugin",
+"plugin_id": "nazz.tuiboard",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/nazzarenogiannelli__tuiboard-omarchy-plugin"
+},
+{
+"key": "jesseburlamaque/omarchy-find",
+"repo": "jesseburlamaque/omarchy-find",
+"plugin_id": "jesseburlamaque.omarchy-find",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/jesseburlamaque__omarchy-find"
+},
+{
+"key": "siygle/omarchy-rss-client",
+"repo": "siygle/omarchy-rss-client",
+"plugin_id": "io.github.siygle.omarchy-rss-client",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/siygle__omarchy-rss-client"
+},
+{
+"key": "kmpeeduwee/omarchy-plugin-guard",
+"repo": "kmpeeduwee/omarchy-plugin-guard",
+"plugin_id": "ksb.plugin-guard",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/kmpeeduwee__omarchy-plugin-guard"
+},
+{
+"key": "aweiward/omaqbt",
+"repo": "aweiward/omaqbt",
+"plugin_id": "aweiward.omaqbt",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/aweiward__omaqbt"
+},
+{
+"key": "silvaio/gamemode-switcher",
+"repo": "silvaio/gamemode-switcher",
+"plugin_id": "silvaio.gamemode",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/silvaio__gamemode-switcher"
+},
+{
+"key": "ywenhao/omarchy-mouse-touchpad-toggle",
+"repo": "ywenhao/omarchy-mouse-touchpad-toggle",
+"plugin_id": "dev.ywenhao.mouse-touchpad-toggle",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/ywenhao__omarchy-mouse-touchpad-toggle"
+},
+{
+"key": "qempexe/omarchy-omatravel",
+"repo": "qempexe/omarchy-omatravel",
+"plugin_id": "io.github.qempexe.omatravel",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/qempexe__omarchy-omatravel"
+},
+{
+"key": "davedes83/omacontrol",
+"repo": "davedes83/omacontrol",
+"plugin_id": "davedes.omcontrol",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/davedes83__omacontrol"
+},
+{
+"key": "zerobearing2/omarchy-omatalk-plugin",
+"repo": "zerobearing2/omarchy-omatalk-plugin",
+"plugin_id": "zerobearing.omatalk",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/zerobearing2__omarchy-omatalk-plugin"
+},
+{
+"key": "rryan/omarchy-tiddlywiki",
+"repo": "rryan/omarchy-tiddlywiki",
+"plugin_id": "rryan.tiddlywiki",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/rryan__omarchy-tiddlywiki"
+},
+{
+"key": "maslinedwin/nowah-travel",
+"repo": "maslinedwin/nowah-travel",
+"plugin_id": "xyz.nowah.travel",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/maslinedwin__nowah-travel"
+},
+{
+"key": "gigor/omarchy-simple-notifications",
+"repo": "gigor/omarchy-simple-notifications",
+"plugin_id": "gigor.notifications",
+"label": "broken",
+"local_dir": "/workspace/registry_repos/gigor.notifications"
+},
+{
+"key": "dghelm/omarchy-herdy",
+"repo": "dghelm/omarchy-herdy",
+"plugin_id": "dghelm.herdy",
+"label": "broken",
+"local_dir": "/workspace/registry_repos/dghelm.herdy"
+},
+{
+"key": "odessa2/omakeyboard-brightness",
+"repo": "odessa2/omakeyboard-brightness",
+"plugin_id": "omakeyboard.brightness",
+"label": "broken",
+"local_dir": "/workspace/registry_repos/omakeyboard.brightness"
+},
+{
+"key": "grzeskobyte/omagrid",
+"repo": "grzeskobyte/omagrid",
+"plugin_id": "io.github.grzeskobyte.omagrid",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/grzeskobyte__omagrid"
+},
+{
+"key": "woodenplastic/omarchy-information-wallpaper-overlay",
+"repo": "woodenplastic/omarchy-information-wallpaper-overlay",
+"plugin_id": "woodenplastic.information-wallpaper-overlay",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/woodenplastic__omarchy-information-wallpaper-overlay"
+},
+{
+"key": "bronder/omarchy-tuner-v2",
+"repo": "bronder/omarchy-tuner-v2",
+"plugin_id": "bronder.tuner",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/bronder__omarchy-tuner-v2"
+},
+{
+"key": "joejoeflyn/omakaomoji",
+"repo": "joejoeflyn/omakaomoji",
+"plugin_id": "omakaomoji",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/joejoeflyn__omakaomoji"
+},
+{
+"key": "signal-six/dungeons-of-omakon",
+"repo": "signal-six/dungeons-of-omakon",
+"plugin_id": "b.omakon",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/signal-six__dungeons-of-omakon"
+},
+{
+"key": "sshbrian/lightctl",
+"repo": "sshbrian/lightctl",
+"plugin_id": "io.github.sshbrian.lightctl",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/sshbrian__lightctl"
+},
+{
+"key": "cbayschm74/deepl-omarchy",
+"repo": "cbayschm74/deepl-omarchy",
+"plugin_id": "io.github.cbayschm74.deepl-clipboard",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/cbayschm74__deepl-omarchy"
+},
+{
+"key": "lxp-git/omarchy-stay-awake-indicators",
+"repo": "lxp-git/omarchy-stay-awake-indicators",
+"plugin_id": "io.github.lxp-git.stay-awake-indicators",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/lxp-git__omarchy-stay-awake-indicators"
+},
+{
+"key": "jheuing/omarchy-tyme",
+"repo": "jheuing/omarchy-tyme",
+"plugin_id": "ch.wertstifter.tyme",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/jheuing__omarchy-tyme"
+},
+{
+"key": "danielfuentespl/omarchy-pihole",
+"repo": "danielfuentespl/omarchy-pihole",
+"plugin_id": "com.blogvirtualizado.omaops.pihole",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/danielfuentespl__omarchy-pihole"
+},
+{
+"key": "nvandendries1984/omarchy-useless-facts",
+"repo": "nvandendries1984/omarchy-useless-facts",
+"plugin_id": "io.github.nvandendries1984.useless-facts",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/nvandendries1984__omarchy-useless-facts"
+},
+{
+"key": "eddownes/omaimapmail",
+"repo": "eddownes/omaimapmail",
+"plugin_id": "io.github.eddownes.omaimapmail",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/eddownes__omaimapmail"
+},
+{
+"key": "maiosx/runway",
+"repo": "maiosx/runway",
+"plugin_id": "runway.forecast",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/maiosx__runway"
+},
+{
+"key": "mani4/omarchy-instant-snippets",
+"repo": "mani4/omarchy-instant-snippets",
+"plugin_id": "mani4.instant-snippets",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/mani4__omarchy-instant-snippets"
+},
+{
+"key": "gardnmi/omarchy-minimize",
+"repo": "gardnmi/omarchy-minimize",
+"plugin_id": "io.github.gardnmi.window-shelf",
+"label": "broken",
+"local_dir": "/workspace/registry_repos/io.github.gardnmi.window-shelf"
+},
+{
+"key": "shirak-semonian/myip-omarchy-plugin",
+"repo": "shirak-semonian/myip-omarchy-plugin",
+"plugin_id": "io.github.shirak-semonian.myip",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/shirak-semonian__myip-omarchy-plugin"
+},
+{
+"key": "mkultrausa/omarchy-the-prisoner-seaside",
+"repo": "mkultrausa/omarchy-the-prisoner-seaside",
+"plugin_id": "uk.co.mkultrausa.the-prisoner-seaside",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/mkultrausa__omarchy-the-prisoner-seaside"
+},
+{
+"key": "bennethon/launchboard",
+"repo": "bennethon/launchboard",
+"plugin_id": "bennethon.launchboard",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/bennethon__launchboard"
+},
+{
+"key": "07dcolem/bar-glow",
+"repo": "07dcolem/bar-glow",
+"plugin_id": "bar-glow",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/07dcolem__bar-glow"
+},
+{
+"key": "skalawag/disk-health",
+"repo": "skalawag/disk-health",
+"plugin_id": "io.github.skalawag.disk-health",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/skalawag__disk-health"
+},
+{
+"key": "tcballard/omarchy-plugin-tidyup",
+"repo": "tcballard/omarchy-plugin-tidyup",
+"plugin_id": "io.github.tcballard.tidyup",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/tcballard__omarchy-plugin-tidyup"
+},
+{
+"key": "dupontbertrand/omastatus",
+"repo": "dupontbertrand/omastatus",
+"plugin_id": "io.github.dupontbertrand.omastatus",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/dupontbertrand__omastatus"
+},
+{
+"key": "tcballard/omarchy-markets",
+"repo": "tcballard/omarchy-markets",
+"plugin_id": "io.github.tcballard.omarchy-markets",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/tcballard__omarchy-markets"
+},
+{
+"key": "joseluiss2003/joseluis.media",
+"repo": "joseluiss2003/joseluis.media",
+"plugin_id": "joseluis.media",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/joseluiss2003__joseluis.media"
+},
+{
+"key": "latentoperator/omarchy-audible",
+"repo": "latentoperator/omarchy-audible",
+"plugin_id": "latentoperator.audible",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/latentoperator__omarchy-audible"
+},
+{
+"key": "taraskim/omarchy-notion-tasks",
+"repo": "taraskim/omarchy-notion-tasks",
+"plugin_id": "io.github.taraskim.notion-tasks",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/taraskim__omarchy-notion-tasks"
+},
+{
+"key": "ericvrp/omarchy-one-app-per-workspace",
+"repo": "ericvrp/omarchy-one-app-per-workspace",
+"plugin_id": "ericvrp.one-app-per-workspace",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/ericvrp__omarchy-one-app-per-workspace"
+},
+{
+"key": "mastermendes74/omarchy-sports-bar",
+"repo": "mastermendes74/omarchy-sports-bar",
+"plugin_id": "mendestein.sports",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/mastermendes74__omarchy-sports-bar"
+},
+{
+"key": "whiteovis/light",
+"repo": "whiteovis/light",
+"plugin_id": "light.bible-reader",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/whiteovis__light"
+},
+{
+"key": "topmass/airtype-for-omarchy",
+"repo": "topmass/airtype-for-omarchy",
+"plugin_id": "topmass.airtype",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/topmass__airtype-for-omarchy"
+},
+{
+"key": "kdriedger/omarchy-lock-battery",
+"repo": "kdriedger/omarchy-lock-battery",
+"plugin_id": "linuxbox.lock",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/kdriedger__omarchy-lock-battery"
+},
+{
+"key": "i12bp8/fmhy-deck",
+"repo": "i12bp8/fmhy-deck",
+"plugin_id": "io.github.i12bp8.fmhy-deck",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/i12bp8__fmhy-deck"
+},
+{
+"key": "rodrix2000/omarchy-photodock",
+"repo": "rodrix2000/omarchy-photodock",
+"plugin_id": "io.github.rodrix2000.photodock",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/rodrix2000__omarchy-photodock"
+},
+{
+"key": "grappabh/omarchy-pill-overlay",
+"repo": "grappabh/omarchy-pill-overlay",
+"plugin_id": "io.github.grappabh.pill-overlay",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/grappabh__omarchy-pill-overlay"
+},
+{
+"key": "mirashif/omalauncher",
+"repo": "mirashif/omalauncher",
+"plugin_id": "com.mirashif.omalauncher",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/mirashif__omalauncher"
+},
+{
+"key": "fel-2/omarchy-vidi-plugin",
+"repo": "fel-2/omarchy-vidi-plugin",
+"plugin_id": "fel.vidi",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/fel-2__omarchy-vidi-plugin"
+},
+{
+"key": "itsgg/omarchy-headset",
+"repo": "itsgg/omarchy-headset",
+"plugin_id": "io.github.itsgg.headset",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/itsgg__omarchy-headset"
+},
+{
+"key": "zdehasek/records-desktop",
+"repo": "zdehasek/records-desktop",
+"plugin_id": "io.github.zdehasek.records",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/zdehasek__records-desktop"
+},
+{
+"key": "jeremylongshore/omarchy-pit-wall-entry",
+"repo": "jeremylongshore/omarchy-pit-wall-entry",
+"plugin_id": "io.github.jeremylongshore.pit-wall",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/jeremylongshore__omarchy-pit-wall-entry"
+},
+{
+"key": "tiertek/omarchy-hyprpm-manager",
+"repo": "tiertek/omarchy-hyprpm-manager",
+"plugin_id": "tiertek.hyprpm-manager",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/tiertek__omarchy-hyprpm-manager"
+},
+{
+"key": "mwikala/omarchy-auto-theme",
+"repo": "mwikala/omarchy-auto-theme",
+"plugin_id": "mwikala.auto-theme",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/mwikala__omarchy-auto-theme"
+},
+{
+"key": "ayushkr2003/omacale",
+"repo": "ayushkr2003/omacale",
+"plugin_id": "omacale.bar",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/ayushkr2003__omacale"
+},
+{
+"key": "creazawolf/omarchygotchi",
+"repo": "creazawolf/omarchygotchi",
+"plugin_id": "creaza.tamagotchi",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/creazawolf__omarchygotchi"
+},
+{
+"key": "the4rchangel/omarchy-hackery-lock",
+"repo": "the4rchangel/omarchy-hackery-lock",
+"plugin_id": "io.github.the4rchangel.hackery-lock",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/the4rchangel__omarchy-hackery-lock"
+},
+{
+"key": "jtcarrasco/audiobookshelf-player",
+"repo": "jtcarrasco/audiobookshelf-player",
+"plugin_id": "abs-player",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/jtcarrasco__audiobookshelf-player"
+},
+{
+"key": "djrcx/omarchy-layout-switcher",
+"repo": "djrcx/omarchy-layout-switcher",
+"plugin_id": "io.github.djrcx.layout-switcher",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/djrcx__omarchy-layout-switcher"
+},
+{
+"key": "arikisonfire/omarsync",
+"repo": "arikisonfire/omarsync",
+"plugin_id": "io.github.arikisonfire.rsync",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/arikisonfire__omarsync"
+},
+{
+"key": "tngyema/refresh-rate",
+"repo": "tngyema/refresh-rate",
+"plugin_id": "tngyema.refresh-rate",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/tngyema__refresh-rate"
+},
+{
+"key": "techguy-top/omarchy-reading-highlighter",
+"repo": "techguy-top/omarchy-reading-highlighter",
+"plugin_id": "diky.reading-highlighter",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/techguy-top__omarchy-reading-highlighter"
+},
+{
+"key": "sceny/omarchy-devices",
+"repo": "sceny/omarchy-devices",
+"plugin_id": "sceny.devices",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/sceny__omarchy-devices"
+},
+{
+"key": "mulcahyio/omarchy-app-picker",
+"repo": "mulcahyio/omarchy-app-picker",
+"plugin_id": "mulcahyio.app-picker",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/mulcahyio__omarchy-app-picker"
+},
+{
+"key": "tophermdev/omarchy-todos",
+"repo": "tophermdev/omarchy-todos",
+"plugin_id": "jeanhuit.todos",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/tophermdev__omarchy-todos"
+},
+{
+"key": "ccdwyer/omarchy-desktop-undo",
+"repo": "ccdwyer/omarchy-desktop-undo",
+"plugin_id": "io.github.chris.desktop-undo",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/ccdwyer__omarchy-desktop-undo"
+},
+{
+"key": "jvanbaarsen/omafocus",
+"repo": "jvanbaarsen/omafocus",
+"plugin_id": "jvb.omafocus",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/jvanbaarsen__omafocus"
+},
+{
+"key": "ronald2wing/omarchy-shop",
+"repo": "ronald2wing/omarchy-shop",
+"plugin_id": "shop",
+"label": "broken",
+"local_dir": "/workspace/registry_repos/shop"
+},
+{
+"key": "firstintegral/vigil",
+"repo": "firstintegral/vigil",
+"plugin_id": "brwsk.vigil",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/firstintegral__vigil"
+},
+{
+"key": "kostadinkadiev/omarchy-remote-desktop",
+"repo": "kostadinkadiev/omarchy-remote-desktop",
+"plugin_id": "kokd.remote-desktop",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/kostadinkadiev__omarchy-remote-desktop"
+},
+{
+"key": "jltrench/textify",
+"repo": "jltrench/textify",
+"plugin_id": "jltrench.textify",
+"label": "broken",
+"local_dir": "/workspace/registry_repos/jltrench.textify"
+},
+{
+"key": "tristonarmstrong/omarchy-dictionary",
+"repo": "tristonarmstrong/omarchy-dictionary",
+"plugin_id": "tristonarmstrong.dictionary",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/tristonarmstrong__omarchy-dictionary"
+},
+{
+"key": "lumberman/omarchy-ytmusic",
+"repo": "lumberman/omarchy-ytmusic",
+"plugin_id": "quickshell.ytmusic",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/lumberman__omarchy-ytmusic"
+},
+{
+"key": "vbtwo31984/omarchy-hebrew-calendar-zmanim",
+"repo": "vbtwo31984/omarchy-hebrew-calendar-zmanim",
+"plugin_id": "vbtwo.hebrew-calendar",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/vbtwo31984__omarchy-hebrew-calendar-zmanim"
+},
+{
+"key": "kairos-tech-oh/omarchy-globe-guesser",
+"repo": "kairos-tech-oh/omarchy-globe-guesser",
+"plugin_id": "kairos.globe-guesser",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/kairos-tech-oh__omarchy-globe-guesser"
+},
+{
+"key": "omacheese/omastorm-nord",
+"repo": "omacheese/omastorm-nord",
+"plugin_id": "omacheese.omastorm-nord",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/omacheese__omastorm-nord"
+},
+{
+"key": "pixygon/micromachee",
+"repo": "pixygon/micromachee",
+"plugin_id": "io.pixygon.micromachee",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/pixygon__micromachee"
+},
+{
+"key": "bethropolis/omarchy-kcd-plugin",
+"repo": "bethropolis/omarchy-kcd-plugin",
+"plugin_id": "io.github.bethropolis.kcd",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/bethropolis__omarchy-kcd-plugin"
+},
+{
+"key": "antongisli/omarchy-nebius",
+"repo": "antongisli/omarchy-nebius",
+"plugin_id": "nebius",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/antongisli__omarchy-nebius"
+},
+{
+"key": "rodrigopim/omarchy.gitname",
+"repo": "rodrigopim/omarchy.gitname",
+"plugin_id": "rodrigopim.gitname",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/rodrigopim__omarchy.gitname"
+},
+{
+"key": "coding-sparrow/omarchy-devkit",
+"repo": "coding-sparrow/omarchy-devkit",
+"plugin_id": "coding-sparrow.devkit",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/coding-sparrow__omarchy-devkit"
+},
+{
+"key": "fram74/omarchy-voyager",
+"repo": "fram74/omarchy-voyager",
+"plugin_id": "net.moggia.voyager-layouts",
+"label": "broken",
+"local_dir": "/workspace/sweep_repos/fram74__omarchy-voyager"
+}
+]
+}
