@@ -1,0 +1,86 @@
+{
+ "name": "checker-baseline",
+ "backend": "checker",
+ "model": null,
+ "n": 329,
+ "positives": 300,
+ "negatives": 29,
+ "verdict_accuracy": 0.65,
+ "positive_recall": 0.673,
+ "negative_false_alarm": 0.586,
+ "category_recall_micro": 0.131,
+ "category_precision_micro": 0.442,
+ "json_valid": 1.0,
+ "tokens_in": 0,
+ "tokens_out": 0,
+ "cost_usd": 0.0,
+ "secs_median": 0.0,
+ "secs_total": 0.0,
+ "per_category": {
+  "file-safety-symlink-perms": {
+   "gt": 138,
+   "recall": 0.152,
+   "precision": 0.512
+  },
+  "install-deps-packaging": {
+   "gt": 110,
+   "recall": 0.336,
+   "precision": 0.398
+  },
+  "listing-metadata-docs": {
+   "gt": 51,
+   "recall": 0.0,
+   "precision": null
+  },
+  "privileged-system": {
+   "gt": 89,
+   "recall": 0.247,
+   "precision": 0.564
+  },
+  "process-lifecycle-timeouts": {
+   "gt": 114,
+   "recall": 0.105,
+   "precision": 0.387
+  },
+  "remote-code-pinning": {
+   "gt": 87,
+   "recall": 0.057,
+   "precision": 0.625
+  },
+  "rich-text-markup-injection": {
+   "gt": 95,
+   "recall": 0.053,
+   "precision": 0.263
+  },
+  "scope-policy-duplicate": {
+   "gt": 70,
+   "recall": 0.0,
+   "precision": null
+  },
+  "secrets-credentials": {
+   "gt": 127,
+   "recall": 0.016,
+   "precision": 0.5
+  },
+  "shell-lua-injection": {
+   "gt": 66,
+   "recall": 0.106,
+   "precision": 0.226
+  },
+  "unbounded-input-resource": {
+   "gt": 177,
+   "recall": 0.305,
+   "precision": 0.505
+  },
+  "url-scheme-network": {
+   "gt": 112,
+   "recall": 0.027,
+   "precision": 0.429
+  },
+  "user-config-modification": {
+   "gt": 42,
+   "recall": 0.0,
+   "precision": null
+  }
+ }
+}

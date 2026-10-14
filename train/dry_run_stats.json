@@ -1,0 +1,13 @@
+{
+ "train": 4539,
+ "train_dropped_overlength": 53,
+ "val": 144,
+ "val_dropped": 4,
+ "tok_median": 7022,
+ "tok_p95": 9195,
+ "tok_max": 201630,
+ "train_tokens": 31600865,
+ "assistant_tokens": 945359,
+ "steps_per_epoch": 284,
+ "tokenize_secs": 123.2
+}
