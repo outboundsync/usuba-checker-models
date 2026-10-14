@@ -188,6 +188,28 @@ The plan is a bf16 LoRA on one H100 80GB on Vast, about 6 hours and roughly $20,
 
 ---
 
+## Progress so far (verified numbers, 2026-10-14)
+
+Here's where the numbers stand as of Wednesday, Oct 14, 2026. These are the ones we can point at in the repo and the billing ledgers.
+
+**Spend.** About **$207** so far: **$77.67** on GPU (Vast) and **$129.73** on AI services (OpenRouter project ledgers). That's a lot more than "tens of dollars." The real cost is still the time on data and evaluation, but the cash number belongs in the open too.
+
+**Grader vs. the Dell.** Agreement with the hardware answer key went from **44/58** on the old grader to **90/90** decided once we rebuilt it against the Dell and grew the key.
+
+**Checker scripts vs. the Dell sweep.** Agreement with the sweep key went from **45/52** to **52/52**.
+
+**Builder fine-tunes.** None of them beat stock on the clean /49 holdout. Our fine-tunes landed around **2–4/49**. Stock open models were about **3–6/49**. We never cleared the first bar: beat your own base.
+
+**Frontier builders with Checker feedback.** First try, then after the Checker-feedback fix loop: GPT **21 → 40/49**, Opus **17 → 36**, Sonnet **9 → 35**. That's the clearest lift we've measured for building plugins so far, and it came from the Checker, not from a fine-tune.
+
+**Checker model on the Dell set.** Usuba v1 accuracy **0.756**, against stock Qwen3.5 9B at **0.567**. On "right reason" for the broken plugins it flagged, v1 got **1 of 31**, vs stock **9** and Sonnet **13**. So the accuracy gain is real, and the reasons still aren't good enough.
+
+**Prompt matters more than we hoped.** Stock 9B with a better prompt hits **0.800** on the same Dell set. Ministral 14B hits **0.822**. Before we spend more on training, we have to beat a stock model with a better prompt.
+
+**What we learned:** the grader and the Checker scripts are the measured wins. The builder fine-tunes aren't. The Checker model is better at the verdict than stock 9B, but not yet at naming the real reason, and a prompt change on stock can outscore our first trained run.
+
+---
+
 ## What's next, and how you can help
 
 I want to be straight about this: it has been a lot of work. Calibrating a grader against a real laptop, sweeping thousands of plugins on hardware, re-running jobs after an audio plugin took down the desktop, chasing bugs through GitHub issues, building a training set with provenance on every row. None of it was quick, and most of it was data and evaluation, not GPUs.
