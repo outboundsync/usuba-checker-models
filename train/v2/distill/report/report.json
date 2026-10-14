@@ -1,86 +1,86 @@
 {
  "counts": {
   "train": {
-   "total": 2374,
+   "total": 2314,
    "by_label": {
-    "works": 1140,
-    "broken": 1234
+    "broken": 1203,
+    "works": 1111
    },
    "by_verdict": {
-    "approve": 1140,
-    "changes_requested": 1234
+    "changes_requested": 1203,
+    "approve": 1111
    },
    "approve_share": 0.48,
    "by_source": {
-    "dell_works_verified": 1075,
-    "fix_upstream": 39,
     "hancore": 1000,
-    "dell_broken_verified": 226,
-    "nudged_approve": 23,
+    "dell_works_verified": 1046,
+    "dell_broken_verified": 195,
+    "fix_upstream": 39,
     "dell_inuse_missing_binary": 7,
+    "nudged_approve": 23,
     "dell_inuse_usage_memory": 3,
     "dell_inuse_close": 1
    },
    "by_target_kind": {
-    "dell_works_verified:<id-withheld>": 957,
-    "fix_upstream:teacher_retry": 8,
     "hancore:template_no_teacher": 1000,
-    "dell_works_verified:<id-withheld>": 118,
-    "dell_broken_verified:<id-withheld>": 171,
+    "dell_works_verified:<id-withheld>": 933,
+    "dell_broken_verified:<id-withheld>": 15,
     "fix_upstream:teacher": 30,
-    "dell_broken_verified:<id-withheld>": 30,
-    "nudged_approve:teacher_nudged": 23,
-    "dell_broken_verified:<id-withheld>": 25,
+    "dell_broken_verified:<id-withheld>": 157,
+    "dell_works_verified:<id-withheld>": 113,
     "dell_inuse_missing_binary:<id-withheld>": 6,
-    "fix_upstream:template_fallback": 1,
-    "dell_inuse_missing_binary:<id-withheld>": 1,
+    "nudged_approve:teacher_nudged": 23,
+    "dell_broken_verified:<id-withheld>": 23,
     "dell_inuse_usage_memory:<id-withheld>": 3,
-    "dell_inuse_close:<id-withheld>": 1
-   },
-   "tokens": {
-    "min": 2756,
-    "p50": 15661,
-    "p90": 27006,
-    "p99": 31224,
-    "max": 31697,
-    "mean": 16287,
-    "total": 38664824
-   }
-  },
-  "val": {
-   "total": 156,
-   "by_label": {
-    "works": 104,
-    "broken": 52
-   },
-   "by_verdict": {
-    "approve": 104,
-    "changes_requested": 52
-   },
-   "approve_share": 0.667,
-   "by_source": {
-    "dell_works_verified": 104,
-    "dell_broken_verified": 50,
-    "dell_inuse_usage_memory": 1,
-    "dell_inuse_missing_binary": 1
-   },
-   "by_target_kind": {
-    "dell_works_verified:<id-withheld>": 88,
-    "dell_broken_verified:<id-withheld>": 40,
-    "dell_broken_verified:<id-withheld>": 5,
-    "dell_broken_verified:<id-withheld>": 5,
-    "dell_works_verified:<id-withheld>": 16,
-    "dell_inuse_usage_memory:<id-withheld>": 1,
+    "fix_upstream:teacher_retry": 8,
+    "fix_upstream:template_fallback": 1,
+    "dell_inuse_close:<id-withheld>": 1,
     "dell_inuse_missing_binary:<id-withheld>": 1
    },
    "tokens": {
-    "min": 3138,
-    "p50": 14444,
+    "min": 2756,
+    "p50": 15728,
+    "p90": 27007,
+    "p99": 31222,
+    "max": 31697,
+    "mean": 16353,
+    "total": 37841090
+   }
+  },
+  "val": {
+   "total": 152,
+   "by_label": {
+    "works": 104,
+    "broken": 48
+   },
+   "by_verdict": {
+    "approve": 104,
+    "changes_requested": 48
+   },
+   "approve_share": 0.684,
+   "by_source": {
+    "dell_works_verified": 104,
+    "dell_broken_verified": 46,
+    "dell_inuse_missing_binary": 1,
+    "dell_inuse_usage_memory": 1
+   },
+   "by_target_kind": {
+    "dell_works_verified:<id-withheld>": 88,
+    "dell_broken_verified:<id-withheld>": 36,
+    "dell_works_verified:<id-withheld>": 16,
+    "dell_broken_verified:<id-withheld>": 7,
+    "dell_broken_verified:<id-withheld>": 3,
+    "dell_inuse_missing_binary:<id-withheld>": 1,
+    "dell_inuse_usage_memory:<id-withheld>": 1
+   },
+   "tokens": {
+    "min": 3465,
+    "p50": 14717,
     "p90": 26245,
     "p99": 30223,
     "max": 30936,
-    "mean": 15396,
-    "total": 2401848
+    "mean": 15569,
+    "total": 2366461
    }
   }
  },
@@ -88,6 +88,15 @@
   "dropped_fix_dell_contradicted:<id-withheld>": 2,
   "dropped_fix_helper_missing_from_prompt:train:fix_upstream": 36,
   "dropped_fix_model_proprietary:train": 7,
+  "dropped_guided_not_names_actual_bug:train:blocker_reason_mismatch": 8,
+  "dropped_guided_not_names_actual_bug:train:gold_line_mismatch": 3,
+  "dropped_guided_not_names_actual_bug:train:mentions_nudge": 1,
+  "dropped_guided_not_names_actual_bug:train:truncated": 2,
+  "dropped_guided_not_names_actual_bug:train:verdict_mismatch": 9,
+  "dropped_guided_not_names_actual_bug:val:blocker_reason_mismatch": 1,
+  "dropped_guided_not_names_actual_bug:val:verdict_mismatch": 1,
+  "dropped_post_audit_not_names_actual_bug:train": 8,
+  "dropped_post_audit_not_names_actual_bug:val": 2,
   "dropped_runtime_only:train:dell_broken_verified": 114,
   "dropped_runtime_only:train:dell_inuse_close": 76,
   "dropped_runtime_only:train:dell_inuse_missing_binary": 250,
@@ -98,9 +107,10 @@
   "stage_kept:blind:first": 1207,
   "stage_kept:blind:nudged": 23,
   "stage_kept:blind:retry": 163,
-  "stage_kept:guided:first": 218,
-  "stage_kept:guided:nudged": 38,
-  "teacher_kept:dell_broken_verified:<id-withheld>": 246,
+  "stage_kept:guided:first": 200,
+  "stage_kept:guided:loc": 23,
+  "stage_kept:guided:nudged": 28,
+  "teacher_kept:dell_broken_verified:<id-withheld>": 241,
   "teacher_kept:dell_inuse_close:<id-withheld>": 1,
   "teacher_kept:dell_inuse_missing_binary:<id-withheld>": 8,
   "teacher_kept:dell_inuse_usage_memory:<id-withheld>": 1,
@@ -109,29 +119,26 @@
   "teacher_kept:fix_upstream:works": 39,
   "teacher_not_sent:dell_works_verified:<id-withheld>": 750,
   "teacher_not_sent:hancore:broken": 1000,
-  "teacher_rejected:blocker_reason_mismatch:dell_broken_verified:<id-withheld>": 16,
-  "teacher_rejected:mentions_nudge:dell_broken_verified:<id-withheld>": 3,
   "teacher_rejected:mentions_nudge:dell_works_verified:<id-withheld>": 1,
-  "teacher_rejected:truncated:dell_broken_verified:<id-withheld>": 1,
-  "teacher_rejected:verdict_mismatch:dell_broken_verified:<id-withheld>": 10,
   "teacher_rejected:verdict_mismatch:dell_works_verified:<id-withheld>": 2,
   "teacher_rejected:verdict_mismatch:fix_upstream:works": 1,
-  "trimmed_works_for_approve_share": 903
+  "trimmed_works_for_approve_share": 932
  },
  "spend": {
   "teacher": "qwen/qwen3.5-397b-a17b",
-  "usd": 30.1302,
+  "usd": 31.3412,
   "by_state": {
    "state.json": 24.0531,
    "state.nudge.json": 2.0756,
    "state.retry1.json": 2.9675,
-   "state.retry2.json": 1.034
+   "state.retry2.json": 1.034,
+   "state.loc.json": 1.211
   },
   "rows": 1728,
   "note": "OpenRouter usage.cost; open-weights teacher only"
  },
  "sha256": {
-  "train.jsonl": "511665423f1392bea5a086266f3639fbea80e0c9d09d0af81daa24e6d129f384",
-  "val.jsonl": "1e971a31f8eeadd88d9e5bc0bad7e7659390674811971ba344e3a3b43393a4f2"
+  "train.jsonl": "9c8e55bb55297c738b003e129b2ed8da42e71f5cd8cb419d276786c6daf431b8",
+  "val.jsonl": "e4b3fba169584447b9b1bba1215c14a4e206f2115b1e9a2f5db8745f8977b061"
  }
 }

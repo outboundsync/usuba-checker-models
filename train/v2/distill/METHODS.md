@@ -55,3 +55,10 @@ Rejected first-try works rows: up to 2 more blind tries (`--tag retry1`, `--tag 
 the teacher request says the plugin is verified working and asks for an approve review grounded in the code, no invented issues).
 Rejected guided rows: one nudged pass stressing the known bug location. Same filters, plus a nudge-leak check. Nudged works rows are
 tagged `source=nudged_approve` and capped at 25% of approve rows (excess falls back to the templated target).
+
+## Broken-review audit (2026-10-14)
+Every teacher-written review of a broken plugin was graded against the verified failure by two open-weights judges (Qwen3.5-397B-A17B and GLM-5.1, `audit.py`):
+names_actual_bug / loose / wrong. Pass 1 found 20 of 256 rows not unanimously names_actual_bug (plus manual reads). Those rows got one `loc` retry
+(teacher sees line-numbered source; training prompt stays unnumbered); cited lines are also snapped deterministically to the line that contains the named symbol
+(`ground.py`), reviews whose symbols are absent from the cited file are rejected, and a review must cite within 15 lines of the verified failure line. Rows that
+still fail are dropped (no templated fallback for guided rows). Audit files: `report/audit*.json`.

@@ -8,7 +8,7 @@ import argparse, json, os, sys, threading, time, urllib.request, urllib.error
 from concurrent.futures import ThreadPoolExecutor
 from common import *
 import queuelib as BT
-LK = threading.Lock()
+LK = threading.Lock(); LOC = False
 def tdir(model): d = os.path.join(WORK, "teacher", model.replace("/", "__")); os.makedirs(d, exist_ok=True); return d
 NUDGE_WORKS = """
 
@@ -19,9 +19,17 @@ NUDGE_GUIDED = """
 
 NOTE FOR THIS REQUEST (teacher only): your review must name the known failure from the maintainer note as a blocker: cite the exact file
 shown, the line you can see, and the concrete cause in the code. Verdict "changes_requested", load "broken". Never mention the note."""
+NUDGE_LOC = """
+
+NOTE FOR THIS REQUEST (teacher only): the verified failure from the maintainer note is the ground truth. Name it as a blocker with the exact file and the
+symbol/binary/property from the note. The line you cite MUST be the line in the source shown where that symbol appears (copy it from the line-number prefixes (`N| `) on the code shown;
+never guess a line, and never include the prefixes in quoted text). Do not add other blockers unless you can quote the offending line. Verdict "changes_requested", load "broken". Never mention the note."""
 def nudge(c):
     c = json.loads(json.dumps(c)); m = c["messages"]
-    m[0]["content"] += NUDGE_GUIDED if c["cid"].startswith("g-") else NUDGE_WORKS
+    if LOC and c["cid"].startswith("g-"):   # teacher-side only: number the source lines so cited lines can be exact (the training prompt stays unnumbered)
+        import re
+        m[-1]["content"] = re.sub(r"(?m)^(### .+?\n```\n)(.*?)(\n```)$", lambda g: g.group(1) + "\n".join(f"{i + 1}| {s}" for i, s in enumerate(g.group(2).split("\n"))) + g.group(3), m[-1]["content"], flags=re.S)
+    m[0]["content"] += (NUDGE_LOC if LOC else NUDGE_GUIDED) if c["cid"].startswith("g-") else NUDGE_WORKS
     return c
 def call(model, c, log):
     b = BT.body(c)
@@ -44,7 +52,8 @@ def call(model, c, log):
     return dict(custom_id=c["cid"], result=dict(type="errored", error=err))
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--model", required=True); ap.add_argument("--only"); ap.add_argument("--cap", type=float, default=60.0)
-    ap.add_argument("--workers", type=int, default=6); ap.add_argument("--tag", default="", help="retry1/retry2/nudge: separate results file"); ap.add_argument("--nudge", action="store_true"); ap.add_argument("--spent-elsewhere", type=float, default=0.0, help="other redo spend counted against --cap (pilot)"); a = ap.parse_args()
+    ap.add_argument("--workers", type=int, default=6); ap.add_argument("--tag", default="", help="retry1/retry2/nudge: separate results file"); ap.add_argument("--nudge", action="store_true"); ap.add_argument("--loc", action="store_true"); ap.add_argument("--spent-elsewhere", type=float, default=0.0, help="other redo spend counted against --cap (pilot)"); a = ap.parse_args()
+    global LOC; LOC = a.loc
     D = tdir(a.model); T = ("." + a.tag) if a.tag else ""; SP = os.path.join(D, f"state{T}.json"); RP = os.path.join(D, f"results{T}.jsonl"); LOGP = os.path.join(D, "runner.log")
     def log(s): s = time.strftime("%Y-%m-%d %H:%M:%S ") + s; print(s, flush=True); open(LOGP, "a").write(s + "\n")
     st = json.load(open(SP)) if os.path.exists(SP) else dict(model=a.model, done={}, errors={}, spend_usd=0.0)

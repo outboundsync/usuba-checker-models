@@ -122,7 +122,11 @@ def template(c):
         s = s2 if len(s2) > 20 else s
         fl.append(dict(category=f["category"], severity=f["severity"], file=f.get("file"), line=f.get("line"), finding=s))
     t["findings"] = fl; return t
-def judge(c, guided, r, want, nudged=False):
+import ground as _G
+DENY = set(json.load(open(os.path.join(WORK, "audit_deny.json")))) if os.path.exists(os.path.join(WORK, "audit_deny.json")) else set()
+DROP = set(json.load(open(os.path.join(WORK, "audit_drop.json")))) if os.path.exists(os.path.join(WORK, "audit_drop.json")) else set()   # rows two open-model judges (+ manual read) did not grade names_actual_bug
+def key_of(g): return g["cid"]
+def judge(c, guided, r, want, nudged=False, loc=False):
     why = None; out = None
     if r is None: why = "no_teacher_result"
     elif r["type"] != "succeeded": why = "teacher_errored"
@@ -138,6 +142,9 @@ def judge(c, guided, r, want, nudged=False):
             elif c["label"] == "broken" and not matches(c, out): why = "blocker_reason_mismatch"
             elif guided and re.search(r"maintainer|\bnote\b|\bhint\b|\bDell\b|verified failure", json.dumps(out), re.I): why = "mentions_hint"
             elif not cites_exist(c, out): why = "cited_file_or_line_missing"
+            elif guided and _G.repair(c, out): why = "ungrounded_blocker"
+            elif guided and not _G.line_ok(guided["vis"], out): why = "gold_line_mismatch"
+            elif guided and not loc and key_of(guided) in DENY: why = "audit_rejected"
             elif nudged and re.search(r"verif|hardware|\btest(ed|ing)\b|\bnote\b|told|stock omarchy 4\.x system", json.dumps(out), re.I): why = "mentions_nudge"
     return why, out
 TEACHER = os.environ.get("TEACHER", "qwen/qwen3.5-397b-a17b")
@@ -152,7 +159,7 @@ def load_results(model=None, tag=""):
     return res
 def main():
     cands = jl(os.path.join(WORK, "candidates.jsonl")); res = load_results()
-    STAGES = [("first", res, False), ("retry", load_results(tag="retry1"), False), ("retry", load_results(tag="retry2"), False), ("nudged", load_results(tag="nudge"), True)]
+    STAGES = [("first", res, False), ("retry", load_results(tag="retry1"), False), ("retry", load_results(tag="retry2"), False), ("nudged", load_results(tag="nudge"), True), ("loc", load_results(tag="loc"), True)]
     TD = os.path.join(WORK, "teacher", TEACHER.replace("/", "__")); st = json.load(open(os.path.join(TD, "state.json")))
     import guided as GD
     G = {g["orig"]: g for g in jl(os.path.join(WORK, "guided.jsonl"))}
@@ -164,7 +171,9 @@ def main():
         if c["source"].startswith("fix_") and c["repo"] in DELL_CONTRADICTED: R[f"dropped_fix_dell_contradicted:{c['split']}"] += 1; continue
         if c["label"] == "broken" and c["source"] != "hancore":
             if c["cid"] not in G: R[f"dropped_runtime_only:{c['split']}:{c['source']}"] += 1; continue
-            guided = G[c["cid"]]; c = dict(c, target=dict(c["target"], findings=guided["vis"]))   # gold = code-visible failures only
+            guided = G[c["cid"]]
+            if guided["cid"] in DROP: R[f"dropped_post_audit_not_names_actual_bug:{c['split']}"] += 1; continue
+            c = dict(c, target=dict(c["target"], findings=guided["vis"]))   # gold = code-visible failures only
         if c["source"] == "hancore": res.pop(c["cid"], None)                                       # HANCORE: cleaned templated targets only
         want = "approve" if c["label"] == "works" else "changes_requested"; key = guided["cid"] if guided else c["cid"]
         # first try, then up to 2 blind retries (works rows), then one nudged pass (works: told it is verified working; guided: told to name the known bug)
@@ -172,7 +181,7 @@ def main():
         if why not in (None, "no_teacher_result") and c["source"] != "hancore":
             for stg, RS, nd in STAGES[1:]:
                 if key not in RS: continue
-                w2, o2 = judge(c, guided, RS[key], want, nudged=nd)
+                w2, o2 = judge(c, guided, RS[key], want, nudged=nd, loc=(stg == "loc"))
                 if w2 is None: why, out, stage = None, o2, stg; break
                 why = w2
         cs = c["source"]
@@ -181,6 +190,8 @@ def main():
             kind = ("teacher_guided" if guided else "teacher") + ("" if stage == "first" else "_" + stage)
             if stage == "nudged" and not guided: cs = "nudged_approve"
             R[f"stage_kept:{'guided' if guided else 'blind'}:{stage}"] += 1
+        elif guided:
+            R[f"dropped_guided_not_names_actual_bug:{c['split']}:{why}"] += 1; continue   # audit policy: broken rows are kept only if the review names the verified bug
         else:
             tgt = template(c); kind = ("template_no_teacher" if why == "no_teacher_result" else "template_fallback") + ("_guided" if guided else "")
         R[f"teacher_{'kept' if why is None else ('not_sent' if why == 'no_teacher_result' else 'rejected:' + why)}:{c['source']}:{c['label']}"] += 1
