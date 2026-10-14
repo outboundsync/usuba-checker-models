@@ -2,10 +2,12 @@
 """bf16 LoRA SFT for Usuba on Qwen 3.5 9B. Loss on assistant tokens only, optional per-example weights.
   python3 train_lora.py --config config.yaml            # real run (GPU)
   python3 train_lora.py --config config.yaml --dry-run  # CPU: tokenize, mask, length stats; no model weights loaded"""
-import argparse, json, math, os, random, sys, time
+import argparse, glob, hashlib, json, math, os, random, shutil, signal, sys, time
 import yaml
 p = argparse.ArgumentParser(); p.add_argument("--config", default="config.yaml"); p.add_argument("--dry-run", action="store_true")
-p.add_argument("--limit", type=int, default=0); a = p.parse_args()
+p.add_argument("--limit", type=int, default=0)
+p.add_argument("--resume", action="store_true", help="continue from the newest complete checkpoint in <output_dir>/checkpoints")
+a = p.parse_args()
 C = yaml.safe_load(open(a.config)); H = os.path.dirname(os.path.abspath(a.config))
 path = lambda x: x if os.path.isabs(x) else os.path.join(H, x)
 from transformers import AutoTokenizer
@@ -53,6 +55,8 @@ suf = tuple(C["lora_target_suffixes"])
 targets = sorted({n for n, m in model.named_modules() if isinstance(m, torch.nn.Linear) and n.split(".")[-1] in suf and "visual" not in n and "vision" not in n})
 print(f"LoRA on {len(targets)} linear modules", flush=True)
 model = get_peft_model(model, LoraConfig(r=C["lora"]["r"], lora_alpha=C["lora"]["alpha"], lora_dropout=C["lora"]["dropout"], target_modules=targets, task_type="CAUSAL_LM"))
+for prm in model.parameters():
+    if prm.requires_grad: prm.data = prm.data.float()   # LoRA weights + Adam state in fp32 (base stays bf16)
 model.enable_input_require_grads(); model.print_trainable_parameters()
 
 def collate(b):
@@ -72,36 +76,88 @@ def fwd_loss(ids, lab, att, w):
     tl = torch.nn.functional.cross_entropy(lg.reshape(-1, lg.size(-1)), lb.reshape(-1), ignore_index=-100, reduction="none").view(lb.shape)
     m = (lb != -100).float(); per = (tl * m).sum(1) / m.sum(1).clamp(min=1)
     w = w.to(per.device); return (per * w).sum() / w.sum().clamp(min=1e-6)
-dl = DataLoader(train, batch_size=C["per_device_batch"], shuffle=True, collate_fn=collate)
+out = path(C["output_dir"]); CK = os.path.join(out, "checkpoints"); os.makedirs(CK, exist_ok=True)
+log = open(os.path.join(out, "train_log.jsonl"), "a")
 vdl = DataLoader(val, batch_size=1, collate_fn=collate)
-opt = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=C["lr"], weight_decay=C["weight_decay"])
-total = math.ceil(len(dl) * C["epochs"] / C["grad_accum"])
+opt = torch.optim.AdamW([q for q in model.parameters() if q.requires_grad], lr=C["lr"], weight_decay=C["weight_decay"])
+per_epoch = math.ceil(len(train) / C["per_device_batch"])
+total = math.ceil(per_epoch * C["epochs"] / C["grad_accum"])
 sch = get_scheduler(C["scheduler"], opt, num_warmup_steps=int(total * C["warmup_ratio"]), num_training_steps=total)
-out = path(C["output_dir"]); os.makedirs(out, exist_ok=True); log = open(os.path.join(out, "train_log.jsonl"), "a")
+
+def sha(fn):
+    h = hashlib.sha256()
+    with open(fn, "rb") as f:
+        for b in iter(lambda: f.read(1 << 20), b""): h.update(b)
+    return h.hexdigest()
+def write_sums(d):
+    fs = sorted(os.path.relpath(os.path.join(r, f), d) for r, _, ff in os.walk(d) for f in ff if f != "SHA256SUMS")
+    open(os.path.join(d, "SHA256SUMS"), "w").write("".join(f"{sha(os.path.join(d, f))}  {f}\n" for f in fs))
+def save_adapter(tag):
+    d = os.path.join(out, tag); tmp = d + ".tmp"; shutil.rmtree(tmp, ignore_errors=True)
+    model.save_pretrained(tmp); tok.save_pretrained(tmp); write_sums(tmp)
+    shutil.rmtree(d, ignore_errors=True); os.replace(tmp, d); print("saved", d, flush=True)
+state = dict(step=0, epoch=0, micro=0, best=1e9)
+def save_ckpt(reason):
+    """Full resumable checkpoint (adapter + optimizer + scheduler + data position + RNG). Written to a temp dir, then
+    renamed, so a crash mid-save never leaves a half checkpoint marked complete. Keeps the newest C['keep_checkpoints']."""
+    d = os.path.join(CK, f"step-{state['step']:06d}"); tmp = d + ".tmp"; shutil.rmtree(tmp, ignore_errors=True); os.makedirs(tmp)
+    model.save_pretrained(os.path.join(tmp, "adapter"))
+    torch.save(dict(opt=opt.state_dict(), sch=sch.state_dict(), state=state, reason=reason, py_rng=random.getstate(), torch_rng=torch.get_rng_state(),
+                    cuda_rng=torch.cuda.get_rng_state_all() if dev == "cuda" else None), os.path.join(tmp, "trainer_state.pt"))
+    json.dump(dict(state, reason=reason, time=time.time()), open(os.path.join(tmp, "meta.json"), "w"))
+    write_sums(tmp); open(os.path.join(tmp, "COMPLETE"), "w").write(reason)
+    shutil.rmtree(d, ignore_errors=True); os.replace(tmp, d)
+    for old in sorted(glob.glob(os.path.join(CK, "step-*[0-9]")))[:-C.get("keep_checkpoints", 3)]: shutil.rmtree(old, ignore_errors=True)
+    print(f"checkpoint {d} ({reason})", flush=True)
+def latest_ckpt():
+    c = [d for d in sorted(glob.glob(os.path.join(CK, "step-*[0-9]"))) if os.path.exists(os.path.join(d, "COMPLETE"))]
+    return c[-1] if c else None
+if a.resume and (ck := latest_ckpt()):
+    from peft import set_peft_model_state_dict
+    from safetensors.torch import load_file
+    set_peft_model_state_dict(model, load_file(os.path.join(ck, "adapter", "adapter_model.safetensors")))
+    for prm in model.parameters():
+        if prm.requires_grad: prm.data = prm.data.float()
+    ts = torch.load(os.path.join(ck, "trainer_state.pt"), weights_only=False)
+    opt.load_state_dict(ts["opt"]); sch.load_state_dict(ts["sch"]); state.update(ts["state"])
+    random.setstate(ts["py_rng"]); torch.set_rng_state(ts["torch_rng"])
+    if ts.get("cuda_rng") and dev == "cuda": torch.cuda.set_rng_state_all(ts["cuda_rng"])
+    print(f"resumed from {ck}: step {state['step']} epoch {state['epoch']} micro {state['micro']}", flush=True)
+elif a.resume: print("--resume: no complete checkpoint found, starting fresh", flush=True)
+
+STOP = {"sig": None}
+def on_signal(sig, _): STOP["sig"] = signal.Signals(sig).name; print(f"got {STOP['sig']}: will checkpoint and exit after this step", flush=True)
+signal.signal(signal.SIGTERM, on_signal); signal.signal(signal.SIGINT, on_signal)
 def evaluate():
     model.eval(); L = []
     with torch.no_grad():
-        for ids, lab, att, w in vdl:
-            L.append(fwd_loss(ids, lab, att, torch.ones(1)).item())
+        for ids, lab, att, w in vdl: L.append(fwd_loss(ids, lab, att, torch.ones(1)).item())
     model.train(); return sum(L) / len(L)
-def save(tag):
-    d = os.path.join(out, tag); model.save_pretrained(d); tok.save_pretrained(d); print("saved", d, flush=True)
-start = time.time(); step = 0; best = 1e9; model.train(); acc = 0.0
-print(json.dumps(dict(total_optimizer_steps=total, val_loss_start=evaluate())), flush=True)
-for ep in range(C["epochs"]):
+start = time.time(); hours0 = state.get("hours", 0.0); model.train(); acc = 0.0
+if state["step"] == 0: print(json.dumps(dict(total_optimizer_steps=total, val_loss_start=evaluate())), flush=True)
+def stop_and_exit(reason, code):
+    save_ckpt(reason); save_adapter("last"); open(os.path.join(out, "STOPPED"), "w").write(reason); sys.exit(code)
+for ep in range(state["epoch"], C["epochs"]):
+    g = torch.Generator().manual_seed(C["seed"] + ep)        # same order on resume
+    order = torch.randperm(len(train), generator=g).tolist()
+    dl = DataLoader([train[i] for i in order], batch_size=C["per_device_batch"], shuffle=False, collate_fn=collate)
     for i, (ids, lab, att, w) in enumerate(dl):
+        if i < state["micro"]: continue                       # already trained before the checkpoint
         loss = fwd_loss(ids, lab, att, w) / C["grad_accum"]
-        loss.backward(); acc += loss.item()
-        if (i + 1) % C["grad_accum"]: continue
-        torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0); opt.step(); sch.step(); opt.zero_grad(); step += 1
-        rec = dict(step=step, epoch=ep, loss=round(acc, 4), lr=sch.get_last_lr()[0], hours=round((time.time() - start) / 3600, 3),
+        loss.backward(); acc += loss.item(); state["micro"] = i + 1
+        if (i + 1) % C["grad_accum"] and i + 1 != len(dl): continue
+        torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0); opt.step(); sch.step(); opt.zero_grad(); state["step"] += 1
+        state["hours"] = hours0 + (time.time() - start) / 3600
+        rec = dict(step=state["step"], epoch=ep, loss=round(acc, 4), lr=sch.get_last_lr()[0], hours=round(state["hours"], 3),
                    mem_gb=round((torch.cuda.max_memory_allocated() / 2**30 if dev == "cuda" else 0), 1)); acc = 0.0
-        if step % C["eval_every_steps"] == 0:
+        if state["step"] % C["eval_every_steps"] == 0:
             rec["val_loss"] = evaluate()
-            if rec["val_loss"] < best: best = rec["val_loss"]; save("best")
-        if step % C["save_every_steps"] == 0: save("last")
+            if rec["val_loss"] < state["best"]: state["best"] = rec["val_loss"]; save_adapter("best")
         log.write(json.dumps(rec) + "\n"); log.flush(); print(json.dumps(rec), flush=True)
-        if (time.time() - start) / 3600 > C["max_hours"]: print("max_hours reached, stopping"); save("last"); sys.exit(0)
-rec = dict(step=step, final_val_loss=evaluate()); print(json.dumps(rec)); log.write(json.dumps(rec) + "\n")
-if rec["final_val_loss"] < best: save("best")
-save("last"); open(os.path.join(out, "DONE"), "w").write(json.dumps(rec))
+        if state["step"] % C["save_every_steps"] == 0: save_ckpt("periodic"); save_adapter("last")
+        if state["hours"] > C["max_hours"]: print("max_hours reached: checkpointing before exit", flush=True); stop_and_exit("max_hours", 0)
+        if STOP["sig"]: stop_and_exit("signal " + STOP["sig"], 143)
+    state["epoch"] = ep + 1; state["micro"] = 0
+rec = dict(step=state["step"], final_val_loss=evaluate()); print(json.dumps(rec)); log.write(json.dumps(rec) + "\n")
+if rec["final_val_loss"] < state["best"]: state["best"] = rec["final_val_loss"]; save_adapter("best")
+save_ckpt("final"); save_adapter("last"); open(os.path.join(out, "DONE"), "w").write(json.dumps(rec))
