@@ -36,3 +36,10 @@ Exclusions: all 329 `eval/hancore_holdout` plugins, matched by repo, by manifest
 Estimate: about 63 M tokens at roughly 3k tok/s on an H100 (this needs flash-linear-attention and causal-conv1d; without them Gated DeltaNet is many times slower) comes to about 6 h. At $3.1-3.3/h (best reliable H100 offers on 2026-10-13) that is about $20 plus export. An A100 80GB is about $1.16/h at roughly 1/3 the speed, about 17 h for 2 epochs, so on an A100 use `epochs: 1` or raise `max_hours`.
 **Export**: merge into bf16, then llama.cpp `convert_hf_to_gguf.py`, then `llama-quantize Q4_K_M`. The result is about 5.5 GB and runs on a 32 GB laptop (CPU/iGPU) with `llama-server -c 16384`.
 **Head-to-head** on the 329-plugin holdout (`run_eval.py`): verdict accuracy, positive recall, false alarms on negatives, per-category recall/precision, JSON validity, $ cost and seconds per plugin. Baseline already measured, Checker scripts alone: accuracy 0.650, positive recall 0.673, negative false alarm 0.586, category recall 0.131, category precision 0.442 (`eval/hancore_holdout/results/checker-baseline.json`).
+
+### Holdout baselines (329 plugins: 300 positive, 29 negative; same prompt, thinking off)
+| system | verdict acc | positive recall | false alarm on negatives | category recall | JSON valid | cost | median s/plugin |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Checker scripts alone | 0.650 | 0.673 | 0.586 | 0.131 | 1.00 | $0 | 0 |
+| stock Qwen 3.5 9B (OpenRouter, DeepInfra) | 0.699 | 0.737 | 0.690 | 0.001 | 0.766 | $0.25 | 10.4 |
+The stock model almost never uses the Usuba category names, so its category recall is near zero. Invalid JSON is counted as no verdict. Its accuracy is about the same as answering "changes_requested" for everything (300/329 = 0.912 would be the score for always flagging), so verdict accuracy alone is not a useful uplift metric here. Judge the fine-tune on category recall and precision and on false alarms.
