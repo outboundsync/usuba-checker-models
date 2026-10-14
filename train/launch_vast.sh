@@ -10,6 +10,7 @@
 #   status | logs
 # Secrets: vastai CLI key file and CLOUDFLARE_API_TOKEN stay on the box; nothing secret is sent to the instance or printed.
 set -euo pipefail
+command -v ssh >/dev/null && command -v scp >/dev/null || { echo "ssh/scp missing on this machine: sudo apt-get install -y openssh-client"; exit 4; }
 cd "$(dirname "$0")"; T=$PWD; ROOT=$(dirname "$T"); ST=$T/.vast_instance
 IMAGE=${IMAGE:-pytorch/pytorch:2.9.1-cuda12.8-cudnn9-devel}; DISK=${DISK:-150}
 RUNS=${USUBA_RUNS:-/workspace/usuba-runs}; R2_BUCKET=${R2_BUCKET:-usuba-training}; CHUNK=${CHUNK:-200M}
@@ -20,7 +21,7 @@ Q_A100="gpu_name in [A100_SXM4,A100_PCIE] num_gpus=1 gpu_ram>=79 disk_space>=$DI
 query() { [ "$GPU" = a100 ] && echo "$Q_A100" || echo "$Q_H100"; }
 best() { vastai search offers "$(query)" -o dph_total --limit 1 --storage $DISK --raw | python3 -c "import json,sys;o=json.load(sys.stdin);print(o[0]['id'],round(o[0]['dph_total'],3),o[0]['gpu_name'].replace(' ','_')) if o else print('NONE 0 none')"; }
 KEY=${VAST_SSH_KEY:-$HOME/.ssh/vast_ed25519}
-SO="-o StrictHostKeyChecking=no -o ConnectTimeout=20 -o ServerAliveInterval=30 -i $KEY"
+SO="-o StrictHostKeyChecking=no -o BatchMode=yes -o LogLevel=ERROR -o ConnectTimeout=20 -o ServerAliveInterval=30 -i $KEY"
 IID() { cat $ST; }
 LOCAL() { echo "$RUNS/$(IID)"; }
 ssh_of() { vastai ssh-url "$(IID)" | sed 's#ssh://##'; }
@@ -95,6 +96,7 @@ plan)
   echo "H100: $(GPU=h100; best)"; echo "A100: $(GPU=a100; best)"
   echo "box free: $(df -h --output=avail / | tail -1)  R2 bucket: $R2_BUCKET";;
 up) rent;;
+start) bundle; start_remote; echo "started on $(IID)";;   # (re)start the job on the already-rented instance
 resume)
   P=$(ls -d $RUNS/*/train/out/usuba-9b-lora/checkpoints/step-*/COMPLETE 2>/dev/null | awk -F/ '{print $(NF-1)" "$0}' | sort | tail -1 | cut -d' ' -f2 || true)
   [ -n "$P" ] || { echo "no synced complete checkpoint under $RUNS"; exit 2; }
@@ -102,7 +104,7 @@ resume)
 watch)
   while true; do
     echo "[$(date)] sync"; sync_once || true
-    L=$(LOCAL); if [ -f "$L/ALL_DONE" ] || [ -f "$L/SMOKE_DONE" ] || [ -f "$L/TRAIN_STOPPED" ]; then
+    L=$(LOCAL); if grep -qE "  (ALL_DONE|SMOKE_DONE|TRAIN_STOPPED)$" "$L/remote.sha256" 2>/dev/null; then   # markers present on the instance now
       echo "run finished; final fetch"; "$0" fetch && echo "FETCH VERIFIED. safe to: train/launch_vast.sh down"; break; fi
     sleep ${SYNC_EVERY:-600}
   done;;
@@ -122,7 +124,7 @@ down)
     ( cd "$L" && sha256sum -c --quiet remote.sha256 ) || { echo "REFUSING: local copy no longer verifies"; exit 3; }
   fi
   [ -n "${MOCK_REMOTE:-}" ] && { echo "MOCK: would destroy $(IID)"; exit 0; }
-  vastai destroy instance "$(IID)" && rm -f $ST && echo destroyed;;
+  vastai destroy instance -y "$(IID)" && rm -f $ST && echo destroyed;;
 status) vastai show instance "$(IID)";;
 logs) rsh "tail -n 40 /workspace/usuba/run.log; ls /workspace/usuba/ | grep -E 'DONE|STOPPED' || true";;
 *) sed -n 2,14p "$0"; exit 1;;
