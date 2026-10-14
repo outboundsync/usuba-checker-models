@@ -34,7 +34,7 @@ Exclusions: all 329 `eval/hancore_holdout` plugins, matched by repo, by manifest
 
 **Run**: bf16 LoRA r=32/alpha=64 on all LM linear layers, lr 1e-4 cosine, 2 epochs, gradient checkpointing, and loss on the assistant tail only (only those positions go through lm_head). HANCORE strength weights scale the loss. `max_hours: 9` is a hard stop.
 Estimate: about 63 M tokens at roughly 3k tok/s on an H100 (this needs flash-linear-attention and causal-conv1d; without them Gated DeltaNet is many times slower) comes to about 6 h. At $3.1-3.3/h (best reliable H100 offers on 2026-10-13) that is about $20 plus export. An A100 80GB is about $1.16/h at roughly 1/3 the speed, about 17 h for 2 epochs, so on an A100 use `epochs: 1` or raise `max_hours`.
-**Export**: merge into bf16, then llama.cpp `convert_hf_to_gguf.py`, then `llama-quantize Q4_K_M`. The result is about 5.5 GB and runs on a 32 GB laptop (CPU/iGPU) with `llama-server -c 16384`.
+**Export**: merge into bf16, then llama.cpp `convert_hf_to_gguf.py`, then `llama-quantize Q4_K_M`. The result is about 5.5 GB and runs on a 32 GB laptop (CPU/iGPU) with `llama-server -c 32768 -np 1` (one slot; `-c` is total context shared by all slots).
 **Head-to-head** on the 329-plugin holdout (`run_eval.py`): verdict accuracy, positive recall, false alarms on negatives, per-category recall/precision, JSON validity, $ cost and seconds per plugin. Baseline already measured, Checker scripts alone: accuracy 0.650, positive recall 0.673, negative false alarm 0.586, category recall 0.131, category precision 0.442 (`eval/hancore_holdout/results/checker-baseline.json`).
 
 ### Holdout baselines (HANCORE holdout: 329 plugins, 300 positive / 29 negative; same skill prompt)
@@ -64,3 +64,9 @@ Always answering "changes_requested" would score 0.912 here, so judge on categor
   - Live-appended logs (`run.log`, `train_log.jsonl`) are copied as snapshots instead of being checksum-gated (they no longer fail sync as "still being written").
   - Checkpoints are copied (and checked by `down`) only once their `COMPLETE` marker exists.
 - Pending: final exam on the H100.
+
+### Exam pitfall: llama-server context is shared across slots (2026-10-14)
+- The first final exam on Vast 55864967 ran `llama-server -c 16384` with 4 parallel slots. `-c` is the total context, so each slot got 4k tokens, but HANCORE / Dell exam prompts are ~6.7k-8k tokens (plus up to 2,048 output). 1002 of 1054 requests failed with "Context size has been exceeded", and those rows would have scored as invalid output.
+- Fix: restarted llama-server with 32k per slot (`-c 131072 -np 4 -ngl 99`, same Q4_K_M GGUF) and relaunched the exam; 0 context errors.
+- The failed logs were kept on the instance as `exam_*_ctx16k_failed.log`.
+- Required setup: start the server with `eval/hancore_holdout/serve_llama.sh MODEL.gguf` (defaults `CTX_PER_SLOT=32768`, `PARALLEL=4`, so `-c 131072`; it refuses less than 32k per slot). `run_eval.py` reads llama-server `/props` and aborts if the per-slot context is under 32k, and aborts the exam if more than 10% of the first 20+ responses hit context overflow (`--ctx-check-n`, `--ctx-max-rate`).
