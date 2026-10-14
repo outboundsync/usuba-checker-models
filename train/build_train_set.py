@@ -157,7 +157,7 @@ def dell_candidates(key_ids, st):
             seen.add((cat, txt[:60])); fl.append({k: v for k, v in dict(category=cat, severity=sev, file=fn, finding=txt).items() if v is not None})
         load = r["label"]
         verdict = "changes_requested" if any(x["severity"] == "blocker" for x in fl) else "approve"
-        rep = [(t if isinstance(t, str) else ": ".join(map(str, t)))[:300] for t in (ck.get("static_fails") or [])] + [f"[runtime] {str(t)[:300]}" for t in (ck.get("runtime_errors") or [])]
+        rep = None   # filled in load_code() from the plugin files with train/checker_report.py, the exact report the eval prompt shows
         out[b].append(dict(source=b, repo=norm_repo(r["key"]), plugin_id=r.get("plugin_id"), weight=1.0, local_dir=c["local_dir"], tree_hash=c.get("tree_hash"),
                            checker_report=rep, target=dict(verdict=verdict, load=load, findings=fl),
                            provenance=dict(kind="dell-sweep" + ("+checker-agree" if verified else ""), commit=r.get("commit"), dell_run=d.get("run"), dell_job=d.get("job"),
@@ -167,8 +167,10 @@ def dell_candidates(key_ids, st):
 def load_code(row):
     import functest
     from build_reviewer_scrub import scrub
-    files = functest.read_dir(row["local_dir"])
-    return scrub(code_blob(files)), sorted(file_hashes(files)), manifest_id(files)
+    import checker_report
+    files = {p: c for p, c in functest.read_dir(row["local_dir"]).items() if p not in checker_report.HARNESS_FILES}
+    rep = checker_report.report(files)
+    return scrub(code_blob(files)), sorted(file_hashes(files)), manifest_id(files), [scrub(r) for r in rep] if rep is not None else None
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--limit", type=int, default=0); ap.add_argument("--workers", type=int, default=8)
@@ -184,7 +186,7 @@ def main():
     if a.limit: rnd.shuffle(rows); rows = rows[:a.limit]
     need = [r for r in rows if "local_dir" in r]
     with ProcessPoolExecutor(a.workers) as ex:
-        for r, (code, fh, mid) in zip(need, ex.map(load_code, need, chunksize=16)): r["code"], r["_fh"], r["_mid"] = code, set(fh), mid
+        for r, (code, fh, mid, rep) in zip(need, ex.map(load_code, need, chunksize=16)): r["code"], r["_fh"], r["_mid"], r["checker_report"] = code, set(fh), mid, rep
     kept, seen_code = [], set()
     for r in rows:
         if r["repo"] in h_repos: st["excluded_holdout_repo:" + r["source"]] += 1; continue
