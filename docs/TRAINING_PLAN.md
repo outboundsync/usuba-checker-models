@@ -55,12 +55,24 @@ Always answering "changes_requested" would score 0.912 here, so judge on categor
 
 ## Run log: Qwen 3.5 9B bf16 LoRA (2026-10-13/14)
 
-- Config: LoRA rank 32, bf16, 568 steps; data 4592 train / 148 val (data sha prefix `cc003d002be6`).
-- Host: Vast instance 55864967, H100 NVL, $3.068/hr, rented 10:31 PM MT Oct 13.
-- Overnight failure: container restarted at 1:40 AM MT after step 211; nothing auto-resumed, so the GPU sat idle ~3.4 h.
-- Resumed from checkpoint step 200 at 5:09 AM MT; training completed ~8:21 AM MT.
-- Fixes in `train/launch_vast.sh`:
-  - Watch heartbeat: if no new optimizer step for `STALL_MIN` (default 10) minutes, log STALLED and restart training via `/root/onstart.sh` (15 min grace after a restart); sync interval now 120 s.
-  - Live-appended logs (`run.log`, `train_log.jsonl`) are copied as snapshots instead of being checksum-gated (they no longer fail sync as "still being written").
-  - Checkpoints are copied (and checked by `down`) only once their `COMPLETE` marker exists.
-- Pending: final exam on the H100.
+**Finished** 2026-10-14 ~9:30 AM MT on Vast H100_NVL instance 55864967 (label usuba-9b-lora). Final val loss **1.073459** at step **568** (~5.0 train hours). Q4_K_M GGUF exported and sha256-verified on the box. Exam ran on the same H100 (llama-server `-c 131072 -np 4` after a failed `-c 16384` attempt). Instance destroyed; Vast shows **0** instances. Estimated rental cost ~**$34** (~11.1 h × $3.07/hr); credit left ~$72.56.
+
+### Holdout exam (Usuba 9B Q4_K_M on H100)
+
+| system | verdict acc | positive recall | false alarm (neg) | category recall | category precision | JSON valid | cost | median s |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Checker scripts alone | 0.650 | 0.673 | 0.586 | 0.131 | 0.442 | 1.00 | $0 | 0 |
+| stock Qwen 3.5 9B (OpenRouter) | 0.699 | 0.737 | 0.690 | 0.173 | 0.420 | 0.766 | $0.25 | 10.4 |
+| Claude Sonnet 5.5 skill | 0.374 | 0.330 | 0.172 | 0.347 | 0.397 | 0.997 | $11.05 | 11.0 |
+| **Usuba 9B Q4_K_M (this run)** | **0.812** | **0.883** | **0.931** | **0.402** | **0.427** | **0.909** | **$0** | **5.23** |
+
+### Dell answer key (90 plugins)
+
+| system | verdict acc | broken caught | false alarm on works | JSON valid | median s |
+|---|---:|---:|---:|---:|---:|
+| stock Qwen 3.5 9B | 0.567 | 0.879 | 0.614 | 0.822 | 7.67 |
+| Claude Sonnet 5.5 skill | 0.867 | 0.848 | 0.123 | 1.00 | 8.99 |
+| **Usuba 9B Q4_K_M (this run)** | **0.756** | **0.939** | **0.351** | **0.978** | **2.88** |
+
+Artifacts: `/workspace/usuba-runs/55864967/` (model, checkpoints, logs, GGUF) + `exam/` (eval JSON/raw + logs). Raw results also copied to `eval/hancore_holdout/results/usuba-9b-q4km*.json*`.
+
