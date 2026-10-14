@@ -1,5 +1,25 @@
 # omarchy-specialist
 
+## Training data provenance
+
+**No proprietary-model outputs (Anthropic/Claude, OpenAI/GPT, Google/Gemini, xAI/Grok, or any other closed model) were used to train Usuba.**
+
+Usuba v2 training rows come from exactly these sources:
+- **Real plugins**: MIT/Apache/BSD/ISC/MPL-licensed community and first-party Omarchy plugin code (see `NOTICE`, `sources/SOURCES.md`).
+- **Real reviewer evidence**: HANCORE findings drawn from public GitHub review issues, the Usuba Checker's scripted report, and
+  hardware-verified Omarchy 4.0.4 labels (plugin loads or fails on a real machine).
+- **Verified fixes**: real upstream fix commits, graded by the Checker/hardware grader. (Model-written fixes were removed from v2.)
+- **Review text written only by an open-weights teacher**: **Qwen3.5-397B-A17B, Apache-2.0**
+  (https://huggingface.co/Qwen/Qwen3.5-397B-A17B/blob/main/LICENSE), served through OpenRouter. Each teacher review is kept only if it
+  agrees with the grader/hardware label, names the real bug, invents no SHAs or plugin names, and parses. Details: `train/v2/distill/METHODS.md`, `TEACHER.md`.
+- Everything else uses scripted templated targets built from the grader/Checker findings.
+
+Proprietary models appear in this repo only as **evaluation baselines** (scoreboards, judge) and never as a source of training text.
+History: an early v2 attempt used Claude Sonnet 5.5 as teacher; that data was discarded unused (quarantined outside the repo) and never trained on.
+Usuba v1 (see `docs/TRAINING_PLAN.md`) was built from real plugins, HANCORE human-written findings, Checker rules and hardware labels; our review of the
+v1 build scripts found no proprietary-model output in its training data.
+
+
 Experiment: fine-tune small open models (Qwen-coder 7B "Santoku", and a 14B) with QLoRA to write valid **Omarchy (Quattro / omarchy-shell) plugins**, and measure them honestly.
 
 ## Honest current status

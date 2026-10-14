@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Open-weights teacher via OpenRouter (replaces Sonnet: Anthropic ToS D.4 bars training competing models on its outputs; all Sonnet outputs
-are quarantined in $DISTILL_WORK/quarantine-sonnet and never used). Same queue as batches.queue() (blind works/fix rows + guided code-visible
+"""Open-weights teacher via OpenRouter (only open-weights, training-permissive teachers are used; no proprietary-model output enters the data
+). Same queue as queuelib.queue() (blind works/fix rows + guided code-visible
 broken rows), same prompts/body. Resumable: $DISTILL_WORK/teacher/<slug>/{results.jsonl,state.json}; finished rows never redone; retries with
 backoff; spend from OpenRouter usage.cost, stops before --cap. Key $OPENROUTER_API_KEY (never printed).
 usage: or_teacher.py --model z-ai/glm-5.1 [--only cid,cid] [--cap 60] [--workers 6]"""
 import argparse, json, os, sys, threading, time, urllib.request, urllib.error
 from concurrent.futures import ThreadPoolExecutor
 from common import *
-import batches as BT
+import queuelib as BT
 LK = threading.Lock()
 def tdir(model): d = os.path.join(WORK, "teacher", model.replace("/", "__")); os.makedirs(d, exist_ok=True); return d
 NUDGE_WORKS = """

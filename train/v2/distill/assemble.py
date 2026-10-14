@@ -159,6 +159,7 @@ def main():
     rows, R = [], collections.Counter(); per = []
     for c in cands:
         guided = None
+        if c["source"] == "fix_model": R[f"dropped_fix_model_proprietary:{c['split']}"] += 1; continue   # written by proprietary models -> never training data
         if c["source"].startswith("fix_") and fix_incomplete(c): R[f"dropped_fix_helper_missing_from_prompt:{c['split']}:{c['source']}"] += 1; continue
         if c["source"].startswith("fix_") and c["repo"] in DELL_CONTRADICTED: R[f"dropped_fix_dell_contradicted:{c['split']}"] += 1; continue
         if c["label"] == "broken" and c["source"] != "hancore":
@@ -210,7 +211,7 @@ def main():
                                  approve_share=round(sum(r["verdict"] == "approve" for r in S) / max(1, len(S)), 3),
                                  by_source=dict(collections.Counter(r["source"] for r in S)), by_target_kind=dict(collections.Counter(f"{r['source']}:{r['target_kind']}" for r in S)),
                                  tokens=dict(min=toks[0], p50=toks[len(toks) // 2], p90=toks[int(len(toks) * .9)], p99=toks[int(len(toks) * .99)], max=toks[-1], mean=round(sum(toks) / len(toks)), total=sum(toks)) if toks else None)
-    rep["spend"] = dict(teacher=TEACHER, usd=round(st["spend_usd"], 4), rows=len(st["done"]), note="OpenRouter usage.cost; Sonnet outputs quarantined, not used")
+    rep["spend"] = dict(teacher=TEACHER, usd=round(st["spend_usd"], 4), rows=len(st["done"]), note="OpenRouter usage.cost; open-weights teacher only")
     rep["sha256"] = {f: hashlib.sha256(open(os.path.join(WORK, "final", f), "rb").read()).hexdigest() for f in ("train.jsonl", "val.jsonl")}
     wjson(os.path.join(WORK, "final", "report.json"), rep)
     kept = [r for r in rows if r["target_kind"].startswith("teacher")]; sp = random.Random(20261014).sample(kept, min(20, len(kept)))

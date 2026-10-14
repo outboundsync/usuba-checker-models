@@ -10,7 +10,7 @@ def H(k): return hashlib.sha1(("pilot:" + k).encode()).hexdigest()
 def load():
     C = {c["cid"]: c for c in jl(os.path.join(WORK, "candidates.jsonl"))}; G = {g["cid"]: g for g in jl(os.path.join(WORK, "guided.jsonl"))}; return C, G
 def pick():
-    import batches as BT
+    import queuelib as BT
     C, G = load(); Q, _ = BT.queue(); tr = [c for c in C.values() if c["split"] == "train" and c["cid"] in Q]
     w = sorted((c["cid"] for c in tr if c["source"] == "dell_works_verified"), key=H)[:12]
     f = sorted((c["cid"] for c in tr if c["source"].startswith("fix_") and not A.fix_incomplete(c) and c["repo"] not in A.DELL_CONTRADICTED), key=H)[:3]

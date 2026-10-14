@@ -13,4 +13,4 @@
 | Kimi K2.6 (Modified MIT) | 20/30 (7 no result: >15 min/row, 3 truncated) | 8/15 | 11/15 | 18/30 | 0 | 0.54 |
 
   Qwen3.5-397B tied GLM-5.1 on kept rows with no truncation at a third of the cost (GLM's projected full run exceeded the $60 cap).
-- Claude Sonnet 5.5 outputs are **not** used (see METHODS.md).
+- No proprietary-model outputs are used anywhere in the training data (see METHODS.md, "Training data provenance").

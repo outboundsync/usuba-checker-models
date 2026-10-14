@@ -1,5 +1,8 @@
 # Usuba Vast training-run plan
 
+> **Provenance:** proprietary models (Claude, GPT, etc.) in the tables below are evaluation baselines only; none of their outputs are training data. See README "Training data provenance".
+
+
 ## Base model (locked 2026-10-13, Harris)
 - **Base: Qwen 3.5 9B**, for the Omarchy plugin checker fine-tune.
 - Hardware floor: a typical laptop with 32 GB RAM and integrated graphics (no dedicated GPU).

@@ -1,5 +1,8 @@
 # Usuba: what we learned trying to teach a small model to write Omarchy plugins, and why we're building the checker first
 
+> **Training data provenance:** no proprietary-model outputs (Anthropic, OpenAI, Google or any closed model) were used to train Usuba. Training reviews were written only by the open-weights Qwen3.5-397B-A17B (Apache-2.0, https://huggingface.co/Qwen/Qwen3.5-397B-A17B/blob/main/LICENSE), plus real plugins, verified upstream fixes and hardware labels. Frontier models in this post are evaluation baselines only.
+
+
 *By Harris Kenny · OutboundSync · DRAFT v0.3, revised Tuesday, Oct 13, 2026 · usuba.dev*
 
 > Draft status: this is a work-in-progress post, not a launch. Every number below comes from our working repo (the READMEs in `runs/rescore404`, `runs/basetry`, `runs/q27` and `runs/fixer`). Anything we haven't confirmed or built yet is marked [TK].

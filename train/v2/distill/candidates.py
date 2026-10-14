@@ -59,12 +59,7 @@ def main():
                       target=dict(verdict="approve", load="works", findings=[]),
                       provenance=dict(kind="upstream-fix", repo=u["repo"], commit=u["fix_commit"], parent_commit=u["parent_commit"], fixes=u["threads"], grader=u["grader"]),
                       pair=f"{B.norm_repo(u['repo'])}@{u['parent_commit']}"))
-    for m in jl("/workspace/v2fix/model_fixes.jsonl"):
-        if m["status"] != "pass" or not m.get("code_dir"): continue
-        C.append(dict(source="fix_model", repo=B.norm_repo(m["repo"]), plugin_id=None, dir=m["code_dir"], reader="dell", label="works",
-                      target=dict(verdict="approve", load="works", findings=[]),
-                      provenance=dict(kind="model-fix", generator=m["generator"], parent_commit=m["parent_commit"], grader="usuba-checker", grader_verdict=m["grader_verdict"], changed_files=m["changed_files"]),
-                      pair=f"{B.norm_repo(m['repo'])}@{m['parent_commit']}"))
+    # (model-written fixes were removed: they came from proprietary models, which Usuba training data must not contain)
     pair_parents = {c["pair"] for c in C if "pair" in c}
     # --- HANCORE (non-weak, strong first, fix parents always in) ---
     hc = B.hancore_examples(st)
