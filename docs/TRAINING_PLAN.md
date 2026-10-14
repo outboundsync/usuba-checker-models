@@ -52,3 +52,15 @@ Always answering "changes_requested" would score 0.912 here, so judge on categor
 |---|---:|---:|---:|---:|---:|
 | stock Qwen 3.5 9B | 0.567 | 0.879 | 0.614 | 0.822 | $0.04 |
 | Claude Sonnet 5.5 skill | 0.867 | 0.848 | 0.123 | 1.00 | $2.08 |
+
+## Run log: Qwen 3.5 9B bf16 LoRA (2026-10-13/14)
+
+- Config: LoRA rank 32, bf16, 568 steps; data 4592 train / 148 val (data sha prefix `cc003d002be6`).
+- Host: Vast instance 55864967, H100 NVL, $3.068/hr, rented 10:31 PM MT Oct 13.
+- Overnight failure: container restarted at 1:40 AM MT after step 211; nothing auto-resumed, so the GPU sat idle ~3.4 h.
+- Resumed from checkpoint step 200 at 5:09 AM MT; training completed ~8:21 AM MT.
+- Fixes in `train/launch_vast.sh`:
+  - Watch heartbeat: if no new optimizer step for `STALL_MIN` (default 10) minutes, log STALLED and restart training via `/root/onstart.sh` (15 min grace after a restart); sync interval now 120 s.
+  - Live-appended logs (`run.log`, `train_log.jsonl`) are copied as snapshots instead of being checksum-gated (they no longer fail sync as "still being written").
+  - Checkpoints are copied (and checked by `down`) only once their `COMPLETE` marker exists.
+- Pending: final exam on the H100.
