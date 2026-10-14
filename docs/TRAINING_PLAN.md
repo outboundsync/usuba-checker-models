@@ -83,3 +83,10 @@ Artifacts: `/workspace/usuba-runs/55864967/` (model, checkpoints, logs, GGUF) + 
 - Fix: restarted llama-server with 32k per slot (`-c 131072 -np 4 -ngl 99`, same Q4_K_M GGUF) and relaunched the exam; 0 context errors.
 - The failed logs were kept on the instance as `exam_*_ctx16k_failed.log`.
 - Required setup: start the server with `eval/hancore_holdout/serve_llama.sh MODEL.gguf` (defaults `CTX_PER_SLOT=32768`, `PARALLEL=4`, so `-c 131072`; it refuses less than 32k per slot). `run_eval.py` reads llama-server `/props` and aborts if the per-slot context is under 32k, and aborts the exam if more than 10% of the first 20+ responses hit context overflow (`--ctx-check-n`, `--ctx-max-rate`).
+
+## Dell key, reason-graded and leak-free (2026-10-14)
+See `eval/dellkey/README.md`. Two fixes change every earlier Dell-key number: `SOURCE.txt` / `checklist.md` (which state the functest failure)
+are no longer shown to models, and files are no longer cut at 8000/24000 chars. Train and eval now build the Checker report with the same
+function (`train/checker_report.py`); v1 Dell training rows used the sweep's static_fails and left out the `warn` lines the eval showed.
+Headline: Usuba v1 names the real bug for 0/26 flagged broken plugins and invents a commit SHA in 46/90 outputs. Stock Ministral 14B with the
+improved prompt names it for 15/27; Sonnet 5.5 (improved prompt) for 22/24 at 0.07 false alarms.
