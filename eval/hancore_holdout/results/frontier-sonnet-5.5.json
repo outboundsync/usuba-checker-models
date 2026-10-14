@@ -1,0 +1,86 @@
+{
+ "name": "frontier-sonnet-5.5",
+ "backend": "openai",
+ "model": "anthropic/claude-sonnet-5.5",
+ "n": 329,
+ "positives": 300,
+ "negatives": 29,
+ "verdict_accuracy": 0.374,
+ "positive_recall": 0.33,
+ "negative_false_alarm": 0.172,
+ "category_recall_micro": 0.347,
+ "category_precision_micro": 0.397,
+ "json_valid": 0.997,
+ "tokens_in": 3274206,
+ "tokens_out": 450100,
+ "cost_usd": 11.0494,
+ "secs_median": 11.02,
+ "secs_total": 3765.1,
+ "per_category": {
+  "file-safety-symlink-perms": {
+   "gt": 138,
+   "recall": 0.297,
+   "precision": 0.451
+  },
+  "install-deps-packaging": {
+   "gt": 110,
+   "recall": 0.736,
+   "precision": 0.354
+  },
+  "listing-metadata-docs": {
+   "gt": 51,
+   "recall": 0.0,
+   "precision": null
+  },
+  "privileged-system": {
+   "gt": 89,
+   "recall": 0.326,
+   "precision": 0.537
+  },
+  "process-lifecycle-timeouts": {
+   "gt": 114,
+   "recall": 0.605,
+   "precision": 0.379
+  },
+  "remote-code-pinning": {
+   "gt": 87,
+   "recall": 0.184,
+   "precision": 0.593
+  },
+  "rich-text-markup-injection": {
+   "gt": 95,
+   "recall": 0.168,
+   "precision": 0.39
+  },
+  "scope-policy-duplicate": {
+   "gt": 70,
+   "recall": 0.429,
+   "precision": 0.207
+  },
+  "secrets-credentials": {
+   "gt": 127,
+   "recall": 0.291,
+   "precision": 0.698
+  },
+  "shell-lua-injection": {
+   "gt": 66,
+   "recall": 0.273,
+   "precision": 0.295
+  },
+  "unbounded-input-resource": {
+   "gt": 177,
+   "recall": 0.328,
+   "precision": 0.574
+  },
+  "url-scheme-network": {
+   "gt": 112,
+   "recall": 0.277,
+   "precision": 0.608
+  },
+  "user-config-modification": {
+   "gt": 42,
+   "recall": 0.405,
+   "precision": 0.207
+  }
+ }
+}

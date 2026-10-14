@@ -37,9 +37,18 @@ Estimate: about 63 M tokens at roughly 3k tok/s on an H100 (this needs flash-lin
 **Export**: merge into bf16, then llama.cpp `convert_hf_to_gguf.py`, then `llama-quantize Q4_K_M`. The result is about 5.5 GB and runs on a 32 GB laptop (CPU/iGPU) with `llama-server -c 16384`.
 **Head-to-head** on the 329-plugin holdout (`run_eval.py`): verdict accuracy, positive recall, false alarms on negatives, per-category recall/precision, JSON validity, $ cost and seconds per plugin. Baseline already measured, Checker scripts alone: accuracy 0.650, positive recall 0.673, negative false alarm 0.586, category recall 0.131, category precision 0.442 (`eval/hancore_holdout/results/checker-baseline.json`).
 
-### Holdout baselines (329 plugins: 300 positive, 29 negative; same prompt, thinking off)
-| system | verdict acc | positive recall | false alarm on negatives | category recall | JSON valid | cost | median s/plugin |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| Checker scripts alone | 0.650 | 0.673 | 0.586 | 0.131 | 1.00 | $0 | 0 |
-| stock Qwen 3.5 9B (OpenRouter, DeepInfra) | 0.699 | 0.737 | 0.690 | 0.001 | 0.766 | $0.25 | 10.4 |
-The stock model almost never uses the Usuba category names, so its category recall is near zero. Invalid JSON is counted as no verdict. Its accuracy is about the same as answering "changes_requested" for everything (300/329 = 0.912 would be the score for always flagging), so verdict accuracy alone is not a useful uplift metric here. Judge the fine-tune on category recall and precision and on false alarms.
+### Holdout baselines (HANCORE holdout: 329 plugins, 300 positive / 29 negative; same skill prompt)
+Category names are normalised to the HANCORE slugs (`run_eval.norm_cat`; rescored from the raw outputs with `rescore.py`).
+| system | verdict acc | positive recall | false alarm (neg) | category recall | category precision | JSON valid | cost | median s |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Checker scripts alone | 0.650 | 0.673 | 0.586 | 0.131 | 0.442 | 1.00 | $0 | 0 |
+| stock Qwen 3.5 9B (OpenRouter, no thinking) | 0.699 | 0.737 | 0.690 | 0.173 | 0.420 | 0.766 | $0.25 | 10.4 |
+| Claude Sonnet 5.5 skill (OpenRouter, reasoning on; it cannot be turned off) | 0.374 | 0.330 | 0.172 | 0.347 | 0.397 | 0.997 | $11.05 | 11.0 |
+Always answering "changes_requested" would score 0.912 here, so judge on category recall/precision and false alarms, not verdict accuracy.
+
+### In-use eval: Dell answer key (90 decided rows: 33 broken, 57 works; excluded from training)
+`run_eval.py --set dellkey`. The functest (real Quickshell) scores 90/90 on these; the models see only code + Checker report.
+| system | verdict acc | broken caught | false alarm on works | JSON valid | cost |
+|---|---:|---:|---:|---:|---:|
+| stock Qwen 3.5 9B | 0.567 | 0.879 | 0.614 | 0.822 | $0.04 |
+| Claude Sonnet 5.5 skill | 0.867 | 0.848 | 0.123 | 1.00 | $2.08 |
