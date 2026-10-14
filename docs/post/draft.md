@@ -99,17 +99,17 @@ We also found the gaps it was exploiting. Binaries called inside `sh -c` strings
 
 Here's the new plan.
 
-**Usuba Checker scripts come first.** It's a hardened checker plus a public, versioned standard that defines a working Omarchy plugin. Version **v0.1 targets Omarchy 4.0.4**. Every rule has an id, a reason, and a fix hint, so a failure tells you (or a model) exactly what's wrong and how to fix it, not just "fail." It closes the gaps the fix loop found.
+**Usuba Checker scripts come first.** They're a hardened checker plus a public, versioned standard that defines a working Omarchy plugin. Version **v0.1 targets Omarchy 4.0.4**. Every rule has an id, a reason, and a fix hint, so a failure tells you (or a model) exactly what's wrong and how to fix it, not just "fail." It closes the gaps the fix loop found.
 
 It's in progress, and it isn't done until it verifies against the Dell, the same way the grader did. [TK: link to the standard and the rule list once published.]
 
-**Usuba Checker model comes later.** It will use a stronger base model and be trained and judged against the Checker. That ordering is the whole lesson of this post. We shouldn't train or optimize anything against a test that can be gamed.
+**Usuba Checker model comes later.** It's Qwen 3.5 9B, 4-bit, running locally. It's trained on the HANCORE reviews plus the hardware-tested in-use labels, and judged against the Checker scripts and a frontier model on the HANCORE holdout. That ordering is the whole lesson of this post. We shouldn't train or optimize anything against a test that can be gamed.
 
 Why make the standard public? Plugin authors get a clear target and readable failures. Omarchy gets a written definition of "working" that can move with each release. And anyone's model, ours or not, can be measured against the same ruler.
 
 **Suggested figures:**
 - A sample Checker failure: rule id, reason and fix hint. [TK: real example once the rule format is final.]
-- A roadmap strip: Checker + standard v0.1 (Omarchy 4.0.4) → verified on the Dell → Usuba Checker model on a stronger base.
+- A roadmap strip: Checker + standard v0.1 (Omarchy 4.0.4) → verified on the Dell → Usuba Checker model (Qwen 3.5 9B, 4-bit, local), judged against the Checker scripts and a frontier model on the HANCORE holdout.
 
 ---
 
