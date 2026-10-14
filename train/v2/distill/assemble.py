@@ -211,7 +211,9 @@ def main():
                                  approve_share=round(sum(r["verdict"] == "approve" for r in S) / max(1, len(S)), 3),
                                  by_source=dict(collections.Counter(r["source"] for r in S)), by_target_kind=dict(collections.Counter(f"{r['source']}:{r['target_kind']}" for r in S)),
                                  tokens=dict(min=toks[0], p50=toks[len(toks) // 2], p90=toks[int(len(toks) * .9)], p99=toks[int(len(toks) * .99)], max=toks[-1], mean=round(sum(toks) / len(toks)), total=sum(toks)) if toks else None)
-    rep["spend"] = dict(teacher=TEACHER, usd=round(st["spend_usd"], 4), rows=len(st["done"]), note="OpenRouter usage.cost; open-weights teacher only")
+    import glob
+    allsp = {os.path.basename(p): round(json.load(open(p))["spend_usd"], 4) for p in glob.glob(os.path.join(WORK, "teacher", "*", "state*.json"))}
+    rep["spend"] = dict(teacher=TEACHER, usd=round(sum(allsp.values()), 4), by_state=allsp, rows=len(st["done"]), note="OpenRouter usage.cost; open-weights teacher only")
     rep["sha256"] = {f: hashlib.sha256(open(os.path.join(WORK, "final", f), "rb").read()).hexdigest() for f in ("train.jsonl", "val.jsonl")}
     wjson(os.path.join(WORK, "final", "report.json"), rep)
     kept = [r for r in rows if r["target_kind"].startswith("teacher")]; sp = random.Random(20261014).sample(kept, min(20, len(kept)))

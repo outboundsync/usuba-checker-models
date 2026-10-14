@@ -1,0 +1,61 @@
+{
+ "z-ai/glm-5.1": {
+  "counts": {
+   "blind_n": 15,
+   "parsed": 25,
+   "blind_agree": 13,
+   "blind_kept": 13,
+   "guided_n": 15,
+   "guided_agree": 11,
+   "guided_kept": 10
+  },
+  "reasons": {
+   "truncated": 5,
+   "kept": 23,
+   "verdict_mismatch": 1,
+   "blocker_reason_mismatch": 1
+  },
+  "kept": 23,
+  "spend_usd": 1.432,
+  "n": 30
+ },
+ "qwen/qwen3.5-397b-a17b": {
+  "counts": {
+   "blind_n": 15,
+   "parsed": 30,
+   "blind_agree": 12,
+   "blind_kept": 12,
+   "guided_n": 15,
+   "guided_agree": 11,
+   "guided_kept": 11
+  },
+  "reasons": {
+   "kept": 23,
+   "verdict_mismatch": 7
+  },
+  "kept": 23,
+  "spend_usd": 0.4579,
+  "n": 30
+ },
+ "moonshotai/kimi-k2.6": {
+  "counts": {
+   "blind_n": 15,
+   "parsed": 20,
+   "blind_agree": 8,
+   "blind_kept": 8,
+   "guided_n": 15,
+   "guided_agree": 11,
+   "guided_kept": 10
+  },
+  "reasons": {
+   "kept": 18,
+   "no_result": 7,
+   "verdict_mismatch": 1,
+   "truncated": 3,
+   "blocker_reason_mismatch": 1
+  },
+  "kept": 18,
+  "spend_usd": 0.539,
+  "n": 30
+ }
+}
