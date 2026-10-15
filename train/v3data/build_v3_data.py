@@ -8,7 +8,7 @@ import argparse, collections, gzip, hashlib, json, os, random, re, sys, statisti
 from concurrent.futures import ProcessPoolExecutor
 H = os.path.dirname(os.path.abspath(__file__)); T = os.path.dirname(H); ROOT = os.path.dirname(T)
 sys.path[:0] = [T, os.path.join(ROOT, "functest"), os.path.join(ROOT, "hancore"), os.path.join(T, "v2", "distill")]
-import prompt_v2 as P
+import prompt_v3 as P   # v3 system prompt + shots; every row uses it (v2-derived rows are re-wrapped with P.rebuild)
 import build_train_set as B
 STORE = "/cursor/stores/store-59a6dbfe-4592-4709-aa00-b03118ea5a20/usuba-v2distill/"
 HL = "/workspace/usuba-runs/hancore-labels/"
@@ -16,6 +16,8 @@ QWEN_TOK = os.path.expanduser("~/.cache/huggingface/hub/models--Qwen--Qwen3.5-9B
 MAX_TOK = 32000          # train_lora max_len is 32768; keep margin
 CODE_CAP, FILE_CAP, CITED_CAP = 24000, 8000, 16000
 MAX_FINDINGS = 3; FIND_LEN = 300
+HYG = re.compile(r"(?i)remains? (blocked|open)|still (pins|blocked|open)|blocked:|retarget|\bthe update\b|re-?review|\bprevious|\bearlier\b|\bblocker remains|\bremaining\b|cannot be approved|\bagain\b")   # prompt_v3: no earlier-review wording in findings
+HYG_URL = re.compile(r"(?i)https?://|\(\[|kernel doc")   # citations of external URLs: dropped for HANCORE prose only (Dell placeholder-endpoint findings legitimately quote a URL)
 KEEP_V2 = {"dell_broken_verified", "dell_inuse_close", "dell_inuse_missing_binary", "dell_works_verified", "nudged_approve", "fix_upstream"}
 UNBOUNDED_CAP_SHARE = 0.20   # of all broken rows
 BAD_WORDS = re.compile(r"(?i)\b(sonnet|claude|anthropic|deepseek|gemini|gpt-?\d|openai)\b")
@@ -273,10 +275,22 @@ def main():
         if m["verdict"] == "changes_requested":
             if not cites_ok(files, tgt): drops["v2:broken_no_file_line_or_cite_invalid:" + m["source"]] += 1; continue
             if any(BAD_WORDS.search(f["finding"]) for f in tgt["findings"]): drops["v2:bad_words"] += 1; continue
-        if m["tokens"] > MAX_TOK: drops["v2:over_token_cap"] += 1; continue
         fh = {hashlib.sha1(re.sub(r"\s+", "", c).encode()).hexdigest() for p, c in files.items() if not p.lower().startswith(("readme", "license")) and c.strip()}
         mid = B.manifest_id({"manifest.json": files.get("manifest.json", "")})
-        rows.append(dict(id=m["id"], source=m["source"], repo=repo, label=m["label"], verdict=m["verdict"], messages=m["messages"], tokens=m["tokens"], target_kind=m["target_kind"], provenance=m["provenance"], fh=fh, mid=mid))
+        rows.append(dict(id=m["id"], source=m["source"], repo=repo, label=m["label"], verdict=m["verdict"], messages=P.rebuild(m["messages"]), tokens=m["tokens"], target_kind=m["target_kind"], provenance=m["provenance"], fh=fh, mid=mid))
+    # ---- v3 pass: hygiene filter on findings (drop a finding that cites URLs / earlier reviews; drop the row if no blocker is left), recount tokens with prompt_v3 ----
+    rows2 = []
+    for r in rows:
+        tgt = json.loads(r["messages"][-1]["content"]); n0 = len(tgt["findings"])
+        if n0:
+            tgt["findings"] = [f for f in tgt["findings"] if not HYG.search(f["finding"]) and not (r["source"] == "hancore_concrete" and HYG_URL.search(f["finding"]))]
+            if len(tgt["findings"]) < n0: st["hyg_findings_dropped"] += n0 - len(tgt["findings"])
+            if r["verdict"] == "changes_requested" and not any(f["severity"] == "blocker" for f in tgt["findings"]): drops["v3:hygiene_no_blocker_left:" + r["source"]] += 1; continue
+            if len(tgt["findings"]) < n0: r["messages"] = r["messages"][:-1] + [{"role": "assistant", "content": json.dumps(tgt, ensure_ascii=False)}]
+        r["tokens"] = ntok(json.dumps(r["messages"]))
+        if r["tokens"] > MAX_TOK: drops["v3:over_token_cap:" + r["source"]] += 1; continue
+        rows2.append(r)
+    rows = rows2
     # ---- exclusion on v2-derived rows + dedupe ----
     kept = []
     for r in rows:
