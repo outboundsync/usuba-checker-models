@@ -9,22 +9,27 @@ U=${U:-/workspace/usuba}; O=${O:-$U/train/out/usuba-9b-lora}; LOG=$U/watchdog.lo
 CHECK_SEC=${CHECK_SEC:-300}; STALL_MIN=${STALL_MIN:-15}; GRACE_MIN=${GRACE_MIN:-30}; MAX_RESTARTS=${MAX_RESTARTS:-6}
 say() { echo "[$(date -u +%FT%TZ)] $*" >> $LOG; }
 alert() { echo "[$(date -u +%FT%TZ)] $*" >> $ALERT; say "ALERT: $*"; }
-last_step() { tail -n 40 $O/train_log.jsonl 2>/dev/null | grep -o '"step": [0-9]*' | tail -1 | grep -o '[0-9]*'; }
+last_step() { [ -f $O/train_log.jsonl ] && tail -n 40 $O/train_log.jsonl 2>/dev/null | grep -o '"step": [0-9]*' | tail -1 | grep -o '[0-9]*'; }
 gpu_sample() {   # mean util % and max mem MiB over 5 samples, 2 s apart ("na" if no nvidia-smi)
   command -v nvidia-smi >/dev/null || { echo "na na"; return; }
   for i in 1 2 3 4 5; do nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader,nounits 2>/dev/null | head -1; sleep 2; done |
     awk -F', *' '{u+=$1; if($2>m)m=$2; n++} END{if(n)printf "%d %d", u/n, m; else print "na na"}'
 }
+# FIX: the watchdog must never start training on a fresh instance. It only acts when $U/ARMED exists:
+#   line 1 = output dir (relative to $U/train), line 2 = command to run in tmux "train" (default: remote_setup.sh), line 3 = optional CHECK_SEC.
+# launch_vast.sh start arms the real run; dry_run.sh/resume_test.sh arm their own test run.
+armed() { [ -f $U/ARMED ] || return 1; O=$U/train/$(sed -n 1p $U/ARMED); TCMD=$(sed -n 2p $U/ARMED); CS=$(sed -n 3p $U/ARMED); [ -n "$CS" ] && CHECK_SEC=$CS; return 0; }
 start_train() {
   pkill -f train_lora.py 2>/dev/null; tmux kill-session -t train 2>/dev/null; sleep 3
   rm -f $U/TRAIN_STOPPED $O/STOPPED
-  tmux new -d -s train "SMOKE_STEPS=$(cat $U/mode_smoke 2>/dev/null || echo 0) SMOKE_HOURS=0.15 bash $U/train/remote_setup.sh"   # remote_setup.sh runs --resume
+  tmux new -d -s train "cd $U/train && ${TCMD:-SMOKE_STEPS=$(cat $U/mode_smoke 2>/dev/null || echo 0) SMOKE_HOURS=0.15 bash $U/train/remote_setup.sh} >> $U/watchdog_train.log 2>&1"   # remote_setup.sh runs --resume
   START=$(date +%s); RESTARTS=$((RESTARTS+1)); say "START/RESTART #$RESTARTS from step ${LAST:-0}"
 }
 RESTARTS=0; LAST=$(last_step); LAST=${LAST:--1}; LAST_T=$(date +%s); START=0; LOWGPU=0
 say "watchdog up: check every ${CHECK_SEC}s, stall ${STALL_MIN}m, grace ${GRACE_MIN}m, last step $LAST"
 while true; do
   now=$(date +%s)
+  armed || { say "not armed; idle"; sleep $CHECK_SEC; continue; }
   if [ -f $U/ALL_DONE ] || [ -f $U/SMOKE_DONE ] || [ -f $U/NO_RESTART ] || { [ -f $O/STOPPED ] && grep -q max_hours $O/STOPPED; }; then say "terminal marker present; idle"; sleep $CHECK_SEC; continue; fi
   if [ -f $O/DONE ]; then say "DONE present; export phase"; sleep $CHECK_SEC; continue; fi   # export runs after DONE; never interfere
   alive=0; pgrep -f "train_lora.py" >/dev/null && alive=1

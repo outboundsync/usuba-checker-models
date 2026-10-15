@@ -106,3 +106,12 @@ Provenance reminder: no proprietary-model outputs are training data; the Dell ba
 - `train/resume_test.sh [--reboot|--verify]`: kill -9 (or reboot) the trainer mid-run and prove `--resume` continues from the newest complete checkpoint with no step-counter reset.
 - `train/watchdog.sh`: every 5 minutes checks process alive, GPU util/memory and that the optimizer step advanced; restarts from the checkpoint after a dead process or `STALL_MIN` (15) minutes without a step; appends to `/workspace/usuba/ALERT` (surfaced by `launch_vast.sh watch`); gives up after 6 restarts. Started by `autostart.sh` (Vast onstart), so it survives reboots.
 - Order on the instance: `dry_run.sh` -> `resume_test.sh` -> real run. Neither script has been run yet; they were only syntax-checked (`bash -n`).
+
+## Vast setup learnings (2026-10-14, first real run of the v2 scripts)
+The prep scripts had only passed `bash -n`; running them on a rented H100 NVL (instance 56016890) found these issues. Each was fixed on `retrain-v2-data`.
+1. **torch/CUDA mismatch.** `pip install -U transformers ...` pulled torch 2.14.1+cu130, but the host driver (570) supports CUDA 12.8 only, so `torch.cuda.is_available()` was False and the trainer asserted. Fix: `deps.sh` pins `torch==2.9.1 torchvision==0.24.1` (cu128). Always run `python3 -c "import torch;print(torch.cuda.is_available())"` right after installing.
+2. **Watchdog started the real run on a fresh instance.** With no training running, the watchdog saw "process dead" and launched `remote_setup.sh` (the full run). Fix: the watchdog only acts when `/workspace/usuba/ARMED` exists (line 1 output dir, line 2 command, line 3 optional CHECK_SEC); `launch_vast.sh start` arms the real run, `resume_test.sh` arms its own test run.
+3. **`dry_run.sh` assumed deps were installed.** Dependency install moved to `deps.sh` (idempotent), called by `remote_setup.sh`, `dry_run.sh` and `resume_test.sh`.
+4. **`pkill -f` can kill its own ssh command** (the pattern appears in the remote command line). Use the bracket trick: `pkill -f "[t]rain_lora"`.
+5. **Pick offers by driver CUDA version.** Filter `cuda_vers>=12.8` is not enough to guarantee the image's torch build runs; check `nvidia-smi` CUDA version against the torch build before the first paid step.
+6. **`resume_test.sh --reboot` called `reboot` inside the container**, which does not work on Vast. It now records state and the reboot is done with `vastai reboot instance ID`.

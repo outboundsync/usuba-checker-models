@@ -33,7 +33,7 @@ rcp() { if [ -n "${MOCK_REMOTE:-}" ]; then cp "${1/\/workspace\/usuba/$MOCK_REMO
 bundle() {
   [ -s data/train.jsonl ] || python3 build_train_set.py
   python3 -c "import json,hashlib;m=json.load(open('data/manifest.json'));assert all(hashlib.sha256(open('data/'+f,'rb').read()).hexdigest()==h for f,h in m['sha256'].items()),'train data does not match manifest sha256'"
-  tar czf /tmp/usuba_train_bundle.tgz -C "$ROOT" train/config.yaml train/train_lora.py train/export_gguf.py train/remote_setup.sh train/watchdog.sh train/autostart.sh train/dry_run.sh train/resume_test.sh train/loss_utils.py train/prompt.py train/data/train.jsonl train/data/val.jsonl train/data/manifest.json
+  tar czf /tmp/usuba_train_bundle.tgz -C "$ROOT" train/config.yaml train/train_lora.py train/export_gguf.py train/remote_setup.sh train/watchdog.sh train/autostart.sh train/deps.sh train/dry_run.sh train/resume_test.sh train/loss_utils.py train/prompt.py train/data/train.jsonl train/data/val.jsonl train/data/manifest.json
 }
 # remote artifact list: checkpoints, adapters, logs, final GGUF (merged bf16 is deleted on the instance: regenerable)
 REMOTE_LIST='cd /workspace/usuba && { ls run.log DRYRUN_REPORT.txt RESUMETEST_REPORT.txt ALL_DONE SMOKE_DONE TRAIN_STOPPED 2>/dev/null; find train/out -type f ! -path "*/merged-bf16/*" ! -name "*bf16.gguf" ! -path "*.tmp/*" 2>/dev/null; } | sort'
@@ -79,7 +79,7 @@ start_remote() {
   if [ -n "${RESUME_FROM:-}" ]; then   # push the newest synced checkpoint so train_lora.py --resume continues from it
     ( cd "$RESUME_FROM" && tar cf - train/out/usuba-9b-lora ) | ssh $SO -p $P $HST "tar xf - -C /workspace/usuba"
   fi
-  ssh $SO -p $P $HST "(command -v tmux >/dev/null || (apt-get update -qq && apt-get install -y -qq tmux git cmake build-essential >/dev/null)) && echo $SMOKE > /workspace/usuba/mode_smoke && rm -f /workspace/usuba/NO_RESTART && bash /workspace/usuba/train/autostart.sh"
+  ssh $SO -p $P $HST "(command -v tmux >/dev/null || (apt-get update -qq && apt-get install -y -qq tmux git cmake build-essential >/dev/null)) && echo $SMOKE > /workspace/usuba/mode_smoke && rm -f /workspace/usuba/NO_RESTART && printf 'out/usuba-9b-lora\\n\\n\\n' > /workspace/usuba/ARMED && bash /workspace/usuba/train/autostart.sh"
 }
 rent() {
   [ $YES = 1 ] || { echo "refusing to rent without --yes"; exit 2; }
