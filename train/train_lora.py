@@ -8,6 +8,9 @@ p = argparse.ArgumentParser(); p.add_argument("--config", default="config.yaml")
 p.add_argument("--limit", type=int, default=0)
 p.add_argument("--max-steps", type=int, default=0, help="stop after N optimizer steps (CPU smoke test)")
 p.add_argument("--resume", action="store_true", help="continue from the newest complete checkpoint in <output_dir>/checkpoints")
+p.add_argument("--midcheck", default="", help="OPTIONAL, off by default: comma-separated optimizer steps (e.g. 100 or 100,300) at which to score held-out plugins for 'names the real bug at the right file:line' with the in-memory model; also runs once at the end. Failure never stops training.")
+p.add_argument("--midcheck-n", type=int, default=30, help="plugins per midcheck"); p.add_argument("--midcheck-pool", default="", help="pool jsonl(.gz) (default: config val_file); Dell-key/holdout rows are always excluded")
+p.add_argument("--midcheck-max-new", type=int, default=400); p.add_argument("--midcheck-max-secs", type=int, default=1200)
 a = p.parse_args()
 C = yaml.safe_load(open(a.config)); H = os.path.dirname(os.path.abspath(a.config))
 path = lambda x: x if os.path.isabs(x) else os.path.join(H, x)
@@ -133,6 +136,32 @@ if a.resume and (ck := latest_ckpt()):
     print(f"resumed from {ck}: step {state['step']} epoch {state['epoch']} micro {state['micro']}", flush=True)
 elif a.resume: print("--resume: no complete checkpoint found, starting fresh", flush=True)
 
+# ---- optional mid-training check (train/midcheck.py); every failure is swallowed ----
+MID = {"steps": set(), "rows": [], "done": set()}
+if a.midcheck:
+    try:
+        import midcheck
+        MID["steps"] = {int(x) for x in a.midcheck.split(",") if x.strip()}
+        MID["rows"], _sk = midcheck.build_pool(path(a.midcheck_pool or C["val_file"]), a.midcheck_n)
+        print(f"midcheck on at steps {sorted(MID['steps'])} + end: {len(MID['rows'])} plugins (skipped {_sk})", flush=True)
+        if os.path.exists(os.path.join(out, "midcheck.jsonl")):
+            MID["done"] = {json.loads(l).get("tag") for l in open(os.path.join(out, "midcheck.jsonl")) if l.strip()}
+    except Exception as e:
+        print(f"[midcheck] disabled (setup failed: {type(e).__name__}: {e})", flush=True); MID["steps"] = set(); MID["rows"] = []; a.midcheck = ""
+def run_mid(tag):
+    if not a.midcheck or not MID["rows"] or tag in MID["done"]: return
+    try:
+        was_training = model.training; model.eval(); model.config.use_cache = True
+        try: midcheck.run_midcheck(state["step"], MID["rows"], midcheck.hf_generator(model, tok, a.midcheck_max_new), out, log=log, max_secs=a.midcheck_max_secs, tag=tag)
+        finally:
+            model.config.use_cache = False
+            if was_training: model.train()
+            if dev == "cuda": torch.cuda.empty_cache()
+        MID["done"].add(tag)
+    except BaseException as e:
+        if isinstance(e, (KeyboardInterrupt, SystemExit)): raise
+        print(f"[midcheck] failed (ignored): {type(e).__name__}", flush=True)
+
 STOP = {"sig": None}
 def on_signal(sig, _): STOP["sig"] = signal.Signals(sig).name; print(f"got {STOP['sig']}: will checkpoint and exit after this step", flush=True)
 signal.signal(signal.SIGTERM, on_signal); signal.signal(signal.SIGINT, on_signal)
@@ -165,6 +194,7 @@ for ep in range(state["epoch"], C["epochs"]):
             rec["val_loss"] = evaluate()
             if rec["val_loss"] < state["best"]: state["best"] = rec["val_loss"]; save_adapter("best")
         log.write(json.dumps(rec) + "\n"); log.flush(); print(json.dumps(rec), flush=True)
+        if state["step"] in MID["steps"]: run_mid(f"step-{state['step']}")
         if state["step"] % C["save_every_steps"] == 0: save_ckpt("periodic"); save_adapter("last")
         if state["hours"] > C["max_hours"]: print("max_hours reached: checkpointing before exit", flush=True); stop_and_exit("max_hours", 0)
         if STOP["sig"]: stop_and_exit("signal " + STOP["sig"], 143)
@@ -172,4 +202,4 @@ for ep in range(state["epoch"], C["epochs"]):
     state["epoch"] = ep + 1; state["micro"] = 0
 rec = dict(step=state["step"], final_val_loss=evaluate()); print(json.dumps(rec)); log.write(json.dumps(rec) + "\n")
 if rec["final_val_loss"] < state["best"]: state["best"] = rec["final_val_loss"]; save_adapter("best")
-save_ckpt("final"); save_adapter("last"); open(os.path.join(out, "DONE"), "w").write(json.dumps(rec))
+save_ckpt("final"); save_adapter("last"); run_mid("final"); open(os.path.join(out, "DONE"), "w").write(json.dumps(rec))

@@ -406,3 +406,13 @@ in the official Omarchy plugin registry (plugins.omarchy.org), at the listing's 
   - yuters/omarchy-flight-radar @ 0a984a8e1342bb395a8976c974ecba4b8d263f23 — MIT — Copyright (c (1 rows)
   - zharinov/super-w-wait @ 9357426438c7dceb90722afeba53c1477f242743 — MIT — Copyright (c (1 rows)
   - znxr/QFetch @ f6cab366b4813440e3c559ba073ca7722fd96727 — MIT — Copyright (c) 2026 QFetch contributors (2 rows)
+
+v3-fixes additions (2026-10-15)
+  - Derived in part from tcballard/build-omarchy-plugins @ e3a45f8 (rules and prompt wording written from its host-contract facts, checked against the shipped shell tree) — MIT — Copyright (c) 2026 Tom Ballard.
+    MIT License: Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED (full text: the LICENSE file of that repository).
+  - Text sources (QML/JS/manifest/README/setup only) in train/v3data rows, source winners_mit, MIT, each kept with its copyright line in the row provenance:
+    AksharP5/omarchy-radio-atlas (c) 2026 Akshar Patel (assets and screenshots not used; no row built yet);
+    SLcode777/omagotchi @ 9c15d705a201ebbb7f4d4b759d8f214690467ba0 and 669ea0b7eac7a78ec408512cb81d8e5082c3c33b (c) 2026 SLcode777 (sounds/ and CREDITS.md excluded);
+    thisisgm/omarchy-pods @ fff7fec600a5b9a61cdb40e93eccbcceb4b8f824 (c) 2026 GM (root files only; daemon/ is GPL-3.0 and is not used);
+    robzolkos/omarchy-github @ c38e600ba76af0771c708cbc546154bd24aeb7e8 and its parent (c) 2026 Rob Zolkos (PR 23 contribution by its author under the repository's MIT).
+  - Synthetic rows (source synthetic_lifecycle) are our own work and contain no third-party text.

@@ -1,4 +1,4 @@
-"""Usuba reviewer prompt v3 (2026-10-15). Rules are written to match the answers the v3 training data teaches (see v3data/build_v3_data.py):
+"""Usuba reviewer prompt v3 (2026-10-15; v3-fixes edits P1-P7, see docs/V3_FIXES.md). Rules are written to match the answers the v3 training data teaches (see v3data/build_v3_data.py):
   * load/runtime bugs      -> changes_requested, load "broken"
   * HANCORE-style hardening blockers (missing caps/deadlines on untrusted input, symlink/tmp, secrets, pinning, injection...) -> changes_requested, load "unsure"
   * genuinely clean plugins, or only low-risk warnings -> approve, load "works"
@@ -11,7 +11,9 @@ Your job: decide whether the plugin is safe to list: it must load and work for a
 
 Request changes (severity "blocker") ONLY for a defect you can point to at a file and line. Two groups:
 A. Load/runtime bugs (load = "broken"):
-- an entry point named in manifest.json that is missing from the plugin, or a manifest that does not use the `entryPoints` object (kind -> file) the shell requires;
+- an entry point named in manifest.json that is missing from the plugin; a declared kind with no matching `entryPoints` key (the object maps entry-point key -> file: `bar-widget` needs `barWidget`; `panel`, `overlay`, `menu`, `service`, `bar` use their own name); or a manifest the shell registry rejects (no `entryPoints` object, `schemaVersion` not the number 1, missing `id`/`name`/`version`/`kinds`);
+- a `panel`, `overlay` or `menu` entry that does not define both `function open(payloadJson)` and `function close()` at its root (the shell calls them to show and hide the surface and silently skips a missing one, so it never appears; a root of the `Panel` base type from qs.Ui already provides both);
+- a `ShellRoot` as the entry root or a plugin that starts its own `quickshell` process (entry points are hosted Items); a `required property` named like a host-injected one (`shell`, `manifest`, `omarchyPath`, `pluginRegistry`, `barWidgetRegistry`, `barConfig`, `service`): the host assigns those after load, so the component fails to create;
 - a QML syntax error (unbalanced braces, truncated file), a type that does not exist or lacks its import, a property assigned twice in one object, a reference to an undefined id/property/method;
 - a binary or script the plugin runs that is not installed on stock Omarchy and is not shipped or declared;
 - logic that makes the plugin silently do nothing (e.g. parsing command output in a format the tool does not print), or a panel that cannot open/close;
@@ -23,9 +25,9 @@ B. Concrete safety/robustness defects in code that loads fine (load = "unsure").
 - secrets (tokens, passwords, phrases) put in argv, logs or world-readable files; sudo/pkexec/systemd/etc changes beyond what the plugin documents;
 - remote code that is downloaded and executed or installed without pinning or checksum verification;
 - shell/Lua injection (variables interpolated into sh -c / bash -c / Lua strings), rich text (Text.AutoText/StyledText) rendering of untrusted text, unvalidated URL schemes passed to xdg-open.
-Missing caps and timeouts are NOT blockers, only warnings, when the source is trusted and small: output of a fixed local tool that prints one line or a small JSON (hyprctl, ping, top, a shipped helper), a static file shipped with the plugin, or a state/config file the plugin itself writes under its own XDG directory. If the cap/timeout gap is on remote, shared-path or externally mutable input, it is a blocker.
+A missing cap or timeout is a blocker only when you can say who controls the input and what it can do to the shell (remote or other-user data, a shared path, an unbounded stream). Missing caps and timeouts are NOT blockers, only warnings, when the source is trusted and small: output of a fixed local tool that prints one line or a small JSON (hyprctl, ping, top, a shipped helper), a static file shipped with the plugin, or a state/config file the plugin itself writes under its own XDG directory; large local content that only wastes memory the plugin itself owns is a warning. `bash -c` with a literal script where every external value goes through `Util.shellQuote` is not injection: a Checker injection line there is a lead you dismiss. If the cap/timeout gap is on remote, shared-path or externally mutable input, it is a blocker.
 
-APPROVE (load = "works") when you cannot point to a defect from A or B. Style issues, hardening ideas that fall under the trusted-and-small exception, and Checker `warn` / `warn experimental` / `heuristic` lines are warnings, never blockers by themselves: a Checker line is a lead, you confirm it in the code. Checker lines with no tag are load/runtime errors and are usually real; verify them. Do not invent problems, but do not approve a plugin that has a group A or B defect.
+APPROVE (load = "works") when you cannot point to a defect from A or B. Style issues, hardening ideas that fall under the trusted-and-small exception, and Checker `warn` / `warn experimental` / `heuristic` lines are warnings, never blockers by themselves: a Checker line is a lead, you confirm it in the code. Declared capabilities (sudo/pkexec named in docs, `Process`, `StdioCollector`, `XMLHttpRequest`, installer scripts) are not defects by themselves: point to the line that actually executes or crosses the boundary. Checker lines with no tag are load/runtime errors and are usually real; verify them. Do not invent problems, but do not approve a plugin that has a group A or B defect.
 
 Every blocker must name the file (as it appears in the source), the line number of the offending statement (count lines from the top of the file), and the concrete cause and construct in backticks, in one or two sentences. State the problem as it is in this code; do not mention commits, SHAs, URLs, earlier reviews, other plugins, or files that are not in the source shown.
 Answer with JSON only, no prose:
@@ -33,7 +35,7 @@ Answer with JSON only, no prose:
 Use `"findings": []` for a clean plugin. Keep each finding under 300 characters."""
 
 def _code(files): return "\n\n".join(f"### {p}\n```\n{c}\n```" for p, c in files.items())
-def _m(id_, name, kind, ep, f): return json.dumps({"id": id_, "name": name, "kinds": [kind], "entryPoints": {f: ep}}, indent=2)
+def _m(id_, name, kind, ep, f): return json.dumps({"schemaVersion": 1, "id": id_, "name": name, "version": "1.0.0", "kinds": [kind], "entryPoints": {f: ep}}, indent=2)
 _FETCH = ("import QtQuick\nimport Quickshell.Io\n\nItem {\n  id: root\n  implicitWidth: label.implicitWidth\n  property string quote: \"...\"\n"
           "  Text { id: label; text: root.quote; color: \"white\" }\n  Process {\n    id: fetch\n    command: [\"curl\", \"-s\", \"https://quotes.daily-words.dev/v1/random\"]\n"
           "    stdout: StdioCollector { onStreamFinished: root.quote = JSON.parse(text).content }\n  }\n  Timer { interval: 60000; running: true; repeat: true; triggeredOnStart: true; onTriggered: fetch.running = true }\n}\n")
@@ -60,11 +62,15 @@ SHOTS = [
     # 5. remote body, no cap, no deadline, polled in the shell -> blocker, load unsure (the v2 prompt said approve here)
     (dict(files={"manifest.json": _m("example.daily-quote", "Daily Quote", "bar-widget", "BarWidget.qml", "barWidget"), "BarWidget.qml": _FETCH}, rep=["[USB-W10 warn experimental] BarWidget.qml: reads command output or a file with no size cap", "[USB-W08 warn experimental] BarWidget.qml: starts a process without a timeout"]),
      dict(verdict="changes_requested", load="unsure", findings=[dict(category="unbounded-input-resource", severity="blocker", file="BarWidget.qml", line=11, finding="`curl` fetches a remote body every minute with no `--max-time` or `--max-filesize`, and `StdioCollector` buffers all of it before `JSON.parse`; a slow or oversized response can stall or exhaust the shell.")])),
-    # 6. clean overlay with a heuristic Checker line -> approve, no findings
+    # 6. clean overlay WITH open(payloadJson)/close()/opened (the v3 draft taught an overlay with only toggle(); the host calls open/close) -> approve, no findings
     (dict(files={"manifest.json": _m("example.quick-launch", "Quick Launch", "overlay", "Overlay.qml", "overlay"),
-                 "Overlay.qml": "import QtQuick\nimport Quickshell\nimport Quickshell.Io\n\nItem {\n  id: root\n  property var shell: null\n  property bool opened: false\n  function toggle() { opened = !opened }\n  Process { id: launch; command: [\"uwsm-app\", \"--\", \"alacritty\"] }\n  Rectangle {\n    visible: root.opened\n    width: 240; height: 60; color: \"#1e1e2e\"\n    Text { anchors.centerIn: parent; text: \"Terminal\"; color: \"white\" }\n    MouseArea { anchors.fill: parent; onClicked: { launch.running = true; root.opened = false } }\n    Keys.onEscapePressed: root.opened = false\n  }\n}\n"},
-          rep=["[USB-W08 warn experimental] Overlay.qml: starts a process without a timeout"]),
+                 "Overlay.qml": "import QtQuick\nimport Quickshell\nimport Quickshell.Io\n\nItem {\n  id: root\n  property var shell: null\n  property bool opened: false\n  function open(payloadJson) { opened = true; win.visible = true }\n  function close() { opened = false; win.visible = false }\n  Process { id: launch; command: [\"uwsm-app\", \"--\", \"alacritty\"] }\n  PanelWindow {\n    id: win\n    visible: false\n    implicitWidth: 240; implicitHeight: 60; color: \"#1e1e2e\"\n    Text { anchors.centerIn: parent; text: \"Terminal\"; color: \"white\"; textFormat: Text.PlainText }\n    MouseArea { anchors.fill: parent; onClicked: { launch.running = true; root.close() } }\n    Item { anchors.fill: parent; focus: root.opened; Keys.onEscapePressed: root.close() }\n  }\n}\n"},
+          rep=[]),
      dict(verdict="approve", load="works", findings=[])),
+    # 7. panel that defines toggle() only: the shell calls open(payloadJson)/close(), which are missing -> blocker on the root
+    (dict(files={"manifest.json": _m("example.notes-pad", "Notes Pad", "panel", "Panel.qml", "panel"),
+                 "Panel.qml": "import QtQuick\nimport Quickshell\n\nItem {\n  id: root\n  property var shell: null\n  property bool opened: false\n  function toggle() { opened = !opened }\n  PanelWindow {\n    visible: root.opened\n    implicitWidth: 300; implicitHeight: 200\n    Text { anchors.centerIn: parent; text: \"Notes\"; color: \"white\" }\n  }\n}\n"}, rep=["[USB-L01 warn experimental] Panel.qml: `panel` entry root `Item` defines no `open()` / `close()`; the shell calls open(payloadJson) to show and close() to hide the surface and silently skips a missing function"]),
+     dict(verdict="changes_requested", load="broken", findings=[dict(category="load:panel-lifecycle", severity="blocker", file="Panel.qml", line=4, finding="The `panel` root `Item` defines `toggle()` but neither `open(payloadJson)` nor `close()`; the shell calls those to show and hide the panel and skips them when absent, so it never appears.")])),
 ]
 def _prefix():
     m = [{"role": "system", "content": SYSTEM}]
