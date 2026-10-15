@@ -105,9 +105,14 @@ def main():
     r1 = [p for p in P if p.get("round", 1) == 1]; r2 = [p for p in P if p.get("round", 1) == 2]
     rs = random.Random(4242); rs.shuffle(r2); per = collections.Counter(); thin2, oth2 = [], []
     for p in sorted(r2, key=lambda p: (p["bug_kind"] not in THIN, p["cls"] != "exact_removed")):
-        if per[p["repo"]] >= 4: continue
+        if per[p["repo"]] >= int(os.environ.get("R4_PER_REPO", "4")): continue
         per[p["repo"]] += 1; (thin2 if p["bug_kind"] in THIN else oth2).append(p)
-    oth2 = oth2[:int(os.environ.get("R4_OTHER_CAP", "180"))]; st["round2_candidates"] = len(r2); st["round2_selected_thin"] = len(thin2); st["round2_selected_other"] = len(oth2)
+    LOGIC = {"wrong-condition-or-logic", "ui-layout-or-state"}
+    if os.environ.get("R4_EXTEND"):   # r6 extension: the r4 selection (first 180) is kept so its cached replies replay; then ALL remaining non-logic kinds, plus up to R4_LOGIC_EXTRA of the two dominant logic/layout kinds
+        base, rest = oth2[:180], oth2[180:]
+        oth2 = base + [p for p in rest if p["bug_kind"] not in LOGIC] + [p for p in rest if p["bug_kind"] in LOGIC][:int(os.environ.get("R4_LOGIC_EXTRA", "150"))]
+    else: oth2 = oth2[:int(os.environ.get("R4_OTHER_CAP", "180"))]
+    st["round2_candidates"] = len(r2); st["round2_selected_thin"] = len(thin2); st["round2_selected_other"] = len(oth2)
     P = r1 + thin2 + oth2
     if os.environ.get("LIMIT"): P = P[:int(os.environ["LIMIT"])]
     with ThreadPoolExecutor(12) as pool: RS = list(pool.map(job, P))

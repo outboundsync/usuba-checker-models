@@ -41,21 +41,21 @@ def read_tree(d):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--holdout", required=True); ap.add_argument("--dell-key", required=True); ap.add_argument("--dell-root", required=True)
     ap.add_argument("--out", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "guard_data", "fingerprints.json.gz")); a = ap.parse_args()
-    hold, mids, repos = [], [], []
+    hold, mids, repos, hmeta, dmeta = [], [], [], [], []
     for l in open(os.path.join(a.holdout, "manifest.jsonl")):
         m = json.loads(l); repos.append(G.norm(m["repo"]) or m["repo"].lower()); files = read_tar(os.path.join(a.holdout, m["code_archive"]))
         try: mid = (json.loads(files.get("manifest.json", "{}")) or {}).get("id")
         except Exception: mid = None
         if isinstance(mid, str): mids.append(mid)
-        hold.append(G.tree_fp(with_capped(files)))
+        hold.append(G.tree_fp(with_capped(files))); hmeta.append(dict(repo=G.norm(m["repo"]) or m["repo"].lower(), mid=mid if isinstance(mid, str) else None))
     dids, dtrees = [], []
     for l in open(a.dell_key):
         k = json.loads(l); dids.append(k["id"]); p = os.path.join(a.dell_root, k.get("path") or "")
         if k.get("path") and os.path.isdir(p):
             fp = G.tree_fp(with_capped(read_tree(p)))
-            if fp: dtrees.append(fp)
+            if fp: dtrees.append(fp); dmeta.append(dict(id=k["id"]))
     os.makedirs(os.path.dirname(a.out), exist_ok=True)
-    json.dump(dict(holdout=hold, manifest_ids=sorted(set(mids)), repos=sorted(set(repos)), dell_ids=sorted(set(dids)), dell_trees=dtrees,
+    json.dump(dict(holdout=hold, manifest_ids=sorted(set(mids)), repos=sorted(set(repos)), dell_ids=sorted(set(dids)), dell_trees=dtrees, holdout_meta=hmeta, dell_meta=dmeta,
                    note="hashes only; built from the private holdout code and Dell-key trees; used for exclusion"), gzip.open(a.out, "wt"))
     print(f"holdout plugins {len(hold)}, manifest ids {len(set(mids))}, dell ids {len(set(dids))}, dell trees {len(dtrees)} -> {a.out}")
 if __name__ == "__main__": main()

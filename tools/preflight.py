@@ -26,7 +26,11 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.join(MODELS, "train"))
 PASS, WARN, FAIL, SKIP = "PASS", "WARN", "FAIL", "SKIP"
 TWIN_SOURCES = {"version_history", "fix_upstream", "nudged_approve", "synthetic_lifecycle", "synthetic"}   # approves that are fixed twins / synthetic
-MIN_PER_SLUG = 5
+MIN_PER_SLUG = 5            # legacy floor for the scored-slug check (item 3, train only)
+MIN_PER_KIND = 15           # Harris 2026-10-15: every kind in the label set needs >= 15 findings across train+val, else merge into a parent kind or drop it
+DELL_SOURCES_PREFIX = ("dell", "nudged_approve")   # rows from the same Dell-sweep pipeline as the sealed Dell key
+DELL_SHARE_WARN = 0.5
+APPROVE_BAND = (0.40, 0.55)
 
 
 class Ctx:
@@ -206,8 +210,9 @@ def i06_holdout_guard(c):
         gd = guard_cls()
         hits = gd.check(allr)   # {row id: reason}
         if hits:
-            return FAIL, f"content guard rejects {len(hits)} of the final rows: {dict(list(hits.items())[:4])}"
-        msg += "; content guard clean"
+            from collections import Counter
+            return FAIL, f"guard rejects {len(hits)} of the final rows by rule {dict(Counter(w.split(':')[0] for w in hits.values()))}: {dict(list(hits.items())[:4])}"
+        msg += "; guard clean (repo, id, content share J>=0.5, per-file J>=0.5, same-name, same-author J>=0.3 vs the sealed HANCORE holdout and the Dell key)"
     tr_repos = {x for r in rows["train"] for x in g.row_repos(r)}
     va_repos = {x for r in rows["val"] for x in g.row_repos(r)}
     if tr_repos & va_repos:
@@ -375,6 +380,28 @@ def i15_old_runs_rescored(c):
     return PASS, f"all {len(res)} result files have n_invalid via the original or a .rescored.json ({len(have)} scored, {len(ci)} with CIs, {len(exempt)} exempt: no model text)"
 
 
+def i17_composition(c):
+    """r6 gate numbers: rows per kind (train+val >= MIN_PER_KIND), approve mix, source mix, Dell-sweep share (the Dell key comes from the same pipeline)."""
+    from collections import Counter
+    rows = load_rows(c)
+    allr = rows["train"] + rows["val"]
+    cnt = Counter(f.get("category") for r in allr for f in (final_answer(r).get("findings") or []))
+    low = {k: n for k, n in cnt.items() if n < MIN_PER_KIND}
+    src = Counter(r["source"] for r in allr)
+    dell = sum(v for k, v in src.items() if k.startswith(DELL_SOURCES_PREFIX))
+    ap = sum(1 for r in allr if final_answer(r).get("verdict") == "approve")
+    msg = (f"{len(allr)} rows; approve {ap} ({100 * ap // max(1, len(allr))}%); Dell-sweep share {dell}/{len(allr)} ({100 * dell // max(1, len(allr))}%): report Dell-key scores next to HANCORE holdout "
+           f"and clean-set scores; sources {dict(src)}; findings per kind {dict(sorted(cnt.items()))}")
+    if low:
+        return FAIL, f"kinds below {MIN_PER_KIND} findings across train+val (merge into a parent kind or drop): {low}; " + msg
+    share = ap / max(1, len(allr))
+    if not APPROVE_BAND[0] <= share <= APPROVE_BAND[1]:
+        return WARN, f"approve share {share:.2f} outside {APPROVE_BAND}; " + msg
+    if dell / max(1, len(allr)) > DELL_SHARE_WARN:
+        return WARN, f"Dell-sweep share above {DELL_SHARE_WARN:.0%}; " + msg
+    return PASS, msg
+
+
 def i16_headline(c):
     rd = read(os.path.join(MODELS, "README.md"))
     ok = ("0.912" in rd) and re.search(r"false[- ]alarm", rd, re.I) and re.search(r"always answering", rd, re.I)
@@ -388,7 +415,8 @@ ITEMS = [(1, "one shared code_blob, label-independent (A1)", i01_shared_code_blo
          (9, "base_revision pinned, schedule has mid-run evals (A8, A9)", i09_revision_schedule), (10, "midcheck bundled, pool has negatives (A10)", i10_midcheck),
          (11, "run_meta.json + unique output_dir (H)", i11_run_meta_unique_output), (12, "one supervisor, trap, wall clock, stall grace (A11)", i12_supervisor),
          (13, "eval scoring: invalid-on-negative, finish_reason, rescore (B1-B3)", i13_eval_scoring), (14, "--prompt required, provenance in results (A7)", i14_prompt_and_meta),
-         (15, "old runs re-scored, n_invalid and CIs (B4, B5)", i15_old_runs_rescored), (16, "headline = false alarms on clean plugins (K16)", i16_headline)]
+         (15, "old runs re-scored, n_invalid and CIs (B4, B5)", i15_old_runs_rescored), (16, "headline = false alarms on clean plugins (K16)", i16_headline),
+         (17, "composition: >= 15 findings per kind, approve mix, Dell-sweep share (r6)", i17_composition)]
 
 
 def run(c, only=None):

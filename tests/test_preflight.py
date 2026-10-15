@@ -18,12 +18,12 @@ def test_final_answer_is_last_assistant_json():
     assert P.final_answer({"messages": [{"role": "assistant", "content": "not json"}]}) == {}
 
 
-def test_all_16_items_registered_and_a_crashing_item_is_a_fail_not_a_skip(tmp_path):
-    assert [n for n, _, _ in P.ITEMS] == list(range(1, 17))
+def test_all_17_items_registered_and_a_crashing_item_is_a_fail_not_a_skip(tmp_path):
+    assert [n for n, _, _ in P.ITEMS] == list(range(1, 18))
     c = P.Ctx()
     c.data, c.scripts, c.min_checker = str(tmp_path / "nope"), str(tmp_path / "nope"), "0000000"
     res = P.run(c)
-    assert len(res) == 16 and all(r["status"] in (P.PASS, P.WARN, P.FAIL, P.SKIP) for r in res)
+    assert len(res) == 17 and all(r["status"] in (P.PASS, P.WARN, P.FAIL, P.SKIP) for r in res)
     assert all(r["status"] == P.FAIL for r in res if r["item"] in (1, 2, 3, 4, 5, 6))   # missing data/scripts: never a pass
 
 

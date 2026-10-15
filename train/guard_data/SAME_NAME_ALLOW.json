@@ -1,0 +1,3 @@
+{"note": "Reviewed same-name pairs (train/guard_data/SAME_NAME_PAIRS.md): different code under one repo name, 0 files at Jaccard >= 0.6 at HEAD. Everything else with the same normalised name as a holdout / Dell-key plugin is rejected.",
+ "pairs": [{"repo": "jankeesvw/omarchy-github-build-monitor", "holdout_repo": "davidmessenger123/omarchy-github-build-monitor"},
+           {"repo": "jankeesvw/omarchy-notification-center", "holdout_repo": "apurvasaraiya/omarchy-notification-center"}]}
