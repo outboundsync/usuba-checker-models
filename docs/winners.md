@@ -100,7 +100,7 @@ False-positive review (I read the code at each cited line):
 | USB-H02 omapods hearing-aid-adjustments.py:127 | NOT A PLUGIN DEFECT | recv(512) on an L2CAP socket in the vendored upstream tool, and the flagged "loop" is in vendored code. Should be skipped under paths declared as upstream. |
 | USB-H16 omapods AGENTS.md, .claude/advloop-rules.md | TRUE POSITIVE (policy) | files are shipped; low severity. |
 | USB-H13 (experimental) omapods daemon/Main.qml x3 | out of scope | daemon app, not shell surface. |
-So of 21 HANCORE-rule hits (experimental included) about 3 are true or plausible (H16 x2, mpris recv), 14 are false positives, 4 are vendored/out-of-scope. Rule-tuning learning: add skip conditions for `>/dev/null`, mktemp-assigned vars, regex-guarded vars, `hyprctl eval`, helper-wrapped curl, and vendored paths (UPSTREAM.md / vendor dirs / non-entry subtrees).
+Of the 15 HANCORE-rule hits (experimental included): 3 are true or plausible (H16 x2, mpris recv), 8 are false positives (H01, H24, H06 x3, H18 x2, H02 readline), 4 are vendored/out-of-scope (omapods H02, H13 x3). Rule-tuning learning: add skip conditions for `>/dev/null`, mktemp-assigned vars, regex-guarded vars, `hyprctl eval`, helper-wrapped curl, and vendored paths (UPSTREAM.md / vendor dirs / non-entry subtrees).
 
 ## 5. Sealed-set overlap (ids only; script overlap.py, output overlap.txt)
 - Dell key (functest/dell_ground_truth.jsonl, only the `id` field read, 116 ids): no exact match for any of the four, and no id from the same authors (the other thisisgm plugins adguard/slack/discord/cliampui are in the corpus with a dell_name but not in this key file).
