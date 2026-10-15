@@ -7,6 +7,7 @@ Changes vs w2:
    not already in training; ids re-namespaced omarchy.* -> acme.* (reserved namespace), omarchy.clonePaths files inlined
  - global holdout dedupe: holdout plugin paths/repos, ids in holdout prompts, prompt near-dups, answer line-jaccard >= 0.5
 out: v3/train_v3.jsonl, v3/train_v3_manifest.json (one provenance record per input row, kept or excluded)"""
+import ast
 import json, os, re, sys, hashlib, collections, subprocess
 R = "/workspace/omarchy-specialist/"; sys.path[:0] = [R + "functest", R + "validator"]
 from validate import KIND_EP
@@ -22,7 +23,7 @@ def jac(a, b): return len(a & b) / max(1, len(a | b))
 # built-ins come from the Dell's own Omarchy 4.0.4-1 tree (shell/ == basecamp/omarchy@c668141); the newer defbf90 tree used ShellIpc/UntypedInput/OverlayWindow that 4.0.4 lacks
 OMC = os.environ.get("OMC", "c668141e9c42b13c80c9ca4ea108e11708c5e8a5"); OMD = os.environ.get("OMD", "/tmp/om-c668141")   # git worktree of c668141 (bundle() needs git ls-files); shell/ verified == Dell 4.0.4-1
 ho = [json.loads(l) for l in open(R + "data/holdout.jsonl")]
-hm = [h["meta"] if isinstance(h["meta"], dict) else eval(h["meta"]) for h in ho]
+hm = [h["meta"] if isinstance(h["meta"], dict) else ast.literal_eval(h["meta"]) for h in ho]
 HPATH = {m["plugin_path"].rstrip("/") for m in hm if m["origin"] == "first-party"}
 HREPO = {m["repo"].rstrip("/").lower() for m in hm if m["origin"] != "first-party"}
 HA = [L(h["messages"][2]["content"]) for h in ho]; HP = [h["messages"][1]["content"] for h in ho]; HPL = [L(p) for p in HP]
@@ -48,7 +49,7 @@ def fix_text(text):
     return re.sub(r"(### \S*manifest\.json\n|```json)(\n?)(\{.*?\})\n```", lambda mt: sub(mt) if '"kinds"' in mt.group(3) else mt.group(0), text, flags=re.S), n
 out, man, C = [], [], collections.Counter()
 def gate(r, source):
-    a = r["messages"][2]["content"]; u = r["messages"][1]["content"]; meta = r["meta"] if isinstance(r["meta"], dict) else eval(r["meta"])
+    a = r["messages"][2]["content"]; u = r["messages"][1]["content"]; meta = r["meta"] if isinstance(r["meta"], dict) else ast.literal_eval(r["meta"])
     a, na = fix_text(a); u, nu = fix_text(u); r["messages"][2]["content"] = a; r["messages"][1]["content"] = u
     C["entryPoints_fixed"] += na + nu
     why = None; t = ntok(a); La = L(a); Lu = L(u)
@@ -66,7 +67,7 @@ def gate(r, source):
     if not why: out.append(r)
 for l in open(R + "clean/train_w2.jsonl"): gate(json.loads(l), "train_w2")
 # ---- Omarchy built-ins
-have = {(m["meta"] if isinstance(m["meta"], dict) else eval(m["meta"])).get("plugin_path", "").rstrip("/") for m in out if m["task"] == "build_from_spec"}
+have = {(m["meta"] if isinstance(m["meta"], dict) else ast.literal_eval(m["meta"])).get("plugin_path", "").rstrip("/") for m in out if m["task"] == "build_from_spec"}
 cat = [v for v in json.load(open(R + "clean/registry/catalog_live.json")).values() if isinstance(v, list)][0]
 lic = open(OMD + "/LICENSE").read(); assert lic.startswith("MIT") or "Permission is hereby granted, free of charge" in lic
 BI = []
