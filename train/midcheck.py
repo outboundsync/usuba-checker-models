@@ -60,43 +60,63 @@ def row_excluded(row, forbidden_ids, holdout, allow_dell_sources=False):
     if any(h and h.replace("/", "__") in rid.replace("/", "__") for h in holdout): return "holdout_plugin"
     return None
 
-def build_pool(path, n=30, forbidden_ids=None, holdout=None, allow_dell_sources=False):
+def gold_verdict(row):
+    return (parse_json(row["messages"][-1]["content"]) or {}).get("verdict")
+
+def build_pool(path, n=30, forbidden_ids=None, holdout=None, allow_dell_sources=False, seed=0):
+    """Stratified random pool (audit A10): half positives with file:line gold, half negatives (approve rows), seeded, not sorted-by-id.
+    Dell-source rows are excluded by default (they are key-adjacent)."""
+    import random
     forbidden_ids = _forbidden_ids() if forbidden_ids is None else forbidden_ids
     holdout = _holdout_names() if holdout is None else holdout
-    pool, skipped = [], {}
+    pos, neg, skipped = [], [], {}
     for r in _lines(path):
         if r.get("split") not in (None, "val") and "split" in r: continue
         why = row_excluded(r, forbidden_ids, holdout, allow_dell_sources)
-        if not why and not gold_findings(r): why = "no_file_line_gold"
+        v = gold_verdict(r)
+        if not why and v == "changes_requested" and not gold_findings(r): why = "no_file_line_gold"
+        if not why and v not in ("approve", "changes_requested"): why = "bad_gold_verdict"
         if why: skipped[why] = skipped.get(why, 0) + 1; continue
-        pool.append(r)
-    pool.sort(key=lambda r: r.get("id", ""))          # deterministic
-    return pool[:n], skipped
+        (neg if v == "approve" else pos).append(r)
+    rnd = random.Random(seed); pos.sort(key=lambda r: r.get("id", "")); neg.sort(key=lambda r: r.get("id", "")); rnd.shuffle(pos); rnd.shuffle(neg)
+    kn = min(len(neg), n // 2); kp = min(len(pos), n - kn); kn = min(len(neg), n - kp)
+    pool = pos[:kp] + neg[:kn]; pool.sort(key=lambda r: r.get("id", ""))
+    return pool, skipped
+
+def norm_path(p):
+    p = str(p).strip()
+    while p.startswith("./"): p = p[2:]
+    return p
 
 def score_one(row, response):
+    """Exact-path matching (no basename fallback, no character-set lstrip); an invalid answer is wrong for BOTH classes."""
     gold = gold_findings(row); out = parse_json(response)
-    res = dict(id=row.get("id"), json_ok=out is not None, file_hit=False, line_hit=False, verdict_ok=None, n_gold=len(gold))
-    if out is None: return res
-    res["verdict_ok"] = out.get("verdict") == (parse_json(row["messages"][-1]["content"]) or {}).get("verdict")
-    for f in out.get("findings") or []:
+    gv = gold_verdict(row)
+    res = dict(id=row.get("id"), json_ok=False, file_hit=False, line_hit=False, verdict_ok=False, gold_verdict=gv, n_gold=len(gold), n_findings=0)
+    if not isinstance(out, dict) or out.get("verdict") not in ("approve", "changes_requested") or not isinstance(out.get("findings"), list): return res
+    res["json_ok"] = True; res["verdict_ok"] = out["verdict"] == gv; res["n_findings"] = len(out["findings"])
+    for f in out["findings"]:
         if not isinstance(f, dict) or not f.get("file"): continue
-        pf = str(f["file"]).lstrip("./")
+        pf = norm_path(f["file"])
         try: pl = int(f.get("line")) if f.get("line") is not None else None
         except Exception: pl = None
         for gf, gl, ge in gold:
-            gfn = gf.lstrip("./")
-            if not (pf == gfn or pf.endswith("/" + gfn) or gfn.endswith("/" + pf) or os.path.basename(pf) == os.path.basename(gfn)): continue
+            if pf != norm_path(gf): continue
             res["file_hit"] = True
             if pl is not None and (abs(pl - gl) <= LINE_TOL or (ge and gl - LINE_TOL <= pl <= ge + LINE_TOL)): res["line_hit"] = True
     return res
 
 def summarize(results):
     n = len(results)
-    r = lambda k: round(sum(1 for x in results if x.get(k)) / n, 3) if n else None
-    return dict(n=n, line_hit=r("line_hit"), file_hit=r("file_hit"), json_ok=r("json_ok"),
-                verdict_ok=round(sum(1 for x in results if x.get("verdict_ok")) / n, 3) if n else None)
+    pos = [x for x in results if x.get("gold_verdict") == "changes_requested"]; neg = [x for x in results if x.get("gold_verdict") == "approve"]
+    r = lambda xs, k: round(sum(1 for x in xs if x.get(k)) / len(xs), 3) if xs else None
+    s = dict(n=n, n_pos=len(pos), n_neg=len(neg), n_invalid=sum(1 for x in results if not x.get("json_ok")), line_hit=r(pos, "line_hit"), file_hit=r(pos, "file_hit"),
+             json_ok=r(results, "json_ok"), verdict_ok=r(results, "verdict_ok"), neg_verdict_ok=r(neg, "verdict_ok"), pos_verdict_ok=r(pos, "verdict_ok"))
+    parts = [v for v in (s["line_hit"], s["neg_verdict_ok"]) if v is not None]
+    s["selection_score"] = round(sum(parts) / len(parts), 4) if parts else None     # mean of 'right file:line on positives' and 'approves clean plugins'
+    return s
 
-def hf_generator(model, tok, max_new=400, enable_thinking=False):
+def hf_generator(model, tok, max_new=2048, enable_thinking=False):
     """Greedy generation with the in-memory (training) model. Restores train state; caller wraps in try/except."""
     import torch
     def gen(msgs):
