@@ -41,6 +41,6 @@ Scripts named without a repo prefix are in this repository; `scripts:` means `us
 - [ ] 23. `scripts:eval/hancore_holdout/run_eval.py` against the private manifest (check its SHA-256 equals `scripts:eval/hancore_holdout/MANIFEST.sha256`) `[P]`; `rescore.py` for re-scoring. Publish score tables only.
 
 ## H. Release (each needs the owner's approval)
-- [ ] 24. Copy the final adapter (`best/`) into `hf/` layout, add to `hf/MANIFEST.sha256`; upload datasets and adapters to Hugging Face with the cards in `hf/`.
+- [ ] 24. After the v3 run: copy the final adapter (`best/`) into the `hf/` layout, add hashes to `hf/ADAPTERS_CARD.md`; upload datasets and adapters to Hugging Face with the cards in `hf/`. Until then no adapter weights are published; only their hashes are listed.
 - [ ] 25. Gate: `python3 tools/scan_public.py` and `gitleaks git --config .gitleaks.toml .` in both repos report 0 findings.
 - [ ] 26. Tag `v0.1.0` in both repos; create GitHub release notes (no large attachments).

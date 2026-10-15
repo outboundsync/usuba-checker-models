@@ -48,7 +48,7 @@ Checker reports, real upstream fix commits, and review text written by the open-
 | `NOTICE`, `sources/licenses/` | Per-source attribution and licence texts that must travel with the data and model |
 | `docs/` | `REPLICATION.md`, `TRAINING_CHECKLIST.md`, `TRAINING_PLAN.md`, `MODEL_CARD.md`, `PROVENANCE.md`, `DATA_HOSTING.md`, method notes |
 | `runs/` | Experiment scripts, score tables, charts (no raw generations) |
-| `hf/` | Hugging Face cards and SHA-256 manifest for datasets and adapters (prepared, not uploaded) |
+| `hf/` | Hugging Face cards and SHA-256 manifest for datasets and adapters (datasets prepared, not uploaded; adapter weights withheld, hashes only) |
 
 ## Replicate
 Read [`docs/REPLICATION.md`](docs/REPLICATION.md), then follow [`docs/TRAINING_CHECKLIST.md`](docs/TRAINING_CHECKLIST.md) step by step.
