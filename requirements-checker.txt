@@ -2,4 +2,4 @@
 # Local development:   pip install -e ../usuba-checker-scripts
 # GPU / clean machine: pip install -r requirements-checker.txt        (private repo: needs git access; set FT_OMARCHY to a reference tree, the wheel does not ship one)
 # Bump the SHA deliberately; tests/test_checker_contract.py fails if the sibling checkout is not at or after it.
-usuba-checker @ git+https://github.com/outboundsync/usuba-checker-scripts@630803b7bdbddb4d40ac83ed0a652f6d5578f142
+usuba-checker @ git+https://github.com/outboundsync/usuba-checker-scripts@f61102851d95229397dd4588295e4e8085c73546

@@ -18,7 +18,7 @@ MIN_PER_SLUG = 15   # findings across train+val
 SCORED_SLUGS = ["unbounded-input-resource", "install-deps-packaging", "file-safety-symlink-perms", "secrets-credentials", "privileged-system",
                 "rich-text-markup-injection", "shell-lua-injection", "process-lifecycle-timeouts", "remote-code-pinning", "url-scheme-network",
                 "scope-policy-duplicate", "user-config-modification", "listing-metadata-docs"]
-OUT_OF_SCOPE = ["scope-policy-duplicate", "install-deps-packaging", "url-scheme-network", "listing-metadata-docs", "user-config-modification", "process-lifecycle-timeouts", "rich-text-markup-injection"]   # r5 counts: see GATE_REPORT section 7
+OUT_OF_SCOPE = ["scope-policy-duplicate", "install-deps-packaging", "url-scheme-network", "listing-metadata-docs", "user-config-modification", "process-lifecycle-timeouts", "rich-text-markup-injection", "privileged-system"]   # r5 counts: see GATE_REPORT section 7
 LOAD_SLUGS = ["load:component-not-created", "load:panel-lifecycle", "load:undefined-reference", "load:unknown-type", "load:missing-import", "load:invalid-binding",
               "in-use:missing-binary", "in-use:missing-file", "in-use:invalid-command-arg", "in-use:stale-or-wrong-display", "in-use:placeholder-data",
               "runtime-qml-api-compat", "runtime:logic-error", "runtime:error-handling", "runtime:state-or-race"]

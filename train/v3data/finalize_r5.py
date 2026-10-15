@@ -60,7 +60,7 @@ assert not under, under
 badslug = [s for s in set(slug) | set(vs) if s not in P4.SLUGS]; assert not badslug, badslug
 import label_filters as LF
 A("\n## 5b. Label-quality filters (audit E)\n")
-A("- commit attribution: HANCORE rows are kept only when the recorded commit equals the plugin's majority reviewed SHA (strict mode: 'fixed in <sha>' and foreign-repo commit URLs are not reviewed commits); drops: " + json.dumps({k: v for k, v in bs["drops"].items() if k.startswith("attribution:")}))
+A("- commit attribution: HANCORE rows are kept only when the recorded commit equals the plugin's plurality reviewed SHA (strict mode: 'fixed in <sha>' and foreign-repo commit URLs are not reviewed commits); drops: " + json.dumps({k: v for k, v in bs["drops"].items() if k.startswith("attribution:")}))
 A("- retractions (findings the reviewer later withdrew, whole or partial): rows dropped " + str(bs["drops"].get("retraction:withdrawn_finding_row_dropped", 0)))
 A(f"- synthetic generator rows: policy `{LF.SYNTHETIC_POLICY}` (template-id tell sample.*/syn.*); excluded {bs['drops'].get('synthetic:excluded_template_artefact', 0)}; remaining synthetic rows in train: {sum(r['source'] == 'synthetic_lifecycle' for r in tr)}")
 A("- template-id share by verdict (train+val; a skew between verdicts would be a label tell): `" + json.dumps(LF.template_id_fraction(tr + va)) + "`")

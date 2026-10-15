@@ -1,0 +1,11 @@
+# Dell source audit (r5)
+
+- data: train+val 473 rows; dell_* / nudged rows: 267; by source `{'dell_works_verified': 195, 'hancore_concrete': 82, 'version_history': 101, 'dell_broken_verified': 65, 'hancore_clean_approve': 23, 'dell_inuse_missing_binary': 4, 'nudged_approve': 2, 'dell_inuse_close': 1}`
+- fresh fingerprints rebuilt from the private key trees + holdout archives: sha256(canonical json) `c11b461c7ea47aba`; committed `c11b461c7ea47aba`; **identical: True**
+- sealed holdout plugins fingerprinted: 329; Dell key ids 116, key trees available and fingerprinted 114; key ids WITHOUT a local tree (not content-checkable, id-checked only): 0 []; key ids whose tree has no non-trivial file to fingerprint (id-checked only): 2 ['b3.q7b.acme-notifications', 'b3.q7b.vimarchy']
+- content guard (file sha1 + MinHash Jaccard >= 0.6, >= 50% of non-trivial files in one plugin) of every train/val row against the fresh fingerprints: **rows rejected 0** `{}`
+- manifest ids of train/val rows equal to a Dell-key id: **0** []
+- provenance kinds of the dell rows `{'dell-sweep+checker-agree': 267}`; sweep runs `{'run21': 11, 'run30': 5, 'run24': 9, 'run11': 9, 'run28': 10, 'run12': 9, 'run25': 13, 'run19': 12, 'run29': 10, 'run14': 5, 'run10': 14, 'run27': 10, 'run13': 11, 'run1': 3, 'run8': 10, 'run7': 5, 'run16': 15, 'run15': 7, 'run3': 9, 'run2': 8, 'run9': 5, 'run5': 3, 'run18': 8, 'run20': 11, 'run23': 11, 'run4': 6, 'run6': 7, 'run26': 9, 'run22': 12, 'run17': 10}`
+- the dell rows' plugins in the sweep corpus: 267/267; corpus `sources` of those plugins `{'marketplace-full': 211, 'data/reviews,marketplace': 25, 'github-search': 18, 'data/reviews,github-search,marketplace': 3, 'github-search,marketplace': 3, 'github-code-search,github-search': 1, 'marketplace': 5, 'data/reviews,github-code-search,github-search,marketplace': 1}`
+
+Reading: the Dell KEY is 116 hand-run plugins (registry + generated, ids like fab.pillbar, verdicts from real hardware runs). The dell_* TRAINING rows are plugins from the Dell SWEEP corpus (public marketplace / github-search repositories, pinned commit) whose label comes from the sweep's own runtime verdict (+ Checker agreement). They are different plugins; the content check above is the evidence, and any overlap would have been rejected by the same guard at build and at train_lora load.

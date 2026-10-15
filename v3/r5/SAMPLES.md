@@ -1,6 +1,71 @@
 # r5 samples (12)
 
-## 1. hancore_clean:ziouf/omarchy-adaptive-brightness:2dd87df4cf [hancore_clean_approve, approve]
+## 1. hancore_clean:filipechagas/omarchy-pinboard:a876061a58 [hancore_clean_approve, approve]
+
+label: ```{"verdict": "approve", "load": "works", "findings": []}```
+
+provenance: `{"kind": "hancore-reviewed-clean", "repo": "filipechagas/omarchy-pinboard", "commit": "a876061a58c7bf7f05dcb83526de80751b66c4f2", "approved": false, "listed": true, "weak_outcomes": ["closed_no_fix"], "license": "see repo (public plugin)", "category_orig": []}`
+
+user (head): ```
+## Checker report
+(no Checker findings)
+
+## Plugin source
+### manifest.json
+```
+   1| {
+   2|   "schemaVersion": 1,
+   3|   "id": "io.github.filipechagas.omapin",
+   4|   "name": "Omapin",
+   5|   "version": "0.1.1",
+   6|   "author": "Filipe Chagas",
+   7|   "description": "Keyboard-first Pinboard capture for Omarchy",
+   8|   "license": "MIT",
+   9|   "homepage": "https://github.com/filipechagas/omarchy-pinboard",
+  10|   "repository": "https://github.com/filipechagas/omarchy-pinboard",
+  11|   "keywords": [
+  12|     "pinboard",
+  13|     "bookmarks",
+  14|     "productivity"
+  15|   ],
+  16|   "kinds": [
+  17|     "service",
+  18|     "bar-widget"
+  19|   ],
+  20|   "keepLoaded": true,
+  21|   "entryPoints": {
+  22|     "service": "Service.qml",
+  23|     "barWidget": "BarWidget.qml"
+  24|   },
+  25|   "barWidget": {
+  26|     "displayName": "Omapin",
+  27|     "description": "Add and update Pinboard bookmarks",
+  28|     "category": "Productivity",
+  29|     "allowMultiple": false,
+  30|     "defaultSection": "right"
+  31|   }
+  32| }
+  33| 
+```
+
+### BarWidget.qml
+```
+   1| import QtQuick
+   2| import qs.Commons as C
+   3| import qs.Ui as Ui
+   4| 
+   5| Ui.BarWidget {
+   6|   id: root
+   7|   moduleName: "io.github.filipechagas.omapin"
+   8| 
+   9|   readonly property bool showIcon: setting("showIcon", true) !== false
+  10|   readonly property var pinboardService: bar && bar.shell
+  11|     ? bar.shell.serviceFor("io.github.filipechagas.omapin")
+  12|     : null
+  13|  
+```
+
+## 2. hancore_clean:ziouf/omarchy-adaptive-brightness:2dd87df4cf [hancore_clean_approve, approve]
 
 label: ```{"verdict": "approve", "load": "works", "findings": []}```
 
@@ -51,109 +116,124 @@ user (head): ```
    4| 
 ```
 
-## 2. hancore_clean:jacob-vincent-mink/omarchy-npu-waveform:63fc18ad7b [hancore_clean_approve, approve]
+## 3. dell_works_verified:nejcc/omarchy-safe-update:r00243-7900d748fd [dell_works_verified, approve]
 
 label: ```{"verdict": "approve", "load": "works", "findings": []}```
 
-provenance: `{"kind": "hancore-reviewed-clean", "repo": "jacob-vincent-mink/omarchy-npu-waveform", "commit": "63fc18ad7b6084dc07b843fcb9919bcd32567388", "approved": true, "listed": true, "weak_outcomes": ["closed_no_fix"], "license": "see repo (public plugin)", "category_orig": []}`
+provenance: `{"kind": "dell-sweep+checker-agree", "commit": "a7750dc17cbc98008f41f21429fc65a485151d16", "dell_run": "run22", "dell_job": "nejcc__omarchy-safe-update", "dell_label": "works", "checker_pass": true, "issue_urls": null, "checker_report_regenerated_r3": false, "category_orig": []}`
 
 user (head): ```
 ## Checker report
-[USB-W05 heuristic/medium] power-reader/install.sh: line 4: privileged/system-level action `sudo`. Fix: keep the plugin unprivileged; document manual root steps in the README instead of escalating from the shell
-[USB-W10 warn experimental] Telemetry.qml: reads command output or a file with no size cap
-[USB-HC15 warn] power-reader/install.sh:4: privileged or system-level action (`sudo (`)
-[USB-HC15 warn] power-reader/install.sh:22: privileged or system-level action (`install -d -m 0755 -o root -g root /usr/`)
-[USB-HC15 warn] power-reader/install.sh:23: privileged or system-level action (`install -m 0644 -o root -g root "$source_dir/reade`)
+[USB-W05 heuristic/medium] Panel.qml: line 141: privileged/system-level action `sudo`. Fix: keep the plugin unprivileged; document manual root steps in the README instead of escalating from the shell
+[USB-W10 warn experimental] BarWidget.qml: reads command output or a file with no size cap
+[USB-HC15 warn] Panel.qml:141: privileged or system-level action (`sudo s`)
+[USB-HC15 warn] Panel.qml:142: privileged or system-level action (`sudo s`)
 
 ## Plugin source
 ### manifest.json
 ```
    1| {
    2|   "schemaVersion": 1,
-   3|   "id": "jacob.npu",
-   4|   "name": "NPU Waveform",
-   5|   "version": "1.4.0",
-   6|   "author": "Jacob Mink",
+   3|   "id": "nejcc.safe-update",
+   4|   "name": "Safe Update",
+   5|   "version": "0.1.0",
+   6|   "author": "Nejcc",
    7|   "license": "MIT",
-   8|   "description": "Intel NPU waveforms with native performance history and dedicated NPU power.",
-   9|   "kinds": [
-  10|     "bar-widget"
-  11|   ],
-  12|   "activation": "on-demand",
-  13|   "entryPoints": {
-  14|     "barWidget": "BarWidget.qml"
-  15|   },
-  16|   "barWidget": {
-  17|     "displayName": "NPU Waveform",
-  18|     "description": "A btop-style waveform sampled from the Intel NPU kernel busy-time counter.",
-  19|     "category": "System",
-  20|     "aliases": [
-  21|       "npu",
-  22|       "intel-npu",
-  23|       "accelerator"
-  24|     ],
-  25|     "allowMultiple": false,
-  26|    
-```
-
-## 3. dell_works_verified:spacexrace/omarchy-screen-mirroring:r01152-0477ffca10 [dell_works_verified, approve]
-
-label: ```{"verdict": "approve", "load": "works", "findings": []}```
-
-provenance: `{"kind": "dell-sweep+checker-agree", "commit": "8f27a9c14e0eb4d78734d6377ff6143280f731b9", "dell_run": "run6", "dell_job": "spacexrace__omarchy-screen-mirroring", "dell_label": "works", "checker_pass": true, "issue_urls": null, "checker_report_regenerated_r3": false, "category_orig": []}`
-
-user (head): ```
-## Checker report
-[USB-W05 heuristic/medium] Panel.qml: line 122: privileged/system-level action `sudo`. Fix: keep the plugin unprivileged; document manual root steps in the README instead of escalating from the shell
-[USB-HC15 warn] Panel.qml:122: privileged or system-level action (`sudo p`)
-[USB-HC15 warn] bin/omarchy-screen-mirroring:410: privileged or system-level action (`"pkexec",`)
-[USB-HC04 warn] bin/omarchy-screen-mirroring:841: predictable shared path `mkfifo "$` can be pre-created as a symlink/FIFO by another process
-
-## Plugin source
-### manifest.json
-```
-   1| {
-   2|   "schemaVersion": 1,
-   3|   "id": "spacexrace.screen-mirroring",
-   4|   "name": "Screen Mirroring",
-   5|   "version": "1.0.0",
-   6|   "author": "spaceXrace",
-   7|   "license": "MIT",
-   8|   "description": "Discover compatible receivers and mirror your Linux desktop from the Omarchy bar.",
+   8|   "description": "Checks the shell and every plugin after an Omarchy update and shows the snapshot to roll back to",
    9|   "kinds": ["bar-widget"],
-  10|   "entryPoints": {
-  11|     "barWidget": "BarWidget.qml"
-  12|   },
-  13|   "barWidget": {
-  14|     "displayName": "Screen Mirroring",
-  15|     "description": "Discover and mirror to compatible screen receivers.",
-  16|     "category": "Network",
-  17|     "defaultSection": "right",
-  18|     "allowMultiple": false,
-  19|     "defaults": {},
-  20|     "schema": []
-  21|   }
-  22| }
-  23| 
+  10|   "entryPoints": { "barWidget": "BarWidget.qml" },
+  11|   "barWidget": {
+  12|     "displayName": "Safe Update",
+  13|     "description": "Post-update plugin check and rollback snapshot",
+  14|     "category": "System",
+  15|     "allowMultiple": false,
+  16|     "defaultSection": "right"
+  17|   }
+  18| }
+  19| 
 ```
 
 ### BarWidget.qml
 ```
    1| import QtQuick
    2| import Quickshell
-   3| import qs.Commons
-   4| import qs.Ui
-   5| 
-   6| BarWidget {
-   7|   id: root
-   8|   moduleName: "spa
+   3| import Quickshell.Io
+   4| import qs.Commons
+   5| import qs.Ui
+   6| 
+   7| // Bar icon for Safe Update. Reads the last post-update check from
+   8| // $XDG_STATE_HOME/omarchy-safe-update/last.json (written by bin/safe-update)
+   9| // through a file watcher,
 ```
 
-## 4. dell_works_verified:jjdizz1l/dizziee.auto-wallpaper:r01919-53ca4b9731 [dell_works_verified, approve]
+## 4. dell_works_verified:grupertal/omarchy-nanit:r01600-5a5f286509 [dell_works_verified, approve]
 
 label: ```{"verdict": "approve", "load": "works", "findings": []}```
 
-provenance: `{"kind": "dell-sweep+checker-agree", "commit": "c5397646b96eaba45710b32e2dd77a9a4720ddc9", "dell_run": "run18", "dell_job": "jjdizz1l__dizziee.auto-wallpaper", "dell_label": "works", "checker_pass": true, "issue_urls": null, "checker_report_regenerated_r3": false, "category_orig": []}`
+provenance: `{"kind": "dell-sweep+checker-agree", "commit": "add8665407c6b31bfae9e4de70da28f8a9ba3c96", "dell_run": "run16", "dell_job": "grupertal__omarchy-nanit", "dell_label": "works", "checker_pass": true, "issue_urls": null, "checker_report_regenerated_r3": false, "category_orig": []}`
+
+user (head): ```
+## Checker report
+[USB-HC19 warn] bin/nanit:12: pip/pipx install without --hash (model-proposed rule)
+
+## Plugin source
+### manifest.json
+```
+   1| {
+   2|   "schemaVersion": 1,
+   3|   "id": "gruper.nanit",
+   4|   "name": "Nanit",
+   5|   "version": "1.0.1",
+   6|   "author": "Tal Gruper",
+   7|   "license": "MIT",
+   8|   "description": "Nanit baby monitor in the bar: live camera video in the popup, always-on audio while you work, night light and white noise controls.",
+   9|   "kinds": [
+  10|     "service",
+  11|     "bar-widget"
+  12|   ],
+  13|   "entryPoints": {
+  14|     "service": "Service.qml",
+  15|     "barWidget": "Panel.qml"
+  16|   },
+  17|   "barWidget": {
+  18|     "displayName": "Nanit",
+  19|     "description": "Live Nanit camera in the popup, always-on audio, night light and white noise.",
+  20|     "category": "Home",
+  21|     "aliases": [
+  22|       "nanit",
+  23|       "baby",
+  24|       "monitor"
+  25|     ],
+  26|     "allowMultiple": false,
+  27|     "defaultSection": "right",
+  28|     "defaults": {},
+  29|     "schema": []
+  30|   }
+  31| }
+  32| 
+```
+
+### NanitIcon.qml
+```
+   1| import QtQuick
+   2| 
+   3| // The Nanit mark drawn natively: a filled rounded square with a ring cut out
+   4| // of its middle, so it takes the bar's theme color like every other icon.
+   5| Item {
+   6|   id: root
+   7|   property real iconSize: 14
+   8|   property color color: "white"
+   9|   property color background: "black"
+  10| 
+  11|   width: iconSize
+  12|  
+```
+
+## 5. version_history:charlieras262/omarchy-omablur:ffa789aafa:broken [version_history, changes_requested]
+
+label: ```{"verdict": "changes_requested", "load": "unsure", "findings": [{"category": "runtime-qml-api-compat", "severity": "blocker", "file": "Panel.qml", "line": 142, "finding": "The assignment `config.bar.transparent = want` writes a boolean value to the shell configuration, which forces the bar into full invisibility instead of enabling the intended partial opacity with blur effect."}]}```
+
+provenance: `{"kind": "version-history-fix", "repo_url": "https://github.com/charlieras262/omarchy-omablur", "repo": "charlieras262/omarchy-omablur", "commit": "ffa789aafa0290360ba546f30a3fff7f6935ed7a", "parent": "555a6c908dbe17777c833749aa56b5295ba3ee84", "date": "2026-08-27T10:33:23-06:00", "subject": "fix: use partial background opacity instead of full transparency", "file": "Panel.qml", "line": 142, "hist`
 
 user (head): ```
 ## Checker report
@@ -164,12 +244,255 @@ user (head): ```
 ```
    1| {
    2|   "schemaVersion": 1,
-   3|   "id": "dizziee.auto-wallpaper",
-   4|   "name": "Auto Wallpaper",
-   5|   "version": "1.0.0",
-   6|   "author": "Dizziee",
+   3|   "id": "charlieras262.omablur",
+   4|   "name": "Omablur",
+   5|   "version": "1.3.0",
+   6|   "author": "Charlieras262",
+   7|   "description": "Bar panel to tune window corner rounding and blur intensity live, no config file editing required",
+   8|   "kinds": [
+   9|     "bar-widget"
+  10|   ],
+  11|   "entryPoints": {
+  12|     "barWidget": "Panel.qml"
+  13|   },
+  14|   "barWidget": {
+  15|     "displayName": "Omablur",
+  16|     "description": "Tune window corner rounding and blur intensity",
+  17|     "category": "Compositor",
+  18|     "defaultSection": "right",
+  19|     "allowMultiple": false
+  20|   }
+  21| }
+  22| 
+```
+
+### Panel.qml
+```
+   1| import QtQuick
+   2| import Quickshell
+   3| import Quickshell.Io
+   4| import qs.Ui
+   5| import qs.Commons
+   6| 
+   7| // Bar chip + popup panel to tune window corner rounding and blur intensity
+   8| // live. Dragging a slider applies the change to the running Hyprland
+   9| // session immediately via `hyprctl eval` (Omarchy's Lua config parser
+  10| // doesn't support the older `hyprctl keyword`, so this is required, not
+  11| // just faster); no config write, no reload happens for the live preview.
+  12| // releasing it persists the setting as a marked block in the user's own
+  13| // ~/.config/hypr/looknfeel.lua so it survives restarts, using the same
+  14| // atomic, symlink-safe writer other Oma
+```
+
+## 6. version_history:deunnis/comapilot:d4e4d76f10:broken [version_history, changes_requested]
+
+label: ```{"verdict": "changes_requested", "load": "unsure", "findings": [{"category": "runtime-qml-api-compat", "severity": "blocker", "file": "Copilot.qml", "line": 185, "finding": "The code uses `hl.config({layerrule=...})` which is an incorrect Lua API shape for Hyprland's `eval` command, causing the blur rule to silently fail and leaving the overlay background unblurred."}]}```
+
+provenance: `{"kind": "version-history-fix", "repo_url": "https://github.com/deunnis/comapilot", "repo": "deunnis/comapilot", "commit": "d4e4d76f1028037e11b4b5b9d570bb5f42321497", "parent": "ce530772c4abc2cf02d37a6f5f7eb86bb742ba04", "date": "2026-08-24T14:39:19+02:00", "subject": "Fix: previous blur fix was a no-op - wrong Lua config API shape", "file": "Copilot.qml", "line": 185, "history_bug_kind": "api-com`
+
+user (head): ```
+## Checker report
+[USB-H07 heuristic/high] ActionAllowlist.js: line 58: placeholder endpoint/credential `https://example.com` used as real data. Fix: read the endpoint/key from settings (declared in manifest defaults) or a real config file; never ship example.com / dummy keys
+[USB-HC01 warn] Copilot.qml:742: curl/wget response is not size-limited (--max-time is a time limit, not a byte cap); a hostile or compromised endpoint can stream unbounded data into memory/disk
+[USB-HC01 warn] OllamaProbe.js:10: curl/wget response is not size-limited (--max-time is a time limit, not a byte cap); a hostile or compromised endpoint can stream unbounded data into memory/disk
+[USB-HC25 warn] AnthropicBackend.js:14: HTTP request with Authorization/API-key header and default redirects (model-proposed rule)
+[USB-HC25 warn] OpenAiCompatBackend.js:8: HTTP request with Authorization/API-key header and default redirects (model-proposed rule)
+
+## Plugin source
+### manifest.json
+```
+   1| {
+   2|   "schemaVersion": 1,
+   3|   "id": "io.github.omacopilot",
+   4|   "name": "cOMApilot",
+   5|   "version": "0.1.0",
+   6|   "author": "Deunnis",
    7|   "license": "MIT",
-   8|   "description": "Preview the active theme's wallpapers and automatically cycle or shuffle them on a schedule.",
+   8|   "description": "An AI assistant that streams answers and, with your explicit confirmation, can act: open files, run a small set of safe named actions, or drive other Omarchy plugins.",
+   9|   "kinds": ["overlay", "bar-widget"],
+  10|   "keepLoaded": true,
+  11|   "entryPoints": {
+  12|     "overlay": "Copilot.qml",
+  13|     "barW
+```
+
+## 7. hancore_concrete:neilofneils404/acid-alerts:9ada5f89dc [hancore_concrete, changes_requested]
+
+label: ```{"verdict": "changes_requested", "load": "unsure", "findings": [{"category": "unbounded-input-resource", "severity": "blocker", "file": "Model.js", "line": 209, "finding": "`Panel.qml` fetch NWS alert/zone responses into `StdioCollector` with a timeout but no response-size limit, and `Model.js` then materializes the full body with `JSON.parse`."}]}```
+
+provenance: `{"kind": "hancore-concrete-verified", "commit": "9ada5f89dc0d438d5f2a1a84e585b4760cbfd21e", "source_tree": "hancore_cache_partial_tree", "findings": [{"bug_kind": "unbounded-input-resource", "confidence": "high", "verify": "quoted_code_near_line", "line_derived": false, "kind_relabeled": true, "orig_kind": "unbounded-input-resource", "comment_url": "https://github.com/omacom/omarchy-plugin-marketp`
+
+user (head): ```
+## Checker report
+[USB-A08 heuristic/medium] Panel.qml: line 106: assigns read-only `bar.centerHoverRevealSuppressed` - plugins get the read-only PluginBarApi facade, so this throws and aborts the rest of the function. Fix: call the setter instead, e.g. `bar.setCenterHoverRevealSuppressed(v)`
+[USB-HC01 warn] Panel.qml:126: curl/wget response is not size-limited (--max-time is a time limit, not a byte cap); a hostile or compromised endpoint can stream unbounded data into memory/disk
+[USB-HC01 warn] Panel.qml:235: curl/wget response is not size-limited (--max-time is a time limit, not a byte cap); a hostile or compromised endpoint can stream unbounded data into memory/disk
+
+## Plugin source
+### manifest.json
+```
+   1| {
+   2|   "schemaVersion": 1,
+   3|   "id": "neil.acid-alerts",
+   4|   "name": "Acid Alerts",
+   5|   "version": "1.0.0",
+   6|   "author": "Neil",
+   7|   "license": "MIT",
+   8|   "description": "National Weather Service alerts for your Omarchy weather location. Warnings on by default; watches and advisories are opt-in.",
+   9|   "kinds": ["bar-widget"],
+  10|   "entryPoints": {
+  11|     "barWidget": "BarWidget.qml"
+  12|   },
+  13|   "barWidget": {
+  14|     "displayName": "Acid Alerts",
+  15|     "description": "Warnings for your weather location, with an idle brand mark when the area is clear.",
+  16|     "category": "Info",
+  17|     "allowMultiple": false,
+  18|     "defaultSection": "center"
+  19|   }
+  20| }
+  21| 
+```
+
+### AlertMap.qml
+```
+   1| import
+```
+
+## 8. hancore_concrete:lekonidus/omarchy-currency:1fbe9b6137 [hancore_concrete, changes_requested]
+
+label: ```{"verdict": "changes_requested", "load": "unsure", "findings": [{"category": "unbounded-input-resource", "severity": "blocker", "file": "Panel.qml", "line": 120, "finding": "`Panel.qml` fetches a remote API response with only a time limit, and `Panel.qml` buffers the complete stdout in `StdioCollector` before parsing it."}]}```
+
+provenance: `{"kind": "hancore-concrete-verified", "commit": "1fbe9b6137cb1412fabd8547de00cb2c2fe830c1", "source_tree": "src_full", "findings": [{"bug_kind": "unbounded-input-resource", "confidence": "high", "verify": "quoted_code_near_line", "line_derived": false, "kind_relabeled": true, "orig_kind": "process-lifecycle-timeouts", "comment_url": "https://github.com/omacom/omarchy-plugin-marketplace/issues/7865`
+
+user (head): ```
+## Checker report
+[USB-W10 warn experimental] Panel.qml: reads command output or a file with no size cap
+[USB-HC01 warn] Panel.qml:93: curl/wget response is not size-limited (--max-time is a time limit, not a byte cap); a hostile or compromised endpoint can stream unbounded data into memory/disk
+
+## Plugin source
+### manifest.json
+```
+   1| {
+   2|   "schemaVersion": 1,
+   3|   "id": "io.github.lekonidus.currency",
+   4|   "name": "Currency",
+   5|   "version": "1.0.0",
+   6|   "author": "Lekonidus",
+   7|   "license": "MIT",
+   8|   "description": "Convert currencies from the bar using ECB rates.",
+   9|   "kinds": ["bar-widget"],
+  10|   "entryPoints": {
+  11|     "barWidget": "Entry.qml"
+  12|   },
+  13|   "barWidget": {
+  14|     "displayName": "Currency",
+  15|     "description": "Live FX rate with a conversion panel",
+  16|     "category": "Info",
+  17|     "allowMultiple": false,
+  18|     "defaultSection": "center",
+  19|     "defaults": {
+  20|       "from": "USD",
+  21|       "to": "ILS"
+  22|     },
+  23|     "schema": [
+  24|       { "key": "from", "type": "string", "label": "From currency" },
+  25|       { "key": "to", "type": "string", "label": "To currency" }
+  26|     ]
+  27|   }
+  28| }
+  29| 
+```
+
+### Entry.qml
+```
+   1| import QtQuick
+   2| import Quickshell
+   3| import Quickshell.Io
+   4| import qs.Commons
+   5| import qs.Ui
+   6| import "Model.js" as Model
+   7| 
+   8| // Icon-sized bar slot (same as weather / hass). Rate lives in the tooltip
+   9| // an
+```
+
+## 9. dell_broken_verified:koenhendriks/omarchy-menu-calculator-plugin:r02382-7dc6d8e42c [dell_broken_verified, changes_requested]
+
+label: ```{"verdict": "changes_requested", "load": "broken", "findings": [{"category": "in-use:missing-file", "severity": "blocker", "file": "AppLibraryShim.qml", "line": 166, "finding": "Line 166 constructs a path to `/shell/services/hidden-entries.sh` which is not shipped by the plugin; the script must be included in the plugin package or the logic inlined."}, {"category": "load:unknown-type", "severity": "blocker", "file": "BarWidget.qml", "line": 6, "finding": "Import `file:///usr/share/omarchy/shell/plugins/menu` as Upstream does not provide `Upstream.BarWidget` type; the type is unknown and the widget cannot be created."}]}```
+
+provenance: `{"kind": "dell-sweep+checker-agree", "commit": "2ffacdd5ab20d5af67e570a80387986a9e1d6585", "dell_run": "run6", "dell_job": "koenhendriks__omarchy-menu-calculator-plugin", "dell_label": "broken", "checker_pass": false, "issue_urls": null, "checker_report_regenerated_r3": true, "category_orig": [null, null]}`
+
+user (head): ```
+## Checker report
+[USB-Q01] BarWidget.qml: line 6: unknown QML type `Upstream.BarWidget` - not provided by any module this file imports. Fix: add `import qs.Ui`
+[USB-Q01] Menu.qml: line 15: unknown QML type `Upstream.Menu` - not provided by any module this file imports. Fix: add `import Qt.labs.platform`
+
+## Plugin source
+### manifest.json
+```
+   1| {
+   2|   "schemaVersion": 1,
+   3|   "id": "io.github.koenhendriks.menu-calculator",
+   4|   "name": "Omarchy Menu Calculator Plugin",
+   5|   "version": "1.1.0",
+   6|   "author": "Koen Hendriks",
+   7|   "description": "Answers arithmetic typed into the Omarchy menu search field and copies the result on Enter",
+   8|   "kinds": [
+   9|     "menu",
+  10|     "bar-widget"
+  11|   ],
+  12|   "keepLoaded": true,
+  13|   "entryPoints": {
+  14|     "menu": "Menu.qml",
+  15|     "barWidget": "BarWidget.qml"
+  16|   },
+  17|   "barWidget": {
+  18|     "displayName": "Omarchy Menu Calculator Plugin",
+  19|     "description": "Launches the Omarchy menu",
+  20|     "category": "Compositor",
+  21|     "allowMultiple": false
+  22|   },
+  23|   "omarchy": {
+  24|     "clonedFrom": "omarchy.menu"
+  25|   }
+  26| }
+  27| 
+```
+
+### AppLibraryShim.qml
+```
+   1| import QtQuick
+   2| import Quickshell
+   3| import Quickshell.Io
+   4| import qs.Commons
+   5| import "file:///usr/share/omarchy/shell/services/AppSearch.js" as AppSearch
+   6| 
+   7| // Stand-in for the shell's own AppLibrary, for when the host does not hand one
+   8| // over. Omarchy 4
+```
+
+## 10. dell_broken_verified:jcarcinogen/omarchy-rice-bar:r02417-cb6cdf060a [dell_broken_verified, changes_requested]
+
+label: ```{"verdict": "changes_requested", "load": "broken", "findings": [{"category": "load:undefined-reference", "severity": "blocker", "file": "Service.qml", "line": 79, "finding": "Assigns to bar.foregroundAnimationEnabled which does not exist on stock Omarchy 4.x bar, causing runtime error."}, {"category": "load:undefined-reference", "severity": "blocker", "file": "Service.qml", "line": 82, "finding": "Assigns to bar.transparent which does not exist on stock Omarchy 4.x bar, causing runtime error."}]}```
+
+provenance: `{"kind": "dell-sweep+checker-agree", "commit": "266b7dd133e3a86c04da5548d0844ed017d5d8de", "dell_run": "run8", "dell_job": "jcarcinogen__omarchy-rice-bar", "dell_label": "broken", "checker_pass": false, "issue_urls": null, "checker_report_regenerated_r3": false, "category_orig": ["load:property-not-found", "load:property-not-found"]}`
+
+user (head): ```
+## Checker report
+(no Checker findings)
+
+## Plugin source
+### manifest.json
+```
+   1| {
+   2|   "schemaVersion": 1,
+   3|   "id": "io.github.jcarcinogen.rice-bar",
+   4|   "name": "Rice Bar",
+   5|   "version": "0.4.2",
+   6|   "author": "Scott Angel",
+   7|   "license": "MIT",
+   8|   "description": "Theme-aware visual presets for the stock Omarchy bar. Rice Bar keeps omarchy.bar, its official logo, widgets, panels, gestures, layout, and behavior intact while drawing passive chrome behind it.",
    9|   "kinds": [
   10|     "service",
   11|     "bar-widget"
@@ -179,217 +502,82 @@ user (head): ```
   15|     "barWidget": "BarWidget.qml"
   16|   },
   17|   "barWidget": {
-  18|     "displayName": "Auto Wallpaper",
-  19|     "description": "Preview and automatically cycle the active theme's wallpapers.",
-  20|     "category": "System",
+  18|     "displayName": "Rice Bar",
+  19|     "description": "Choose stock-preserving visual treatments for the Omarchy bar",
+  20|     "category": "Appearance",
   21|     "allowMultiple": false,
   22|     "defaultSection": "right",
   23|     "defaults": {
-  24|       "enabled": true,
-  25|       "intervalMinutes": 30,
-  26|       "mode": "sequential"
-  27|     },
-  28|     "schema": [
-  29|       {
-  30|         "key": "enabled",
-  31|         "type": "boolean",
-  32|         "label": "Automatic switching",
-  33|         "description": "Start cycling wallpapers automatically.",
-  34|         "defaultValue": true
-  35|       },
-  36|       {
-  37|         "key": "intervalMinutes",
-  38|         "type": "integer",
-  39|         "label": "Interval (minutes)",
-  40|         "description": "How often the wallpaper changes.",
-  41|         "min": 5,
-  42|         "max": 1440,
-  43|       
+  24|       "preset": "islands",
+  25|       "opacity": 92,
+  26|       "radius": 12,
+  27|       "gap": 4,
+  28|       "border": true
+  29|     },
+  30|     "schema": [
+  31|       {
+  32|         "key": "preset",
+  33|         "type": "enum",
+  34|         "label": "Style",
+  35|         "options": [
+  36|           "Omarchy",
+  37|           "Islands",
+  38|           "Pills",
+  39|           "Material",
+  40|           "Outline",
+  41|           "Rail",
+  42|           "Bracket",
+  43|           "Glow",
+  44|           "Pow
 ```
 
-## 5. version_history:pxllbt/better-recast:5f9a22a6cb:broken [version_history, changes_requested]
+## 11. hancore_clean:mahdihedhli/omarchy-usage-grok-bar:0b3eb00a59 [hancore_clean_approve, approve]
 
-label: ```{"verdict": "changes_requested", "load": "broken", "findings": [{"category": "runtime:logic-error", "severity": "blocker", "file": "Config.js", "line": 20, "finding": "The hardcoded default `frameMode: \"cfr\"` forces constant frame rate encoding even when the source content is variable, causing post-save video lag and synchronization issues due to the mismatch between the enforced CFR and the actual VFR input."}]}```
+label: ```{"verdict": "approve", "load": "works", "findings": []}```
 
-provenance: `{"kind": "version-history-fix", "repo_url": "https://github.com/pxllbt/better-recast", "repo": "pxllbt/better-recast", "commit": "5f9a22a6cbe64591b43086da34fc9df48e8c5933", "parent": "6508df63ae923ac7a86afe6c43cf25faf4146899", "date": "2026-09-20T18:58:24+08:00", "subject": "Fix post-save video lag: race condition, typo, vfr, keyframe interval", "file": "Config.js", "line": 20, "history_bug_kind":`
+provenance: `{"kind": "hancore-reviewed-clean", "repo": "mahdihedhli/omarchy-usage-grok-bar", "commit": "0b3eb00a59ac3d33ab03a627a9d7f171f3d68bf0", "approved": true, "listed": false, "weak_outcomes": ["stale"], "license": "see repo (public plugin)", "category_orig": []}`
 
 user (head): ```
 ## Checker report
-[USB-A02] Panel.qml: line 110: `onConfigChanged` is not a signal of `Connections` (handler never fires). Fix: `Connections` signals: none besides <prop>Changed
-[USB-W10 warn experimental] BarWidget.qml: reads command output or a file with no size cap
-[USB-W07 warn experimental] Service.qml: line 114: a variable is interpolated into a shell/Lua command string (`"bash", "-c", "mkdir -p " +`)
-[USB-HC02 warn] scripts/gsr-ipc.py:36: socket recv loop accumulates data with no total-size ceiling
-[USB-HC02 warn] scripts/gsr-ipc.py:74: socket recv loop accumulates data with no total-size ceiling
+[USB-W07 warn experimental] Panel.qml: line 70: a variable is interpolated into a shell/Lua command string (`"bash", "-c", "printf %s " +`)
+[USB-W04 warn experimental] install.sh: line 21: unsafe file operation `rm -rf "$PLUGIN_DIR"` (world-writable mode, forced symlink, predictable /tmp path, or rm -rf on an unchecked variable)
 
 ## Plugin source
 ### manifest.json
 ```
    1| {
    2|   "schemaVersion": 1,
-   3|   "id": "pix.recast",
-   4|   "name": "Better Recast",
-   5|   "version": "1.0.0",
-   6|   "author": "pixllbeat",
+   3|   "id": "usage.grok",
+   4|   "name": "Grok + Cursor Usage Widget",
+   5|   "version": "1.2.0",
+   6|   "author": "Mahdi Hedhli",
    7|   "license": "MIT",
-   8|   "description": "GPU-accelerated screen recording with automatic hardware detection",
-   9|   "kinds": [
-  10|     "service",
-  11|     "bar-widget"
-  12|   ],
-  13|   "keepLoaded": true,
-  14|   "entryPoints": {
-  15|     "service": "Service.qml",
-  16|     "barWidget": "BarWidget.qml"
-  17|   },
-  18|   "barWidget": {
-  19|     "displayName": "Better Recast",
-  20|     "description": "Record, pause, and manage GPU screen recordings",
-  21|     "category": "System",
-  22|     "defaultSection": "right",
-  23|     "allowMultiple": false
-  24|   }
-  25| }
-```
-
-### BarWidget.qml
-```
-   1| import QtQuick
-   2| import Quickshell
-   3| import Quickshell.Io
- 
-```
-
-## 6. version_history:artur-hash/omarchy-smartac:fb6a9e2b62:broken [version_history, changes_requested]
-
-label: ```{"verdict": "changes_requested", "load": "broken", "findings": [{"category": "runtime:error-handling", "severity": "blocker", "file": "bin/smartac", "line": 172, "finding": "The `api GET /devices` call on silently produces no output when an unknown device ID is provided because the subsequent `jq` filter yields nothing instead of triggering an error, leaving the user without feedback that the requested device does not exist."}]}```
-
-provenance: `{"kind": "version-history-fix", "repo_url": "https://github.com/artur-hash/omarchy-smartac", "repo": "artur-hash/omarchy-smartac", "commit": "fb6a9e2b62ca1657d59bb93327afaf6313f6c235", "parent": "5e633bd993b3aac26d7b6620e405114bb0a17cf1", "date": "2026-08-26T17:36:31-03:00", "subject": "Fix: --capabilities now errors on unknown devices", "file": "bin/smartac", "line": 172, "history_bug_kind": "err`
-
-user (head): ```
-## Checker report
-(no Checker findings)
-
-## Plugin source
-### manifest.json
-```
-   1| {
-   2|   "schemaVersion": 1,
-   3|   "id": "arturhash.smartac",
-   4|   "name": "SmartThings AC",
-   5|   "version": "0.1.0",
-   6|   "author": "artur-hash",
-   7|   "license": "MIT",
-   8|   "description": "Turn an air conditioner on and off and set its temperature from the bar, through the SmartThings API.",
+   8|   "description": "One bar chip for all of it: SuperGrok Build, Chat, Imagine, and Voice, Cursor Pro monthly pools, and ngrok tunnels. Complements stock omarchy.agents instead of replacing it.",
    9|   "kinds": ["bar-widget"],
-  10|   "entryPoints": {
-  11|     "barWidget": "BarWidget.qml"
-  12|   },
-  13|   "barWidget": {
-  14|     "displayName": "SmartThings AC",
-  15|     "description": "Air conditioner power and temperature",
-  16|     "category": "System",
-  17|     "defaultSection": "right",
-  18|     "allowMultiple": false
-  19|   }
-  20| }
-  21| 
-```
-
-### BarWidget.qml
-```
-   1| import QtQuick
-   2| import qs.Commons
-   3| import qs.Ui
-   4| 
-   5| // Replaced in full by Task 8. Present from the first commit so the repository
-   6| // validates at every point in its history, not only at the end.
-   7| Item {
-   8|   id: root
-   9|   required property QtObject bar
-  10|   implicitWidth: Style.space(1)
-  11|   implicitHeight: Style.space(1)
-  12| }
-  13| 
-```
-
-### LICENSE
-```
-   1| MIT License
-   2| 
-   3| Copyright (c) 2026 artur-hash
-   4| 
-   5| Permission is hereby granted, free of charge, to any person obtaining a copy
-   6| of this software and associated documentation files (the "Software"), to deal
-   7| in the Software without restriction, including without li
-```
-
-## 7. hancore_concrete:wookelvin/omarchy-workspace-swipe:914f36ae2e [hancore_concrete, changes_requested]
-
-label: ```{"verdict": "changes_requested", "load": "unsure", "findings": [{"category": "unbounded-input-resource", "severity": "blocker", "file": "GestureOverlay.qml", "line": 81, "finding": "`GestureOverlay.qml` and `Workspaces.qml` expose predictable Unix-socket listeners to a persistent `SplitParser` without a connection, line, or byte ceiling."}]}```
-
-provenance: `{"kind": "hancore-concrete-verified", "commit": "914f36ae2eb7ae89efe5dd443b43a633669e8426", "source_tree": "hancore_cache_partial_tree", "findings": [{"bug_kind": "unbounded-input-resource", "confidence": "high", "verify": "quoted_code_near_line", "line_derived": false, "kind_relabeled": true, "orig_kind": "process-lifecycle-timeouts", "comment_url": "https://github.com/omacom/omarchy-plugin-marke`
-
-user (head): ```
-## Checker report
-(no Checker findings)
-
-## Plugin source
-### manifest.json
-```
-   1| {
-   2|   "schemaVersion": 1,
-   3|   "id": "io.github.wookelvin.workspace-swipe",
-   4|   "name": "Workspace Swipe",
-   5|   "version": "2.0.0",
-   6|   "author": "Kelvin Woo",
-   7|   "license": "MIT",
-   8|   "description": "Compositor-synchronized four-finger workspace sliding with edge resistance, workspace numbers, and a live bar indicator.",
-   9|   "kinds": ["service", "bar-widget"],
-  10|   "keepLoaded": true,
+  10|   "activation": "on-demand",
   11|   "entryPoints": {
-  12|     "service": "GestureOverlay.qml",
-  13|     "barWidget": "Workspaces.qml"
-  14|   },
-  15|   "barWidget": {
-  16|     "displayName": "Workspace Swipe",
-  17|     "description": "Workspace numbers with a finger-tracked active marker",
-  18|     "category": "Compositor",
+  12|     "barWidget": "BarWidget.qml"
+  13|   },
+  14|   "barWidget": {
+  15|     "displayName": "Grok + Cursor Usage Widget",
+  16|     "description": "One chip for SuperGrok channels, Cursor Pro, and ngrok tunnels. Left-click expands the popup; middle-click opens omarchy.agents; right-click launches the default agent.",
+  17|     "category": "AI",
+  18|     "aliases": ["grok-usage", "grok-limits", "ngrok"],
   19|     "allowMultiple": false,
-  20|     "defaultSection": "left"
-  21|   }
-  22| }
-  23| 
+  20|     "defaultSection": "right",
+  21|     "defaults": {
+  22|       "showCursorUsage": true,
+  23|       "showNgrok": true
+  24|     },
+  25|     "schema": [
+  26|    
 ```
 
-### GestureOverlay.qml
-```
-   1| import Quickshell
-   2| import Quickshell.Io
-   3| import Quickshell.Wayland
-   4| import QtQuick
-   5| import qs.Commons
-   6| import qs.Ui
-   7| 
-   8| Item {
-   9|   id: root
-  10| 
-  11|   property bool gestureActive: false
-  12|   property bool gestureEdge: false
-  13|   property int gestureBase: 1
-  14|   property int gestureTarget: 2
-  15|   property real gestureProgress: 0
-  16|   property real settleDestination: 0
-  17|   property int settleDuration: 180
-  18| 
-  19|   function consumeLine(rawLine) {
-  20|     const fields = String(rawLine 
-```
+## 12. version_history:dimdoremy/omaflameshot:061240d43b:broken [version_history, changes_requested]
 
-## 8. hancore_concrete:labrat-0/omarchy-omasift:0d77f2236e [hancore_concrete, changes_requested]
+label: ```{"verdict": "changes_requested", "load": "broken", "findings": [{"category": "runtime:logic-error", "severity": "blocker", "file": "Service.qml", "line": 74, "finding": "The `requestDeadlineAt` property uses a 32-bit `int` to store epoch milliseconds, which overflows in 2031 and causes active capture requests to appear instantly expired, breaking screenshot functionality."}]}```
 
-label: ```{"verdict": "changes_requested", "load": "unsure", "findings": [{"category": "file-safety-symlink-perms", "severity": "blocker", "file": "Service.qml", "line": 89, "finding": "The shell then reads the cache using an unbounded pathname-based `FileView`."}]}```
-
-provenance: `{"kind": "hancore-concrete-verified", "commit": "0d77f2236e9cf6c0bd4a15ec98aa21d5204258e2", "source_tree": "hancore_cache_partial_tree", "findings": [{"bug_kind": "file-safety-symlink-perms", "confidence": "high", "verify": "quoted_code_near_line", "line_derived": false, "kind_relabeled": false, "orig_kind": "unbounded-input-resource", "comment_url": "https://github.com/omacom/omarchy-plugin-marke`
+provenance: `{"kind": "version-history-fix", "repo_url": "https://github.com/dimdoremy/omaflameshot", "repo": "dimdoremy/omaflameshot", "commit": "061240d43b9aef2f155d0879683527d244ec2053", "parent": "a694cc4ed26f280105023b2bd6f4376c7054d9ff", "date": "2026-09-02T20:46:25+08:00", "subject": "Fix instant request expiry: epoch-millis deadline overflows QML int, use real", "file": "Service.qml", "line": 74, "hist`
 
 user (head): ```
 ## Checker report
@@ -400,263 +588,39 @@ user (head): ```
 ```
    1| {
    2|   "schemaVersion": 1,
-   3|   "id": "io.github.labrat-0.omasift",
-   4|   "name": "OmaSift",
-   5|   "version": "1.0.0",
-   6|   "author": "mick 'labrat' donahue",
+   3|   "id": "dimdoremy.omaflameshot",
+   4|   "name": "omaflameshot",
+   5|   "version": "1.3.0",
+   6|   "author": "DimDoremy",
    7|   "license": "MIT",
-   8|   "description": "Search the Omarchy plugin marketplace from the shell, with the review status of every listing shown before you install it.",
+   8|   "description": "Flameshot as the capture / annotate / pin tool: keeps every Flameshot window floating and pinned so screenshots pin on top of all workspaces like Snipaste, with omarchy-shell IPC actions ready for the menu or your own keybindings.",
    9|   "kinds": [
-  10|     "service",
-  11|     "bar-widget",
-  12|     "overlay"
-  13|   ],
-  14|   "keepLoaded": true,
-  15|   "entryPoints": {
-  16|     "service": "Service.qml",
-  17|     "barWidget": "BarWidget.qml",
-  18|     "overlay": "Browser.qml"
-  19|   },
-  20|   "barWidget": {
-  21|     "displayName": "OmaSift",
-  22|     "description": "Search the plugin marketplace and see what has actually been reviewed.",
-  23|     "category": "System",
-  24|     "aliases": [
-  25|       "omasift",
-  26|       "sift",
-  27|       "marketplace",
-  28|       "plugins"
-  29|     ],
-  30|     "allowMultiple": false,
-  31|     "defaultSection": "right",
-  32|     "defaults": {
-  33|       "refreshHours": 24,
-  34|       "palette": "lab"
-  35|     },
-  36|     "schema": [
-  37|       {
-  38|         "key": "refreshHours",
-  39|         "type": "integer",
-  40|         "label": "Refresh the catalog every (hours)",
-  41|         "min": 1,
-  42|         "max": 168,
-  43|         "step": 1,
-  
-```
-
-## 9. dell_broken_verified:lavrinovich86/omarchy-agy-token-usage:r02565-6d5bfe9717 [dell_broken_verified, changes_requested]
-
-label: ```{"verdict": "changes_requested", "load": "broken", "findings": [{"category": "load:invalid-binding", "severity": "blocker", "file": "Panel.qml", "line": 233, "finding": "Cannot assign to non-existent property 'font' on Button. The syntax 'font.family: root.fontFamily' is invalid; use a 'font { family: ... }' block instead."}]}```
-
-provenance: `{"kind": "dell-sweep+checker-agree", "commit": "76d0ce94c3110500ba652eaa219482012eeea9ea", "dell_run": "run20", "dell_job": "lavrinovich86__omarchy-agy-token-usage", "dell_label": "broken", "checker_pass": false, "issue_urls": null, "checker_report_regenerated_r3": false, "category_orig": ["load:property-assignment"]}`
-
-user (head): ```
-## Checker report
-[USB-W10 warn experimental] BarWidget.qml: reads command output or a file with no size cap
-
-## Plugin source
-### manifest.json
-```
-   1| {
-   2|   "schemaVersion": 1,
-   3|   "id": "agy.token-usage",
-   4|   "name": "AGY Token Usage",
-   5|   "version": "1.0.0",
-   6|   "author": "Antigravity",
-   7|   "license": "MIT",
-   8|   "description": "Antigravity (AGY) token usage, prompt pace, and session metrics in a native Omarchy bar panel.",
-   9|   "kinds": [
-  10|     "bar-widget"
-  11|   ],
-  12|   "activation": "on-demand",
-  13|   "entryPoints": {
-  14|     "barWidget": "BarWidget.qml"
-  15|   },
-  16|   "barWidget": {
-  17|     "displayName": "AGY Tokens",
-  18|     "description": "One bar icon and dropdown panel: today's token consumption, 7-day pace, model split, and recent sessions.",
-  19|     "category": "AI",
-  20|     "aliases": ["agy", "antigravity", "gemini-tokens"],
-  21|     "allowMultiple": false,
-  22|     "defaultSection": "right",
-  23|     "defaults": {
-  24|       "refreshIntervalSec": 60,
-  25|       "showLabel": true
-  26|     },
-  27|     "schema": [
-  28|       {
-  29|         "key": "refreshIntervalSec",
-  30|         "type": "integer",
-  31|         "label": "Refresh interval (seconds)",
-  32|         "min": 10,
-  33|         "max": 3600,
-  34|         "step": 10,
-  35|         "defaultValue": 60,
-  36|         "description": "How often the token statistics update from AGY transcripts"
-  37|       },
-  38|       {
-  39|         "key
-```
-
-## 10. dell_broken_verified:flaviomedeiros/rssheadlines:r02376-e66cf0b426 [dell_broken_verified, changes_requested]
-
-label: ```{"verdict": "changes_requested", "load": "broken", "findings": [{"category": "in-use:placeholder-data", "severity": "blocker", "file": "QmlSmokeTest.qml", "line": 70, "finding": "Hardcoded placeholder URL `https://example.com/feed.xml` is used as real data instead of reading from settings."}]}```
-
-provenance: `{"kind": "dell-sweep+checker-agree", "commit": "166bd57bf386fbad59131bd1d715c8489c319851", "dell_run": "run2", "dell_job": "com.flaviomedeiros.rss.headlines", "dell_label": "broken", "checker_pass": false, "issue_urls": null, "checker_report_regenerated_r3": false, "category_orig": ["security:placeholder-credential"]}`
-
-user (head): ```
-## Checker report
-[USB-H07 heuristic/high] QmlSmokeTest.qml: line 70: placeholder endpoint/credential `https://example.com` used as real data. Fix: read the endpoint/key from settings (declared in manifest defaults) or a real config file; never ship example.com / dummy keys
-[USB-W01 warn experimental] notify.sh: runs `flush_pending`, which is not part of a stock Omarchy install and is not listed as a dependency in the README/manifest
-[USB-HC04 warn] notify.sh:51: predictable shared path `.tmp.$$` can be pre-created as a symlink/FIFO by another process
-
-## Plugin source
-### manifest.json
-```
-   1| {
-   2|   "schemaVersion": 1,
-   3|   "id": "com.flaviomedeiros.rss.headlines",
-   4|   "name": "RSS Headlines",
-   5|   "version": "1.0.2",
-   6|   "author": "Flavio Medeiros",
-   7|   "license": "MIT",
-   8|   "description": "RSS headlines in the Menu Bar, powered by Newsboat.",
-   9|   "kinds": [
-  10|     "bar-widget"
+  10|     "service"
   11|   ],
   12|   "entryPoints": {
-  13|     "barWidget": "RSSHeadlines.qml"
-  14|   },
-  15|   "barWidget": {
-  16|     "displayName": "RSS Headlines",
-  17|     "description": "Shows the latest RSS articles in a bar panel.",
-  18|     "category": "Info",
-  19|     "allowMultiple": false,
-  20|     "defaultSection": "right",
-  21|     "defaults": {
-  22|       "maxArticles": 10,
-  23|       "maxFeeds": 5,
-  24|       "feedUrls": "",
-  25|       "refreshIntervalSec": 900
-  26|     },
-  27|     "schema": [
-  28|       {
-  29|         "key": "maxArticles",
-  30|     
+  13|     "service": "Service.qml"
+  14|   }
+  15| }
+  16| 
 ```
 
-## 11. dell_works_verified:farangkao/omarchy-emojis-nerd:r00871-cf79c8295e [dell_works_verified, approve]
-
-label: ```{"verdict": "approve", "load": "works", "findings": []}```
-
-provenance: `{"kind": "dell-sweep+checker-agree", "commit": "bda347615e3b0ee92d02d1ca2fb0d488709afddb", "dell_run": "run2", "dell_job": "farangkao.emojis-nerd", "dell_label": "works", "checker_pass": true, "issue_urls": null, "checker_report_regenerated_r3": false, "category_orig": []}`
-
-user (head): ```
-## Checker report
-[USB-W03 warn experimental] tools/convert_kaomoji.py: line 21: runs or installs remote code that is not pinned to an immutable ref (`https://raw.githubusercontent.com/w33ble/emoticon-data/maste`)
-
-## Plugin source
-### manifest.json
+### FlameshotModel.js
 ```
-   1| {
-   2|   "schemaVersion": 1,
-   3|   "id": "farangkao.emojis-nerd",
-   4|   "name": "Emojis & Nerd Fonts",
-   5|   "version": "1.2.1",
-   6|   "author": "farangkao",
-   7|   "license": "MIT",
-   8|   "description": "Search, copy, and type emojis, kaomoji, and Nerd Font glyphs — with Recents",
-   9|   "kinds": [
-  10|     "overlay"
-  11|   ],
-  12|   "keepLoaded": true,
-  13|   "entryPoints": {
-  14|     "overlay": "Emojis.qml"
-  15|   },
-  16|   "omarchy": {
-  17|     "clonedFrom": "omarchy.emojis"
-  18|   }
-  19| }
-  20| 
-```
-
-### EmojiSearch.js
-```
-   1| function parseEmojis(raw) {
-   2|   try {
-   3|     var data = JSON.parse(String(raw || ""))
-   4|     return Array.isArray(data) ? data : []
-   5|   } catch (e) {
-   6|     return []
-   7|   }
-   8| }
-   9| 
-  10| function normalizedQuery(query) {
-  11|   return String(query || "").trim().toLowerCase()
-  12| }
-  13| 
-  14| function keywordText(item) {
-  15|   return String((item && item.k) || "").toLowerCase()
-  16| }
-  17| 
-  18| function filterEmojis(emojis, query, limit) {
-  19|   var values = Array.isArray(emojis) ? emojis : []
-  20|   var needle = normalizedQuery(query)
-  21|   var max = limit === undefined || limit === null ? 1000 : Number(limit)
-  22|   if (is
-```
-
-## 12. dell_broken_verified:deoxizn/keybind-manager:r02491-ed2f3feadf [dell_broken_verified, changes_requested]
-
-label: ```{"verdict": "changes_requested", "load": "broken", "findings": [{"category": "load:missing-import", "severity": "blocker", "file": "qml/KeybindCatalog.js", "line": 98, "finding": "Uses CommonJS `module.exports` which is not defined in QML's JavaScript environment; causes `ReferenceError: module is not defined` at load time."}]}```
-
-provenance: `{"kind": "dell-sweep+checker-agree", "commit": "443a7e7a937fa5572349722224e5637203e88a92", "dell_run": "run14", "dell_job": "deoxizn__keybind-manager", "dell_label": "broken", "checker_pass": false, "issue_urls": null, "checker_report_regenerated_r3": true, "category_orig": ["load:qml-import-error"]}`
-
-user (head): ```
-## Checker report
-[USB-W01 warn experimental] scripts/apply.sh: runs `about`, which is not part of a stock Omarchy install and is not listed as a dependency in the README/manifest
-
-## Plugin source
-### manifest.json
-```
-   1| {
-   2|   "schemaVersion": 1,
-   3|   "id": "dev.deoxizn.keybind-manager",
-   4|   "name": "Keybind Manager",
-   5|   "version": "1.0.0",
-   6|   "author": "Deoxizn",
-   7|   "license": "MIT",
-   8|   "description": "Add, override, and disable Hyprland keybindings from the bar, with a rolling backup and one-click revert.",
-   9|   "kinds": ["service", "bar-widget"],
-  10|   "keepLoaded": true,
-  11|   "entryPoints": {
-  12|     "barWidget": "qml/BarWidget.qml",
-  13|     "service": "qml/Service.qml"
-  14|   },
-  15|   "barWidget": {
-  16|     "displayName": "Keybind manager",
-  17|     "description": "Custom keybindings panel with backup and revert",
-  18|     "category": "System",
-  19|     "defaultSection": "left",
-  20|     "allowMultiple": false
-  21|   }
-  22| }
-  23| 
-```
-
-### qml/BarWidget.qml
-```
-   1| pragma ComponentBehavior: Bound
+   1| // Pure helpers for the omaflameshot service.
    2| 
-   3| import QtQuick
-   4| import Quickshell
-   5| import Quickshell.Io
-   6| import qs.Commons
-   7| import qs.Ui
-   8| 
-   9| // Bar button for Keybind Manager and host for the keybind panel. Shows a
-  10| // keyboard glyph; left click toggles the panel.
-  11| //
-  12| // Theming: colors and sizes come from the active bar. A Shibumi bar hands us
-  13| // its VisualTokens (bar.visualTokens); any other host is
+   3| // argv builders. Every helper runs as a direct argv array with an absolute
+   4| // executable path — nothing is resolved through PATH and no shell is ever
+   5| // spawned. Detachment is done by the caller via `setsid --fork`, so the
+   6| // interactive Flameshot session is reparented and never tracked by us.
+   7| 
+   8| function readinessArgs(busctlBin) {
+   9|   return [String(busctlBin), "--user", "--no-pager", "list"]
+  10| }
+  11| 
+  12| function captureArgs(flameshotBin, args) {
+  13|   var flags = Array.isArray(args) ? args : [String(args || "gui")]
+  14|   return [String(flameshotBin)].concat(flags)
+  15| }
+  16| 
+  17| function daemonArgs(flameshotBin
 ```

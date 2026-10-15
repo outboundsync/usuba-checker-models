@@ -2,7 +2,7 @@
 
 attribution   a HANCORE finding belongs to ONE reviewed commit: the most common reviewed SHA among the plugin's finding comments (strict mode of
               hancore/common.py: a "fixed in <sha>" sentence names the FIXED code, a foreign-repo commit URL is not this plugin's). A row is kept only when
-              its recorded commit IS that SHA (so the shown source is the reviewed code) and the finding comments agree on it.
+              its recorded commit IS that SHA (so the shown source is the reviewed code). Findings on other SHAs of the same plugin are not this row's evidence.
 retractions   findings the reviewer later withdrew (hancore/retraction_check.py output): whole withdrawal = drop the row, partial = drop too (we cannot
               tell which part remains), listed ids come from retraction_list.json (decisions made by an open-weights judge, cached) .
 synthetic     generator-made rows carry template tells (manifest id sample./example., row ids syn.*): documented exclusion by default (SYNTHETIC_POLICY)."""
@@ -24,9 +24,6 @@ def attribution(strict, row_id, row_commit):
     if d is None: return False, "attribution:plugin_not_in_strict_reviews"
     if not d["sha"]: return False, "attribution:no_reviewed_sha"
     if not row_commit or not d["sha"].startswith(row_commit[:10]) and not row_commit.startswith(d["sha"][:10]): return False, "attribution:row_commit_is_not_the_reviewed_sha"
-    shas = collections.Counter(x["_sha"] for x in d["findings"] if x.get("_sha"))
-    top = shas.most_common(1)[0][1] if shas else 0
-    if len(shas) > 1 and top * 2 <= sum(shas.values()): return False, "attribution:no_majority_sha_among_findings"      # findings spread over several commits
     return True, None
 
 

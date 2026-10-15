@@ -40,5 +40,23 @@
   "kept": 55,
   "dropped_holdout_overlap": 0,
   "sha256": "fe0d624af1f93d0afa1e749e93a33b9e313a086dae722a47836fb1fac0674ff7"
+ },
+ "v3_r5/content_guard": {
+  "rows_checked": 473,
+  "content_rejected_final_rows": 0,
+  "builder_content_rejects": 41,
+  "builder_repo_rejects": 29,
+  "fingerprints_sha256": "a5739c792187c8cc1020b4e6aa62fc381b1c401bae3ffdc32962466d9aa1856e",
+  "note": "content guard (file sha1 + MinHash Jaccard>=0.6) against 329 holdout plugins and 114 Dell-key trees; see v3/r5/DELL_AUDIT.md"
+ },
+ "v3_r5/train.jsonl.gz": {
+  "kept": 383,
+  "dropped_holdout_overlap": 0,
+  "sha256": "ea7125db887f4dfe3fbc04d7968026ffcd638b08a7a0afc6d2d4bb2ce3d41e7d"
+ },
+ "v3_r5/val.jsonl.gz": {
+  "kept": 90,
+  "dropped_holdout_overlap": 0,
+  "sha256": "58fcaa5a57e8264a69d3ce773337c18e5b006a935c5c1716f68f6926b17409ab"
  }
 }

@@ -240,6 +240,7 @@ def stage_rows(rows):
         why = guard.check_row(row, files=c["files"])        # full shown files, plus repo/id/provenance rules
         if why is None:     # also the full raw files (pre-truncation) so a long file cannot hide a copy
             why = guard.check_row(row, files={p: t for p, t in c["raw_files"].items()})
+        if why is None: why = guard.check_row(row)       # finally exactly what the model sees: the files parsed back out of the rendered prompt (preflight item 6 does the same)
         if why: drops["guard:" + why.split(":")[0]] += 1; st["guard_reject_" + c["source"]] += 1; continue
         out.append(dict(row, _repo=repo, _fh=full_hashes(c["raw_files"]), _info=c["info"], _files=sorted(c["files"])))
     return out
