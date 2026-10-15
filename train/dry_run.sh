@@ -11,7 +11,7 @@ fail() { echo "DRYRUN FAIL: $*" | tee $REP; touch $U/DRYRUN_FAIL; exit 1; }
 bash $U/train/deps.sh || fail "dependency install failed"
 python3 train_lora.py --config config.yaml --dry-run || fail "CPU dry-run (tokenise/mask) failed"
 python3 - <<PY || fail "config"
-import yaml; c=yaml.safe_load(open("config.yaml")); c.update(save_every_steps=3, eval_every_steps=1000, max_hours=$M/60, output_dir="out/dryrun")
+import yaml; c=yaml.safe_load(open("config.yaml")); c.update(save_every_steps=3, eval_every_steps=1000, eval_every_epochs=0, allow_no_midrun_eval=True, max_hours=$M/60, output_dir="out/dryrun")
 yaml.safe_dump(c, open("config_dryrun.yaml","w")); print("max_hours in real config:", yaml.safe_load(open("config.yaml"))["max_hours"])
 PY
 ALLOW_CPU=0 timeout $(( (M+12)*60 )) python3 train_lora.py --config config_dryrun.yaml --resume; rc=$?

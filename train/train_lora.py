@@ -52,7 +52,7 @@ TF, VF = path(C["train_file"]), path(C["val_file"])
 DATA_SHA = TU.verify_sums(path(C["dataset_sums"]), [TF, VF])
 t0 = time.time(); train, dtr, ltr, ntr_raw = load(C["train_file"]); val, dva, lva, nva_raw = load(C["val_file"])
 if not a.limit: TU.check_row_counts({"train": ntr_raw, "val": nva_raw}, C["expected_rows"])
-SCHED = TU.schedule(len(train), C["per_device_batch"], C["grad_accum"], C["epochs"], C["warmup_ratio"], C.get("eval_every_steps"), C.get("eval_every_epochs"))
+SCHED = TU.schedule(len(train), C["per_device_batch"], C["grad_accum"], C["epochs"], C["warmup_ratio"], C.get("eval_every_steps"), C.get("eval_every_epochs"), bool(C.get("allow_no_midrun_eval")))
 s = sorted(ltr); tot = sum(min(x, C["max_len"]) for x in ltr)
 stats = dict(train=len(train), train_dropped_overlength=dtr, val=len(val), val_dropped=dva, tok_median=s[len(s)//2], tok_p95=s[int(len(s)*.95)], tok_max=s[-1],
              train_tokens=tot, assistant_tokens=sum(sum(1 for y in r["labels"] if y != -100) for r in train),

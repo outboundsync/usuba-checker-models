@@ -1,0 +1,17 @@
+[project]
+name = "usuba-checker-models"
+version = "0.5.0"
+description = "Usuba Checker reviewer: dataset build, LoRA SFT, eval, export"
+requires-python = ">=3.10,<3.13"
+dependencies = ["pyyaml>=6"]
+
+[project.optional-dependencies]
+# data build / gates / tests run on CPU
+build = ["pytest>=8"]
+# GPU training image is pytorch/pytorch:2.9.1-cuda12.8: torch/torchvision come from the image, the rest is pinned by uv.lock
+train = ["transformers>=5.2,<6", "peft>=0.18", "accelerate", "sentencepiece", "pillow", "safetensors", "torch==2.9.1", "torchvision==0.24.1", "flash-linear-attention"]
+
+[tool.uv]
+package = false
+# fla refuses Triton 3.4-3.7.0 on Hopper (wrong gated bwd results); torch 2.9.1 pins 3.5.1 -> override, same as train/deps.sh
+override-dependencies = ["triton>=3.7.1"]

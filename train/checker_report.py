@@ -4,14 +4,26 @@ None means the Checker crashed or timed out (prompt shows "(Checker report unava
 Before 2026-10-14 the v1 Dell training rows used the sweep's static_fails + [runtime] lines instead, which omitted the warn lines
 the eval prompt shows; that mismatch is what this module removes."""
 import os, sys, signal
-_F = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "functest")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import paths
+CHECKER_ROOT = paths.checker_root()
+os.environ["FT_OMARCHY"] = os.environ.get("FT_OMARCHY") or paths.reference_tree()     # D2: the reference tree is part of the Checker; never run without it
+_F = os.path.join(CHECKER_ROOT, "functest")
 if _F not in sys.path: sys.path.insert(0, _F)
-from usuba import checks, hancore_rules as HR, lifecycle_rules as LR
+from usuba import checks, hancore_rules as HR, lifecycle_rules as LR, hancore_rules_v2 as HV2
+import dell_checks as _DC
+if not (_DC.API.get("Color") and _DC.API.get("bar")): raise RuntimeError(f"Checker reference tree gave an empty API table (FT_OMARCHY={os.environ['FT_OMARCHY']}): refusing to build reports")
+CHECKER_TIMEOUT = 60   # one value for training rows and every eval backend (audit A7: train used 20 s, eval 0 s)
+def checker_meta():
+    """what produced a report: recorded in every row's meta and every result json"""
+    gi = paths.git_info(CHECKER_ROOT)
+    return dict(checker_git_sha=gi["sha"], checker_dirty=gi["dirty"], rules_hash=paths.rules_hash(CHECKER_ROOT), reference_tree=os.environ["FT_OMARCHY"],
+                api_members={k: len(v) for k, v in _DC.API.items()}, timeout=CHECKER_TIMEOUT)
 # Test-harness notes that live next to some plugins (generator + functest verdict). Never part of a prompt, train or eval.
 HARNESS_FILES = {"SOURCE.txt", "checklist.md"}
 class _TO(Exception): pass
 def _alarm(*a): raise _TO()
-def report_and_warn_rules(files, timeout=20):
+def report_and_warn_rules(files, timeout=CHECKER_TIMEOUT):
     use_alarm = timeout and hasattr(signal, "SIGALRM")
     try:
         if use_alarm:
@@ -32,5 +44,9 @@ def report_and_warn_rules(files, timeout=20):
         elif f["rule"] not in LR.ENABLED: continue
         elif f["severity"] == "high": rep3.append(f"[{f['rule']} heuristic/high] {f['file']}: {f['reason']}. Fix: {f['hint']}")
         else: rep3.append(f"[{f['rule']} warn] {f['file']}: {f['reason']}")
-    return ((rep or []) + rep2 + rep3 if rep is not None else None), w + lc
-def report(files, timeout=20): return report_and_warn_rules(files, timeout)[0]
+    # audit A7: the USB-HC rules (hancore_rules_v2, advisory) belong in the report too (TRAINING_PLAN planned them); formatted as warn leads with file:line
+    try: hc = HV2.check(files)
+    except Exception: hc = []
+    rep4 = [f"[{f['rule']} warn] {f['file']}:{f['line']}: {f['reason']}" for f in hc]
+    return ((rep or []) + rep2 + rep3 + rep4 if rep is not None else None), w + lc + hc
+def report(files, timeout=CHECKER_TIMEOUT): return report_and_warn_rules(files, timeout)[0]

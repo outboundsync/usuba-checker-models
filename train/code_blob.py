@@ -28,8 +28,14 @@ def _numbered(lines, first=1):
     return "\n".join(f"{i:>{w}}| {l}" for i, l in enumerate(lines, first))
 
 
+def norm_newlines(t):
+    """CRLF/CR -> LF: the Checker's loader reads text-mode (normalised) while a tar-based eval loader keeps \\r; one rule for both (audit B3)"""
+    return t.replace("\r\n", "\n").replace("\r", "\n")
+
+
 def render_file(p, text, cap=FILE_CAP, numbered=NUMBERED):
     """-> (block, info). Cuts on a line boundary; never cuts inside the first line."""
+    text = norm_newlines(text)
     lines = text.split("\n")
     if len(text) <= cap:
         body, shown = lines, len(lines); note = ""
@@ -47,7 +53,7 @@ def render_file(p, text, cap=FILE_CAP, numbered=NUMBERED):
 def render(files, file_cap=FILE_CAP, code_cap=CODE_CAP, numbered=NUMBERED):
     out, info, used = [], {}, 0
     for p in sorted(files, key=order_key):
-        t = files[p]
+        t = norm_newlines(files[p])
         block, inf = render_file(p, t, file_cap, numbered)
         cost = min(len(t), file_cap)
         if used + cost > code_cap and p != "manifest.json":

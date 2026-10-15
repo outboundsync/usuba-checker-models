@@ -38,3 +38,7 @@ def test_budget_omits_files_deterministically_not_the_manifest():
 def test_no_truncation_marker_for_short_files():
     blob, info = C.render({"a.qml": "x\n" * 10})
     assert "truncated" not in blob and not info["a.qml"]["truncated"]
+
+
+def test_crlf_and_lf_render_identically():
+    assert C.code_blob({"a.qml": "x\r\ny\r\n"}) == C.code_blob({"a.qml": "x\ny\n"})

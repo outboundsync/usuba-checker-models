@@ -41,7 +41,7 @@ def check_row_counts(counts, expected):
         if counts.get(k) != v: raise SystemExit(f"DATASET: {k} has {counts.get(k)} rows, config expects {v}")
 
 
-def schedule(n_train, per_device_batch, grad_accum, epochs, warmup_ratio, eval_every_steps=None, eval_every_epochs=None):
+def schedule(n_train, per_device_batch, grad_accum, epochs, warmup_ratio, eval_every_steps=None, eval_every_epochs=None, allow_no_midrun_eval=False):
     """Exact optimizer-step schedule. Every epoch flushes a partial accumulation window, so steps = epochs * ceil(micro/GA) with
     micro = ceil(n/B). Eval cadence is given in epochs (preferred) or steps; zero mid-run evals is an error."""
     micro = math.ceil(n_train / per_device_batch); spe = math.ceil(micro / grad_accum); total = spe * epochs
@@ -49,7 +49,7 @@ def schedule(n_train, per_device_batch, grad_accum, epochs, warmup_ratio, eval_e
     elif eval_every_steps: every = int(eval_every_steps)
     else: raise SystemExit("config needs eval_every_epochs or eval_every_steps")
     evals = [s for s in range(every, total, every)]            # strictly before the final step (the end eval always runs)
-    if not evals: raise SystemExit(f"SCHEDULE: no mid-training eval: total steps {total}, eval every {every}")
+    if not evals and not allow_no_midrun_eval: raise SystemExit(f"SCHEDULE: no mid-training eval: total steps {total}, eval every {every}")
     warm = int(total * warmup_ratio)
     return dict(micro_per_epoch=micro, steps_per_epoch=spe, total_steps=total, warmup_steps=warm, eval_every_steps=every, eval_steps=evals, last_window=micro - (spe - 1) * grad_accum)
 
@@ -81,3 +81,22 @@ def truncate_log(path, last_step):
 def drop_check(dropped, total, max_rate):
     if total and dropped / total > max_rate:
         raise SystemExit(f"DATASET: {dropped}/{total} rows ({dropped / total:.1%}) dropped (over-length or empty target); limit {max_rate:.1%}")
+
+
+def verify_cli(config_path, data_dir):
+    """python3 train_utils.py verify config.yaml DATA_DIR : SHA256SUMS + row counts of the files named in the config (used by launch_vast.sh bundle)"""
+    import yaml
+    C = yaml.safe_load(open(config_path)); tr, va = (os.path.join(data_dir, os.path.basename(C[k])) for k in ("train_file", "val_file"))
+    sums = os.path.join(data_dir, "SHA256SUMS")
+    verify_sums(sums, [tr, va])
+    n = dict(train=len(read_rows(tr)), val=len(read_rows(va)))
+    exp = C.get("expected_rows") or {}
+    if not exp or not all(exp.get(k) for k in ("train", "val")): raise SystemExit(f"DATASET: config expected_rows not filled in ({exp}); finalize the build first")
+    check_row_counts(n, exp)
+    print(f"dataset OK: {n}, sha256 verified against {sums}")
+
+
+if __name__ == "__main__":
+    import sys
+    if len(sys.argv) == 4 and sys.argv[1] == "verify": verify_cli(sys.argv[2], sys.argv[3])
+    else: raise SystemExit(__doc__)
