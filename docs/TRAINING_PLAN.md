@@ -149,3 +149,21 @@ Learnings:
 - Vast watchdog: `ARMED` lives at `/workspace/usuba/ARMED`, not under `train/`; remove it before any post-training work. The watchdog tmux keeps running but does nothing unarmed.
 - llama.cpp on the Vast image is built CPU-only by `export_gguf.py`; for the exam build `llama-server` with `-DGGML_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=90` into a separate build dir (about 5 min with -j48). Run `run_eval.py` locally through an SSH `-L` tunnel; no repo copy is needed on the instance.
 - With 4 slots at 229k each the whole exam (90 Dell + 329 holdout) took about 35 min of GPU; the OpenRouter peers ran in parallel.
+
+## v2 exam diagnosis (2026-10-15)
+### Part A: v2 Q4_K_M vs stock Qwen3.5 9B on the 20 flagged-broken Dell plugins
+- v2 flagged 20/33 broken, stock flagged 20/33 (different sets; overlap-by-plugin not identical). Right-reason (judge): v2 2/33, stock 8/33.
+- v2 findings: exactly 1 finding per flagged plugin (stock 1.6), ~94 completion tokens (stock ~132). 14/20 have file=null (stock 0/20); 6/20 cite a line (stock 12/20).
+- 12/20 v2 findings use marketplace/security boilerplate categories (unbounded-input-resource x8, rich-text-markup-injection x4) + file-safety x1 = 13/20 generic security-review wording ("accepts an unbounded response ...", "default AutoText ... rich-text resource load") that is not a load failure; load="unsure" for 14/20 (stock says load="broken" for all 20). Stock mostly uses load:component-not-created (13/20) incl. manifest/missing entry-file claims.
+- Only 6/20 v2 answers are concrete load-bug claims with file+line (Qt.reschemaVersion, root.toggle(), brightnessModel undeclared, NativeDrag unknown type, Qt.setClipboardText, undeclared service); stock names the same ones in the same places. v2 never catches the missing-file / manifest-entryPoints classes (stock 6 of its 8 hits, e.g. bl.q14s.* manifest entryPoints, b3.q7b.acme-notifications missing Service.qml).
+- One v2 answer is off-task: bl.q14s.acme-weather "current HEAD still differs from the reviewed snapshot ... trigger fresh marketplace validation" (training-set boilerplate leaking in).
+- Grader strictness: no v2 answer was rejected that names the real bug. Judge/regex disagreements: b3.q14b.acme-notifications (regex yes, judge no; key = missing service entry file, v2 reported Qt.reschemaVersion: different cause, judge right); intemporel (judge yes, regex no; v2 listed undeclared Panel API members, a lenient accept: key also names a missing binary, and the finding is mislabelled unbounded-input-resource). So 2/33 is, if anything, generous; judge strict 1-2.
+Conclusion A: v2 mostly answers in the training-set "security review" register (generic, file-less, load=unsure) instead of diagnosing the load failure; it did not forget code-level bugs entirely but lost the manifest/missing-file checks.
+### Part B: unquantized merged model (bf16 GGUF merged from best adapter into bf16 Qwen3.5-9B; llama-server CUDA, same flags, prompt v2, same harness)
+| model | verdict acc | false alarm | caught | right-reason judge (regex) | of flagged |
+|---|---|---|---|---|---|
+| v2 Q4_K_M | .844 | .018 | 20/33 | 2/33 (2) | .10 |
+| v2 bf16 merged | .811 | .070 | 20/33 | 1/33 (2) | .05 |
+bf16: 12/20 flagged answers file-null, same categories (unbounded-input x8, rich-text x2...). Same verdict as Q4 on 18/20 flagged. Quantization does NOT explain the gap; the problem is in the training. (bf16 even has more false alarms: 4 vs 1 of 57.)
+GPU: ~12 min busy (merge+convert+exam), ~$0.5 at $2.34/h. Instance left running, ARMED absent.
+Raw files: usuba-runs/56016890/diagnosis/.
