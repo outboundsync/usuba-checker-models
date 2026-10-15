@@ -226,7 +226,7 @@ Here's where the numbers stand as of Wednesday, Oct 14, 2026. These are the ones
 
 **Frontier builders with Checker feedback.** First try, then after the Checker-feedback fix loop: GPT **21 → 40/49**, Opus **17 → 36**, Sonnet **9 → 35**. That's the clearest lift we've measured for building plugins so far, and it came from the Checker, not from a fine-tune.
 
-**Checker model on the Dell set.** Usuba v1 accuracy **0.756**, against stock Qwen3.5 9B at **0.567**. On "right reason" for the broken plugins it flagged, v1 got **1 of 31**, vs stock **9** and Sonnet **13**. So the accuracy gain is real, and the reasons still aren't good enough.
+**Checker model on the Dell set.** Usuba v1 accuracy **0.756**, against stock Qwen3.5 9B at **0.567**. On "right reason" for the broken plugins it flagged, v1 got **1 of 31**, vs stock **9** and Sonnet **13** (Haiku-judged, historical, on the original 90-row key; Sonnet is a third-party comparison, score only). So the accuracy gain is real, and the reasons still aren't good enough.
 
 **Prompt matters more than we hoped.** Stock 9B with a better prompt hits **0.800** on the same Dell set. Ministral 14B hits **0.822**. Before we spend more on training, we have to beat a stock model with a better prompt.
 

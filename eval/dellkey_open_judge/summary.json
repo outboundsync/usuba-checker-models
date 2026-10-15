@@ -1,101 +1,171 @@
 [
  {
-  "system": "v3p-gemma-3-12b",
-  "haiku_judge_original": 4,
-  "open_judge_gpt_oss_120b": 4,
-  "regex": 5,
-  "open_judge_vs_regex_agreement": 0.944,
-  "open_judge_of_flagged": 0.222
- },
- {
-  "system": "v3p-gemma-4-26b",
-  "haiku_judge_original": 12,
-  "open_judge_gpt_oss_120b": 11,
-  "regex": 11,
-  "open_judge_vs_regex_agreement": 0.913,
-  "open_judge_of_flagged": 0.478
- },
- {
-  "system": "v3p-glm-4.7-flash",
-  "haiku_judge_original": 4,
-  "open_judge_gpt_oss_120b": 3,
-  "regex": 5,
-  "open_judge_vs_regex_agreement": 0.846,
-  "open_judge_of_flagged": 0.231
- },
- {
-  "system": "v3p-llama-3.1-8b",
-  "haiku_judge_original": 3,
-  "open_judge_gpt_oss_120b": 3,
-  "regex": 8,
-  "open_judge_vs_regex_agreement": 0.696,
-  "open_judge_of_flagged": 0.13
- },
- {
-  "system": "v3p-ministral-14b",
-  "haiku_judge_original": 12,
-  "open_judge_gpt_oss_120b": 11,
-  "regex": 13,
-  "open_judge_vs_regex_agreement": 0.923,
-  "open_judge_of_flagged": 0.423
- },
- {
-  "system": "v3p-nemotron-3-nano",
-  "haiku_judge_original": 5,
-  "open_judge_gpt_oss_120b": 5,
-  "regex": 7,
-  "open_judge_vs_regex_agreement": 0.9,
-  "open_judge_of_flagged": 0.25
- },
- {
-  "system": "v3p-qwen3-coder-30b-a3b",
-  "haiku_judge_original": 5,
-  "open_judge_gpt_oss_120b": 4,
-  "regex": 3,
-  "open_judge_vs_regex_agreement": 0.947,
-  "open_judge_of_flagged": 0.211
- },
- {
-  "system": "v3p-stock-qwen3.5-9b",
-  "haiku_judge_original": 10,
-  "open_judge_gpt_oss_120b": 9,
-  "regex": 13,
-  "open_judge_vs_regex_agreement": 0.692,
-  "open_judge_of_flagged": 0.346
- },
- {
   "system": "v2-gemma-4-26b",
-  "haiku_judge_original": 14,
-  "open_judge_gpt_oss_120b": 13,
-  "regex": 15,
-  "open_judge_vs_regex_agreement": 0.923
+  "rows": 86,
+  "broken": 31,
+  "works": 55,
+  "verdict_accuracy": 0.791,
+  "false_alarm": 0.2,
+  "broken_caught": 24,
+  "right_reason_open_judge": 12,
+  "right_reason_regex": 13,
+  "judge_vs_regex_agreement": 0.958,
+  "historical_haiku_judged_90row_key": 14
  },
  {
   "system": "v2-glm-4.7-flash",
-  "haiku_judge_original": 2,
-  "open_judge_gpt_oss_120b": 2,
-  "regex": 3,
-  "open_judge_vs_regex_agreement": 0.909
+  "rows": 86,
+  "broken": 31,
+  "works": 55,
+  "verdict_accuracy": 0.756,
+  "false_alarm": 0.018,
+  "broken_caught": 11,
+  "right_reason_open_judge": 2,
+  "right_reason_regex": 3,
+  "judge_vs_regex_agreement": 0.909,
+  "historical_haiku_judged_90row_key": 2
  },
  {
   "system": "v2-llama-3.1-8b",
-  "haiku_judge_original": 1,
-  "open_judge_gpt_oss_120b": 1,
-  "regex": 2,
-  "open_judge_vs_regex_agreement": 0.875
+  "rows": 86,
+  "broken": 31,
+  "works": 55,
+  "verdict_accuracy": 0.698,
+  "false_alarm": 0.055,
+  "broken_caught": 8,
+  "right_reason_open_judge": 1,
+  "right_reason_regex": 2,
+  "judge_vs_regex_agreement": 0.875,
+  "historical_haiku_judged_90row_key": 1
  },
  {
   "system": "v2-nemotron-3-nano",
-  "haiku_judge_original": 7,
-  "open_judge_gpt_oss_120b": 7,
-  "regex": 6,
-  "open_judge_vs_regex_agreement": 0.947
+  "rows": 86,
+  "broken": 31,
+  "works": 55,
+  "verdict_accuracy": 0.314,
+  "false_alarm": 0.836,
+  "broken_caught": 18,
+  "right_reason_open_judge": 6,
+  "right_reason_regex": 5,
+  "judge_vs_regex_agreement": 0.944,
+  "historical_haiku_judged_90row_key": 7
  },
  {
   "system": "v2-usuba-v2-best-q4km",
-  "haiku_judge_original": 2,
-  "open_judge_gpt_oss_120b": 0,
-  "regex": 2,
-  "open_judge_vs_regex_agreement": 0.9
+  "rows": 86,
+  "broken": 31,
+  "works": 55,
+  "verdict_accuracy": 0.849,
+  "false_alarm": 0.018,
+  "broken_caught": 19,
+  "right_reason_open_judge": 1,
+  "right_reason_regex": 2,
+  "judge_vs_regex_agreement": 0.947,
+  "historical_haiku_judged_90row_key": 2
+ },
+ {
+  "system": "v3p-gemma-3-12b",
+  "rows": 86,
+  "broken": 31,
+  "works": 55,
+  "verdict_accuracy": 0.616,
+  "false_alarm": 0.345,
+  "broken_caught": 17,
+  "right_reason_open_judge": 4,
+  "right_reason_regex": 5,
+  "judge_vs_regex_agreement": 0.941,
+  "historical_haiku_judged_90row_key": 4
+ },
+ {
+  "system": "v3p-gemma-4-26b",
+  "rows": 86,
+  "broken": 31,
+  "works": 55,
+  "verdict_accuracy": 0.791,
+  "false_alarm": 0.164,
+  "broken_caught": 22,
+  "right_reason_open_judge": 11,
+  "right_reason_regex": 11,
+  "judge_vs_regex_agreement": 0.909,
+  "historical_haiku_judged_90row_key": 12
+ },
+ {
+  "system": "v3p-glm-4.7-flash",
+  "rows": 86,
+  "broken": 31,
+  "works": 55,
+  "verdict_accuracy": 0.744,
+  "false_alarm": 0.073,
+  "broken_caught": 13,
+  "right_reason_open_judge": 3,
+  "right_reason_regex": 5,
+  "judge_vs_regex_agreement": 0.846,
+  "historical_haiku_judged_90row_key": 4
+ },
+ {
+  "system": "v3p-llama-3.1-8b",
+  "rows": 86,
+  "broken": 31,
+  "works": 55,
+  "verdict_accuracy": 0.709,
+  "false_alarm": 0.309,
+  "broken_caught": 23,
+  "right_reason_open_judge": 3,
+  "right_reason_regex": 8,
+  "judge_vs_regex_agreement": 0.696,
+  "historical_haiku_judged_90row_key": 3
+ },
+ {
+  "system": "v3p-ministral-14b",
+  "rows": 86,
+  "broken": 31,
+  "works": 55,
+  "verdict_accuracy": 0.767,
+  "false_alarm": 0.236,
+  "broken_caught": 24,
+  "right_reason_open_judge": 11,
+  "right_reason_regex": 13,
+  "judge_vs_regex_agreement": 0.917,
+  "historical_haiku_judged_90row_key": 12
+ },
+ {
+  "system": "v3p-nemotron-3-nano",
+  "rows": 86,
+  "broken": 31,
+  "works": 55,
+  "verdict_accuracy": 0.326,
+  "false_alarm": 0.818,
+  "broken_caught": 18,
+  "right_reason_open_judge": 5,
+  "right_reason_regex": 7,
+  "judge_vs_regex_agreement": 0.889,
+  "historical_haiku_judged_90row_key": 5
+ },
+ {
+  "system": "v3p-qwen3-coder-30b-a3b",
+  "rows": 86,
+  "broken": 31,
+  "works": 55,
+  "verdict_accuracy": 0.767,
+  "false_alarm": 0.145,
+  "broken_caught": 19,
+  "right_reason_open_judge": 4,
+  "right_reason_regex": 3,
+  "judge_vs_regex_agreement": 0.947,
+  "historical_haiku_judged_90row_key": 5
+ },
+ {
+  "system": "v3p-stock-qwen3.5-9b",
+  "rows": 86,
+  "broken": 31,
+  "works": 55,
+  "verdict_accuracy": 0.826,
+  "false_alarm": 0.164,
+  "broken_caught": 25,
+  "right_reason_open_judge": 9,
+  "right_reason_regex": 13,
+  "judge_vs_regex_agreement": 0.68,
+  "historical_haiku_judged_90row_key": 10
  }
 ]

@@ -17,7 +17,7 @@ Headline rows (prompt v1, i.e. the prompt Usuba 9B was trained with; `usuba-9b-q
 | **Usuba 9B (Q4_K_M)** | 0.812 | 0.883 | 0.931 | 0.402 | 0.427 | 0.909 |
 | Stock Qwen3.5-9B (OpenRouter) | 0.699 | 0.737 | 0.690 | 0.173 | 0.420 | 0.766 |
 | Checker alone (no model) | 0.650 | 0.673 | 0.586 | 0.131 | 0.442 | 1.000 |
-| Claude Sonnet 5.5 with its own skill prompt (score only) | 0.374 | 0.330 | 0.172 | 0.347 | 0.397 | 0.997 |
+| Claude Sonnet 5.5 with its own skill prompt (third-party comparison, score only; no Claude output is used anywhere in this project) | 0.374 | 0.330 | 0.172 | 0.347 | 0.397 | 0.997 |
 
 Like-for-like re-run of stock and open peers on prompt v3 (Usuba 9B was **not** run on prompt v3; Oct 15 re-run; `holdout-v3p-*.json`) and on prompt v2 (`holdout-v2-*.json`):
 | System | v3 acc / recall / false alarm / cat. recall | v2 acc / cat. recall |

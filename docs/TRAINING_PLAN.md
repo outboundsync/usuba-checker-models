@@ -46,16 +46,16 @@ Category names are normalised to the HANCORE slugs (`run_eval.norm_cat`; rescore
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | Checker scripts alone | 0.650 | 0.673 | 0.586 | 0.131 | 0.442 | 1.00 | $0 | 0 |
 | stock Qwen 3.5 9B (OpenRouter, no thinking) | 0.699 | 0.737 | 0.690 | 0.173 | 0.420 | 0.766 | $0.25 | 10.4 |
-| Claude Sonnet 5.5 skill (OpenRouter, reasoning on; it cannot be turned off) | 0.374 | 0.330 | 0.172 | 0.347 | 0.397 | 0.997 | $11.05 | 11.0 |
+| Claude Sonnet 5.5 skill (third-party comparison, score only; OpenRouter, reasoning on; it cannot be turned off) | 0.374 | 0.330 | 0.172 | 0.347 | 0.397 | 0.997 | $11.05 | 11.0 |
 | **Usuba 9B Q4_K_M (this run)** | **0.812** | **0.883** | **0.931** | **0.402** | **0.427** | **0.909** | **$0** | **5.23** |
 Always answering "changes_requested" would score 0.912 here, so judge on category recall/precision and false alarms, not verdict accuracy.
 
-### In-use eval: Dell answer key (90 decided rows: 33 broken, 57 works; excluded from training)
+### In-use eval: Dell answer key (90 decided rows: 33 broken, 57 works; excluded from training). Historical numbers: later the 4 decided rows of Claude-written plugins were excluded (now 86 rows: 31 broken, 55 works); tables in this section keep the 90-row key
 `run_eval.py --set dellkey`. The functest (real Quickshell) scores 90/90 on these; the models see only code + Checker report.
 | system | verdict acc | broken caught | false alarm on works | JSON valid | cost |
 |---|---:|---:|---:|---:|---:|
 | stock Qwen 3.5 9B | 0.567 | 0.879 | 0.614 | 0.822 | $0.04 |
-| Claude Sonnet 5.5 skill | 0.867 | 0.848 | 0.123 | 1.00 | $2.08 |
+| Claude Sonnet 5.5 skill (third-party comparison, score only) | 0.867 | 0.848 | 0.123 | 1.00 | $2.08 |
 | **Usuba 9B Q4_K_M (this run)** | **0.756** | **0.939** | **0.351** | **0.978** | **$0** |
 
 ## Run log: Qwen 3.5 9B bf16 LoRA (2026-10-13/14)
@@ -68,15 +68,15 @@ Always answering "changes_requested" would score 0.912 here, so judge on categor
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | Checker scripts alone | 0.650 | 0.673 | 0.586 | 0.131 | 0.442 | 1.00 | $0 | 0 |
 | stock Qwen 3.5 9B (OpenRouter) | 0.699 | 0.737 | 0.690 | 0.173 | 0.420 | 0.766 | $0.25 | 10.4 |
-| Claude Sonnet 5.5 skill | 0.374 | 0.330 | 0.172 | 0.347 | 0.397 | 0.997 | $11.05 | 11.0 |
+| Claude Sonnet 5.5 skill (third-party comparison, score only) | 0.374 | 0.330 | 0.172 | 0.347 | 0.397 | 0.997 | $11.05 | 11.0 |
 | **Usuba 9B Q4_K_M (this run)** | **0.812** | **0.883** | **0.931** | **0.402** | **0.427** | **0.909** | **$0** | **5.23** |
 
-### Dell answer key (90 plugins)
+### Dell answer key (90 plugins; historical 90-row key, before the Claude-written plugins were excluded)
 
 | system | verdict acc | broken caught | false alarm on works | JSON valid | median s |
 |---|---:|---:|---:|---:|---:|
 | stock Qwen 3.5 9B | 0.567 | 0.879 | 0.614 | 0.822 | 7.67 |
-| Claude Sonnet 5.5 skill | 0.867 | 0.848 | 0.123 | 1.00 | 8.99 |
+| Claude Sonnet 5.5 skill (third-party comparison, score only) | 0.867 | 0.848 | 0.123 | 1.00 | 8.99 |
 | **Usuba 9B Q4_K_M (this run)** | **0.756** | **0.939** | **0.351** | **0.978** | **2.88** |
 
 Artifacts: `/workspace/usuba-runs/55864967/` (model, checkpoints, logs, GGUF) + `exam/` (eval JSON/raw + logs). Raw results also copied to `eval/hancore_holdout/results/usuba-9b-q4km*.json*`.
@@ -126,8 +126,8 @@ The prep scripts had only passed `bash -n`; running them on a rented H100 NVL (i
 ## Usuba v2 exam (2026-10-15, Vast 56016890 H100 NVL)
 Best adapter -> merged -> Q4_K_M GGUF (already exported on the instance) -> CUDA llama-server (`-c 917504 -np 4`, 229k/slot, whole-file Dell prompts), prompt v2, same harness for all rows. Peers via OpenRouter (stock models, no DeepSeek/Anthropic rows; the Dell reason judge is still Haiku 5.5, as in the harness). Raw results: `/workspace/usuba-runs/56016890/exam/` and `usuba-v2distill/exam/` in the store.
 
-Dell key (90 plugins: 33 broken, 57 works):
-| system | verdict acc | false alarm | broken caught | right reason (judge) | of flagged | invented SHA/name rows | parse |
+Dell key (historical 90-row key: 33 broken, 57 works; the right-reason column is Haiku-judged, historical):
+| system | verdict acc | false alarm | broken caught | right reason (Haiku-judged, historical) | of flagged | invented SHA/name rows | parse |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Ministral 14B | 0.822 | 0.175 | 27/33 | 15/33 | 0.56 | 0/0 | 1.000 |
 | Gemma 4 26B-A4B | 0.800 | 0.193 | 26/33 | 14/33 | 0.54 | 0/0 | 0.989 |
@@ -152,7 +152,7 @@ Learnings:
 
 ## v2 exam diagnosis (2026-10-15)
 ### Part A: v2 Q4_K_M vs stock Qwen3.5 9B on the 20 flagged-broken Dell plugins
-- v2 flagged 20/33 broken, stock flagged 20/33 (different sets; overlap-by-plugin not identical). Right-reason (judge): v2 2/33, stock 8/33.
+- v2 flagged 20/33 broken, stock flagged 20/33 (different sets; overlap-by-plugin not identical). Right-reason (Haiku-judged, historical): v2 2/33, stock 8/33.
 - v2 findings: exactly 1 finding per flagged plugin (stock 1.6), ~94 completion tokens (stock ~132). 14/20 have file=null (stock 0/20); 6/20 cite a line (stock 12/20).
 - 12/20 v2 findings use marketplace/security boilerplate categories (unbounded-input-resource x8, rich-text-markup-injection x4) + file-safety x1 = 13/20 generic security-review wording ("accepts an unbounded response ...", "default AutoText ... rich-text resource load") that is not a load failure; load="unsure" for 14/20 (stock says load="broken" for all 20). Stock mostly uses load:component-not-created (13/20) incl. manifest/missing entry-file claims.
 - Only 6/20 v2 answers are concrete load-bug claims with file+line (Qt.reschemaVersion, root.toggle(), brightnessModel undeclared, NativeDrag unknown type, Qt.setClipboardText, undeclared service); stock names the same ones in the same places. v2 never catches the missing-file / manifest-entryPoints classes (stock 6 of its 8 hits, e.g. bl.q14s.* manifest entryPoints, b3.q7b.acme-notifications missing Service.qml).
@@ -160,7 +160,7 @@ Learnings:
 - Grader strictness: no v2 answer was rejected that names the real bug. Judge/regex disagreements: b3.q14b.acme-notifications (regex yes, judge no; key = missing service entry file, v2 reported Qt.reschemaVersion: different cause, judge right); intemporel (judge yes, regex no; v2 listed undeclared Panel API members, a lenient accept: key also names a missing binary, and the finding is mislabelled unbounded-input-resource). So 2/33 is, if anything, generous; judge strict 1-2.
 Conclusion A: v2 mostly answers in the training-set "security review" register (generic, file-less, load=unsure) instead of diagnosing the load failure; it did not forget code-level bugs entirely but lost the manifest/missing-file checks.
 ### Part B: unquantized merged model (bf16 GGUF merged from best adapter into bf16 Qwen3.5-9B; llama-server CUDA, same flags, prompt v2, same harness)
-| model | verdict acc | false alarm | caught | right-reason judge (regex) | of flagged |
+| model | verdict acc | false alarm | caught | right-reason (Haiku-judged, historical; regex) | of flagged |
 |---|---|---|---|---|---|
 | v2 Q4_K_M | .844 | .018 | 20/33 | 2/33 (2) | .10 |
 | v2 bf16 merged | .811 | .070 | 20/33 | 1/33 (2) | .05 |
@@ -204,4 +204,22 @@ Do the steps in order; each has a stop condition. Nothing here launches paid GPU
 
 Prompt-v3 baselines (Dell right-reason by the ORIGINAL Haiku judge, now superseded by the open-judge regrade in docs/ANTHROPIC_TERMS_COMPLIANCE.md, of 33 broken): Ministral 14B 12, Gemma 4 26B 12, Qwen3.5 9B stock 10, Nemotron 5, Qwen3-Coder 5, Gemma 3 12B 4, GLM 4.7 Flash 4, Llama 3.1 8B 3. Stock Qwen3.5 9B is the gate-(c) bar: 10/33 on prompt v3 (8/33 on v2).
 
-**Open-judge regrade (gpt-oss-120b, replaces the Haiku numbers above; `eval/dellkey_open_judge/summary.json`)**, right-reason catches of 33 broken: Ministral 14B 11, Gemma 4 26B 11, Qwen3.5 9B stock 9, Nemotron 5, Qwen3-Coder 4, Gemma 3 12B 4, GLM 4.7 Flash 3, Llama 3.1 8B 3 (regex rubric: 13, 11, 13, 7, 3, 5, 5, 8). The stock Qwen3.5 9B bar for gate (c) is 9/33 under the open judge. Where this file elsewhere says "judge" for the v1/v2 exams, those numbers came from the Haiku judge and have not been regraded.
+**Open-judge regrade on the 86-row key (31 broken, 55 works; 4 rows of Claude-written plugins excluded), judge gpt-oss-120b; replaces the Haiku numbers above and the 90-row numbers for these systems; `eval/dellkey_open_judge/summary.json`.** Systems whose raw answers are missing (Usuba v1, Sonnet, Ministral and others on v1/v2, bf16) were not regraded and keep their Haiku-judged, historical, 90-row numbers.
+
+| system (v2 = prompt v2, v3p = prompt v3) | verdict acc | false alarm | broken caught | right reason (open judge) | right reason (regex) |
+|---|---|---|---|---|---|
+| v2-gemma-4-26b | 0.791 | 0.200 | 24/31 | 12/31 | 13/31 |
+| v2-glm-4.7-flash | 0.756 | 0.018 | 11/31 | 2/31 | 3/31 |
+| v2-llama-3.1-8b | 0.698 | 0.055 | 8/31 | 1/31 | 2/31 |
+| v2-nemotron-3-nano | 0.314 | 0.836 | 18/31 | 6/31 | 5/31 |
+| v2-usuba-v2-best-q4km | 0.849 | 0.018 | 19/31 | 1/31 | 2/31 |
+| v3p-gemma-3-12b | 0.616 | 0.345 | 17/31 | 4/31 | 5/31 |
+| v3p-gemma-4-26b | 0.791 | 0.164 | 22/31 | 11/31 | 11/31 |
+| v3p-glm-4.7-flash | 0.744 | 0.073 | 13/31 | 3/31 | 5/31 |
+| v3p-llama-3.1-8b | 0.709 | 0.309 | 23/31 | 3/31 | 8/31 |
+| v3p-ministral-14b | 0.767 | 0.236 | 24/31 | 11/31 | 13/31 |
+| v3p-nemotron-3-nano | 0.326 | 0.818 | 18/31 | 5/31 | 7/31 |
+| v3p-qwen3-coder-30b-a3b | 0.767 | 0.145 | 19/31 | 4/31 | 3/31 |
+| v3p-stock-qwen3.5-9b | 0.826 | 0.164 | 25/31 | 9/31 | 13/31 |
+
+The stock Qwen3.5 9B bar for gate (c) on prompt v3 is 9/31 under the open judge (regex 13/31).
