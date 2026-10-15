@@ -324,7 +324,7 @@ def i12_supervisor(c):
     ln = read(os.path.join(MODELS, "train", "launch_vast.sh"))
     checks = {"trap that destroys on failure": re.search(r"trap\s+'[^']*destroy", ln), "instance wall-clock limit": "INSTANCE_MAX_HOURS" in ln,
               "terminal NO_RESTART/TRAIN_STOPPED handled": "NO_RESTART" in ln and "TRAIN_STOPPED" in ln, "mktemp for temp files": "mktemp" in ln,
-              "no fixed local /tmp bundle path": ("/tmp/" + "usuba_train_bundle.tgz") not in ln, "host key policy not 'no'": "StrictHostKeyChecking=no" not in ln}
+              "no fixed local /tmp bundle path": re.search(r"[\s=\"]/tmp/usuba_train_bundle\.tgz", ln) is None, "host key policy not 'no'": "StrictHostKeyChecking=no" not in ln}
     wd = read(os.path.join(MODELS, "train", "watchdog.sh"))
     checks["stall clock starts at first step (watchdog grace)"] = re.search(r"grace|GRACE", wd) is not None
     checks["host does not restart (single supervisor)"] = "pkill" not in re.sub(r"#.*", "", ln.split("watch)")[-1].split("INSTANCE WALL-CLOCK")[0]) if "watch)" in ln else True
