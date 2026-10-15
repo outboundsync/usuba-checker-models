@@ -1,5 +1,5 @@
 import json,os,re,threading,hashlib,urllib.request,time
-MODEL="qwen/qwen3.5-397b-a17b"; CAP=9.0
+MODEL="qwen/qwen3.5-397b-a17b"; CAP=float(os.environ.get('R_CAP','9.0'))
 HERE=os.path.dirname(os.path.abspath(__file__)); WORK=os.environ.get('R_WORK','/tmp/usuba_r_work'); os.makedirs(WORK,exist_ok=True)
 LEDGER=WORK+'/ledger.json'; CACHE=WORK+'/cache.jsonl'
 SEED_CACHE=os.path.join(HERE,'..','r3_cache','llm_cache.jsonl.gz')   # every model reply used for r2+r3 (offline replay: zero cost); delete R_WORK to re-query
@@ -15,11 +15,11 @@ def spent(): return _tot[0]
 def _add(c):
     with _lk:
         _tot[0]+=c; json.dump({'usd':_tot[0]},open(LEDGER,'w'))
-def call(system,user,tag='',temperature=0.0,max_tokens=6000,effort='none',seed=None):
-    k=hashlib.sha1(json.dumps([system,user,temperature,seed,tag]).encode()).hexdigest()
+def call(system,user,tag='',temperature=0.0,max_tokens=6000,effort='none',seed=None,model=None):
+    k=hashlib.sha1(json.dumps([system,user,temperature,seed,tag]+([model] if model else [])).encode()).hexdigest()
     if k in _cache: return _cache[k]['out']
     if spent()>CAP: raise RuntimeError('budget cap')
-    req=dict(model=MODEL,max_tokens=max_tokens,messages=[{"role":"system","content":system},{"role":"user","content":user}],reasoning={"effort":effort},
+    req=dict(model=model or MODEL,max_tokens=max_tokens,messages=[{"role":"system","content":system},{"role":"user","content":user}],reasoning={"effort":effort},
              provider={"data_collection":"deny","sort":"throughput"},usage={"include":True},temperature=temperature)
     if seed is not None: req['seed']=seed
     err=''

@@ -1,0 +1,51 @@
+{
+ "stats": {
+  "pairs_class_other_excluded": 26,
+  "pairs_prepared": 607,
+  "pairs_passed_gates": 381,
+  "spot_check_n": 40,
+  "spot_check_agree": 35,
+  "spot_failed_dropped": 5,
+  "broken_rows": 351,
+  "approve_candidates": 299
+ },
+ "drops": {
+  "finding_text_unusable": 100,
+  "mechanical_exact_line_failed": 62,
+  "model_gate_llm_not_exact_line": 21,
+  "kind_vote_split": 18,
+  "model_gate_not_a_defect_statement": 19,
+  "model_gate_moved": 6,
+  "broken_row:cited_line_not_visible": 24,
+  "approve:checker_errors_or_unavailable": 44,
+  "broken_row:over_32k_tokens": 1,
+  "approve:model_remaining_defect": 8
+ },
+ "by_class": {
+  "exact_removed": 303,
+  "insertion_anchor": 48
+ },
+ "by_category": {
+  "in-use:stale-or-wrong-display": 76,
+  "file-safety-symlink-perms": 4,
+  "unbounded-input-resource": 13,
+  "runtime:logic-error": 145,
+  "in-use:invalid-command-arg": 18,
+  "shell-lua-injection": 7,
+  "runtime:state-or-race": 31,
+  "runtime-qml-api-compat": 18,
+  "runtime:undefined-property": 9,
+  "rich-text-markup-injection": 3,
+  "process-lifecycle-timeouts": 9,
+  "install-deps-packaging": 1,
+  "runtime:error-handling": 8,
+  "url-scheme-network": 1,
+  "in-use:missing-binary": 1,
+  "secrets-credentials": 4,
+  "privileged-system": 1,
+  "user-config-modification": 1,
+  "remote-code-pinning": 1
+ },
+ "spot_agreement": 0.875,
+ "spend_usd": 2.237278280000002
+}

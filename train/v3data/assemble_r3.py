@@ -110,6 +110,9 @@ st.update({"v3fixes_dropped_" + k: v for k, v in dropped.items()})
 NOISE = {l.strip().lower() for l in open(FX + "relabel_broken_to_works_candidates.txt") if l.strip() and not l.startswith("#")}
 nz = [r for r in rows if r["source"].startswith("dell") and r["verdict"] == "changes_requested" and r["id"].split(":", 1)[1].rsplit(":", 1)[0].lower() in NOISE]
 st["v3fixes_dell_label_noise_rows_dropped"] = len(nz); rows = [r for r in rows if r not in nz]   # bad-import on QML not reachable from the manifest: label is noise; the regenerated Checker report is clean, so the row is dropped, not turned into an approve (no Dell evidence for the approve answer)
+if os.environ.get("DUMP_FINAL"):   # r4 input: every row after report regeneration, prompt_v3 rewrap and v3-fixes drops (before caps / val selection)
+    with gzip.open(os.environ["DUMP_FINAL"], "wt") as f:
+        for r in rows: f.write(json.dumps(r, ensure_ascii=False) + "\n")
 # ---- leakage fingerprints
 h_repos, h_ids, h_trees = B.holdout_fingerprint()
 def fhash(r):

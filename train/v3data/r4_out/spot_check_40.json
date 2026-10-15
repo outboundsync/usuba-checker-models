@@ -1,0 +1,362 @@
+[
+ {
+  "id": "version_history:midagedev/gadak:9bb1e22028",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The pipeline at line 121 can trigger SIGPIPE when head exits early, causing an unwanted error message."
+  }
+ },
+ {
+  "id": "version_history:mrcode/omarchy-cast:c8f69b288f",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The original list comprehension iterates over all sessions, including IDLE ones, as shown on line 148"
+  }
+ },
+ {
+  "id": "version_history:gran-software-solutions/podmarchy-omarchy-plugin:88c92f820b",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The later change replaces authSetProc.exitCode with a passed exitCode, confirming the original was incorrect."
+  }
+ },
+ {
+  "id": "version_history:tahayvr/postcard:fad1f9e0e7",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The -q flag indeed suppresses output, leading to empty pipeline results, and the later change removes it confirming the defect."
+  }
+ },
+ {
+  "id": "version_history:tablerase/omarchy-ardoise:044f1d27a0",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The original code lacked a Keys.priority setting, so the Escape key could be intercepted by other focused items, confirming the reported defect."
+  }
+ },
+ {
+  "id": "version_history:swheel33/tailbridge:f699ad61aa",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The later change replaces the same constant with a new URL, confirming the original ID was outdated."
+  }
+ },
+ {
+  "id": "version_history:davedes83/fossfetch:72ebb937e8",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The later change fixes the bug by replacing Layout.preferred* with implicit* indicating the original code caused the collapse."
+  }
+ },
+ {
+  "id": "version_history:elynch303/proton-pass:a8762801ae",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The original code uses $CLI_TIMEOUT for item list, which can abort large fetches, and the later change replaces it with a dedicated timeout variable."
+  }
+ },
+ {
+  "id": "version_history:scoop/omarchy-plugin-uptime-kuma:a0fbeb480d",
+  "agree": false,
+  "verdict": {
+   "defect_real": false,
+   "cited_line_exact": true,
+   "why": "Assigning selectedIndex on open is intentional behavior, not a bug."
+  }
+ },
+ {
+  "id": "version_history:spencerbull/omarchy-omapilot:a74f94a7f1",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The code declares approvedOpenCodeToolCalls as a Set<string>, which can only hold command names and not their argument strings."
+  }
+ },
+ {
+  "id": "version_history:justnak/charge-cap:443bb68599",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "Number(i.limit) turns null/empty into 0, bypassing the null check and causing incorrect estimates."
+  }
+ },
+ {
+  "id": "version_history:omarchy-qol/omarchy-keyboard-layout:37a9c73067",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The original line concatenates the quoted name directly, causing hyprctl to misinterpret a leading dash as an option flag."
+  }
+ },
+ {
+  "id": "version_history:layolayo/omarchy-the-eternal-moment:2880f96d4d",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The code copies a predictable temporary file via cp, allowing a race\u2011condition overwrite."
+  }
+ },
+ {
+  "id": "version_history:bramvanoploo/omarchy-t2-linux:02ce1539ef",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "Default Text element uses AutoText, so modelData.name can be rendered as rich text allowing HTML injection."
+  }
+ },
+ {
+  "id": "version_history:zeus-deus/voxtype-omarchy-plugin:7b9114e2ff",
+  "agree": false,
+  "verdict": {
+   "defect_real": false,
+   "cited_line_exact": true,
+   "why": "The response is still set in the exception block, so no UnboundLocalError occurs"
+  }
+ },
+ {
+  "id": "version_history:levyvix/omarchy-youtube-music:676618da9a",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The function only matches \"chromium\" exactly, so Chrome is missed, confirming the described defect."
+  }
+ },
+ {
+  "id": "version_history:abdxdev/omarchy-onscreen-keyboard:00f3d6a946",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "Space has code point <0x80, so the original check returns the character instead of mapping it to the required 'space' keysym."
+  }
+ },
+ {
+  "id": "version_history:bjarkimg/omarchy-population-pyramid:3c919e8fc2",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The later change reduces the width value, confirming the original assignment caused an excessive width overflow."
+  }
+ },
+ {
+  "id": "version_history:timlittle/omamessenger:ba22496d45",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The later change replaces the hardcoded timeout with a variable, confirming the original hardcoded 5\u202fs was insufficient."
+  }
+ },
+ {
+  "id": "version_history:14brussell/wallpaper-engine-omarchy:729d400cdb",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The code reads root.manifest.__sourceDir, a private field that is removed, causing the path to be incorrect."
+  }
+ },
+ {
+  "id": "version_history:joaodrp/omarchy-auto-brightness:7547316816",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The code uses only root.offset to allow index 1, matching the described bug."
+  }
+ },
+ {
+  "id": "version_history:nagualcode/omarchy-thetinybuttons:00da9e4f38",
+  "agree": false,
+  "verdict": {
+   "defect_real": false,
+   "cited_line_exact": true,
+   "why": "togglefloating is a valid hyprctl dispatcher, so the code does not call a non-existent command"
+  }
+ },
+ {
+  "id": "version_history:dawestheperson/hyperwyrm:41306eb6eb",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The original running condition lacks a visibility check, causing the animation to run even when hidden."
+  }
+ },
+ {
+  "id": "version_history:sgruendel/omarchy-airq:fdd05b58d6",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The code assigns inertTooltipText directly without processing HTML tags."
+  }
+ },
+ {
+  "id": "version_history:simoz/omarchy-vessel:e6a2e9e796",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The height is fixed to Math.ceil(root.height/16) preventing conditional shrinking."
+  }
+ },
+ {
+  "id": "version_history:theairick/omadeck:97ff9b1736",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The original model uses Quickshell.screens, iterating all screens, causing the drawer to appear on every monitor."
+  }
+ },
+ {
+  "id": "version_history:sleepy-studio/omachat:e3fb75c2a6",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The original line logs only tokenReply->errorString() without capturing the response body containing OAuth error details."
+  }
+ },
+ {
+  "id": "version_history:astorrer/konnectarchy:af237ac0fa",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The signal definition directly conflicts with the auto-generated pageChanged signal for the existing page property"
+  }
+ },
+ {
+  "id": "version_history:nethunranasinghe/omakube:2b1c983607",
+  "agree": false,
+  "verdict": {
+   "defect_real": false,
+   "cited_line_exact": true,
+   "why": "The code only builds a file path string; no command execution occurs, so the risk described is not applicable."
+  }
+ },
+ {
+  "id": "version_history:deunnis/omarchy-screenwash:8453618efd",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The later change modifies the kill command to target the process group, confirming the original line only killed the wrapper and left children orphaned."
+  }
+ },
+ {
+  "id": "version_history:elevate08/qs-ynab-api:12a3b595e9",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The code uses a hardcoded Style.space(680) for contentHeight, which was later reduced, confirming the original excessive value caused layout issues."
+  }
+ },
+ {
+  "id": "version_history:mshareef-git/omavibes:1bfa453514",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The original line hardcodes a path assuming ~/.config/omarchy, which is a real limitation"
+  }
+ },
+ {
+  "id": "version_history:davedes83/animated-dock:8d87eac523",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The pattern `$REPO*` matches any path with the same prefix, leading to over\u2011deletion of sibling links."
+  }
+ },
+ {
+  "id": "version_history:balthazzahr/omatunes:7592f536ba",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The code uses self.tracks.first() instead of the active queue, causing playback to start from the library's first track."
+  }
+ },
+ {
+  "id": "version_history:mahziyarng98/jalali-calendar:11a177e2b2",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The code directly assigns to a read\u2011only property, which the later change replaces with a safe method call."
+  }
+ },
+ {
+  "id": "version_history:sleepy-studio/omachat:930afeddf0",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The original code calls net.post without setting the required Authorization header, which the later change adds."
+  }
+ },
+ {
+  "id": "version_history:alxwolfenstein97/omacursor:394dec4edd",
+  "agree": false,
+  "verdict": {
+   "defect_real": false,
+   "cited_line_exact": true,
+   "why": "The state directory is intentionally used for persistent storage, not a defect."
+  }
+ },
+ {
+  "id": "version_history:bonesgit/omarchy-netdata:8ad08e8576",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The y property is set to a constant Style.space(4), fixing the tooltip's vertical position and causing overlap."
+  }
+ },
+ {
+  "id": "version_history:n1byn1kt/omarchy-garmin:54ec996150",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The later change replaces service.data with service.payload, confirming the original call was incorrect."
+  }
+ },
+ {
+  "id": "version_history:iamcheyan/omarchy-launcher:7072e10bdd",
+  "agree": true,
+  "verdict": {
+   "defect_real": true,
+   "cited_line_exact": true,
+   "why": "The later change corrects the verticalAlignment from AlignTop to AlignVCenter, confirming the original setting caused the off\u2011center issue."
+  }
+ }
+]
