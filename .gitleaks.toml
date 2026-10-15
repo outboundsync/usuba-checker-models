@@ -6,5 +6,5 @@ description = "Redaction markers and the offline-replay dummy value are not secr
 regexes = [
   '''unused-offline-replay''',
   '''REDACTED_[A-Z_]+''',
-  '''omarchy-agy-token-usage''',   # a public repo name inside a row id (v3/r5/SAMPLES.md), not a key
+  '''r[0-9]{5}-[0-9a-f]{10}''',   # dataset row ids (v3/r5/SAMPLES.md), not keys
 ]
