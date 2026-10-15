@@ -38,21 +38,78 @@ def regen(r):
     nb = "\n".join(keep) if keep else "(no Checker findings)"
     msgs = [dict(m) for m in r["messages"]]; msgs[-2]["content"] = u[:i + len(HDR)] + nb + u[j:]
     return dict(r, messages=msgs, tokens=ntok(json.dumps(msgs)), provenance=dict(r["provenance"], checker_report_regenerated_r3=n)), n
-RC = os.path.join(OUT, "regen_rows.jsonl.gz")   # cache of the (slow, deterministic) report regeneration; delete to recompute
-if os.path.exists(RC) and not os.environ.get("NO_REGEN_CACHE"):
-    rows = [json.loads(l) for l in gzip.open(RC, "rt")]; st["rows_with_removed_lines"] = sum(1 for r in rows if r["provenance"].get("checker_report_regenerated_r3")); st["report_lines_removed"] = sum(r["provenance"].get("checker_report_regenerated_r3", 0) for r in rows)
-    for r in rows:
-        for ln in [x for x in json.load(open(os.path.join(OUT, "rule_removed.json"))).items()][:0]: pass
-    rule_removed.update(json.load(open(os.path.join(OUT, "rule_removed.json"))))
-else:
-    rows = [json.loads(l) for l in gzip.open(POOL, "rt")]
-    out = []
-    for r in rows:
-        r2, n = regen(r); st["rows_with_removed_lines"] += bool(n); st["report_lines_removed"] += n; out.append(r2)
-    rows = out
-    with gzip.open(RC, "wt") as f:
-        for r in rows: f.write(json.dumps(r, ensure_ascii=False) + "\n")
-    json.dump(dict(rule_removed), open(os.path.join(OUT, "rule_removed.json"), "w"))
+# ---- Checker report regeneration. Stored reports came from the r2 Checker on the FULL source tree; the new Checker (FP fixes + v3-fixes lifecycle rules + HC rename) is applied as a DIFF
+# measured on the visible prompt files: lines the old Checker emitted and the new one does not are removed, lines only the new one emits are added; any other stored line (e.g. from files omitted from the
+# prompt) is kept (old `[USB-Hnn warn ...]` ids renamed to HC). rep_old.json / rep_new.json come from dump_reports.py (r2 tree vs this repo).
+import train_prompt_loader as _pl   # loads train/prompt_v3.py of THIS repo
+PV3 = _pl.load()
+REP_OLD = json.load(open(os.environ.get("REP_OLD", "/workspace/r3/rep_old.json"))); REP_NEW = json.load(open(os.environ.get("REP_NEW", "/workspace/r3/rep_new.json")))
+REP_FULL = json.load(open(os.environ.get("REP_FULL", "/workspace/r3/rep_full.json")))
+HDR = "## Checker report\n"
+def regen2(r):
+    u = r["messages"][-2]["content"]; i = u.index(HDR); j = u.index("\n\n## Plugin source"); body = u[i + len(HDR):j]
+    old, new = REP_OLD.get(r["id"]), REP_NEW.get(r["id"])
+    if r["source"] == "hancore_concrete" and REP_FULL.get(r["id"]) is not None:   # HANCORE reports were made from the full source tree: regenerate from it with the new Checker
+        full = REP_FULL[r["id"]]; stored = [] if body.startswith("(") else body.split("\n")
+        for ln in stored:
+            if ln not in set(full):
+                m = re.match(r"\[(USB-\w+)", ln); rule_removed[m.group(1) if m else "?"] += 1; st["report_lines_removed"] += 1
+                if len(samples) < 400: samples.append(dict(id=r["id"], op="removed", line=ln[:300]))
+        for ln in full:
+            if ln not in set(stored):
+                m = re.match(r"\[(USB-\w+)", ln); rule_added[m.group(1) if m else "?"] += 1; st["report_lines_added"] += 1
+                if len(samples) < 400: samples.append(dict(id=r["id"], op="added", line=ln[:300]))
+        nb = "\n".join(full) if full else "(no Checker findings)"; st["hancore_reports_regenerated_from_full_tree"] += 1
+        changed = set(full) != set(stored)
+        msgs = [dict(m) for m in r["messages"]]; msgs[-2]["content"] = u[:i + len(HDR)] + nb + u[j:]
+        return dict(r, messages=msgs, provenance=dict(r["provenance"], checker_report_regenerated_r3=bool(changed))), int(changed)
+    if old is None or new is None: st["regen_checker_unavailable"] += 1; return r, 0
+    stored = [] if body.startswith("(") else body.split("\n")
+    so, sn = set(old), set(new); removed = so - sn; added = [x for x in new if x not in so]
+    keep = []
+    for ln in stored:
+        if ln in removed:
+            m = re.match(r"\[(USB-\w+)", ln); rule_removed[m.group(1) if m else "?"] += 1; st["report_lines_removed"] += 1
+            if len(samples) < 400: samples.append(dict(id=r["id"], op="removed", line=ln[:300]))
+            continue
+        if ln not in so:
+            m2 = re.match(r"\[USB-H(\d\d) warn", ln)
+            if m2: ln = ln.replace("[USB-H" + m2.group(1), "[USB-HC" + m2.group(1), 1)
+            st["report_lines_unexplained_kept"] += 1
+        keep.append(ln)
+    for ln in added:
+        if ln not in keep:
+            keep.append(ln); m = re.match(r"\[(USB-\w+)", ln); rule_added[m.group(1) if m else "?"] += 1; st["report_lines_added"] += 1
+            if len(samples) < 400: samples.append(dict(id=r["id"], op="added", line=ln[:300]))
+    pos = {x: k for k, x in enumerate(new)}; keep.sort(key=lambda x: pos.get(x, 10 ** 6))
+    nb = "\n".join(keep) if keep else "(no Checker findings)"
+    changed = nb != (body if not body.startswith("(") else "(no Checker findings)")
+    msgs = [dict(m) for m in r["messages"]]; msgs[-2]["content"] = u[:i + len(HDR)] + nb + u[j:]
+    return dict(r, messages=msgs, provenance=dict(r["provenance"], checker_report_regenerated_r3=bool(changed))), int(changed)
+rule_added = collections.Counter()
+rows = []
+for l in gzip.open(POOL, "rt"):
+    r2, n = regen2(json.loads(l)); st["rows_with_changed_report"] += n; rows.append(r2)
+# ---- v3-fixes: re-wrap EVERY row with the new prompt_v3 (system + 7 shots), recount tokens (32k cap)
+over = 0; rr = []
+for r in rows:
+    msgs = PV3.rebuild(r["messages"]); t = ntok(json.dumps(msgs))
+    if t > 32000: over += 1; continue
+    rr.append(dict(r, messages=msgs, tokens=t))
+st["prompt_v3_rewrap_over_32k_dropped"] = over; rows = rr
+# ---- v3-fixes: drops (retractions, approve rows contradicting lifecycle prompt rule P2)
+FX = "/workspace/usuba-runs/v3-fixes/"
+ids = lambda fn: {l.split("\t")[1].strip() if l.startswith("tier") else l.strip() for l in open(FX + fn) if l.strip() and not l.startswith("#")}
+drop_ret = ids("retraction_drop_ids.txt"); drop_rev = ids("retraction_review_ids.txt"); drop_life = ids("audit_approve_lifecycle_ids.txt")
+n0 = len(rows); dropped = collections.Counter()
+for r in rows:
+    for nm, S in (("retraction_whole", drop_ret), ("retraction_partial_omapass", drop_rev), ("approve_lifecycle_audit", drop_life)):
+        if r["id"] in S: dropped[nm] += 1
+rows = [r for r in rows if r["id"] not in drop_ret | drop_rev | drop_life]
+st.update({"v3fixes_dropped_" + k: v for k, v in dropped.items()})
+NOISE = {l.strip().lower() for l in open(FX + "relabel_broken_to_works_candidates.txt") if l.strip() and not l.startswith("#")}
+nz = [r for r in rows if r["source"].startswith("dell") and r["verdict"] == "changes_requested" and r["id"].split(":", 1)[1].rsplit(":", 1)[0].lower() in NOISE]
+st["v3fixes_dell_label_noise_rows_dropped"] = len(nz); rows = [r for r in rows if r not in nz]   # bad-import on QML not reachable from the manifest: label is noise; the regenerated Checker report is clean, so the row is dropped, not turned into an approve (no Dell evidence for the approve answer)
 # ---- leakage fingerprints
 h_repos, h_ids, h_trees = B.holdout_fingerprint()
 def fhash(r):
@@ -96,7 +153,7 @@ bad = {r["id"] for r in val_b if any(dup(r, o) for o in others)}
 val_b = [r for r in val_b if r["id"] not in bad]; val_repos = {r["_repo"] for r in val_b}
 # approve for val: same count, source-mixed, repos disjoint from val broken repos and from train rows' repos; not near-dup with any broken/other row
 cands = [r for r in approve if r["_repo"] not in val_repos]
-prio = {"fix_upstream": 0, "nudged_approve": 0}; rnd.shuffle(cands); cands.sort(key=lambda r: prio.get(r["source"], 1))
+prio = {"fix_upstream": 0, "nudged_approve": 0, "synthetic_lifecycle": -1, "winners_mit": -1}; rnd.shuffle(cands); cands.sort(key=lambda r: prio.get(r["source"], 1))
 val_a = []; vrs = set(val_repos)
 non_val_broken = [r for r in broken if r["_repo"] not in val_repos]
 for r in cands:
@@ -111,6 +168,19 @@ tr_a = [r for r in approve if r["_repo"] not in val_repos]
 leak_dup = [r for r in tr_b + tr_a if any(dup(r, v) for v in val)]
 ld = {r["id"] for r in leak_dup}; st["train_rows_dropped_near_dup_with_val"] = len(ld)
 tr_b = [r for r in tr_b if r["id"] not in ld]; tr_a = [r for r in tr_a if r["id"] not in ld]
+# ---- v3-fixes rows: synthetic (minority, train only) and winners (honour provenance.include_in_train); already prompt_v3-wrapped by v3-fixes
+def _fx(fn): return [json.loads(l) for l in open(FX + fn)]
+syn = _fx("synthetic_rows.jsonl"); win = _fx("winners_rows.jsonl")
+win_ok = [r for r in win if r["provenance"].get("include_in_train", True) is not False]; win_no = [r for r in win if r not in win_ok]
+extra = []
+for r in syn + win_ok:
+    msgs = PV3.rebuild(r["messages"]); t = ntok(json.dumps(msgs))
+    if t > 32000: st["fx_rows_over_cap"] += 1; continue
+    extra.append(dict(r, split="train", messages=msgs, tokens=t))
+st["fx_synthetic_in"] = sum(1 for r in extra if r["source"] == "synthetic_lifecycle"); st["fx_winners_in"] = sum(1 for r in extra if r["source"] == "winners_mit"); st["fx_winners_excluded_include_in_train_false"] = len(win_no)
+with open(os.path.join(OUT, "excluded_include_in_train_false.jsonl"), "w") as f:
+    for r in win_no: f.write(json.dumps(r, ensure_ascii=False) + "\n")
+tr_a = tr_a + [r for r in extra if r["verdict"] == "approve"]; tr_b = tr_b + [r for r in extra if r["verdict"] != "approve"]
 max_app = int(len(tr_b) * 0.9)
 if len(tr_a) > max_app:
     tr_a.sort(key=lambda r: (prio.get(r["source"], 1), rnd.random(), r["id"])); st["cap_approve_trim_train"] = len(tr_a) - max_app; tr_a = tr_a[:max_app]
@@ -118,7 +188,7 @@ train = tr_b + tr_a; rnd.shuffle(train); rnd.shuffle(val)
 for sp, rs in (("train", train), ("val", val)):
     with gzip.open(os.path.join(OUT, sp + ".jsonl.gz"), "wt") as f:
         for r in rs: f.write(json.dumps(dict({k: v for k, v in r.items() if not k.startswith("_")}, split=sp), ensure_ascii=False) + "\n")
-json.dump(dict(stats=dict(st), rule_removed=dict(rule_removed), train=len(train), val=len(val), val_broken=len(val_b), val_approve=len(val_a), train_broken=len(tr_b), train_approve=len(tr_a),
+json.dump(dict(stats=dict(st), rule_removed=dict(rule_removed), rule_added=dict(rule_added), train=len(train), val=len(val), val_broken=len(val_b), val_approve=len(val_a), train_broken=len(tr_b), train_approve=len(tr_a),
                val_repos=len(val_repos), val_kind_coverage={t: got[t] for t in sorted(got)}, kind_quota=quota),
           open(os.path.join(OUT, "assemble_stats.json"), "w"), indent=1)
 with open(os.path.join(OUT, "checker_report_removed_lines.jsonl"), "w") as f:

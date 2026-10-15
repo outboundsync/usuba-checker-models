@@ -63,7 +63,7 @@ for l in open(os.path.join(ROOT, "functest", "dell_ground_truth.jsonl")):
 excl = {B.norm_repo(u) for u in json.load(open("/workspace/usuba-runs/hancore-labels/excluded_plugins.json"))}
 leak = collections.Counter(); bad = []
 for r in allr:
-    files, u = v2_user_files(r); repo = B.norm_repo(r["id"].split(":", 1)[1].rsplit(":", 1)[0]); fh = B.file_hashes(files); mid = B.manifest_id({"manifest.json": files.get("manifest.json", "")})
+    files, u = v2_user_files(r); repo = B.norm_repo(r["id"].split(":", 1)[1].rsplit(":", 1)[0] if ":" in r["id"] else r["id"]); fh = B.file_hashes(files); mid = B.manifest_id({"manifest.json": files.get("manifest.json", "")})
     chk = dict(holdout_repo=repo in h_repos, excluded_repo_list=repo in excl, holdout_manifest_id=bool(mid and mid.lower() in h_ids), dellkey_manifest_id=bool(mid and mid.lower() in key_ids),
                holdout_near_dup=B.near_dup(fh, h_trees), dellkey_near_dup=B.near_dup(fh, key_trees), forbidden_vendor_word=bool(BAD_WORDS.search(r["messages"][-1]["content"])),
                dellkey_id_in_text=any(len(i) >= 8 and i in u.lower() for i in key_ids))
@@ -71,7 +71,7 @@ for r in allr:
         if v and k == "dellkey_id_in_text": leak["INFO_incidental_key_id_string_in_other_plugin_text"] += 1
         elif v: leak[k] += 1; bad.append((r["id"], k))
 fp = [hashlib.sha1(re.sub(r"\s+", "", "".join(sorted(B.file_hashes(v2_user_files(r)[0])))).encode()).hexdigest() for r in allr]; ids = [r["id"] for r in allr]
-repo_of = lambda r: r["id"].split(":", 1)[1].rsplit(":", 1)[0]
+repo_of = lambda r: r["id"].split(":", 1)[1].rsplit(":", 1)[0] if ":" in r["id"] else r["id"]
 leakage = dict(rows_checked=len(allr), dell_key_ids=len(key_ids), dell_key_trees_loaded=len(key_trees), holdout_repos=len(h_repos), holdout_trees=len(h_trees), holdout_manifest_ids=len(h_ids), hits=dict(leak), hard_hit_examples=bad[:10],
                duplicate_row_ids=len(ids) - len(set(ids)), exact_duplicate_trees=len(fp) - len(set(fp)), train_val_repo_overlap=len({repo_of(r) for r in tr} & {repo_of(r) for r in va}))
 # near-dup among kept rows
@@ -117,13 +117,16 @@ ex, app, picked = [], [], set()
 kinds = sorted(mix); rnd.shuffle(kinds); sel_kinds = kinds[:9]
 for k in sel_kinds:
     c = [r for r in hc if fresh(r) and r["id"] not in picked and any(f["category"] == k for f in tgt(r)["findings"])]
+    if not c: continue
     r = rnd.choice(c); picked.add(r["id"]); ex.append((r, "HANCORE kind " + k))
 for pref, why in (("load:", "Dell-derived load bug"), ("in-use:", "Dell-derived in-use bug"), (("runtime:", "config:", "security:", "qml:", "logic:", "missing-file", "packaging:", "syntax:"), "Dell-derived other bug")):
     c = [r for r in dl if fresh(r) and r["id"] not in picked and tgt(r)["findings"][0]["category"].startswith(pref)]
+    if not c: continue
     r = rnd.choice(c); picked.add(r["id"]); ex.append((r, why))
 for pred, why in ((lambda r: r["source"] == "dell_works_verified" and tgt(r)["findings"], "APPROVE with a warning (trusted-and-small exception)"), (lambda r: r["source"] == "dell_works_verified" and not tgt(r)["findings"], "APPROVE clean"),
                   (lambda r: r["source"] in ("fix_upstream", "nudged_approve"), "APPROVE after upstream fix / nudged")):
     c = [r for r in allr if pred(r) and fresh(r) and r["id"] not in picked]
+    if not c: continue
     r = rnd.choice(c); picked.add(r["id"]); app.append((r, why))
 # independent re-verification of every cited line by the open model (fresh prompt tag, not used while building)
 import refine_r3 as R2, llm
@@ -149,13 +152,13 @@ for r, _ in ex + app:
         ls = lines_of(files, f["file"]) if f.get("file") else None
         S_ok["pass" if ls is not None and isinstance(f.get("line"), int) and X.check(f["finding"], ls, f["line"], f["file"]) in ("strict", "two_line") else "other"] += 1
 NOTES = open(os.path.join(H, "samples_notes_r3.md")).read() if os.path.exists(os.path.join(H, "samples_notes_r3.md")) else ""
-md = ["# Usuba v3-data-r3 — SAMPLES (prompt_v3)", "", f"Rows: {len(allr)} (train {len(tr)}, val {len(va)}). 12 fresh random examples (9 HANCORE kinds, 3 Dell-derived) + 3 approve; none appears in the earlier v3 SAMPLES.md / GATE_REPORT.md (seed 20261015+77, not curated). "
+md = ["# Usuba v3-data-r3 — SAMPLES (prompt_v3)", "", f"Rows: {len(allr)} (train {len(tr)}, val {len(va)}). 13 fresh random examples (7 HANCORE kinds, 3 Dell-derived, 3 approve; fewer than the 12+3 asked because kinds with no unseen row were skipped); none appears in the earlier v3 SAMPLES.md / GATE_REPORT.md (seed 20261015+77, not curated). "
       f"Each blocker/warning carries the automated check *cited line contains the described construct* (a backticked identifier/command from the finding must be ON the cited line, or within the same 2-line statement; blank/comment lines fail). Line numbers are counted from the top of the file as shown in the prompt (the model sees none).",
       f"Check results on these 15 samples: {dict(S_ok)}. Overall pass rate over ALL rows: see GATE_REPORT.md section 3 ({pr(ca)[0]:.1%} of checkable findings).", "", "## A. 12 examples", ""] + [render(r, w) for r, w in ex] + ["", "## B. 3 approve examples", ""] + [render(r, w) for r, w in app] + ["", "## C. Reviewer notes", "", NOTES]
 open(f"{D}/SAMPLES.md", "w").write("\n".join(md))
 # ---------- gate report ----------
-g = [f"# Usuba v3-data-r3 — gate report", f"Generated {os.popen('date').read().strip()} on branch v3-data-r3. No training, no GPU, no Dell commands. Rows: train {len(tr)}, val {len(va)} (r2 was train 1013 / val 41).", "",
-     "Changes vs the r2: (1) HANCORE findings re-anchored to the exact statement; (2) Dell-sourced findings audited against source + Checker/Dell evidence; (3) HANCORE kind labels checked by an independent open-model vote. Open model = qwen/qwen3.5-397b-a17b via OpenRouter (open weights); no Anthropic/DeepSeek/proprietary output.", "",
+g = [f"# Usuba v3-data-r3 — gate report", f"Generated {os.popen('date').read().strip()} on branch v3-data-r3. No training, no GPU, no Dell commands. Rows: train {len(tr)}, val {len(va)} (r2 was train 523 / val 20).", "",
+     "Changes vs r2: (0, r3) Checker false positives fixed and reports regenerated, 66-row val set, recovered HANCORE rows, v3-fixes merged (new prompt_v3, lifecycle rules, retractions); carried over from r2: (1) HANCORE findings re-anchored to the exact statement; (2) Dell-sourced findings audited against source + Checker/Dell evidence; (3) HANCORE kind labels checked by an independent open-model vote. Open model = qwen/qwen3.5-397b-a17b via OpenRouter (open weights); no Anthropic/DeepSeek/proprietary output.", "",
      "## 1. Row counts by source", "| source | train | val | r2 (train+val) |", "|---|--:|--:|--:|"]
 for s in sorted(set(spl(allr)) | set(spl(oldall))): g.append(f"| {s} | {spl(tr).get(s,0)} | {spl(va).get(s,0)} | {spl(oldall).get(s,0)} |")
 g += ["", "## 2. Broken vs approve", f"- train: {dict(collections.Counter(r['label'] for r in tr))} (approve share {share(tr)})", f"- val: {dict(collections.Counter(r['label'] for r in va))} (approve share {share(va)})",

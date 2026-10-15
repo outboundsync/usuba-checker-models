@@ -19,7 +19,14 @@ python3 classify_kinds.py before
 python3 dell_audit.py
 # 3. clean-up, exact-line anchoring, model gate (writes $R_WORK-independent pool_refined.jsonl.gz)
 python3 refine_r3.py /workspace/r3/refined
+# 3b. Checker reports: r2 tree (what the stored reports came from) vs this repo (FP fixes + v3-fixes lifecycle rules), on the visible files of every pool row
+rm -rf /workspace/r3/oldtree; mkdir -p /workspace/r3/oldtree
+git -C "$REPO" archive v3-data-r2 functest/usuba functest/dell_env functest/static_checks.py train/checker_report.py train/build_reviewer_scrub.py | tar -x -C /workspace/r3/oldtree
+python3 dump_reports.py /workspace/r3/oldtree /workspace/r3/refined/pool_refined.jsonl.gz /workspace/r3/rep_old.json &
+python3 dump_reports.py "$REPO" /workspace/r3/refined/pool_refined.jsonl.gz /workspace/r3/rep_new.json; wait
+# v3-fixes inputs (branch v3-fixes already merged into v3-data-r3): /workspace/usuba-runs/v3-fixes/{retraction_drop_ids,retraction_review_ids,audit_approve_lifecycle_ids,relabel_broken_to_works_candidates}.txt, synthetic_rows.jsonl, winners_rows.jsonl
 # 4. Checker report regeneration (old vs fixed checker), caps, 64-row repo-disjoint val, train
+python3 dump_reports_full.py /workspace/r3/refined/pool_refined.jsonl.gz /workspace/r3/rep_full.json
 python3 assemble_r3.py /workspace/r3/refined/pool_refined.jsonl.gz /workspace/r3/asm
 # 5. after-vote on final findings, report, checksums
 python3 finalize_r3.py /workspace/r3/asm "$OUT"
