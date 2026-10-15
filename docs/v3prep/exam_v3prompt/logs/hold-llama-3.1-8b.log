@@ -1,0 +1,21 @@
+{
+ "name": "holdout-v3p-llama-3.1-8b",
+ "backend": "openai",
+ "model": "meta-llama/llama-3.1-8b-instruct",
+ "n": 329,
+ "positives": 300,
+ "negatives": 29,
+ "verdict_accuracy": 0.526,
+ "positive_recall": 0.527,
+ "negative_false_alarm": 0.483,
+ "category_recall_micro": 0.021,
+ "category_precision_micro": 0.474,
+ "json_valid": 0.933,
+ "tokens_in": 2830271,
+ "tokens_out": 45171,
+ "cost_usd": 0.086,
+ "prompt": "v3",
+ "whole_files": false,
+ "secs_median": 1.36,
+ "secs_total": 977.5
+}

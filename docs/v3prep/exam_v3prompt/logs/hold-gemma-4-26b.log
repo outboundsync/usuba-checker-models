@@ -1,0 +1,21 @@
+{
+ "name": "holdout-v3p-gemma-4-26b",
+ "backend": "openai",
+ "model": "google/gemma-4-26b-a4b-it",
+ "n": 329,
+ "positives": 300,
+ "negatives": 29,
+ "verdict_accuracy": 0.638,
+ "positive_recall": 0.673,
+ "negative_false_alarm": 0.724,
+ "category_recall_micro": 0.031,
+ "category_precision_micro": 0.443,
+ "json_valid": 0.991,
+ "tokens_in": 3271305,
+ "tokens_out": 30169,
+ "cost_usd": 0.3601,
+ "prompt": "v3",
+ "whole_files": false,
+ "secs_median": 3.47,
+ "secs_total": 1338.6
+}

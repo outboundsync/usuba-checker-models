@@ -1,0 +1,21 @@
+{
+ "name": "holdout-v3p-qwen3-coder-30b-a3b",
+ "backend": "openai",
+ "model": "qwen/qwen3-coder-30b-a3b-instruct",
+ "n": 329,
+ "positives": 300,
+ "negatives": 29,
+ "verdict_accuracy": 0.471,
+ "positive_recall": 0.443,
+ "negative_false_alarm": 0.241,
+ "category_recall_micro": 0.007,
+ "category_precision_micro": 0.5,
+ "json_valid": 0.994,
+ "tokens_in": 2907161,
+ "tokens_out": 37395,
+ "cost_usd": 0.214,
+ "prompt": "v3",
+ "whole_files": false,
+ "secs_median": 3.88,
+ "secs_total": 2150.8
+}

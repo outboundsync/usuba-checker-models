@@ -1,0 +1,21 @@
+{
+ "name": "holdout-v3p-nemotron-3-nano",
+ "backend": "openai",
+ "model": "nvidia/nemotron-3-nano-30b-a3b",
+ "n": 329,
+ "positives": 300,
+ "negatives": 29,
+ "verdict_accuracy": 0.888,
+ "positive_recall": 0.967,
+ "negative_false_alarm": 0.931,
+ "category_recall_micro": 0.055,
+ "category_precision_micro": 0.547,
+ "json_valid": 0.988,
+ "tokens_in": 3023678,
+ "tokens_out": 38241,
+ "cost_usd": 0.1803,
+ "prompt": "v3",
+ "whole_files": false,
+ "secs_median": 2.13,
+ "secs_total": 793.6
+}
