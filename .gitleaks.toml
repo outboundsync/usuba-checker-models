@@ -2,13 +2,7 @@
 useDefault = true
 
 [allowlist]
-description = "Known false positives: keybind key fields, offline-replay dummy, redaction markers"
-paths = [
-  '''functest/fixtures/hyprland-0\.56\.2/.*\.json''',
-  '''runs/rescore404/.*\.json''',
-  '''dell-ref/.*''',
-  '''\.gitleaks\.toml''',
-]
+description = "Redaction markers and the offline-replay dummy value are not secrets"
 regexes = [
   '''unused-offline-replay''',
   '''REDACTED_[A-Z_]+''',
