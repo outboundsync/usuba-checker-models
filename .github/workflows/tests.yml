@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install pytest ruff pyyaml
-      - name: CPU torch (weighted-loss gradient tests, audit A4/J: they must run in CI, not importorskip away)
+      - name: 'CPU torch (weighted-loss gradient tests, audit A4/J - they must run in CI, not importorskip away)'
         run: pip install "torch==2.9.1" --index-url https://download.pytorch.org/whl/cpu
       - name: Lint (files listed in ruff.toml)
         run: ruff check
