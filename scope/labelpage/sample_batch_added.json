@@ -1,0 +1,47 @@
+{
+ "batch_id": "sample-added-001",
+ "set": "S3",
+ "kind": "added",
+ "items": [
+  {
+   "id": "S3-001",
+   "plugin": "acme.feed (synthetic)",
+   "file": "Feed.qml",
+   "line": 2,
+   "rule": null,
+   "category": "url-scheme-network",
+   "severity": "warning",
+   "explanation": "The model says the plugin fetches data over plain http. Anyone on the same network could read or change the data on the way.",
+   "claim": "Fetches updates over http://, not https://.",
+   "fix": "Use https://updates.example-cdn.test/latest.json (and fail if the certificate is rejected).",
+   "snippet": {
+    "start": 1,
+    "lines": [
+     "Process {",
+     "  command: [\"wget\", \"-qO-\", \"http://updates.example-cdn.test/latest.json\"]",
+     "  stdout: StdioCollector { onStreamFinished: root.data = JSON.parse(text) }",
+     "}"
+    ]
+   }
+  },
+  {
+   "id": "S3-002",
+   "plugin": "acme.token (synthetic)",
+   "file": "Token.qml",
+   "line": 1,
+   "rule": null,
+   "category": "secrets-credentials",
+   "severity": "blocker",
+   "explanation": "The model says a secret is stored in the plugin. Here the token is read from an environment variable at run time, so no secret is stored in the code.",
+   "claim": "Token handling exposes a credential.",
+   "fix": "No change needed.",
+   "snippet": {
+    "start": 1,
+    "lines": [
+     "readonly property string token: Quickshell.env(\"ACME_TOKEN\") || \"\"",
+     "onTokenChanged: if (token === \"\") console.log(\"set ACME_TOKEN\")"
+    ]
+   }
+  }
+ ]
+}

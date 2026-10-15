@@ -1,0 +1,146 @@
+{
+ "batch_id": "sample-001",
+ "set": "S1",
+ "kind": "checker",
+ "items": [
+  {
+   "id": "S1-001",
+   "plugin": "acme.weather (synthetic)",
+   "file": "Weather.qml",
+   "line": 6,
+   "rule": "USB-HC01",
+   "category": null,
+   "severity": null,
+   "explanation": "The tool says a secret key is written directly in the plugin source. Anyone who installs or reads the plugin could copy it and use the account behind it.",
+   "claim": "Hard-coded API key literal `sk_live_EXAMPLE...` in property apiKey.",
+   "fix": "Read the key at runtime: property string apiKey: Quickshell.env(\"ACME_WEATHER_KEY\") || \"\" and document the variable in the README.",
+   "snippet": {
+    "start": 1,
+    "lines": [
+     "import QtQuick",
+     "import Quickshell.Io",
+     "",
+     "Item {",
+     "  id: root",
+     "  property string apiKey: \"sk_live_EXAMPLE_not_a_real_key\"",
+     "  Process {",
+     "    id: weather",
+     "    command: [\"curl\", \"-s\", \"https://api.example-weather.test/v1?key=\" + root.apiKey]",
+     "  }",
+     "}"
+    ]
+   }
+  },
+  {
+   "id": "S1-002",
+   "plugin": "acme.notes (synthetic)",
+   "file": "Row.qml",
+   "line": 3,
+   "rule": "USB-HC07",
+   "category": null,
+   "severity": null,
+   "explanation": "The tool says text from the model is shown as rich text. If a note title contained HTML such as a link or image tag, it would be rendered instead of shown as plain text.",
+   "claim": "Text.RichText bound to unescaped model.title.",
+   "fix": "Use textFormat: Text.PlainText, or escape the title before building the markup.",
+   "snippet": {
+    "start": 1,
+    "lines": [
+     "Text {",
+     "  id: label",
+     "  textFormat: Text.RichText",
+     "  text: \"<b>\" + model.title + \"</b>\"",
+     "  color: Color.mOnSurface",
+     "}"
+    ]
+   }
+  },
+  {
+   "id": "S1-003",
+   "plugin": "acme.installer (synthetic)",
+   "file": "install.sh",
+   "line": 3,
+   "rule": "USB-S02",
+   "category": null,
+   "severity": null,
+   "explanation": "The tool says the script downloads a script from the internet and runs it straight away. If that file ever changed, the plugin would run whatever it contains on the user's machine.",
+   "claim": "curl | bash from an unpinned branch URL.",
+   "fix": "Download a tagged release, verify its sha256, then run it: curl -fsSLo install.sh <url>@<tag>; echo '<sha256>  install.sh' | sha256sum -c -; bash install.sh",
+   "snippet": {
+    "start": 1,
+    "lines": [
+     "#!/usr/bin/env bash",
+     "set -e",
+     "curl -fsSL https://raw.example-git.test/acme/tool/main/install.sh | bash",
+     "notify-send \"installed\""
+    ]
+   }
+  },
+  {
+   "id": "S1-004",
+   "plugin": "acme.keys (synthetic)",
+   "file": "Keys.qml",
+   "line": 3,
+   "rule": "USB-S01",
+   "category": null,
+   "severity": null,
+   "explanation": "The tool says the plugin edits a file in the user's own Hyprland settings. That changes the user's setup outside the plugin's folder.",
+   "claim": "Appends to ~/.config/hypr/bindings.conf.",
+   "fix": "Ask the user first, or write to the plugin's own data directory and tell the user to include it.",
+   "snippet": {
+    "start": 1,
+    "lines": [
+     "Process {",
+     "  id: setter",
+     "  command: [\"sh\", \"-c\", \"echo 'bind = SUPER, P, exec, acme' >> ~/.config/hypr/bindings.conf\"]",
+     "}"
+    ]
+   }
+  },
+  {
+   "id": "S1-005",
+   "plugin": "acme.clock (synthetic)",
+   "file": "manifest.json",
+   "line": 2,
+   "rule": "USB-M05",
+   "category": null,
+   "severity": null,
+   "explanation": "The tool says the plugin id is not specific enough. Two plugins with the same id would clash in the plugin list.",
+   "claim": "id `acme.clock` is generic.",
+   "fix": "Use a namespaced id such as io.github.<owner>.clock.",
+   "snippet": {
+    "start": 1,
+    "lines": [
+     "{",
+     "  \"id\": \"acme.clock\",",
+     "  \"name\": \"Clock\",",
+     "  \"version\": \"1.0.0\",",
+     "  \"entryPoints\": { \"barWidget\": \"Clock.qml\" }",
+     "}"
+    ]
+   }
+  },
+  {
+   "id": "S1-006",
+   "plugin": "acme.clock (synthetic)",
+   "file": "Clock.qml",
+   "line": 5,
+   "rule": "USB-W10",
+   "category": null,
+   "severity": null,
+   "explanation": "The tool says a timer runs every second. Whether this matters depends on how much work happens each second.",
+   "claim": "1 s timer updates a label.",
+   "fix": null,
+   "snippet": {
+    "start": 1,
+    "lines": [
+     "Timer {",
+     "  interval: 1000",
+     "  running: true",
+     "  repeat: true",
+     "  onTriggered: label.text = Qt.formatTime(new Date(), \"HH:mm:ss\")",
+     "}"
+    ]
+   }
+  }
+ ]
+}

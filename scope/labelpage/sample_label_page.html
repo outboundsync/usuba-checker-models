@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sample S1 batch (synthetic code)</title>
+<style>
+:root{--bg:#14161a;--fg:#e8e8ea;--mut:#9aa0a8;--card:#1d2026;--line:#2b2f37;--hl:#4a3b12;--real:#1f7a4d;--no:#a63a3a;--uns:#6b6f78;--acc:#5aa2ff}
+@media (prefers-color-scheme:light){:root{--bg:#f6f7f9;--fg:#15171a;--mut:#5b616b;--card:#fff;--line:#d7dbe2;--hl:#fff1c2}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif}
+main{max-width:980px;margin:0 auto;padding:16px}
+header{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+h1{font-size:18px;margin:0}.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;flex:1;min-width:120px}.bar i{display:block;height:100%;background:var(--acc)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-top:12px}
+.meta{color:var(--mut);font-size:14px}.q{font-size:20px;font-weight:600;margin:0 0 6px}
+pre{margin:8px 0 0;overflow:auto;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:0;font:13px/1.45 ui-monospace,Menlo,Consolas,monospace}
+pre div{display:flex;white-space:pre}pre b{display:inline-block;min-width:4ch;text-align:right;padding:0 10px;color:var(--mut);font-weight:400;user-select:none}pre span{padding-right:12px}
+pre .hl{background:var(--hl)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}button{font:inherit;border:0;border-radius:8px;padding:12px 18px;color:#fff;cursor:pointer;min-width:120px}
+#real{background:var(--real)}#no{background:var(--no)}#uns{background:var(--uns)}button.sel{outline:3px solid var(--acc)}button.nav{background:var(--line);color:var(--fg);min-width:90px}
+textarea{width:100%;margin-top:10px;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px;font:inherit}
+.tag{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:0 6px;font-size:12px;color:var(--mut);margin-right:6px}
+.fix{white-space:pre-wrap;font:13px ui-monospace,Menlo,Consolas,monospace}.hide{display:none}
+footer{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}input[type=text]{background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px}
+</style></head><body><main>
+<header><h1 id="title"></h1><span class="meta" id="pos"></span><div class="bar"><i id="prog"></i></div></header>
+<div class="card" id="card">
+ <div class="meta" id="meta"></div>
+ <p class="q" id="q"></p>
+ <p id="explain"></p>
+ <p class="meta">Tool's wording: <span id="claim"></span></p>
+ <pre id="code" aria-label="code"></pre>
+ <div class="btns"><button id="real">1 &middot; Real</button><button id="no">2 &middot; Not real</button><button id="uns">3 &middot; Unsure</button>
+  <button class="nav" id="prev">&larr; Back</button><button class="nav" id="next">Next &rarr;</button></div>
+ <textarea id="note" rows="2" placeholder="Optional note (why?)"></textarea>
+ <div id="fixbox" class="hide"><p class="meta">Proposed fix (shown after you choose):</p><div class="fix" id="fix"></div></div>
+</div>
+<footer><label>Your initials <input type="text" id="who" size="8"></label><button class="nav" id="export">Export labels (JSON)</button><button class="nav" id="copy">Copy JSON</button>
+<button class="nav" id="load">Load saved labels</button><input type="file" id="file" accept=".json" class="hide"><span class="meta" id="status"></span></footer>
+<p class="meta">Keys: 1 Real, 2 Not real, 3 Unsure, &larr; &rarr; move. Nothing leaves this page; labels live in this browser until you export them.</p>
+</main>
+<script id="batch" type="application/json">{"batch_id": "sample-001", "set": "S1", "kind": "checker", "items": [{"id": "S1-001", "plugin": "acme.weather (synthetic)", "file": "Weather.qml", "line": 6, "rule": "USB-HC01", "category": null, "severity": null, "explanation": "The tool says a secret key is written directly in the plugin source. Anyone who installs or reads the plugin could copy it and use the account behind it.", "claim": "Hard-coded API key literal `sk_live_EXAMPLE...` in property apiKey.", "fix": "Read the key at runtime: property string apiKey: Quickshell.env(\"ACME_WEATHER_KEY\") || \"\" and document the variable in the README.", "snippet": {"start": 1, "lines": ["import QtQuick", "import Quickshell.Io", "", "Item {", "  id: root", "  property string apiKey: \"sk_live_EXAMPLE_not_a_real_key\"", "  Process {", "    id: weather", "    command: [\"curl\", \"-s\", \"https://api.example-weather.test/v1?key=\" + root.apiKey]", "  }", "}"]}}, {"id": "S1-002", "plugin": "acme.notes (synthetic)", "file": "Row.qml", "line": 3, "rule": "USB-HC07", "category": null, "severity": null, "explanation": "The tool says text from the model is shown as rich text. If a note title contained HTML such as a link or image tag, it would be rendered instead of shown as plain text.", "claim": "Text.RichText bound to unescaped model.title.", "fix": "Use textFormat: Text.PlainText, or escape the title before building the markup.", "snippet": {"start": 1, "lines": ["Text {", "  id: label", "  textFormat: Text.RichText", "  text: \"<b>\" + model.title + \"<\/b>\"", "  color: Color.mOnSurface", "}"]}}, {"id": "S1-003", "plugin": "acme.installer (synthetic)", "file": "install.sh", "line": 3, "rule": "USB-S02", "category": null, "severity": null, "explanation": "The tool says the script downloads a script from the internet and runs it straight away. If that file ever changed, the plugin would run whatever it contains on the user's machine.", "claim": "curl | bash from an unpinned branch URL.", "fix": "Download a tagged release, verify its sha256, then run it: curl -fsSLo install.sh <url>@<tag>; echo '<sha256>  install.sh' | sha256sum -c -; bash install.sh", "snippet": {"start": 1, "lines": ["#!/usr/bin/env bash", "set -e", "curl -fsSL https://raw.example-git.test/acme/tool/main/install.sh | bash", "notify-send \"installed\""]}}, {"id": "S1-004", "plugin": "acme.keys (synthetic)", "file": "Keys.qml", "line": 3, "rule": "USB-S01", "category": null, "severity": null, "explanation": "The tool says the plugin edits a file in the user's own Hyprland settings. That changes the user's setup outside the plugin's folder.", "claim": "Appends to ~/.config/hypr/bindings.conf.", "fix": "Ask the user first, or write to the plugin's own data directory and tell the user to include it.", "snippet": {"start": 1, "lines": ["Process {", "  id: setter", "  command: [\"sh\", \"-c\", \"echo 'bind = SUPER, P, exec, acme' >> ~/.config/hypr/bindings.conf\"]", "}"]}}, {"id": "S1-005", "plugin": "acme.clock (synthetic)", "file": "manifest.json", "line": 2, "rule": "USB-M05", "category": null, "severity": null, "explanation": "The tool says the plugin id is not specific enough. Two plugins with the same id would clash in the plugin list.", "claim": "id `acme.clock` is generic.", "fix": "Use a namespaced id such as io.github.<owner>.clock.", "snippet": {"start": 1, "lines": ["{", "  \"id\": \"acme.clock\",", "  \"name\": \"Clock\",", "  \"version\": \"1.0.0\",", "  \"entryPoints\": { \"barWidget\": \"Clock.qml\" }", "}"]}}, {"id": "S1-006", "plugin": "acme.clock (synthetic)", "file": "Clock.qml", "line": 5, "rule": "USB-W10", "category": null, "severity": null, "explanation": "The tool says a timer runs every second. Whether this matters depends on how much work happens each second.", "claim": "1 s timer updates a label.", "fix": null, "snippet": {"start": 1, "lines": ["Timer {", "  interval: 1000", "  running: true", "  repeat: true", "  onTriggered: label.text = Qt.formatTime(new Date(), \"HH:mm:ss\")", "}"]}}], "title": "Sample S1 batch (synthetic code)"}</script>
+<script>
+"use strict";
+var B=JSON.parse(document.getElementById("batch").textContent), items=B.items, LS="usuba-labels:"+B.batch_id, st={labels:{},who:""}, i=0;
+try{var s=JSON.parse(localStorage.getItem(LS)||"null"); if(s){st=s}}catch(e){}
+var $=function(id){return document.getElementById(id)};
+function save(){try{localStorage.setItem(LS,JSON.stringify(st))}catch(e){}}
+function done(){return Object.keys(st.labels).length}
+function firstOpen(){for(var k=0;k<items.length;k++){if(!st.labels[items[k].id])return k}return 0}
+function render(){
+ var it=items[i], l=st.labels[it.id]||{};
+ $("title").textContent=(B.title||B.batch_id);
+ $("pos").textContent=(i+1)+" / "+items.length+"  ("+done()+" labelled)";
+ $("prog").style.width=(100*done()/items.length)+"%";
+ var m=$("meta"); m.textContent=""; 
+ [it.plugin, it.file+":"+it.line, it.rule||it.category, it.severity].forEach(function(t){if(t){var s=document.createElement("span");s.className="tag";s.textContent=t;m.appendChild(s)}});
+ $("q").textContent = B.kind==="added" ? "Is this added finding real?" : "Is this Checker scripts finding real?";
+ $("explain").textContent=it.explanation; $("claim").textContent=it.claim;
+ var pre=$("code"); pre.textContent="";
+ it.snippet.lines.forEach(function(t,k){var n=it.snippet.start+k, d=document.createElement("div"), b=document.createElement("b"), sp=document.createElement("span");
+  b.textContent=n; sp.textContent=t||" "; if(n===it.line)d.className="hl"; d.appendChild(b); d.appendChild(sp); pre.appendChild(d)});
+ ["real","no","uns"].forEach(function(id){$(id).classList.remove("sel")});
+ var map={real:"real",not_real:"no",unsure:"uns"}; if(l.label)$(map[l.label]).classList.add("sel");
+ $("note").value=l.note||""; $("who").value=st.who||"";
+ var fb=$("fixbox"); if(l.label&&it.fix){fb.classList.remove("hide");$("fix").textContent=it.fix}else{fb.classList.add("hide")}
+}
+function put(v){var it=items[i]; st.labels[it.id]={label:v,note:$("note").value,ts:new Date().toISOString()}; save(); render(); if(i<items.length-1){i++; setTimeout(render,180)}}
+function go(d){i=Math.max(0,Math.min(items.length-1,i+d));render()}
+$("real").onclick=function(){put("real")};$("no").onclick=function(){put("not_real")};$("uns").onclick=function(){put("unsure")};
+$("prev").onclick=function(){go(-1)};$("next").onclick=function(){go(1)};
+$("note").onchange=function(){var l=st.labels[items[i].id]; if(l){l.note=$("note").value;save()}};
+$("who").onchange=function(){st.who=$("who").value;save()};
+document.addEventListener("keydown",function(e){if(e.target.tagName==="TEXTAREA"||e.target.tagName==="INPUT")return;
+ if(e.key==="1")put("real");else if(e.key==="2")put("not_real");else if(e.key==="3")put("unsure");else if(e.key==="ArrowLeft")go(-1);else if(e.key==="ArrowRight")go(1)});
+function payload(){return JSON.stringify({schema:"usuba-labels/1",batch_id:B.batch_id,set:B.set,labeler:st.who||"",exported_at:new Date().toISOString(),
+ labels:items.filter(function(x){return st.labels[x.id]}).map(function(x){var l=st.labels[x.id];return {id:x.id,label:l.label,note:l.note||"",ts:l.ts}})},null,1)}
+$("export").onclick=function(){var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([payload()],{type:"application/json"}));
+ a.download="labels-"+B.batch_id+(st.who?"-"+st.who:"")+".json";document.body.appendChild(a);a.click();a.remove();$("status").textContent="exported "+done()+" labels"};
+$("copy").onclick=function(){var t=payload();if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){$("status").textContent="copied"},function(){window.prompt("Copy:",t)})}else{window.prompt("Copy:",t)}};
+$("load").onclick=function(){$("file").click()};
+$("file").onchange=function(e){var f=e.target.files[0]; if(!f)return; var r=new FileReader(); r.onload=function(){try{var j=JSON.parse(r.result);
+ if(j.batch_id!==B.batch_id){$("status").textContent="different batch";return}
+ j.labels.forEach(function(x){st.labels[x.id]={label:x.label,note:x.note||"",ts:x.ts}}); if(j.labeler)st.who=j.labeler; save(); i=firstOpen(); render(); $("status").textContent="loaded"}catch(err){$("status").textContent="bad file"}}; r.readAsText(f)};
+i=firstOpen(); render();
+</script></body></html>
