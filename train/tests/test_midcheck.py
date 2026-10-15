@@ -58,3 +58,18 @@ def test_pool_is_stratified_and_seeded():
         for r in rows: f.write(json.dumps(r) + "\n")
     a, _ = M.build_pool(f.name, 10, forbidden_ids=set(), holdout=set(), seed=1); b, _ = M.build_pool(f.name, 10, forbidden_ids=set(), holdout=set(), seed=1)
     assert [r["id"] for r in a] == [r["id"] for r in b] and sum(r["id"].startswith("n") for r in a) == 5 and len(a) == 10
+
+
+def test_positive_marked_approve_is_not_a_verdict_hit_and_wrong_file_is_not_a_line_hit():
+    pos = row("p")
+    s = M.score_one(pos, json.dumps(dict(verdict="approve", findings=[])))
+    assert s["json_ok"] and not s["verdict_ok"] and not s["file_hit"] and not s["line_hit"]
+    s = M.score_one(pos, resp("lib/bin/run.sh", 20)); assert not s["file_hit"]                  # suffix of the path is not the path
+    assert M.score_one(pos, json.dumps(dict(verdict="changes_requested", findings=[dict(file="bin/run.sh", line="20")])))["line_hit"]   # numeric string tolerated
+    assert not M.score_one(pos, json.dumps(dict(verdict="changes_requested", findings=[dict(file="bin/run.sh", line=None)])))["line_hit"]
+
+
+def test_trainer_wires_midcheck_fatally_and_selects_on_task_score():
+    src = open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "train_lora.py")).read()
+    assert "selection_score" in src and "best-task" in src and "midcheck" in src
+    assert "requested but setup failed" in src and "sys.exit" in src
