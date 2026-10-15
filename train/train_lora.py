@@ -141,8 +141,11 @@ def evaluate():
     with torch.no_grad():
         for ids, lab, att, w, tw in vdl: L.append(fwd_loss(ids, lab, att, torch.ones(1)).item())
     model.train(); return sum(L) / len(L)
-start = time.time(); hours0 = state.get("hours", 0.0); model.train(); acc = 0.0
-if state["step"] == 0: print(json.dumps(dict(total_optimizer_steps=total, val_loss_start=evaluate())), flush=True)
+hours0 = state.get("hours", 0.0); model.train(); acc = 0.0
+_t0 = time.time()
+if state["step"] == 0 and os.environ.get("SKIP_INITIAL_EVAL") == "1": print(json.dumps(dict(total_optimizer_steps=total, val_loss_start=None)), flush=True)
+elif state["step"] == 0: print(json.dumps(dict(total_optimizer_steps=total, val_loss_start=evaluate(), eval_secs=round(time.time() - _t0, 1))), flush=True)
+start = time.time()   # FIX: max_hours clock starts after the initial eval (it took ~5 min and ate the whole 6-min dry-run budget)
 def stop_and_exit(reason, code):
     save_ckpt(reason); save_adapter("last"); open(os.path.join(out, "STOPPED"), "w").write(reason); sys.exit(code)
 for ep in range(state["epoch"], C["epochs"]):
@@ -156,7 +159,7 @@ for ep in range(state["epoch"], C["epochs"]):
         if (i + 1) % C["grad_accum"] and i + 1 != len(dl): continue
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0); opt.step(); sch.step(); opt.zero_grad(); state["step"] += 1
         state["hours"] = hours0 + (time.time() - start) / 3600
-        rec = dict(step=state["step"], epoch=ep, loss=round(acc, 4), lr=sch.get_last_lr()[0], hours=round(state["hours"], 3),
+        rec = dict(step=state["step"], epoch=ep, loss=round(acc, 4), lr=sch.get_last_lr()[0], hours=round(state["hours"], 3), t=round(time.time(), 1),
                    mem_gb=round((torch.cuda.max_memory_allocated() / 2**30 if dev == "cuda" else 0), 1)); acc = 0.0
         if state["step"] % C["eval_every_steps"] == 0:
             rec["val_loss"] = evaluate()

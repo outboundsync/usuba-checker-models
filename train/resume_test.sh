@@ -30,9 +30,9 @@ bash $U/train/deps.sh || { echo "FAIL: deps" | tee $REP; exit 1; }
 rm -rf $O $U/NO_RESTART; python3 - <<PY
 import yaml; c=yaml.safe_load(open("config.yaml")); c.update(save_every_steps=2, eval_every_steps=1000, max_hours=1.0, output_dir="$O"); yaml.safe_dump(c, open("config_resumetest.yaml","w"))
 PY
-mkdir -p $O; printf '%s\n%s\n%s\n' "$O" "python3 train_lora.py --config config_resumetest.yaml --resume >> $U/resumetest_run.log 2>&1" 30 > $U/ARMED
+mkdir -p $O; printf '%s\n%s\n%s\n' "$O" "SKIP_INITIAL_EVAL=1 python3 train_lora.py --config config_resumetest.yaml --resume >> $U/resumetest_run.log 2>&1" 30 > $U/ARMED
 pgrep -f "[w]atchdog.sh" >/dev/null || bash $U/train/autostart.sh
-nohup python3 train_lora.py --config config_resumetest.yaml --resume > $U/resumetest_run1.log 2>&1 & P=$!
+export SKIP_INITIAL_EVAL=1; nohup python3 train_lora.py --config config_resumetest.yaml --resume > $U/resumetest_run1.log 2>&1 & P=$!
 echo "waiting for >=2 complete checkpoints (steps >= 4)..."
 for i in $(seq 1 240); do c=$(lastck); [ -n "${c:-}" ] && [ "$c" -ge 4 ] && break; sleep 15; done
 c=$(lastck); [ -n "${c:-}" ] || { echo "FAIL: no checkpoint within 60 min" | tee $REP; kill $P; exit 1; }

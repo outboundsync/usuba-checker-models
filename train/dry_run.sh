@@ -11,7 +11,7 @@ fail() { echo "DRYRUN FAIL: $*" | tee $REP; touch $U/DRYRUN_FAIL; exit 1; }
 bash $U/train/deps.sh || fail "dependency install failed"
 python3 train_lora.py --config config.yaml --dry-run || fail "CPU dry-run (tokenise/mask) failed"
 python3 - <<PY || fail "config"
-import yaml; c=yaml.safe_load(open("config.yaml")); c.update(save_every_steps=3, eval_every_steps=6, max_hours=$M/60, output_dir="out/dryrun")
+import yaml; c=yaml.safe_load(open("config.yaml")); c.update(save_every_steps=3, eval_every_steps=1000, max_hours=$M/60, output_dir="out/dryrun")
 yaml.safe_dump(c, open("config_dryrun.yaml","w")); print("max_hours in real config:", yaml.safe_load(open("config.yaml"))["max_hours"])
 PY
 ALLOW_CPU=0 timeout $(( (M+12)*60 )) python3 train_lora.py --config config_dryrun.yaml --resume; rc=$?
@@ -20,12 +20,14 @@ ls -d out/dryrun/checkpoints/step-*/COMPLETE >/dev/null 2>&1 || fail "no complet
 python3 - <<PY | tee $REP
 import json,yaml
 rows=[json.loads(l) for l in open("$L") if '"loss"' in l]; c=yaml.safe_load(open("config.yaml"))
-n=len(rows); h=rows[-1]["hours"]; sps=h*3600/n
+n=len(rows); h=rows[-1]["hours"]
+ts=[r["t"] for r in rows if "t" in r]; df=[y-x for x,y in zip(ts,ts[1:])]
+sps=(sum(df)/len(df)) if df else h*3600/n   # FIX: per-step wall time from consecutive steps (first step also includes warm-up/compile)
 import re
 m=re.findall(r'"total_optimizer_steps": (\d+)', open("$U/dryrun.log").read()); steps=int(m[-1]) if m else None
 print(f"DRYRUN OK: {n} optimizer steps in {h*60:.1f} min -> {sps:.1f} s/step, peak mem {max(r['mem_gb'] for r in rows)} GB, loss {rows[0]['loss']} -> {rows[-1]['loss']}")
 print("checkpoint written: yes; real config max_hours =", c["max_hours"])
-if steps: print(f"projected: {steps} steps x {sps:.1f} s = {steps*sps/3600:.1f} h vs max_hours {c['max_hours']} (first steps may be shorter/longer than average; examples are shuffled)")
+if steps: print(f"projected: {steps} steps x {sps:.1f} s = {steps*sps/3600:.1f} h (+ ~3 evals + checkpoint saves, see eval_secs in the log) vs max_hours {c['max_hours']} (first steps may be shorter/longer than average; examples are shuffled)")
 else: print("projection skipped (could not read example/epoch count from dry_run_stats.json / config)")
 PY
 touch $U/DRYRUN_DONE
