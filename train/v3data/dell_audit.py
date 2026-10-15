@@ -4,7 +4,8 @@ and the Dell sweep run record (qml_errors, missing_bins, listed/toggle) from del
 Never reads functest/dell_ground_truth.jsonl labels; key ids are excluded by the build/leakage check, not looked at here."""
 import sys, os, json, re, collections
 from concurrent.futures import ThreadPoolExecutor
-sys.path[:0] = ["/workspace/r2", "/workspace/wt-retrain-v2/train/v3data", "/workspace/wt-retrain-v2/functest/dell_env"]
+sys.path[:0] = [os.path.join(os.path.dirname(os.path.abspath(__file__)), "r2_helpers"), "/workspace/wt-retrain-v2/train/v3data", "/workspace/wt-retrain-v2/functest/dell_env"]
+OUTD = os.environ.get("R_OUT", "/workspace/r3/out")
 import llm, exactline as X
 from common import load_rows, target, last_user, dell_res
 from binaries import OMARCHY_BINS, SYSTEM_BINS
@@ -62,6 +63,6 @@ def main():
     out = {}
     with ThreadPoolExecutor(12) as ex:
         for k, v in ex.map(job, jobs): out[f"{k[0]}#{k[1]}"] = v
-    json.dump(out, open("/workspace/r2/out/dell_audit.json", "w"), indent=1)
+    json.dump(out, open(OUTD + "/dell_audit.json", "w"), indent=1)
     print(collections.Counter(v.get("problem", "ERR") for v in out.values()), "spend", llm.spent())
 if __name__ == "__main__": main()

@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Stage 3: independent bug-kind classification of every HANCORE finding from its prose alone (assigned kind never shown), 3 votes with shuffled category order.
 usage: classify_kinds.py before|after  (after = re-run on the refined rows with fresh seeds; reads /workspace/r2/out/refined_hancore.json)"""
-import sys, json, random, collections, hashlib
+import os, sys, json, random, collections, hashlib
 from concurrent.futures import ThreadPoolExecutor
-sys.path[:0] = ["/workspace/r2", "/workspace/wt-retrain-v2/train/v3data"]
-import llm
+sys.path[:0] = [os.path.join(os.path.dirname(os.path.abspath(__file__)), "r2_helpers"), "/workspace/wt-retrain-v2/train/v3data"]
+import llm, os
+OUTD = os.environ.get("R_OUT", "/workspace/r3/out")
 from common import load_rows, target
 KINDS = {
  "unbounded-input-resource": "reads a whole remote response, shared/predictable-path file or process output with no byte/size cap (memory/CPU exhaustion)",
@@ -33,10 +34,10 @@ def main():
     if mode == "before":
         items = [(r["id"], i, f["category"], f["finding"]) for r in load_rows() if r["source"] == "hancore_concrete" for i, f in enumerate(target(r)["findings"])]; base = 100
     else:
-        items = [tuple(x) for x in json.load(open("/workspace/r2/out/refined_findings.json"))]; base = 900
+        items = [tuple(x) for x in json.load(open(OUTD + "/refined_findings.json"))]; base = 900
     with ThreadPoolExecutor(16) as ex: V = list(ex.map(lambda it: votes(it[3], base), items))
     out = [dict(id=it[0], i=it[1], assigned=it[2], votes=v) for it, v in zip(items, V)]
-    json.dump(out, open(f"/workspace/r2/out/kind_votes_{mode}.json", "w"), indent=1)
+    json.dump(out, open(f"{OUTD}/kind_votes_{mode}.json", "w"), indent=1)
     maj = lambda v: collections.Counter(v).most_common(1)[0]
     ag = sum(maj(o["votes"])[0] == o["assigned"] for o in out); un = sum(len(set(o["votes"])) == 1 and o["votes"][0] == o["assigned"] for o in out)
     print(mode, "n", len(out), "majority==assigned", ag, round(ag / len(out), 3), "unanimous==assigned", un, round(un / len(out), 3), "spend", llm.spent())

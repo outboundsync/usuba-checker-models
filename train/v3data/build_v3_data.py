@@ -236,7 +236,7 @@ def main():
         return None
     rows = []   # unified: dict(id, source, repo, label, verdict, messages, tokens, provenance, target_kind, fh, mid, extra)
     # ---- (a) HANCORE ----
-    R = [json.loads(l) for l in open(HL + "concrete_findings.jsonl")]
+    R = [json.loads(l) for l in open(os.environ.get("CONC_FINDINGS", HL + "concrete_findings.jsonl"))]
     st["hancore_findings_total"] = len(R)
     pool = [r for r in R if r["confidence"] in ("high", "medium")]
     st["hancore_findings_high_medium"] = len(pool)
@@ -319,6 +319,9 @@ def main():
     if len(ub) > cap_ub:
         rnd.shuffle(ub); drop = {r["id"] for r in ub[cap_ub:]}; drops["cap:unbounded_only_rows"] += len(drop)
         final = [r for r in final if r["id"] not in drop]; broken = [r for r in final if r["verdict"] == "changes_requested"]; approve = [r for r in final if r["verdict"] == "approve"]
+    if os.environ.get("DUMP_POOL"):
+        with gzip.open(os.path.join(a.out, "pool.jsonl.gz"), "wt") as f:
+            for r in broken + approve: f.write(json.dumps(dict(id=r["id"], split="pool", source=r["source"], orig_source=r["source"], label=r["label"], verdict=r["verdict"], target_kind=r["target_kind"], reject_reason=None, is_pair_parent=False, pair=None, tokens=r["tokens"], provenance=r["provenance"], weight=1.0, messages=r["messages"]), ensure_ascii=False) + "\n")
     # ---- approve mix: target 40-50%; trim approve to <=50% (broken kept whole) ----
     max_app = int(len(broken) * 0.9)
     if len(approve) > max_app:

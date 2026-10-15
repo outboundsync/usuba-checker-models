@@ -1,6 +1,10 @@
 import json,os,re,threading,hashlib,urllib.request,time
 MODEL="qwen/qwen3.5-397b-a17b"; CAP=9.0
-LEDGER='/workspace/r2/ledger.json'; CACHE='/workspace/r2/cache.jsonl'
+HERE=os.path.dirname(os.path.abspath(__file__)); WORK=os.environ.get('R_WORK','/tmp/usuba_r_work'); os.makedirs(WORK,exist_ok=True)
+LEDGER=WORK+'/ledger.json'; CACHE=WORK+'/cache.jsonl'
+SEED_CACHE=os.path.join(HERE,'..','r3_cache','llm_cache.jsonl.gz')   # every model reply used for r2+r3 (offline replay: zero cost); delete R_WORK to re-query
+if not os.path.exists(CACHE) and os.path.exists(SEED_CACHE):
+    import gzip,shutil; shutil.copyfileobj(gzip.open(SEED_CACHE,'rb'),open(CACHE,'wb'))
 _lk=threading.Lock(); _cache={}
 if os.path.exists(CACHE):
     for l in open(CACHE):

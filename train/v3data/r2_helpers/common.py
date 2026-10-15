@@ -1,8 +1,8 @@
 import gzip,json,re,collections,os,sys
-V3='/workspace/usuba-runs/v3-data/'
+V3=os.environ.get('R_BASE','/workspace/usuba-runs/v3-data/')
 def load_rows():
     rows=[]
-    for sp in ('train','val'):
+    for sp in (('pool',) if os.path.exists(V3+'pool.jsonl.gz') else ('train','val')):
         for l in gzip.open(V3+sp+'.jsonl.gz','rt'): rows.append(json.loads(l))
     return rows
 def target(r): return json.loads(r['messages'][-1]['content'])
