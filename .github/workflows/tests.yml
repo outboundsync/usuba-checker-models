@@ -16,4 +16,4 @@ jobs:
           python-version: '3.12'
       - run: pip install pytest
       - name: Unit tests (CPU only, no network, no model)
-        run: python3 -m pytest -q
+        run: python3 -m pytest -q --ignore=train/tests/test_loss_utils.py   # that test needs torch + a tokenizer download; run it locally
