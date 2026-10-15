@@ -5,7 +5,7 @@
 
 *By Harris Kenny · OutboundSync · DRAFT v0.3, revised Tuesday, Oct 13, 2026 · usuba.dev*
 
-> Draft status: this is a work-in-progress post, not a launch. Every number below comes from our working repo (the READMEs in `runs/rescore404`, `runs/basetry`, `runs/q27` and `runs/fixer`). Anything we haven't confirmed or built yet is marked [TK].
+> Draft status: this is a work-in-progress post, not a launch. Every number below comes from our working repo (the READMEs in `legacy/runs/rescore404`, `legacy/runs/basetry`, `legacy/runs/q27` and `legacy/runs/fixer`). Anything we haven't confirmed or built yet is marked [TK].
 
 Here's the short version. We set out to build a small, open, local model that does one job: write Omarchy shell plugins that actually work. That means Quickshell/QML plugins for the Omarchy 4 shell on Hyprland.
 

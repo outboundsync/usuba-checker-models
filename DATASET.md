@@ -200,7 +200,7 @@ Status: built locally. No GPU spend, nothing published, no outreach, no PRs.
 ```
 python3 tools_analyze.py      # verify licenses + validator for sources/repos/*
   .venv/bin/python build_dataset.py   # (needs transformers) rebuild data/*.jsonl (seeded; validates + qmllints every example)
-python3 gen_docs.py           # NOTICE, sources/SOURCES.md, data/STATS.md
+python3 gen_docs.py           # NOTICE, sources/SOURCES.md, legacy/data/STATS.md
 validator/diff_test.sh        # bash vs python validator parity (25/25)
 python3 validator/qmllint_check.py data/train.jsonl data/holdout.jsonl
 ```

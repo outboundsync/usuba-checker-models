@@ -10,7 +10,7 @@
 
 ## Training data (unchanged)
 - Labeled results from the Dell corpus sweep (branch `sweep`, dell/sweep/)
-- Uplift test scores (runs/uplift/results.csv)
+- Uplift test scores (legacy/runs/uplift/results.csv)
 - The Dell answer key (functest/dell_ground_truth.jsonl in usuba-checker-scripts; its size changed over time: 76 rows in the first plan, 116 rows with undecided ones, 90 decided rows, 86 after the Claude-written plugins were excluded; the current count is the 86-row key (31 broken, 55 works) and every table below says which size it used). The key is excluded from training, see "Exclusions"
 - Fizzy.do bug examples (dell/pair_scripts/p10.sh, data/reviews)
 

@@ -58,11 +58,11 @@ Checker reports, real upstream fix commits, and review text written by the open-
 | Path | Content |
 |---|---|
 | `train/` | Training: `build_train_set.py`, `config.yaml`, `train_lora.py`, `launch_vast.sh`, `export_gguf.py`, prompts, watchdog, tests; `v2/` distillation; `v3data/` data builders (r2 to r4) |
-| `clean/`, `v3/`, `data/`, `v3fixes/` | Dataset builders, manifests, reports (the dataset files themselves are on Hugging Face, see `docs/DATA_HOSTING.md`) |
+| `v3fixes/` | Reviewer-v3 fixes: rules, skip measurements, synthetic and winners rows (`run_all.sh`) |
+| `legacy/` | The older Qwen2.5-Coder-era builders and runs, kept for provenance, nothing in `train/` uses them: `legacy/clean/`, `legacy/qwen25-coder-v3/` (was `v3/`, renamed so it no longer collides with the reviewer's v3), `legacy/data/`, `legacy/runs/`. See `legacy/README.md`. The dataset files themselves are on Hugging Face (`docs/DATA_HOSTING.md`; HF paths keep the old names) |
 | `sources/` | `plugin_sources.json` (repo URL + commit SHA + licence of every third-party plugin source), `fetch_plugin_sources.py`, licences, `SOURCES.md` |
 | `NOTICE`, `sources/licenses/` | Per-source attribution and licence texts that must travel with the data and model |
 | `docs/` | `REPLICATION.md`, `TRAINING_CHECKLIST.md`, `TRAINING_PLAN.md`, `MODEL_CARD.md`, `PROVENANCE.md`, `DATA_HOSTING.md`, method notes |
-| `runs/` | Experiment scripts, score tables, charts (no raw generations) |
 | `hf/` | Hugging Face cards and SHA-256 manifest for datasets and adapters (datasets prepared, not uploaded; adapter weights withheld, hashes only) |
 
 ## Replicate

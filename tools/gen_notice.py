@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Keep NOTICE complete for everything that ships (audit F1).
 
-The shipped set is the union of repos in the in-repo manifests (clean/train_final, pool_registry (kept), pool_chunked (not excluded),
-v3/train_v3 (not excluded)) and in any `--rows FILE.jsonl[.gz]` you pass for dataset files that live only on Hugging Face (rows carry meta.repo / meta.license).
+The shipped set is the union of repos in the in-repo manifests (legacy/clean/train_final, pool_registry (kept), pool_chunked (not excluded),
+legacy/qwen25-coder-v3/train_v3 (not excluded)) and in any `--rows FILE.jsonl[.gz]` you pass for dataset files that live only on Hugging Face (rows carry meta.repo / meta.license).
 Modes:
   --check   exit 1 if a shipped repo has no NOTICE line, if a NOTICE line carries Apache boilerplate or a truncated copyright, or if NOTICE still claims "all are MIT".
             Known unresolved copyright lines are listed in sources/notice_known_gaps.txt (a ratchet: it may only shrink).
   --write   regenerate: fix the header, repair boilerplate lines, and rewrite the GENERATED section (repos missing from the hand-written part).
-A copyright line that cannot be recovered from the manifests or clean/registry/scan.jsonl is written as "copyright line not extracted; see LICENSE at repo@commit"
+A copyright line that cannot be recovered from the manifests or legacy/clean/registry/scan.jsonl is written as "copyright line not extracted; see LICENSE at repo@commit"
 instead of being cut off. This does not replace counsel review of the attribution approach before upload.
 """
 import collections
@@ -54,15 +54,15 @@ def shipped(extra_rows=()):
         if c and not e["copyright"]:
             e["copyright"] = c
 
-    for r in jload("clean/train_final_manifest.json"):
+    for r in jload("legacy/clean/train_final_manifest.json"):
         put(r.get("repo"), r.get("commit"), r.get("license"), None)
-    for r in jload("clean/pool_registry_manifest.json"):
+    for r in jload("legacy/clean/pool_registry_manifest.json"):
         if r.get("kept"):
             put(r.get("repo"), r.get("commit"), r.get("license"), r.get("copyright"))
-    for r in jload("clean/pool_chunked_manifest.json"):
+    for r in jload("legacy/clean/pool_chunked_manifest.json"):
         if not r.get("excluded"):
             put(r.get("repo"), r.get("commit"), r.get("license"), r.get("copyright"))
-    for r in jload("v3/train_v3_manifest.json"):
+    for r in jload("legacy/qwen25-coder-v3/train_v3_manifest.json"):
         if not r.get("excluded"):
             put(r.get("repo"), r.get("commit"), r.get("license"), None)
     for path in extra_rows:

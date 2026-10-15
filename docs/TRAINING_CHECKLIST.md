@@ -11,13 +11,13 @@ Scripts named without a repo prefix are in this repository; `scripts:` means `us
 
 ## B. Source catalogue and licence gate
 - [ ] 5. `sources/clone.sh` (per-repo helper) and `sources/SOURCES.md`/`NOTICE`: verify each LICENSE text at the pinned commit; only MIT/Apache/ISC/BSD(/MPL) rows may enter training.
-- [ ] 6. `clean/registry/scan.py` : clone verified registry listings at their validated commit, classify LICENSE text, run the Checker (`scan.jsonl`, `selected_ids.json`).
+- [ ] 6. `legacy/clean/registry/scan.py` : clone verified registry listings at their validated commit, classify LICENSE text, run the Checker (`scan.jsonl`, `selected_ids.json`).
 
 ## C. Base corpus
 - [ ] 7. `scripts:build_dataset_v1.py`, `scripts:build_dataset.py` (chunking helpers) : seed `data/train.jsonl`, `data/holdout.jsonl`.
-- [ ] 8. `clean/score_train.py`, `clean/build_clean.py`, `clean/dedupe.py`, `clean/dedupe2.py`, `clean/fix_assets.py` : Checker-pass filter and holdout de-duplication.
-- [ ] 9. `clean/build_pool.py`, `clean/build_chunked.py`, `clean/build_final.py` : pools and `clean/train_final.jsonl` (+ manifest).
-- [ ] 10. `v3/build_v3.py`, `v3/gen_notice.py` : v3 7B SFT set and the regenerated `NOTICE`.
+- [ ] 8. `legacy/clean/score_train.py`, `legacy/clean/build_clean.py`, `legacy/clean/dedupe.py`, `legacy/clean/dedupe2.py`, `legacy/clean/fix_assets.py` : Checker-pass filter and holdout de-duplication.
+- [ ] 9. `legacy/clean/build_pool.py`, `legacy/clean/build_chunked.py`, `legacy/clean/build_final.py` : pools and `legacy/clean/train_final.jsonl` (+ manifest).
+- [ ] 10. `legacy/qwen25-coder-v3/build_v3.py`, `legacy/qwen25-coder-v3/gen_notice.py` : v3 7B SFT set and the regenerated `NOTICE`.
 
 ## D. Reviewer-text data (teacher: Qwen3.5-397B-A17B, Apache-2.0)
 - [ ] 11. `train/v2/distill/candidates.py`, `guided.py` `[P]`, `or_teacher.py` `[$]`, `assemble.py`, `audit.py` `[$]` : see `train/v2/distill/METHODS.md`. Teacher outputs are kept only if they agree with the grader label and invent nothing.
