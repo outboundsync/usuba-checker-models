@@ -5,7 +5,7 @@ EVERYTHING written here is DRAFT / provisional: machine-derived, not hand-labell
 because it is derived from the sealed Dell key and from mined upstream data. Only this script and aggregate counts are committed.
 
   python3 -m scope.build_drafts dell    # S1 + S2 drafts from the Dell hardware key vs the Checker scripts report (static stage only)
-  python3 -m scope.build_drafts s4      # S4 draft from version-history fix commits (needs network: shallow fetch of public parent commits)
+  python3 -m scope.build_drafts s4      # S4 draft from version-history fix commits of the in-scope kind only (security); needs network (shallow fetch of public parent commits)
 
 S1 draft (hardware-observable false alarms):  hardware WORKS + a fail-level Checker scripts finding  ->  label false_alarm (the plugin runs on hardware, so "blocks the plugin" is false).
    hardware BROKEN + fail-level finding whose file the key's reason names  ->  label real (draft; the key reason is the only evidence).  Everything else is left unlabelled.
@@ -108,12 +108,15 @@ def _fetch_tree(url, sha, dest):
     return files
 
 
-def build_s4(max_n=60):
+IN_SCOPE_KINDS = ("security",)   # the only version-history bug kind that can fall in the seven focus categories; the other kinds are runtime/logic bugs (out of scope)
+
+
+def build_s4(max_n=60, kinds=IN_SCOPE_KINDS):
     pairs = []
     for fn in ("verified_pairs.jsonl", "verified_pairs_2.jsonl"):
         pairs += [json.loads(line) for line in open(os.path.join(VH, fn))]
     cand = [p for p in pairs if p["license"] in ("MIT", "Apache-2.0", "ISC", "BSD") and p["confidence"] >= 0.9 and p["file"].endswith((".qml", ".js", ".sh", ".py"))
-            and len(p["pre_fix_line_text"].strip()) >= 12]
+            and len(p["pre_fix_line_text"].strip()) >= 12 and (kinds is None or p["bug_kind"] in kinds)]
     cand.sort(key=lambda p: hashlib.sha256(("s4-draft|" + p["repo"]).encode()).hexdigest())   # deterministic, repo-disjoint selection
     seen, rows, plugins, tried = set(), [], [], 0
     for p in cand:

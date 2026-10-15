@@ -1,0 +1,120 @@
+{
+ "name": "b0-holdout",
+ "set": "holdout",
+ "model": "qwen/qwen3.5-9b",
+ "prompt": "scope-v4",
+ "prompt_sha256": "a2317251f69e8ab6d1dae402c29b632aeeb437230c1a0a7a947feea9dae6ccdb",
+ "code_blob_policy": "code_blob/v1 file_cap=12000 code_cap=40000 numbered=1",
+ "n_plugins": 329,
+ "n_checker_findings": 1100,
+ "cost_usd": 0.526,
+ "status": "B0 = stock model, same input/schema/post-filter",
+ "generated_at": "2026-10-15T17:09:53-0600",
+ "practical": {
+  "n": 329,
+  "schema_valid": 0.65,
+  "schema_valid_wilson": [
+   0.597,
+   0.7
+  ],
+  "median_secs": 7.58,
+  "invalid_reasons": {
+   "schema": 88,
+   "unparseable": 21,
+   "truncated": 6
+  }
+ },
+ "tracked_T1_T5": {
+  "T1_added_ungrounded_drop_rate": 0.156,
+  "T1_n_added_raw": 180,
+  "T2_line_accuracy_of_kept": 1.0,
+  "T2_n_kept": 140,
+  "T3_triage_quote_ungrounded_rate": 0.374,
+  "T3_n_triage": 537,
+  "T4_verdict_inconsistency_rate": 0.098,
+  "T4_n": 214,
+  "T5_fix_concrete_rate": 1.0,
+  "T5_n_kept": 140,
+  "added_duplicate_of_checker_dropped": 12
+ },
+ "postfilter_totals": {
+  "dismissals_dropped": 142,
+  "runtime_dismissal_blocked": 0,
+  "dismissals_kept": 252,
+  "confirms_ungrounded": 59,
+  "added_in": 180,
+  "added_dropped_quote": 28,
+  "added_dropped_file": 0,
+  "added_dropped_duplicate": 12,
+  "added_kept": 140,
+  "lines_ok": 140
+ },
+ "holdout_proxy": {
+  "n": 329,
+  "positives": 300,
+  "negatives": 29,
+  "added_kept": 140,
+  "category_match_precision": 0.243,
+  "category_match_precision_wilson": [
+   0.179,
+   0.32
+  ],
+  "focus_category_recall": 0.036,
+  "focus_category_recall_wilson": [
+   0.024,
+   0.054
+  ],
+  "negatives_with_blocker_or_invalid": 8,
+  "negatives_blocker_rate": 0.276,
+  "negatives_blocker_rate_wilson": [
+   0.147,
+   0.457
+  ],
+  "added_per_negative": 0.828,
+  "caveat": "reviewer-category proxy; a real added finding outside the reviewers' categories counts as a miss; not an S3 adjudication"
+ },
+ "added_findings_summary": {
+  "kept_after_postfilter": 140,
+  "blockers": 75,
+  "by_category": {
+   "remote-code-pinning": 17,
+   "secrets-credentials": 26,
+   "user-config-modification": 62,
+   "url-scheme-network": 33,
+   "listing-metadata-docs": 1,
+   "rich-text-markup-injection": 1
+  },
+  "per_plugin": 0.426
+ },
+ "dod_set_sizes_used": {
+  "S1": 0,
+  "S2": 0,
+  "S3": 0,
+  "S4": 0
+ },
+ "gates": {
+  "M1": {
+   "status": "not measurable",
+   "why": "no S3 adjudications"
+  },
+  "M2": {
+   "status": "not measurable",
+   "why": "no S2 clean set"
+  },
+  "M3": {
+   "status": "not measurable",
+   "why": "no S1 real findings"
+  },
+  "M4": {
+   "status": "not measurable",
+   "why": "needs Checker model results; use mcnemar_paired, paired_triage_diff and paired_precision_diff against B0"
+  },
+  "M5": {
+   "schema_valid": 0.65,
+   "median_secs": 7.58,
+   "deterministic": null,
+   "gate": "schema-valid>=99%, median<=10 s, deterministic (Q4_K_M on a 32 GB laptop is NOT measured by an API run)",
+   "status": "provisional-fail"
+  }
+ }
+}

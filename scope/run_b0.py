@@ -11,6 +11,7 @@ Writes $USUBA_RUNS/scope-v4/b0/<name>.rows.jsonl (per-plugin, private) and <name
 Spend is tracked in $USUBA_RUNS/scope-v4/spend.json and stops at --max-cost (global cap $5 for this job).
 """
 import argparse
+import fcntl
 import json
 import os
 import sys
@@ -76,13 +77,17 @@ _LOCK = threading.Lock()
 
 
 def add_spend(name, usd):
+    """Cross-process safe (several runs may share the ledger): flock + atomic replace."""
     with _LOCK:
         p = os.path.join(BASE, "spend.json")
-        d = json.load(open(p)) if os.path.exists(p) else dict(total=0.0, runs={})
-        d["total"] = round(d["total"] + usd, 6)
-        d["runs"][name] = round(d["runs"].get(name, 0.0) + usd, 6)
-        with open(p, "w") as f:
-            json.dump(d, f, indent=1)
+        with open(p + ".lock", "w") as lk:
+            fcntl.flock(lk, fcntl.LOCK_EX)
+            d = json.load(open(p)) if os.path.exists(p) else dict(total=0.0, runs={})
+            d["total"] = round(d["total"] + usd, 6)
+            d["runs"][name] = round(d["runs"].get(name, 0.0) + usd, 6)
+            with open(p + ".tmp", "w") as f:
+                json.dump(d, f, indent=1)
+            os.replace(p + ".tmp", p)
 
 
 def call(model, msgs, key, max_tokens):
@@ -120,7 +125,14 @@ def main():
     ap.add_argument("--price-in", type=float, default=0.1)    # $/M, only used when the endpoint reports no cost
     ap.add_argument("--price-out", type=float, default=0.15)
     ap.add_argument("--overwrite", action="store_true")
+    ap.add_argument("--resummarize", action="store_true", help="recompute <name>.summary.json from the stored rows (no API calls)")
     a = ap.parse_args()
+    if a.resummarize:
+        rows = [json.loads(line) for line in open(os.path.join(BASE, "b0", a.name + ".rows.jsonl"))]
+        summ = summarize(rows, a)
+        with open(os.path.join(BASE, "b0", a.name + ".summary.json"), "w") as f:
+            json.dump(summ, f, indent=1)
+        return
     key = os.environ.get("OPENROUTER_API_KEY")
     if not key:
         raise SystemExit("no $OPENROUTER_API_KEY")
@@ -129,6 +141,12 @@ def main():
     if os.path.exists(rows_fn) and not a.overwrite:
         raise SystemExit("%s exists: use a new --name or --overwrite" % rows_fn)
     plugins = load_set(a.set, a.limit)
+    cache_fn = os.path.join(BASE, "b0", a.name + ".cache.jsonl")   # one line per finished API call: a crash never re-spends
+    cache = {}
+    if os.path.exists(cache_fn):
+        for line in open(cache_fn):
+            c = json.loads(line)
+            cache[c["plugin"]] = c
     run_spent = [0.0]
     cap = min(a.max_cost, GLOBAL_CAP - spent_total())
 
@@ -146,8 +164,14 @@ def main():
             raw = "SKIPPED checker-crash"
         elif skip:
             raw = "SKIPPED max-cost"
+        elif p["plugin"] in cache:
+            raw, usage, fin = cache[p["plugin"]]["raw"], cache[p["plugin"]]["usage"], cache[p["plugin"]]["fin"]
+            with _LOCK:
+                run_spent[0] -= est
         else:
             raw, usage, fin = call(a.model, prompt_scope.messages(prompt_scope.render_files(files), fs), key, a.max_tokens)
+            with _LOCK, open(cache_fn, "a") as cf:
+                cf.write(json.dumps(dict(plugin=p["plugin"], raw=raw, usage=usage, fin=fin)) + "\n")
             c = usage.get("cost")
             c = c if isinstance(c, (int, float)) else usage.get("prompt_tokens", 0) / 1e6 * a.price_in + usage.get("completion_tokens", 0) / 1e6 * a.price_out
             with _LOCK:
@@ -201,6 +225,10 @@ def summarize(rows, a):
     elif set_name == "s4":
         s4 = [json.loads(line) for line in open(os.path.join(DRAFTS, "S4_draft.jsonl"))]
         out["S4_draft_bug_recall"] = SC.bug_recall(rows, s4)
+        # the mined bugs are mostly runtime/logic bugs, which are OUT of scope for the Checker model: report the in-scope kind (security) separately
+        sec = [g for g in s4 if g["bug_kind"] == "security"]
+        out["S4_draft_bug_recall_security_kind_only"] = SC.bug_recall(rows, sec)
+        out["S4_draft_kind_counts"] = {k: sum(g["bug_kind"] == k for g in s4) for k in sorted({g["bug_kind"] for g in s4})}
         out["dismissal_rate_all_findings"] = _dismiss_all(rows)
         sizes = dict(S1=0, S2=0, S3=0, S4=len(s4))
     else:

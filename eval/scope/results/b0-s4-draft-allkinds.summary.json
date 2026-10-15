@@ -1,0 +1,136 @@
+{
+ "name": "b0-s4",
+ "set": "s4",
+ "model": "qwen/qwen3.5-9b",
+ "prompt": "scope-v4",
+ "prompt_sha256": "a2317251f69e8ab6d1dae402c29b632aeeb437230c1a0a7a947feea9dae6ccdb",
+ "code_blob_policy": "code_blob/v1 file_cap=12000 code_cap=40000 numbered=1",
+ "n_plugins": 60,
+ "n_checker_findings": 276,
+ "cost_usd": 0.0972,
+ "status": "B0 = stock model, same input/schema/post-filter",
+ "generated_at": "2026-10-15T16:51:47-0600",
+ "practical": {
+  "n": 60,
+  "schema_valid": 0.583,
+  "schema_valid_wilson": [
+   0.457,
+   0.699
+  ],
+  "median_secs": 8.34,
+  "invalid_reasons": {
+   "unparseable": 4,
+   "truncated": 1,
+   "schema": 20
+  }
+ },
+ "tracked_T1_T5": {
+  "T1_added_ungrounded_drop_rate": 0.0,
+  "T1_n_added_raw": 12,
+  "T2_line_accuracy_of_kept": 1.0,
+  "T2_n_kept": 12,
+  "T3_triage_quote_ungrounded_rate": 0.255,
+  "T3_n_triage": 47,
+  "T4_verdict_inconsistency_rate": 0.171,
+  "T4_n": 35,
+  "T5_fix_concrete_rate": 1.0,
+  "T5_n_kept": 12,
+  "added_duplicate_of_checker_dropped": 0
+ },
+ "postfilter_totals": {
+  "dismissals_dropped": 9,
+  "runtime_dismissal_blocked": 0,
+  "dismissals_kept": 27,
+  "confirms_ungrounded": 3,
+  "added_in": 12,
+  "added_dropped_quote": 0,
+  "added_dropped_file": 0,
+  "added_dropped_duplicate": 0,
+  "added_kept": 12,
+  "lines_ok": 12
+ },
+ "S4_draft_bug_recall": {
+  "n": 60,
+  "hit": 1,
+  "recall": 0.017,
+  "recall_wilson": [
+   0.003,
+   0.089
+  ]
+ },
+ "S4_draft_bug_recall_security_kind_only": {
+  "n": 3,
+  "hit": 0,
+  "recall": 0.0,
+  "recall_wilson": [
+   0.0,
+   0.562
+  ]
+ },
+ "S4_draft_kind_counts": {
+  "api-compat-change": 6,
+  "env-or-config-assumption": 5,
+  "error-handling": 1,
+  "missing-dependency-or-install": 1,
+  "null-or-missing-guard": 4,
+  "process-or-resource-lifecycle": 5,
+  "race-or-timing": 2,
+  "security": 3,
+  "shell-quoting-or-expansion": 2,
+  "syntax-or-parse-error": 2,
+  "ui-layout-or-state": 11,
+  "wrong-condition-or-logic": 14,
+  "wrong-path-or-command": 4
+ },
+ "dismissal_rate_all_findings": {
+  "dismissed": 27,
+  "findings_in_valid_rows": 47,
+  "rate": 0.574,
+  "wilson": [
+   0.433,
+   0.705
+  ]
+ },
+ "added_findings_summary": {
+  "kept_after_postfilter": 12,
+  "blockers": 1,
+  "by_category": {
+   "url-scheme-network": 7,
+   "rich-text-markup-injection": 1,
+   "user-config-modification": 2,
+   "secrets-credentials": 2
+  },
+  "per_plugin": 0.2
+ },
+ "dod_set_sizes_used": {
+  "S1": 0,
+  "S2": 0,
+  "S3": 0,
+  "S4": 60
+ },
+ "gates": {
+  "M1": {
+   "status": "not measurable",
+   "why": "no S3 adjudications"
+  },
+  "M2": {
+   "status": "not measurable",
+   "why": "no S2 clean set"
+  },
+  "M3": {
+   "status": "not measurable",
+   "why": "no S1 real findings"
+  },
+  "M4": {
+   "status": "not measurable",
+   "why": "needs Checker model results; use mcnemar_paired, paired_triage_diff and paired_precision_diff against B0"
+  },
+  "M5": {
+   "schema_valid": 0.583,
+   "median_secs": 8.34,
+   "deterministic": null,
+   "gate": "schema-valid>=99%, median<=10 s, deterministic (Q4_K_M on a 32 GB laptop is NOT measured by an API run)",
+   "status": "provisional-fail"
+  }
+ }
+}

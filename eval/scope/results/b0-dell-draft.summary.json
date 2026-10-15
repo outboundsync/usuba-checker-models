@@ -1,0 +1,193 @@
+{
+ "name": "b0-dell",
+ "set": "dell",
+ "model": "qwen/qwen3.5-9b",
+ "prompt": "scope-v4",
+ "prompt_sha256": "a2ae25335af3eb0007c7a3b05951416eeba677b363aa635345d3313e7ad5835b",
+ "n_plugins": 75,
+ "n_checker_findings": 87,
+ "cost_usd": 0.0677,
+ "status": "B0 = stock model, same input/schema/post-filter",
+ "generated_at": "2026-10-15T16:36:05-0600",
+ "practical": {
+  "n": 75,
+  "schema_valid": 0.84,
+  "schema_valid_wilson": [
+   0.741,
+   0.906
+  ],
+  "median_secs": 4.14,
+  "invalid_reasons": {
+   "schema": 11,
+   "unparseable": 1
+  }
+ },
+ "tracked_T1_T5": {
+  "T1_added_ungrounded_drop_rate": 0.024,
+  "T1_n_added_raw": 41,
+  "T2_line_accuracy_of_kept": 1.0,
+  "T2_n_kept": 37,
+  "T3_triage_quote_ungrounded_rate": 0.151,
+  "T3_n_triage": 53,
+  "T4_verdict_inconsistency_rate": 0.143,
+  "T4_n": 63,
+  "T5_fix_concrete_rate": 1.0,
+  "T5_n_kept": 37,
+  "added_duplicate_of_checker_dropped": 3
+ },
+ "postfilter_totals": {
+  "dismissals_dropped": 6,
+  "runtime_dismissal_blocked": 0,
+  "dismissals_kept": 22,
+  "confirms_ungrounded": 2,
+  "added_in": 41,
+  "added_dropped_quote": 1,
+  "added_dropped_file": 0,
+  "added_dropped_duplicate": 3,
+  "added_kept": 37,
+  "lines_ok": 37
+ },
+ "S1_draft_triage": {
+  "n": 6,
+  "n_real": 6,
+  "n_false_alarm": 0,
+  "dismiss_of_real": 0.0,
+  "false_alarm_dismissed": null,
+  "confirm_of_real": 1.0,
+  "triage_accuracy": 1.0,
+  "n_no_decision": 0,
+  "n_plugins": 1,
+  "dismiss_of_real_wilson": [
+   0.0,
+   0.39
+  ],
+  "false_alarm_dismissed_wilson": null,
+  "dismiss_of_real_ci95": null,
+  "false_alarm_dismissed_ci95": null,
+  "triage_accuracy_ci95": null,
+  "dismiss_of_real_before_postfilter": 0.0,
+  "ci_method": "percentile bootstrap resampling plugins, 1000 resamples, seed 0"
+ },
+ "S2_draft_clean": {
+  "n_clean": 47,
+  "clean_with_blocker": 14,
+  "blocker_rate": 0.298,
+  "blocker_rate_wilson": [
+   0.187,
+   0.44
+  ],
+  "blocker_rate_ci95": [
+   0.17,
+   0.426
+  ],
+  "added_per_clean": 0.83,
+  "added_per_clean_ci95": [
+   0.532,
+   1.149
+  ]
+ },
+ "verdict_vs_hardware_model": {
+  "verdict_accuracy": 0.48,
+  "positive_recall": 0.393,
+  "negative_false_alarm": 0.277,
+  "negative_correct_approve": 0.532,
+  "n": 75,
+  "positives": 28,
+  "negatives": 47,
+  "n_invalid": 12,
+  "json_valid": 0.84,
+  "always_flag_accuracy": 0.373,
+  "ci95": {
+   "verdict_accuracy": [
+    0.36,
+    0.6
+   ],
+   "positive_recall": [
+    0.214,
+    0.571
+   ],
+   "negative_false_alarm": [
+    0.149,
+    0.404
+   ],
+   "negative_correct_approve": [
+    0.383,
+    0.681
+   ],
+   "category_recall_micro": null,
+   "category_precision_micro": null
+  },
+  "ci_method": "stratified percentile bootstrap, 1000 resamples, seed 0"
+ },
+ "verdict_vs_hardware_system(Checker scripts)": {
+  "n": 75,
+  "correct": 58,
+  "accuracy": 0.773,
+  "wilson": [
+   0.667,
+   0.853
+  ]
+ },
+ "dismissal_rate_all_findings": {
+  "dismissed": 22,
+  "findings_in_valid_rows": 53,
+  "rate": 0.415,
+  "wilson": [
+   0.293,
+   0.549
+  ]
+ },
+ "added_findings_summary": {
+  "kept_after_postfilter": 37,
+  "blockers": 15,
+  "by_category": {
+   "url-scheme-network": 14,
+   "user-config-modification": 11,
+   "rich-text-markup-injection": 3,
+   "remote-code-pinning": 3,
+   "secrets-credentials": 5,
+   "listing-metadata-docs": 1
+  },
+  "per_plugin": 0.493
+ },
+ "dod_set_sizes_used": {
+  "S1": 6,
+  "S2": 47,
+  "S3": 0,
+  "S4": 0
+ },
+ "gates": {
+  "M1": {
+   "status": "not measurable",
+   "why": "no S3 adjudications"
+  },
+  "M2": {
+   "blocker_rate": 0.298,
+   "added_per_clean": 0.83,
+   "n": 47,
+   "gate": "blocker rate<=0.15 and added/clean<=0.3",
+   "status": "provisional-fail"
+  },
+  "M3": {
+   "value": 0.0,
+   "wilson": [
+    0.0,
+    0.39
+   ],
+   "n_real": 6,
+   "gate": "dismisses<=5% of real Checker failures",
+   "status": "provisional-pass"
+  },
+  "M4": {
+   "status": "not measurable",
+   "why": "needs candidate model results; use mcnemar_paired and paired CIs against B0"
+  },
+  "M5": {
+   "schema_valid": 0.84,
+   "median_secs": 4.14,
+   "deterministic": null,
+   "gate": "schema-valid>=99%, median<=10 s, deterministic (Q4_K_M on a 32 GB laptop is NOT measured by an API run)",
+   "status": "provisional-fail"
+  }
+ }
+}
