@@ -6,7 +6,7 @@ Repo worktree: branch v3-prep (off v3-data cff8fe5). Keys come from env `OPENROU
   then `python3 eval/dellkey/reason_grade.py dellkey-v3p-SHORT --judge` (judge anthropic/claude-haiku-5.5 via OpenRouter, grading only), then the same run_eval with `--set hancore --name holdout-v3p-SHORT`.
 - Models (slug, ctx cap): qwen/qwen3.5-9b 262144; mistralai/ministral-14b-2512 262144; google/gemma-4-26b-a4b-it 262144; google/gemma-3-12b-it 131072; qwen/qwen3-coder-30b-a3b-instruct 262144; z-ai/glm-4.7-flash 202752; nvidia/nemotron-3-nano-30b-a3b 262144; meta-llama/llama-3.1-8b-instruct 131072.
 - Inputs: Dell key 90 decided rows (functest/dell_ground_truth.jsonl, whole files), HANCORE holdout 329 (eval/hancore_holdout/manifest.jsonl). Seeds: none; request temperature=0, one run per system.
-- Cost: $3.02 OpenRouter (eval + judge), cap was $5. Results/tables/sha256: `exam_v3prompt/`. 4 Dell rows across three systems hit context overflow (scored invalid; see logs).
+- Cost: $3.02 OpenRouter (eval + judge), cap was $5. Results/tables/sha256: `exam_v3prompt/`. 7 Dell rows (3 Gemma 3 12B or similar, 1, 3 across Gemma 3 12B, GLM 4.7 Flash, Llama 3.1 8B) hit context overflow (scored invalid; see logs).
 ## 2. HANCORE recovery r2
 - `python3 hancore/label_recover.py --max-cost 8.5 --workers 8` (run from hancore/; needs /workspace/hancore_cache, hancore-labels/src_full, gh for tarballs). Model qwen/qwen3.5-397b-a17b, temperature 0, reasoning off, data_collection deny. Output dir default /workspace/usuba-runs/hancore-labels-r2 (copied here as `hancore_labels_r2/`). Result: 319/1719 recovered (179 high, 140 medium), $6.22. See hancore_labels_r2/REPORT.md. Resumable via raw.jsonl. Not merged into training data.
 ## 3. Midcheck
