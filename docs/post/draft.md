@@ -152,6 +152,27 @@ Next we stopped sampling and ran the whole plugin set on the reference laptop ru
 
 ---
 
+## Local hardware learnings (reference laptop, CPU only)
+
+Notes from running Usuba 9B v1 (Q4_K_M, llama-server `-t 8 --jinja`, `-c 12288 -np 1`) on a reference laptop (16 threads, 15 GB RAM, no GPU), 2026-10-14. Everything here is from our own runs; the sample is small.
+
+- **Speed.** Prefill about 24 tok/s (21-32 across runs, roughly 43 ms/token). Generation 5-7 tok/s (7.4 at 2.4k context, 5.2 at 7.8k). Prefill dominates once a prompt passes about 1.5k tokens: a cold 4.7k-token prompt took about 195 s, 7.5k about 326 s, an 8k prompt is about 5.5 min. Wall time per plugin was 36-71 s for small plugins and 3-6 minutes for first-seen 5-8k prompts.
+- **Prefix cache.** With one slot, a repeat of the same plugin (or one sharing a long prefix) reuses the cache and prefills in 15-17 s. Those rows are not clean speed numbers; we compare cold rows only.
+- **Context.** About 10k prompt tokens is the practical limit at `-c 12288` (the largest prompt we ran was 7.8k in + up to 1200 out). Whole-file prompts for the Dell key have a median of about 8k tokens, p90 about 50k, max about 200k, so a laptop at this setting covers roughly half the key. A 32k-token plugin needs about 25 minutes of prefill, which is past a 20-minute call timeout; skip or cap those locally.
+- **Memory.** llama-server RSS 9.4-10.7 GB (about 68% of RAM) with the desktop running, about 1 GB of swap in use at times. No swap pressure in the baseline runs.
+- **Degenerate output.** One run looped on a pseudo-SHA until the token cap, costing about 150 s of decode.
+- **Determinism.** Changing slot/context settings can flip outputs even at temperature 0 (one plugin went from a made-up finding to "approve").
+
+### v1 vs stock Qwen3.5-9B on the Dell (8 broken plugins, CPU, same prompt and flags)
+Same v1 prompt, whole files (SOURCE.txt / checklist.md removed), temperature 0.2, max 1200 tokens, thinking off, both Q4_K_M. Open models only. **Eight plugins is a small sample**: one plugin is 12.5 points, and one hit in 8 is within noise at temperature 0.2, so read this as a weak edge for stock, not a clear win.
+
+| system | names the actual bug | loose | wrong | no flag | invented commit SHA |
+|---|---:|---:|---:|---:|---:|
+| Usuba 9B v1 Q4_K_M | 0/8 | 0 | 7 | 1 | 7/8 |
+| Qwen3.5 9B stock Q4_K_M | 1/8 (portwatch: ScrollBar missing import) | 1 (intemporel) | 5 | 1 | 0/8 |
+
+What it shows: v1 gave a changes_requested verdict with a generic security template and an invented commit SHA on 7 of 7 flagged plugins; the SHA habit comes from the marketplace-review boilerplate it was fine-tuned on. Stock invented no SHAs, but it still missed the key syntax breaks (the missing `}`) and the missing entry point, and made some API claims up. Both approved `gpt56.scriptural`, which is broken. The same "verdict right, reason wrong" pattern appeared in the 90-plugin A6000 run. Raw logs and per-plugin grades: `eval/dellkey/dell_baseline.json` (source: `dell-runs/{v1,stock}-baseline-1014/GRADES.md`).
+
 ## 8. Re-checking the grader, and an out-of-sample test
 
 We re-ran the full answer key on the real-runtime grader. It found a crash and one miss on `main`. After the fixes, it agrees on **90/90 decided cases**.

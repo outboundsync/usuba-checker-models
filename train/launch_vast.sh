@@ -12,7 +12,7 @@
 set -euo pipefail
 command -v ssh >/dev/null && command -v scp >/dev/null || { echo "ssh/scp missing on this machine: sudo apt-get install -y openssh-client"; exit 4; }
 cd "$(dirname "$0")"; T=$PWD; ROOT=$(dirname "$T"); ST=$T/.vast_instance
-IMAGE=${IMAGE:-pytorch/pytorch:2.9.1-cuda12.8-cudnn9-devel}; DISK=${DISK:-150}
+IMAGE=${IMAGE:-pytorch/pytorch:2.9.1-cuda12.8-cudnn9-devel}; DISK=${DISK:-200}
 RUNS=${USUBA_RUNS:-/workspace/usuba-runs}; R2_BUCKET=${R2_BUCKET:-usuba-training}; CHUNK=${CHUNK:-200M}
 GPU=h100; MAXDPH=3.6; YES=0; SMOKE=0; FORCE=0; CMD=${1:-plan}; shift || true
 while [ $# -gt 0 ]; do case $1 in --yes) YES=1;; --smoke) SMOKE=1;; --i-accept-data-loss) FORCE=1;; --gpu) GPU=$2; shift;; --max-dph) MAXDPH=$2; shift;; esac; shift; done
@@ -33,10 +33,10 @@ rcp() { if [ -n "${MOCK_REMOTE:-}" ]; then cp "${1/\/workspace\/usuba/$MOCK_REMO
 bundle() {
   [ -s data/train.jsonl ] || python3 build_train_set.py
   python3 -c "import json,hashlib;m=json.load(open('data/manifest.json'));assert all(hashlib.sha256(open('data/'+f,'rb').read()).hexdigest()==h for f,h in m['sha256'].items()),'train data does not match manifest sha256'"
-  tar czf /tmp/usuba_train_bundle.tgz -C "$ROOT" train/config.yaml train/train_lora.py train/export_gguf.py train/remote_setup.sh train/prompt.py train/data/train.jsonl train/data/val.jsonl train/data/manifest.json
+  tar czf /tmp/usuba_train_bundle.tgz -C "$ROOT" train/config.yaml train/train_lora.py train/export_gguf.py train/remote_setup.sh train/watchdog.sh train/autostart.sh train/dry_run.sh train/resume_test.sh train/loss_utils.py train/prompt.py train/data/train.jsonl train/data/val.jsonl train/data/manifest.json
 }
 # remote artifact list: checkpoints, adapters, logs, final GGUF (merged bf16 is deleted on the instance: regenerable)
-REMOTE_LIST='cd /workspace/usuba && { ls run.log ALL_DONE SMOKE_DONE TRAIN_STOPPED 2>/dev/null; find train/out -type f ! -path "*/merged-bf16/*" ! -name "*bf16.gguf" ! -path "*.tmp/*" 2>/dev/null; } | sort'
+REMOTE_LIST='cd /workspace/usuba && { ls run.log DRYRUN_REPORT.txt RESUMETEST_REPORT.txt ALL_DONE SMOKE_DONE TRAIN_STOPPED 2>/dev/null; find train/out -type f ! -path "*/merged-bf16/*" ! -name "*bf16.gguf" ! -path "*.tmp/*" 2>/dev/null; } | sort'
 CF_ACCT=""
 r2_up() {  # r2_up <file> <key>: Cloudflare R2 object API; the token goes in a header file descriptor, never on argv or stdout
   [ -n "$CF_ACCT" ] || CF_ACCT=$(curl -s -H @<(printf 'Authorization: Bearer %s' "$CLOUDFLARE_API_TOKEN") https://api.cloudflare.com/client/v4/accounts | python3 -c "import json,sys;print(json.load(sys.stdin)['result'][0]['id'])")
@@ -79,7 +79,7 @@ start_remote() {
   if [ -n "${RESUME_FROM:-}" ]; then   # push the newest synced checkpoint so train_lora.py --resume continues from it
     ( cd "$RESUME_FROM" && tar cf - train/out/usuba-9b-lora ) | ssh $SO -p $P $HST "tar xf - -C /workspace/usuba"
   fi
-  ssh $SO -p $P $HST "(command -v tmux >/dev/null || (apt-get update -qq && apt-get install -y -qq tmux git cmake build-essential >/dev/null)) && tmux new -d -s train 'SMOKE_STEPS=$SMOKE bash /workspace/usuba/train/remote_setup.sh'"
+  ssh $SO -p $P $HST "(command -v tmux >/dev/null || (apt-get update -qq && apt-get install -y -qq tmux git cmake build-essential >/dev/null)) && echo $SMOKE > /workspace/usuba/mode_smoke && rm -f /workspace/usuba/NO_RESTART && bash /workspace/usuba/train/autostart.sh"
 }
 rent() {
   [ $YES = 1 ] || { echo "refusing to rent without --yes"; exit 2; }
@@ -87,7 +87,7 @@ rent() {
   if [ "$(vastai show ssh-keys --raw | python3 -c 'import json,sys;print(len(json.load(sys.stdin)))')" = 0 ]; then echo "registering $KEY.pub with Vast"; vastai create ssh-key "$(cat $KEY.pub)" >/dev/null; fi
   bundle; read -r OID DPH NAME < <(best); [ "$OID" = NONE ] && { echo "no $GPU offer under \$$MAXDPH/h"; exit 3; }
   echo "renting $NAME offer $OID at \$$DPH/h"
-  vastai create instance $OID --image $IMAGE --disk $DISK --ssh --direct --label usuba-9b-lora --raw | python3 -c "import json,sys;print(json.load(sys.stdin)['new_contract'])" > $ST
+  vastai create instance $OID --image $IMAGE --disk $DISK --ssh --direct --label usuba-9b-lora --onstart-cmd 'bash /workspace/usuba/train/autostart.sh' --raw | python3 -c "import json,sys;print(json.load(sys.stdin)['new_contract'])" > $ST
   mkdir -p "$(LOCAL)"; echo "$DPH $NAME $(date -u +%FT%TZ) smoke=$SMOKE" > "$(LOCAL)/rental.txt"
   echo "instance $(IID); waiting for ssh..."
   for i in $(seq 1 60); do rsh true 2>/dev/null && break; sleep 20; done
@@ -115,9 +115,10 @@ watch)
     now=$(date +%s); [ "$st" != "${last_st:-x}" ] && { last_st=$st; last_t=$now; }
     if [ $((now-${last_t:-$now})) -ge $((${STALL_MIN:-10}*60)) ]; then
       echo "[$(date)] STALLED: no new step since $(date -d @$last_t) ($st); attempting resume"
-      rsh "tmux kill-session -t train 2>/dev/null; pkill -f train_lora.py; sleep 5; rm -f /workspace/usuba/TRAIN_STOPPED; bash /root/onstart.sh" || echo "  resume attempt failed (instance unreachable?)"
+      rsh "pkill -f train_lora.py; bash /workspace/usuba/train/autostart.sh" || echo "  resume attempt failed (instance unreachable?)"
       last_t=$((now+15*60))   # grace for setup + model load before the next stall check
     fi
+    al=$(rsh "tail -n 3 /workspace/usuba/ALERT 2>/dev/null" 2>/dev/null || true); [ -n "$al" ] && [ "$al" != "${last_al:-}" ] && { last_al=$al; echo "[$(date)] WATCHDOG ALERT on instance:"; echo "$al"; }
     sleep ${SYNC_EVERY:-120}
   done;;
 sync) sync_once;;

@@ -93,3 +93,16 @@ are no longer shown to models, and files are no longer cut at 8000/24000 chars. 
 function (`train/checker_report.py`); v1 Dell training rows used the sweep's static_fails and left out the `warn` lines the eval showed.
 Headline: Usuba v1 names the real bug for 0/26 flagged broken plugins and invents a commit SHA in 46/90 outputs. Stock Ministral 14B with the
 improved prompt names it for 15/27; Sonnet 5.5 (improved prompt) for 22/24 at 0.07 false alarms.
+
+## Local hardware learnings (reference laptop, CPU only)
+Provenance reminder: no proprietary-model outputs are training data; the Dell baselines below are open models (Usuba v1, stock Qwen3.5-9B) on our own runs.
+- Speeds: prefill about 24 tok/s, generation 5-7 tok/s. Memory about 10 GB for the 9B Q4_K_M server.
+- Context: about 10k prompt tokens at `-c 12288`; 32k-token plugins need about 25 min of prefill, so local runs skip or cap the biggest plugins. Plan 32k per slot on the GPU exam (already enforced by `serve_llama.sh`).
+- Baseline, 8 broken Dell-key plugins (small sample): v1 names the real bug 0/8 and invents commit SHAs on 7/8; stock Qwen3.5-9B names it 1/8 (+1 loose) and invents 0/8. The exam table carries these rows (see `eval/dellkey/dell_baseline.json`). One hit in 8 is within noise.
+
+## Vast run config for v2 (prepared, NOT launched)
+- `train/config.yaml`: `max_hours: 11` (was 9), `max_len: 32768`, `save_every_steps: 20`, `eval_every_steps: 145`.
+- `train/dry_run.sh [MIN]`: a few paid minutes on the real data and config (output in `out/dryrun`), reports s/step, peak memory, checkpoint written, projected total hours vs `max_hours`.
+- `train/resume_test.sh [--reboot|--verify]`: kill -9 (or reboot) the trainer mid-run and prove `--resume` continues from the newest complete checkpoint with no step-counter reset.
+- `train/watchdog.sh`: every 5 minutes checks process alive, GPU util/memory and that the optimizer step advanced; restarts from the checkpoint after a dead process or `STALL_MIN` (15) minutes without a step; appends to `/workspace/usuba/ALERT` (surfaced by `launch_vast.sh watch`); gives up after 6 restarts. Started by `autostart.sh` (Vast onstart), so it survives reboots.
+- Order on the instance: `dry_run.sh` -> `resume_test.sh` -> real run. Neither script has been run yet; they were only syntax-checked (`bash -n`).
