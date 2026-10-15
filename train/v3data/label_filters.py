@@ -27,6 +27,46 @@ def attribution(strict, row_id, row_commit):
     return True, None
 
 
+def plurality_table(HC, plugins=None):
+    """r6 attribution (Harris 2026-10-15): plurality of the reviewed SHAs that finding comments NAME THEMSELVES (no carry-forward from earlier comments, no back-fill from later
+    ones; "fixed in <sha>" and foreign-repo commits are not reviewed SHAs). Plugin -> dict(status, sha, counts).
+      ok               one SHA has strictly more explicit mentions than any other (a single mention counts)
+      tie              the top two SHAs have equal counts (serial re-reviews at different HEADs): DROP, the choice would be arbitrary
+      unresolvable     no finding comment names a reviewed SHA: DROP
+      sha_after_review the plurality SHA is first named AFTER a finding comment that names no SHA (the legacy loader back-filled it from the later comment): DROP
+    Measured on 4,799 reviewed plugins: ok 2,3xx / tie 1,9xx / unresolvable 4xx (see v3/r6/GATE_REPORT.md)."""
+    out = {}
+    for p, d in (plugins if plugins is not None else HC.load(strict_sha=True)).items():
+        res = []
+        for x in sorted(d["items"], key=lambda x: x["date"]):
+            if x["item_type"] != "finding" or set(x["categories"]) <= {"clean-review-no-blocker"}: continue
+            c = HC.reviewed_shas(x["text"], HC.repo_of(p)); res.append((x["date"], c[0] if c else None))
+        cnt = collections.Counter(s for _, s in res if s); top = cnt.most_common(2)
+        if not cnt: out[p.lower()] = dict(status="unresolvable", sha=None, counts=dict(cnt)); continue
+        if len(top) > 1 and top[0][1] == top[1][1]: out[p.lower()] = dict(status="tie", sha=None, counts=dict(cnt)); continue
+        sha = top[0][0]; first = min(dt for dt, s in res if s == sha)
+        late = any(s is None and dt < first for dt, s in res)
+        out[p.lower()] = dict(status="sha_after_review" if late else "ok", sha=sha, counts=dict(cnt))
+    return out
+
+
+def attribution_v2(table, row_id, row_commit):
+    """-> (ok, reason). table = plurality_table(...). A row is kept only when its plugin is `ok` and the row's commit IS the plurality reviewed SHA."""
+    d = table.get(plugin_url_key(row_id))
+    if d is None: return False, "attribution:plugin_not_in_reviews"
+    if d["status"] != "ok": return False, "attribution:" + d["status"]
+    if not row_commit or not (d["sha"].startswith(row_commit[:10]) or row_commit.startswith(d["sha"][:10])): return False, "attribution:row_commit_is_not_the_plurality_sha"
+    return True, None
+
+
+def cited_line_exists(files, finding):
+    """the finding's file is in the attributed-SHA source and its cited line is inside it (and not blank): a label can only cite code that exists at that SHA"""
+    t = files.get(finding.get("file"))
+    if t is None or not isinstance(finding.get("line"), int): return False
+    lines = t.replace("\r\n", "\n").split("\n")
+    return 1 <= finding["line"] <= len(lines) and bool(lines[finding["line"] - 1].strip())
+
+
 def lower_keys(d): return {k.lower(): v for k, v in d.items()}
 
 

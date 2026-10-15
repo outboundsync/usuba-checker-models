@@ -41,3 +41,41 @@ def test_real_strict_loader_matches_filter_contract(tmp_path, monkeypatch):
     strict = F.lower_keys(C.load(strict_sha=True)); d = strict[plug.lower()]
     assert d["sha"] == SH1                                         # the "Fixed in <sha>" sentence does not become the reviewed commit
     assert F.attribution(strict, "hancore_concrete:own/name:" + SH1[:10], SH1)[0]
+
+
+# ---- r6: explicit-mention plurality, ties / unresolvable / sha-after-review dropped
+class _HC:
+    @staticmethod
+    def reviewed_shas(text, repo=None): return [w for w in text.split() if len(w) == 40]
+    @staticmethod
+    def repo_of(p): return "o/n"
+    @staticmethod
+    def load(strict_sha=False): return {}
+
+
+def _plug(*comments):
+    return dict(items=[dict(date=d, item_type="finding", categories=["x"], text=t) for d, t in comments])
+
+
+def test_plurality_table_statuses():
+    C = "c" * 40
+    pl = {"https://github.com/o/ok": _plug(("1", SH1), ("2", SH1), ("3", SH2)),
+          "https://github.com/o/tie": _plug(("1", SH1), ("2", SH2)),
+          "https://github.com/o/none": _plug(("1", "no sha here")),
+          "https://github.com/o/late": _plug(("1", "finding with no sha"), ("2", SH1)),
+          "https://github.com/o/carry": _plug(("1", SH1), ("2", "later finding that names no sha"), ("3", "another"))}
+    t = F.plurality_table(_HC, pl)
+    assert [t["https://github.com/o/" + k]["status"] for k in ("ok", "tie", "none", "late", "carry")] == ["ok", "tie", "unresolvable", "sha_after_review", "ok"]
+    assert t["https://github.com/o/carry"]["counts"] == {SH1: 1}      # carried-forward findings are NOT counted for the SHA (the r5 loader counted 3)
+    assert F.attribution_v2(t, "hancore_concrete:o/ok:" + SH1[:10], SH1) == (True, None)
+    assert F.attribution_v2(t, "hancore_concrete:o/ok:" + SH2[:10], SH2)[1] == "attribution:row_commit_is_not_the_plurality_sha"
+    for k, why in (("tie", "tie"), ("none", "unresolvable"), ("late", "sha_after_review")):
+        assert F.attribution_v2(t, f"hancore_concrete:o/{k}:{SH1[:10]}", SH1)[1] == "attribution:" + why
+    assert C not in str(t)
+
+
+def test_cited_line_must_exist_at_the_sha():
+    files = {"A.qml": "a\n\nc\n"}
+    assert F.cited_line_exists(files, dict(file="A.qml", line=3))
+    assert not F.cited_line_exists(files, dict(file="A.qml", line=2))     # blank line
+    assert not F.cited_line_exists(files, dict(file="A.qml", line=99)) and not F.cited_line_exists(files, dict(file="B.qml", line=1))

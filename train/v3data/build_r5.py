@@ -46,7 +46,7 @@ def build_pool():
     pool = []
     sys.path.insert(0, os.path.join(paths.checker_root(), "hancore")); import common as HC
     HC.REV = os.path.join(WT, "dell/sweep/hancore_reviews.jsonl")
-    STRICT = LF.lower_keys(HC.load(strict_sha=True))                       # audit E: one reviewed commit per plugin (majority SHA, "fixed in <sha>" and foreign-repo URLs excluded)
+    STRICT = LF.plurality_table(HC)                       # audit E: one reviewed commit per plugin (majority SHA, "fixed in <sha>" and foreign-repo URLs excluded)
     RET = LF.retraction_ids(json.load(open(FX + "retraction_list.json")))   # withdrawn findings (whole or partial): the row is dropped
     r3 = rd(R4W + "/r3_pool_final.jsonl.gz"); hb = rd(R4W + "/hist/hist_broken.jsonl.gz"); ha = rd(R4W + "/hist/hist_approve_candidates.jsonl.gz"); jank = rd(R4W + "/jank_rows.jsonl.gz")
     ex = []
@@ -74,7 +74,7 @@ def build_pool():
         if why: drops["synthetic:excluded_template_artefact"] += 1; continue
         if src == "hancore_concrete":
             if r["id"] in RET: drops["retraction:withdrawn_finding_row_dropped"] += 1; continue
-            ok, why = LF.attribution(STRICT, r["id"], pv.get("commit"))
+            ok, why = LF.attribution_v2(STRICT, r["id"], pv.get("commit"))
             if not ok: drops[why] += 1; continue
         if src.startswith("dell") or src == "nudged_approve":
             m = re.match(r"^[\w-]+:([^:]+):", r["id"]); c = C.get(m.group(1).lower()) if m else None
@@ -147,6 +147,7 @@ def stage_render(pool):
             f["category_orig"] = f["category"] if slug != f["category"] else None; f["category"] = slug
             if f.get("file") and isinstance(f.get("line"), int):
                 if f["file"] not in sf: drops["finding:file_missing"] += 1; continue
+                if c["source"] == "hancore_concrete" and not LF.cited_line_exists(sf, f): drops["attribution:cited_line_missing_at_attributed_sha"] += 1; continue   # r6: the cited line must exist at the attributed SHA
                 if not CB.line_visible(info, f["file"], f["line"]): drops["finding:cited_line_not_visible_under_shared_policy"] += 1; continue
             keep.append(f)
         if c["verdict"] != "approve" and not keep: drops["row:no_finding_left"] += 1; continue
