@@ -9,7 +9,7 @@ python3 -m pytest -q          # CPU only, no network, no model
 python3 tools/scan_public.py  # must print "0 finding(s)" before you open a PR
 ```
 
-## Adding a rule (Checker)
+## Adding a rule (Checker scripts, in the `usuba-checker-scripts` repo, not here)
 Add the rule to `functest/usuba/rules.py` (single source of truth), implement it in `functest/usuba/` with a test that has one failing and one passing example,
 regenerate the standard (`cd functest && python3 -m usuba.rules > STANDARD.md`), and say which public plugin or thread motivated it.
 

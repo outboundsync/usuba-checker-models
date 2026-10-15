@@ -1,5 +1,7 @@
 # Usuba Vast training-run plan
 
+> **Scope note (2026-10-15):** this plan and its tables are for the earlier scope (a verdict plus findings). The settled scope is `docs/MODEL_SCOPE.md` (Checker model = triage + extend + explain/fix on top of the Checker scripts report; release 1 advisory) and its gates are in `docs/DEFINITION_OF_DONE.md`. Where they disagree, those win. No GPU run is planned until S1-S4 and the B0 baseline exist.
+
 > **Provenance:** proprietary models (Claude, GPT, etc.) in the tables below are evaluation baselines only; none of their outputs are training data. See README "Training data provenance".
 
 
@@ -8,7 +10,7 @@
 - Hardware floor: a typical laptop with 32 GB RAM and integrated graphics (no dedicated GPU).
 - It must run at 4-bit quantization, about 5.5 GB of weights.
 
-## Training data (unchanged)
+## Training data sources (original plan; the Dell answer key is NOT trained on, see "Exclusions")
 - Labeled results from the Dell corpus sweep (branch `sweep`, dell/sweep/)
 - Uplift test scores (legacy/runs/uplift/results.csv)
 - The Dell answer key (functest/dell_ground_truth.jsonl in usuba-checker-scripts; its size changed over time: 76 rows in the first plan, 116 rows with undecided ones, 90 decided rows, 86 after the Claude-written plugins were excluded; the current count is the 86-row key (31 broken, 55 works) and every table below says which size it used). The key is excluded from training, see "Exclusions"

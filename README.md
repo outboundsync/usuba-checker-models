@@ -1,8 +1,13 @@
 # usuba-checker-models
 
-Training code, data policy, exam results and release notes for **Usuba**, a local reviewer model (LoRA on **Qwen3.5-9B**, Apache-2.0 base) that reads an Omarchy
-plugin plus the [Usuba Checker](https://github.com/outboundsync/usuba-checker-scripts) report and answers with a JSON verdict and findings.
-The deterministic Checker, mining pipelines and exam harness live in `usuba-checker-scripts`; this repository is everything that trains, ships and reports the model.
+Training code, data policy, exam results and release notes for the **Checker model**: a local reviewer (LoRA on **Qwen3.5-9B**, Apache-2.0 base) that works ON TOP of the
+**Checker scripts** report ([`usuba-checker-scripts`](https://github.com/outboundsync/usuba-checker-scripts): deterministic static + runtime checks) for an Omarchy plugin.
+Terms, used exactly: **Checker scripts** = `usuba-checker-scripts`; **Checker model** = the LoRA on Qwen3.5-9B (`usuba-checker-models`, this repo); **System** = both.
+Scope (release 1, advisory): the Checker model TRIAGES each Checker scripts finding (confirm | dismiss with a quote), EXTENDS with findings the scripts cannot see, and EXPLAINS + FIXES
+with a concrete patch; the Checker scripts' verdict is the System verdict. Full scope: [`docs/MODEL_SCOPE.md`](docs/MODEL_SCOPE.md); what "done" means: [`docs/DEFINITION_OF_DONE.md`](docs/DEFINITION_OF_DONE.md).
+The deterministic checks, mining pipelines and exam harness live in `usuba-checker-scripts`; this repository is everything that trains, ships and reports the Checker model.
+
+> Naming: the results below are for earlier adapters, which were called "Usuba v1" and "Usuba v2" and were trained for the previous scope (a verdict plus findings, no triage). They are kept under those historic names.
 
 > Status: research artefact, not production-ready. The numbers below are the honest ones, including the bad one.
 
@@ -78,12 +83,13 @@ Checker reports, real upstream fix commits, and review text written by the open-
 ## Where things are
 | Path | Content |
 |---|---|
+| `scope/` | Release-1 scope code: `prompt_scope.py` (prompt v4 of the scope), `schema.py` validator, `postfilter.py`, `scoring.py` (S1-S4 metrics, M1-M5 gates, T1-T5), `run_b0.py` (stock-model baseline harness), `build_drafts.py` (DRAFT S1/S2/S4 sets), `labelpage/` (offline labelling page) |
 | `train/` | Training: `build_train_set.py`, `config.yaml`, `train_lora.py`, `launch_vast.sh`, `export_gguf.py`, prompts, watchdog, tests; `v2/` distillation; `v3data/` data builders (r2 to r4) |
 | `v3fixes/` | Reviewer-v3 fixes: rules, skip measurements, synthetic and winners rows (`run_all.sh`) |
 | `legacy/` | The older Qwen2.5-Coder-era builders and runs, kept for provenance, nothing in `train/` uses them: `legacy/clean/`, `legacy/qwen25-coder-v3/` (was `v3/`, renamed so it no longer collides with the reviewer's v3), `legacy/data/`, `legacy/runs/`. See `legacy/README.md`. The dataset files themselves are on Hugging Face (`docs/DATA_HOSTING.md`; HF paths keep the old names) |
 | `sources/` | `plugin_sources.json` (repo URL + commit SHA + licence of every third-party plugin source), `fetch_plugin_sources.py`, licences, `SOURCES.md` |
 | `NOTICE`, `sources/licenses/` | Per-source attribution and licence texts that must travel with the data and model |
-| `docs/` | `REPLICATION.md`, `TRAINING_CHECKLIST.md`, `TRAINING_PLAN.md`, `MODEL_CARD.md`, `PROVENANCE.md`, `DATA_HOSTING.md`, method notes |
+| `docs/` | `MODEL_SCOPE.md`, `DEFINITION_OF_DONE.md`, `SCOPE_DATA_BUILDER_SPEC.md`, `REPLICATION.md`, `TRAINING_CHECKLIST.md`, `TRAINING_PLAN.md`, `MODEL_CARD.md`, `PROVENANCE.md`, `DATA_HOSTING.md`, method notes |
 | `hf/` | Hugging Face cards and SHA-256 manifest for datasets and adapters (datasets prepared, not uploaded; adapter weights withheld, hashes only) |
 
 ## Replicate
