@@ -1,0 +1,21 @@
+{
+ "name": "holdout-v3p-glm-4.7-flash",
+ "backend": "openai",
+ "model": "z-ai/glm-4.7-flash",
+ "n": 329,
+ "positives": 300,
+ "negatives": 29,
+ "verdict_accuracy": 0.465,
+ "positive_recall": 0.427,
+ "negative_false_alarm": 0.138,
+ "category_recall_micro": 0.032,
+ "category_precision_micro": 0.446,
+ "json_valid": 0.97,
+ "tokens_in": 2850803,
+ "tokens_out": 36716,
+ "cost_usd": 0.1716,
+ "prompt": "v3",
+ "whole_files": false,
+ "secs_median": 2.8,
+ "secs_total": 1526.9
+}

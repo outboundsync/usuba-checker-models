@@ -191,3 +191,15 @@ Do the steps in order; each has a stop condition. Nothing here launches paid GPU
    - Scripts that were only `bash -n` checked failed on first real use (torch/CUDA mismatch, watchdog launching a run on a fresh instance, `pkill -f` killing its own ssh, stale timers); run every script once on a cheap instance and read raw evidence on a FAIL.
    - The shared store rejects single files over ~100 MB: split into 90 MB parts plus a sha256 list.
    - llama-server context is shared across slots: -c must be per-slot context x slots.
+
+### Full v3 pipeline, in order (everything needed to replicate; commands and costs in `docs/v3prep/COMMANDS.md`)
+1. Label parse + verify HANCORE findings at the reviewed commit: `hancore/label_concrete.py` (no model calls, $0) -> `hancore-labels/concrete_findings.jsonl`.
+2. Recover file:line for findings without a file reference: `hancore/label_recover.py` (qwen3.5-397b, $6.22, 319 rows) -> `docs/v3prep/hancore_labels_r2/` (optional, high-confidence tier only).
+3. Build v3 data and gate it: `train/v3data/` builders (branches v3-data, v3-data-r2) and gate report; prompt `train/prompt_v3.py`.
+4. Dry run on the new data (~$0.30 GPU): `train/dry_run.sh`; then `train/resume_test.sh` if scripts changed.
+5. Real run: `train/launch_vast.sh start` (arms watchdog, auto-resume, 5-minute watch) with `train_lora.py --midcheck 100` on `train/config.yaml` (seed 1337).
+6. Merge/export: `train/export_gguf.py`; stop (not destroy) Vast instance 56016890.
+7. Baselines on prompt v3 (done): `docs/v3prep/exam_v3prompt/` ($3.02), then Usuba rows with the same `run_eval.py --prompt v3` and `eval/dellkey/reason_grade.py --judge`.
+8. Apply the gate rules (step 7 of the checklist above) and write the result into this file.
+
+Prompt-v3 baselines (Dell right-reason by Haiku judge, of 33 broken): Ministral 14B 12, Gemma 4 26B 12, Qwen3.5 9B stock 10, Nemotron 5, Qwen3-Coder 5, Gemma 3 12B 4, GLM 4.7 Flash 4, Llama 3.1 8B 3. Stock Qwen3.5 9B is the gate-(c) bar: 10/33 on prompt v3 (8/33 on v2).

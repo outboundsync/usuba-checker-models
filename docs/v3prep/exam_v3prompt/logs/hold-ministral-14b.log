@@ -1,0 +1,21 @@
+{
+ "name": "holdout-v3p-ministral-14b",
+ "backend": "openai",
+ "model": "mistralai/ministral-14b-2512",
+ "n": 329,
+ "positives": 300,
+ "negatives": 29,
+ "verdict_accuracy": 0.699,
+ "positive_recall": 0.727,
+ "negative_false_alarm": 0.586,
+ "category_recall_micro": 0.116,
+ "category_precision_micro": 0.507,
+ "json_valid": 0.979,
+ "tokens_in": 3000730,
+ "tokens_out": 87485,
+ "cost_usd": 0.4691,
+ "prompt": "v3",
+ "whole_files": false,
+ "secs_median": 4.11,
+ "secs_total": 1525.4
+}
