@@ -46,8 +46,19 @@ def wilson(k, n, z=1.96):
 
 
 def load(stem):
+    """The ORIGINAL result file as published (kept for the footnote and for systems with no raw outputs)."""
     with open(os.path.join(RES, stem + ".json")) as f:
         return json.load(f)
+
+
+def load_scored(stem):
+    """-> (result dict, rescored?) . Headline numbers come from <stem>.rescored.json (current scorer, bootstrap CIs, exact invalid counts,
+    invalid answers wrong for both classes) when it exists; systems with no stored raw outputs fall back to their original file (flagged)."""
+    p = os.path.join(RES, stem + ".rescored.json")
+    if os.path.exists(p):
+        with open(p) as f:
+            return json.load(f), True
+    return load(stem), False
 
 
 def cell(d, key, denom, ci_key=None):
@@ -66,13 +77,23 @@ def cat_total(d):
     return sum(c.get("gt", 0) for c in d.get("per_category", {}).values())
 
 
-def row(label, d, extra=None):
+def row(label, d, rescored=True):
     n, pos, neg = d["n"], d["positives"], d["negatives"]
     inv = d.get("n_invalid")
-    inv_s = str(inv) if inv is not None else "~%d*" % round((1 - d.get("json_valid", 1.0)) * n)
-    cells = [label, cell(d, "verdict_accuracy", n), cell(d, "positive_recall", pos), cell(d, "negative_false_alarm", neg),
-             cell(d, "category_recall_micro", cat_total(d) or n), "%.3f" % d["category_precision_micro"], inv_s]
-    return "| " + " | ".join(cells + (extra or [])) + " |"
+    inv_s = str(inv) if inv is not None else "~%d\u2020" % round((1 - d.get("json_valid", 1.0)) * n)
+    cells = [label + ("" if rescored else " \u2020"), cell(d, "verdict_accuracy", n), cell(d, "positive_recall", pos), cell(d, "negative_false_alarm", neg),
+             cell(d, "category_recall_micro", cat_total(d) or n), cell(d, "category_precision_micro", n), inv_s]
+    return "| " + " | ".join(cells) + " |"
+
+
+def _orig_line(label, stem):
+    o = load(stem)
+    r, rs = load_scored(stem)
+    if not rs:
+        return None
+    return "| %s | %.3f \u2192 %.3f | %.3f \u2192 %.3f | %.3f \u2192 %.3f | %.3f \u2192 %.3f | %s |" % (
+        label, o["verdict_accuracy"], r["verdict_accuracy"], o["negative_false_alarm"], r["negative_false_alarm"],
+        o["category_recall_micro"], r["category_recall_micro"], o["category_precision_micro"], r["category_precision_micro"], r["n_invalid"])
 
 
 def render():
@@ -80,20 +101,21 @@ def render():
     ref = load("checker-baseline")
     n, pos, neg = ref["n"], ref["positives"], ref["negatives"]
     always = "%.3f" % (pos / n)
-    out.append("Source: `eval/hancore_holdout/results/*.json` (%d-plugin sealed HANCORE holdout: %d positives, %d negatives). One run per system. Brackets are 95%% intervals: "
-               "Wilson intervals computed from the published rates for these legacy files (not bootstrap), %s." % (n, pos, neg, CAT_DENOM_NOTE))
+    out.append("Source: `eval/hancore_holdout/results/*.rescored.json` (%d-plugin sealed HANCORE holdout: %d positives, %d negatives), i.e. every stored run **re-scored with the current "
+               "three-way scorer** (no new model calls). One run per system. Brackets are 95%% stratified percentile-bootstrap intervals (1000 resamples, seed 0); %s. "
+               "Rows marked \u2020 have no stored raw outputs, so they show the original published numbers (Wilson intervals from the rates, invalid count estimated from the JSON-valid rate). "
+               "The original numbers of every re-scored row are in the footnote below." % (n, pos, neg, CAT_DENOM_NOTE))
     out.append("")
     out.append("**Always answering \"changes requested\" scores %s verdict accuracy (%d/%d), recall 1.0 and false alarm 1.0**, so verdict accuracy alone proves little: read it "
-               "together with the false-alarm and category columns. Intervals of different rows overlap heavily; do not read a ranking into differences smaller than the intervals." % (always, pos, n))
+               "together with the false-alarm and category columns. Intervals of different rows overlap heavily; do not read a ranking into differences smaller than the intervals. "
+               "These are scores on the HANCORE holdout only; Dell-key and clean-set scores must always be reported next to them (about 56%% of r5 training rows share the Dell sweep pipeline with the Dell key, so Dell-key gains must never be quoted alone)." % (always, pos, n))
     out.append("")
     out.append("### Prompt v1 (the prompt Usuba v1 was trained with)")
     out.append("| System | verdict acc | positive recall | false alarm (of %d negatives) | category recall | category precision | invalid outputs |" % neg)
     out.append("|---|---|---|---|---|---|---|")
     for stem, label, _p in V1:
-        out.append(row(label, load(stem)))
-    out.append("")
-    out.append("`*` legacy files carry only a JSON-valid rate; the invalid count is derived from it. These files cannot separate an invalid output on a clean plugin from a true "
-               "approval, so \"false alarm\" here is the share of negatives *not scored as approve*, and the rates are not comparable with files written by the new three-way scorer.")
+        d, rs = load_scored(stem)
+        out.append(row(label, d, rs))
     out.append("")
     out.append("### Prompt v2 (truncated files) and prompt v3 (stock and open peers only)")
     out.append("Usuba v1 was **not** run on prompt v2 or v3. The adapter on the v2 row is the second adapter, Usuba v2 (`holdout-v2-usuba-v2-best-q4km.json`), trained on prompt v2. "
@@ -101,13 +123,33 @@ def render():
     out.append("")
     out.append("| System | prompt | verdict acc | positive recall | false alarm | category recall | category precision | invalid outputs |")
     out.append("|---|---|---|---|---|---|---|---|")
-    d = load("holdout-v2-usuba-v2-best-q4km")
-    out.append(row("**Usuba v2** (second adapter, Q4_K_M)", d, None).replace("| **Usuba v2**", "| **Usuba v2**", 1).replace(" | ", " | v2 | ", 1))
+    d, rs = load_scored("holdout-v2-usuba-v2-best-q4km")
+    out.append(row("**Usuba v2** (second adapter, Q4_K_M)", d, rs).replace(" | ", " | v2 | ", 1))
     for stem, label in PEERS:
         for pv, pre in (("v3", "holdout-v3p-"), ("v2", "holdout-v2-")):
-            p = os.path.join(RES, pre + stem + ".json")
-            if os.path.exists(p):
-                out.append(row(label, load(pre + stem)).replace(" | ", " | %s | " % pv, 1))
+            if os.path.exists(os.path.join(RES, pre + stem + ".json")):
+                d, rs = load_scored(pre + stem)
+                out.append(row(label, d, rs).replace(" | ", " | %s | " % pv, 1))
+    out.append("")
+    out.append("**Footnote: original numbers and invalid-answer handling.** The first published tables were computed by the legacy scorer, which kept only rates. Its \"false alarm\" was the share of "
+               "negatives *not scored as approve* and it could not tell a transport error, a truncated answer or a schema violation on a clean plugin from a real approval, so some "
+               "invalid answers were silently credited or mis-scored. The current scorer gives every answer one of three verdicts (approve, changes requested, **invalid**); an invalid answer "
+               "(error, skipped row, context overflow, cut-off or unparseable output, schema violation) is wrong for both classes and is never credited as an approval. Legacy rows whose stored text "
+               "may have been cut at 20,000 characters keep their original stored outcome instead of being re-parsed. The table above re-scores the saved outputs with that scorer; nothing was re-run. "
+               "Net effect is small (mostly within 0.01-0.03; the largest moves are in category columns where an unparseable answer used to be counted). Changes (original \u2192 re-scored):")
+    out.append("")
+    out.append("| System (prompt) | verdict acc | false alarm | category recall | category precision | invalid (exact) |")
+    out.append("|---|---|---|---|---|---|")
+    for stem, label, _p in V1[:1]:
+        out.append(_orig_line(label.split(" (")[0] + " (v1)", stem))
+    l2 = _orig_line("Usuba v2 (v2)", "holdout-v2-usuba-v2-best-q4km")
+    out.append(l2)
+    for stem, label in PEERS:
+        for pv, pre in (("v3", "holdout-v3p-"), ("v2", "holdout-v2-")):
+            if os.path.exists(os.path.join(RES, pre + stem + ".json")):
+                ln = _orig_line("%s (%s)" % (label, pv), pre + stem)
+                if ln:
+                    out.append(ln)
     return "\n".join(out)
 
 

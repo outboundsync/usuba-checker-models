@@ -20,7 +20,7 @@ def test_readme_tables_match_result_files():
 
 def test_every_rendered_number_comes_from_a_result_file():
     g = _mod("gen_readme_tables")
-    d = g.load("usuba-9b-q4km")
+    d, _rs = g.load_scored("usuba-9b-q4km")
     block = g.render()
     assert "%.3f" % d["verdict_accuracy"] in block and "%.3f" % d["negative_false_alarm"] in block
 
@@ -30,7 +30,7 @@ def test_usuba_v1_and_v2_rows_are_labelled_with_their_own_prompt():
     block = g.render()
     v1 = next(ln for ln in block.splitlines() if "Usuba v1" in ln and ln.startswith("|"))
     v2 = next(ln for ln in block.splitlines() if "Usuba v2" in ln and ln.startswith("|"))
-    assert "0.812" in v1 and "0.696" in v2 and "| v2 |" in v2
+    assert "0.809" in v1 and "0.696" in v2 and "| v2 |" in v2
     assert "not** run on prompt v2 or v3" in block
 
 
@@ -47,3 +47,11 @@ def test_result_files_are_consistent():
         if f.endswith(".json"):
             d = json.load(open(os.path.join(g.RES, f)))
             assert d["positives"] + d["negatives"] == d["n"], f
+
+
+def test_headline_rows_are_rescored_and_originals_are_in_the_footnote():
+    g = _mod("gen_readme_tables")
+    block = g.render()
+    head, foot = block.split("**Footnote: original numbers")
+    assert "0.809 [" in head and "0.812" not in head          # re-scored headline with a bootstrap CI
+    assert "0.812 \u2192 0.809" in foot and "invalid-answer handling" in block and "never credited as an approval" in foot
