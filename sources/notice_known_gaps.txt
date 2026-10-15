@@ -1,0 +1,5 @@
+# repos whose copyright line could not be recovered from manifests/scan.jsonl; read the LICENSE at the pinned commit. May only shrink.
+codesmith28/omalt-tab
+ozz1ee-dev/omarchy-hermbot
+yeet-src/omarchy-proctop
+yeet-src/omarchy-yeet-ai

@@ -1,0 +1,11 @@
+# Lint gate (audit J). Legacy code is brought under ruff file by file: add a file to `include` when it is clean.
+line-length = 160
+target-version = "py310"
+include = ["tools/gen_readme_tables.py", "tools/gen_notice.py", "tests/*.py"]
+
+[lint]
+select = ["E4", "E7", "E9", "F", "B", "S", "E722", "BLE"]
+ignore = ["S101", "S603", "S607", "S311"]
+
+[lint.per-file-ignores]
+"tests/*.py" = ["S", "E702", "E741"]

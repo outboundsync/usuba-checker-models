@@ -1,6 +1,52 @@
-# Usuba (Omarchy plugin checker model) — model card (draft)
+# Usuba (Omarchy plugin checker model): model card (draft, not released)
 
-Base: Qwen 3.5 9B (Apache-2.0), bf16 LoRA. Task: review an Omarchy plugin (source + Checker report) and return a JSON verdict with findings.
+Base: Qwen3.5-9B (Apache-2.0), bf16 LoRA (r=32, alpha=64, dropout 0.05, all attention and MLP projections; `train/config.yaml`), then merged and quantised to Q4_K_M GGUF for local use.
+Task: read an Omarchy (Quickshell/QML) plugin plus the deterministic Usuba Checker report and answer with a JSON verdict (`approve`, `changes_requested`) and a list of findings (category, file, line, explanation).
+Status: **research artefact, not production-ready, no weights released.** Adapter weights are withheld; hashes are in `hf/ADAPTERS_CARD.md` (identity note there: which hash is v1 or v2 is unresolved).
+
+## Versions
+- **Usuba v1**: first adapter (prompt v1, whole-plugin text capped by the harness). Scored in `eval/hancore_holdout/results/usuba-9b-q4km.json`.
+- **Usuba v2**: second adapter, trained on prompt v2 with the v2 distilled data. Scored in `holdout-v2-usuba-v2-best-q4km.json`.
+- Results are not comparable across prompt versions; see the README tables, which are generated from the result files.
+
+## Intended use
+- Local pre-review of third-party Omarchy plugins: surface candidate problems for a human reviewer, next to the Checker output.
+- A human decides. The model is not a merge, install or security gate.
+
+## Out of scope
+- Any automated accept/reject decision, supply-chain or malware vetting, or review of code that is not Omarchy/Quickshell plugins.
+- Treating a finding's explanation as evidence: findings are model text, and the Checker and the plugin source are the evidence.
+
+## Evaluation (329-plugin sealed HANCORE holdout: 300 positives, 29 negatives; one run per system)
+Numbers and 95% intervals are in the README (generated from the result files). Headline facts:
+- Always answering "changes requested" scores 0.912 verdict accuracy (300/329), so accuracy alone says little.
+- Usuba v1 (prompt v1): verdict accuracy 0.812, positive recall 0.883, **false alarm 0.931 (27 of 29 clean plugins flagged)**, category recall 0.402, JSON valid 0.909.
+- Usuba v2 (prompt v2): verdict accuracy 0.696, false alarm 0.586, category recall 0.106.
+- Only 29 negatives: the false-alarm interval is about +/-0.15. Legacy result files have no per-row data and no invalid/approve split, so their intervals are Wilson intervals from the published rates.
+- Not measured: bf16 versus Q4_K_M on the holdout for the shipped model (only 20 Dell plugins for v2), a second seed, and any prompt-v3 run of the Usuba models.
+- Hardware key (private, 86 decided plugins): the right-reason bar was not met by v2 (0.10 of flagged vs a 0.60 gate). See `docs/TRAINING_PLAN.md`.
+
+## Known limitations
+- **False alarms.** v1 flags nearly every clean plugin.
+- **Invented specifics.** v1 invented commit SHAs in 46 of 90 Dell outputs; v2 removed that failure mode on the same key (0 rows) but answers in a generic security-review register with no file or line for 14 of 20 flagged findings.
+- **Prompt sensitivity.** The same stock model moves by more than 0.2 accuracy across prompt versions.
+- **Truncation.** Prompts cap file length (v2 truncated files); findings in cut-off code cannot be seen.
+- **Line numbers.** Prompts carry no line numbers, so line citations are unreliable.
+- Training labels come from a deterministic Checker and a hardware key on one reference machine (Omarchy 4.0.4); other versions are untested.
+
+## Quantisation
+Q4_K_M GGUF via llama.cpp (`train/export_gguf.py`; about 5.5 GB). All published Usuba rows are Q4_K_M. Server flags used for the exam: `-c 131072 -np 4` (32k tokens per slot), temperature 0.
+
+## Prompt template and decoding
+Prompts: `train/prompt.py` (v1), `train/prompt_v2.py`, `train/prompt_v3.py`; the same module builds training rows and eval requests.
+Decoding for the exam: temperature 0, `max_tokens` set by `run_eval.py --max-tokens` (recorded in each new result file under `decoding`), no thinking mode.
+Output schema (validated by the shared scorer, `eval/hancore_holdout/scoring.py` in usuba-checker-scripts): `{"verdict": "approve"|"changes_requested", "findings": [{"category": str, "file": str|null, "line": int|null, ...}]}` (the verdict values, optional `severity` and `load` are checked against fixed lists in the scorer); an output that fails the schema is counted as **invalid**, not as an approval.
+
+## Licence
+- Adapters follow the base model: Apache-2.0 (verified 2026-10-15 on https://huggingface.co/Qwen/Qwen3.5-9B).
+- Training data keeps each source plugin's licence (MIT, Apache-2.0, ISC); attribution and licence texts: `NOTICE`, `sources/licenses/`. NOTICE is generated and checked by `tools/gen_notice.py`.
+- Code and documents in this repository: MIT.
+- Attribution approach has not been reviewed by counsel; do that before any upload.
 
 ## Training data provenance
 **No proprietary-model outputs (Anthropic/Claude, OpenAI/GPT, Google/Gemini, xAI/Grok or any closed model) were used to train Usuba.**
