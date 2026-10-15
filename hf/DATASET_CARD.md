@@ -9,4 +9,4 @@ tags: [omarchy, quickshell, qml, code-review]
 Training and holdout rows used for the Usuba Checker reviewer model. **Each row keeps the licence of the plugin it came from** (`meta.license`: MIT, Apache-2.0, ISC);
 attribution is in `NOTICE` of https://github.com/outboundsync/usuba-checker-models and `sources/licenses/` there. Rows are not relicensed.
 No raw review text, no answer keys, no proprietary-model outputs. Third-party author e-mail addresses were replaced by `REDACTED_EMAIL`; home paths by `/home/user/`.
-Verify files with `SHA256SUMS`. Paths mirror the GitHub repo layout (`clean/`, `v3/`, `data/`, `sources/`). r4 files will be added when that build is final.
+Verify files with `SHA256SUMS`. Paths mirror the GitHub repo layout (`clean/`, `v3/`, `data/`, `sources/`). `v3_r4_public/{train,val}.jsonl.gz` is the final r4 build, **public subset only** (464/896 train, 55/138 val rows): rows built from private device-run records are withheld. Rows from repos on the sealed-holdout id list were removed from every file (`GUARD_FILTER.json` in the GitHub repo hf/ folder).

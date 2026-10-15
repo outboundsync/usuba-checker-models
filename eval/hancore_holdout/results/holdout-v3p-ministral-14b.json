@@ -1,0 +1,88 @@
+{
+ "name": "holdout-v3p-ministral-14b",
+ "backend": "openai",
+ "model": "mistralai/ministral-14b-2512",
+ "n": 329,
+ "positives": 300,
+ "negatives": 29,
+ "verdict_accuracy": 0.699,
+ "positive_recall": 0.727,
+ "negative_false_alarm": 0.586,
+ "category_recall_micro": 0.116,
+ "category_precision_micro": 0.507,
+ "json_valid": 0.979,
+ "tokens_in": 3000730,
+ "tokens_out": 87485,
+ "cost_usd": 0.4691,
+ "prompt": "v3",
+ "whole_files": false,
+ "secs_median": 4.11,
+ "secs_total": 1525.4,
+ "per_category": {
+  "file-safety-symlink-perms": {
+   "gt": 138,
+   "recall": 0.065,
+   "precision": 0.5
+  },
+  "install-deps-packaging": {
+   "gt": 110,
+   "recall": 0.018,
+   "precision": 0.5
+  },
+  "listing-metadata-docs": {
+   "gt": 51,
+   "recall": 0.0,
+   "precision": null
+  },
+  "privileged-system": {
+   "gt": 89,
+   "recall": 0.225,
+   "precision": 0.645
+  },
+  "process-lifecycle-timeouts": {
+   "gt": 114,
+   "recall": 0.018,
+   "precision": 0.5
+  },
+  "remote-code-pinning": {
+   "gt": 87,
+   "recall": 0.0,
+   "precision": null
+  },
+  "rich-text-markup-injection": {
+   "gt": 95,
+   "recall": 0.011,
+   "precision": 0.2
+  },
+  "scope-policy-duplicate": {
+   "gt": 70,
+   "recall": 0.0,
+   "precision": null
+  },
+  "secrets-credentials": {
+   "gt": 127,
+   "recall": 0.047,
+   "precision": 0.667
+  },
+  "shell-lua-injection": {
+   "gt": 66,
+   "recall": 0.091,
+   "precision": 0.207
+  },
+  "unbounded-input-resource": {
+   "gt": 177,
+   "recall": 0.576,
+   "precision": 0.534
+  },
+  "url-scheme-network": {
+   "gt": 112,
+   "recall": 0.0,
+   "precision": 0.0
+  },
+  "user-config-modification": {
+   "gt": 42,
+   "recall": 0.0,
+   "precision": null
+  }
+ }
+}

@@ -7,7 +7,7 @@ Scripts named without a repo prefix are in this repository; `scripts:` means `us
 - [ ] 1. Clone both repos side by side; Python 3.10+, `pip install pytest`; run `python3 -m pytest -q` in each (all green).
 - [ ] 2. Export `OPENROUTER_API_KEY` only for steps marked `[$]`. Never write keys into files.
 - [ ] 3. `python3 sources/fetch_plugin_sources.py` : fetches the pinned third-party plugin repos (`sources/plugin_sources.json`, permissive licences only).
-- [ ] 4. Download the dataset snapshot from Hugging Face into the repo root if you want to skip data building (`docs/DATA_HOSTING.md`), then jump to step 15.
+- [ ] 4. Download the dataset snapshot from Hugging Face into the repo root if you want to skip data building (`docs/DATA_HOSTING.md`), then jump to step 15. Note: the public r4 files (`v3_r4_public/`) are a **subset** (464 of 896 train rows, 55 of 138 val rows): rows derived from private device runs are withheld, so training on them will not reproduce the released model exactly.
 
 ## B. Source catalogue and licence gate
 - [ ] 5. `sources/clone.sh` (per-repo helper) and `sources/SOURCES.md`/`NOTICE`: verify each LICENSE text at the pinned commit; only MIT/Apache/ISC/BSD(/MPL) rows may enter training.
@@ -23,11 +23,11 @@ Scripts named without a repo prefix are in this repository; `scripts:` means `us
 - [ ] 11. `train/v2/distill/candidates.py`, `guided.py` `[P]`, `or_teacher.py` `[$]`, `assemble.py`, `audit.py` `[$]` : see `train/v2/distill/METHODS.md`. Teacher outputs are kept only if they agree with the grader label and invent nothing.
 - [ ] 12. Mining inputs from the scripts repo: `scripts:hancore/fetch.py` -> `label_concrete.py`/`label_recover.py` `[$]` `[P]` (review corpus is re-fetched, not shipped); `scripts:train/version_history/01..05_*.py` and `scripts:jankeesvw-history/scripts/01..10_*.py` (fix-pair mining, `[$]` for the LLM judge step).
 - [ ] 13. `v3fixes/run_all.sh` : lifecycle rules, skip-condition measurements, synthetic and winners rows (`train/v3data/build_v3_fixes_rows.py`).
-- [ ] 14. `train/v3data/reproduce_r3.sh` (r2 -> r3 build; offline replay needs the unpublished LLM cache, otherwise `[$]`) then `train/v3data/reproduce_r4.sh` `[TODO: r4 dataset pending, see train/v3data/R4_TODO.md]`.
+- [ ] 14. `train/v3data/reproduce_r3.sh` (r2 -> r3 build; offline replay needs the unpublished LLM cache, otherwise `[$]`) then `train/v3data/reproduce_r4.sh` (final r4, commit 4678af3 of the original repo: 2,787 version-history pairs considered, thin-kind weighting, 40-pair gpt-oss spot check, repo-disjoint val). Outputs and reports: `train/v3data/r4_out/`, `docs/V3_DATA_R4.md`. The offline LLM-reply cache (`llm_cache.jsonl.gz`, 10,950 replies) is **not published** (it quotes private device run records), so a replay needs `[$]` teacher/judge calls (about USD 5) or your own cache.
 
 ## E. Assemble and verify the training set
 - [ ] 15. `python3 train/build_train_set.py` : deterministic; writes `train/data/manifest.json`. `launch_vast.sh` refuses data that does not match the manifest.
-- [ ] 16. Leakage gate: confirm no sealed-holdout plugin (ids in `scripts:eval/hancore_holdout/plugin_ids.txt`) appears in any train row; confirm every row has `meta.license` in {MIT, Apache-2.0, ISC, BSD-*}; confirm no row mentions a proprietary-model teacher (`build_v3_data.py` banned-word filter). 
+- [ ] 16. Leakage gate: `python3 train/holdout_guard.py train.jsonl.gz val.jsonl.gz` (exit 0 required; also wired into `build_train_set.py` and `assemble_r4.py`, and `python3 -m pytest train/tests/test_holdout_guard.py`) confirms no sealed-holdout plugin (ids in `eval/hancore_holdout/plugin_ids.txt`) appears in any row; confirm every row has `meta.license` in {MIT, Apache-2.0, ISC, BSD-*}; confirm no row mentions a proprietary-model teacher (`build_v3_data.py` banned-word filter). 
 - [ ] 17. Upload nothing yet: verify `hf/MANIFEST.sha256` against the files you will publish.
 
 ## F. Train (Qwen3.5-9B, bf16 LoRA, 1x H100 80GB)

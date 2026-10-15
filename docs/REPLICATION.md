@@ -3,6 +3,7 @@
 Companion to `usuba-checker-scripts/docs/REPLICATION.md`. Order of operations: `docs/TRAINING_CHECKLIST.md`.
 
 ## What you can reproduce without anything private
+- A guard against holdout leakage: `python3 train/holdout_guard.py <files>` needs only the public ids.
 - The dataset **as published** (Hugging Face, `docs/DATA_HOSTING.md`), verified by `hf/MANIFEST.sha256`.
 - Training from it: `train/build_train_set.py` reads it, `train/launch_vast.sh` or `train/train_lora.py` trains (config in `train/config.yaml`, seed 1337).
 - Export and exam: `train/export_gguf.py`, `scripts:eval/hancore_holdout/*` (needs the holdout manifest, which only the owner has; use your own holdout to compare).
@@ -12,7 +13,7 @@ Companion to `usuba-checker-scripts/docs/REPLICATION.md`. Order of operations: `
 | Step | Missing input | Workaround |
 |---|---|---|
 | `train/v3data/reproduce_r3.sh`, `reproduce_r4.sh`, `dell_audit.py`, `build_v3_data.py` | hardware-verified answer key (exclusion ids), device sweep run records, review-label corpus, offline LLM-reply cache | Re-fetch reviews via `scripts:hancore/fetch.py`, run your own device sweep, and pay for the teacher calls (`[$]`, a few USD); or start from the published dataset |
-| r4 dataset | pending | `train/v3data/R4_TODO.md` |
+| r4 dataset (`reproduce_r4.sh`) | Public files are a subset: the 432 train / 83 val rows built from private device-sweep run records and labels (sources `dell_*`) are withheld; the offline LLM-reply cache is withheld | Run your own device sweep, or accept the subset (`v3_r4_public/`, 464 + 55 rows); reports in `train/v3data/r4_out/` describe the full build |
 | `runs/*` experiments | raw generations are not published | score tables only; rerun the generation scripts |
 | `data/reviews`, `data/hancore_reviewer` | raw review text (other people's posts) | re-fetch, see `scripts:hancore/` |
 

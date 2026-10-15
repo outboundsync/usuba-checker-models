@@ -167,6 +167,7 @@ mx = int(len(tb) * 0.9)
 if len(ta) > mx: ta.sort(key=lambda r: (prio(r), rnd.random(), r["id"])); st["cap_approve_trim_train"] = len(ta) - mx; ta = ta[:mx]
 print('tb', dict(collections.Counter(r['source'] for r in tb)), 'val_b', dict(collections.Counter(r['source'] for r in val_b)))
 train = tb + ta; rnd.shuffle(train); rnd.shuffle(val)
+import holdout_guard; holdout_guard.assert_clean(train + val)   # independent check against the public sealed-holdout id list
 for sp, rs in (("train", train), ("val", val)):
     with gzip.open(os.path.join(OUT, sp + ".jsonl.gz"), "wt") as f:
         for r in rs: f.write(json.dumps(dict({k: v for k, v in r.items() if not k.startswith("_")}, split=sp, **({"weight": 2.0} if r["source"] == "version_history" and r["verdict"] != "approve" and r["provenance"].get("history_bug_kind") in THIN else {})), ensure_ascii=False) + "\n")

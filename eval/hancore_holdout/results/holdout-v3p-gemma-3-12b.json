@@ -1,0 +1,88 @@
+{
+ "name": "holdout-v3p-gemma-3-12b",
+ "backend": "openai",
+ "model": "google/gemma-3-12b-it",
+ "n": 329,
+ "positives": 300,
+ "negatives": 29,
+ "verdict_accuracy": 0.751,
+ "positive_recall": 0.797,
+ "negative_false_alarm": 0.724,
+ "category_recall_micro": 0.058,
+ "category_precision_micro": 0.574,
+ "json_valid": 0.979,
+ "tokens_in": 3268855,
+ "tokens_out": 45554,
+ "cost_usd": 0.1703,
+ "prompt": "v3",
+ "whole_files": false,
+ "secs_median": 2.28,
+ "secs_total": 1007.0,
+ "per_category": {
+  "file-safety-symlink-perms": {
+   "gt": 138,
+   "recall": 0.0,
+   "precision": 0.0
+  },
+  "install-deps-packaging": {
+   "gt": 110,
+   "recall": 0.009,
+   "precision": 0.333
+  },
+  "listing-metadata-docs": {
+   "gt": 51,
+   "recall": 0.0,
+   "precision": null
+  },
+  "privileged-system": {
+   "gt": 89,
+   "recall": 0.124,
+   "precision": 0.688
+  },
+  "process-lifecycle-timeouts": {
+   "gt": 114,
+   "recall": 0.0,
+   "precision": null
+  },
+  "remote-code-pinning": {
+   "gt": 87,
+   "recall": 0.011,
+   "precision": 1.0
+  },
+  "rich-text-markup-injection": {
+   "gt": 95,
+   "recall": 0.0,
+   "precision": 0.0
+  },
+  "scope-policy-duplicate": {
+   "gt": 70,
+   "recall": 0.0,
+   "precision": null
+  },
+  "secrets-credentials": {
+   "gt": 127,
+   "recall": 0.016,
+   "precision": 0.667
+  },
+  "shell-lua-injection": {
+   "gt": 66,
+   "recall": 0.03,
+   "precision": 0.667
+  },
+  "unbounded-input-resource": {
+   "gt": 177,
+   "recall": 0.316,
+   "precision": 0.56
+  },
+  "url-scheme-network": {
+   "gt": 112,
+   "recall": 0.009,
+   "precision": 1.0
+  },
+  "user-config-modification": {
+   "gt": 42,
+   "recall": 0.0,
+   "precision": null
+  }
+ }
+}

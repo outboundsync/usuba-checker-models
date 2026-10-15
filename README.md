@@ -6,16 +6,33 @@ The deterministic Checker, mining pipelines and exam harness live in `usuba-chec
 
 > Status: research artefact, not production-ready. The numbers below are the honest ones, including the bad one.
 
-## Results (329-plugin sealed HANCORE holdout, summary tables only)
-| System | verdict accuracy | positive recall | false-alarm rate on clean plugins | category recall | JSON valid |
-|---|---|---|---|---|---|
-| Usuba 9B (Q4_K_M, this repo's recipe) | 0.812 | 0.883 | 0.931 | 0.402 | 0.909 |
-| Stock Qwen3.5-9B (via OpenRouter) | 0.699 | 0.737 | 0.690 | 0.173 | 0.766 |
-| Checker alone (no model) | 0.650 | 0.673 | 0.586 | 0.131 | 1.000 |
-| Frontier baseline, Claude Sonnet 5.5 (score only) | 0.374 | 0.330 | 0.172 | 0.347 | 0.997 |
+## Results (329-plugin sealed HANCORE holdout: 300 positives, 29 negatives; summary tables only)
+Verified against the result files in `eval/hancore_holdout/results/` (copied from the exam runs); one run per system, no confidence intervals.
 
-Only 29 of the 329 holdout plugins are negatives, so accuracy is dominated by recall and the false-alarm column matters: Usuba 9B flags almost every plugin.
-Full tables: `eval/hancore_holdout/results/*.json`, `docs/TRAINING_PLAN.md`. Raw model outputs (including all proprietary-model outputs) are **not** published.
+**Always answering "changes requested" scores 0.912 verdict accuracy (300/329), recall 1.0 and false alarm 1.0**, so verdict accuracy alone proves little: read it together with the false-alarm and category columns.
+
+Headline rows (prompt v1, i.e. the prompt Usuba 9B was trained with; `usuba-9b-q4km.json`, `stock-qwen3.5-9b-openrouter.json`, `checker-baseline.json`, `frontier-sonnet-5.5.json`):
+| System | verdict acc | positive recall | false alarm (29 neg) | category recall | category precision | JSON valid |
+|---|---|---|---|---|---|---|
+| **Usuba 9B (Q4_K_M)** | 0.812 | 0.883 | 0.931 | 0.402 | 0.427 | 0.909 |
+| Stock Qwen3.5-9B (OpenRouter) | 0.699 | 0.737 | 0.690 | 0.173 | 0.420 | 0.766 |
+| Checker alone (no model) | 0.650 | 0.673 | 0.586 | 0.131 | 0.442 | 1.000 |
+| Claude Sonnet 5.5 with its own skill prompt (score only) | 0.374 | 0.330 | 0.172 | 0.347 | 0.397 | 0.997 |
+
+Like-for-like re-run of stock and open peers on prompt v3 (Usuba 9B was **not** run on prompt v3; Oct 15 re-run; `holdout-v3p-*.json`) and on prompt v2 (`holdout-v2-*.json`):
+| System | v3 acc / recall / false alarm / cat. recall | v2 acc / cat. recall |
+|---|---|---|
+| Qwen3.5-9B stock | 0.745 / 0.790 / 0.724 / 0.070 | 0.541 / 0.004 |
+| Nemotron 3 Nano 30B | 0.888 / 0.967 / 0.931 / 0.055 | 0.909 / 0.003 |
+| Gemma 3 12B | 0.751 / 0.797 / 0.724 / 0.058 | 0.802 / 0.018 |
+| Ministral 14B | 0.699 / 0.727 / 0.586 / 0.116 | 0.529 / 0.001 |
+| Gemma 4 26B-A4B | 0.638 / 0.673 / 0.724 / 0.031 | 0.757 / 0.001 |
+| Llama 3.1 8B | 0.526 / 0.527 / 0.483 / 0.021 | 0.331 / 0.020 |
+| GLM 4.7 Flash | 0.465 / 0.427 / 0.138 / 0.032 | 0.371 / 0.037 |
+| Qwen3-Coder 30B-A3B | 0.471 / 0.443 / 0.241 / 0.007 | 0.240 / 0.001 |
+
+What the numbers say: Usuba 9B has by far the best category recall (0.402 vs at most 0.116 for any open peer) but flags 27 of 29 clean plugins, so it is not a usable gate on its own. Stock Qwen3.5-9B moves from 0.699 to 0.745 to 0.541 accuracy depending only on the prompt, so single numbers are prompt-sensitive.
+Full tables: `docs/TRAINING_PLAN.md`. Raw model outputs (including all proprietary-model outputs) are **not** published.
 
 ## Training data provenance
 No proprietary-model output (Anthropic, OpenAI, Google, xAI or any closed model) was used to train Usuba. Rows come from licensed real plugins, public review findings,

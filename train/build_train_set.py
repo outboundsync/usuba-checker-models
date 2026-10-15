@@ -231,6 +231,7 @@ def main():
     for r in kept: by_repo[r["repo"]].append(r)
     repos = sorted(by_repo); rnd.shuffle(repos); nval = max(1, int(len(repos) * 0.03))
     val_repos = set(repos[:nval])
+    import holdout_guard; holdout_guard.assert_clean([{"id": r["repo"], "repo": r["repo"]} for r in kept])   # independent check against the public sealed-holdout ids
     with open(os.path.join(a.out, "train.jsonl"), "w") as ft, open(os.path.join(a.out, "val.jsonl"), "w") as fv:
         for r in kept:
             rec = dict(id=f"{r['source']}:{r['repo']}", source=r["source"], weight=r["weight"], provenance=r["provenance"],
