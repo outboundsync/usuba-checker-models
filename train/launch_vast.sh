@@ -139,8 +139,8 @@ watch)
     # instance wall-clock limit (training max_hours does not bound instance time): stop training, fetch, destroy
     if [ $((now-T0)) -ge $(python3 -c "print(int($INSTANCE_MAX_HOURS*3600))") ]; then
       echo "[$(date)] INSTANCE WALL-CLOCK LIMIT (${INSTANCE_MAX_HOURS} h): stopping training, final fetch, destroy"
-      rsh "touch /workspace/usuba/NO_RESTART; pkill -TERM -f [t]rain_lora.py" || true; sleep 300
-      for k in 1 2 3 4 5 6 7 8 9 10; do "$0" fetch && break; sleep 120; done
+      rsh "touch /workspace/usuba/NO_RESTART; pkill -TERM -f [t]rain_lora.py" || true; sleep ${LIMIT_GRACE:-300}
+      for k in 1 2 3 4 5 6 7 8 9 10; do "$0" fetch && break; sleep ${FETCH_RETRY_SLEEP:-120}; done
       "$0" down --i-accept-data-loss; break
     fi
     al=$(rsh "tail -n 3 /workspace/usuba/ALERT 2>/dev/null" 2>/dev/null || true); [ -n "$al" ] && [ "$al" != "${last_al:-}" ] && { last_al=$al; echo "[$(date)] WATCHDOG ALERT on instance:"; echo "$al"; }

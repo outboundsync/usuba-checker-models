@@ -7,6 +7,7 @@
 # so launch_vast.sh watch can surface it. Needs no network. Test with train/resume_test.sh.
 U=${U:-/workspace/usuba}; O=${O:-$U/train/out/usuba-9b-lora}; LOG=$U/watchdog.log; ALERT=$U/ALERT
 CHECK_SEC=${CHECK_SEC:-300}; STALL_MIN=${STALL_MIN:-15}; BOOT_MIN=${BOOT_MIN:-90}; MAX_RESTARTS=${MAX_RESTARTS:-6}
+STALL_SEC=${STALL_SEC:-$((STALL_MIN*60))}; BOOT_SEC=${BOOT_SEC:-$((BOOT_MIN*60))}; DEAD_GRACE=${DEAD_GRACE:-90}; RESTART_PAUSE=${RESTART_PAUSE:-3}   # *_SEC / DEAD_GRACE / RESTART_PAUSE exist so tests/test_watchdog.py can run the real loop in seconds
 # A11: the stall clock starts at the FIRST logged step. Before any step exists only the boot limit applies (deps, dry run, model load and the initial eval can take > 30 min).
 say() { echo "[$(date -u +%FT%TZ)] $*" >> $LOG; }
 alert() { echo "[$(date -u +%FT%TZ)] $*" >> $ALERT; say "ALERT: $*"; }
@@ -21,7 +22,7 @@ gpu_sample() {   # mean util % and max mem MiB over 5 samples, 2 s apart ("na" i
 # launch_vast.sh start arms the real run; dry_run.sh/resume_test.sh arm their own test run.
 armed() { [ -f $U/ARMED ] || return 1; O=$U/train/$(sed -n 1p $U/ARMED); TCMD=$(sed -n 2p $U/ARMED); CS=$(sed -n 3p $U/ARMED); [ -n "$CS" ] && CHECK_SEC=$CS; return 0; }
 start_train() {
-  pkill -f train_lora.py 2>/dev/null; tmux kill-session -t train 2>/dev/null; sleep 3
+  pkill -f train_lora.py 2>/dev/null; tmux kill-session -t train 2>/dev/null; sleep $RESTART_PAUSE
   rm -f $U/TRAIN_STOPPED $O/STOPPED
   tmux new -d -s train "cd $U/train && ${TCMD:-SMOKE_STEPS=$(cat $U/mode_smoke 2>/dev/null || echo 0) SMOKE_HOURS=0.15 bash $U/train/remote_setup.sh} >> $U/watchdog_train.log 2>&1"   # remote_setup.sh runs --resume
   START=$(date +%s); SEEN_STEP=0; RESTARTS=$((RESTARTS+1)); say "START/RESTART #$RESTARTS from step ${LAST:-0}"
@@ -43,10 +44,10 @@ while true; do
   if [ $alive = 1 ] && [ "$gutil" != na ] && [ "$gutil" -lt 5 ] && [ $advanced = 0 ]; then LOWGPU=$((LOWGPU+1)); else LOWGPU=0; fi
   reason=""
   if [ $alive = 0 ]; then
-    { [ $START = 0 ] || [ $((now-START)) -gt 90 ]; } && reason="process dead"
+    { [ $START = 0 ] || [ $((now-START)) -gt $DEAD_GRACE ]; } && reason="process dead"
   elif [ $SEEN_STEP = 0 ]; then
-    [ $START != 0 ] && [ $((now-START)) -gt $((BOOT_MIN*60)) ] && reason="no step logged ${BOOT_MIN}m after (re)start (boot limit)"
-  elif [ $((now-LAST_T)) -gt $((STALL_MIN*60)) ]; then
+    [ $START != 0 ] && [ $((now-START)) -gt $BOOT_SEC ] && reason="no step logged ${BOOT_MIN}m after (re)start (boot limit)"
+  elif [ $((now-LAST_T)) -gt $STALL_SEC ]; then
     reason="no step progress for >${STALL_MIN}m since the last step (gpu_util=${gutil}%, lowgpu_checks=$LOWGPU)"
   fi
   if [ -n "$reason" ]; then
