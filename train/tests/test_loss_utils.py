@@ -2,7 +2,8 @@
 Qwen3.5-9B tokenizer files only, no weights)."""
 import json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-import torch
+import pytest
+torch = pytest.importorskip('torch'); pytest.importorskip('transformers')
 from transformers import AutoTokenizer
 import loss_utils as L, prompt
 TOK = AutoTokenizer.from_pretrained(os.environ.get("TEST_TOKENIZER", "Qwen/Qwen3.5-9B"))

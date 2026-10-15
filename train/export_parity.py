@@ -2,7 +2,7 @@
 """Export parity check (audit H): the quantised GGUF must agree with the HF base+adapter on held-out VAL rows (never the sealed holdout).
   python3 export_parity.py <gguf> <adapter_dir> [--n 12] [--min-agree 0.75]
 Greedy decoding on both sides, same chat-template prompt. Compares the parsed verdict and the (file,line) set; exits 1 below --min-agree."""
-import argparse, os, sys, json, re, subprocess, yaml
+import argparse, os, sys, re, subprocess, yaml
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import paths, train_utils
 p = argparse.ArgumentParser(); p.add_argument("gguf"); p.add_argument("adapter"); p.add_argument("--n", type=int, default=12); p.add_argument("--min-agree", type=float, default=0.75)

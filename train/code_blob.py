@@ -10,7 +10,7 @@ Policy (POLICY_ID goes into every row's meta and every result file):
   * a file that would push the total over CODE_CAP characters is replaced by (omitted: N chars, M lines); the manifest is never omitted
   * every shown line is prefixed with its 1-based number  `  12| code`  so cited line numbers need no counting (NUMBERED)
 """
-import hashlib, json
+import hashlib
 
 FILE_CAP = 12000
 CODE_CAP = 40000

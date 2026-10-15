@@ -1,6 +1,5 @@
 """A11/A6: launcher behaviour with stub vastai/ssh (no network, no instance): a failed rent destroys the instance; an unverified dataset is never bundled."""
-import os, sys, json, gzip, shutil, hashlib, subprocess, stat, pathlib
-import pytest
+import os, sys, json, gzip, shutil, hashlib, subprocess, pathlib
 T = pathlib.Path(__file__).resolve().parent.parent
 
 

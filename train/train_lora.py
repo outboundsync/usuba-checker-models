@@ -2,7 +2,7 @@
 """bf16 LoRA SFT for Usuba on Qwen 3.5 9B. Loss on assistant tokens only, optional per-example weights.
   python3 train_lora.py --config config.yaml            # real run (GPU)
   python3 train_lora.py --config config.yaml --dry-run  # CPU: tokenize, mask, length stats; no model weights loaded"""
-import argparse, glob, hashlib, json, math, os, random, shutil, signal, sys, time
+import argparse, glob, hashlib, json, os, random, shutil, signal, sys, time
 import yaml
 p = argparse.ArgumentParser(); p.add_argument("--config", default="config.yaml"); p.add_argument("--dry-run", action="store_true")
 p.add_argument("--limit", type=int, default=0, help="only for the CPU smoke test; skips the row-count assertion")

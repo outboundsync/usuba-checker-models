@@ -3,7 +3,7 @@
 Everything is recomputed from the written train/val files, not from builder counters, so the report cannot drift from the data."""
 import sys, os, re, json, gzip, hashlib, collections, random
 HERE = os.path.dirname(os.path.abspath(__file__)); TRAIN = os.path.dirname(HERE); sys.path.insert(0, TRAIN)
-import prompt_v4 as P4, code_blob as CB
+import prompt_v4 as P4
 D, W = sys.argv[1], sys.argv[2]
 rd = lambda n: [json.loads(l) for l in gzip.open(os.path.join(D, n), "rt")]
 tr, va = rd("train.jsonl.gz"), rd("val.jsonl.gz"); bs = json.load(open(os.path.join(W, "build_stats.json")))
