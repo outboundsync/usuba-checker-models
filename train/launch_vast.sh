@@ -36,7 +36,7 @@ bundle() {
   tar czf /tmp/usuba_train_bundle.tgz -C "$ROOT" train/config.yaml train/train_lora.py train/export_gguf.py train/remote_setup.sh train/watchdog.sh train/autostart.sh train/deps.sh train/dry_run.sh train/resume_test.sh train/loss_utils.py train/prompt.py train/data/train.jsonl train/data/val.jsonl train/data/manifest.json
 }
 # remote artifact list: checkpoints, adapters, logs, final GGUF (merged bf16 is deleted on the instance: regenerable)
-REMOTE_LIST='cd /workspace/usuba && { ls run.log DRYRUN_REPORT.txt RESUMETEST_REPORT.txt ALL_DONE SMOKE_DONE TRAIN_STOPPED 2>/dev/null; find train/out -type f ! -path "*/merged-bf16/*" ! -name "*bf16.gguf" ! -path "*.tmp/*" 2>/dev/null; } | sort'
+REMOTE_LIST='cd /workspace/usuba && { ls run.log DRYRUN_REPORT.txt RESUMETEST_REPORT.txt ALL_DONE SMOKE_DONE TRAIN_STOPPED 2>/dev/null; find train/out/usuba-9b-lora train/out/export -type f ! -path "*/merged-bf16/*" ! -name "*bf16.gguf" ! -path "*.tmp/*" 2>/dev/null; } | sort'
 CF_ACCT=""
 r2_up() {  # r2_up <file> <key>: Cloudflare R2 object API; the token goes in a header file descriptor, never on argv or stdout
   [ -n "$CF_ACCT" ] || CF_ACCT=$(curl -s -H @<(printf 'Authorization: Bearer %s' "$CLOUDFLARE_API_TOKEN") https://api.cloudflare.com/client/v4/accounts | python3 -c "import json,sys;print(json.load(sys.stdin)['result'][0]['id'])")
@@ -115,7 +115,7 @@ watch)
     now=$(date +%s); [ "$st" != "${last_st:-x}" ] && { last_st=$st; last_t=$now; }
     if [ $((now-${last_t:-$now})) -ge $((${STALL_MIN:-10}*60)) ]; then
       echo "[$(date)] STALLED: no new step since $(date -d @$last_t) ($st); attempting resume"
-      rsh "pkill -f train_lora.py; bash /workspace/usuba/train/autostart.sh" || echo "  resume attempt failed (instance unreachable?)"
+      rsh "pkill -f [t]rain_lora.py; bash /workspace/usuba/train/autostart.sh" || echo "  resume attempt failed (instance unreachable?)"
       last_t=$((now+15*60))   # grace for setup + model load before the next stall check
     fi
     al=$(rsh "tail -n 3 /workspace/usuba/ALERT 2>/dev/null" 2>/dev/null || true); [ -n "$al" ] && [ "$al" != "${last_al:-}" ] && { last_al=$al; echo "[$(date)] WATCHDOG ALERT on instance:"; echo "$al"; }
