@@ -1,0 +1,2 @@
+# Open-model cost (OpenRouter usage.cost; model qwen/qwen3.5-397b-a17b, open weights; reasoning off; data_collection=deny)
+Total spend for all stages: {"usd": 1.3170817100000003} (budget < 10 USD). Stages: Dell finding audit x2 prompt versions (306 findings each), HANCORE kind votes (353 x3 before, final findings x3 after), exact-line + defect-stated verification (~440 calls) and the independent re-check (333 calls). No Anthropic / DeepSeek / Sonnet / proprietary model used; API key read from env only and never printed or written.

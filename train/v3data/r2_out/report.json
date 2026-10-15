@@ -1,0 +1,199 @@
+{
+ "llm_line_recheck": {
+  "hancore": {
+   "n": 158,
+   "exact": 149,
+   "defect_stated": 156
+  },
+  "dell_broken": {
+   "n": 174,
+   "exact": 170,
+   "defect_stated": 173
+  },
+  "approve_warning": {
+   "n": 1,
+   "exact": 0,
+   "defect_stated": 0
+  }
+ },
+ "exact_line_all": {
+  "strict": 327,
+  "nocheck": 6
+ },
+ "exact_line_v3": {
+  "fail": 160,
+  "strict": 419,
+  "blank_or_comment": 39,
+  "two_line": 35,
+  "nocheck": 19,
+  "out_of_range": 2
+ },
+ "pass_rate": [
+  1.0,
+  0.9819819819819819
+ ],
+ "kind_agreement_before": {
+  "n": 353,
+  "majority": 0.739,
+  "unanimous": 0.691,
+  "majority_n": 261
+ },
+ "kind_agreement_after": {
+  "n": 158,
+  "majority": 0.968,
+  "unanimous": 0.93,
+  "majority_n": 153
+ },
+ "leakage": {
+  "rows_checked": 543,
+  "dell_key_ids": 116,
+  "dell_key_trees_loaded": 101,
+  "holdout_repos": 329,
+  "holdout_trees": 329,
+  "holdout_manifest_ids": 329,
+  "hits": {
+   "INFO_incidental_key_id_string_in_other_plugin_text": 4
+  },
+  "hard_hit_examples": [],
+  "duplicate_row_ids": 0,
+  "exact_duplicate_trees": 0,
+  "train_val_repo_overlap": 0,
+  "near_dup_pairs_ge50pct_among_kept": 0
+ },
+ "tokens": {
+  "p50": 13442,
+  "max": 31948
+ },
+ "per_kind": {
+  "remote-code-pinning": {
+   "rows": 17,
+   "findings": 17
+  },
+  "file-safety-symlink-perms": {
+   "rows": 27,
+   "findings": 27
+  },
+  "unbounded-input-resource": {
+   "rows": 44,
+   "findings": 44
+  },
+  "secrets-credentials": {
+   "rows": 21,
+   "findings": 21
+  },
+  "dell-sourced/load:*": {
+   "rows": 99,
+   "findings": 129
+  },
+  "process-lifecycle-timeouts": {
+   "rows": 7,
+   "findings": 7
+  },
+  "dell-sourced/qml:*": {
+   "rows": 4,
+   "findings": 5
+  },
+  "rich-text-markup-injection": {
+   "rows": 10,
+   "findings": 10
+  },
+  "dell-sourced/in-use:*": {
+   "rows": 18,
+   "findings": 20
+  },
+  "dell-sourced/packaging:*": {
+   "rows": 1,
+   "findings": 1
+  },
+  "dell-sourced/runtime:*": {
+   "rows": 10,
+   "findings": 12
+  },
+  "runtime-qml-api-compat": {
+   "rows": 1,
+   "findings": 1
+  },
+  "dell-sourced/config:*": {
+   "rows": 3,
+   "findings": 3
+  },
+  "privileged-system": {
+   "rows": 15,
+   "findings": 15
+  },
+  "shell-lua-injection": {
+   "rows": 13,
+   "findings": 13
+  },
+  "dell-sourced/missing-file:*": {
+   "rows": 1,
+   "findings": 1
+  },
+  "dell-sourced/syntax:*": {
+   "rows": 1,
+   "findings": 1
+  },
+  "user-config-modification": {
+   "rows": 1,
+   "findings": 1
+  },
+  "url-scheme-network": {
+   "rows": 1,
+   "findings": 1
+  },
+  "listing-metadata-docs": {
+   "rows": 1,
+   "findings": 1
+  },
+  "dell-sourced/security:*": {
+   "rows": 1,
+   "findings": 1
+  },
+  "dell-sourced/logic:*": {
+   "rows": 1,
+   "findings": 1
+  }
+ },
+ "hancore_kind_mix": {
+  "remote-code-pinning": 17,
+  "file-safety-symlink-perms": 27,
+  "unbounded-input-resource": 44,
+  "secrets-credentials": 21,
+  "process-lifecycle-timeouts": 7,
+  "rich-text-markup-injection": 10,
+  "runtime-qml-api-compat": 1,
+  "privileged-system": 15,
+  "shell-lua-injection": 13,
+  "user-config-modification": 1,
+  "url-scheme-network": 1,
+  "listing-metadata-docs": 1
+ },
+ "dell_actions": {
+  "kept": 186,
+  "dropped:construct_absent": 29,
+  "dropped:not_a_defect": 24,
+  "dropped:qt_labs_import_rule": 13,
+  "dropped:optional_fallback": 7,
+  "dropped:hedged": 7,
+  "dropped:not_executable": 21,
+  "dropped:stock_binary": 8,
+  "dropped:unverifiable": 8,
+  "dropped:stock_rule": 3
+ },
+ "samples": {
+  "pass": 12,
+  "other": 1
+ },
+ "approve_share": {
+  "train": 0.47,
+  "val": 0.5,
+  "all": 0.471
+ },
+ "counts": {
+  "train": 523,
+  "val": 20,
+  "broken": 287,
+  "hancore_rows": 158,
+  "dell_broken_rows": 129
+ }
+}
