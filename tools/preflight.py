@@ -355,16 +355,24 @@ def i14_prompt_and_meta(c):
 
 
 def i15_old_runs_rescored(c):
-    res = [p for p in glob.glob(os.path.join(MODELS, "eval", "**", "*.json"), recursive=True) + glob.glob(os.path.join(MODELS, "results", "**", "*.json"), recursive=True)]
-    scored = [p for p in res if '"n_invalid"' in read(p)]
-    ci = [p for p in scored if '"ci"' in read(p) or "ci95" in read(p) or "ci_" in read(p)]
+    allres = glob.glob(os.path.join(MODELS, "eval", "**", "*.json"), recursive=True) + glob.glob(os.path.join(MODELS, "results", "**", "*.json"), recursive=True)
+    res = [p for p in allres if not p.endswith(".rescored.json") and "summary" not in os.path.basename(p)]
+    NO_GENERATIONS = {"checker-baseline"}      # deterministic Checker output: there is no model text to be invalid
+    def scored_file(p):
+        r = p[:-5] + ".rescored.json"
+        return p if '"n_invalid"' in read(p) else (r if os.path.exists(r) and '"n_invalid"' in read(r) else None)
+    scored = [(p, scored_file(p)) for p in res]
+    have = [(p, f) for p, f in scored if f]
+    exempt = [p for p, f in scored if not f and os.path.basename(p)[:-5] in NO_GENERATIONS]
+    rest = [os.path.basename(p) for p, f in scored if not f and p not in exempt]
+    ci = [f for p, f in have if '"ci"' in read(f) or "ci95" in read(f) or "ci_" in read(f)]
     if not res:
         return FAIL, "no result JSONs found under eval/ or results/"
-    if not scored:
-        return FAIL, f"0/{len(res)} result files carry n_invalid: old v1/v2 runs are not re-scored with the three-way scorer (needs the private raw rows)"
-    if len(scored) < len(res):
-        return WARN, f"{len(scored)}/{len(res)} result files have n_invalid ({len(ci)} with CIs); re-score the rest"
-    return PASS, f"all {len(res)} result files have n_invalid; {len(ci)} with CIs"
+    if not have:
+        return FAIL, f"0/{len(res)} result files carry n_invalid: old runs are not re-scored with the three-way scorer (tools/rescore_all.py, needs the private raw rows)"
+    if rest:
+        return WARN, f"{len(have)}/{len(res)} result files have n_invalid ({len(ci)} with CIs, {len(exempt)} exempt: no model text); no raw rows to re-score: {rest}"
+    return PASS, f"all {len(res)} result files have n_invalid via the original or a .rescored.json ({len(have)} scored, {len(ci)} with CIs, {len(exempt)} exempt: no model text)"
 
 
 def i16_headline(c):

@@ -1,0 +1,123 @@
+{
+ "name": "holdout-v3p-gemma-3-12b",
+ "backend": "openai",
+ "model": "google/gemma-3-12b-it",
+ "tokens_in": 3268855,
+ "tokens_out": 45554,
+ "cost_usd": 0.1703,
+ "secs_median": 2.28,
+ "secs_total": 1007.0,
+ "verdict_accuracy": 0.751,
+ "positive_recall": 0.797,
+ "negative_false_alarm": 0.724,
+ "negative_correct_approve": 0.276,
+ "category_recall_micro": 0.045,
+ "category_precision_micro": 0.547,
+ "schema_version": 1,
+ "n": 329,
+ "positives": 300,
+ "negatives": 29,
+ "n_invalid": 7,
+ "n_invalid_positive": 7,
+ "n_invalid_negative": 0,
+ "n_error": 0,
+ "n_length_stop": 0,
+ "json_valid": 0.979,
+ "always_flag_accuracy": 0.912,
+ "ci95": {
+  "verdict_accuracy": [
+   0.702,
+   0.793
+  ],
+  "positive_recall": [
+   0.747,
+   0.84
+  ],
+  "negative_false_alarm": [
+   0.552,
+   0.897
+  ],
+  "negative_correct_approve": [
+   0.103,
+   0.448
+  ],
+  "category_recall_micro": [
+   0.035,
+   0.056
+  ],
+  "category_precision_micro": [
+   0.451,
+   0.649
+  ]
+ },
+ "ci_method": "stratified percentile bootstrap, 1000 resamples, seed 0",
+ "per_category": {
+  "unbounded-input-resource": {
+   "gt": 177,
+   "recall": 0.316,
+   "precision": 0.56
+  },
+  "install-deps-packaging": {
+   "gt": 110,
+   "recall": 0.0,
+   "precision": null
+  },
+  "file-safety-symlink-perms": {
+   "gt": 138,
+   "recall": 0.0,
+   "precision": 0.0
+  },
+  "secrets-credentials": {
+   "gt": 127,
+   "recall": 0.0,
+   "precision": null
+  },
+  "privileged-system": {
+   "gt": 89,
+   "recall": 0.0,
+   "precision": null
+  },
+  "process-lifecycle-timeouts": {
+   "gt": 114,
+   "recall": 0.0,
+   "precision": null
+  },
+  "remote-code-pinning": {
+   "gt": 87,
+   "recall": 0.0,
+   "precision": 0.0
+  },
+  "url-scheme-network": {
+   "gt": 112,
+   "recall": 0.0,
+   "precision": null
+  },
+  "rich-text-markup-injection": {
+   "gt": 95,
+   "recall": 0.0,
+   "precision": 0.0
+  },
+  "shell-lua-injection": {
+   "gt": 66,
+   "recall": 0.03,
+   "precision": 0.667
+  },
+  "user-config-modification": {
+   "gt": 42,
+   "recall": 0.0,
+   "precision": null
+  },
+  "scope-policy-duplicate": {
+   "gt": 70,
+   "recall": 0.0,
+   "precision": null
+  },
+  "listing-metadata-docs": {
+   "gt": 51,
+   "recall": 0.0,
+   "precision": null
+  }
+ },
+ "rescored": true,
+ "n_legacy_text_cut": 0
+}

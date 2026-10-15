@@ -15,6 +15,7 @@ H = os.path.dirname(os.path.abspath(__file__)); T = os.path.dirname(H)
 sys.path[:0] = [T, H]
 import paths, code_blob as CB, prompt_v4 as P4, holdout_guard as HG, llm_client as LC, exactline as X
 import checker_report as CR
+import label_filters as LF
 import functest as FT
 
 ap = argparse.ArgumentParser(); ap.add_argument("work"); ap.add_argument("out"); ap.add_argument("--stage", default="all"); ap.add_argument("--limit", type=int, default=0)
@@ -43,6 +44,10 @@ def parse_files_plain(u):
 
 def build_pool():
     pool = []
+    sys.path.insert(0, os.path.join(paths.checker_root(), "hancore")); import common as HC
+    HC.REV = os.path.join(WT, "dell/sweep/hancore_reviews.jsonl")
+    STRICT = LF.lower_keys(HC.load(strict_sha=True))                       # audit E: one reviewed commit per plugin (majority SHA, "fixed in <sha>" and foreign-repo URLs excluded)
+    RET = LF.retraction_ids(json.load(open(FX + "retraction_list.json")))   # withdrawn findings (whole or partial): the row is dropped
     r3 = rd(R4W + "/r3_pool_final.jsonl.gz"); hb = rd(R4W + "/hist/hist_broken.jsonl.gz"); ha = rd(R4W + "/hist/hist_approve_candidates.jsonl.gz"); jank = rd(R4W + "/jank_rows.jsonl.gz")
     ex = []
     for fn in ("synthetic_rows.jsonl", "winners_rows.jsonl"):
@@ -65,6 +70,12 @@ def build_pool():
     for r in rows:
         if A.limit and len(out) >= A.limit: break
         src, pv = r["source"], r.get("provenance") or {}; t = tgt(r); spec = None; origin = None
+        why = LF.synthetic_reason(r) if LF.SYNTHETIC_POLICY == "exclude" else None
+        if why: drops["synthetic:excluded_template_artefact"] += 1; continue
+        if src == "hancore_concrete":
+            if r["id"] in RET: drops["retraction:withdrawn_finding_row_dropped"] += 1; continue
+            ok, why = LF.attribution(STRICT, r["id"], pv.get("commit"))
+            if not ok: drops[why] += 1; continue
         if src.startswith("dell") or src == "nudged_approve":
             m = re.match(r"^[\w-]+:([^:]+):", r["id"]); c = C.get(m.group(1).lower()) if m else None
             if c and c.get("local_dir") and os.path.isdir(c["local_dir"]) and (not pv.get("commit") or pv["commit"] == c.get("commit")): spec, origin = dict(dir=c["local_dir"]), "dell_corpus"
@@ -83,10 +94,9 @@ def build_pool():
         out.append(dict(id=r["id"], source=src, verdict=r["verdict"], label=r.get("label"), target=t, prov=pv, weight=r.get("weight", 1.0), spec=spec, origin=origin,
                         old_msgs_user=None, pair=r.get("pair"), orig_source=r.get("orig_source")))
     # review-clean HANCORE approves (A2): reviewed plugin, approved/listed by the reviewer, no strong/likely/open finding, source at the reviewed commit
-    sys.path.insert(0, WT + "/hancore"); import common as HC
     excl = {norm_repo(u) for u in json.load(open(HL + "excluded_plugins.json"))}
     n_hc = 0
-    for p, d in sorted(HC.load().items()):
+    for p, d in sorted(HC.load(strict_sha=True).items()):
         sts = {HC.strength(x["fixed"]) for x in d["findings"]}
         if sts & {"strong", "likely", "open"} or not (d["approved"] or d["listed"]) or not d["sha"]: continue
         repo = norm_repo(p)

@@ -1,0 +1,123 @@
+{
+ "name": "holdout-v3p-glm-4.7-flash",
+ "backend": "openai",
+ "model": "z-ai/glm-4.7-flash",
+ "tokens_in": 2850803,
+ "tokens_out": 36716,
+ "cost_usd": 0.1716,
+ "secs_median": 2.8,
+ "secs_total": 1526.9,
+ "verdict_accuracy": 0.465,
+ "positive_recall": 0.427,
+ "negative_false_alarm": 0.138,
+ "negative_correct_approve": 0.862,
+ "category_recall_micro": 0.024,
+ "category_precision_micro": 0.437,
+ "schema_version": 1,
+ "n": 329,
+ "positives": 300,
+ "negatives": 29,
+ "n_invalid": 10,
+ "n_invalid_positive": 10,
+ "n_invalid_negative": 0,
+ "n_error": 0,
+ "n_length_stop": 0,
+ "json_valid": 0.97,
+ "always_flag_accuracy": 0.912,
+ "ci95": {
+  "verdict_accuracy": [
+   0.416,
+   0.52
+  ],
+  "positive_recall": [
+   0.373,
+   0.483
+  ],
+  "negative_false_alarm": [
+   0.034,
+   0.276
+  ],
+  "negative_correct_approve": [
+   0.724,
+   0.966
+  ],
+  "category_recall_micro": [
+   0.016,
+   0.032
+  ],
+  "category_precision_micro": [
+   0.315,
+   0.557
+  ]
+ },
+ "ci_method": "stratified percentile bootstrap, 1000 resamples, seed 0",
+ "per_category": {
+  "unbounded-input-resource": {
+   "gt": 177,
+   "recall": 0.158,
+   "precision": 0.475
+  },
+  "install-deps-packaging": {
+   "gt": 110,
+   "recall": 0.0,
+   "precision": null
+  },
+  "file-safety-symlink-perms": {
+   "gt": 138,
+   "recall": 0.007,
+   "precision": 1.0
+  },
+  "secrets-credentials": {
+   "gt": 127,
+   "recall": 0.0,
+   "precision": null
+  },
+  "privileged-system": {
+   "gt": 89,
+   "recall": 0.0,
+   "precision": null
+  },
+  "process-lifecycle-timeouts": {
+   "gt": 114,
+   "recall": 0.0,
+   "precision": null
+  },
+  "remote-code-pinning": {
+   "gt": 87,
+   "recall": 0.0,
+   "precision": null
+  },
+  "url-scheme-network": {
+   "gt": 112,
+   "recall": 0.0,
+   "precision": null
+  },
+  "rich-text-markup-injection": {
+   "gt": 95,
+   "recall": 0.0,
+   "precision": 0.0
+  },
+  "shell-lua-injection": {
+   "gt": 66,
+   "recall": 0.03,
+   "precision": 0.2
+  },
+  "user-config-modification": {
+   "gt": 42,
+   "recall": 0.0,
+   "precision": null
+  },
+  "scope-policy-duplicate": {
+   "gt": 70,
+   "recall": 0.0,
+   "precision": null
+  },
+  "listing-metadata-docs": {
+   "gt": 51,
+   "recall": 0.0,
+   "precision": null
+  }
+ },
+ "rescored": true,
+ "n_legacy_text_cut": 0
+}

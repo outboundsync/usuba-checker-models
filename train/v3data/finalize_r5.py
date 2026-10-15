@@ -52,12 +52,19 @@ for s in sorted({r["source"] for r in tr + va}):
     A(f"| {s} | {sum(r['source']==s and r['verdict']=='approve' for r in tr)} | {sum(r['source']==s and r['verdict']=='approve' for r in va)} | {sum(r['source']==s and r['verdict']!='approve' for r in tr)} |")
 na = sum(r["verdict"] == "approve" for r in tr); real = sum(r["verdict"] == "approve" and r["source"] in ("hancore_clean_approve", "dell_works_verified", "nudged_approve") for r in tr)
 A(f"\napprove share of train {100*na/len(tr):.0f}%; of the approves, real clean plugins (HANCORE-clean + Dell-sweep-verified + nudged) = {real} ({100*real/max(1,na):.0f}%); fixed-twin/synthetic = {na-real}. Only 53 review-clean HANCORE candidates exist (23 survive the gates/guard/dedupe into train): the supply, not the policy, is the limit.")
-A("\n## 5. Label space (A3)\n"); A(f"slugs in train (min {P4.MIN_PER_SLUG} findings per scored slug, train+val); OUT_OF_SCOPE = not in the prompt, never labelled, eval n/a: {sorted(P4.OUT_OF_SCOPE)}\n"); A("| slug | train findings | val findings | scored by HANCORE eval |\n|---|---|---|---|")
+A("\n## 5. Label space (A3)\n"); A(f"slugs in train (min {P4.MIN_PER_SLUG} findings per scored slug, train+val); out-of-scope (not in the prompt, never labelled, eval n/a): {sorted(P4.OUT_OF_SCOPE)}\n"); A("| slug | train findings | val findings | scored by HANCORE eval |\n|---|---|---|---|")
 vs = analyse(va)[3]
 for s in sorted(set(slug) | set(vs)): A(f"| {s} | {slug.get(s,0)} | {vs.get(s,0)} | {'yes' if s in P4.SCORED_SLUGS else 'no'} |")
 under = [s for s in P4.SLUGS if s in P4.SCORED_SLUGS and slug.get(s, 0) + vs.get(s, 0) < P4.MIN_PER_SLUG]; A(f"\nin-scope scored slugs below MIN_PER_SLUG={P4.MIN_PER_SLUG} (train+val): {under or 'none'}. Scored slugs with no data are OUT_OF_SCOPE: eval reports n/a for them (not recall 0).")
 assert not under, under
 badslug = [s for s in set(slug) | set(vs) if s not in P4.SLUGS]; assert not badslug, badslug
+import label_filters as LF
+A("\n## 5b. Label-quality filters (audit E)\n")
+A("- commit attribution: HANCORE rows are kept only when the recorded commit equals the plugin's majority reviewed SHA (strict mode: 'fixed in <sha>' and foreign-repo commit URLs are not reviewed commits); drops: " + json.dumps({k: v for k, v in bs["drops"].items() if k.startswith("attribution:")}))
+A("- retractions (findings the reviewer later withdrew, whole or partial): rows dropped " + str(bs["drops"].get("retraction:withdrawn_finding_row_dropped", 0)))
+A(f"- synthetic generator rows: policy `{LF.SYNTHETIC_POLICY}` (template-id tell sample.*/syn.*); excluded {bs['drops'].get('synthetic:excluded_template_artefact', 0)}; remaining synthetic rows in train: {sum(r['source'] == 'synthetic_lifecycle' for r in tr)}")
+A("- template-id share by verdict (train+val; a skew between verdicts would be a label tell): `" + json.dumps(LF.template_id_fraction(tr + va)) + "`")
+A("- line numbers shown at train and eval (numbered blob), few-shots swapped to holdout-clean themes (prompt_v4); the explicit-evidence check is the fail-closed LLM gate")
 A("\n## 6. Guards, drops, spend\n"); A("drops: `" + json.dumps(bs["drops"]) + "`\n")
 A(f"- holdout/Dell guard rejects: content {bs['drops'].get('guard:content',0)}, repo/id {bs['drops'].get('guard:repo',0)}; v2-val repos kept out of the pool: {bs['drops'].get('row:v2_val_repo_in_pool',0)}")
 A(f"- LLM gates (qwen/qwen3.5-397b-a17b + openai/gpt-oss-120b, fail-closed): `{json.dumps({k: g[k] for k in g if k != 'error_samples'})}`")

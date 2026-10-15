@@ -1,0 +1,123 @@
+{
+ "name": "holdout-v3p-nemotron-3-nano",
+ "backend": "openai",
+ "model": "nvidia/nemotron-3-nano-30b-a3b",
+ "tokens_in": 3023678,
+ "tokens_out": 38241,
+ "cost_usd": 0.1803,
+ "secs_median": 2.13,
+ "secs_total": 793.6,
+ "verdict_accuracy": 0.897,
+ "positive_recall": 0.977,
+ "negative_false_alarm": 0.931,
+ "negative_correct_approve": 0.069,
+ "category_recall_micro": 0.045,
+ "category_precision_micro": 0.543,
+ "schema_version": 1,
+ "n": 329,
+ "positives": 300,
+ "negatives": 29,
+ "n_invalid": 1,
+ "n_invalid_positive": 1,
+ "n_invalid_negative": 0,
+ "n_error": 0,
+ "n_length_stop": 0,
+ "json_valid": 0.997,
+ "always_flag_accuracy": 0.912,
+ "ci95": {
+  "verdict_accuracy": [
+   0.878,
+   0.912
+  ],
+  "positive_recall": [
+   0.96,
+   0.993
+  ],
+  "negative_false_alarm": [
+   0.828,
+   1.0
+  ],
+  "negative_correct_approve": [
+   0.0,
+   0.172
+  ],
+  "category_recall_micro": [
+   0.034,
+   0.055
+  ],
+  "category_precision_micro": [
+   0.45,
+   0.64
+  ]
+ },
+ "ci_method": "stratified percentile bootstrap, 1000 resamples, seed 0",
+ "per_category": {
+  "unbounded-input-resource": {
+   "gt": 177,
+   "recall": 0.294,
+   "precision": 0.547
+  },
+  "install-deps-packaging": {
+   "gt": 110,
+   "recall": 0.0,
+   "precision": null
+  },
+  "file-safety-symlink-perms": {
+   "gt": 138,
+   "recall": 0.007,
+   "precision": 1.0
+  },
+  "secrets-credentials": {
+   "gt": 127,
+   "recall": 0.0,
+   "precision": null
+  },
+  "privileged-system": {
+   "gt": 89,
+   "recall": 0.0,
+   "precision": null
+  },
+  "process-lifecycle-timeouts": {
+   "gt": 114,
+   "recall": 0.0,
+   "precision": null
+  },
+  "remote-code-pinning": {
+   "gt": 87,
+   "recall": 0.0,
+   "precision": null
+  },
+  "url-scheme-network": {
+   "gt": 112,
+   "recall": 0.0,
+   "precision": null
+  },
+  "rich-text-markup-injection": {
+   "gt": 95,
+   "recall": 0.011,
+   "precision": 1.0
+  },
+  "shell-lua-injection": {
+   "gt": 66,
+   "recall": 0.045,
+   "precision": 0.375
+  },
+  "user-config-modification": {
+   "gt": 42,
+   "recall": 0.0,
+   "precision": null
+  },
+  "scope-policy-duplicate": {
+   "gt": 70,
+   "recall": 0.0,
+   "precision": null
+  },
+  "listing-metadata-docs": {
+   "gt": 51,
+   "recall": 0.0,
+   "precision": null
+  }
+ },
+ "rescored": true,
+ "n_legacy_text_cut": 0
+}
