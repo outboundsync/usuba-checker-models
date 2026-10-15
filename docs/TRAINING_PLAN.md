@@ -202,4 +202,6 @@ Do the steps in order; each has a stop condition. Nothing here launches paid GPU
 7. Baselines on prompt v3 (done): `docs/v3prep/exam_v3prompt/` ($3.02), then Usuba rows with the same `run_eval.py --prompt v3` and `eval/dellkey/reason_grade.py --judge`.
 8. Apply the gate rules (step 7 of the checklist above) and write the result into this file.
 
-Prompt-v3 baselines (Dell right-reason by Haiku judge, of 33 broken): Ministral 14B 12, Gemma 4 26B 12, Qwen3.5 9B stock 10, Nemotron 5, Qwen3-Coder 5, Gemma 3 12B 4, GLM 4.7 Flash 4, Llama 3.1 8B 3. Stock Qwen3.5 9B is the gate-(c) bar: 10/33 on prompt v3 (8/33 on v2).
+Prompt-v3 baselines (Dell right-reason by the ORIGINAL Haiku judge, now superseded by the open-judge regrade in docs/ANTHROPIC_TERMS_COMPLIANCE.md, of 33 broken): Ministral 14B 12, Gemma 4 26B 12, Qwen3.5 9B stock 10, Nemotron 5, Qwen3-Coder 5, Gemma 3 12B 4, GLM 4.7 Flash 4, Llama 3.1 8B 3. Stock Qwen3.5 9B is the gate-(c) bar: 10/33 on prompt v3 (8/33 on v2).
+
+**Open-judge regrade (gpt-oss-120b, replaces the Haiku numbers above; `eval/dellkey_open_judge/summary.json`)**, right-reason catches of 33 broken: Ministral 14B 11, Gemma 4 26B 11, Qwen3.5 9B stock 9, Nemotron 5, Qwen3-Coder 4, Gemma 3 12B 4, GLM 4.7 Flash 3, Llama 3.1 8B 3 (regex rubric: 13, 11, 13, 7, 3, 5, 5, 8). The stock Qwen3.5 9B bar for gate (c) is 9/33 under the open judge. Where this file elsewhere says "judge" for the v1/v2 exams, those numbers came from the Haiku judge and have not been regraded.

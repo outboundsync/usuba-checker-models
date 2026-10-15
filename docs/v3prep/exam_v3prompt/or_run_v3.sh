@@ -1,5 +1,5 @@
 #!/bin/bash
-# usage: or_run_v3.sh slug short ctx ; Dell key then holdout, prompt v3, Haiku reason grading (grading only)
+# usage: or_run_v3.sh slug short ctx ; Dell key then holdout, prompt v3, reason grading with the open-weights judge (the original run used a Haiku judge; superseded, see docs/ANTHROPIC_TERMS_COMPLIANCE.md)
 cd /workspace/wt-retrain-v2
 slug=$1; short=$2; ctx=$3
 L=/workspace/usuba-runs/exam-v3prompt/logs

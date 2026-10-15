@@ -1,0 +1,3 @@
+Open-weights regrade of the prompt-v3 Dell-key exam (7 of the 8 systems in `docs/TRAINING_PLAN.md` plus Gemma 4), judge `openai/gpt-oss-120b` (Apache-2.0) via OpenRouter, zero data retention, grading only, temperature 0, reasoning effort low.
+Command: `python3 eval/dellkey/reason_grade.py dellkey-v3p-SHORT --judge --suffix .gptoss` (needs the private Dell key file). Total judge cost about $0.01.
+`summary.json`: right-reason catches of the 33 broken plugins by the original Haiku judge (superseded), by gpt-oss-120b, by the deterministic regex rubric, and judge-versus-regex agreement. Per-row judge text is not published (it would reveal the private key).

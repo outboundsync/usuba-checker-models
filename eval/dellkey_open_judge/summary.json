@@ -1,0 +1,101 @@
+[
+ {
+  "system": "v3p-gemma-3-12b",
+  "haiku_judge_original": 4,
+  "open_judge_gpt_oss_120b": 4,
+  "regex": 5,
+  "open_judge_vs_regex_agreement": 0.944,
+  "open_judge_of_flagged": 0.222
+ },
+ {
+  "system": "v3p-gemma-4-26b",
+  "haiku_judge_original": 12,
+  "open_judge_gpt_oss_120b": 11,
+  "regex": 11,
+  "open_judge_vs_regex_agreement": 0.913,
+  "open_judge_of_flagged": 0.478
+ },
+ {
+  "system": "v3p-glm-4.7-flash",
+  "haiku_judge_original": 4,
+  "open_judge_gpt_oss_120b": 3,
+  "regex": 5,
+  "open_judge_vs_regex_agreement": 0.846,
+  "open_judge_of_flagged": 0.231
+ },
+ {
+  "system": "v3p-llama-3.1-8b",
+  "haiku_judge_original": 3,
+  "open_judge_gpt_oss_120b": 3,
+  "regex": 8,
+  "open_judge_vs_regex_agreement": 0.696,
+  "open_judge_of_flagged": 0.13
+ },
+ {
+  "system": "v3p-ministral-14b",
+  "haiku_judge_original": 12,
+  "open_judge_gpt_oss_120b": 11,
+  "regex": 13,
+  "open_judge_vs_regex_agreement": 0.923,
+  "open_judge_of_flagged": 0.423
+ },
+ {
+  "system": "v3p-nemotron-3-nano",
+  "haiku_judge_original": 5,
+  "open_judge_gpt_oss_120b": 5,
+  "regex": 7,
+  "open_judge_vs_regex_agreement": 0.9,
+  "open_judge_of_flagged": 0.25
+ },
+ {
+  "system": "v3p-qwen3-coder-30b-a3b",
+  "haiku_judge_original": 5,
+  "open_judge_gpt_oss_120b": 4,
+  "regex": 3,
+  "open_judge_vs_regex_agreement": 0.947,
+  "open_judge_of_flagged": 0.211
+ },
+ {
+  "system": "v3p-stock-qwen3.5-9b",
+  "haiku_judge_original": 10,
+  "open_judge_gpt_oss_120b": 9,
+  "regex": 13,
+  "open_judge_vs_regex_agreement": 0.692,
+  "open_judge_of_flagged": 0.346
+ },
+ {
+  "system": "v2-gemma-4-26b",
+  "haiku_judge_original": 14,
+  "open_judge_gpt_oss_120b": 13,
+  "regex": 15,
+  "open_judge_vs_regex_agreement": 0.923
+ },
+ {
+  "system": "v2-glm-4.7-flash",
+  "haiku_judge_original": 2,
+  "open_judge_gpt_oss_120b": 2,
+  "regex": 3,
+  "open_judge_vs_regex_agreement": 0.909
+ },
+ {
+  "system": "v2-llama-3.1-8b",
+  "haiku_judge_original": 1,
+  "open_judge_gpt_oss_120b": 1,
+  "regex": 2,
+  "open_judge_vs_regex_agreement": 0.875
+ },
+ {
+  "system": "v2-nemotron-3-nano",
+  "haiku_judge_original": 7,
+  "open_judge_gpt_oss_120b": 7,
+  "regex": 6,
+  "open_judge_vs_regex_agreement": 0.947
+ },
+ {
+  "system": "v2-usuba-v2-best-q4km",
+  "haiku_judge_original": 2,
+  "open_judge_gpt_oss_120b": 0,
+  "regex": 2,
+  "open_judge_vs_regex_agreement": 0.9
+ }
+]
