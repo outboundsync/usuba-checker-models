@@ -218,11 +218,13 @@ def repo_of(r):
 def stage_rows(rows):
     ntok = ntok_factory(); guard = HG.Guard(); v2v = v2_val_repos(); cm = CR.checker_meta(); out = []
     for c in rows:
-        msgs = P4.messages(c["blob"], c["report"], c["target"]); tk = ntok(msgs)
+        orig = [f.get("category_orig") for f in c["target"]["findings"]]   # kept in provenance only: the model must not be trained to emit its own pre-fold label
+        clean = dict(c["target"], findings=[{k: v for k, v in f.items() if k != "category_orig"} for f in c["target"]["findings"]])
+        msgs = P4.messages(c["blob"], c["report"], clean); tk = ntok(msgs)
         if tk > 32000: drops["row:over_32k_tokens"] += 1; continue
         repo = repo_of(c)
         if repo in v2v: drops["row:v2_val_repo_in_pool"] += 1; continue
-        pv = dict(c["prov"]); meta = dict(prompt_sha256=P4.PROMPT_SHA256, code_blob_policy=CB.POLICY_ID, checker_git_sha=cm["checker_git_sha"], rules_hash=cm["rules_hash"], files_origin=c["origin"],
+        pv = dict(c["prov"], category_orig=orig); meta = dict(prompt_sha256=P4.PROMPT_SHA256, code_blob_policy=CB.POLICY_ID, checker_git_sha=cm["checker_git_sha"], rules_hash=cm["rules_hash"], files_origin=c["origin"],
                                           builder="build_r5", guard_fingerprints_sha256=guard.fp_sha)
         row = dict(id=c["id"], split=None, source=c["source"], orig_source=c["orig_source"], label=c["label"], verdict=c["verdict"], provenance=pv, weight=c["weight"], tokens=tk, meta=meta, messages=msgs, pair=c["pair"])
         why = guard.check_row(row, files=c["files"])        # full shown files, plus repo/id/provenance rules

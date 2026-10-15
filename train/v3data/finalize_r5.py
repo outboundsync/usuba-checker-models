@@ -77,3 +77,4 @@ open(os.path.join(D, "COST.md"), "w").write(f"r5 LLM spend (this build): ${g.get
 sums = "".join(f"{hashlib.sha256(open(os.path.join(D, n), 'rb').read()).hexdigest()}  {n}\n" for n in ("train.jsonl.gz", "val.jsonl.gz")); open(os.path.join(D, "SHA256SUMS"), "w").write(sums)
 cfg = os.path.join(TRAIN, "config.yaml"); t = open(cfg).read(); t = re.sub(r"expected_rows:.*", f"expected_rows: {{train: {len(tr)}, val: {len(va)}}}     # set by finalize_r5.py", t, count=1); open(cfg, "w").write(t)
 print("report written; exact-line", ok, bad, "expected_rows", len(tr), len(va))
+import subprocess; subprocess.run([sys.executable, os.path.join(TRAIN, "gen_train_docs.py")], check=True, capture_output=True)

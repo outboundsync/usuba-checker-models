@@ -1,13 +1,24 @@
 {
- "train": 4539,
- "train_dropped_overlength": 53,
- "val": 144,
- "val_dropped": 4,
- "tok_median": 7022,
- "tok_p95": 9195,
- "tok_max": 201630,
- "train_tokens": 31600865,
- "assistant_tokens": 945359,
- "steps_per_epoch": 284,
- "tokenize_secs": 123.2
+ "train": 454,
+ "train_dropped_overlength": 0,
+ "val": 96,
+ "val_dropped": 0,
+ "tok_median": 19654,
+ "tok_p95": 22895,
+ "tok_max": 31802,
+ "train_tokens": 8244883,
+ "assistant_tokens": 30815,
+ "verdict_token_weight": 1.0,
+ "rows_with_weighted_verdict": 0,
+ "steps_per_epoch": 29,
+ "tokenize_secs": 36.3,
+ "rows_raw": {
+  "train": 454,
+  "val": 96
+ },
+ "dataset_sha256": {
+  "train.jsonl.gz": "4c29fb64d4357d19fe54787adc2bc7fc27f4d0bd2e64f337b046496e8fa934aa",
+  "val.jsonl.gz": "2c7b6274cc9d8408846b7d1825e295c95abcf4acb147aa226b39a7799774329e"
+ },
+ "holdout_guard_fingerprints_sha256": "73f1eeae037537d66e4902c7faf6ced0cf37a1c3c368a8d950abab739cdad0a7"
 }

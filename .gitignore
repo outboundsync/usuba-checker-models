@@ -39,3 +39,4 @@ sources/repos/
 .pytest_cache/
 functest/cache/
 train/.vast_instance
+train/data/r5/

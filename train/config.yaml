@@ -5,7 +5,7 @@ base_revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a   # pinned snapshot (aud
 train_file: data/r5/train.jsonl.gz
 val_file: data/r5/val.jsonl.gz
 dataset_sums: data/r5/SHA256SUMS
-expected_rows: {train: 482, val: 104}     # set by finalize_r5.py
+expected_rows: {train: 454, val: 96}     # set by finalize_r5.py
 max_drop_rate: 0.02                  # over-length / empty-target rows may not exceed 2% of a file (audit H)
 output_dir: out/usuba-9b-lora-r5      # unique per run: change for every new run (audit H)
 max_len: 32768                       # tokens; longer examples are dropped and counted (dry run shows how many)
