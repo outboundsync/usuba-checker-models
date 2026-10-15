@@ -10,7 +10,7 @@
 set -uo pipefail
 U=/workspace/usuba; cd $U/train; O=out/resumetest; REP=$U/RESUMETEST_REPORT.txt; MODE=${1:-}
 steps() { grep -o '"step": [0-9]*' $O/train_log.jsonl 2>/dev/null | grep -o '[0-9]*' | tail -1; }
-lastck() { ls -d $O/checkpoints/step-*/COMPLETE 2>/dev/null | sed -E 's#.*step-([0-9]+)/.*#\1#' | sort -n | tail -1; }
+lastck() { ls -d $O/checkpoints/step-*/COMPLETE 2>/dev/null | sed -E 's#.*step-([0-9]+)/.*#\1#' | sort -n | tail -1 | sed -E 's/^0+([0-9])/\1/'; }
 gpu() { nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader; }
 verify() {  # $1 = pre-state json
   python3 - $1 <<PY | tee $REP
@@ -30,7 +30,7 @@ bash $U/train/deps.sh || { echo "FAIL: deps" | tee $REP; exit 1; }
 rm -rf $O $U/NO_RESTART; python3 - <<PY
 import yaml; c=yaml.safe_load(open("config.yaml")); c.update(save_every_steps=2, eval_every_steps=1000, max_hours=1.0, output_dir="$O"); yaml.safe_dump(c, open("config_resumetest.yaml","w"))
 PY
-mkdir -p $O; printf '%s\n%s\n%s\n' "$O" "SKIP_INITIAL_EVAL=1 python3 train_lora.py --config config_resumetest.yaml --resume >> $U/resumetest_run.log 2>&1" 30 > $U/ARMED
+mkdir -p $O; printf '%s\n%s\n%s\n' "$O" "SKIP_INITIAL_EVAL=1 python3 train_lora.py --config config_resumetest.yaml --resume" 30 > $U/ARMED
 pgrep -f "[w]atchdog.sh" >/dev/null || bash $U/train/autostart.sh
 export SKIP_INITIAL_EVAL=1; nohup python3 train_lora.py --config config_resumetest.yaml --resume > $U/resumetest_run1.log 2>&1 & P=$!
 echo "waiting for >=2 complete checkpoints (steps >= 4)..."
@@ -40,5 +40,5 @@ sleep 20; s=$(steps); kill -9 $P; pkill -9 -f "[c]onfig_resumetest.yaml.*--resum
 echo "{\"step_at_kill\": ${s:-$c}, \"ckpt\": $(lastck)}" > $O/pre_kill.json; echo "KILLED at step ${s:-?} (newest complete checkpoint $(lastck)) $(date -u +%T)Z; waiting for the watchdog to resume it"
 for i in $(seq 1 90); do sleep 20; n=$(steps); [ -n "${n:-}" ] && [ "$n" -gt "${s:-$c}" ] && break; done
 echo "after $((i*20))s: step ${n:-?} gpu: $(gpu) alive: $(pgrep -f '[c]onfig_resumetest.yaml' | wc -l)"
-grep -m1 "resumed from" $U/resumetest_run.log || { echo "FAIL: watchdog run did not report 'resumed from'" | tee $REP; exit 1; }
+grep "resumed from" $U/watchdog_train.log | tail -1 || { echo "FAIL: watchdog run did not report 'resumed from'" | tee $REP; exit 1; }
 verify $O/pre_kill.json

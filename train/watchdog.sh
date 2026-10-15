@@ -29,7 +29,7 @@ RESTARTS=0; LAST=$(last_step); LAST=${LAST:--1}; LAST_T=$(date +%s); START=0; LO
 say "watchdog up: check every ${CHECK_SEC}s, stall ${STALL_MIN}m, grace ${GRACE_MIN}m, last step $LAST"
 while true; do
   now=$(date +%s)
-  armed || { say "not armed; idle"; sleep $CHECK_SEC; continue; }
+  armed || { say "not armed; idle"; LAST=-1; LAST_T=$now; START=0; sleep $CHECK_SEC; continue; }
   if [ -f $U/ALL_DONE ] || [ -f $U/SMOKE_DONE ] || [ -f $U/NO_RESTART ] || { [ -f $O/STOPPED ] && grep -q max_hours $O/STOPPED; }; then say "terminal marker present; idle"; sleep $CHECK_SEC; continue; fi
   if [ -f $O/DONE ]; then say "DONE present; export phase"; sleep $CHECK_SEC; continue; fi   # export runs after DONE; never interfere
   alive=0; pgrep -f "train_lora.py" >/dev/null && alive=1
