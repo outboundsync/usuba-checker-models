@@ -29,7 +29,7 @@ Caveats
   asset files installed alongside -> all 6 pass. Train functest now 180/198. Remaining 18 failures are real behaviour
   (sudo/pkexec, /etc/pam.d writes in first-party lock/polkit, ~/.config/hypr write, unknown module, fix_manifest trees) and stay excluded.
   score_train.before_assetfix.json keeps the previous scores.
-- build_chunked.py → pool_chunked.jsonl (328 rows after final dedupe; 334 built) from the 107 large curated plugins, using build_dataset.chunk_tasks
+- build_chunked.py → pool_chunked.jsonl (334 rows built, all distinct; 313 after the sealed-holdout guard, see docs/DATA_HOSTING.md; an earlier "328 after final dedupe" figure was stale) from the 107 large curated plugins, using build_dataset.chunk_tasks
   with community limits (manifest+entry, entry file, add-kind, 2 largest components). All 107 were already license-OK (0 license exclusions);
   36 chunks dropped for overlapping a holdout answer (overlap >= 0.5). Rows are slices of plugins that pass functest as a whole; individual chunk rows were not re-run.
 - build_final.py → train_final.jsonl (593 rows) + train_final_manifest.json (per-row provenance; exact dups and same-task answer near-dups at

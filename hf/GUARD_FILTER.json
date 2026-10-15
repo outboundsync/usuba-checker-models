@@ -1,7 +1,11 @@
 {
- "clean/train_final.jsonl": {
-  "kept": 567,
-  "dropped_holdout_overlap": 26
+ "clean/holdout_clean.jsonl": {
+  "kept": 49,
+  "dropped_holdout_overlap": 0
+ },
+ "clean/pool_chunked.jsonl": {
+  "kept": 313,
+  "dropped_holdout_overlap": 21
  },
  "clean/pool_registry.jsonl": {
   "kept": 148,
@@ -11,24 +15,30 @@
   "kept": 144,
   "dropped_holdout_overlap": 1
  },
- "v3/train_v3.jsonl": {
-  "kept": 589,
-  "dropped_holdout_overlap": 30
- },
- "data/train.jsonl": {
-  "kept": 193,
-  "dropped_holdout_overlap": 5
- },
- "clean/pool_chunked.jsonl": {
-  "kept": 313,
-  "dropped_holdout_overlap": 21
+ "clean/train_final.jsonl": {
+  "kept": 567,
+  "dropped_holdout_overlap": 26
  },
  "data/holdout.jsonl": {
   "kept": 56,
   "dropped_holdout_overlap": 0
  },
- "clean/holdout_clean.jsonl": {
-  "kept": 49,
-  "dropped_holdout_overlap": 0
+ "data/train.jsonl": {
+  "kept": 193,
+  "dropped_holdout_overlap": 5
+ },
+ "v3/train_v3.jsonl": {
+  "kept": 589,
+  "dropped_holdout_overlap": 30
+ },
+ "v3_r4_public/train.jsonl.gz": {
+  "kept": 464,
+  "dropped_holdout_overlap": 0,
+  "sha256": "cb8b767fd4531466e1ae4b4ef5cce37992307f4fbe350f80ed8812afc61d55f9"
+ },
+ "v3_r4_public/val.jsonl.gz": {
+  "kept": 55,
+  "dropped_holdout_overlap": 0,
+  "sha256": "fe0d624af1f93d0afa1e749e93a33b9e313a086dae722a47836fb1fac0674ff7"
  }
 }
