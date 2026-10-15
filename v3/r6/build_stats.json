@@ -1,0 +1,138 @@
+{
+ "stats": {
+  "pool_r3": 1387,
+  "pool_hist_broken": 1058,
+  "pool_hist_approve": 881,
+  "pool_jank": 72,
+  "pool_extra": 19,
+  "hancore_clean_approve_candidates": 53,
+  "rows_with_findings_dropped": 6,
+  "kind_floor_merged": 58,
+  "train_rows_dropped_near_dup_with_val": 0,
+  "approve_policy": {
+   "target_ratio": 0.47,
+   "need_total": 273,
+   "hancore_clean": 20,
+   "dell_kept": 127,
+   "dell_available": 824,
+   "twin_kept": 126,
+   "twin_available": 196
+  },
+  "cap_approve_trim_by_source": {
+   "dell_works_verified": 683,
+   "nudged_approve": 14,
+   "version_history": 70
+  },
+  "kind_floor": {
+   "mapping": {
+    "in-use:missing-binary": null,
+    "in-use:missing-file": null,
+    "in-use:placeholder-data": "in-use:stale-or-wrong-display",
+    "load:component-not-created": "load:undefined-reference",
+    "load:invalid-binding": "load:undefined-reference",
+    "load:missing-import": "load:undefined-reference",
+    "load:unknown-type": "load:undefined-reference",
+    "remote-code-pinning": null,
+    "runtime:error-handling": "runtime:logic-error",
+    "secrets-credentials": null
+   },
+   "passes": [
+    {
+     "iteration": 0,
+     "rows": 734,
+     "low": [
+      "in-use:missing-binary",
+      "in-use:missing-file",
+      "in-use:placeholder-data",
+      "load:component-not-created",
+      "load:invalid-binding",
+      "load:missing-import",
+      "load:unknown-type",
+      "remote-code-pinning",
+      "runtime:error-handling",
+      "secrets-credentials"
+     ]
+    },
+    {
+     "iteration": 1,
+     "rows": 647,
+     "low": []
+    }
+   ]
+  }
+ },
+ "drops": {
+  "attribution:tie": 98,
+  "attribution:sha_after_review": 9,
+  "attribution:unresolvable": 1,
+  "attribution:row_commit_is_not_the_plurality_sha": 2,
+  "retraction:withdrawn_finding_row_dropped": 1,
+  "pool:no_full_source_and_shown_may_be_truncated": 95,
+  "synthetic:excluded_template_artefact": 16,
+  "hancore_clean:no_source": 2,
+  "finding:unmappable_category": 82,
+  "row:no_finding_left": 541,
+  "finding:cited_line_not_visible_under_shared_policy": 471,
+  "render:checker_unavailable_or_timeout": 1,
+  "finding:failed_exact_line_gate": 57,
+  "row:all_findings_failed_gate": 53,
+  "scope:source_fix_upstream": 3,
+  "kind_floor:finding_dropped": 33,
+  "kind_floor:row_dropped": 27,
+  "row:finding_without_file_or_line": 12,
+  "dedupe_near_dup:dell_works_verified_vs_hancore_clean_approve": 3,
+  "dedupe_near_dup:version_history_vs_version_history": 148,
+  "dedupe_near_dup:version_history_vs_dell_works_verified": 76,
+  "dedupe_near_dup:version_history_vs_dell_broken_verified": 6,
+  "dedupe_near_dup:version_history_vs_hancore_concrete": 3,
+  "dedupe_near_dup:version_history_vs_hancore_clean_approve": 1,
+  "cap:kind_runtime:logic-error_20pct": 146,
+  "approve_history_twin_dropped": 270,
+  "approve_history_minority_cap": 17
+ },
+ "gates": {
+  "findings": 736,
+  "mech_pass": 734,
+  "qwen_pass": 715,
+  "gptoss_pass": 698,
+  "all_pass": 679,
+  "fail_gptoss": 34,
+  "fail_qwen": 17,
+  "fail_qwengptoss": 4,
+  "fail_mech": 2,
+  "calls": 1472,
+  "hits": 1078,
+  "live": 394,
+  "errors": 0,
+  "error_samples": [],
+  "spent_usd": 0.1526,
+  "cache_entries": 14377
+ },
+ "train": 581,
+ "val": 66,
+ "llm": {
+  "calls": 0,
+  "hits": 0,
+  "live": 0,
+  "errors": 0,
+  "error_samples": [],
+  "spent_usd": 0.1526,
+  "cache_entries": 14377
+ },
+ "checker": {
+  "checker_git_sha": "db0fbee317e02a093ccef5728319de11c2645d28",
+  "checker_dirty": false,
+  "rules_hash": "793a7a7de937bf83355b705206203b0bdf99fcd989dda8d80cbdf03c4de6e1ef",
+  "reference_tree": "/workspace/usuba-runs/audit-fixes-B/usuba-checker-scripts/dell-ref/omarchy-4.0.4",
+  "api_members": {
+   "bar": 47,
+   "Color": 57,
+   "Style": 159,
+   "Util": 26,
+   "Border": 38
+  },
+  "timeout": 60
+ },
+ "prompt_sha256": "8f55c5f198695b4b00f02f0b364681faa7c5679e7b6cbd82e84e50e5181f221a",
+ "policy": "code_blob/v1 file_cap=12000 code_cap=40000 numbered=1"
+}

@@ -387,7 +387,12 @@ def main():
     if P in ("gates", "all"):
         rows = pickle.load(open(pk("rendered.pkl"), "rb")); rows, g = stage_gates(rows); pickle.dump((rows, g), open(pk("gated.pkl"), "wb")); print("gated", len(rows), json.dumps(g), flush=True); save_counters("gates")
     if P in ("assemble", "all"):
-        merge_counters(["pool", "render", "gates"]); rows, g = pickle.load(open(pk("gated.pkl"), "rb")); rows = stage_rows(rows); pickle.dump(rows, open(pk("guarded.pkl"), "wb"))
+        merge_counters(["pool", "render", "gates"]); rows, g = pickle.load(open(pk("gated.pkl"), "rb")); rows = pickle.load(open(pk("guarded.pkl"), "rb")) if os.environ.get("R6_REUSE_GUARDED") and os.path.exists(pk("guarded.pkl")) else stage_rows(rows)
+        pickle.dump(rows, open(pk("guarded.pkl"), "wb"))
+        DROP_SRC = set(filter(None, os.environ.get("R6_DROP_SOURCES", "fix_upstream").split(",")))   # scope trim 2026-10-15: no fix rows; upstream fixes stay S4 gold only
+        for r in rows:
+            if r["source"] in DROP_SRC: drops["scope:source_" + r["source"]] += 1
+        rows = [r for r in rows if r["source"] not in DROP_SRC]
         import copy
         d0, s0 = copy.deepcopy(dict(drops)), copy.deepcopy(dict(st)); mapping = {}; hist = []
         for it in range(6):    # kind floor: every kind >= MIN_KIND findings across train+val, else merge into its parent kind (iteration 1) or drop (later); counters are reset every pass
