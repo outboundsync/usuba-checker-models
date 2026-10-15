@@ -223,3 +223,6 @@ Prompt-v3 baselines (Dell right-reason by the ORIGINAL Haiku judge, now supersed
 | v3p-stock-qwen3.5-9b | 0.826 | 0.164 | 25/31 | 9/31 | 13/31 |
 
 The stock Qwen3.5 9B bar for gate (c) on prompt v3 is 9/31 under the open judge (regex 13/31).
+
+## False-alarm penalty and val-tuned threshold (2026-10-15)
+See `docs/FALSE_ALARM_PLAN.md`: `false_alarm_penalty` option in train/config.yaml (default off) and the val-only threshold-selection plan. Not run.

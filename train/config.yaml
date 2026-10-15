@@ -20,6 +20,7 @@ weight_decay: 0.0
 per_device_batch: 1
 grad_accum: 16                       # effective batch 16 sequences
 use_example_weight: false            # OFF on purpose for r5 (audit A4): weights now work (train_utils.weighted_micro_loss) but their effect was never measured; r1-r4 effectively trained unweighted, so r5 keeps that
+false_alarm_penalty: 1.0              # OFF (r5/r6 first run). Option: >1 multiplies the loss weight of approve-target rows; choose from {1, 1.5, 2, 3} by VAL false alarm / recall (plan in docs/TRAINING_PLAN.md), never on the holdout or the Dell key
 eval_every_epochs: 0.5               # cadence in epochs (audit A8): r5 ~ 56 steps/epoch -> evals at 1/2, 1, 3/2 epochs; the trainer prints the schedule and refuses a run with no mid-run eval
 save_every_steps: 20                 # full resumable checkpoint (~15 min on H100); synced off the instance by launch_vast.sh watch
 keep_checkpoints: 3

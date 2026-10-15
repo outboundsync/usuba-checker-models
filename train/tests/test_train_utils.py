@@ -58,3 +58,13 @@ def test_truncate_log_removes_duplicate_steps(tmp_path):
 def test_drop_check():
     U.drop_check(1, 100, 0.02)
     with pytest.raises(SystemExit): U.drop_check(5, 100, 0.02)
+
+
+def test_false_alarm_penalty_only_scales_approve_rows():
+    import json
+    ap = {"messages": [{"role": "assistant", "content": json.dumps({"verdict": "approve", "findings": []})}], "weight": 2.0}
+    br = {"messages": [{"role": "assistant", "content": json.dumps({"verdict": "changes_requested", "findings": [{}]})}]}
+    bad = {"messages": [{"role": "assistant", "content": "not json"}]}
+    assert U.example_weight(ap) == 1.0 and U.example_weight(ap, True) == 2.0              # default: off
+    assert U.example_weight(ap, False, 3.0) == 3.0 and U.example_weight(ap, True, 3.0) == 6.0
+    assert U.example_weight(br, False, 3.0) == 1.0 and U.example_weight(bad, False, 3.0) == 1.0

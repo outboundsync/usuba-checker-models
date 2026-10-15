@@ -17,6 +17,7 @@ path = lambda x: x if os.path.isabs(x) else os.path.join(H, x)
 from transformers import AutoTokenizer
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import loss_utils, train_utils as TU, paths as PATHS
 VW = float(C.get("verdict_token_weight", 1.0))
+FAP = float(C.get("false_alarm_penalty", 1.0))   # >1 upweights approve rows (false-alarm penalty); 1.0 = off. Never set it from the test sets: tune on val only (docs/TRAINING_PLAN.md)
 # A9: the base model revision is pinned; builders, trainer and export use the same snapshot
 REV = C.get("base_revision") or sys.exit("config.yaml needs base_revision (pin the base model snapshot)")
 assert REV == PATHS.BASE_REVISION, f"config base_revision {REV} != paths.BASE_REVISION {PATHS.BASE_REVISION}"
@@ -29,7 +30,7 @@ def encode(rec):
     if hasattr(prompt_ids, "input_ids"): prompt_ids, full_ids = prompt_ids["input_ids"], full_ids["input_ids"]
     if full_ids[:len(prompt_ids)] != prompt_ids: raise ValueError("chat template prefix mismatch")
     labels = [-100] * len(prompt_ids) + full_ids[len(prompt_ids):]
-    return dict(input_ids=full_ids, labels=labels, tokw=loss_utils.token_weights(tok, labels, VW), weight=float(rec.get("weight", 1.0)) if C.get("use_example_weight") else 1.0, source=rec.get("source"))
+    return dict(input_ids=full_ids, labels=labels, tokw=loss_utils.token_weights(tok, labels, VW), weight=TU.example_weight(rec, C.get("use_example_weight"), FAP), source=rec.get("source"))
 
 def load(fn):
     """A6: reads .jsonl or .jsonl.gz; A12: every row passes the content/provenance holdout guard; empty targets and over-length rows are dropped AND counted"""

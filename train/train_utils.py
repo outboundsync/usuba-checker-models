@@ -100,3 +100,16 @@ if __name__ == "__main__":
     import sys
     if len(sys.argv) == 4 and sys.argv[1] == "verify": verify_cli(sys.argv[2], sys.argv[3])
     else: raise SystemExit(__doc__)
+
+
+def example_weight(rec, use_example_weight=False, false_alarm_penalty=1.0):
+    """Per-example loss weight. false_alarm_penalty (default 1.0 = off) multiplies the weight of every APPROVE-target row: a model that answers
+    "changes requested" on a clean plugin pays that factor more, which pushes the false-alarm rate down at some cost in recall (r5 baseline: 0.93 false alarms).
+    The val-tuned threshold plan in docs/TRAINING_PLAN.md says how the factor is chosen. The target verdict is read from the row's final assistant message."""
+    import json
+    w = float(rec.get("weight", 1.0)) if use_example_weight else 1.0
+    if false_alarm_penalty != 1.0:
+        try: v = json.loads(rec["messages"][-1]["content"]).get("verdict")
+        except (ValueError, KeyError, IndexError, AttributeError): v = None
+        if v == "approve": w *= float(false_alarm_penalty)
+    return w
