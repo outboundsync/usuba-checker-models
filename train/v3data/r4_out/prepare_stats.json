@@ -1,13 +1,14 @@
 {
- "pairs_in": 669,
- "excluded_license_GPL": 22,
- "excluded_license_other-license-file": 2,
- "excluded_license_none-found": 2,
- "excluded_holdout_or_key_repo": 1,
- "after_license_and_repo_exclusion": 642,
- "excluded_near_dup_holdout_or_key": 6,
- "class_exact_removed": 489,
- "class_other": 26,
- "class_insertion_anchor": 118,
- "excluded_manifest_id": 3
+ "pairs_in": 2787,
+ "excluded_license_GPL": 94,
+ "excluded_license_other-license-file": 9,
+ "excluded_license_none-found": 15,
+ "excluded_holdout_or_key_repo": 4,
+ "after_license_and_repo_exclusion": 2665,
+ "excluded_near_dup_holdout_or_key": 26,
+ "class_exact_removed": 2039,
+ "class_other": 93,
+ "class_insertion_anchor": 484,
+ "excluded_manifest_id": 18,
+ "pre_fix_line_text_mismatch": 5
 }

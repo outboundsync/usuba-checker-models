@@ -100,6 +100,15 @@ def build_row(res, files, rep, verdict_target, rid_suffix, label, prov_extra):
 def main():
     P = [json.loads(l) for l in open(W + "/prepared.jsonl")]
     st["pairs_class_other_excluded"] = sum(p["cls"] == "other" for p in P); P = [p for p in P if p["cls"] != "other"]
+    # ---- round-2 selection (cost control, extra budget < 4 USD): every round-1 pair is processed (replayed from cache); round-2 pairs: all thin-kind pairs, plus a seeded sample of the other kinds, at most 4 pairs per repo
+    THIN = {"null-or-missing-guard", "missing-dependency-or-install", "shell-quoting-or-expansion", "error-handling", "security", "api-compat-change"}
+    r1 = [p for p in P if p.get("round", 1) == 1]; r2 = [p for p in P if p.get("round", 1) == 2]
+    rs = random.Random(4242); rs.shuffle(r2); per = collections.Counter(); thin2, oth2 = [], []
+    for p in sorted(r2, key=lambda p: (p["bug_kind"] not in THIN, p["cls"] != "exact_removed")):
+        if per[p["repo"]] >= 4: continue
+        per[p["repo"]] += 1; (thin2 if p["bug_kind"] in THIN else oth2).append(p)
+    oth2 = oth2[:int(os.environ.get("R4_OTHER_CAP", "180"))]; st["round2_candidates"] = len(r2); st["round2_selected_thin"] = len(thin2); st["round2_selected_other"] = len(oth2)
+    P = r1 + thin2 + oth2
     if os.environ.get("LIMIT"): P = P[:int(os.environ["LIMIT"])]
     with ThreadPoolExecutor(12) as pool: RS = list(pool.map(job, P))
     good = [r for r in RS if "drop" not in r]

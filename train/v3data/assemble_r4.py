@@ -92,7 +92,10 @@ rows = final
 broken = [r for r in rows if r["verdict"] != "approve"]; approve = [r for r in rows if r["verdict"] == "approve"]
 kind = lambda r: tgt(r)["findings"][0]["category"] if tgt(r)["findings"] else None
 kinds = lambda r: {f["category"] for f in tgt(r)["findings"]}
-def hist_priority(r): return (0 if r["provenance"].get("exact_class") == "exact_removed" else 1, -(r["provenance"].get("judge_confidence") or 0), hashlib.sha1(r["id"].encode()).hexdigest())
+THIN = {"null-or-missing-guard", "missing-dependency-or-install", "shell-quoting-or-expansion", "error-handling", "security", "api-compat-change"}
+def hist_priority(r):   # larger = dropped first. Thin kinds are kept preferentially (score u*0.5, so kept about twice as often) but other kinds keep a share (score u); insertion anchors rank later
+    u = int(hashlib.sha1(r["id"].encode()).hexdigest(), 16) / 2**160; pv = r["provenance"]
+    return ((u * 0.5 if pv.get("history_bug_kind") in THIN else u) + (0.1 if pv.get("exact_class") != "exact_removed" else 0), r["id"])
 # ---- caps (iterative): unbounded-only <=20%, any single kind <=20%, any single source <=40% of broken rows. Drop order: history rows (weakest first), then jank, never r3/Dell rows unless they alone break a cap.
 def drop_rows(ids, why): global rows, broken, approve; rows = [r for r in rows if r["id"] not in ids]; broken = [r for r in rows if r["verdict"] != "approve"]; approve = [r for r in rows if r["verdict"] == "approve"]; drops[why] += len(ids)
 def enforce():
@@ -100,7 +103,7 @@ def enforce():
     nb = len(broken)
     # source cap 40%
     for src in sorted({r["source"] for r in broken}):
-        rs = [r for r in broken if r["source"] == src]; cap = int((nb - len(rs)) * 0.40 / 0.60)   # n <= 0.4 (n + others)
+        rs = [r for r in broken if r["source"] == src]; cap = int((nb - len(rs)) * 0.385 / 0.615)   # n <= 0.385 (n + others): margin so later val/train dedupe still ends <= 40%
         if len(rs) > cap:
             order = sorted(rs, key=hist_priority, reverse=True) if src == "version_history" else sorted(rs, key=lambda r: hashlib.sha1((str(rnd.random()) + r["id"]).encode()).hexdigest())
             k = len(rs) - cap; rs_drop = order[:k]; ids = {r["id"] for r in rs_drop}
@@ -122,7 +125,9 @@ def enforce():
         vict = (hist + oth)[:int(-(-(len(ub) - 0.20 * nb) // 0.80))]; drop_rows({r["id"] for r in vict} | {r["id"].replace(":broken", ":fixed") for r in vict if r["source"] == "version_history"}, "cap:unbounded_only_20pct"); return True
     return False
 print('before caps', dict(collections.Counter(r['source'] for r in broken)), 'approve', dict(collections.Counter(r['source'] for r in approve)))
+print('before caps kinds', dict(collections.Counter(r['provenance'].get('history_bug_kind') for r in broken if r['source']=='version_history')))
 while enforce(): pass
+print('after caps kinds', dict(collections.Counter(r['provenance'].get('history_bug_kind') for r in broken if r['source']=='version_history')))
 print('after caps', dict(collections.Counter(r['source'] for r in broken)))
 # approve history rows are a minority: <= 1/3 of history broken rows, and only if their broken twin survived
 hbk = {r["id"] for r in broken if r["source"] == "version_history"}
@@ -146,7 +151,7 @@ while True:
         if r["verdict"] != "approve":
             for c in kinds(r): got[c] += 1
 val_b = [r for rp in val_repos for r in byrepo[rp] if r["verdict"] != "approve"]; val_a = [r for rp in val_repos for r in byrepo[rp] if r["verdict"] == "approve"]
-cands = [r for r in approve if r["_repo"] not in val_repos and r["source"] not in ("synthetic_lifecycle", "winners_mit")]; rnd.shuffle(cands); cands.sort(key=lambda r: 0 if r["source"] == "version_history" else 1)
+cands = [r for r in approve if r["_repo"] not in val_repos and r["source"] not in ("synthetic_lifecycle", "winners_mit", "version_history")]; rnd.shuffle(cands)   # history approve rows join val only with their own (val) repo, never by removing a train repo
 vrs = set(val_repos)
 for r in cands:
     if len(val_a) >= len(val_b): break
@@ -164,7 +169,7 @@ print('tb', dict(collections.Counter(r['source'] for r in tb)), 'val_b', dict(co
 train = tb + ta; rnd.shuffle(train); rnd.shuffle(val)
 for sp, rs in (("train", train), ("val", val)):
     with gzip.open(os.path.join(OUT, sp + ".jsonl.gz"), "wt") as f:
-        for r in rs: f.write(json.dumps(dict({k: v for k, v in r.items() if not k.startswith("_")}, split=sp), ensure_ascii=False) + "\n")
+        for r in rs: f.write(json.dumps(dict({k: v for k, v in r.items() if not k.startswith("_")}, split=sp, **({"weight": 2.0} if r["source"] == "version_history" and r["verdict"] != "approve" and r["provenance"].get("history_bug_kind") in THIN else {})), ensure_ascii=False) + "\n")
 src = lambda rs: dict(collections.Counter(r["source"] for r in rs))
 bsrc = lambda rs: dict(collections.Counter(r["source"] for r in rs if r["verdict"] != "approve"))
 json.dump(dict(stats=dict(st), drops=dict(drops), train=len(train), val=len(val), train_broken=len(tb), train_approve=len(ta), val_broken=len(val_b), val_approve=len(val_a), source_mix_all=src(train + val), broken_source_mix=bsrc(train + val),

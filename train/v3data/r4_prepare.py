@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """r4 step 1: version-history verified pairs -> license filter, exclusions, pre/post source trees (text sources only), copyright, exact-line class.
-usage: r4_prepare.py OUT_DIR   (reads /workspace/usuba-runs/version-history/data/verified_pairs.jsonl; clones in /workspace/vh_repos). No model calls."""
+usage: r4_prepare.py OUT_DIR   (reads verified_pairs.jsonl (round 1) and verified_pairs_2.jsonl (round 2, if present); clones in /workspace/vh_repos). No model calls."""
 import sys, os, re, json, subprocess, collections, hashlib
 from concurrent.futures import ThreadPoolExecutor
 H = os.path.dirname(os.path.abspath(__file__)); T = os.path.dirname(H); ROOT = os.path.dirname(T)
 sys.path[:0] = [T, os.path.join(ROOT, "functest"), os.path.join(ROOT, "hancore"), H]
 import build_train_set as B, functest as FT
 OUT = sys.argv[1]; TR = os.path.join(OUT, "trees2"); os.makedirs(TR, exist_ok=True)
-VH = "/workspace/usuba-runs/version-history/data/verified_pairs.jsonl"; REPOS = "/workspace/vh_repos/"
+VH = ["/workspace/usuba-runs/version-history/data/verified_pairs.jsonl", "/workspace/usuba-runs/version-history/data/verified_pairs_2.jsonl"]; REPOS = "/workspace/vh_repos/"
 OK_LIC = {"MIT", "Apache-2.0", "BSD", "ISC"}
 GLOBS = ["*." + e for e in "qml js mjs sh bash py lua json toml md txt service desktop conf rs yaml yml".split()] + ["LICENSE*", "COPYING*", "NOTICE*", "LICENCE*", "bin/*", "*/bin/*", "scripts/*", "*/scripts/*"]
-pairs = [json.loads(l) for l in open(VH)]
+pairs = [dict(json.loads(l), round=i + 1) for i, f in enumerate(VH) if os.path.exists(f) for l in open(f)]
 st = collections.Counter(); st["pairs_in"] = len(pairs)
 h_repos, h_ids, h_trees = B.holdout_fingerprint()
 key_ids, key_trees = set(), []

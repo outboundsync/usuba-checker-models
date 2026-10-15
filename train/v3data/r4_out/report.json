@@ -1,53 +1,53 @@
 {
  "counts": {
-  "train": 796,
-  "val": 142,
-  "broken": 490,
-  "approve": 448
+  "train": 896,
+  "val": 138,
+  "broken": 541,
+  "approve": 493
  },
  "source_mix": {
-  "dell_works_verified": 321,
-  "hancore_concrete": 167,
-  "version_history": 233,
-  "dell_broken_verified": 116,
-  "fix_upstream": 22,
-  "jankeesvw-history": 35,
-  "dell_inuse_missing_binary": 5,
-  "nudged_approve": 20,
+  "dell_works_verified": 371,
+  "fix_upstream": 21,
+  "hancore_concrete": 168,
+  "version_history": 277,
+  "dell_broken_verified": 117,
   "synthetic_lifecycle": 16,
-  "winners_mit": 2,
-  "dell_inuse_close": 1
+  "nudged_approve": 20,
+  "jankeesvw-history": 36,
+  "dell_inuse_missing_binary": 5,
+  "dell_inuse_close": 1,
+  "winners_mit": 2
  },
  "broken_source_mix": {
-  "hancore_concrete": 167,
-  "version_history": 159,
-  "dell_broken_verified": 116,
-  "jankeesvw-history": 33,
-  "dell_inuse_missing_binary": 5,
+  "hancore_concrete": 168,
+  "version_history": 208,
+  "dell_broken_verified": 117,
   "synthetic_lifecycle": 9,
-  "dell_inuse_close": 1
+  "dell_inuse_missing_binary": 5,
+  "dell_inuse_close": 1,
+  "jankeesvw-history": 33
  },
  "approve_share": {
-  "train": 0.474,
+  "train": 0.473,
   "val": 0.5,
-  "all": 0.478
+  "all": 0.477
  },
  "mech": {
-  "strict": 503,
-  "nocheck": 9,
-  "fail": 11,
-  "file_missing": 8,
+  "strict": 548,
+  "file_missing": 15,
+  "nocheck": 8,
   "two_line": 3,
+  "fail": 11,
   "blank_or_comment": 2
  },
- "mech_pass": 0.9601518026565465,
+ "mech_pass": 0.9516407599309153,
  "qwen_recheck": {
-  "exact": 501,
-  "n": 528
+  "exact": 543,
+  "n": 572
  },
  "gptoss_recheck": {
-  "exact": 489,
-  "n": 528
+  "exact": 530,
+  "n": 572
  },
  "spot": {
   "agree": 35,
@@ -55,13 +55,14 @@
   "rate": 0.875
  },
  "leakage": {
-  "rows_checked": 938,
+  "rows_checked": 1034,
   "hits": {
-   "INFO_incidental_key_id_string_in_other_plugin_text": 2
+   "INFO_incidental_key_id_string_in_other_plugin_text": 6,
+   "forbidden_vendor_word": 1
   },
   "duplicate_row_ids": 0,
   "train_val_repo_overlap": 0,
-  "near_dup_rows_ge50pct_among_kept": 25,
+  "near_dup_rows_ge50pct_among_kept": 72,
   "dell_key_ids": 116,
   "dell_key_trees": 101,
   "holdout_repos": 329
@@ -71,156 +72,167 @@
   "n/a": 2
  },
  "license_mix": {
-  "MIT": 228,
+  "MIT": 271,
+  "Apache-2.0": 4,
   "ISC": 1,
-  "Apache-2.0": 3,
   "BSD": 1
  },
  "exact_class": {
-  "exact_removed": 159
+  "exact_removed": 192,
+  "insertion_anchor": 16
  },
  "tokens": {
-  "p50": 11976,
-  "max": 31994
+  "p50": 12060,
+  "max": 31831
  },
- "unbounded_only": 69,
+ "unbounded_only": 68,
  "per_kind": {
-  "file-safety-symlink-perms": {
-   "rows": 30,
-   "findings": 30,
-   "file_line": 30
+  "secrets-credentials": {
+   "rows": 31,
+   "findings": 31,
+   "file_line": 31
   },
-  "runtime:logic-error": {
-   "rows": 71,
-   "findings": 71,
-   "file_line": 71
+  "in-use:stale-or-wrong-display": {
+   "rows": 18,
+   "findings": 18,
+   "file_line": 18
+  },
+  "process-lifecycle-timeouts": {
+   "rows": 9,
+   "findings": 9,
+   "file_line": 9
   },
   "dell-sourced/load:*": {
    "rows": 94,
    "findings": 123,
    "file_line": 123
   },
-  "remote-code-pinning": {
-   "rows": 20,
-   "findings": 20,
-   "file_line": 20
-  },
-  "in-use:stale-or-wrong-display": {
-   "rows": 36,
-   "findings": 36,
-   "file_line": 36
-  },
-  "secrets-credentials": {
-   "rows": 26,
-   "findings": 26,
-   "file_line": 26
-  },
-  "runtime-qml-api-compat": {
-   "rows": 11,
-   "findings": 11,
-   "file_line": 11
-  },
   "unbounded-input-resource": {
-   "rows": 69,
-   "findings": 69,
-   "file_line": 69
-  },
-  "dell-sourced/in-use:*": {
-   "rows": 18,
-   "findings": 20,
-   "file_line": 20
-  },
-  "in-use:data-loss": {
-   "rows": 2,
-   "findings": 2,
-   "file_line": 2
-  },
-  "in-use:invalid-command-arg": {
-   "rows": 12,
-   "findings": 12,
-   "file_line": 12
-  },
-  "shell-lua-injection": {
-   "rows": 17,
-   "findings": 17,
-   "file_line": 17
-  },
-  "process-lifecycle-timeouts": {
-   "rows": 13,
-   "findings": 13,
-   "file_line": 13
-  },
-  "privileged-system": {
-   "rows": 18,
-   "findings": 18,
-   "file_line": 18
-  },
-  "dell-sourced/config:*": {
-   "rows": 3,
-   "findings": 3,
-   "file_line": 3
-  },
-  "user-config-modification": {
-   "rows": 1,
-   "findings": 1,
-   "file_line": 1
-  },
-  "url-scheme-network": {
-   "rows": 2,
-   "findings": 2,
-   "file_line": 2
-  },
-  "runtime:state-or-race": {
-   "rows": 11,
-   "findings": 11,
-   "file_line": 11
-  },
-  "runtime:error-handling": {
-   "rows": 4,
-   "findings": 4,
-   "file_line": 4
-  },
-  "load:panel-lifecycle": {
-   "rows": 3,
-   "findings": 3,
-   "file_line": 3
-  },
-  "dell-sourced/runtime:*": {
-   "rows": 10,
-   "findings": 12,
-   "file_line": 12
+   "rows": 68,
+   "findings": 68,
+   "file_line": 68
   },
   "load:component-not-created": {
    "rows": 4,
    "findings": 4,
    "file_line": 4
   },
+  "remote-code-pinning": {
+   "rows": 23,
+   "findings": 23,
+   "file_line": 23
+  },
+  "runtime:logic-error": {
+   "rows": 53,
+   "findings": 53,
+   "file_line": 53
+  },
+  "user-config-modification": {
+   "rows": 2,
+   "findings": 2,
+   "file_line": 2
+  },
+  "dell-sourced/in-use:*": {
+   "rows": 18,
+   "findings": 20,
+   "file_line": 20
+  },
+  "runtime:undefined-property": {
+   "rows": 20,
+   "findings": 20,
+   "file_line": 20
+  },
+  "privileged-system": {
+   "rows": 20,
+   "findings": 20,
+   "file_line": 20
+  },
+  "runtime-qml-api-compat": {
+   "rows": 30,
+   "findings": 30,
+   "file_line": 30
+  },
+  "file-safety-symlink-perms": {
+   "rows": 39,
+   "findings": 39,
+   "file_line": 39
+  },
+  "runtime:error-handling": {
+   "rows": 27,
+   "findings": 27,
+   "file_line": 27
+  },
+  "shell-lua-injection": {
+   "rows": 25,
+   "findings": 25,
+   "file_line": 25
+  },
+  "dell-sourced/config:*": {
+   "rows": 3,
+   "findings": 3,
+   "file_line": 3
+  },
+  "in-use:invalid-command-arg": {
+   "rows": 8,
+   "findings": 8,
+   "file_line": 8
+  },
+  "dell-sourced/runtime:*": {
+   "rows": 10,
+   "findings": 12,
+   "file_line": 12
+  },
+  "runtime:state-or-race": {
+   "rows": 7,
+   "findings": 7,
+   "file_line": 7
+  },
+  "dell-sourced/logic:*": {
+   "rows": 1,
+   "findings": 1,
+   "file_line": 1
+  },
+  "rich-text-markup-injection": {
+   "rows": 17,
+   "findings": 17,
+   "file_line": 17
+  },
+  "in-use:data-loss": {
+   "rows": 2,
+   "findings": 2,
+   "file_line": 2
+  },
   "listing-metadata-docs": {
    "rows": 2,
    "findings": 2,
    "file_line": 2
   },
-  "rich-text-markup-injection": {
-   "rows": 10,
-   "findings": 10,
-   "file_line": 10
+  "url-scheme-network": {
+   "rows": 2,
+   "findings": 2,
+   "file_line": 2
   },
-  "runtime:undefined-property": {
-   "rows": 4,
-   "findings": 4,
-   "file_line": 4
+  "in-use:missing-binary": {
+   "rows": 2,
+   "findings": 2,
+   "file_line": 2
+  },
+  "install-deps-packaging": {
+   "rows": 1,
+   "findings": 1,
+   "file_line": 1
   },
   "dell-sourced/syntax:*": {
    "rows": 1,
    "findings": 1,
    "file_line": 1
   },
-  "dell-sourced/qml:*": {
-   "rows": 2,
+  "load:panel-lifecycle": {
+   "rows": 3,
    "findings": 3,
    "file_line": 3
   },
-  "dell-sourced/packaging:*": {
+  "dell-sourced/missing-file:*": {
    "rows": 1,
    "findings": 1,
    "file_line": 1
@@ -230,50 +242,56 @@
    "findings": 2,
    "file_line": 2
   },
+  "runtime:undefined-method": {
+   "rows": 3,
+   "findings": 3,
+   "file_line": 3
+  },
+  "dell-sourced/packaging:*": {
+   "rows": 1,
+   "findings": 1,
+   "file_line": 1
+  },
   "dell-sourced/security:*": {
    "rows": 1,
    "findings": 1,
    "file_line": 1
   },
-  "dell-sourced/missing-file:*": {
-   "rows": 1,
-   "findings": 1,
-   "file_line": 1
-  },
-  "dell-sourced/logic:*": {
-   "rows": 1,
-   "findings": 1,
-   "file_line": 1
+  "dell-sourced/qml:*": {
+   "rows": 3,
+   "findings": 4,
+   "file_line": 4
   }
  },
  "val_kind_counts": {
-  "load:method-not-found": 2,
-  "in-use:missing-binary": 3,
-  "unbounded-input-resource": 6,
+  "in-use:missing-file": 1,
+  "load:unknown-type": 6,
+  "load:undefined-property": 3,
+  "rich-text-markup-injection": 3,
   "secrets-credentials": 4,
-  "runtime:logic-error": 8,
-  "runtime:error-handling": 3,
-  "load:component-not-created": 3,
+  "remote-code-pinning": 3,
+  "shell-lua-injection": 3,
+  "unbounded-input-resource": 5,
   "in-use:invalid-command-arg": 4,
   "privileged-system": 3,
-  "runtime:undefined-property": 1,
-  "load:missing-import": 1,
-  "qml:property-shadowing": 1,
-  "load:unknown-type": 6,
-  "in-use:stale-or-wrong-display": 4,
-  "runtime:state-or-race": 3,
-  "in-use:missing-file": 1,
-  "rich-text-markup-injection": 3,
-  "load:undefined-method": 2,
-  "load:undefined-property": 3,
-  "remote-code-pinning": 3,
   "load:undefined-identifier": 1,
+  "runtime:invalid-command-arg": 1,
+  "in-use:stale-or-wrong-display": 3,
+  "runtime:error-handling": 3,
+  "runtime:logic-error": 4,
+  "runtime:state-or-race": 3,
   "process-lifecycle-timeouts": 3,
-  "shell-lua-injection": 3,
   "file-safety-symlink-perms": 3,
-  "load:qml-type-error": 2,
   "runtime-qml-api-compat": 3,
-  "runtime:undefined-method": 2,
-  "load:invalid-signal-handler": 3
+  "load:invalid-signal-handler": 3,
+  "load:missing-import": 1,
+  "runtime:undefined-property": 3,
+  "qml:property-shadowing": 1,
+  "in-use:missing-binary": 3,
+  "load:method-not-found": 5,
+  "runtime:undefined-method": 3,
+  "load:component-not-created": 3,
+  "load:undefined-method": 1,
+  "load:qml-type-error": 2
  }
 }

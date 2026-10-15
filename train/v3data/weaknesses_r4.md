@@ -1,8 +1,9 @@
-- History rows are single-file edits mined from public Omarchy/Quickshell plugins; their finding text is model-written from the diff (checked by exact-line and a second model), not by the original author.
-- Pure-insertion pairs are kept only when the anchor line passes the same exact-line check; many insertion fixes were dropped, so "missing guard" defects are under-represented.
-- Approve rows from post-fix files are a minority of history rows (cap 1/3) and rest on the Checker plus one model check, not on running the plugin.
-- jankeesvw history is 33 broken rows after near-duplicate removal, mostly from few repositories; most of them sit in val because val must be repo-disjoint from train, leaving train with few.
-- Surplus rows from repositories chosen for val are dropped (not moved to train) to keep val and train repo-disjoint; about 60 history broken rows were lost that way.
-- Some kinds still have fewer than 3 val findings because fewer than 6 exist overall (see section 7).
-- Eight history rows have no copyright line in any LICENSE text found; they carry the license id and repo URL only.
-- Spot check agreement is 35/40 (87.5%); the remaining unsampled pairs have been through the gates but not the second-model spot check.
+- History rows are single-line defects mined from public Omarchy/Quickshell plugins; the finding text is model-written from the diff (checked by exact-line rules and a second model), not by the original author.
+- The 40% source cap binds: about 700 history broken rows passed the gates but only about 208 are kept, so most of round 2 adds kind balance rather than volume. Thin kinds are kept about twice as often as other kinds when trimming (about 80% of kept history rows are thin kinds) and carry weight 2.0 (field `weight`; the trainer must read it for it to have effect).
+- Round 2 was not processed in full (cost control, under $4): all thin-kind pairs (max 4 per repo) plus a seeded sample of 180 others; the rest of its 2,118 pairs are unused.
+- Insertion-anchor pairs are kept only when the anchor line passes the same checks (88 passed gates before caps); null-guard and missing-dependency kinds remain thin in absolute numbers.
+- History approve rows rest on the Checker plus one qwen check of the area around the fix, not on running the plugin; they are at most a third of history broken rows.
+- jankeesvw-history (29 broken after near-duplicate removal) and synthetic_lifecycle rows pass the mechanical exact-line check at a lower rate than the other sources (see section 3).
+- val is repo-disjoint from train, so a history repo chosen for val cannot also give train rows; surplus rows from val repos are dropped, not moved. Most jankeesvw-history rows sit in val for the same reason.
+- Some history rows lack a LICENSE copyright line (counted in assemble_stats); they carry the license id and repo URL only.
+- Spot check is 35/40 (87.5%) on 40 random pairs; the other gated pairs are covered by the gates and the second-model re-check, not by a per-pair independent review.

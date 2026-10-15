@@ -1,196 +1,202 @@
 # Usuba v3-data-r4 — gate report
-Generated Thu Oct 15 09:52:58 MDT 2026 on branch v3-data-r4 (on top of v3-data-r3). No training, no GPU, no Dell commands; Dell key read for ids/paths only (exclusion); hancore_holdout used only as exclusion fingerprints. Open-weights models only: qwen/qwen3.5-397b-a17b and openai/gpt-oss-120b (OpenRouter).
+Generated Thu Oct 15 10:59:35 MDT 2026 on branch v3-data-r4 (on top of v3-data-r3). No training, no GPU, no Dell commands; Dell key read for ids/paths only (exclusion); hancore_holdout used only as exclusion fingerprints. Open-weights models only: qwen/qwen3.5-397b-a17b and openai/gpt-oss-120b (OpenRouter).
 
-Rows: train 796, val 142 (r3: train 516 / val 66).
+Rows: train 896, val 138 (r3: train 516 / val 66).
 
 ## 1. Source mix
 | source | train | val | all | broken | share of broken |
 |---|--:|--:|--:|--:|--:|
-| dell_broken_verified | 99 | 17 | 116 | 116 | 23.7% |
+| dell_broken_verified | 101 | 16 | 117 | 117 | 21.6% |
 | dell_inuse_close | 1 | 0 | 1 | 1 | 0.2% |
-| dell_inuse_missing_binary | 5 | 0 | 5 | 5 | 1.0% |
-| dell_works_verified | 320 | 1 | 321 | 0 | 0.0% |
-| fix_upstream | 22 | 0 | 22 | 0 | 0.0% |
-| hancore_concrete | 157 | 10 | 167 | 167 | 34.1% |
-| jankeesvw-history | 7 | 28 | 35 | 33 | 6.7% |
-| nudged_approve | 19 | 1 | 20 | 0 | 0.0% |
-| synthetic_lifecycle | 16 | 0 | 16 | 9 | 1.8% |
-| version_history | 148 | 85 | 233 | 159 | 32.4% |
+| dell_inuse_missing_binary | 4 | 1 | 5 | 5 | 0.9% |
+| dell_works_verified | 307 | 64 | 371 | 0 | 0.0% |
+| fix_upstream | 21 | 0 | 21 | 0 | 0.0% |
+| hancore_concrete | 156 | 12 | 168 | 168 | 31.1% |
+| jankeesvw-history | 9 | 27 | 36 | 33 | 6.1% |
+| nudged_approve | 18 | 2 | 20 | 0 | 0.0% |
+| synthetic_lifecycle | 16 | 0 | 16 | 9 | 1.7% |
+| version_history | 261 | 16 | 277 | 208 | 38.4% |
 | winners_mit | 2 | 0 | 2 | 0 | 0.0% |
 
-Largest single source share of broken rows: 34.1% (cap 40%). Largest single kind share: 13.3% of findings (runtime:logic-error); cap 20% of broken rows enforced per kind. Unbounded-input-only broken rows: 69 (14.1% of broken, cap 20%).
+Largest single source share of broken rows: 38.4% (cap 40%). Largest single kind share: 11.6% of findings (unbounded-input-resource); cap 20% of broken rows enforced per kind. Unbounded-input-only broken rows: 68 (12.6% of broken, cap 20%).
 
 ## 2. Broken vs approve
-- train: broken 419, approve 377 (approve share 0.474)
-- val: broken 71, approve 71 (approve share 0.5)
-- all: broken 490, approve 448, approve share 0.478 (target 40-50%)
+- train: broken 472, approve 424 (approve share 0.473)
+- val: broken 69, approve 69 (approve share 0.5)
+- all: broken 541, approve 493, approve share 0.477 (target 40-50%)
 
 ## 3. Exact-line pass rate (all findings that cite file+line)
 | | count |
 |---|--:|
-| strict | 503 |
+| strict | 548 |
 | two_line | 3 |
 | fail | 11 |
 | blank_or_comment | 2 |
 | out_of_range | 0 |
-| file_missing | 8 |
-| nocheck | 9 |
-| **mechanical pass rate over checkable findings** | **96.0%** (506/527) |
-| independent re-check, qwen (fresh prompt) 'cited line is the exact statement' | 501/528 = 94.9% |
-| independent re-check, openai/gpt-oss-120b (second open model) | 489/528 = 92.6% |
+| file_missing | 15 |
+| nocheck | 8 |
+| **mechanical pass rate over checkable findings** | **95.2%** (551/579) |
+| independent re-check, qwen (fresh prompt) 'cited line is the exact statement' | 543/572 = 94.9% |
+| independent re-check, openai/gpt-oss-120b (second open model) | 530/572 = 92.7% |
 
-Mechanical by source: hancore_concrete: 167/167; version_history: 156/159; dell_broken_verified: 149/149; jankeesvw-history: 19/31; dell_inuse_missing_binary: 9/9; synthetic_lifecycle: 3/9; dell_works_verified: 1/1; dell_inuse_close: 2/2
+Mechanical by source: hancore_concrete: 168/168; version_history: 198/208; dell_broken_verified: 150/150; synthetic_lifecycle: 3/9; dell_inuse_missing_binary: 9/9; dell_inuse_close: 2/2; jankeesvw-history: 19/31; dell_works_verified: 2/2
 
-Model re-checks by source (exact / n): qwen hancore_concrete 157/167; version_history 155/156; dell_broken_verified 152/155; jankeesvw-history 20/31; dell_inuse_missing_binary 9/9; synthetic_lifecycle 4/6; dell_works_verified 2/2; dell_inuse_close 2/2 || gpt-oss hancore_concrete 154/167; version_history 153/156; dell_broken_verified 150/155; jankeesvw-history 16/31; dell_inuse_missing_binary 9/9; synthetic_lifecycle 3/6; dell_works_verified 2/2; dell_inuse_close 2/2
+Model re-checks by source (exact / n): qwen hancore_concrete 158/168; version_history 195/198; dell_broken_verified 153/156; synthetic_lifecycle 4/6; dell_inuse_missing_binary 9/9; dell_inuse_close 2/2; jankeesvw-history 20/31; dell_works_verified 2/2 || gpt-oss hancore_concrete 155/168; version_history 193/198; dell_broken_verified 151/156; synthetic_lifecycle 3/6; dell_inuse_missing_binary 9/9; dell_inuse_close 2/2; jankeesvw-history 16/31; dell_works_verified 1/2
 
 ## 4. Version-history rows
 - Pairs: 669 verified; license filter (MIT / Apache-2.0 / BSD / ISC only; GPL 22, other-license-file 2, none-found 2 excluded); see `r4_out/prepare_stats.json`.
-- Rows kept in the final set: 159 broken, 74 approve (post-fix versions; Checker reported no error-level line and qwen found no remaining defect near the fixed area; kept a minority, <= 1/3 of history broken). Licenses: `{'MIT': 228, 'ISC': 1, 'Apache-2.0': 3, 'BSD': 1}`. Exact class of broken rows: `{'exact_removed': 159}` (exact_removed = the cited line is exactly a removed line; insertion_anchor = pure insertions that passed the same mechanical and model exact-line gates).
-- Build stats: `{"pairs_class_other_excluded": 26, "pairs_prepared": 607, "pairs_passed_gates": 381, "spot_check_n": 40, "spot_check_agree": 35, "spot_failed_dropped": 5, "broken_rows": 351, "approve_candidates": 299}`; drops `{"finding_text_unusable": 100, "mechanical_exact_line_failed": 62, "model_gate_llm_not_exact_line": 21, "kind_vote_split": 18, "model_gate_not_a_defect_statement": 19, "model_gate_moved": 6, "broken_row:cited_line_not_visible": 24, "approve:checker_errors_or_unavailable": 44, "broken_row:over_32k_tokens": 1, "approve:model_remaining_defect": 8}`.
+- Rows kept in the final set: 208 broken, 69 approve (post-fix versions; Checker reported no error-level line and qwen found no remaining defect near the fixed area; kept a minority, <= 1/3 of history broken). Licenses: `{'MIT': 271, 'Apache-2.0': 4, 'ISC': 1, 'BSD': 1}`. Exact class of broken rows: `{'exact_removed': 192, 'insertion_anchor': 16}` (exact_removed = the cited line is exactly a removed line; insertion_anchor = pure insertions that passed the same mechanical and model exact-line gates).
+- Build stats: `{"pairs_class_other_excluded": 93, "round2_candidates": 1916, "round2_selected_thin": 510, "round2_selected_other": 180, "pairs_prepared": 1297, "pairs_passed_gates": 761, "spot_check_n": 40, "spot_check_agree": 35, "spot_failed_dropped": 5, "broken_rows": 708, "approve_candidates": 589}`; drops `{"finding_text_unusable": 236, "mechanical_exact_line_failed": 150, "model_gate_llm_not_exact_line": 52, "kind_vote_split": 38, "model_gate_not_a_defect_statement": 42, "model_gate_moved": 17, "kind_unmapped": 1, "broken_row:cited_line_not_visible": 47, "approve:checker_errors_or_unavailable": 103, "broken_row:over_32k_tokens": 1, "approve:model_remaining_defect": 16}`.
 - **Spot check**: 35/40 of 40 random gated pairs confirmed by a second, independent open model (openai/gpt-oss-120b: real defect AND cited line exact) = **87.5%**; the 5 that failed were dropped (`spot_check_40.json`).
 - Kind mapping (history kind -> existing taxonomy; model vote 3/3 on the finding text among the allowed categories, split votes dropped): see `hist_build_stats.json` by_category in `r4_out/`. HANCORE hardening kinds get load 'unsure'; Dell-style runtime/in-use kinds get load 'broken'.
 - Provenance per row: repo url, commit, parent, date, subject, license, copyright line (from the repo LICENSE), judge confidence, models. NOTICE updated (see repo `NOTICE`).
 
 ## 5. jankeesvw-history rows
-- 35 rows (33 broken) re-wrapped with the current prompt_v3 and Checker reports regenerated by old-vs-new diff (removed 8, added 0); rows_tierB and rows_extra are not used.
+- 36 rows (33 broken) re-wrapped with the current prompt_v3 and Checker reports regenerated by old-vs-new diff (removed 8, added 0); rows_tierB and rows_extra are not used.
 
 ## 6. Per bug kind (blocker findings in broken rows)
 | kind | rows | findings | share with file+line |
 |---|--:|--:|--:|
 | dell-sourced/load:* | 94 | 123 | 100.0% |
-| runtime:logic-error | 71 | 71 | 100.0% |
-| unbounded-input-resource | 69 | 69 | 100.0% |
-| in-use:stale-or-wrong-display | 36 | 36 | 100.0% |
-| file-safety-symlink-perms | 30 | 30 | 100.0% |
-| secrets-credentials | 26 | 26 | 100.0% |
-| remote-code-pinning | 20 | 20 | 100.0% |
+| unbounded-input-resource | 68 | 68 | 100.0% |
+| runtime:logic-error | 53 | 53 | 100.0% |
+| file-safety-symlink-perms | 39 | 39 | 100.0% |
+| secrets-credentials | 31 | 31 | 100.0% |
+| runtime-qml-api-compat | 30 | 30 | 100.0% |
+| runtime:error-handling | 27 | 27 | 100.0% |
+| shell-lua-injection | 25 | 25 | 100.0% |
+| remote-code-pinning | 23 | 23 | 100.0% |
+| runtime:undefined-property | 20 | 20 | 100.0% |
+| privileged-system | 20 | 20 | 100.0% |
+| in-use:stale-or-wrong-display | 18 | 18 | 100.0% |
 | dell-sourced/in-use:* | 18 | 20 | 100.0% |
-| privileged-system | 18 | 18 | 100.0% |
-| shell-lua-injection | 17 | 17 | 100.0% |
-| process-lifecycle-timeouts | 13 | 13 | 100.0% |
-| in-use:invalid-command-arg | 12 | 12 | 100.0% |
-| runtime-qml-api-compat | 11 | 11 | 100.0% |
-| runtime:state-or-race | 11 | 11 | 100.0% |
+| rich-text-markup-injection | 17 | 17 | 100.0% |
 | dell-sourced/runtime:* | 10 | 12 | 100.0% |
-| rich-text-markup-injection | 10 | 10 | 100.0% |
-| runtime:error-handling | 4 | 4 | 100.0% |
+| process-lifecycle-timeouts | 9 | 9 | 100.0% |
+| in-use:invalid-command-arg | 8 | 8 | 100.0% |
+| runtime:state-or-race | 7 | 7 | 100.0% |
 | load:component-not-created | 4 | 4 | 100.0% |
-| runtime:undefined-property | 4 | 4 | 100.0% |
 | dell-sourced/config:* | 3 | 3 | 100.0% |
 | load:panel-lifecycle | 3 | 3 | 100.0% |
+| runtime:undefined-method | 3 | 3 | 100.0% |
+| dell-sourced/qml:* | 3 | 4 | 100.0% |
+| user-config-modification | 2 | 2 | 100.0% |
 | in-use:data-loss | 2 | 2 | 100.0% |
-| url-scheme-network | 2 | 2 | 100.0% |
 | listing-metadata-docs | 2 | 2 | 100.0% |
-| dell-sourced/qml:* | 2 | 3 | 100.0% |
+| url-scheme-network | 2 | 2 | 100.0% |
+| in-use:missing-binary | 2 | 2 | 100.0% |
 | qml:property-shadowing | 2 | 2 | 100.0% |
-| user-config-modification | 1 | 1 | 100.0% |
+| dell-sourced/logic:* | 1 | 1 | 100.0% |
+| install-deps-packaging | 1 | 1 | 100.0% |
 | dell-sourced/syntax:* | 1 | 1 | 100.0% |
+| dell-sourced/missing-file:* | 1 | 1 | 100.0% |
 | dell-sourced/packaging:* | 1 | 1 | 100.0% |
 | dell-sourced/security:* | 1 | 1 | 100.0% |
-| dell-sourced/missing-file:* | 1 | 1 | 100.0% |
-| dell-sourced/logic:* | 1 | 1 | 100.0% |
 
-File+line share over all blocker findings: 534/534.
+File+line share over all blocker findings: 585/585.
 
 ## 7. Val set
-142 rows from 104 repos, repo-disjoint from train. Broken val findings per kind (total available in parentheses; target >= 3 where >= 6 exist):
+138 rows from 106 repos, repo-disjoint from train. Broken val findings per kind (total available in parentheses; target >= 3 where >= 6 exist):
 
 | kind | val | all |
 |---|--:|--:|
-| runtime:logic-error | 8 | 71 |
-| unbounded-input-resource | 6 | 69 |
-| in-use:stale-or-wrong-display | 4 | 36 |
-| file-safety-symlink-perms | 3 | 30 |
-| secrets-credentials | 4 | 26 |
-| remote-code-pinning | 3 | 20 |
+| unbounded-input-resource | 5 | 68 |
+| runtime:logic-error | 4 | 53 |
+| file-safety-symlink-perms | 3 | 39 |
+| secrets-credentials | 4 | 31 |
+| runtime-qml-api-compat | 3 | 30 |
+| runtime:error-handling | 3 | 27 |
+| shell-lua-injection | 3 | 25 |
+| remote-code-pinning | 3 | 23 |
+| runtime:undefined-property | 3 | 20 |
+| privileged-system | 3 | 20 |
 | load:undefined-property | 3 | 20 |
-| privileged-system | 3 | 18 |
-| load:unknown-type | 6 | 17 |
-| shell-lua-injection | 3 | 17 |
+| in-use:stale-or-wrong-display | 3 | 18 |
 | load:component-not-created | 3 | 17 |
-| in-use:invalid-command-arg | 4 | 13 |
-| process-lifecycle-timeouts | 3 | 13 |
-| runtime-qml-api-compat | 3 | 11 |
-| runtime:state-or-race | 3 | 11 |
-| rich-text-markup-injection | 3 | 10 |
-| in-use:missing-binary | 3 | 9 |
-| load:method-not-found | 2 | 9 |
+| load:unknown-type | 6 | 17 |
+| rich-text-markup-injection | 3 | 17 |
+| in-use:missing-binary | 3 | 11 |
+| process-lifecycle-timeouts | 3 | 9 |
+| in-use:invalid-command-arg | 4 | 9 |
+| load:method-not-found | 5 | 9 |
+| runtime:undefined-method | 3 | 8 |
 | load:invalid-signal-handler | 3 | 7 |
-| load:undefined-method | 2 | 6 |
-| load:undefined-identifier | 1 | 5 |
+| runtime:state-or-race | 3 | 7 |
+| load:undefined-method | 1 | 6 |
 | load:qml-type-error | 2 | 5 |
-| runtime:undefined-method | 2 | 5 |
-| runtime:error-handling | 3 | 4 |
-| runtime:undefined-property | 1 | 4 |
+| load:undefined-identifier | 1 | 5 |
 | load:undefined-reference | 0 | 4 |
-| qml:property-shadowing | 1 | 4 |
 | in-use:missing-file | 1 | 4 |
+| qml:property-shadowing | 1 | 4 |
 | load:property-not-found | 0 | 3 |
+| load:missing-module | 0 | 3 |
 | load:panel-lifecycle | 0 | 3 |
 | load:missing-import | 1 | 3 |
-| load:missing-module | 0 | 3 |
-| in-use:data-loss | 0 | 2 |
-| url-scheme-network | 0 | 2 |
-| load:missing-file | 0 | 2 |
+| load:unknown-qml-type | 0 | 2 |
+| user-config-modification | 0 | 2 |
 | runtime:method-missing | 0 | 2 |
-| listing-metadata-docs | 0 | 2 |
 | load:missing-property | 0 | 2 |
 | load:reference-error | 0 | 2 |
 | in-use:missing-script | 0 | 2 |
-| load:unknown-qml-type | 0 | 2 |
-| load:qml-property-error | 0 | 2 |
+| in-use:data-loss | 0 | 2 |
+| listing-metadata-docs | 0 | 2 |
+| url-scheme-network | 0 | 2 |
+| load:missing-file | 0 | 2 |
 | in-use:missing-asset | 0 | 2 |
-| load:missing-native-module | 0 | 1 |
-| load:type-not-found | 0 | 1 |
+| load:qml-property-error | 0 | 2 |
 | in-use:missing-qml-module | 0 | 1 |
-| load:module-not-installed | 0 | 1 |
-| load:invalid-command-path | 0 | 1 |
-| config:placeholder-in-defaults | 0 | 1 |
-| user-config-modification | 0 | 1 |
-| load:placeholder-data | 0 | 1 |
-| runtime:missing-implementation | 0 | 1 |
-| config:placeholder-endpoint | 0 | 1 |
-| load:import-not-found | 0 | 1 |
-| syntax:type-not-found | 0 | 1 |
-| packaging:missing-file | 0 | 1 |
-| load:undefined-type | 0 | 1 |
-| in-use:missing-module | 0 | 1 |
-| load:invalid-property | 0 | 1 |
+| config:hardcoded-placeholder | 0 | 1 |
 | runtime:readonly-property-assignment | 0 | 1 |
-| load:runtime-error | 0 | 1 |
-| runtime:invalid-command-arg | 0 | 1 |
-| load:type-unavailable | 0 | 1 |
-| load:signal-not-found | 0 | 1 |
-| runtime:method-not-found | 0 | 1 |
+| logic:placeholder-data | 0 | 1 |
+| load:invalid-property | 0 | 1 |
 | load:undefined-api | 0 | 1 |
 | load:unknown-property | 0 | 1 |
-| load:undefined-id | 0 | 1 |
-| load:invalid-property-assignment | 0 | 1 |
-| load:qml-import-error | 0 | 1 |
+| load:import-not-found | 0 | 1 |
+| install-deps-packaging | 0 | 1 |
+| load:module-not-installed | 0 | 1 |
+| syntax:type-not-found | 0 | 1 |
 | runtime:invalid-api | 0 | 1 |
-| qml:undefined-property | 0 | 1 |
-| security:placeholder-credential | 0 | 1 |
-| config:hardcoded-placeholder | 0 | 1 |
-| load:signal-handler-invalid | 0 | 1 |
+| load:invalid-property-assignment | 0 | 1 |
+| in-use:missing-module | 0 | 1 |
+| load:qml-import-error | 0 | 1 |
+| load:type-not-found | 0 | 1 |
+| config:placeholder-endpoint | 0 | 1 |
+| load:signal-not-found | 0 | 1 |
+| runtime:method-not-found | 0 | 1 |
 | missing-file | 0 | 1 |
-| logic:placeholder-data | 0 | 1 |
+| load:undefined-id | 0 | 1 |
+| packaging:missing-file | 0 | 1 |
+| runtime:missing-implementation | 0 | 1 |
+| load:signal-handler-invalid | 0 | 1 |
+| security:placeholder-credential | 0 | 1 |
+| load:invalid-command-path | 0 | 1 |
+| load:undefined-type | 0 | 1 |
 | load:property-assignment | 0 | 1 |
+| qml:undefined-method | 0 | 1 |
+| qml:undefined-property | 0 | 1 |
+| load:type-unavailable | 0 | 1 |
+| load:placeholder-data | 0 | 1 |
+| config:placeholder-in-defaults | 0 | 1 |
+| load:runtime-error | 0 | 1 |
+| load:missing-native-module | 0 | 1 |
+| runtime:invalid-command-arg | 1 | 1 |
 
-Kinds with fewer than 3 val findings although >= 6 exist: ['load:method-not-found', 'load:undefined-method'].
+Kinds with fewer than 3 val findings although >= 6 exist: ['load:undefined-method'].
 
 ## 8. Token lengths
-`{'min': 4184, 'p50': 11976, 'p90': 25636, 'p99': 31310, 'max': 31994, 'over_32000': 0}` (cap 32000).
+`{'min': 4184, 'p50': 12060, 'p90': 25930, 'p99': 31347, 'max': 31831, 'over_32000': 0}` (cap 32000).
 
 ## 9. Leakage + dedupe (recomputed on the written files)
 ```
 {
- "rows_checked": 938,
+ "rows_checked": 1034,
  "hits": {
-  "INFO_incidental_key_id_string_in_other_plugin_text": 2
+  "INFO_incidental_key_id_string_in_other_plugin_text": 6,
+  "forbidden_vendor_word": 1
  },
  "duplicate_row_ids": 0,
  "train_val_repo_overlap": 0,
- "near_dup_rows_ge50pct_among_kept": 25,
+ "near_dup_rows_ge50pct_among_kept": 72,
  "dell_key_ids": 116,
  "dell_key_trees": 101,
  "holdout_repos": 329
@@ -199,18 +205,19 @@ Kinds with fewer than 3 val findings although >= 6 exist: ['load:method-not-foun
 INFO_incidental = a Dell-key id string occurs in another plugin's text; manifest id, repo and tree do not match.
 
 ## 10. Assembly stats
-`{"history_rows_without_copyright_line": 8, "jank_report_lines_removed": 8, "jank_report_lines_added": 0, "train_rows_dropped_near_dup_with_val": 0, "cap_approve_trim_train": 683}`
-drops: `{"excluded_leak:version_history": 1, "dedupe_near_dup:hancore_concrete_vs_hancore_concrete": 5, "dedupe_near_dup:jankeesvw-history_vs_jankeesvw-history": 30, "dedupe_near_dup:jankeesvw-history_vs_hancore_concrete": 3, "dedupe_near_dup:jankeesvw-history_vs_dell_broken_verified": 1, "dedupe_near_dup:version_history_vs_version_history": 46, "dedupe_near_dup:version_history_vs_hancore_concrete": 9, "dedupe_near_dup:version_history_vs_dell_broken_verified": 6, "dedupe_near_dup:dell_works_verified_vs_version_history": 14, "dedupe_near_dup:dell_works_verified_vs_dell_broken_verified": 1, "dedupe_near_dup:dell_works_verified_vs_hancore_concrete": 4, "dedupe_near_dup:dell_works_verified_vs_dell_works_verified": 11, "dedupe_near_dup:dell_works_verified_vs_jankeesvw-history": 2, "dedupe_near_dup:dell_works_verified_vs_nudged_approve": 1, "dedupe_near_dup:nudged_approve_vs_dell_works_verified": 1, "dedupe_near_dup:fix_upstream_vs_dell_works_verified": 1, "dedupe_near_dup:winners_mit_vs_winners_mit": 1, "cap:source_version_history_40pct": 196, "approve_history_twin_dropped": 2, "approve_history_minority_cap": 116}`
+`{"history_rows_without_copyright_line": 10, "jank_report_lines_removed": 8, "jank_report_lines_added": 0, "train_rows_dropped_near_dup_with_val": 0, "cap_approve_trim_train": 638}`
+drops: `{"excluded_leak:version_history": 1, "dedupe_near_dup:hancore_concrete_vs_hancore_concrete": 5, "dedupe_near_dup:jankeesvw-history_vs_jankeesvw-history": 30, "dedupe_near_dup:jankeesvw-history_vs_hancore_concrete": 3, "dedupe_near_dup:jankeesvw-history_vs_dell_broken_verified": 1, "dedupe_near_dup:version_history_vs_version_history": 122, "dedupe_near_dup:version_history_vs_hancore_concrete": 16, "dedupe_near_dup:version_history_vs_dell_broken_verified": 8, "dedupe_near_dup:dell_works_verified_vs_version_history": 21, "dedupe_near_dup:dell_works_verified_vs_dell_broken_verified": 1, "dedupe_near_dup:dell_works_verified_vs_hancore_concrete": 4, "dedupe_near_dup:dell_works_verified_vs_dell_works_verified": 11, "dedupe_near_dup:dell_works_verified_vs_jankeesvw-history": 2, "dedupe_near_dup:dell_works_verified_vs_nudged_approve": 1, "dedupe_near_dup:nudged_approve_vs_dell_works_verified": 1, "dedupe_near_dup:fix_upstream_vs_version_history": 1, "dedupe_near_dup:fix_upstream_vs_dell_works_verified": 1, "dedupe_near_dup:winners_mit_vs_winners_mit": 1, "cap:source_version_history_40pct": 852, "approve_history_twin_dropped": 7, "approve_history_minority_cap": 98}`
 
 ## 11. Samples
 See SAMPLES.md.
 
 ## 12. Remaining weaknesses
-- History rows are single-file edits mined from public Omarchy/Quickshell plugins; their finding text is model-written from the diff (checked by exact-line and a second model), not by the original author.
-- Pure-insertion pairs are kept only when the anchor line passes the same exact-line check; many insertion fixes were dropped, so "missing guard" defects are under-represented.
-- Approve rows from post-fix files are a minority of history rows (cap 1/3) and rest on the Checker plus one model check, not on running the plugin.
-- jankeesvw history is 33 broken rows after near-duplicate removal, mostly from few repositories; most of them sit in val because val must be repo-disjoint from train, leaving train with few.
-- Surplus rows from repositories chosen for val are dropped (not moved to train) to keep val and train repo-disjoint; about 60 history broken rows were lost that way.
-- Some kinds still have fewer than 3 val findings because fewer than 6 exist overall (see section 7).
-- Eight history rows have no copyright line in any LICENSE text found; they carry the license id and repo URL only.
-- Spot check agreement is 35/40 (87.5%); the remaining unsampled pairs have been through the gates but not the second-model spot check.
+- History rows are single-line defects mined from public Omarchy/Quickshell plugins; the finding text is model-written from the diff (checked by exact-line rules and a second model), not by the original author.
+- The 40% source cap binds: about 700 history broken rows passed the gates but only about 208 are kept, so most of round 2 adds kind balance rather than volume. Thin kinds are kept about twice as often as other kinds when trimming (about 80% of kept history rows are thin kinds) and carry weight 2.0 (field `weight`; the trainer must read it for it to have effect).
+- Round 2 was not processed in full (cost control, under $4): all thin-kind pairs (max 4 per repo) plus a seeded sample of 180 others; the rest of its 2,118 pairs are unused.
+- Insertion-anchor pairs are kept only when the anchor line passes the same checks (88 passed gates before caps); null-guard and missing-dependency kinds remain thin in absolute numbers.
+- History approve rows rest on the Checker plus one qwen check of the area around the fix, not on running the plugin; they are at most a third of history broken rows.
+- jankeesvw-history (29 broken after near-duplicate removal) and synthetic_lifecycle rows pass the mechanical exact-line check at a lower rate than the other sources (see section 3).
+- val is repo-disjoint from train, so a history repo chosen for val cannot also give train rows; surplus rows from val repos are dropped, not moved. Most jankeesvw-history rows sit in val for the same reason.
+- Some history rows lack a LICENSE copyright line (counted in assemble_stats); they carry the license id and repo URL only.
+- Spot check is 35/40 (87.5%) on 40 random pairs; the other gated pairs are covered by the gates and the second-model re-check, not by a per-pair independent review.

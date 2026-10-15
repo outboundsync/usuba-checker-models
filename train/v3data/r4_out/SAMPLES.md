@@ -1,28 +1,25 @@
 # Usuba v3-data-r4 — SAMPLES (prompt_v3)
 
-Rows 938 (train 796, val 142). 12 fresh random answers (seed 20261015+404; none appears in the r3 SAMPLES.md); each finding carries the automated check *cited line contains the described construct*. Results: {'pass': 10, 'n/a': 2}.
+Rows 1034 (train 896, val 138). 12 fresh random answers (seed 20261015+404; none appears in the r3 SAMPLES.md); each finding carries the automated check *cited line contains the described construct*. Results: {'pass': 10, 'n/a': 2}.
 
-### `version_history:linuskelsey/arxiv-scanner:5926dea9db:broken` — version-history broken, kind url-scheme-network
-- source: version_history; tokens: 11204; files shown: 5; license MIT; https://github.com/linuskelsey/arxiv-scanner @ 5926dea9db
+### `version_history:devasstated/omarchy-workspace-stash:e1342b2146:broken` — version-history broken, kind unbounded-input-resource
+- source: version_history; tokens: 12459; files shown: 1; license MIT; https://github.com/devasstated/omarchy-workspace-stash @ e1342b2146
 - Checker report shown to the model:
 ```
-[USB-W06 warn experimental] BarWidget.qml: line 254: Text.StyledText renders markup; if its text comes from command output, files, network or other apps it can inject links/images
-[USB-W09 warn experimental] bin/poll.py: line 59: plain-http URL `http://arxiv.org` (no TLS)
-[USB-W09 warn experimental] bin/check-authors.py: line 41: plain-http URL `http://a9.com` (no TLS)
-[USB-W01 warn experimental] install.sh: runs `install_file_safe`, which is not
+(no Checker findings)
 ```
-- **[blocker] url-scheme-network** `BarWidget.qml:301`: The code directly passes `modelData.link` to `Qt.openUrlExternally` without validating the URL scheme or domain, allowing attackers to craft malicious links that execute arbitrary commands or launch phishing sites when clicked.
-  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['modelData.link', 'Qt.openUrlExternally'])
+- **[blocker] unbounded-input-resource** `Service.qml:572`: The `waitForEnd: true` setting on `StdioCollector` forces the process to buffer all stdout in memory before delivery, which causes memory exhaustion or application hangs when `hyprctl` outputs large amounts of data.
+  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['waitForEnd: true', 'StdioCollector', 'hyprctl'])
 ```
-   297| 
-   298|       MouseArea {
-   299|         anchors.fill: parent
-   300|         cursorShape: Qt.PointingHandCursor
->  301|         onClicked: Qt.openUrlExternally(modelData.link)
-   302|       }
-   303|     }
-   304|   }
-   305| 
+   568|     id: moveCaptureProcess
+   569|     command: ["hyprctl", "-j", "clients"]
+   570|     stdout: StdioCollector {
+   571|       id: moveCaptureOutput
+>  572|       waitForEnd: true
+   573|     }
+   574|     onExited: function(exitCode) {
+   575|       var clients = []
+   576|       if (exitCode === 0) {
 ```
 - **full answer taught:**
 ```json
@@ -31,110 +28,34 @@ Rows 938 (train 796, val 142). 12 fresh random answers (seed 20261015+404; none 
  "load": "unsure",
  "findings": [
   {
-   "category": "url-scheme-network",
+   "category": "unbounded-input-resource",
    "severity": "blocker",
-   "file": "BarWidget.qml",
-   "line": 301,
-   "finding": "The code directly passes `modelData.link` to `Qt.openUrlExternally` without validating the URL scheme or domain, allowing attackers to craft malicious links that execute arbitrary commands or launch phishing sites when clicked."
+   "file": "Service.qml",
+   "line": 572,
+   "finding": "The `waitForEnd: true` setting on `StdioCollector` forces the process to buffer all stdout in memory before delivery, which causes memory exhaustion or application hangs when `hyprctl` outputs large amounts of data."
   }
  ]
 }
 ```
 
-### `version_history:signal-six/kaomarchy:d8a77d0c66:broken` — version-history broken, kind runtime:undefined-property
-- source: version_history; tokens: 11027; files shown: 7; license MIT; https://github.com/signal-six/kaomarchy @ d8a77d0c66
+### `version_history:datbuiquoc035/omasky:7309bac60b:broken` — version-history broken, kind rich-text-markup-injection
+- source: version_history; tokens: 16433; files shown: 1; license MIT; https://github.com/datbuiquoc035/omasky @ 7309bac60b
 - Checker report shown to the model:
 ```
-[USB-Q01] Kaomoji.qml: line 256: unknown QML type `RowLayout` - not provided by any module this file imports. Fix: add `import QtQuick.Layouts`
-[USB-A01] Kaomoji.qml: line 170: `Quickshell.path` is not a member of the Quickshell singleton. Fix: real members include execDetached, env, shellDir, dataDir, stateDir, screens, iconPath, reload
-[USB-W10 warn experimental] Kaomoji.qml: reads command output or a file with no size cap
-[USB-W03 warn experim
+[USB-A08 heuristic/medium] Panel.qml: line 130: assigns read-only `bar.centerHoverRevealSuppressed` - plugins get the read-only PluginBarApi facade, so this throws and aborts the rest of the function. Fix: call the setter instead, e.g. `bar.setCenterHoverRevealSuppressed(v)`
 ```
-- **[blocker] runtime:undefined-property** `Kaomoji.qml:256`: The `RowLayout` type on is used without a corresponding import statement, causing the QML engine to fail at runtime with an undefined component error.
-  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['RowLayout'])
+- **[blocker] rich-text-markup-injection** `BarWidget.qml:1224`: The code concatenates `ev.name` and `occ.start_local_label` directly into tooltip text without sanitization, allowing untrusted event data to inject arbitrary content or break the UI layout.
+  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['ev.name', 'occ.start_local_label'])
 ```
-   252|         anchors.bottomMargin: card.contentBottomInset
-   253|         anchors.leftMargin: card.contentLeftInset
-   254|         spacing: root.contentSpacing
-   255| 
->  256|         RowLayout {
-   257|           width: parent.width
-   258|           height: root.headerHeight
-   259|           spacing: Style.spacing.md
-   260| 
-```
-- **full answer taught:**
-```json
-{
- "verdict": "changes_requested",
- "load": "broken",
- "findings": [
-  {
-   "category": "runtime:undefined-property",
-   "severity": "blocker",
-   "file": "Kaomoji.qml",
-   "line": 256,
-   "finding": "The `RowLayout` type on is used without a corresponding import statement, causing the QML engine to fail at runtime with an undefined component error."
-  }
- ]
-}
-```
-
-### `version_history:hazat/word-fixer-app:4a0acc520e:broken` — version-history broken, kind in-use:invalid-command-arg
-- source: version_history; tokens: 11924; files shown: 7; license MIT; https://github.com/hazat/word-fixer-app @ 4a0acc520e
-- Checker report shown to the model:
-```
-[USB-B01] scripts/build-icon.sh: script string runs `qlmanage`, which is not installed on the Dell's Omarchy 4.0.4 (system_bins) and not shipped by the plugin. Fix: use a binary that exists on stock Omarchy (see dell_env/system_bins.txt), ship a script for it, or document `qlmanage` as a dependency in README.md
-[USB-B01] scripts/package-app.sh: script string runs `codesign`, which is not installed on the Dell's Omarchy 4.0.4 (system_bins) and not
-```
-- **[blocker] in-use:invalid-command-arg** `linux/lib/system.mjs:328`: The code passes a Lua expression string to `hyprctl dispatch`, which Hyprland ignores because it expects a direct command rather than an embedded script, causing the window focus operation to fail silently.
-  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['hyprctl dispatch'])
-```
-   324|   async focusAndVerify(target, { signal } = {}) {
-   325|     try {
-   326|       await this.command(
-   327|         'hyprctl',
->  328|         ['dispatch', `hl.dsp.focus({ window = 'address:${target.address}' })`],
-   329|         { signal },
-   330|       );
-   331|       const deadline = Date.now() + 750;
-   332|       while (Date.now() < deadline) {
-```
-- **full answer taught:**
-```json
-{
- "verdict": "changes_requested",
- "load": "broken",
- "findings": [
-  {
-   "category": "in-use:invalid-command-arg",
-   "severity": "blocker",
-   "file": "linux/lib/system.mjs",
-   "line": 328,
-   "finding": "The code passes a Lua expression string to `hyprctl dispatch`, which Hyprland ignores because it expects a direct command rather than an embedded script, causing the window focus operation to fail silently."
-  }
- ]
-}
-```
-
-### `version_history:kasemeyer/omalink-bar:77a128d773:broken` — version-history broken, kind shell-lua-injection
-- source: version_history; tokens: 10763; files shown: 7; license MIT; https://github.com/kasemeyer/omalink-bar @ 77a128d773
-- Checker report shown to the model:
-```
-(no Checker findings)
-```
-- **[blocker] shell-lua-injection** `BarWidget.qml:74`: The code passes the unquoted string `"scrcpy"` directly to `root.bar.run`, which executes it via a shell without sanitization. This allows an attacker to inject arbitrary commands if the executed path or arguments ever incorporate untrusted input, leading to remote code execution.
-  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['"scrcpy"', 'root.bar.run'])
-```
-    70|     { icon: "󰂚", label: "Ring phone",          run: function() { kdec.ring() } },
-    71|     { icon: "󰅌", label: "Send clipboard",      run: function() { kdec.sendClipboard(); root.toast() } },
-    72|     { icon: "󰈔", label: "Send a file…",        run: function() { root.pickAndShare(); root.close() } },
-    73|     { icon: "󰂜", label: "Ping phone",          run: function() { kdec.ping() } },
->   74|     { icon: "󰍹", label: "Mirror screen",       run: function() { root.bar.run("scrcpy"); root.close() } }
-    75|   ]
-    76| 
-    77|   property int cursorIndex: 0
-    78|   function moveCursor(dy) {
+  1220|         var ev = capped[i]
+  1221|         var occ = EventsModel.nextOccurrence(ev)
+  1222|         if (!occ) continue
+  1223|         lines.push(
+> 1224|           ev.name + " · " + occ.start_local_label
+  1225|           + (ev.is_active ? " · ACTIVE" : "")
+  1226|         )
+  1227|       }
+  1228|       if (root.dailyReset && root.setting("showDailyReset", true) !== false) {
 ```
 - **full answer taught:**
 ```json
@@ -143,34 +64,70 @@ Rows 938 (train 796, val 142). 12 fresh random answers (seed 20261015+404; none 
  "load": "unsure",
  "findings": [
   {
-   "category": "shell-lua-injection",
+   "category": "rich-text-markup-injection",
    "severity": "blocker",
    "file": "BarWidget.qml",
-   "line": 74,
-   "finding": "The code passes the unquoted string `\"scrcpy\"` directly to `root.bar.run`, which executes it via a shell without sanitization. This allows an attacker to inject arbitrary commands if the executed path or arguments ever incorporate untrusted input, leading to remote code execution."
+   "line": 1224,
+   "finding": "The code concatenates `ev.name` and `occ.start_local_label` directly into tooltip text without sanitization, allowing untrusted event data to inject arbitrary content or break the UI layout."
   }
  ]
 }
 ```
 
-### `version_history:seesharpsi/omarchy-vct-scoreline:97311e2651:broken` — version-history broken, kind in-use:stale-or-wrong-display
-- source: version_history; tokens: 10404; files shown: 3; license MIT; https://github.com/seesharpsi/omarchy-vct-scoreline @ 97311e2651
+### `version_history:linuxgameruk/omafinsight:1784e2c1c4:broken` — version-history broken, kind runtime-qml-api-compat
+- source: version_history; tokens: 12822; files shown: 4; license MIT; https://github.com/linuxgameruk/omafinsight @ 1784e2c1c4
 - Checker report shown to the model:
 ```
 (no Checker findings)
 ```
-- **[blocker] in-use:stale-or-wrong-display** `vlr.py:473`: The assignment `warning_text = "Live map details unavailable for " + ", ".join(warnings[:MAX_WARNINGS])` unconditionally constructs a warning message even when the `warnings` list is empty, causing the UI to display a misleading error prefix with no actual errors.
-  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['warning_text = "Live map details unavailable for " + ", ".join(warnings[:MAX_WARNINGS])', 'warnings'])
+- **[blocker] runtime-qml-api-compat** `AppWindow.qml:102`: The `icon` property on is invalid for `AppWindow` in Qt6, causing the application to fail at launch because this property was removed from the API.
+  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['icon', 'AppWindow'])
 ```
-   469|         except (HTTPError, URLError, TimeoutError, ValueError, RuntimeError) as error:
-   470|             live.append(match)
-   471|             warnings.append(f"{match['id']}: {clean_text(str(error))}")
-   472| 
->  473|     warning_text = "Live map details unavailable for " + ", ".join(warnings[:MAX_WARNINGS])
-   474|     warning_text = warning_text[:MAX_WARNING_CHARS]
-   475|     if len(warnings) > MAX_WARNINGS:
-   476|         suffix = f" (+{len(warnings) - MAX_WARNINGS} more)"
-   477|         warning_text = warning_text[:MAX_WARNING_CHARS - len(suffix)] + suffix
+    98|   readonly property color green: "#a6da95"
+    99|   readonly property color inputBg: "#11131c"
+   100| 
+   101|   title: "OmaFinSight"
+>  102|   icon: Qt.resolvedUrl("assets/logo.png")
+   103|   color: cBg
+   104|   width: 1160
+   105|   height: 760
+   106|   visible: true
+```
+- **full answer taught:**
+```json
+{
+ "verdict": "changes_requested",
+ "load": "unsure",
+ "findings": [
+  {
+   "category": "runtime-qml-api-compat",
+   "severity": "blocker",
+   "file": "AppWindow.qml",
+   "line": 102,
+   "finding": "The `icon` property on is invalid for `AppWindow` in Qt6, causing the application to fail at launch because this property was removed from the API."
+  }
+ ]
+}
+```
+
+### `version_history:ef-code/omarchy-mcp-manager:6288cd80ac:broken` — version-history broken, kind in-use:stale-or-wrong-display
+- source: version_history; tokens: 11623; files shown: 1; license MIT; https://github.com/ef-code/omarchy-mcp-manager @ 6288cd80ac
+- Checker report shown to the model:
+```
+[USB-W10 warn experimental] Controller.qml: reads command output or a file with no size cap
+```
+- **[blocker] in-use:stale-or-wrong-display** `Panel.qml:573`: The `ImportSheet` component is declared as a sibling within the main scrollable column, causing it to be clipped or hidden behind other content when `root.importOpen` becomes true. This layout placement prevents users from seeing or interacting with the import dialog because it does not overlay the interface as a proper sheet.
+  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['ImportSheet', 'root.importOpen'])
+```
+   569|           ServerDetails { visible: !!root.selectedServer && !root.editorOpen && !root.importOpen; server: root.selectedServer; foreground: root.foreground }
+   570| 
+   571|           ServerEditor { visible: root.editorOpen; server: root.editingServer; sourceId: root.selectedSource ? String(root.selectedSource.sourceId) : ""; foreground: root
+   572| 
+>  573|           ImportSheet { visible: root.importOpen; foreground: root.foreground; onRegisterRequested: function(path, adapter, mode) { root.importOpen = false; backend.regis
+   574| 
+   575|         }
+   576|       }
+   577|     }
 ```
 - **full answer taught:**
 ```json
@@ -181,34 +138,32 @@ Rows 938 (train 796, val 142). 12 fresh random answers (seed 20261015+404; none 
   {
    "category": "in-use:stale-or-wrong-display",
    "severity": "blocker",
-   "file": "vlr.py",
-   "line": 473,
-   "finding": "The assignment `warning_text = \"Live map details unavailable for \" + \", \".join(warnings[:MAX_WARNINGS])` unconditionally constructs a warning message even when the `warnings` list is empty, causing the UI to display a misleading error prefix with no actual errors."
+   "file": "Panel.qml",
+   "line": 573,
+   "finding": "The `ImportSheet` component is declared as a sibling within the main scrollable column, causing it to be clipped or hidden behind other content when `root.importOpen` becomes true. This layout placement prevents users from seeing or interacting with the import dialog because it does not overlay the interface as a proper sheet."
   }
  ]
 }
 ```
 
-### `version_history:pdfrg/amla:d2f8c278ed:broken` — version-history broken, kind runtime:state-or-race
-- source: version_history; tokens: 11796; files shown: 3; license MIT; https://github.com/pdfrg/amla @ d2f8c278ed
+### `version_history:deadjoe/omarchy-mbpfan:948941ce8a:broken` — version-history broken, kind in-use:invalid-command-arg
+- source: version_history; tokens: 10670; files shown: 6; license MIT; https://github.com/deadjoe/omarchy-mbpfan @ 948941ce8a
 - Checker report shown to the model:
 ```
-[USB-J01] Amla.qml: line 401: `pendingM3uText` is never declared (no property, id, var or parameter) - ReferenceError at runtime. Fix: declare `property var pendingM3uText` (and fill it), or use a real API object; never hide missing APIs behind try/catch
-[USB-W07 warn experimental] Amla.qml: line 430: a variable is interpolated into a shell/Lua command string (`"sh", "-c", "rm -rf " +`)
-[USB-W01 warn experimental] scripts/warm-art-cache.sh: runs 
+[USB-W05 heuristic/medium] Panel.qml: line 276: privileged/system-level action `"pkexec",`. Fix: keep the plugin unprivileged; document manual root steps in the README instead of escalating from the shell
 ```
-- **[blocker] runtime:state-or-race** `Dispatch.js:25`: The `mustRunningExpr` function relies solely on `[ -S... ]` to detect the running state, which returns true if the socket file persists after a crash. This causes the system to incorrectly report the service as active when the underlying process is actually dead.
-  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['mustRunningExpr', '[ -S... ]'])
+- **[blocker] in-use:invalid-command-arg** `Panel.qml:243`: The `command` array uses the incorrect hardcoded namespace `joe.mbpfan` in the plugin path, causing the shell to fail locating the `mbpfan-status` executable and preventing the panel from displaying temperature or fan data.
+  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['command', 'joe.mbpfan', 'mbpfan-status'])
 ```
-    21| }
-    22| 
-    23| // must ctl socket per DOCUMENTATION.md: $XDG_RUNTIME_DIR/must/ctl.sock
-    24| function mustRunningExpr() {
->   25|     return "[ -S \"${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/must/ctl.sock\" ]"
-    26| }
-    27| 
-    28| function cliampRunningExpr() {
-    29|     return "[ -S \"$HOME/.config/cliamp/cliamp.sock\" ]"
+   239|     onTriggered: root.refreshStatus()
+   240|   }
+   241|   Process {
+   242|     id: statusProc
+>  243|     command: [Quickshell.env("HOME") + "/.config/omarchy/plugins/joe.mbpfan/bin/mbpfan-status"]
+   244|     stdout: StdioCollector {
+   245|       waitForEnd: true
+   246|       onStreamFinished: {
+   247|         var parts = String(text).trim().split(/\s+/)
 ```
 - **full answer taught:**
 ```json
@@ -217,70 +172,34 @@ Rows 938 (train 796, val 142). 12 fresh random answers (seed 20261015+404; none 
  "load": "broken",
  "findings": [
   {
-   "category": "runtime:state-or-race",
+   "category": "in-use:invalid-command-arg",
    "severity": "blocker",
-   "file": "Dispatch.js",
-   "line": 25,
-   "finding": "The `mustRunningExpr` function relies solely on `[ -S... ]` to detect the running state, which returns true if the socket file persists after a crash. This causes the system to incorrectly report the service as active when the underlying process is actually dead."
+   "file": "Panel.qml",
+   "line": 243,
+   "finding": "The `command` array uses the incorrect hardcoded namespace `joe.mbpfan` in the plugin path, causing the shell to fail locating the `mbpfan-status` executable and preventing the panel from displaying temperature or fan data."
   }
  ]
 }
 ```
 
-### `version_history:vex-7k9/vex-system-monitor:4422d85610:broken` — version-history broken, kind runtime:logic-error
-- source: version_history; tokens: 11654; files shown: 4; license MIT; https://github.com/vex-7k9/vex-system-monitor @ 4422d85610
-- Checker report shown to the model:
-```
-[USB-A04] BarWidget.qml: line 325: `root.toggleMode()` - `BarWidget` has no method `toggleMode`. Fix: real `BarWidget` methods: QObject, _q_createJSWrapper, _q_resourceObjectDeleted, _settingKeys, bar, barSize, broadcast, bumpTemp, cardHovered, childAt
-```
-- **[blocker] runtime:logic-error** `StatsService.qml:136`: The `echo cpu $u...` command on omits the `=` delimiter between the key and values, causing the parser to drop the entire CPU line because it cannot recognize the malformed output format.
-  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['echo cpu $u...'])
-```
-   132|   function _snapshotLines() {
-   133|     var lines = [
-   134|       "LANG=C",
-   135|       "{",
->  136|       "  read -r _ u n s i io irq so < /proc/stat; echo cpu $u $n $s $i $io $irq $so",
-   137|       "  read -r cur < /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq || cur=NA; echo cur=$cur",
-   138|       "  read -r cmax < /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq || cmax=NA; echo cmax=$cmax",
-   139|       "  read -r ctemp < " + root.cpuTempPath + " || ctemp=NA; echo ctemp=$ctemp",
-   140|       "  echo mem=$(/usr/bin/awk '/^(MemTotal|MemAvailable|SwapTotal|SwapFree):/ {print $1, $2}' /proc/meminfo)",
-```
-- **full answer taught:**
-```json
-{
- "verdict": "changes_requested",
- "load": "broken",
- "findings": [
-  {
-   "category": "runtime:logic-error",
-   "severity": "blocker",
-   "file": "StatsService.qml",
-   "line": 136,
-   "finding": "The `echo cpu $u...` command on omits the `=` delimiter between the key and values, causing the parser to drop the entire CPU line because it cannot recognize the malformed output format."
-  }
- ]
-}
-```
-
-### `jankeesvw-history:omarchy-github-build-monitor:e68bc2e408:broken` — jankeesvw-history broken
-- source: jankeesvw-history; tokens: 23716; files shown: 3
+### `version_history:gustavohariel/omarchy-hubstaff:7fb70b7fa9:broken` — version-history broken, kind in-use:missing-binary
+- source: version_history; tokens: 10487; files shown: 2; license MIT; https://github.com/gustavohariel/omarchy-hubstaff @ 7fb70b7fa9
 - Checker report shown to the model:
 ```
 (no Checker findings)
 ```
-- **[blocker] qml:property-shadowing** `Panel.qml:1412`: The `visible` binding crashes when `flagged` is undefined because accessing `.length` on undefined throws a TypeError.
-  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['visible', 'flagged', '.length'])
+- **[blocker] in-use:missing-binary** `Service.qml:567`: The expression `out.indexOf("cli") >= 0` incorrectly validates installation by searching for a generic substring instead of verifying the specific client GUI binary path, causing false positives when unrelated text appears in the output.
+  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['out.indexOf("cli") >= 0'])
 ```
-  1408|                   // is not something the status colour can say.
-  1409|                   Item {
-  1410|                     id: migrationMark
-  1411|                     anchors.verticalCenter: parent.verticalCenter
-> 1412|                     visible: row.modelData.flagged !== undefined && row.modelData.flagged.length > 0
-  1413|                     width: visible ? migrationGlyph.implicitWidth : 0
-  1414|                     height: migrationGlyph.implicitHeight
-  1415| 
-  1416|                     Text {
+   563|     command: []
+   564|     stdout: StdioCollector { id: envStdout; waitForEnd: true }
+   565|     onExited: {
+   566|       var out = String(envStdout.text || "")
+>  567|       root.cliInstalled = out.indexOf("cli") >= 0
+   568|       root.hyprctlAvailable = out.indexOf("hypr") >= 0
+   569|       root.envChecked = true
+   570|       if (root.cliInstalled) {
+   571|         root.guardWindow()
 ```
 - **full answer taught:**
 ```json
@@ -289,35 +208,34 @@ Rows 938 (train 796, val 142). 12 fresh random answers (seed 20261015+404; none 
  "load": "broken",
  "findings": [
   {
-   "category": "qml:property-shadowing",
+   "category": "in-use:missing-binary",
    "severity": "blocker",
-   "file": "Panel.qml",
-   "line": 1412,
-   "finding": "The `visible` binding crashes when `flagged` is undefined because accessing `.length` on undefined throws a TypeError."
+   "file": "Service.qml",
+   "line": 567,
+   "finding": "The expression `out.indexOf(\"cli\") >= 0` incorrectly validates installation by searching for a generic substring instead of verifying the specific client GUI binary path, causing false positives when unrelated text appears in the output."
   }
  ]
 }
 ```
 
-### `hancore_concrete:alanfrigo/omarchy-openlogi:2cdccc1064` — HANCORE broken
-- source: hancore_concrete; tokens: 11114; files shown: 5
+### `version_history:tobiasz-p/next-event:6a768aa6cf:broken` — version-history broken, kind secrets-credentials
+- source: version_history; tokens: 11010; files shown: 5; license MIT; https://github.com/tobiasz-p/next-event @ 6a768aa6cf
 - Checker report shown to the model:
 ```
-[USB-B01] scripts/uninstall.sh: script string runs `unit`, which is not installed on the Dell's Omarchy 4.0.4 (system_bins) and not shipped by the plugin. Fix: use a binary that exists on stock Omarchy (see dell_env/system_bins.txt), ship a script for it, or document `unit` as a dependency in README.md
-[USB-B01] scripts/build-openlogi.sh: script string runs `cargo`, which is not installed on the Dell's Omarchy 4.0.4 (system_bins) and not shipped 
+(no Checker findings)
 ```
-- **[blocker] file-safety-symlink-perms** `scripts/install.sh:27`: `scripts/install.sh` opens `$XDG_STATE_HOME/omarchy-openlogi/.install.lock` with `exec 9>` before checking the destination's ownership or whether it is a symlink.
-  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['$XDG_STATE_HOME/omarchy-openlogi/.install.lock', 'exec 9>'])
+- **[blocker] secrets-credentials** `BarWidget.qml:82`: Assigning `root.icsUrl` directly to `fetchProc.command` exposes the URL in the system process table, allowing other users to view sensitive calendar endpoints via process inspection tools.
+  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['root.icsUrl', 'fetchProc.command'])
 ```
-    23| }
-    24| for tool in flock jq omarchy omarchy-shell systemctl sha256sum cut find cmp; do command -v "$tool" >/dev/null || fail "$tool is required"; done
-    25| export OMARCHY_SHELL_IPC_TIMEOUT=${OMARCHY_SHELL_IPC_TIMEOUT:-15s}
-    26| mkdir -p -- "$state"
->   27| exec 9>"$state/.install.lock"
-    28| flock -n 9 || fail 'another OpenLogi installation/removal is running'
-    29| [[ ! -e $receipt ]] || fail "installation receipt exists at $receipt; uninstall first (or resolve its reported conflicts)"
-    30| for name in openlogi openlogi-agent openlogi-desktop openlogi-overlay; do
-    31|     [[ -x $bin/$name && ! -L $bin/$name ]] || fail "missing compatible private binary $bin/$name; run scripts/build-openlogi.sh"
+    78|   }
+    79| 
+    80|   function fetchCalendar() {
+    81|     if (!root.configured || fetchProc.running) return
+>   82|     fetchProc.command = ["curl", "-fsSL", "--max-time", "15", root.icsUrl]
+    83|     fetchProc.running = true
+    84|   }
+    85| 
+    86|   function refresh() {
 ```
 - **full answer taught:**
 ```json
@@ -326,35 +244,34 @@ Rows 938 (train 796, val 142). 12 fresh random answers (seed 20261015+404; none 
  "load": "unsure",
  "findings": [
   {
-   "category": "file-safety-symlink-perms",
+   "category": "secrets-credentials",
    "severity": "blocker",
-   "file": "scripts/install.sh",
-   "line": 27,
-   "finding": "`scripts/install.sh` opens `$XDG_STATE_HOME/omarchy-openlogi/.install.lock` with `exec 9>` before checking the destination's ownership or whether it is a symlink."
+   "file": "BarWidget.qml",
+   "line": 82,
+   "finding": "Assigning `root.icsUrl` directly to `fetchProc.command` exposes the URL in the system process table, allowing other users to view sensitive calendar endpoints via process inspection tools."
   }
  ]
 }
 ```
 
-### `dell_broken_verified:<id-withheld>` — Dell-derived broken
-- source: dell_broken_verified; tokens: 21316; files shown: 9
+### `jankeesvw-history:omarchy-notification-center:0c4e475190:broken` — jankeesvw-history broken
+- source: jankeesvw-history; tokens: 23984; files shown: 6
 - Checker report shown to the model:
 ```
-[USB-Q01] examples/standalone/shell.qml: line 19: unknown QML type `VpnCore` - not provided by any module this file imports. Fix: VpnCore.qml exists but is not in this file's directory; add `import "../.."`
-[USB-W04 warn experimental] scripts/run-example.sh: line 18: unsafe file operation `rm -rf "$workdir"` (world-writable mode, forced symlink, predictable /tmp path, or rm -rf on an unchecked variable)
+(no Checker findings)
 ```
-- **[blocker] load:unknown-type** `examples/standalone/shell.qml:19`: Unknown QML type `VpnCore` - the file uses VpnCore but only imports QtQuick and Quickshell. VpnCore.qml exists in the plugin root but is not in this file's directory; add `import "../.."` to resolve it.
-  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['VpnCore', 'import "../.."'])
+- **[blocker] in-use:stale-or-wrong-display** `bin/notification-center:143`: The `have_key` check causes `ingest_file` to return silently on multi-screen setups, preventing the second screen's panel from receiving the notification entry.
+  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['have_key', 'ingest_file'])
 ```
-    15| import QtQuick
-    16| import Quickshell
-    17| 
-    18| ShellRoot {
->   19|   VpnCore {
-    20|     id: vpn
-    21|     intervalMs: 15000
-    22|     // only: "zuhause"                    // default: every VPN-typed profile
-    23|     // vpnTypes: ["vpn", "wireguard"]     // add "tun" for raw tunnel profiles
+   139| ingest_file() {
+   140|   local file=$1 key entry app_icon image_src exec_src icon_copy image_copy preview_src preview_copy
+   141|   key=$(basename -- "$file"); key=${key%.json}
+   142|   [[ -n $key ]] || return 0
+>  143|   have_key "$key" && return 0
+   144|   [[ -s $file ]] || return 0
+   145| 
+   146|   # A file caught mid-write parses as nothing; it will be caught again on the
+   147|   # move into history, or by the next sync.
 ```
 - **full answer taught:**
 ```json
@@ -363,21 +280,94 @@ Rows 938 (train 796, val 142). 12 fresh random answers (seed 20261015+404; none 
  "load": "broken",
  "findings": [
   {
-   "category": "load:unknown-type",
+   "category": "in-use:stale-or-wrong-display",
    "severity": "blocker",
-   "file": "examples/standalone/shell.qml",
-   "line": 19,
-   "finding": "Unknown QML type `VpnCore` - the file uses VpnCore but only imports QtQuick and Quickshell. VpnCore.qml exists in the plugin root but is not in this file's directory; add `import \"../..\"` to resolve it."
+   "file": "bin/notification-center",
+   "line": 143,
+   "finding": "The `have_key` check causes `ingest_file` to return silently on multi-screen setups, preventing the second screen's panel from receiving the notification entry."
   }
  ]
 }
 ```
 
-### `version_history:mshareef-git/omavibes:1bfa453514:fixed` — APPROVE: post-fix version (Checker clean + model check)
-- source: version_history; tokens: 12138; files shown: 7; license MIT; https://github.com/mshareef-git/omavibes @ 1bfa453514
+### `hancore_concrete:jburchel/omarchy-jarvis:884b5c8a76` — HANCORE broken
+- source: hancore_concrete; tokens: 11611; files shown: 7
 - Checker report shown to the model:
 ```
-[USB-W10 warn experimental] OmaVibesState.qml: reads command output or a file with no size cap
+[USB-W10 warn experimental] BarWidget.qml: reads command output or a file with no size cap
+```
+- **[blocker] remote-code-pinning** `bin/jarvis:44`: `bin/jarvis` installs `pip`, `edge-tts`, and `piper-tts` without pinned versions or hashes; `bin/jarvis` does the same for `openwakeword`.
+  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['bin/jarvis', 'pip', 'edge-tts', 'piper-tts'])
+```
+    40| case "${1:-status}" in
+    41| setup)
+    42|   mkdir -p "$JARVIS_HOME" "$JARVIS_VOICES" "$JARVIS_CONFIG_DIR"
+    43|   [ -x "$JARVIS_VENV/bin/python" ] || python3 -m venv "$JARVIS_VENV"
+>   44|   "$JARVIS_VENV/bin/pip" install -q --upgrade pip edge-tts piper-tts
+    45|   if [ ! -f "$JARVIS_VOICES/$JARVIS_PIPER_VOICE.onnx" ]; then
+    46|     (cd "$JARVIS_VOICES" && "$JARVIS_VENV/bin/python" -m piper.download_voices "$JARVIS_PIPER_VOICE")
+    47|   fi
+    48|   if [ ! -f "$JARVIS_CONFIG_DIR/config.sh" ]; then
+```
+- **full answer taught:**
+```json
+{
+ "verdict": "changes_requested",
+ "load": "unsure",
+ "findings": [
+  {
+   "category": "remote-code-pinning",
+   "severity": "blocker",
+   "file": "bin/jarvis",
+   "line": 44,
+   "finding": "`bin/jarvis` installs `pip`, `edge-tts`, and `piper-tts` without pinned versions or hashes; `bin/jarvis` does the same for `openwakeword`."
+  }
+ ]
+}
+```
+
+### `dell_broken_verified:<id-withheld>` — Dell-derived broken
+- source: dell_broken_verified; tokens: 22129; files shown: 7
+- Checker report shown to the model:
+```
+[USB-W01 warn experimental] install.sh: runs `confirm`, which is not part of a stock Omarchy install and is not listed as a dependency in the README/manifest
+[USB-W01 warn experimental] uninstall.sh: runs `info`, which is not part of a stock Omarchy install and is not listed as a dependency in the README/manifest
+```
+- **[blocker] load:missing-import** `AppPicker.qml:7`: Imports `qs.services`, which is not a valid Omarchy module (only `qs.Commons` and `qs.Ui` exist on stock Omarchy), so the QML file fails to load.
+  - **automated check 'cited line contains the described construct': PASS** (strict; constructs: ['qs.services', 'qs.Commons', 'qs.Ui'])
+```
+     3| import Quickshell.Wayland
+     4| import QtQuick
+     5| import qs.Commons
+     6| import qs.Ui
+>    7| import qs.services
+     8| 
+     9| // App Picker: a full-screen (or centered, windowed) grid of every app the
+    10| // Omarchy Apps menu shows. Apps can be sorted A-Z / Z-A, filtered by typing,
+    11| // and ranked as favorites by dragging them into the Favorites box.
+```
+- **full answer taught:**
+```json
+{
+ "verdict": "changes_requested",
+ "load": "broken",
+ "findings": [
+  {
+   "category": "load:missing-import",
+   "severity": "blocker",
+   "file": "AppPicker.qml",
+   "line": 7,
+   "finding": "Imports `qs.services`, which is not a valid Omarchy module (only `qs.Commons` and `qs.Ui` exist on stock Omarchy), so the QML file fails to load."
+  }
+ ]
+}
+```
+
+### `version_history:duketopceo/omarchy-fan:c730a3d505:fixed` — APPROVE: post-fix version (Checker clean + model check)
+- source: version_history; tokens: 9240; files shown: 4; license MIT; https://github.com/duketopceo/omarchy-fan @ c730a3d505
+- Checker report shown to the model:
+```
+(no Checker findings)
 ```
 - no findings (clean approve)
 - **full answer taught:**
@@ -390,7 +380,7 @@ Rows 938 (train 796, val 142). 12 fresh random answers (seed 20261015+404; none 
 ```
 
 ### `dell_works_verified:<id-withheld>` — APPROVE: Dell-verified working plugin
-- source: dell_works_verified; tokens: 14175; files shown: 4
+- source: dell_works_verified; tokens: 16450; files shown: 9
 - Checker report shown to the model:
 ```
 (no Checker findings)
