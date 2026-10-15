@@ -1,0 +1,88 @@
+{
+ "name": "holdout-v2-usuba-v2-best-q4km",
+ "backend": "openai",
+ "model": "usuba",
+ "n": 329,
+ "positives": 300,
+ "negatives": 29,
+ "verdict_accuracy": 0.696,
+ "positive_recall": 0.723,
+ "negative_false_alarm": 0.586,
+ "category_recall_micro": 0.106,
+ "category_precision_micro": 0.596,
+ "json_valid": 0.985,
+ "tokens_in": 2764201,
+ "tokens_out": 38206,
+ "cost_usd": 0.0,
+ "prompt": "v2",
+ "whole_files": false,
+ "secs_median": 4.58,
+ "secs_total": 1754.1,
+ "per_category": {
+  "file-safety-symlink-perms": {
+   "gt": 138,
+   "recall": 0.109,
+   "precision": 0.714
+  },
+  "install-deps-packaging": {
+   "gt": 110,
+   "recall": 0.0,
+   "precision": null
+  },
+  "listing-metadata-docs": {
+   "gt": 51,
+   "recall": 0.0,
+   "precision": null
+  },
+  "privileged-system": {
+   "gt": 89,
+   "recall": 0.034,
+   "precision": 0.5
+  },
+  "process-lifecycle-timeouts": {
+   "gt": 114,
+   "recall": 0.0,
+   "precision": null
+  },
+  "remote-code-pinning": {
+   "gt": 87,
+   "recall": 0.023,
+   "precision": 1.0
+  },
+  "rich-text-markup-injection": {
+   "gt": 95,
+   "recall": 0.011,
+   "precision": 0.25
+  },
+  "scope-policy-duplicate": {
+   "gt": 70,
+   "recall": 0.0,
+   "precision": null
+  },
+  "secrets-credentials": {
+   "gt": 127,
+   "recall": 0.0,
+   "precision": null
+  },
+  "shell-lua-injection": {
+   "gt": 66,
+   "recall": 0.0,
+   "precision": null
+  },
+  "unbounded-input-resource": {
+   "gt": 177,
+   "recall": 0.65,
+   "precision": 0.59
+  },
+  "url-scheme-network": {
+   "gt": 112,
+   "recall": 0.0,
+   "precision": null
+  },
+  "user-config-modification": {
+   "gt": 42,
+   "recall": 0.0,
+   "precision": null
+  }
+ }
+}

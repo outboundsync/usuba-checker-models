@@ -122,3 +122,30 @@ The prep scripts had only passed `bash -n`; running them on a rented H100 NVL (i
 11. **Measured numbers (H100 NVL, real data, cu128, fla, bf16 LoRA r32):** 68.8 s/step (9 steps), peak 41.3 GB allocated (~52 GB seen in nvidia-smi), 290 steps -> 5.5 h, plus ~170 s per validation pass and checkpoint saves; well under the 11 h cap. Initial dry-run training starts ~5 min after launch (tokenise ~95 s, model load, eval 170 s).
 12. **Recovery evidence.** kill -9 at step 4 (checkpoint 4): the watchdog restarted from step-000004 in ~50 s, GPU busy, step 5 logged ~3.5 min after the kill, loss at step 5 matched the earlier run (0.857 vs 0.858), i.e. same data order. Reboot via `vastai reboot instance`: container back and watchdog + trainer up within ~25 s of the call (onstart hook), resumed from step-000006, GPU 100%, step 8 logged ~5 min after reboot (loss 0.7467 vs 0.7454 in the dry run). Steps after the newest checkpoint are recomputed, not lost.
 13. **Sync (2026-10-14).** `launch_vast.sh watch` first copied the dry-run and resume-test outputs (GBs) to the box and R2; `REMOTE_LIST` now only lists `train/out/usuba-9b-lora` and `train/out/export`. The watcher's stall action used `pkill -f train_lora.py` over ssh (kills its own ssh command); now `[t]rain_lora.py`. `/workspace/usuba/ALERT` keeps old test alerts, so the watcher prints them once at start (harmless; clear the file before a real run). Verified: step-20 checkpoint (adapter, 693 MB trainer_state.pt) synced, remote sha256 matched, `sha256sum -c SHA256SUMS` OK, uploaded to R2 in chunks.
+
+## Usuba v2 exam (2026-10-15, Vast 56016890 H100 NVL)
+Best adapter -> merged -> Q4_K_M GGUF (already exported on the instance) -> CUDA llama-server (`-c 917504 -np 4`, 229k/slot, whole-file Dell prompts), prompt v2, same harness for all rows. Peers via OpenRouter (stock models, no DeepSeek/Anthropic rows; the Dell reason judge is still Haiku 5.5, as in the harness). Raw results: `/workspace/usuba-runs/56016890/exam/` and `usuba-v2distill/exam/` in the store.
+
+Dell key (90 plugins: 33 broken, 57 works):
+| system | verdict acc | false alarm | broken caught | right reason (judge) | of flagged | invented SHA/name rows | parse |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Ministral 14B | 0.822 | 0.175 | 27/33 | 15/33 | 0.56 | 0/0 | 1.000 |
+| Gemma 4 26B-A4B | 0.800 | 0.193 | 26/33 | 14/33 | 0.54 | 0/0 | 0.989 |
+| Qwen3.5 9B stock | 0.800 | 0.088 | 20/33 | 8/33 | 0.40 | 0/0 | 1.000 |
+| Nemotron 3 Nano 30B | 0.322 | 0.825 | 19/33 | 7/33 | 0.37 | 0/0 | 0.978 |
+| Qwen3-Coder 30B-A3B | 0.778 | 0.070 | 17/33 | 5/33 | 0.29 | 0/0 | 1.000 |
+| Gemma 3 12B | 0.589 | 0.368 | 17/33 | 5/33 | 0.29 | 0/0 | 0.956 |
+| **Usuba v2 (best, Q4_K_M)** | **0.844** | **0.018** | 20/33 | **2/33** | **0.10** | **0/0** | **1.000** |
+| GLM 4.7 Flash | 0.744 | 0.018 | 11/33 | 2/33 | 0.18 | 0/0 | 0.989 |
+| Llama 3.1 8B | 0.689 | 0.053 | 8/33 | 1/33 | 0.12 | 0/0 | 0.933 |
+| Usuba v1 Q4 (whole files) | 0.678 | 0.386 | 26/33 | 0/33 | 0.00 | 43/0 | 0.989 |
+Result: v2 fixes the v1 failure modes that were measurable (false alarms 0.386 -> 0.018, invented SHAs 43 rows -> 0, parse 1.000), but it does NOT meet the right-reason bar (0.10 of flagged vs >= 0.60; 2/33 vs stock 8/33). It mostly approves (0.606 caught is flag-by-category, rarely the real bug).
+
+HANCORE holdout (329: 300 pos / 29 neg), prompt v2, truncated files: see `holdout_table.md` in the exam dir. Usuba v2: verdict 0.696, positive recall 0.723, false alarm 0.586 (17/29), category recall 0.106, precision 0.596, JSON 0.985. Holdout false alarm is far above the 0.15 bar even though Dell false alarm is 0.018; with only 29 negatives and always-"changes_requested" scoring 0.912, treat as weak evidence either way. Peers on holdout have near-zero category recall (0.001-0.037).
+Cost: OpenRouter about $2.07 (peers: holdout $1.71 + new Dell rows and judge $0.36); GPU time is on top.
+
+Learnings:
+- The shared store rejects single files over roughly 100-200 MB (`Invalid argument` on close, leaves a 0-byte file). Split big artifacts into 90 MB parts plus a sha256 list (adapter gz is stored that way).
+- Vast watchdog: `ARMED` lives at `/workspace/usuba/ARMED`, not under `train/`; remove it before any post-training work. The watchdog tmux keeps running but does nothing unarmed.
+- llama.cpp on the Vast image is built CPU-only by `export_gguf.py`; for the exam build `llama-server` with `-DGGML_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=90` into a separate build dir (about 5 min with -j48). Run `run_eval.py` locally through an SSH `-L` tunnel; no repo copy is needed on the instance.
+- With 4 slots at 229k each the whole exam (90 Dell + 329 holdout) took about 35 min of GPU; the OpenRouter peers ran in parallel.

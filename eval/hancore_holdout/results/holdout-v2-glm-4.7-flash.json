@@ -1,0 +1,88 @@
+{
+ "name": "holdout-v2-glm-4.7-flash",
+ "backend": "openai",
+ "model": "z-ai/glm-4.7-flash",
+ "n": 329,
+ "positives": 300,
+ "negatives": 29,
+ "verdict_accuracy": 0.371,
+ "positive_recall": 0.323,
+ "negative_false_alarm": 0.138,
+ "category_recall_micro": 0.037,
+ "category_precision_micro": 0.49,
+ "json_valid": 0.982,
+ "tokens_in": 2558980,
+ "tokens_out": 34111,
+ "cost_usd": 0.1377,
+ "prompt": "v2",
+ "whole_files": false,
+ "secs_median": 2.43,
+ "secs_total": 976.4,
+ "per_category": {
+  "file-safety-symlink-perms": {
+   "gt": 138,
+   "recall": 0.0,
+   "precision": null
+  },
+  "install-deps-packaging": {
+   "gt": 110,
+   "recall": 0.027,
+   "precision": 0.75
+  },
+  "listing-metadata-docs": {
+   "gt": 51,
+   "recall": 0.0,
+   "precision": null
+  },
+  "privileged-system": {
+   "gt": 89,
+   "recall": 0.045,
+   "precision": 1.0
+  },
+  "process-lifecycle-timeouts": {
+   "gt": 114,
+   "recall": 0.009,
+   "precision": 0.143
+  },
+  "remote-code-pinning": {
+   "gt": 87,
+   "recall": 0.0,
+   "precision": null
+  },
+  "rich-text-markup-injection": {
+   "gt": 95,
+   "recall": 0.0,
+   "precision": 0.0
+  },
+  "scope-policy-duplicate": {
+   "gt": 70,
+   "recall": 0.0,
+   "precision": null
+  },
+  "secrets-credentials": {
+   "gt": 127,
+   "recall": 0.008,
+   "precision": 1.0
+  },
+  "shell-lua-injection": {
+   "gt": 66,
+   "recall": 0.0,
+   "precision": 0.0
+  },
+  "unbounded-input-resource": {
+   "gt": 177,
+   "recall": 0.215,
+   "precision": 0.494
+  },
+  "url-scheme-network": {
+   "gt": 112,
+   "recall": 0.0,
+   "precision": 0.0
+  },
+  "user-config-modification": {
+   "gt": 42,
+   "recall": 0.0,
+   "precision": null
+  }
+ }
+}

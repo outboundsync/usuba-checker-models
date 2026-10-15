@@ -1,0 +1,88 @@
+{
+ "name": "holdout-v2-stock-qwen3.5-9b",
+ "backend": "openai",
+ "model": "qwen/qwen3.5-9b",
+ "n": 329,
+ "positives": 300,
+ "negatives": 29,
+ "verdict_accuracy": 0.541,
+ "positive_recall": 0.553,
+ "negative_false_alarm": 0.586,
+ "category_recall_micro": 0.004,
+ "category_precision_micro": 0.5,
+ "json_valid": 0.979,
+ "tokens_in": 2764215,
+ "tokens_out": 32815,
+ "cost_usd": 0.2812,
+ "prompt": "v2",
+ "whole_files": false,
+ "secs_median": 1.94,
+ "secs_total": 788.7,
+ "per_category": {
+  "file-safety-symlink-perms": {
+   "gt": 138,
+   "recall": 0.0,
+   "precision": null
+  },
+  "install-deps-packaging": {
+   "gt": 110,
+   "recall": 0.0,
+   "precision": 0.0
+  },
+  "listing-metadata-docs": {
+   "gt": 51,
+   "recall": 0.0,
+   "precision": null
+  },
+  "privileged-system": {
+   "gt": 89,
+   "recall": 0.0,
+   "precision": null
+  },
+  "process-lifecycle-timeouts": {
+   "gt": 114,
+   "recall": 0.0,
+   "precision": null
+  },
+  "remote-code-pinning": {
+   "gt": 87,
+   "recall": 0.0,
+   "precision": null
+  },
+  "rich-text-markup-injection": {
+   "gt": 95,
+   "recall": 0.0,
+   "precision": null
+  },
+  "scope-policy-duplicate": {
+   "gt": 70,
+   "recall": 0.0,
+   "precision": null
+  },
+  "secrets-credentials": {
+   "gt": 127,
+   "recall": 0.0,
+   "precision": 0.0
+  },
+  "shell-lua-injection": {
+   "gt": 66,
+   "recall": 0.0,
+   "precision": null
+  },
+  "unbounded-input-resource": {
+   "gt": 177,
+   "recall": 0.028,
+   "precision": 0.625
+  },
+  "url-scheme-network": {
+   "gt": 112,
+   "recall": 0.0,
+   "precision": null
+  },
+  "user-config-modification": {
+   "gt": 42,
+   "recall": 0.0,
+   "precision": null
+  }
+ }
+}

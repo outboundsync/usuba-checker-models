@@ -1,0 +1,88 @@
+{
+ "name": "holdout-v2-nemotron-3-nano",
+ "backend": "openai",
+ "model": "nvidia/nemotron-3-nano-30b-a3b",
+ "n": 329,
+ "positives": 300,
+ "negatives": 29,
+ "verdict_accuracy": 0.909,
+ "positive_recall": 0.987,
+ "negative_false_alarm": 0.897,
+ "category_recall_micro": 0.003,
+ "category_precision_micro": 0.8,
+ "json_valid": 0.988,
+ "tokens_in": 2716063,
+ "tokens_out": 35574,
+ "cost_usd": 0.1644,
+ "prompt": "v2",
+ "whole_files": false,
+ "secs_median": 1.66,
+ "secs_total": 588.9,
+ "per_category": {
+  "file-safety-symlink-perms": {
+   "gt": 138,
+   "recall": 0.0,
+   "precision": null
+  },
+  "install-deps-packaging": {
+   "gt": 110,
+   "recall": 0.027,
+   "precision": 1.0
+  },
+  "listing-metadata-docs": {
+   "gt": 51,
+   "recall": 0.0,
+   "precision": null
+  },
+  "privileged-system": {
+   "gt": 89,
+   "recall": 0.0,
+   "precision": null
+  },
+  "process-lifecycle-timeouts": {
+   "gt": 114,
+   "recall": 0.0,
+   "precision": null
+  },
+  "remote-code-pinning": {
+   "gt": 87,
+   "recall": 0.0,
+   "precision": null
+  },
+  "rich-text-markup-injection": {
+   "gt": 95,
+   "recall": 0.0,
+   "precision": null
+  },
+  "scope-policy-duplicate": {
+   "gt": 70,
+   "recall": 0.0,
+   "precision": null
+  },
+  "secrets-credentials": {
+   "gt": 127,
+   "recall": 0.0,
+   "precision": null
+  },
+  "shell-lua-injection": {
+   "gt": 66,
+   "recall": 0.0,
+   "precision": null
+  },
+  "unbounded-input-resource": {
+   "gt": 177,
+   "recall": 0.006,
+   "precision": 0.5
+  },
+  "url-scheme-network": {
+   "gt": 112,
+   "recall": 0.0,
+   "precision": null
+  },
+  "user-config-modification": {
+   "gt": 42,
+   "recall": 0.0,
+   "precision": null
+  }
+ }
+}
