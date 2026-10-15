@@ -179,7 +179,7 @@ def labels(path, key="key"):
 def summarize(rows, a):
     """Aggregates only (no plugin ids, no code, no raw output): this is the part that may be committed."""
     set_name = a.set
-    out = dict(name=a.name, set=set_name, model=a.model, prompt=prompt_scope.PROMPT_ID, prompt_sha256=prompt_scope.PROMPT_SHA256, n_plugins=len(rows),
+    out = dict(name=a.name, set=set_name, model=a.model, prompt=prompt_scope.PROMPT_ID, prompt_sha256=prompt_scope.PROMPT_SHA256, code_blob_policy=prompt_scope.code_blob_policy(), n_plugins=len(rows),
                n_checker_findings=sum(len(r["findings"]) for r in rows), cost_usd=round(sum((r["usage"] or {}).get("cost") or 0 for r in rows), 4),
                status="B0 = stock model, same input/schema/post-filter", generated_at=time.strftime("%Y-%m-%dT%H:%M:%S%z"))
     out["practical"] = SC.practical(rows)

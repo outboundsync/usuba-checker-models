@@ -214,7 +214,15 @@ def test_paired_cluster_diff_detects_a_difference():
 
 
 # ---- prompt ------------------------------------------------------------------------------------------------------------------------------------
+def _need_renderer():
+    try:
+        prompt_scope.code_blob_module()
+    except (ImportError, FileNotFoundError):
+        pytest.skip("usuba-checker-scripts (code_blob renderer) not available")
+
+
 def test_prompt_uses_exact_terms_and_schema_and_is_stable():
+    _need_renderer()
     s = prompt_scope.SYSTEM
     assert "Checker scripts" in s and "scripts_triage" in s and "added_findings" in s
     for c in schema.ADDED_CATEGORIES:

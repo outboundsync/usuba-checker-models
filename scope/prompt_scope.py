@@ -8,17 +8,22 @@ Input  : the plugin source rendered by train/code_blob.py (every line prefixed w
 Output : {"scripts_triage": [...], "added_findings": [...], "verdict": ...}, see scope/schema.py.
 """
 import hashlib
-import importlib.util
+import importlib
 import json
 import os
+import sys
 
 PROMPT_ID = "scope-v4"
 HERE = os.path.dirname(os.path.abspath(__file__))
-_CB = os.path.join(os.path.dirname(HERE), "train", "code_blob.py")
+TRAIN = os.path.join(os.path.dirname(HERE), "train")
 
-_spec = importlib.util.spec_from_file_location("scope_code_blob", _CB)
-code_blob_mod = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(code_blob_mod)
+
+def code_blob_module():
+    """The canonical renderer (usuba_checker.code_blob in usuba-checker-scripts, via the train/code_blob.py shim). Loaded lazily so that the schema, post-filter and scorer
+    work, and CI runs, without the private sibling checkout; rendering needs it (set USUBA_CHECKER_ROOT)."""
+    if TRAIN not in sys.path:
+        sys.path.insert(0, TRAIN)
+    return importlib.import_module("code_blob")
 
 CATEGORIES = (
     "secrets-credentials", "url-scheme-network", "rich-text-markup-injection", "remote-code-pinning",
@@ -67,7 +72,12 @@ def messages(code, findings, target=None):
 
 
 def render_files(files):
-    return code_blob_mod.code_blob(files)
+    return code_blob_module().code_blob(files)
 
 
-PROMPT_SHA256 = hashlib.sha256((PROMPT_ID + "\n" + SYSTEM + "\n" + code_blob_mod.POLICY_ID).encode()).hexdigest()
+def code_blob_policy():
+    return code_blob_module().POLICY_ID
+
+
+# identity of the instructions only; the renderer policy is recorded next to it in every result (``code_blob_policy()``)
+PROMPT_SHA256 = hashlib.sha256((PROMPT_ID + "\n" + SYSTEM).encode()).hexdigest()
