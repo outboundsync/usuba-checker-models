@@ -2,12 +2,12 @@
 base_model: Qwen/Qwen3.5-9B          # post-trained (chat) checkpoint; its chat template is used for training and inference
 base_revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a   # pinned snapshot (audit A9); must equal paths.BASE_REVISION (tests/test_config.py)
 # r5 data (audit A6): explicit files, verified against SHA256SUMS at startup, row counts asserted; there is no fallback build
-train_file: data/r5/train.jsonl.gz
-val_file: data/r5/val.jsonl.gz
-dataset_sums: data/r5/SHA256SUMS
-expected_rows: {train: 383, val: 90}     # set by finalize_r5.py
+train_file: data/r7/train.jsonl.gz
+val_file: data/r7/val.jsonl.gz
+dataset_sums: data/r7/SHA256SUMS
+expected_rows: {train: 0, val: 0}         # FILLED BY train/r7_preflight.py --write-config (0 = not finalized; launch_vast.sh refuses)
 max_drop_rate: 0.02                  # over-length / empty-target rows may not exceed 2% of a file (audit H)
-output_dir: out/usuba-9b-lora-r5      # unique per run: change for every new run (audit H)
+output_dir: out/usuba-9b-lora-r7      # unique per run
 max_len: 32768                       # tokens; longer examples are dropped and counted (dry run shows how many)
 lora: {r: 32, alpha: 64, dropout: 0.05}
 # language-model linear layers only (attention + Gated DeltaNet projections + MLP); vision tower untouched
@@ -20,9 +20,11 @@ weight_decay: 0.0
 per_device_batch: 1
 grad_accum: 16                       # effective batch 16 sequences
 use_example_weight: false            # OFF on purpose for r5 (audit A4): weights now work (train_utils.weighted_micro_loss) but their effect was never measured; r1-r4 effectively trained unweighted, so r5 keeps that
+eval_every_steps: 14               # r7: val-loss eval every 14 optimizer steps
+midcheck_args: ""                    # r7: midcheck OFF (old findings[] schema; see remote_setup.sh)
 false_alarm_penalty: 1.0              # OFF (r5/r6 first run). Option: >1 multiplies the loss weight of approve-target rows; choose from {1, 1.5, 2, 3} by VAL false alarm / recall (plan in docs/TRAINING_PLAN.md), never on the holdout or the Dell key
-eval_every_epochs: 0.5               # cadence in epochs (audit A8): r5 ~ 56 steps/epoch -> evals at 1/2, 1, 3/2 epochs; the trainer prints the schedule and refuses a run with no mid-run eval
-save_every_steps: 20                 # full resumable checkpoint (~15 min on H100); synced off the instance by launch_vast.sh watch
+eval_every_epochs: 0                 # r7: cadence in STEPS (below); epochs setting would override it
+save_every_steps: 14                 # aligned with evals; full resumable checkpoint (<= 14 steps ~ 16 min lost on a kill); synced off the instance by launch_vast.sh watch
 keep_checkpoints: 3
-max_hours: 11                        # hard stop (budget guard); trainer saves and exits
+max_hours: 8                         # hard stop (budget guard); trainer saves and exits. Instance limit = max_hours+2 = 10 h
 seed: 1337
