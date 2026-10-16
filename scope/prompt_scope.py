@@ -71,12 +71,18 @@ def messages(code, findings, target=None):
     return m
 
 
-def render_files(files):
-    return code_blob_module().code_blob(files)
+def render_files(files, findings=None):
+    """The prompt's source part. With the Checker findings (the same list that is rendered in the report) the cited-line windows of code_blob/v2 are
+    added, so a finding in a truncated/omitted file is still inspectable; train and inference call it identically."""
+    cb = code_blob_module()
+    if findings and hasattr(cb, "render_anchored"):
+        return cb.render_anchored(files, [(f["file"], f["line"]) for f in findings if f.get("line")])[0]
+    return cb.code_blob(files)
 
 
 def code_blob_policy():
-    return code_blob_module().POLICY_ID
+    cb = code_blob_module()
+    return getattr(cb, "POLICY_ID_V2", cb.POLICY_ID)
 
 
 # identity of the instructions only; the renderer policy is recorded next to it in every result (``code_blob_policy()``)

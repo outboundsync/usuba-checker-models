@@ -155,7 +155,7 @@ def mine(url, out_dir):
     return name, res["status"]
 
 
-def select(n, seed):
+def select(n, seed, include_all=False):
     for l in open(VH + "candidates.jsonl"):
         c = json.loads(l); PRIOR[c["repo"]].add(c["commit"])
     for f in ("verified_pairs.jsonl", "verified_pairs_2.jsonl"):
@@ -163,16 +163,19 @@ def select(n, seed):
     U = json.load(open(VH + "universe.json"))["repos"]; ex = set()
     for fn in ("S4_EXCLUDE_REPOS.txt", "allkinds_S4_EXCLUDE_REPOS.txt"):
         p = os.path.join("/workspace/usuba-runs/scope-v4/drafts", fn)
-        if os.path.exists(p): ex |= {l.strip().lower().split("github.com/")[-1] for l in open(p) if l.strip()}
+        if os.path.exists(p): ex |= {l.strip().lower().split("github.com/")[-1].replace("__", "/", 1) for l in open(p) if l.strip()}
     nm = lambda u: u.replace("https://github.com/", "").replace("/", "__")
     keep = [u for u in U if u.lower().split("github.com/")[-1] not in ex and PRIOR.get(nm(u))]
-    random.Random(seed).shuffle(keep); return keep[:n]
+    random.Random(seed).shuffle(keep)      # same prefix as the pilot: repos with earlier candidate commits first, then (include_all) every other licensed-candidate repo
+    if include_all:
+        rest = [u for u in U if u.lower().split("github.com/")[-1] not in ex and not PRIOR.get(nm(u))]; random.Random(seed + 1).shuffle(rest); keep += rest
+    return keep[:n]
 
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser(); ap.add_argument("out"); ap.add_argument("--n", type=int, default=300); ap.add_argument("--seed", type=int, default=7); ap.add_argument("--workers", type=int, default=6); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument("out"); ap.add_argument("--n", type=int, default=300); ap.add_argument("--seed", type=int, default=7); ap.add_argument("--workers", type=int, default=6); ap.add_argument("--all", action="store_true"); a = ap.parse_args()
     from concurrent.futures import ThreadPoolExecutor
-    os.makedirs(CLONES, exist_ok=True); repos = select(a.n, a.seed); done = 0; cnt = collections.Counter()
+    os.makedirs(CLONES, exist_ok=True); repos = select(a.n, a.seed, a.all); done = 0; cnt = collections.Counter()
     with ThreadPoolExecutor(a.workers) as ex:
         for name, st in ex.map(lambda u: mine(u, a.out), repos):
             done += 1; cnt[st.split(":")[0]] += 1

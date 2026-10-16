@@ -43,7 +43,7 @@ def load(name): return pickle.load(open(pk(name), "rb"))
 def line_text(files, f, l):
     t = files.get(f)
     if t is None or not isinstance(l, int) or l < 1: return None
-    ls = t.split("\n"); return ls[l - 1] if l <= len(ls) else None
+    ls = t.split("\n"); return ls[l - 1] if l <= len(ls) and ls[l - 1].strip() else None      # blank = nothing to quote (also: lines outside the anchored windows)
 def good_quote(s): return s is not None and len(re.sub(r"\s", "", s)) >= PF.MIN_QUOTE
 
 
@@ -161,7 +161,7 @@ def stage_render(units):
         sf, raw, fs = R[u["id"]]
         if not sf: drops["render:empty_or_scrub_shifts_lines"] += 1; continue
         if fs is None: drops["render:checker_unavailable_or_timeout"] += 1; continue
-        blob, info = CB.render(sf)
+        blob, info = CB.render_anchored(sf, [(f['file'], f['line']) for f in fs if f.get('line')])
         out.append(dict(u, files=sf, raw_files=raw, blob=blob, info=info, findings=fs))
     print(f"render {len(units)} -> {len(out)} in {time.time() - t0:.0f}s", flush=True)
     return out
@@ -356,7 +356,7 @@ def stage_llm(units):
 # ------------------------------------------------------------------ stage 4: rows
 def mk_target(u, tier, files):
     """-> (target, meta_extra) or (None, reason). Hard asserts live here and in validate(). Quotes must be VISIBLE in the rendered prompt (truncated files show only their first lines)."""
-    full = files; files = HG.parse_blob(u["blob"])
+    full = files; files = HG.parse_blob_sparse(u["blob"])
     tri = []; fails_confirmed = False; basis = collections.Counter()
     for t in u["triage"]:
         f = t["f"]; d = t["decision"]; reason = None; quote = None
@@ -436,10 +436,10 @@ def stage_rows(units):
             if tgt is None: drops["row:" + extra] += 1; continue
             msgs = PS.messages(u["blob"], fs, tgt); n = ntok(msgs)
             if n > 32000: drops["row:over_32k_tokens"] += 1; continue
-            if u["repo"] in v2v: drops["row:v2_val_repo_in_pool"] += 1; continue
+            if E("R7_V2VAL", "allow") != "allow" and u["repo"] in v2v: drops["row:v2_val_repo_in_pool"] += 1; continue
             kind = "clean" if not tgt["scripts_triage"] and not tgt["added_findings"] else ("extend" if tgt["added_findings"] else "triage")
             meta = dict(row_type=kind, tier=tier, provisional=tier == "provisional", hand_reviewed=False, source=u["source"], label_basis=extra["basis"], added_finding_basis=extra["added_basis"], prompt_sha256=PS.PROMPT_SHA256, prompt_id=PS.PROMPT_ID,
-                        code_blob_policy=CB.POLICY_ID, checker_git_sha=cm["checker_git_sha"], rules_hash=cm["rules_hash"], runtime_stage="absent (static findings only)", files_origin=u["origin"],
+                        code_blob_policy=CB.POLICY_ID_V2, checker_git_sha=cm["checker_git_sha"], rules_hash=cm["rules_hash"], runtime_stage="absent (static findings only)", files_origin=u["origin"],
                         repo=u["repo"], commit=u["commit"], license=u["prov"].get("license") or "see repo (public plugin)", attribution=("strict-plurality" if u["source"] == "hancore_concrete" else "n/a"), builder="build_scope",
                         guard_fingerprints_sha256=guard.fp_sha)
             rid = u["id"] + (":" + tier if tier == "provisional" else "")
@@ -454,7 +454,7 @@ def stage_rows(units):
 FLOOR = int(E("R6S_FLOOR", "15"))
 BELOW = []     # rows dropped by the per-slug floor: written to below_floor.jsonl.gz (NOT training data) so a later top-up can reuse them
 DEFAULT_CONFIRM = E("R6S_DEFAULT_CONFIRM", "1") == "1"
-DELL_SHARE = float(E("R6S_DELL_SHARE", "0.35")); APPROVE_MAX = float(E("R6S_APPROVE_MAX", "0.50"))
+DELL_SHARE = float(E("R6S_DELL_SHARE", "0.30")); APPROVE_MAX = float(E("R6S_APPROVE_MAX", "0.50"))
 def assemble(tiers):
     """whole-tree dedupe over BOTH tiers (extend > triage > clean, verified before provisional), then a cap on clean rows drawn from the Dell sweep (keeps the Dell-sweep share down)"""
     pri = {"extend": 0, "triage": 1, "clean": 2}; allr = sorted(tiers["verified"] + tiers["provisional"], key=lambda r: (pri[r["row_type"]], r["meta"]["provisional"], r["id"]))

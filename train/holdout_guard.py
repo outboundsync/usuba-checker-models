@@ -89,6 +89,33 @@ def parse_blob(user_content):
     return out
 
 
+_WIN = re.compile(r"^(.*) \[window lines (\d+)-(\d+) of (\d+)\]$")
+
+
+def parse_blob_sparse(user_content):
+    """Like parse_blob, but anchored windows (code_blob/v2) are placed at their true line numbers: unseen lines are empty strings, so line numbers,
+    quote_in_file and quote_on_line see exactly what the model sees."""
+    i = user_content.find("## Plugin source\n")
+    body = user_content[i + len("## Plugin source\n"):] if i >= 0 else user_content
+    heads = list(_HEAD.finditer(body)); base, wins = {}, {}
+    for k, m in enumerate(heads):
+        seg = body[m.end(): heads[k + 1].start() if k + 1 < len(heads) else len(body)]
+        if not seg.startswith("```\n"): continue
+        seg = seg[4:]; end = seg.rfind("\n```")
+        if end < 0: continue
+        t = seg[:end]; w = _WIN.match(m.group(1))
+        txt = _NUM.sub("", t) if re.match(r" *\d+\| ?", t) else t
+        if w: wins.setdefault(w.group(1), []).append((int(w.group(2)), int(w.group(3)), int(w.group(4)), txt))
+        else: base[m.group(1)] = txt
+    for p, ws in wins.items():
+        total = ws[0][2]; ls = base.get(p, "").split("\n") if p in base else []
+        ls = (ls + [""] * total)[:total] if len(ls) < total else ls
+        for a, b, _, txt in ws:
+            for j, l in enumerate(txt.split("\n")): ls[a - 1 + j] = l
+        base[p] = "\n".join(ls)
+    return base
+
+
 def file_fp(text):
     return dict(h=ws_hash(text), s=sketch(text))
 

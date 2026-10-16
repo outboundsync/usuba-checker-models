@@ -169,7 +169,7 @@ def main():
             with _LOCK:
                 run_spent[0] -= est
         else:
-            raw, usage, fin = call(a.model, prompt_scope.messages(prompt_scope.render_files(files), fs), key, a.max_tokens)
+            raw, usage, fin = call(a.model, prompt_scope.messages(prompt_scope.render_files(files, fs), fs), key, a.max_tokens)
             with _LOCK, open(cache_fn, "a") as cf:
                 cf.write(json.dumps(dict(plugin=p["plugin"], raw=raw, usage=usage, fin=fin)) + "\n")
             c = usage.get("cost")
