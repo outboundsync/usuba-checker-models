@@ -1,3 +1,5 @@
+> **SUPERSEDED 2026-10-15.** This planned blog post is replaced by [`docs/PROJECT_STORY.md`](../PROJECT_STORY.md). Numbers here are as of the draft date and several were later corrected. Kept for history.
+
 # Usuba post: outline + open TKs
 
 Draft: `/workspace/usuba-post/draft.md` (~9,300 words, DRAFT v0.1, written Mon Oct 12, 2026, 4:37 PM MT)
