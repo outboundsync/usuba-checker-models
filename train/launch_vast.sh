@@ -37,7 +37,7 @@ rcp() { if [ -n "${MOCK_REMOTE:-}" ]; then cp "${1/\/workspace\/usuba/$MOCK_REMO
         local S; S=$(ssh_of); scp -q $SO -P ${S##*:} "${S%:*}:$1" "$2"; }
 BUNDLE=${BUNDLE:-}
 bundle() {   # audit A6: the r5 files named in config.yaml, verified (SHA256SUMS + row counts), NO fallback build. Per-run temp files (no /tmp collisions).
-  local D=${R5_DATA:-${R7_DATA:-$RUNS/v3-data-r7/final_merged}} stage dd; dd=$(dirname "$(cfg train_file)");   # data dir inside the bundle = dirname of config train_file (data/r7) [ -n "$BUNDLE" ] || BUNDLE=$(mktemp /tmp/usuba_train_bundle.XXXXXX.tgz)
+  local D=${R5_DATA:-${R7_DATA:-$RUNS/v3-data-r7/final_merged}} stage dd; dd=$(dirname "$(cfg train_file)"); [ -n "$BUNDLE" ] || BUNDLE=$(mktemp /tmp/usuba_train_bundle.XXXXXX.tgz)
   python3 train_utils.py verify config.yaml "$D" || { echo "dataset verification failed: refusing to bundle"; exit 5; }
   stage=$(mktemp -d); mkdir -p "$stage/train/$dd" "$stage/eval/hancore_holdout"
   cp "$D"/train.jsonl.gz "$D"/val.jsonl.gz "$D"/SHA256SUMS "$stage/train/$dd/"
@@ -85,7 +85,7 @@ sync_once() {  # copies every new/changed remote artifact, verifies sha256, uplo
 }
 start_remote() {
   local S P HST; S=$(ssh_of); P=${S##*:}; HST=${S%:*}
-  scp -q $SO -P $P $BUNDLE $HST:/workspace/
+  scp -q $SO -P $P $BUNDLE $HST:/workspace/usuba_train_bundle.tgz
   ssh $SO -p $P $HST "mkdir -p /workspace/usuba && tar xzf /workspace/usuba_train_bundle.tgz -C /workspace/usuba"
   if [ -n "${RESUME_FROM:-}" ]; then   # push the newest synced checkpoint so train_lora.py --resume continues from it
     ( cd "$RESUME_FROM" && tar cf - train/$OUTD ) | ssh $SO -p $P $HST "tar xf - -C /workspace/usuba"

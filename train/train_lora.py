@@ -161,7 +161,7 @@ def write_run_meta():
         except (OSError, subprocess.SubprocessError): return None
     pv = None
     try: import prompt_v4; pv = prompt_v4.PROMPT_SHA256
-    except ImportError: pass
+    except (ImportError, FileNotFoundError): pass   # the Checker checkout is not on the Vast instance; rows carry meta.prompt_sha256 (verified by r7_preflight)
     try: ckr = PATHS.checker_root()
     except FileNotFoundError: ckr = None   # run meta records checker_repo=None; the run itself already needs the Checker
     meta = dict(written=time.strftime("%Y-%m-%dT%H:%M:%S%z"), models_repo=PATHS.git_info(PATHS.REPO), checker_repo=PATHS.git_info(ckr) if ckr else None,

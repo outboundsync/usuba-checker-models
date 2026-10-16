@@ -5,7 +5,7 @@ base_revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a   # pinned snapshot (aud
 train_file: data/r7/train.jsonl.gz
 val_file: data/r7/val.jsonl.gz
 dataset_sums: data/r7/SHA256SUMS
-expected_rows: {train: 0, val: 0}         # FILLED BY train/r7_preflight.py --write-config from /workspace/usuba-runs/v3-data-r7/final_merged (0 = not finalized; launch_vast.sh refuses)
+expected_rows: {train: 0, val: 0}         # FILLED BY train/r7_preflight.py --write-config (0 = not finalized; launch_vast.sh refuses)
 max_drop_rate: 0.02                  # over-length / empty-target rows may not exceed 2% of a file (audit H)
 output_dir: out/usuba-9b-lora-r7      # unique per run
 max_len: 32768                       # tokens; longer examples are dropped and counted (dry run shows how many)

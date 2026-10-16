@@ -10,6 +10,8 @@ echo "== setup $(date -u +%FT%TZ)"; nvidia-smi --query-gpu=name,memory.total --f
 if [ "$(df --output=avail -B1G /dev/shm | tail -1)" -gt 60 ]; then export HF_HOME=/dev/shm/hf; mkdir -p $HF_HOME; echo "HF_HOME=$HF_HOME"; fi
 [ "$(df --output=avail -B1G / | tail -1)" -ge 15 ] || { echo "FATAL: under 15 GB free on / (need checkpoints + 5.5 GB GGUF)"; exit 1; }
 bash /workspace/usuba/train/deps.sh || exit 1
+# export_gguf.py requires a llama.cpp commit; default = current upstream HEAD (recorded in the export meta). TODO: pin a tested sha here.
+export LLAMA_CPP_COMMIT=${LLAMA_CPP_COMMIT:-$(git ls-remote https://github.com/ggml-org/llama.cpp HEAD | cut -f1)}
 [ -d $OUT/checkpoints ] || python3 train_lora.py --config config.yaml --dry-run || exit 1
 if [ "${SMOKE_STEPS:-0}" != 0 ]; then   # paid smoke test: a few optimizer steps, a checkpoint, then exit
   python3 - <<PY
