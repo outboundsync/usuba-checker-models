@@ -35,3 +35,11 @@ Concrete findings funnel (focus slugs, 462 raw incl. file-level): weak strength 
 - mine pilot finished 19:08
 - 19:16 PILOT DONE: 292 of 300 repos processed (7 no permissive licence, 1 too few commits), 2,403 versions checked; labels: 57 verified confirm, 702 provisional dismiss, 446 unlabelled. 349 candidates -> 266 units -> 91 rows (68 verified, 23 provisional). Merged with r6 scope + security subset: pilot_merged/ = 110 rows (98/12), 102 plugins; report GATE_REPORT_R7_PILOT.md.
 - Main loss found: 538 of 759 labelled triage items sit in files the code_blob 40k-char cap omits (not visible, so no quote); 74 rows dropped. A design issue for scope-v4, not a guard.
+
+## 4. Current state (2026-10-15 ~23:05 MT; narrative in `docs/PROJECT_STORY.md`)
+- Mining finished 22:09 (5,024 of 5,033 plugin result files; ledger ok 5,256 / error 25 / no permissive licence 205 / too few commits 489 / clone failed 2). Miner v2: clean versions keep up to 3 unlabelled warn findings (provisional), up to 3 clean per repo.
+- Final rebuild (`chain/r7_final_armed.sh`): shards 0-8 of 40 built (84, 67, 90, 57, 72, 63, 70, 82, 82 rows = 667 pre-merge, before caps/guards/dedupe); shard 9 running. Final row count TBD.
+- Post-chain (`chain/r7_post_chain.sh`) ARMED 22:56: merge + tradeoff -> SHA256SUMS -> hard checks -> gates -> launch. Trains regardless of row count (below 300 rows only warns). Hard failures still stop it.
+- r7 LLM builder spend so far $5.17 (builder cap $14, Harris cap $20). B0 on r7 inputs: first job ended on a transient error; result TBD.
+- Result will be published either way as "In Training / did not clear the bar", inviting contribution.
+
