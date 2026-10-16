@@ -150,8 +150,13 @@ def mine(url, out_dir):
         shutil.rmtree(d, ignore_errors=True)
     res["stats"] = dict(res["stats"]); res["secs"] = round(time.time() - t0, 1)
     os.makedirs(os.path.dirname(dst), exist_ok=True)
+    if res["status"] is None or res["status"].startswith("error") or res["status"] == "clone_failed":      # transient: ledger line only, NOT a result file, so a re-run retries it
+        with open(os.path.join(out_dir, "processed.jsonl"), "a") as lf: lf.write(json.dumps(dict(repo=name, status=res["status"], transient=True, t=time.strftime("%Y-%m-%d %H:%M:%S"))) + "\n")
+        return name, res["status"]
     with gzip.open(dst + ".tmp", "wt") as f: json.dump(res, f)
     os.replace(dst + ".tmp", dst)
+    with open(os.path.join(out_dir, "processed.jsonl"), "a") as lf:      # processed-plugin ledger (append-only, one line per finished plugin; O_APPEND lines are atomic at this size)
+        lf.write(json.dumps(dict(repo=name, status=res["status"], secs=res["secs"], t=time.strftime("%Y-%m-%d %H:%M:%S"), cands=len(res["cands"]))) + "\n")
     return name, res["status"]
 
 

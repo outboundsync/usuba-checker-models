@@ -38,7 +38,8 @@ st = collections.Counter(); drops = collections.Counter(); funnel = collections.
 norm_repo = lambda s: s.lower().rstrip("/").removesuffix(".git").split("github.com/")[-1]
 ws_hash = lambda t: hashlib.sha1(re.sub(r"\s+", "", t).encode()).hexdigest()
 def pk(name): return os.path.join(W, name)
-def save(name, o): pickle.dump(o, open(pk(name), "wb"))
+def save(name, o):
+    pickle.dump(o, open(pk(name) + ".tmp", "wb")); os.replace(pk(name) + ".tmp", pk(name))      # atomic: a killed run never leaves a half-written checkpoint
 def load(name): return pickle.load(open(pk(name), "rb"))
 def line_text(files, f, l):
     t = files.get(f)

@@ -56,7 +56,7 @@ def call(system, user, tag="", temperature=0.0, max_tokens=6000, effort="none", 
             j = json.load(urllib.request.urlopen(r, timeout=120))
             t = j["choices"][0]["message"].get("content") or ""
             with _lk:
-                _spent[0] += (j.get("usage") or {}).get("cost") or 0.0; json.dump({"usd": _spent[0]}, open(LEDGER, "w"))
+                _spent[0] += (j.get("usage") or {}).get("cost") or 0.0; json.dump({"usd": _spent[0]}, open(LEDGER + ".tmp", "w")); os.replace(LEDGER + ".tmp", LEDGER)
             out = json.loads(re.search(r"\{.*\}", t, re.S).group(0))
             with _lk:
                 _stat["live"] += 1; _cache[k] = dict(k=k, out=out, model=model, tag=tag); open(CACHE, "a").write(json.dumps(_cache[k]) + "\n")

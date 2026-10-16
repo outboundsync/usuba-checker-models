@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """r7: per-repo mining results (build_r7_mine.py) -> build_scope units. Security-like fix commits get a category from TWO open-weights models that must agree (and pick the removed line); labels from
 the miner become `preset` triage labels (confirm = fix removed/changed the cited line; dismiss = provisional persistence). usage: r7_units.py MINEDIR WORKDIR"""
-import sys, os, json, gzip, glob, pickle, collections
+import sys, os, json, gzip, glob, pickle, collections, hashlib
 from concurrent.futures import ThreadPoolExecutor
 H = os.path.dirname(os.path.abspath(__file__)); T = os.path.dirname(H); sys.path[:0] = [T, H]
 import llm_client as LC
@@ -20,9 +20,11 @@ def agreed(a, b, hunks):
     return (a["category"], hunks[a["hunk"]]) if ok else None
 
 
-def load_cands(md, excluded=frozenset()):
-    cands = []
-    for f in sorted(glob.glob(os.path.join(md, "repos", "*.json.gz"))):
+def load_cands(md, excluded=frozenset(), shard=None):
+    """shard = (i, n): a stable hash-shard of the result files, so a big mining set is processed in disk-bounded batches"""
+    cands = []; files = sorted(glob.glob(os.path.join(md, "repos", "*.json.gz")))
+    if shard: files = [f for f in files if int(hashlib.md5(os.path.basename(f).encode()).hexdigest(), 16) % shard[1] == shard[0]]      # stable under new files
+    for f in files:
         d = json.load(gzip.open(f, "rt"))
         if d["status"] != "ok" or d["repo"].lower() in excluded: continue
         for c in d["cands"]: cands.append((d, c))
@@ -45,11 +47,11 @@ def make_unit(d, c, cls_hit):
                 findings_cached=None, evidence=ev, preset=preset, verdict0="approve" if c["kind"] == "clean" else "changes_requested", extend=ext, weight=1.0)
 
 
-def main(md, w):
+def main(md, w, shard=None):
     os.makedirs(w, exist_ok=True)
     import tempfile; sys.argv = ["x", w, tempfile.mkdtemp()]
     import build_scope as B
-    cands = load_cands(md, {x.replace("/", "__") for x in B.s4_repos()} | B.s4_repos())
+    cands = load_cands(md, {x.replace("/", "__") for x in B.s4_repos()} | B.s4_repos(), shard)
     jobs = [(d, c) for d, c in cands if c["sec_like"] and c["hunks"]]
     def one(job):
         d, c = job
@@ -65,4 +67,4 @@ def main(md, w):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    sh = os.environ.get("R7_SHARD"); main(sys.argv[1], sys.argv[2], tuple(map(int, sh.split("/"))) if sh else None)

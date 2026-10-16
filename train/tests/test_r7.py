@@ -111,3 +111,19 @@ def test_cap_approve_and_split_by_plugin():
     out = RM.cap_approve(rows, 0.5); assert sum(map(RM.is_approve, out)) / len(out) <= 0.5
     tr, va, plugins = RM.split_rows(out)
     assert not ({r["meta"]["repo"] for r in tr} & {r["meta"]["repo"] for r in va}) and len(va) > 0 and all(not k.startswith("_") for k in tr[0])
+
+
+def test_shards_partition_result_files_stably(tmp_path):
+    import gzip
+    (tmp_path / "repos").mkdir()
+    for i in range(40):
+        with gzip.open(tmp_path / "repos" / ("o__r%d.json.gz" % i), "wt") as f: json.dump(dict(repo="o__r%d" % i, status="ok", cands=[dict(kind="clean")]), f)
+    seen = [d["repo"] for k in range(4) for d, c in RU.load_cands(str(tmp_path), shard=(k, 4))]
+    assert sorted(seen) == sorted("o__r%d" % i for i in range(40)) and len(set(seen)) == 40
+    assert RU.load_cands(str(tmp_path), excluded={"o__r3"}) and "o__r3" not in [d["repo"] for d, c in RU.load_cands(str(tmp_path), excluded={"o__r3"})]
+
+
+def test_atomic_save_leaves_no_tmp(tmp_path, monkeypatch):
+    sys.argv = ["x", str(tmp_path), str(tmp_path)]
+    import build_scope as B
+    B.save("x.pkl", {"a": 1}); assert B.load("x.pkl") == {"a": 1} and not os.path.exists(B.pk("x.pkl") + ".tmp")
