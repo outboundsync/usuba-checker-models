@@ -1,0 +1,11 @@
+# scope-v4 r6 build status (L2: tie-relaxed, file-level located)
+- units: started 18:26
+- units: done 18:26: done 2 s {'calls': 0, 'hits': 0, 'live': 0, 'errors': 0, 'error_samples': [], 'spent_usd': 1.1021, 'cache_entries': 16999}
+- render: started 18:26
+- render: done 18:31: done 266 s {'calls': 376, 'hits': 0, 'live': 376, 'errors': 0, 'error_samples': [], 'spent_usd': 1.7824, 'cache_entries': 17375}
+- llm: started 18:31
+- llm: done 18:32: done 107 s {'calls': 2857, 'hits': 2468, 'live': 383, 'errors': 6, 'error_samples': ['JSONDecodeError', 'JSONDecodeError', 'JSONDecodeError', 'JSONDecodeError',
+- assemble: started 18:32
+- assemble: done 18:33: done 66 s {'calls': 0, 'hits': 0, 'live': 0, 'errors': 0, 'error_samples': [], 'spent_usd': 1.9487, 'cache_entries': 17758}
+- ALL DONE 18:33
+- final assemble (visible quotes, dell/approve caps, floor): done 18:43; report GATE_REPORT_SCOPE.md

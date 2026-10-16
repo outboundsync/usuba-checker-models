@@ -1,0 +1,219 @@
+{
+ "stats": {
+  "units": 3522,
+  "provisional_adjudicated_extend": 252,
+  "provisional_adjudicated_dell_broken": 67,
+  "provisional_adjudicated_dell_works": 120,
+  "provisional_adjudicated_hancore_clean": 52,
+  "provisional_adjudicated_hancore_other": 96,
+  "provisional_adjudicated_history": 50,
+  "provisional_items_adjudicated": 637,
+  "guard_reject_dell_broken_verified": 6,
+  "guard_reject_dell_works_verified": 62,
+  "guard_reject_nudged_approve": 2,
+  "guard_reject_hancore_clean_approve": 15,
+  "guard_reject_hancore_concrete": 20,
+  "slug_counts_verified_only": {
+   "secrets-credentials": 5,
+   "rich-text-markup-injection": 12,
+   "user-config-modification": 1,
+   "url-scheme-network": 3,
+   "remote-code-pinning": 3
+  },
+  "out_of_scope_slug:listing-metadata-docs": 4,
+  "out_of_scope_slug:user-config-modification": 5,
+  "out_of_scope_slug:secrets-credentials": 13,
+  "out_of_scope_slug:remote-code-pinning": 12,
+  "out_of_scope_slug:url-scheme-network": 10
+ },
+ "drops": {
+  "pool:source_not_in_scope_spec:hancore_concrete": 62,
+  "pool:source_not_in_scope_spec:fix_upstream": 3,
+  "pool:checker_unavailable": 2,
+  "pool:history_fixed_twin_not_a_clean_row": 881,
+  "prefilter:cannot_become_a_row:dell_broken_verified": 52,
+  "prefilter:cannot_become_a_row:dell_inuse_missing_binary": 4,
+  "prefilter:cannot_become_a_row:dell_works_verified": 114,
+  "prefilter:cannot_become_a_row:nudged_approve": 1,
+  "prefilter:cannot_become_a_row:version_history": 1021,
+  "prefilter:cannot_become_a_row:hancore_clean_approve": 11,
+  "render:checker_unavailable_or_timeout": 2,
+  "guard:content": 23,
+  "row:unlabelled_checker_items_verified_tier": 1542,
+  "row:triage:no_quotable_line": 81,
+  "guard:same_name": 32,
+  "row:triage:teachers_disagree": 114,
+  "guard:file": 33,
+  "row:triage:reason_mentions_label_source": 2,
+  "row:v2_val_repo_in_pool": 42,
+  "row:triage:reason_bad": 2,
+  "row:triage:adjudication_unavailable": 5,
+  "guard:same_author": 4,
+  "guard:repo": 13,
+  "row:nothing_to_teach": 248,
+  "row:assert:added_repeats_checker_finding": 2,
+  "dedupe:near_duplicate_tree": 7,
+  "slug_floor:rows_dropped": 44,
+  "cap:dell_sweep_share_or_approve_mix": 381
+ },
+ "funnel": {
+  "process-lifecycle-timeouts": {
+   "raw": 182,
+   "f4_pass_relaxed_quoted_verified": 73,
+   "f2_no_line_number": 61,
+   "f4_pass_strict": 46,
+   "f3_retracted": 2
+  },
+  "secrets-credentials": {
+   "raw": 122,
+   "f2_file_level_to_locate": 29,
+   "f4_pass_relaxed_quoted_verified": 89,
+   "f4_pass_strict": 30,
+   "f3_retracted": 3,
+   "f2b_not_located_models_disagree_or_null": 18,
+   "f2b_located_both_models_agree": 11,
+   "f9_dedup_checker_already_reports_it": 7,
+   "f6_cited_line_missing_at_sha": 6,
+   "f7_gate_failed:gptoss": 5,
+   "f7_gate_failed:qwengptoss": 33,
+   "f7_gate_failed:qwen": 3,
+   "f7_reanchored_both_models_agree": 18,
+   "f7_gate_failed_after_reanchor": 4,
+   "f8_not_visible_under_code_blob": 14,
+   "f_pass_all_gates": 29
+  },
+  "privileged-system": {
+   "raw": 124,
+   "f4_pass_relaxed_quoted_verified": 41,
+   "f2_no_line_number": 66,
+   "f3_retracted": 1,
+   "f4_pass_strict": 16
+  },
+  "unbounded-input-resource": {
+   "raw": 433,
+   "f4_pass_strict": 86,
+   "f4_pass_relaxed_quoted_verified": 157,
+   "f2_no_line_number": 189,
+   "f3_retracted": 1
+  },
+  "rich-text-markup-injection": {
+   "raw": 270,
+   "f4_pass_relaxed_quoted_verified": 142,
+   "f4_pass_strict": 128,
+   "f2_file_level_to_locate": 79,
+   "f2b_not_located_models_disagree_or_null": 48,
+   "f2b_located_both_models_agree": 31,
+   "f9_dedup_checker_already_reports_it": 9,
+   "f6_cited_line_missing_at_sha": 3,
+   "f7_gate_failed:gptoss": 25,
+   "f7_gate_failed:qwengptoss": 50,
+   "f7_gate_failed:qwen": 17,
+   "f7_reanchored_both_models_agree": 21,
+   "f7_gate_failed_after_reanchor": 13,
+   "f8_not_visible_under_code_blob": 58,
+   "f_pass_all_gates": 43,
+   "f8_quote_too_short": 3
+  },
+  "file-safety-symlink-perms": {
+   "raw": 297,
+   "f4_pass_relaxed_quoted_verified": 100,
+   "f2_no_line_number": 135,
+   "f4_pass_strict": 62
+  },
+  "remote-code-pinning": {
+   "raw": 148,
+   "f4_pass_relaxed_quoted_verified": 103,
+   "f2_file_level_to_locate": 41,
+   "f4_pass_strict": 44,
+   "f3_retracted": 1,
+   "f2b_located_both_models_agree": 15,
+   "f2b_not_located_models_disagree_or_null": 26,
+   "f9_dedup_checker_already_reports_it": 26,
+   "f6_cited_line_missing_at_sha": 3,
+   "f7_gate_failed:qwengptoss": 36,
+   "f7_gate_failed:qwen": 6,
+   "f7_gate_failed:gptoss": 3,
+   "f7_reanchored_both_models_agree": 11,
+   "f7_gate_failed_after_reanchor": 5,
+   "f8_not_visible_under_code_blob": 19,
+   "f_pass_all_gates": 23
+  },
+  "url-scheme-network": {
+   "raw": 85,
+   "f4_pass_relaxed_quoted_verified": 62,
+   "f2_file_level_to_locate": 22,
+   "f4_pass_strict": 23,
+   "f2b_located_both_models_agree": 7,
+   "f2b_not_located_models_disagree_or_null": 15,
+   "f9_dedup_checker_already_reports_it": 14,
+   "f6_cited_line_missing_at_sha": 2,
+   "f7_gate_failed:qwengptoss": 19,
+   "f7_gate_failed:qwen": 2,
+   "f7_gate_failed:gptoss": 2,
+   "f7_gate_failed_after_reanchor": 3,
+   "f7_reanchored_both_models_agree": 14,
+   "f8_not_visible_under_code_blob": 10,
+   "f_pass_all_gates": 17,
+   "f8_quote_too_short": 1
+  },
+  "shell-lua-injection": {
+   "raw": 103,
+   "f4_pass_relaxed_quoted_verified": 48,
+   "f4_pass_strict": 26,
+   "f2_no_line_number": 29
+  },
+  "install-deps-packaging": {
+   "raw": 40,
+   "f2_no_line_number": 25,
+   "f4_pass_relaxed_quoted_verified": 12,
+   "f4_pass_strict": 3
+  },
+  "user-config-modification": {
+   "raw": 29,
+   "f2_file_level_to_locate": 14,
+   "f4_pass_relaxed_quoted_verified": 21,
+   "f4_pass_strict": 8,
+   "f2b_not_located_models_disagree_or_null": 7,
+   "f2b_located_both_models_agree": 7,
+   "f9_dedup_checker_already_reports_it": 1,
+   "f6_cited_line_missing_at_sha": 2,
+   "f7_gate_failed:qwengptoss": 5,
+   "f7_gate_failed:qwen": 4,
+   "f7_reanchored_both_models_agree": 2,
+   "f7_gate_failed_after_reanchor": 1,
+   "f_pass_all_gates": 6,
+   "f8_not_visible_under_code_blob": 3
+  },
+  "listing-metadata-docs": {
+   "raw": 10,
+   "f2_file_level_to_locate": 7,
+   "f4_pass_strict": 4,
+   "f4_pass_relaxed_quoted_verified": 6,
+   "f2b_located_both_models_agree": 3,
+   "f2b_not_located_models_disagree_or_null": 4,
+   "f_pass_all_gates": 4,
+   "f8_not_visible_under_code_blob": 2
+  },
+  "runtime-qml-api-compat": {
+   "raw": 1,
+   "f4_pass_relaxed_quoted_verified": 1
+  }
+ },
+ "slug_counts": {
+  "rich-text-markup-injection": 27
+ },
+ "out_of_scope": [
+  "listing-metadata-docs",
+  "remote-code-pinning",
+  "secrets-credentials",
+  "url-scheme-network",
+  "user-config-modification"
+ ],
+ "rows": {
+  "total": 90,
+  "verified": 45,
+  "provisional": 45,
+  "train": 82,
+  "val": 8
+ }
+}
