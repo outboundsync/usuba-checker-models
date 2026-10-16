@@ -38,8 +38,8 @@ Concrete findings funnel (focus slugs, 462 raw incl. file-level): weak strength 
 
 ## 4. Current state (2026-10-15 ~23:05 MT; narrative in `docs/PROJECT_STORY.md`)
 - Mining finished 22:09 (5,024 of 5,033 plugin result files; ledger ok 5,256 / error 25 / no permissive licence 205 / too few commits 489 / clone failed 2). Miner v2: clean versions keep up to 3 unlabelled warn findings (provisional), up to 3 clean per repo.
-- Final rebuild (`chain/r7_final_armed.sh`): shards 0-8 of 40 built (84, 67, 90, 57, 72, 63, 70, 82, 82 rows = 667 pre-merge, before caps/guards/dedupe); shard 9 running. Final row count TBD.
+- Final rebuild (`chain/r7_final_armed.sh`): shards 0-13 of 40 built as of 23:44 MT (rows 84, 67, 90, 57, 72, 63, 70, 82, 82, then 61, 63, 65, 84 for shards 10-13; pre-merge, before caps/guards/dedupe); next shards running. Final row count TBD.
 - Post-chain (`chain/r7_post_chain.sh`) ARMED 22:56: merge + tradeoff -> SHA256SUMS -> hard checks -> gates -> launch. Trains regardless of row count (below 300 rows only warns). Hard failures still stop it.
-- r7 LLM builder spend so far $5.17 (builder cap $14, Harris cap $20). B0 on r7 inputs: first job ended on a transient error; result TBD.
+- r7 LLM builder spend so far $5.17 (builder cap $14, Harris cap $20). B0 on r7 inputs done 23:56 MT, $0.69 of the $2 cap (runner now retries transport errors): schema-valid Dell 0.893, S4 0.567, holdout 0.638; Dell false alarm 0.277, S4 bug recall 4/60. Details in B0_R7.md (draft labels, provisional).
 - Result will be published either way as "In Training / did not clear the bar", inviting contribution.
 
