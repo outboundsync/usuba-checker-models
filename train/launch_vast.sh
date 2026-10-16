@@ -37,13 +37,14 @@ rcp() { if [ -n "${MOCK_REMOTE:-}" ]; then cp "${1/\/workspace\/usuba/$MOCK_REMO
         local S; S=$(ssh_of); scp -q $SO -P ${S##*:} "${S%:*}:$1" "$2"; }
 BUNDLE=${BUNDLE:-}
 bundle() {   # audit A6: the r5 files named in config.yaml, verified (SHA256SUMS + row counts), NO fallback build. Per-run temp files (no /tmp collisions).
-  local D=${R5_DATA:-$RUNS/v3-data-r5} stage; [ -n "$BUNDLE" ] || BUNDLE=$(mktemp /tmp/usuba_train_bundle.XXXXXX.tgz)
+  local D=${R5_DATA:-${R7_DATA:-$RUNS/v3-data-r7/final_merged}} stage dd; dd=$(dirname "$(cfg train_file)");   # data dir inside the bundle = dirname of config train_file (data/r7) [ -n "$BUNDLE" ] || BUNDLE=$(mktemp /tmp/usuba_train_bundle.XXXXXX.tgz)
   python3 train_utils.py verify config.yaml "$D" || { echo "dataset verification failed: refusing to bundle"; exit 5; }
-  stage=$(mktemp -d); mkdir -p "$stage/train/data/r5" "$stage/eval/hancore_holdout"
-  cp "$D"/train.jsonl.gz "$D"/val.jsonl.gz "$D"/SHA256SUMS "$stage/train/data/r5/"
+  stage=$(mktemp -d); mkdir -p "$stage/train/$dd" "$stage/eval/hancore_holdout"
+  cp "$D"/train.jsonl.gz "$D"/val.jsonl.gz "$D"/SHA256SUMS "$stage/train/$dd/"
   ( cd "$ROOT" && tar cf - --exclude='train/out' --exclude='train/data' --exclude='train/v3data' --exclude='train/v2' --exclude='train/tests' --exclude='__pycache__' --exclude='train/.vast_instance*' --exclude='train/.vast_known_hosts' train ) | tar xf - -C "$stage"
   cp "$ROOT/eval/hancore_holdout/plugin_ids.txt" "$stage/eval/hancore_holdout/"
-  tar czf "$BUNDLE" -C "$stage" train eval && rm -rf "$stage"; echo "bundle $BUNDLE ($(du -h "$BUNDLE" | cut -f1)); includes train_lora, train_utils, midcheck, holdout_guard + fingerprints, prompt_v3/v4, code_blob, paths, config, r5 data"
+  mkdir -p "$stage/scope" && cp "$ROOT/scope/__init__.py" "$ROOT/scope/schema.py" "$stage/scope/"   # export_parity.py compares scope-v4 JSON via scope.schema
+  tar czf "$BUNDLE" -C "$stage" train eval scope && rm -rf "$stage"; echo "bundle $BUNDLE ($(du -h "$BUNDLE" | cut -f1)); includes train_lora, train_utils, midcheck, holdout_guard + fingerprints, prompt_v3/v4, code_blob, paths, config, r5 data"
 }
 # remote artifact list: checkpoints, adapters, logs, final GGUF (merged bf16 is deleted on the instance: regenerable)
 REMOTE_LIST="cd /workspace/usuba && { ls run.log DRYRUN_REPORT.txt RESUMETEST_REPORT.txt ALL_DONE SMOKE_DONE TRAIN_STOPPED NO_RESTART 2>/dev/null; find train/$OUTD train/out/export -type f ! -path \"*/merged-bf16/*\" ! -name \"*bf16.gguf\" ! -path \"*.tmp/*\" 2>/dev/null; } | sort"
@@ -126,7 +127,11 @@ watch)
     L=$(LOCAL); now=$(date +%s)
     if grep -qE "  (ALL_DONE|SMOKE_DONE|TRAIN_STOPPED|NO_RESTART)$" "$L/remote.sha256" 2>/dev/null; then
       echo "terminal marker on the instance: $(grep -oE '(ALL_DONE|SMOKE_DONE|TRAIN_STOPPED|NO_RESTART)$' "$L/remote.sha256" | tr '\n' ' '); final fetch"
-      if "$0" fetch; then echo "FETCH VERIFIED. safe to: train/launch_vast.sh down"; else echo "FETCH FAILED after a terminal state: instance NOT destroyed; investigate"; fi
+      ok=0; for k in 1 2 3 4 5; do "$0" fetch && { ok=1; break; }; sleep ${FETCH_RETRY_SLEEP:-120}; done
+      if [ $ok = 1 ]; then echo "FETCH VERIFIED. safe to: train/launch_vast.sh down"
+        # AUTO_DOWN=1 (overnight): destroy the instance ONLY after the verified fetch; `down` re-verifies against the instance and refuses otherwise
+        if [ "${AUTO_DOWN:-0}" = 1 ]; then if "$0" down; then echo "AUTO_DOWN: instance destroyed after verified fetch"; else echo "AUTO_DOWN REFUSED: instance still billing, investigate (down re-check failed)"; fi; fi
+      else echo "FETCH FAILED after a terminal state: instance NOT destroyed (data safety; it keeps billing until INSTANCE_MAX_HOURS limit); investigate"; fi
       break
     fi
     # stall ALERT only (no kill): the stall clock starts at the FIRST logged step; before that only the boot limit applies

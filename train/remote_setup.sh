@@ -20,7 +20,9 @@ PY
   if [ "${SMOKE_EXPORT:-1}" = 1 ]; then python3 export_gguf.py --adapter out/smoke/last --out out/smoke_export && rm -rf out/smoke_export/merged-bf16 out/smoke_export/usuba-9b-bf16.gguf; echo "== smoke export exit $?"; fi
   touch /workspace/usuba/SMOKE_DONE; exit 0
 fi
-python3 train_lora.py --config config.yaml --resume --midcheck auto --midcheck-n 40 --midcheck-max-secs 1500; rc=$?   # A10: midcheck at every eval step; setup failure is fatal
+# midcheck_args comes from config.yaml (r7: empty. midcheck.py scores the old findings[] schema; scope-v4 targets have scripts_triage/added_findings, so it would be a no-op or fatal setup error)
+MIDARGS=$(python3 -c "import yaml;print(yaml.safe_load(open('config.yaml')).get('midcheck_args') or '')")
+python3 train_lora.py --config config.yaml --resume $MIDARGS; rc=$?
 echo "== train exit $rc $(date -u +%FT%TZ)"
 # TRAIN_STOPPED only for a deliberate terminal stop (max_hours / max_steps). A crash or a signal kill leaves no marker, so the on-box watchdog restarts from the checkpoint.
 [ -f $OUT/DONE ] || { echo "training not finished (rc=$rc); re-run this script to resume"; grep -qE "max_hours|max_steps" $OUT/STOPPED 2>/dev/null && touch /workspace/usuba/TRAIN_STOPPED; exit $rc; }
@@ -28,4 +30,7 @@ echo "== merge + export $(date -u +%FT%TZ)"
 AD=$OUT/best-task; [ -d $AD ] || AD=$OUT/best    # checkpoint chosen on the midcheck task metric (negatives included) when it exists, else best val loss
 python3 export_gguf.py --adapter $AD --out out/export || exit 1
 rm -rf out/export/merged-bf16 out/export/usuba-9b-bf16.gguf   # regenerable from the adapter; keeps the sync small
+# export parity (GGUF vs HF+adapter, greedy, VAL rows). Time-boxed and NON-fatal for ALL_DONE (the artifacts are already safe); result in PARITY_REPORT.txt
+GG=$(ls out/export/*.gguf | head -1)
+[ -n "$GG" ] && PARITY_TIMEOUT=${PARITY_TIMEOUT:-2400} && timeout $PARITY_TIMEOUT python3 export_parity.py "$GG" $AD --n ${PARITY_N:-6} --max-new ${PARITY_MAX_NEW:-768} 2>&1 | tee /workspace/usuba/PARITY_REPORT.txt
 touch /workspace/usuba/ALL_DONE; echo "== done $(date -u +%FT%TZ)"

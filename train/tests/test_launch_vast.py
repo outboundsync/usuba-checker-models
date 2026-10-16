@@ -9,6 +9,7 @@ def _setup(tmp, rows_cfg):
     t = tmp / "repo" / "train"; t.mkdir(parents=True)
     for f in ("launch_vast.sh", "train_utils.py"): shutil.copy(T / f, t / f)
     (tmp / "repo" / "eval" / "hancore_holdout").mkdir(parents=True); (tmp / "repo/eval/hancore_holdout/plugin_ids.txt").write_text("x\n")
+    (tmp / "repo" / "scope").mkdir(); [(tmp / "repo/scope" / n).write_text("") for n in ("__init__.py", "schema.py")]
     d = tmp / "data"; d.mkdir()
     for n, k in (("train.jsonl.gz", 3), ("val.jsonl.gz", 2)):
         with gzip.open(d / n, "wt") as f:
