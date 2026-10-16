@@ -19,6 +19,8 @@ EXT = (".qml", ".js", ".mjs", ".sh", ".bash", ".py", ".lua", ".json", ".toml", "
 CODE = EXT[:10]
 OK_LIC = (("MIT", r"permission is hereby granted, free of charge"), ("Apache-2.0", r"apache license"), ("BSD", r"redistribution and use in source and binary forms"), ("ISC", r"permission to use, copy, modify, and/or distribute"))
 N_DISMISS = int(os.environ.get("R7_N_DISMISS", "3")); MAX_FIX = int(os.environ.get("R7_MAX_FIX", "8")); MAX_V = int(os.environ.get("R7_MAX_V", "18")); NEXT_K = 10
+MINER_V = 2          # v2: clean versions may keep up to MAX_UNLAB_CLEAN unlabelled warn-level findings (adjudicated later, provisional tier); up to 3 clean versions per repo
+MAX_UNLAB_CLEAN = 3
 MAX_FILE = 200_000; MAX_TREE = 700_000
 PRIOR = collections.defaultdict(set); VERIFIED = set()
 
@@ -79,8 +81,13 @@ def changed_old_lines(a, b):
 
 def mine(url, out_dir):
     name = url.replace("https://github.com/", "").replace("/", "__"); dst = os.path.join(out_dir, "repos", name + ".json.gz")
-    if os.path.exists(dst): return name, "cached"
-    d = os.path.join(CLONES, name); t0 = time.time(); res = dict(repo=name, url=url, status=None, cands=[], stats=collections.Counter())
+    if os.path.exists(dst):
+        try: old_v = json.load(gzip.open(dst, "rt")).get("miner_v", 1)
+        except Exception: old_v = 1
+        if old_v >= MINER_V: return name, "cached"
+        bk = os.path.join(out_dir, "repos_v%d" % old_v, name + ".json.gz"); os.makedirs(os.path.dirname(bk), exist_ok=True)
+        if not os.path.exists(bk): shutil.copy2(dst, bk)      # the older result is kept; the upgraded one replaces it atomically only when the re-mine succeeds
+    d = os.path.join(CLONES, name); t0 = time.time(); res = dict(repo=name, url=url, miner_v=MINER_V, status=None, cands=[], stats=collections.Counter())
     try:
         r = subprocess.run(["git", "clone", "-q", "--bare", "--filter=blob:none", "--single-branch", url + ".git", d], capture_output=True, timeout=150, env=dict(os.environ, GIT_TERMINAL_PROMPT="0"))
         if r.returncode: res["status"] = "clone_failed"; raise StopIteration
@@ -134,10 +141,10 @@ def mine(url, out_dir):
                                      hunks=hunks_all if sec_like else [], sec_like=sec_like, n_confirm=len(confirm)))
         nclean = 0
         for s in order[:-1]:
-            if nclean >= 2: break
+            if nclean >= 3: break
             if any(f["level"] == "fail" for f in FD[s]): continue
             lab = labels_for(s, set())
-            if any(l["decision"] is None for l in lab): continue
+            if sum(1 for l in lab if l["decision"] is None) > MAX_UNLAB_CLEAN: continue
             code = {x for x in TR[s] if x.endswith(CODE)}; nxt = cs[idx[s] + 1: idx[s] + 1 + NEXT_K]
             if any(len(c["parents"]) == 1 and FIX.search(c["subject"]) and not SKIP.search(c["subject"]) and (set(c["files"]) & code) for c in nxt): continue
             res["cands"].append(dict(kind="clean", version=s, commit=None, date=cs[idx[s]]["date"], subject=cs[idx[s]]["subject"], body="", author=cs[idx[s]]["email"], files=TR[s], findings=FD[s], labels=lab, hunks=[], sec_like=False, n_confirm=0)); nclean += 1

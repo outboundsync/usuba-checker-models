@@ -36,6 +36,19 @@ def assert_error_budget():
         raise SystemExit(f"LLM GATE: error rate {error_rate():.1%} ({_stat['errors']}/{_stat['calls']}) above {MAX_ERROR_RATE:.0%}; aborting (fail closed). samples: {_stat['error_samples'][:3]}")
 
 
+def parse_json_obj(t):
+    """the reply's JSON object: whole text, fenced block, else the outermost {...}; raises ValueError when none parses"""
+    t = (t or "").strip()
+    for cand in (t, re.sub(r"^```(?:json)?\s*|\s*```$", "", t)):
+        try:
+            o = json.loads(cand)
+            if isinstance(o, dict): return o
+        except ValueError: pass
+    m = re.search(r"\{.*\}", t, re.S)
+    if not m: raise ValueError("no json object")
+    return json.loads(m.group(0))
+
+
 def call(system, user, tag="", temperature=0.0, max_tokens=6000, effort="none", seed=None, model=None):
     model = model or QWEN
     if model not in ALLOWED: raise ValueError(f"model {model} is not on the open-weights allow-list")
@@ -49,7 +62,9 @@ def call(system, user, tag="", temperature=0.0, max_tokens=6000, effort="none", 
                provider={"data_collection": "deny", "sort": "throughput"}, usage={"include": True}, temperature=temperature)
     if seed is not None: req["seed"] = seed
     err = ""
-    for att in range(5):
+    for att in range(6):
+        if att >= 1: req["max_tokens"] = min(2 * max_tokens, 12000) if att < 3 else min(3 * max_tokens, 16000)      # malformed/truncated JSON: a bigger budget and a little temperature (a temp-0 retry would repeat the same bytes)
+        if att >= 2: req["temperature"] = 0.2 * (att - 1); req["seed"] = 1000 + att
         try:
             r = urllib.request.Request("https://openrouter.ai/api/v1/chat/completions", data=json.dumps(req).encode(),
                                        headers={"Authorization": "Bearer " + os.environ["OPENROUTER_API_KEY"], "Content-Type": "application/json"})
@@ -57,7 +72,7 @@ def call(system, user, tag="", temperature=0.0, max_tokens=6000, effort="none", 
             t = j["choices"][0]["message"].get("content") or ""
             with _lk:
                 _spent[0] += (j.get("usage") or {}).get("cost") or 0.0; json.dump({"usd": _spent[0]}, open(LEDGER + ".tmp", "w")); os.replace(LEDGER + ".tmp", LEDGER)
-            out = json.loads(re.search(r"\{.*\}", t, re.S).group(0))
+            out = parse_json_obj(t)
             with _lk:
                 _stat["live"] += 1; _cache[k] = dict(k=k, out=out, model=model, tag=tag); open(CACHE, "a").write(json.dumps(_cache[k]) + "\n")
             return out

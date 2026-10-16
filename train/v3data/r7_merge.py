@@ -69,21 +69,36 @@ def split_rows(rows, seed=7):
     return tr, va, plugins
 
 
+def lift_approve(rows, lo):
+    """approve share below `lo`: drop the lowest-priority NON-approve rows (provisional first) until it reaches `lo`; never drops an approve row"""
+    rows = list(rows)
+    while rows and sum(map(is_approve, rows)) / len(rows) < lo:
+        c_ = [r for r in rows if not is_approve(r)]
+        if not c_: break
+        rows.remove(sorted(c_, key=prio, reverse=True)[0])
+    return rows
+
+
+def pipeline(rows, B, floor=15, dell=0.30, dismiss=0.35, src=0.40, hist=0.55, amax=0.50, amin=0.0):
+    """-> (rows, stats). Order: floor, Dell cap, dismiss cap, source caps, approve cap (<= amax), approve lift (>= amin), floor again. B = build_scope (module globals FLOOR / DELL_SHARE are set here)."""
+    B.FLOOR = floor; B.DELL_SHARE = dell; B.BELOW.clear(); st = {}
+    ver, c, low = B.enforce_floor(list(rows)); st["floor_dropped_slugs"] = low
+    ver = B.cap_dell(ver); ver, st["dismiss_rows_dropped"] = cap_dismiss(ver, dismiss); ver = cap_sources(ver, src, hist); ver = cap_approve(ver, amax)
+    if amin: ver = lift_approve(ver, amin)
+    ver, c, low2 = B.enforce_floor(ver); st["floor_dropped_slugs_2"] = low2; st["slug_counts"] = dict(c)
+    return ver, st
+
+
 def main(out, dirs):
     os.makedirs(out, exist_ok=True); sys.argv = ["x", tempfile.mkdtemp(), out]
     import build_scope as B
     rows = load_rows(dirs); st = dict(input_rows=len(rows), by_source_in=dict(collections.Counter(r["source"] for r in rows)))
-    ver, c, low = B.enforce_floor(rows); st["floor_dropped_slugs"] = low; st["after_floor"] = len(ver)
-    ver = B.cap_dell(ver); st["after_dell_cap"] = len(ver)
-    ver, nd = cap_dismiss(ver); st["dismiss_rows_dropped"] = nd; st["after_dismiss_cap"] = len(ver)
-    ver = cap_sources(ver); st["after_source_cap"] = len(ver)
-    ver = cap_approve(ver); st["after_approve_cap"] = len(ver)
-    ver, c, low2 = B.enforce_floor(ver)
-    tr, va, plugins = split_rows(ver)
+    ver, s2 = pipeline(rows, B, floor=int(E_("R6S_FLOOR", "15")), dell=float(E_("R6S_DELL_SHARE", "0.30")), dismiss=DISMISS_MAX, src=SRC_MAX, hist=HIST_MAX, amax=APPROVE_MAX, amin=float(E_("R7_APPROVE_MIN", "0")))
+    st.update(s2); tr, va, plugins = split_rows(ver)
     for name, rs in (("train", tr), ("val", va)):
         with gzip.open(os.path.join(out, name + ".jsonl.gz"), "wt") as f:
             for r in rs: f.write(json.dumps(r, ensure_ascii=False) + "\n")
-    st.update(rows=len(tr) + len(va), train=len(tr), val=len(va), plugins=len(plugins), slug_counts=dict(c), floor_dropped_slugs_2=low2)
+    st.update(rows=len(tr) + len(va), train=len(tr), val=len(va), plugins=len(plugins))
     json.dump(st, open(os.path.join(out, "merge_stats.json"), "w"), indent=1); print(st)
 
 

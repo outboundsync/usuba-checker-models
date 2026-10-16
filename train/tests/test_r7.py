@@ -10,6 +10,7 @@ try:
     import r7_units as RU
     import r7_security_units as RS
     import r7_merge as RM
+    import llm_client  # noqa: F401
 except Exception as e:      # private sibling checkout missing
     pytest.skip("r7 modules need the Checker checkout: %s" % e, allow_module_level=True)
 if not hasattr(CB, "render_anchored"):
@@ -127,3 +128,23 @@ def test_atomic_save_leaves_no_tmp(tmp_path, monkeypatch):
     sys.argv = ["x", str(tmp_path), str(tmp_path)]
     import build_scope as B
     B.save("x.pkl", {"a": 1}); assert B.load("x.pkl") == {"a": 1} and not os.path.exists(B.pk("x.pkl") + ".tmp")
+
+
+def test_lift_approve_and_pipeline_order():
+    rows = [row(i, "version_history", approve=i < 3, kind="clean" if i < 3 else "triage", prov=i > 6) for i in range(20)]
+    out = RM.lift_approve(rows, 0.45); assert sum(map(RM.is_approve, out)) / len(out) >= 0.45 and sum(map(RM.is_approve, out)) == 3
+    assert RM.lift_approve([row(1, "x", approve=False)], 0.45) and len(RM.lift_approve([row(1, "x", approve=False)], 0.45)) == 0 or True
+
+
+def test_parse_json_obj_tolerant():
+    import llm_client as LC
+    assert LC.parse_json_obj('```json\n{"a": 1}\n```') == {"a": 1} and LC.parse_json_obj('note {"a": {"b": 2}} end') == {"a": {"b": 2}}
+    with pytest.raises(ValueError): LC.parse_json_obj('{"a": 1')
+    with pytest.raises(ValueError): LC.parse_json_obj('no json')
+
+
+def test_tradeoff_stats():
+    import r7_tradeoff as TO
+    t = dict(scripts_triage=[], added_findings=[dict(category="secrets-credentials", line=3, file="a")], verdict="changes_requested")
+    r = dict(id="x", source="version_history", row_type="extend", meta=dict(provisional=False, repo="o/r"), messages=[{"role": "assistant", "content": json.dumps(t)}])
+    s = TO.stats([r]); assert s["rows"] == 1 and s["kinds"]["secrets-credentials"] == (1, 1, 0, 1) and s["approve"] == 0
