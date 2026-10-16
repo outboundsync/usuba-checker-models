@@ -13,11 +13,16 @@ bash /workspace/usuba/train/deps.sh || exit 1
 [ -d $OUT/checkpoints ] || python3 train_lora.py --config config.yaml --dry-run || exit 1
 if [ "${SMOKE_STEPS:-0}" != 0 ]; then   # paid smoke test: a few optimizer steps, a checkpoint, then exit
   python3 - <<PY
-import yaml; c=yaml.safe_load(open("config.yaml")); c.update(save_every_steps=2, eval_every_steps=2, eval_every_epochs=0, allow_no_midrun_eval=True, max_hours=${SMOKE_HOURS:-0.15}, output_dir="out/smoke")
+import yaml; c=yaml.safe_load(open("config.yaml")); c.update(save_every_steps=2, eval_every_steps=5, eval_every_epochs=0, allow_no_midrun_eval=True, max_hours=${SMOKE_HOURS:-0.15}, output_dir="out/smoke")
 yaml.safe_dump(c, open("config_smoke.yaml","w"))
 PY
   python3 train_lora.py --config config_smoke.yaml --resume; echo "== smoke train exit $? $(date -u +%FT%TZ)"
   if [ "${SMOKE_EXPORT:-1}" = 1 ]; then python3 export_gguf.py --adapter out/smoke/last --out out/smoke_export && rm -rf out/smoke_export/merged-bf16 out/smoke_export/usuba-9b-bf16.gguf; echo "== smoke export exit $?"; fi
+  if [ "${SMOKE_EXPORT:-1}" = 1 ] && [ "${SMOKE_PARITY:-1}" = 1 ]; then   # parity on the smoke adapter, then drop the 5.5 GB GGUF (sha256 + meta stay) so the smoke fetch is small
+    GG=$(ls out/smoke_export/*.gguf 2>/dev/null | head -1)
+    [ -n "$GG" ] && timeout ${PARITY_TIMEOUT:-1000} python3 export_parity.py "$GG" out/smoke/last --n ${PARITY_N:-2} --max-new ${PARITY_MAX_NEW:-512} 2>&1 | tee /workspace/usuba/PARITY_REPORT.txt
+    echo "== smoke parity done (rc ${PIPESTATUS[0]})"; rm -f out/smoke_export/*.gguf
+  fi
   touch /workspace/usuba/SMOKE_DONE; exit 0
 fi
 # midcheck_args comes from config.yaml (r7: empty. midcheck.py scores the old findings[] schema; scope-v4 targets have scripts_triage/added_findings, so it would be a no-op or fatal setup error)

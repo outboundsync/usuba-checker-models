@@ -47,7 +47,7 @@ bundle() {   # audit A6: the r5 files named in config.yaml, verified (SHA256SUMS
   tar czf "$BUNDLE" -C "$stage" train eval scope && rm -rf "$stage"; echo "bundle $BUNDLE ($(du -h "$BUNDLE" | cut -f1)); includes train_lora, train_utils, midcheck, holdout_guard + fingerprints, prompt_v3/v4, code_blob, paths, config, r5 data"
 }
 # remote artifact list: checkpoints, adapters, logs, final GGUF (merged bf16 is deleted on the instance: regenerable)
-REMOTE_LIST="cd /workspace/usuba && { ls run.log DRYRUN_REPORT.txt RESUMETEST_REPORT.txt ALL_DONE SMOKE_DONE TRAIN_STOPPED NO_RESTART 2>/dev/null; find train/$OUTD train/out/export -type f ! -path \"*/merged-bf16/*\" ! -name \"*bf16.gguf\" ! -path \"*.tmp/*\" 2>/dev/null; } | sort"
+REMOTE_LIST="cd /workspace/usuba && { ls run.log DRYRUN_REPORT.txt RESUMETEST_REPORT.txt PARITY_REPORT.txt ALL_DONE SMOKE_DONE TRAIN_STOPPED NO_RESTART 2>/dev/null; find train/$OUTD train/out/export train/out/smoke train/out/smoke_export -type f ! -path \"*/merged-bf16/*\" ! -name \"*bf16.gguf\" ! -path \"*.tmp/*\" 2>/dev/null; } | sort"
 CF_ACCT=""
 r2_up() {  # r2_up <file> <key>: Cloudflare R2 object API; the token goes in a header file descriptor, never on argv or stdout
   [ -n "$CF_ACCT" ] || CF_ACCT=$(curl -s -H @<(printf 'Authorization: Bearer %s' "$CLOUDFLARE_API_TOKEN") https://api.cloudflare.com/client/v4/accounts | python3 -c "import json,sys;print(json.load(sys.stdin)['result'][0]['id'])")

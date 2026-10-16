@@ -24,13 +24,14 @@ tr, va = TU.read_rows(tr_f), TU.read_rows(va_f); ok(f"rows: train {len(tr)}, val
 from scope import prompt_scope, schema
 sys.path.insert(0, os.path.join(paths.checker_root())); 
 try:
-    from usuba_checker import code_blob as CB; cur = CB.POLICY_ID
+    from usuba_checker import code_blob as CB; cur = getattr(CB, "POLICY_ID_V2", None)   # v2 id is additive; POLICY_ID stays v1 (render() unchanged, golden hash)
+    if cur is None: bad("installed usuba_checker.code_blob has no POLICY_ID_V2 (pin scripts at >= ffc910e)")
 except Exception as e: cur = None; bad(f"cannot import usuba_checker.code_blob: {e}")
 pol = collections.Counter(r["meta"].get("code_blob_policy") for r in tr + va); pr = collections.Counter(r["meta"].get("prompt_sha256") for r in tr + va)
 if set(pr) != {prompt_scope.PROMPT_SHA256}: bad(f"prompt_sha256 in rows {dict(pr)} != scope.prompt_scope.PROMPT_SHA256 {prompt_scope.PROMPT_SHA256[:12]}")
 else: ok("all rows carry the current scope-v4 prompt sha")
 if len(pol) != 1 or not next(iter(pol)).startswith("code_blob/v2"): bad(f"rows' code_blob_policy {dict(pol)}: expected exactly one code_blob/v2 policy (windows)")
-elif cur != next(iter(pol)): bad(f"rows' code_blob_policy {next(iter(pol))!r} != installed usuba_checker.code_blob.POLICY_ID {cur!r}: eval/train parity would break (commit the v2 renderer + golden hash first)")
+elif cur != next(iter(pol)): bad(f"rows' code_blob_policy {next(iter(pol))!r} != installed usuba_checker.code_blob.POLICY_ID_V2 {cur!r}: eval/train parity would break (commit the v2 renderer + golden hash first)")
 else: ok(f"code_blob policy {cur}")
 n_bad = 0
 for r in tr + va:
