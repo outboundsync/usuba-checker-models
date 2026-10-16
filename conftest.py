@@ -9,6 +9,7 @@ _NEEDS_CHECKER = [
     "tests/test_code_blob_parity.py",
     "train/tests/test_checker_timeout.py",
     "train/tests/test_code_blob.py",
+    "train/tests/test_d7_narrow_excepts.py",
     "train/tests/test_holdout_guard_content.py",
 ]
 
