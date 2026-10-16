@@ -2,8 +2,9 @@
 with a repo-relative default; nothing here touches the disk at import time.
 
   USUBA_CHECKER_ROOT  checkout of usuba-checker-scripts (provides functest/, the Checker). Default: ../usuba-checker-scripts next to this repo.
-  USUBA_RUNS          directory with run outputs and data (default /workspace/usuba-runs)
-  USUBA_WORK          scratch directory for builders (default /workspace)
+  USUBA_RUNS          directory with run outputs and data (default <work>/usuba-runs)
+  USUBA_WORK          scratch directory for builders (default: /workspace when it exists, else the directory next to this repo)
+  USUBA_LLAMA_CPP     llama.cpp checkout used by export_gguf.py / export_parity.py (default <work>/llama.cpp)
   USUBA_HOLDOUT_DIR   private holdout dir with manifest.jsonl + code/ (default <checker root>/eval/hancore_holdout, else this repo's eval/hancore_holdout)
   FT_OMARCHY          reference Omarchy tree for the Checker's API table (default <checker root>/dell-ref/omarchy-4.0.4)
   HF_HOME / USUBA_BASE_REVISION   Hugging Face cache; base model revision (default: BASE_REVISION below)
@@ -16,8 +17,9 @@ BASE_MODEL = "Qwen/Qwen3.5-9B"
 BASE_REVISION = "c202236235762e1c871ad0ccb60c8ee5ba337b9a"   # the snapshot every builder counted tokens with; train_lora, builders and eval load exactly this
 
 
-def runs_dir(): return os.environ.get("USUBA_RUNS", "/workspace/usuba-runs")
-def work_dir(): return os.environ.get("USUBA_WORK", "/workspace")
+def work_dir(): return os.environ.get("USUBA_WORK") or ("/workspace" if os.path.isdir("/workspace") else os.path.dirname(REPO))
+def runs_dir(): return os.environ.get("USUBA_RUNS") or os.path.join(work_dir(), "usuba-runs")
+def llama_cpp_dir(): return os.environ.get("USUBA_LLAMA_CPP") or os.path.join(work_dir(), "llama.cpp")
 
 
 def checker_root():

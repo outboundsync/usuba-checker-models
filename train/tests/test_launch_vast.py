@@ -1,5 +1,7 @@
 """A11/A6: launcher behaviour with stub vastai/ssh (no network, no instance): a failed rent destroys the instance; an unverified dataset is never bundled."""
-import os, sys, json, gzip, shutil, hashlib, subprocess, pathlib
+import os, sys, json, gzip, shutil, hashlib, subprocess, pathlib, site
+import pytest
+pytest.importorskip("yaml", reason="launch_vast.sh verifies the dataset with train_utils, which needs pyyaml")
 T = pathlib.Path(__file__).resolve().parent.parent
 
 
@@ -27,7 +29,7 @@ exit 0
 
 
 def _run(t, d, b, tmp):
-    env = dict(os.environ, PATH=f"{b}:{os.path.dirname(sys.executable)}:{os.environ['PATH']}", R5_DATA=str(d), USUBA_RUNS=str(tmp / "runs"), SSH_WAIT_TRIES="2", SSH_WAIT_SLEEP="0", BUNDLE=str(tmp / "b.tgz"), VAST_SSH_KEY=str(tmp / "k"), HOME=str(tmp))
+    env = dict(os.environ, PATH=f"{b}:{os.path.dirname(sys.executable)}:{os.environ['PATH']}", R5_DATA=str(d), USUBA_RUNS=str(tmp / "runs"), SSH_WAIT_TRIES="2", SSH_WAIT_SLEEP="0", BUNDLE=str(tmp / "b.tgz"), VAST_SSH_KEY=str(tmp / "k"), HOME=str(tmp), PYTHONUSERBASE=site.getuserbase())   # HOME is faked: keep the user site so the same pyyaml is importable
     (tmp / "k.pub").write_text("pub")
     return subprocess.run(["bash", str(t / "launch_vast.sh"), "up", "--yes"], env=env, capture_output=True, text=True, timeout=120)
 

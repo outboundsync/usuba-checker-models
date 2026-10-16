@@ -11,24 +11,24 @@ C = yaml.safe_load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
 # big intermediates (merged bf16 ~18 GB, bf16 GGUF ~18 GB) go to RAM-backed /dev/shm when it has room: Vast container disks can be small
 TMP = "/dev/shm/usuba_export" if os.path.isdir("/dev/shm") and shutil.disk_usage("/dev/shm").free > 60e9 else a.out
 os.makedirs(a.out, exist_ok=True); merged = os.path.join(TMP, "merged-bf16"); os.makedirs(merged, exist_ok=True)
-REV = paths.BASE_REVISION; LLAMA_CPP_COMMIT = os.environ.get("LLAMA_CPP_COMMIT", "")   # REQUIRED below: a moving llama.cpp HEAD changes quantisation/convert behaviour between runs
-if not LLAMA_CPP_COMMIT and not os.path.isdir("/workspace/llama.cpp/.git"): raise SystemExit("set LLAMA_CPP_COMMIT=<sha> (pin it in deps.sh; recorded in the export meta)")
+LLAMA = paths.llama_cpp_dir(); REV = paths.BASE_REVISION; LLAMA_CPP_COMMIT = os.environ.get("LLAMA_CPP_COMMIT", "")   # REQUIRED below: a moving llama.cpp HEAD changes quantisation/convert behaviour between runs
+if not LLAMA_CPP_COMMIT and not os.path.isdir(os.path.join(LLAMA, ".git")): raise SystemExit("set LLAMA_CPP_COMMIT=<sha> (pin it in deps.sh; recorded in the export meta)")
 m = AutoModelForCausalLM.from_pretrained(C["base_model"], revision=REV, dtype=torch.bfloat16, device_map={"": 0})
 m = PeftModel.from_pretrained(m, a.adapter).merge_and_unload(); m.save_pretrained(merged, safe_serialization=True)
 AutoTokenizer.from_pretrained(C["base_model"], revision=REV).save_pretrained(merged); del m; torch.cuda.empty_cache()
 sh = lambda c: (print("+", c, flush=True), subprocess.run(c, shell=True, check=True))
-if not os.path.isdir("/workspace/llama.cpp"):
-    sh("git clone https://github.com/ggml-org/llama.cpp /workspace/llama.cpp")
-if LLAMA_CPP_COMMIT: sh(f"git -C /workspace/llama.cpp fetch -q origin {LLAMA_CPP_COMMIT} || true; git -C /workspace/llama.cpp checkout -q {LLAMA_CPP_COMMIT}")
-LLAMA_SHA = subprocess.run("git -C /workspace/llama.cpp rev-parse HEAD", shell=True, capture_output=True, text=True).stdout.strip()
+if not os.path.isdir(LLAMA):
+    sh(f"git clone https://github.com/ggml-org/llama.cpp {LLAMA}")
+if LLAMA_CPP_COMMIT: sh(f"git -C {LLAMA} fetch -q origin {LLAMA_CPP_COMMIT} || true; git -C {LLAMA} checkout -q {LLAMA_CPP_COMMIT}")
+LLAMA_SHA = subprocess.run(["git", "-C", LLAMA, "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()
 # NOT llama.cpp's requirements file: it pins transformers 4.x and a CPU torch, which breaks Qwen 3.5 and the training env
-sh("pip install -q --no-deps /workspace/llama.cpp/gguf-py && pip install -q sentencepiece numpy protobuf")
-sh("cmake -S /workspace/llama.cpp -B /workspace/llama.cpp/build -DGGML_CUDA=OFF -DLLAMA_CURL=OFF >/dev/null && cmake --build /workspace/llama.cpp/build -j --target llama-quantize llama-cli >/dev/null")
+sh(f"pip install -q --no-deps {LLAMA}/gguf-py && pip install -q sentencepiece numpy protobuf")
+sh(f"cmake -S {LLAMA} -B {LLAMA}/build -DGGML_CUDA=OFF -DLLAMA_CURL=OFF >/dev/null && cmake --build {LLAMA}/build -j --target llama-quantize llama-cli >/dev/null")
 f16 = os.path.join(TMP, "usuba-9b-bf16.gguf"); ad = os.path.abspath(a.adapter).rstrip("/").split("/"); tag = "-".join(ad[-2:])   # unique per adapter (e.g. checkpoints-step-300, usuba-lora-best-task): never overwrites another export
 q = os.path.join(a.out, f"usuba-9b-{tag}-{a.quant}.gguf")
-sh(f"python3 /workspace/llama.cpp/convert_hf_to_gguf.py {merged} --outtype bf16 --outfile {f16}")
+sh(f"python3 {LLAMA}/convert_hf_to_gguf.py {merged} --outtype bf16 --outfile {f16}")
 shutil.rmtree(merged, ignore_errors=True)
-sh(f"/workspace/llama.cpp/build/bin/llama-quantize {f16} {q} {a.quant}")
+sh(f"{LLAMA}/build/bin/llama-quantize {f16} {q} {a.quant}")
 os.remove(f16)
 h = hashlib.sha256(open(q, "rb").read()).hexdigest()
 if os.path.exists(q + ".sha256"):   # re-export of the same adapter: GGUF conversion is not guaranteed bit-stable, so a difference is reported, not hidden

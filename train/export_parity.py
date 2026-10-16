@@ -28,7 +28,7 @@ for r in rows:
     with torch.no_grad(): out = m.generate(**ids, max_new_tokens=a.max_new, do_sample=False)
     hf = tok.decode(out[0][ids["input_ids"].shape[1]:], skip_special_tokens=True)
     open("/tmp/parity_prompt.txt", "w").write(prompt)
-    g = subprocess.run(["/workspace/llama.cpp/build/bin/llama-cli", "-m", a.gguf, "-f", "/tmp/parity_prompt.txt", "-n", str(a.max_new), "--temp", "0", "-no-cnv", "--no-display-prompt", "-ngl", "99"], capture_output=True, text=True, timeout=900).stdout
+    g = subprocess.run([os.path.join(paths.llama_cpp_dir(), "build", "bin", "llama-cli"), "-m", a.gguf, "-f", "/tmp/parity_prompt.txt", "-n", str(a.max_new), "--temp", "0", "-no-cnv", "--no-display-prompt", "-ngl", "99"], capture_output=True, text=True, timeout=900).stdout
     ok = sig(hf) == sig(g) and sig(hf)[0] is not None; agree += ok
     print(("AGREE " if ok else "DIFFER"), sig(hf)[0], sig(g)[0], flush=True)
 rate = agree / max(1, len(rows)); print(f"parity {agree}/{len(rows)} = {rate:.2f}")
