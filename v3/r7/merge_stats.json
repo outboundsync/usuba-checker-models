@@ -1,0 +1,29 @@
+{
+ "input_rows": 229,
+ "by_source_in": {
+  "hancore_concrete": 92,
+  "version_history": 107,
+  "hancore_clean_approve": 9,
+  "dell_broken_verified": 17,
+  "nudged_approve": 1,
+  "dell_works_verified": 3
+ },
+ "floor_dropped_slugs": {
+  "user-config-modification": 6,
+  "remote-code-pinning": 13,
+  "url-scheme-network": 12,
+  "listing-metadata-docs": 4
+ },
+ "after_floor": 194,
+ "after_dell_cap": 186,
+ "after_source_cap": 110,
+ "after_approve_cap": 110,
+ "rows": 110,
+ "train": 98,
+ "val": 12,
+ "plugins": 102,
+ "slug_counts": {
+  "rich-text-markup-injection": 28,
+  "secrets-credentials": 16
+ }
+}

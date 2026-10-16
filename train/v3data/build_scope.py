@@ -126,7 +126,7 @@ def build_concrete():
 
 # ------------------------------------------------------------------ stage 2: files, REAL Checker report, evidence labels
 def read_files(spec):
-    files = FT.read_dir(spec["dir"]) if os.path.isdir(spec["dir"]) else {}
+    files = dict(spec["files"]) if "files" in spec else (FT.read_dir(spec["dir"]) if os.path.isdir(spec["dir"]) else {})
     files = {p: t for p, t in files.items() if p not in HARNESS and os.path.basename(p) not in HARNESS}
     sf = {}
     for p, t in files.items():
@@ -219,10 +219,11 @@ def label_unit(u):
     for r in u["extend"]:
         ev.append(dict(file=r["file"], line=r["line"], kind=r["bug_kind"], text=r["prose"], basis="reviewer finding with exact location", cat=r["bug_kind"]))
         if r["bug_kind"] in FOCUS: cands.append(r)
-    tri = []
+    tri = []; preset = u.get("preset") or {}
     for f in fs:
-        d = None; b = None; e = match_ev(f, ev, dell)
-        if e: d, b = "confirm", e["basis"]
+        d = None; b = None; e = match_ev(f, ev, dell); pk_ = (f["rule"], f["file"], f["line"])
+        if pk_ in preset and not e: d, b, e = preset[pk_]
+        elif e: d, b = "confirm", e["basis"]
         else:
             for r in cands:
                 if r["file"] == f["file"] and f["rule"] in FAMILY.get(r["bug_kind"], ()): d, b, e = "confirm", "reviewer finding of the same family on this file", dict(file=r["file"], line=r["line"], text=r["prose"], kind=r["bug_kind"]); break
@@ -426,9 +427,11 @@ def stage_rows(units):
     for u in units:
         files = u["files"]; fs = u["findings"]
         for tier in ("verified", "provisional"):
+            prov_lab = any(str(t.get("basis") or "").startswith("provisional") for t in u["triage"])
+            if tier == "verified" and prov_lab: continue
             if tier == "verified" and any(not t["decision"] for t in u["triage"]): drops["row:unlabelled_checker_items_verified_tier"] += 1; continue
-            if tier == "provisional" and (all(t["decision"] for t in u["triage"]) or not any("_adj" in t for t in u["triage"])): continue
-            if not u["triage"] and not u["added_cands"] and u["source"] not in ("dell_works_verified", "nudged_approve", "hancore_clean_approve"): drops["row:nothing_to_teach"] += 1; continue
+            if tier == "provisional" and not prov_lab and (all(t["decision"] for t in u["triage"]) or not any("_adj" in t for t in u["triage"])): continue
+            if not u["triage"] and not u["added_cands"] and u["source"] not in ("dell_works_verified", "nudged_approve", "hancore_clean_approve") and u["prov"].get("r7_kind") != "clean": drops["row:nothing_to_teach"] += 1; continue
             tgt, extra = mk_target(u, tier, files)
             if tgt is None: drops["row:" + extra] += 1; continue
             msgs = PS.messages(u["blob"], fs, tgt); n = ntok(msgs)
@@ -448,7 +451,7 @@ def stage_rows(units):
 
 
 # ------------------------------------------------------------------ stage 5: assemble (caps, dedupe, per-slug floor, split, write)
-FLOOR = 15
+FLOOR = int(E("R6S_FLOOR", "15"))
 BELOW = []     # rows dropped by the per-slug floor: written to below_floor.jsonl.gz (NOT training data) so a later top-up can reuse them
 DEFAULT_CONFIRM = E("R6S_DEFAULT_CONFIRM", "1") == "1"
 DELL_SHARE = float(E("R6S_DELL_SHARE", "0.35")); APPROVE_MAX = float(E("R6S_APPROVE_MAX", "0.50"))
