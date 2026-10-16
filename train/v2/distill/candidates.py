@@ -29,7 +29,7 @@ def build_prompt(job):
     code = E.scrub(E.code_blob_whole(files)); rep = [E.scrub(r) for r in rep] if rep is not None else None
     msgs = P.messages(code, rep)
     try: man = json.loads(files.get("manifest.json", "{}")) or {}
-    except Exception: man = {}
+    except ValueError: man = {}
     return dict(messages=msgs, fh=sorted(B.file_hashes(files)), mid=(man.get("id") if isinstance(man, dict) else None),
                 mname=(man.get("name") if isinstance(man, dict) else None), files=sorted(files), est=E.est_tokens(msgs), qtok=qwen_tokens(msgs),
                 code_sha=hashlib.sha1(code.encode()).hexdigest())

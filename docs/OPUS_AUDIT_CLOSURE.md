@@ -9,7 +9,7 @@ Each item of `usuba-runs/opus-audit/VERDICTS.md` was checked against repo HEAD b
 | A4 weighted_micro_loss | CLOSED | CPU tests |
 | A5 llm_client fail-closed | CLOSED | error budget; failures not cached |
 | A6 gz loader, r5 bundled | CLOSED | |
-| A7 `--prompt` required, thread-safe fork timeout | CLOSED | the two `test_checker_timeout` tests are flaky under heavy machine load (pass alone and on re-run) |
+| A7 `--prompt` required, thread-safe fork timeout | CLOSED | flakiness root-caused: it was not load, a test of mine leaked a global `time.sleep` patch (judge_panel test); fixed with monkeypatch, plus generous timeout bounds in `test_checker_timeout`. Full suite 126 passed |
 | A8 eval cadence in epochs, max_hours 11 | CLOSED | |
 | A9 base_revision pinned | CLOSED | |
 | A10 midcheck bundled | CLOSED | |
@@ -22,7 +22,7 @@ Each item of `usuba-runs/opus-audit/VERDICTS.md` was checked against repo HEAD b
 | D1 regex | CLOSED | |
 | D2 refpaths raises ReferenceTreeMissing | CLOSED | |
 | D3-D8 | PARTIAL | only D1-D6 evidenced in 8b4b31d; D7/D8 not independently verified |
-| D7 broad `except Exception` | OPEN | about 89 in scripts, 56 in models remain |
+| D7 broad `except Exception` | PARTIAL | models: the active-path swallowers are narrowed or fail loudly (checker_report: crashing LR/HV2 rules no longer give an empty report; midcheck leakage list refuses corrupt ground truth; holdout_guard, build_train_set, train_utils, build_guard_fingerprints, train_lora run-meta, llm_client, candidates narrowed; tests `test_d7_narrow_excepts.py`). Left on purpose: documented-contract catch-alls (`run_with_timeout`, now logs), retry loops around network calls, preflight (FAIL not skip), and `legacy/` scripts. scripts repo (~89) not touched |
 | D9 pardons | PARTIAL, needs Harris | opt-in `FT_STRICT_D9`; default pardons unchanged (`docs/POLICY_D9.md`) |
 | E strict attribution | CLOSED | b32af72 |
 | F1/F3/F4/F8 | CLOSED | 1dbcb80 |
@@ -30,8 +30,10 @@ Each item of `usuba-runs/opus-audit/VERDICTS.md` was checked against repo HEAD b
 | F5 release tags | CLOSED (plan only) | no tags exist, per rule |
 | F7 legacy | PARTIAL | legacy/ moved; 53 tracked .log files remain |
 | G pyproject/pin | CLOSED | rest of G deferred by design |
-| H lock/pins | PARTIAL | uv.lock done; hard-coded `/workspace` remains in `export_gguf.py` (9), `paths.py` (4), `export_parity.py` (1) |
+| H lock/pins | CLOSED for export_gguf/export_parity/paths.py | llama.cpp via `USUBA_LLAMA_CPP`, work via `USUBA_WORK` (default /workspace only if it exists, else next to the repo); test added. `train/v3data/*` builders still carry /workspace defaults behind env overrides |
 | I | DEFERRED by design | |
 | J CI | CLOSED | tests.yml fixed in dd1e786 |
 
-Environmental test note: `test_launch_vast::test_failed_rent_destroys_instance` fails on this box only because its subprocess python lacks `pyyaml`; not a repo defect.
+`test_launch_vast`: the faked HOME hid the user-site pyyaml; the test now passes `PYTHONUSERBASE` and skips with a reason when pyyaml is absent.
+
+Left for Harris: F7 (53 tracked .log files), D9 default.

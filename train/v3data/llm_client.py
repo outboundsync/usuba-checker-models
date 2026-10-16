@@ -19,7 +19,7 @@ def _load(path):
     with op(path, "rt") as f:
         for l in f:
             try: d = json.loads(l); _cache.setdefault(d["k"], d)
-            except Exception: pass
+            except (ValueError, KeyError, TypeError): pass   # torn cache line: re-ask
 
 
 for _p in (os.environ.get("R_SEED_CACHE"), CACHE):

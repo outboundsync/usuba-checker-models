@@ -158,12 +158,12 @@ def write_run_meta():
     import subprocess, platform
     def cmd(c):
         try: return subprocess.run(c, shell=True, capture_output=True, text=True, timeout=120).stdout.strip()
-        except Exception: return None
+        except (OSError, subprocess.SubprocessError): return None
     pv = None
     try: import prompt_v4; pv = prompt_v4.PROMPT_SHA256
-    except Exception: pass
+    except ImportError: pass
     try: ckr = PATHS.checker_root()
-    except Exception: ckr = None
+    except FileNotFoundError: ckr = None   # run meta records checker_repo=None; the run itself already needs the Checker
     meta = dict(written=time.strftime("%Y-%m-%dT%H:%M:%S%z"), models_repo=PATHS.git_info(PATHS.REPO), checker_repo=PATHS.git_info(ckr) if ckr else None,
                 rules_hash=PATHS.rules_hash(ckr) if ckr else None, config=C, base_revision=REV, data_sha256=DATA_SHA, schedule=SCHED, prompt_sha256=pv,
                 holdout_guard_fingerprints_sha256=GUARD.fp_sha, pip_freeze=cmd("pip freeze"), python=platform.python_version(), torch=torch.__version__,

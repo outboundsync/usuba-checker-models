@@ -31,7 +31,8 @@ def run_with_timeout(fn, args, timeout):
     Returns (ok, value). A crash, a timeout or an unpicklable result is (False, None) - never an exception."""
     if not timeout: 
         try: return True, fn(*args)
-        except Exception: return False, None
+        except Exception as e:   # documented contract: a crashing fn is (False, None); say why instead of hiding it
+            print(f"[checker_report] {getattr(fn, '__name__', fn)} crashed: {type(e).__name__}: {str(e)[:200]}", file=sys.stderr); return False, None
     if hasattr(os, "fork"):
         import pickle, select, time
         with _FORK_LOCK:     # pipe+fork+close(w) atomically: otherwise a sibling's child inherits this write end and our read never sees EOF
@@ -62,7 +63,7 @@ def run_with_timeout(fn, args, timeout):
             _, status = os.waitpid(pid, 0)
         if ok and os.WIFEXITED(status) and os.WEXITSTATUS(status) == 0 and chunks:
             try: return True, pickle.loads(b"".join(chunks))
-            except Exception: return False, None
+            except (pickle.UnpicklingError, EOFError, AttributeError, ImportError, ValueError, IndexError): return False, None
         return False, None
     import threading; box = []
     t = threading.Thread(target=lambda: box.append(fn(*args)), daemon=True); t.start(); t.join(timeout)
@@ -75,8 +76,7 @@ def report_and_warn_rules(files, timeout=CHECKER_TIMEOUT):
     w = HR.check(files, experimental=True)
     rep2 = [f"[{f['rule']} warn{' experimental' if f['rule'] in HR.EXPERIMENTAL else ''}] {f['file']}: {f['reason']}" for f in w if f["rule"] in HR.EXPERIMENTAL]
     # v3-fixes: manifest/lifecycle rules. Enabled high-severity ones read like load errors ("heuristic/high", usually real); L02 is a `warn`; L01 stays `warn experimental`.
-    try: lc = LR.check(files, enabled={"USB-N01", "USB-N02", "USB-L01", "USB-L02", "USB-L03"})
-    except Exception: lc = []
+    lc = LR.check(files, enabled={"USB-N01", "USB-N02", "USB-L01", "USB-L02", "USB-L03"})   # a crashing rule is an error, not an empty report
     rep3 = []
     for f in lc:
         if f["rule"] == "USB-L01": rep3.append(f"[USB-L01 warn experimental] {f['file']}: {f['reason']}")
@@ -84,8 +84,7 @@ def report_and_warn_rules(files, timeout=CHECKER_TIMEOUT):
         elif f["severity"] == "high": rep3.append(f"[{f['rule']} heuristic/high] {f['file']}: {f['reason']}. Fix: {f['hint']}")
         else: rep3.append(f"[{f['rule']} warn] {f['file']}: {f['reason']}")
     # audit A7: the USB-HC rules (hancore_rules_v2, advisory) belong in the report too (TRAINING_PLAN planned them); formatted as warn leads with file:line
-    try: hc = HV2.check(files)
-    except Exception: hc = []
+    hc = HV2.check(files)   # same: never fall back to an incomplete report
     rep4 = [f"[{f['rule']} warn] {f['file']}:{f['line']}: {f['reason']}" for f in hc]
     return ((rep or []) + rep2 + rep3 + rep4 if rep is not None else None), w + lc + hc
 def report(files, timeout=CHECKER_TIMEOUT): return report_and_warn_rules(files, timeout)[0]

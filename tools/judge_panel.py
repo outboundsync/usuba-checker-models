@@ -120,6 +120,7 @@ class Ledger:
 
     def __init__(self, path, cap):
         self.path, self.cap, self.lock = path, cap, threading.Lock()
+        self.pending = 0.0  # estimated cost of calls in flight: counted against the cap so parallel workers cannot overshoot
         try:
             self.d = json.load(open(path))
         except (ValueError, OSError, TypeError):
@@ -127,7 +128,19 @@ class Ledger:
 
     def reserve_ok(self, est):
         with self.lock:
-            return self.d["spent"] + est <= self.cap
+            return self.d["spent"] + self.pending + est <= self.cap
+
+    def reserve(self, est):
+        """atomically check the cap including in-flight calls and, if it fits, count est as in flight"""
+        with self.lock:
+            if self.d["spent"] + self.pending + est > self.cap:
+                return False
+            self.pending += est
+            return True
+
+    def release(self, est):
+        with self.lock:
+            self.pending = max(0.0, self.pending - est)
 
     def add(self, model, cost):
         with self.lock:
@@ -167,10 +180,14 @@ def vote_one(model, item, prompt, ledger, cache, key, call=call_openrouter, retr
         return dict(cache[ck], cached=True)
     err = None
     for attempt in range(retries + 1):
-        if not ledger.reserve_ok(est_cost(model, prompt)):
+        est = est_cost(model, prompt) * 1.5  # margin: estimates under-count thinking tokens
+        if not ledger.reserve(est):
             return dict(model=model, label=None, error="budget cap reached", cost=0.0)
         try:
-            text, cost, fin = call(model, prompt, key)
+            try:
+                text, cost, fin = call(model, prompt, key)
+            finally:
+                ledger.release(est)
             ledger.add(model, cost)
             v = parse_vote(text, item["kind"])
             if v:

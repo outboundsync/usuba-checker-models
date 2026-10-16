@@ -39,7 +39,7 @@ def file_hashes(files):
     return out
 def manifest_id(files):
     try: return (json.loads(files.get("manifest.json", "{}")) or {}).get("id")
-    except Exception: return None
+    except (ValueError, AttributeError, TypeError): return None
 
 # ---------- holdout fingerprint ----------
 def holdout_fingerprint():
@@ -52,7 +52,7 @@ def holdout_fingerprint():
                 if not mem.isfile() or mem.size > 2_000_000: continue
                 p = mem.name.split("/", 1)[-1]
                 try: files[p] = t.extractfile(mem).read().decode("utf-8")
-                except Exception: pass
+                except (UnicodeDecodeError, AttributeError, KeyError): pass   # non-text or missing member
         i = manifest_id(files)
         if i: ids.add(i.lower())
         fh = file_hashes(files)
@@ -81,9 +81,9 @@ def code_blob(files):
 def lit(v):
     if isinstance(v, str):
         try: return ast.literal_eval(v)
-        except Exception:
+        except (ValueError, SyntaxError):
             try: return json.loads(v)
-            except Exception: return v
+            except ValueError: return v
     return v
 
 # ---------- A. HANCORE ----------

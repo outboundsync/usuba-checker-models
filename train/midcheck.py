@@ -24,7 +24,7 @@ def parse_json(txt):
     m = re.search(r"\{.*\}", txt, re.S)
     if not m: return None
     try: return json.loads(m.group(0))
-    except Exception: return None
+    except ValueError: return None
 
 def gold_findings(row):
     """[(file, line, line_end)] from the assistant target (the last message)."""
@@ -33,9 +33,9 @@ def gold_findings(row):
     for f in out.get("findings") or []:
         if not isinstance(f, dict) or not f.get("file"): continue
         try: ln = int(f["line"])
-        except Exception: continue
+        except (ValueError, TypeError, KeyError): continue
         try: le = int(f["line_end"]) if f.get("line_end") else None
-        except Exception: le = None
+        except (ValueError, TypeError): le = None
         g.append((str(f["file"]), ln, le))
     return g
 
@@ -44,8 +44,9 @@ def _forbidden_ids():
     p = os.path.join(ROOT, "functest", "dell_ground_truth.jsonl")
     if os.path.exists(p):
         for l in open(p):
+            if not l.strip(): continue
             try: ids.add(json.loads(l)["id"].lower())     # ids only; labels are never read
-            except Exception: pass
+            except (ValueError, KeyError, AttributeError) as e: raise ValueError(f"{p}: unreadable ground-truth line, refusing to build a partial leakage list: {e}") from e
     return ids
 
 def _holdout_names():
@@ -99,7 +100,7 @@ def score_one(row, response):
         if not isinstance(f, dict) or not f.get("file"): continue
         pf = norm_path(f["file"])
         try: pl = int(f.get("line")) if f.get("line") is not None else None
-        except Exception: pl = None
+        except (ValueError, TypeError): pl = None
         for gf, gl, ge in gold:
             if pf != norm_path(gf): continue
             res["file_hit"] = True

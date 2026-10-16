@@ -194,7 +194,7 @@ class Guard:
         mf = files.get("manifest.json")
         if mf:
             try: mid = (json.loads(mf) or {}).get("id")
-            except Exception: mid = None
+            except (ValueError, AttributeError, TypeError): mid = None
             if isinstance(mid, str) and mid.lower() in self.mids | self.dell_ids: return "manifest_id:" + mid
         ch = self.content_hits(files)
         if ch: return "content:" + ",".join(f"{k}{i}" for k, i in ch[:2])
@@ -223,7 +223,7 @@ class Guard:
         mf = files.get("manifest.json")
         if mf:
             try: mid = (json.loads(mf) or {}).get("id")
-            except Exception: mid = None
+            except (ValueError, AttributeError, TypeError): mid = None
             if isinstance(mid, str):
                 au, nm = _mid_parts(mid); names.add(norm_name(nm)); authors.add(au.lower())
         return {n for n in names if len(n) >= MIN_NAME}, {a for a in authors if len(a) >= 4}

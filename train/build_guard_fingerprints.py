@@ -24,7 +24,7 @@ def read_tar(path):
         for m in t.getmembers():
             if m.isfile() and m.size < 2_000_000:
                 try: files[m.name.split("/", 1)[-1]] = t.extractfile(m).read().decode("utf-8")
-                except Exception: pass
+                except (UnicodeDecodeError, OSError, AttributeError, KeyError): pass   # undecodable / unreadable member: not part of the fingerprint
     return files
 
 def read_tree(d):
@@ -35,7 +35,7 @@ def read_tree(d):
             p = os.path.join(r, f)
             if f in HARNESS or os.path.islink(p) or os.path.getsize(p) > 2_000_000: continue
             try: files[os.path.relpath(p, d)] = open(p, encoding="utf-8").read()
-            except Exception: pass
+            except (UnicodeDecodeError, OSError): pass
     return files
 
 def main():
@@ -45,7 +45,7 @@ def main():
     for l in open(os.path.join(a.holdout, "manifest.jsonl")):
         m = json.loads(l); repos.append(G.norm(m["repo"]) or m["repo"].lower()); files = read_tar(os.path.join(a.holdout, m["code_archive"]))
         try: mid = (json.loads(files.get("manifest.json", "{}")) or {}).get("id")
-        except Exception: mid = None
+        except (ValueError, AttributeError, TypeError): mid = None
         if isinstance(mid, str): mids.append(mid)
         hold.append(G.tree_fp(with_capped(files))); hmeta.append(dict(repo=G.norm(m["repo"]) or m["repo"].lower(), mid=mid if isinstance(mid, str) else None))
     dids, dtrees = [], []

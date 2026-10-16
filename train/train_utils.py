@@ -72,7 +72,7 @@ def truncate_log(path, last_step):
     keep, dropped = [], 0
     for l in open(path):
         try: r = json.loads(l)
-        except Exception: continue
+        except ValueError: continue   # a torn last log line
         if isinstance(r.get("step"), int) and r["step"] > last_step and "midcheck" not in r: dropped += 1; continue
         keep.append(l if l.endswith("\n") else l + "\n")
     open(path, "w").writelines(keep); return dropped

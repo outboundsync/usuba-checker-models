@@ -51,10 +51,10 @@ def test_majority_and_flags():
         assert os.path.getsize(os.path.join(d, "review_queue.jsonl")) > 0
 
 
-def test_failed_call_is_abstain_not_vote():
+def test_failed_call_is_abstain_not_vote(monkeypatch):
     with tempfile.TemporaryDirectory() as d:
         table = {"qwen/qwen3.5-397b-a17b": "real", "openai/gpt-oss-120b": "real", "deepseek/deepseek-v3.2": "boom"}
-        jp.time.sleep = lambda *_: None
+        monkeypatch.setattr(jp.time, "sleep", lambda *_: None)
         recs, _ = jp.run(ITEMS[:1], jp.DEFAULT_PANEL, d, 8, 1, "k", fake_call(table))
         assert recs[0]["n_valid"] == 2 and "missing_vote" in recs[0]["review_reasons"] and not recs[0]["unanimous"]
 
@@ -77,3 +77,11 @@ def test_kappa_perfect_and_chance():
 def test_parse_vote():
     assert jp.parse_vote('x {"label":"Not-Clean","confidence":2} y', "S2")[:2] == ("not_clean", 1.0)
     assert jp.parse_vote('{"label":"real"}', "S2") is None and jp.parse_vote("", "S1") is None
+
+
+def test_in_flight_reservation_counts_against_cap(tmp_path):
+    led = jp.Ledger(str(tmp_path / "l.json"), 1.0)
+    assert led.reserve(0.6)
+    assert not led.reserve(0.6)  # 0.6 already in flight: a parallel worker must not start a call that could overshoot
+    led.release(0.6)
+    assert led.reserve(0.6)
