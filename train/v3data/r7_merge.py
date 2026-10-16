@@ -79,9 +79,25 @@ def lift_approve(rows, lo):
     return rows
 
 
-def pipeline(rows, B, floor=15, dell=0.30, dismiss=0.35, src=0.40, hist=0.55, amax=0.50, amin=0.0):
+PARENT = {"remote-code-pinning": "url-scheme-network", "listing-metadata-docs": "scope-policy-duplicate", "user-config-modification": "scope-policy-duplicate"}      # small kind -> existing parent category (schema categories only)
+
+
+def merge_small(rows, B, floor):
+    """rewrite the category of every added finding of a kind with < floor findings to its parent category (PARENT); rows are copied, labels otherwise untouched. -> (rows, merged: {kind: n})"""
+    c = B.slug_counts(rows); small = {k for k, v in c.items() if v < floor and k in PARENT}; out = []
+    if not small: return list(rows), {}
+    for r in rows:
+        t = tgt(r)
+        if any(a["category"] in small for a in t["added_findings"]):
+            r = dict(r, meta=dict(r["meta"], merged_categories=sorted({a["category"] for a in t["added_findings"] if a["category"] in small})), messages=r["messages"][:-1] + [dict(r["messages"][-1], content=json.dumps(dict(t, added_findings=[dict(a, category=PARENT.get(a["category"], a["category"]) if a["category"] in small else a["category"]) for a in t["added_findings"]]), ensure_ascii=False))])
+        out.append(r)
+    return out, {k: c[k] for k in small}
+
+
+def pipeline(rows, B, floor=15, dell=0.30, dismiss=0.35, src=0.40, hist=0.55, amax=0.50, amin=0.0, merge=False):
     """-> (rows, stats). Order: floor, Dell cap, dismiss cap, source caps, approve cap (<= amax), approve lift (>= amin), floor again. B = build_scope (module globals FLOOR / DELL_SHARE are set here)."""
     B.FLOOR = floor; B.DELL_SHARE = dell; B.BELOW.clear(); st = {}
+    if merge: rows, st["merged_kinds"] = merge_small(rows, B, floor)
     ver, c, low = B.enforce_floor(list(rows)); st["floor_dropped_slugs"] = low
     ver = B.cap_dell(ver); ver, st["dismiss_rows_dropped"] = cap_dismiss(ver, dismiss); ver = cap_sources(ver, src, hist); ver = cap_approve(ver, amax)
     if amin: ver = lift_approve(ver, amin)

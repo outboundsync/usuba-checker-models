@@ -148,3 +148,16 @@ def test_tradeoff_stats():
     t = dict(scripts_triage=[], added_findings=[dict(category="secrets-credentials", line=3, file="a")], verdict="changes_requested")
     r = dict(id="x", source="version_history", row_type="extend", meta=dict(provisional=False, repo="o/r"), messages=[{"role": "assistant", "content": json.dumps(t)}])
     s = TO.stats([r]); assert s["rows"] == 1 and s["kinds"]["secrets-credentials"] == (1, 1, 0, 1) and s["approve"] == 0
+
+
+def test_merge_small_rewrites_to_parent_and_floor_applies():
+    import tempfile
+    sys.argv = ["x", tempfile.mkdtemp(), tempfile.mkdtemp()]
+    import build_scope as B
+    def ext(i, cat):
+        t = dict(scripts_triage=[], added_findings=[dict(category=cat, severity="warning", file="a", line=1, quote="q", finding="f", fix="x")], verdict="approve")
+        return dict(id="e%d" % i, source="version_history", row_type="extend", meta=dict(provisional=False, repo="o/r%d" % i, commit="c"), messages=[{"role": "assistant", "content": json.dumps(t)}], _repo="o/r%d" % i)
+    rows = [ext(i, "url-scheme-network") for i in range(10)] + [ext(20 + i, "remote-code-pinning") for i in range(6)]
+    out, merged = RM.merge_small(rows, B, 15); assert merged == {"remote-code-pinning": 6} and {RM.tgt(r)["added_findings"][0]["category"] for r in out} == {"url-scheme-network"}
+    ver, st = RM.pipeline(rows, B, floor=15, merge=True, hist=1.0, src=1.0, amax=1.0, dell=1.0, dismiss=1.0); assert len(ver) == 16 and st["slug_counts"] == {"url-scheme-network": 16}
+    ver, st = RM.pipeline(rows, B, floor=15, hist=1.0, src=1.0, amax=1.0, dell=1.0, dismiss=1.0); assert ver == [] or len(ver) == 0

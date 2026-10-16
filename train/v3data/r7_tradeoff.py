@@ -18,7 +18,7 @@ def stats(rows):
 
 
 def grid():
-    for hist, dis, floor, dell, amin in itertools.product((0.55, 0.70, 0.85), (0.35, 0.50), (15, 10), (0.30, 0.40), (0.0, 0.45)):
+    for hist, dis, floor, dell, amin in itertools.product((0.55, 0.70, 0.85), (0.35, 0.50), ("15", "8", "merge15"), (0.30,), (0.0, 0.45)):      # Dell stays at the guard value 30%
         yield dict(hist=hist, dismiss=dis, floor=floor, dell=dell, amin=amin)
 
 
@@ -27,8 +27,10 @@ def main(out, dirs):
     rows = RM.load_rows(dirs); base = stats(rows); L = ["# r7 tradeoff table\n", f"candidate pool before any cap/floor: {json.dumps(base)}\n",
         "| hist cap | dismiss max | floor | Dell cap | approve>= | rows | train+val plugins | verified/prov | approve | dismiss share | row types | sources | per-category n (ver/prov rows, file+line%) |", "|" + "---|" * 13]
     for p in grid():
-        ver, st = RM.pipeline(rows, B, floor=p["floor"], dell=p["dell"], dismiss=p["dismiss"], src=0.40, hist=p["hist"], amax=0.50, amin=p["amin"]); s = stats(ver)
-        kk = "; ".join(f"{k} {v[0]} ({v[1]}/{v[2]}, {100 * v[3] // max(1, v[0])}%)" for k, v in sorted(s["kinds"].items())) or "-"
+        fl = 8 if p["floor"] == "8" else 15; ver, st = RM.pipeline(rows, B, floor=fl, merge=p["floor"] == "merge15", dell=p["dell"], dismiss=p["dismiss"], src=0.40, hist=p["hist"], amax=0.50, amin=p["amin"]); s = stats(ver)
+        tr_, va_, _ = RM.split_rows(ver); vc = collections.Counter(a["category"] for r in va_ for a in RM.tgt(r)["added_findings"])
+        kk = "; ".join(f"{k} {v[0]} ({v[1]}/{v[2]}, {100 * v[3] // max(1, v[0])}% file+line, val {vc[k]})" + (" **UNMEASURED: too few validation rows**" if (p["floor"] == "8" and v[0] < 15) or vc[k] < 15 else "") for k, v in sorted(s["kinds"].items())) or "-"
+        if st.get("merged_kinds"): kk += " [merged into parent: %s]" % ", ".join(f"{k}->{RM.PARENT[k]}" for k in st["merged_kinds"])
         L.append(f"| {int(p['hist'] * 100)}% | {int(p['dismiss'] * 100)}% | {p['floor']} | {int(p['dell'] * 100)}% | {p['amin'] or '-'} | {s['rows']} | {s['plugins']} | {s['verified']}/{s['prov']} | {s['approve']:.0%} | {s['dismiss']:.0%} | {s['types']} | {s['src']} | {kk} |")
         print(L[-1][:200], flush=True)
     open(out, "w").write("\n".join(L) + "\n")
