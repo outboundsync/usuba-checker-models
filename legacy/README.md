@@ -8,6 +8,7 @@ Older pipelines, moved here (history kept by `git mv`) so the top level only hol
 | `legacy/qwen25-coder-v3/` | `v3/` | Qwen2.5-Coder "v3" builder datasets. **Renamed**: the old name collided with the reviewer's v3 (`train/v3data`, `prompt_v3`) |
 | `legacy/data/` | `data/` | stats of the v1 build |
 | `legacy/runs/` | `runs/` | experiment scripts, score tables, logs (53 tracked `.log` files; no raw generations) |
+| `legacy/eval-scope/` | `eval/scope/` | 2026-10-15 stock-model (B0) run on an earlier data state. **Superseded** by the 2026-10-16 re-run (Dell 75: 0.893 schema-valid, 0.507 verdict accuracy, in `docs/RUN_RECORDS.md`); archived, not a reported result |
 
 * **Nothing in `train/` imports from here.** `tools/gen_notice.py` reads the manifests under `legacy/clean` and `legacy/qwen25-coder-v3` (NOTICE is generated from them).
 * **Scripts inside these folders still use their old relative paths** (for example `clean/build_final.py` expects `clean/` next to `sources/`). They are archived, not maintained: to re-run one,

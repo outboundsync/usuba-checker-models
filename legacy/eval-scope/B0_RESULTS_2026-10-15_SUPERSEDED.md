@@ -1,3 +1,5 @@
+> **SUPERSEDED (2026-10-17). Archived, not a reported result.** This 2026-10-15 stock-model run was made on an earlier data state. The only reported stock Qwen3.5-9B Dell numbers are from the 2026-10-16 re-run (schema-valid 0.893, verdict accuracy 0.507); see `docs/RUN_RECORDS.md`. Do not quote the figures below.
+
 # B0 (stock Qwen3.5-9B, same prompt / schema / post-filter) on the data that exists today, 2026-10-15
 
 Model `qwen/qwen3.5-9b` on OpenRouter (open weights), temperature 0, no thinking, scope prompt v4 (`scope/prompt_scope.py`), `scope/schema.py`, `scope/postfilter.py`, `scope/scoring.py`. One run per set. Spend for the whole job: about $1.15 of the $5 cap (includes one crashed holdout run that was re-run).
