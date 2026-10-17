@@ -1,4 +1,4 @@
-# Omarchy competition winners: profile, Checker run, learnings
+# Omarchy competition winners: profile, Checker Scripts run, learnings
 
 Date: 2026-10-15. Plugins (as given by Harris; I could not verify the "winner" status from the marketplace, whose plugin pages are JS-rendered and returned empty detail fields): `akshar.radio-atlas`, `slcode777.omagotchi`, `io.github.thisisgm.omapods`, `robzolkos.github`.
 Cost: $0 (no LLM, no GPU, no Dell, no network beyond two page fetches that returned empty JS shells). Seeds: none, everything is deterministic.
@@ -77,19 +77,19 @@ What they share (all four, or 3 of 4):
 3. Bounded reads of untrusted/user-writable input (omagotchi 64 KiB cap, radio-atlas curl --max-filesize, github https-only URL allowlist).
 4. Tests: 3 of 4 ship tests (corpus 49%), 2 of 4 CI (corpus 19%); only 16.7% of the corpus has license+readme+tests+CI. radio-atlas test LOC is in the 99th percentile; github stubs Quickshell in QML tests.
 5. Size is mid to large (prod LOC percentiles 69 to 96), so they are more than weekend widgets, but omagotchi and github are only ~2.8k LOC.
-6. They do NOT share: changelog (none), schema/defaults (2 of 4), a repository field in the manifest (1 of 4, corpus 14%). A Checker must not treat those as quality signals.
+6. They do NOT share: changelog (none), schema/defaults (2 of 4), a repository field in the manifest (1 of 4, corpus 14%). A Checker Scripts must not treat those as quality signals.
 7. Two ship agent-control or knowledge files (omapods: AGENTS.md, .claude/advloop-rules.md), which our USB-H16 flags; that is a known HANCORE finding family, and it does not make a plugin broken.
 
-Good practice the Checker should reward or at least never penalize: size-capped reads of state files; atomic writes; explicit timeouts and byte caps on curl; https-only URL allowlists before xdg-open; dependency probing with a visible "missing dependency" state; fixed argv arrays instead of interpolated shell strings; README section stating what is executed; separate license note for vendored code; honest unverified/optional features (omapods "Deliberately absent").
+Good practice the Checker Scripts should reward or at least never penalize: size-capped reads of state files; atomic writes; explicit timeouts and byte caps on curl; https-only URL allowlists before xdg-open; dependency probing with a visible "missing dependency" state; fixed argv arrays instead of interpolated shell strings; README section stating what is executed; separate license note for vendored code; honest unverified/optional features (omapods "Deliberately absent").
 
-## 4. Checker run (branch checker-rules-v2 @ 57018c8, extracted with `git archive`; no GPU/LLM; script run_checker.py, raw output checker_results.json)
+## 4. Checker Scripts run (branch checker-rules-v2 @ 57018c8, extracted with `git archive`; no GPU/LLM; script run_checker.py, raw output checker_results.json)
 Hard checks `usuba.checks.check` (USB-Q/A/B/F/J/S rules + W): **0 findings on all four** (all pass).
 Legacy `static_checks.check`: 6 findings, all warnings or false positives (below). HANCORE rules (`hancore_rules_v2.check`, enabled_v3 set; the second number adds experimental rules): radio-atlas 4/8, omagotchi 0/0, omapods 3/6, github 0/1.
 
 False-positive review (I read the code at each cited line):
 | finding | verdict | why |
 |---|---|---|
-| static_checks bad-import "unknown module linux" x5 (omapods daemon/*.qml) | FALSE POSITIVE | `import linux 1.0` is a C++-registered module of the vendored librepods daemon (separate Qt app under daemon/), not a shell entry point; usuba.checks (manifest-scoped) correctly ignores it. Checker should only scan files reachable from manifest entryPoints. |
+| static_checks bad-import "unknown module linux" x5 (omapods daemon/*.qml) | FALSE POSITIVE | `import linux 1.0` is a C++-registered module of the vendored librepods daemon (separate Qt app under daemon/), not a shell entry point; usuba.checks (manifest-scoped) correctly ignores it. Checker Scripts should only scan files reachable from manifest entryPoints. |
 | static_checks footgun "Style.font.heading/display is VPS-unsafe" (radio-atlas, github) | NOISE | warn only; `heading` and `display` are real members in types.json and appear in 630 QML lines across registry_repos. Rule is stale; drop it or tie it to evidence. |
 | USB-H01 radio-player:575 curl no byte cap | FALSE POSITIVE | response goes to /dev/null (click-count ping); a cap is meaningless. Rule should skip `>/dev/null`. Other curls in the plugin use --max-filesize. |
 | USB-H24 radio-window:38 "shell eval of variable-expanded string" | FALSE POSITIVE | it is `hyprctl eval` (Lua) not a shell eval, and $width/$height were validated by `^[0-9]+$` at lines 4-9. Model-proposed rule should exclude `hyprctl eval` and honor a preceding regex guard. |
@@ -109,7 +109,7 @@ Of the 15 HANCORE-rule hits (experimental included): 3 are true or plausible (H1
 - Training use so far: data/source_usage.json lists akshar.radio-atlas and robzolkos.github as `skip: too large for 32k ctx`, so no build-from-spec rows came from them; omagotchi and omapods are not in source_usage. data/reviews/reviews.jsonl already holds ~dozen review-comment rows from robzolkos/omarchy-github PRs 13/20/22/23 (maintainer + Codex bot) and one omagotchi mention (omacom/omarchy issue 11796). `slcode777.omaconv` in train.jsonl is a different plugin by the same author.
 
 ## 6. How to use these (prompt, rules, training), with license limits
-Prompt: add a short "good practice" block to the Checker/reviewer prompt: judge a plugin by what is exercised (exit handling, caps, timeouts, https allowlist), do not penalize missing changelog/schema/repository field, treat vendored subtrees (UPSTREAM.md, daemon/) as out of scope, require file:line from the entry-point-reachable tree, and when a heuristic fires on `>/dev/null`, mktemp vars or guarded vars say it is not a bug. Use omagotchi's README "What it executes, exactly" as the model of a dependency/exec inventory the Checker can cross-check against the code.
+Prompt: add a short "good practice" block to the Checker/reviewer prompt: judge a plugin by what is exercised (exit handling, caps, timeouts, https allowlist), do not penalize missing changelog/schema/repository field, treat vendored subtrees (UPSTREAM.md, daemon/) as out of scope, require file:line from the entry-point-reachable tree, and when a heuristic fires on `>/dev/null`, mktemp vars or guarded vars say it is not a bug. Use omagotchi's README "What it executes, exactly" as the model of a dependency/exec inventory the Checker Scripts can cross-check against the code.
 Rules: implement the skip conditions in section 4; scope static_checks imports to manifest-reachable files; retire the VPS-unsafe footgun; keep H16 low severity. Re-measure on the design split only, and never on the Dell key or hancore_holdout.
 Training rows (proposals only; nothing was added; Harris approves):
 - akshar.radio-atlas, MIT (code), map data public domain: approve as "works" positive and as good-practice negative examples for per-file rows (radio-fetch, radio-player, radio-favicon, tests/). Exclude assets/countries.json and screenshots; keep LICENSE and copyright notice attached.

@@ -1,6 +1,6 @@
 # Provisional open-weights judge panel (Janus, 2026-10-15) - FINAL
 
-Tool: `tools/judge_panel.py`. Judges: qwen/qwen3.5-397b-a17b, openai/gpt-oss-120b, deepseek/deepseek-v3.2 via OpenRouter (ZDR, no data collection; no Anthropic, no proprietary OpenAI). Every vote, majority and flag is PROVISIONAL; nothing here is a final label. Scope per Harris: Checker triage findings (S1), added findings (S3) and S2 clean candidates only; patches/fixes are not judged.
+Tool: `tools/judge_panel.py`. Judges: qwen/qwen3.5-397b-a17b, openai/gpt-oss-120b, deepseek/deepseek-v3.2 via OpenRouter (ZDR, no data collection; no Anthropic, no proprietary OpenAI). Every vote, majority and flag is PROVISIONAL; nothing here is a final label. Scope per Harris: Checker Scripts triage findings (S1), added findings (S3) and S2 clean candidates only; patches/fixes are not judged.
 
 Outputs: `scripts/results/s1s2/panel/{scope,hw}/` (votes, summary, review_queue; no code context) and `ledger-final.json`. `review_sheet.csv` carries `panel_majority_provisional` and `panel_needs_human` columns.
 
@@ -19,7 +19,7 @@ Pairwise Cohen kappa 0.17-0.51 (S1 scope: qwen/deepseek 0.48; S3: gpt-oss/deepse
 
 S2 after the current guard (221 candidates): panel majority clean 158, not_clean 34, no majority 21, unsure 8. Cross with the hardware auto verdict: 123 PASS_AUTO+clean, 34 REVIEW+clean, 25 PASS_AUTO+not_clean, 9 REVIEW+not_clean, 16 PASS_AUTO+no majority, 5+3 unsure, 5 REVIEW+no majority, 1 FAIL+clean. The 25 PASS_AUTO+not_clean rows are the first ones for a human to read.
 
-Against hardware truth (S1 hw items after the guard, majority label): real_hw 15/22 judged real; no_symptom_hw 18/81 judged false_alarm (49 unsure/no majority); present_hw 40/100 judged false_alarm. Reading code and the Checker message alone does not recover the hardware false-alarm labels.
+Against hardware truth (S1 hw items after the guard, majority label): real_hw 15/22 judged real; no_symptom_hw 18/81 judged false_alarm (49 unsure/no majority); present_hw 40/100 judged false_alarm. Reading code and the Checker Scripts message alone does not recover the hardware false-alarm labels.
 
 ## Conclusion
 Agreement is moderate to low (kappa 0.3-0.4). The panel is a triage aid that orders human review; do not use majority labels as truth. Roughly half of all items need a human.

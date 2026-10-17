@@ -13,7 +13,7 @@ A small local reviewer model for [Omarchy](https://omarchy.org) shell plugins. I
 | Output | A review that explains the failures and proposes fixes |
 | Not for | Deciding pass/fail. The Checker scripts make the verdict; the model explains it |
 
-The plan and its reasoning are in [`docs/TRAINING_PLAN.md`](docs/TRAINING_PLAN.md). Earlier experiments (Qwen-coder 7B "Santoku" and a 14B QLoRA writing plugins) are documented in [`docs/LEGACY_README.md`](docs/LEGACY_README.md).
+The plan and its reasoning are in [`docs/TRAINING_PLAN.md`](docs/TRAINING_PLAN.md). Earlier experiments (Qwen-coder 7B "Santoku" and a 14B QLoRA writing plugins) are documented in [`docs/LEGACY_README.md`](../../docs/LEGACY_README.md).
 
 ## Layout
 

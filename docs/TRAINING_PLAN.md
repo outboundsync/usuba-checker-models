@@ -1,6 +1,6 @@
 # Usuba Vast training-run plan
 
-> **Scope note (2026-10-15):** this plan and its tables are for the earlier scope (a verdict plus findings). The settled scope is `docs/MODEL_SCOPE.md` (Checker model = triage + extend + explain/fix on top of the Checker scripts report; release 1 advisory) and its gates are in `docs/DEFINITION_OF_DONE.md`. Where they disagree, those win. No GPU run is planned until S1-S4 and the B0 baseline exist.
+> **Scope note (2026-10-15):** this plan and its tables are for the earlier scope (a verdict plus findings). The settled scope is `docs/MODEL_SCOPE.md` (Checker Model = triage + extend + explain/fix on top of the Checker Scripts report; release 1 advisory) and its gates are in `docs/DEFINITION_OF_DONE.md`. Where they disagree, those win. No GPU run is planned until S1-S4 and the B0 baseline exist.
 
 > **Provenance:** proprietary models (Claude, GPT, etc.) in the tables below are evaluation baselines only; none of their outputs are training data. See README "Training data provenance".
 
@@ -21,7 +21,7 @@
 - Any LLM call (agent work, teacher, judge, grader) uses open-weights models only; no Anthropic or other closed-model output enters training data, labels or grading. Closed models appear only as scored evaluation baselines.
 
 ## Ready-to-launch setup (2026-10-13)
-Everything is in `train/` and `eval/hancore_holdout/run_eval.py`. No GPU has been rented yet.
+Everything is in `train/` and [`eval/hancore_holdout/run_eval.py`](https://github.com/outboundsync/usuba-checker-scripts/blob/main/eval/hancore_holdout/run_eval.py). No GPU has been rented yet.
 
 **Data** (`python3 train/build_train_set.py`, deterministic, seed 1337, about 15 s): 4,592 train / 148 val chat examples (val is split by repo).
 `train/data/manifest.json` has the counts and exclusions, and every row carries its provenance.
@@ -31,8 +31,8 @@ Everything is in `train/` and `eval/hancore_holdout/run_eval.py`. No GPU has bee
 | Dell in-use: missing binary on a stock system | 396 | `in-use:missing-binary` |
 | Dell in-use: toggle opened nothing / memory growth | 75 | `in-use:toggle-opens-nothing`, `in-use:memory-growth` |
 | Dell in-use: read-only close path (USB-D06 class, issue-confirmed) | 104 | `in-use:panel-cannot-close` |
-| Grader-verified broken (Dell broken and Checker FAIL agree) | 397 | load blockers with the Checker's reason |
-| Grader-verified works (Dell works and Checker PASS agree, no finding) | 506 | approve, so the model does not raise false alarms |
+| Grader-verified broken (Dell broken and Checker Scripts FAIL agree) | 397 | load blockers with the Checker Scripts's reason |
+| Grader-verified works (Dell works and Checker Scripts PASS agree, no finding) | 506 | approve, so the model does not raise false alarms |
 Exclusions: all 329 `eval/hancore_holdout` plugins, matched by repo, by manifest id, and by near-duplicate code tree (at least 50% shared file hashes; this caught 16 HANCORE forks and 5 Dell ones). The Dell answer key (116 rows at that time) is also excluded, so it stays a clean regression set. That departs from the "Training data" list above, which includes the key. Exact duplicate code is dropped too. The same prompt (`train/prompt.py`) is used for training and for every eval backend.
 
 **CPU dry run (box)**: 4,539 train rows fit 12,288 tokens; 53 longer rows are dropped. Token median is 7,022 and p95 is 9,195. That is 31.6 M tokens per epoch (0.95 M assistant tokens) and 284 optimizer steps per epoch at an effective batch of 16. A tiny-Qwen3.5 CPU smoke run of `train_lora.py` completed: LoRA attached to the 12 language-model projection types (attention, Gated DeltaNet, MLP) and none in the vision tower; loss went down; best/last adapters were saved.
@@ -40,20 +40,22 @@ Exclusions: all 329 `eval/hancore_holdout` plugins, matched by repo, by manifest
 **Run**: bf16 LoRA r=32/alpha=64 on all LM linear layers, lr 1e-4 cosine, 2 epochs, gradient checkpointing, and loss on the assistant tail only (only those positions go through lm_head). HANCORE strength weights scale the loss. `max_hours: 9` is a hard stop.
 Estimate: about 63 M tokens at roughly 3k tok/s on an H100 (this needs flash-linear-attention and causal-conv1d; without them Gated DeltaNet is many times slower) comes to about 6 h. At $3.1-3.3/h (best reliable H100 offers on 2026-10-13) that is about $20 plus export. An A100 80GB is about $1.16/h at roughly 1/3 the speed, about 17 h for 2 epochs, so on an A100 use `epochs: 1` or raise `max_hours`.
 **Export**: merge into bf16, then llama.cpp `convert_hf_to_gguf.py`, then `llama-quantize Q4_K_M`. The result is about 5.5 GB and runs on a 32 GB laptop (CPU/iGPU) with `llama-server -c 32768 -np 1` (one slot; `-c` is total context shared by all slots).
-**Head-to-head** on the 329-plugin holdout (`run_eval.py`): verdict accuracy, positive recall, false alarms on negatives, per-category recall/precision, JSON validity, $ cost and seconds per plugin. Baseline already measured, Checker scripts alone: accuracy 0.650, positive recall 0.673, negative false alarm 0.586, category recall 0.131, category precision 0.442 (`eval/hancore_holdout/results/checker-baseline.json`).
+**Head-to-head** on the 329-plugin holdout (`run_eval.py`): verdict accuracy, positive recall, false alarms on negatives, per-category recall/precision, JSON validity, $ cost and seconds per plugin. Baseline already measured, Checker Scripts alone: accuracy 0.650, positive recall 0.673, negative false alarm 0.586, category recall 0.131, category precision 0.442 (`eval/hancore_holdout/results/checker-baseline.json`).
 
 ### Holdout baselines (HANCORE holdout: 329 plugins, 300 positive / 29 negative; same skill prompt)
 Category names are normalised to the HANCORE slugs (`run_eval.norm_cat`; rescored from the raw outputs with `rescore.py`).
 | system | verdict acc | positive recall | false alarm (neg) | category recall | category precision | JSON valid | cost | median s |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| Checker scripts alone | 0.650 | 0.673 | 0.586 | 0.131 | 0.442 | 1.00 | $0 | 0 |
+| Checker Scripts alone | 0.650 | 0.673 | 0.586 | 0.131 | 0.442 | 1.00 | $0 | 0 |
 | stock Qwen 3.5 9B (OpenRouter, no thinking) | 0.699 | 0.737 | 0.690 | 0.173 | 0.420 | 0.766 | $0.25 | 10.4 |
 | Claude Sonnet 5.5 skill (third-party comparison, score only; OpenRouter, reasoning on; it cannot be turned off) | 0.374 | 0.330 | 0.172 | 0.347 | 0.397 | 0.997 | $11.05 | 11.0 |
-| **Usuba 9B Q4_K_M (this run)** | **0.812** | **0.883** | **0.931** | **0.402** | **0.427** | **0.909** | **$0** | **5.23** |
+| **Usuba 9B Q4_K_M (this run)** | **0.809** | **0.883** | **0.931** | **0.402** | **0.427** | **0.909** | **$0** | **5.23** |
+
+Note: verdict accuracy for this row is the current scorer's 0.809 (`eval/hancore_holdout/results/usuba-9b-q4km.rescored.json`); the legacy scorer logged 0.812 at the time. All other columns are unchanged by the re-score.
 Always answering "changes_requested" would score 0.912 here, so judge on category recall/precision and false alarms, not verdict accuracy.
 
 ### In-use eval: Dell answer key (90 decided rows: 33 broken, 57 works; excluded from training). Historical numbers: later the 4 decided rows of Claude-written plugins were excluded (now 86 rows: 31 broken, 55 works); tables in this section keep the 90-row key
-`run_eval.py --set dellkey`. The functest (real Quickshell) scores 90/90 on these; the models see only code + Checker report.
+`run_eval.py --set dellkey`. The functest (real Quickshell) scores 90/90 on these; the models see only code + Checker Scripts report.
 | system | verdict acc | broken caught | false alarm on works | JSON valid | cost |
 |---|---:|---:|---:|---:|---:|
 | stock Qwen 3.5 9B | 0.567 | 0.879 | 0.614 | 0.822 | $0.04 |
@@ -68,10 +70,12 @@ Always answering "changes_requested" would score 0.912 here, so judge on categor
 
 | system | verdict acc | positive recall | false alarm (neg) | category recall | category precision | JSON valid | cost | median s |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| Checker scripts alone | 0.650 | 0.673 | 0.586 | 0.131 | 0.442 | 1.00 | $0 | 0 |
+| Checker Scripts alone | 0.650 | 0.673 | 0.586 | 0.131 | 0.442 | 1.00 | $0 | 0 |
 | stock Qwen 3.5 9B (OpenRouter) | 0.699 | 0.737 | 0.690 | 0.173 | 0.420 | 0.766 | $0.25 | 10.4 |
 | Claude Sonnet 5.5 skill (third-party comparison, score only) | 0.374 | 0.330 | 0.172 | 0.347 | 0.397 | 0.997 | $11.05 | 11.0 |
-| **Usuba 9B Q4_K_M (this run)** | **0.812** | **0.883** | **0.931** | **0.402** | **0.427** | **0.909** | **$0** | **5.23** |
+| **Usuba 9B Q4_K_M (this run)** | **0.809** | **0.883** | **0.931** | **0.402** | **0.427** | **0.909** | **$0** | **5.23** |
+
+Note: verdict accuracy for this row is the current scorer's 0.809 (`eval/hancore_holdout/results/usuba-9b-q4km.rescored.json`); the legacy scorer logged 0.812 at the time. All other columns are unchanged by the re-score.
 
 ### Dell answer key (90 plugins; historical 90-row key, before the Claude-written plugins were excluded)
 
@@ -91,7 +95,7 @@ Artifacts: `/workspace/usuba-runs/55864967/` (model, checkpoints, logs, GGUF) + 
 
 ## Dell key, reason-graded and leak-free (2026-10-14)
 See `eval/dellkey/README.md`. Two fixes change every earlier Dell-key number: `SOURCE.txt` / `checklist.md` (which state the functest failure)
-are no longer shown to models, and files are no longer cut at 8000/24000 chars. Train and eval now build the Checker report with the same
+are no longer shown to models, and files are no longer cut at 8000/24000 chars. Train and eval now build the Checker Scripts report with the same
 function (`train/checker_report.py`); v1 Dell training rows used the sweep's static_fails and left out the `warn` lines the eval showed.
 Headline: Usuba v1 names the real bug for 0/26 flagged broken plugins and invents a commit SHA in 46/90 outputs. Stock Ministral 14B with the
 improved prompt names it for 15/27; Sonnet 5.5 (improved prompt) for 22/24 at 0.07 false alarms.
@@ -170,8 +174,8 @@ bf16: 12/20 flagged answers file-null, same categories (unbounded-input x8, rich
 GPU: ~12 min busy (merge+convert+exam), ~$0.5 at $2.34/h. Instance left running, ARMED absent.
 Raw files: usuba-runs/56016890/diagnosis/.
 
-## Checker rules v2 (USB-H01..H18, branch checker-rules-v2)
-Gap: the v1 USB-W rules (`functest/usuba/hancore_rules.py`) already touch these categories but are mostly `EXPERIMENTAL` (precision 0.17-0.37) and carry no usable line for most findings. `functest/usuba/hancore_rules_v2.py` adds 18 finer rules (one per detectable pattern family derived from the text of HANCORE findings on the design split), each emitting `file`, `line`, `rule`. Measured by `hancore/measure_rules_v2.py` on a pool built by `hancore/rules_v2_pool.py` (holdout + Dell key excluded by repo/id/near-dup; Dell labels never read; 70% design / 30% test by sha1(repo); keep/drop decided on design, then test read once). Full per-rule table, hits and examples: `/workspace/usuba-runs/checker-rules/` (copy in the store, `usuba-v2distill/checker-rules/`).
+## Checker Scripts rules v2 (USB-H01..H18, branch checker-rules-v2)
+Gap: the v1 USB-W rules ([`functest/usuba/hancore_rules.py`](https://github.com/outboundsync/usuba-checker-scripts/blob/main/functest/usuba/hancore_rules.py)) already touch these categories but are mostly `EXPERIMENTAL` (precision 0.17-0.37) and carry no usable line for most findings. [`functest/usuba/hancore_rules_v2.py`](https://github.com/outboundsync/usuba-checker-scripts/blob/main/functest/usuba/hancore_rules_v2.py) adds 18 finer rules (one per detectable pattern family derived from the text of HANCORE findings on the design split), each emitting `file`, `line`, `rule`. Measured by [`hancore/measure_rules_v2.py`](https://github.com/outboundsync/usuba-checker-scripts/blob/main/hancore/measure_rules_v2.py) on a pool built by [`hancore/rules_v2_pool.py`](https://github.com/outboundsync/usuba-checker-scripts/blob/main/hancore/rules_v2_pool.py) (holdout + Dell key excluded by repo/id/near-dup; Dell labels never read; 70% design / 30% test by sha1(repo); keep/drop decided on design, then test read once). Full per-rule table, hits and examples: `/workspace/usuba-runs/checker-rules/` (copy in the store, `usuba-v2distill/checker-rules/`).
 Result, honest summary: static patterns only weakly predict HANCORE's category tags (lift 1.3-2.5, plugin precision 0.30-0.43, recall 0.01-0.43). Enabled (`rules_v2_enabled.json`): H01 H02 (unbounded), H04 H05 (file safety), H08 H09 (secrets), H10 (insecure transport), H15 H16 (privileged, AGENTS.md/CLAUDE.md in tree), H17 (unpinned remote code). Experimental (too noisy to show by default): H06 H11 H13 H14. Dropped: H03 H07 H12 H18. No rule met the bar for rich-text (H13 recall 0.54 but false-hit 0.28) or shell/Lua injection (H14 precision 0.11). Rules are NOT yet wired into `train/checker_report.py`: wiring them changes every training/eval prompt, so do it only together with a re-measure on the Dell and holdout sets.
 
 ## v3 run checklist (2026-10-15, branch v3-prep)
@@ -195,8 +199,8 @@ Do the steps in order; each has a stop condition. Nothing here launches paid GPU
    - llama-server context is shared across slots: -c must be per-slot context x slots.
 
 ### Full v3 pipeline, in order (everything needed to replicate; commands and costs in `docs/v3prep/COMMANDS.md`)
-1. Label parse + verify HANCORE findings at the reviewed commit: `hancore/label_concrete.py` (no model calls, $0) -> `hancore-labels/concrete_findings.jsonl`.
-2. Recover file:line for findings without a file reference: `hancore/label_recover.py` (qwen3.5-397b, $6.22, 319 rows) -> `docs/v3prep/hancore_labels_r2/` (optional, high-confidence tier only).
+1. Label parse + verify HANCORE findings at the reviewed commit: [`hancore/label_concrete.py`](https://github.com/outboundsync/usuba-checker-scripts/blob/main/hancore/label_concrete.py) (no model calls, $0) -> `hancore-labels/concrete_findings.jsonl`.
+2. Recover file:line for findings without a file reference: [`hancore/label_recover.py`](https://github.com/outboundsync/usuba-checker-scripts/blob/main/hancore/label_recover.py) (qwen3.5-397b, $6.22, 319 rows) -> `docs/v3prep/hancore_labels_r2/` (optional, high-confidence tier only).
 3. Build v3 data and gate it: `train/v3data/` builders (branches v3-data, v3-data-r2) and gate report; prompt `train/prompt_v3.py`.
 4. Dry run on the new data (~$0.30 GPU): `train/dry_run.sh`; then `train/resume_test.sh` if scripts changed.
 5. Real run: `train/launch_vast.sh start` (arms watchdog, auto-resume, 5-minute watch) with `train_lora.py --midcheck 100` on `train/config.yaml` (seed 1337).

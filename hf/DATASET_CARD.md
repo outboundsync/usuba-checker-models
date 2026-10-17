@@ -5,7 +5,8 @@ pretty_name: Usuba Checker training data
 language: [en]
 tags: [omarchy, quickshell, qml, code-review]
 ---
-# Usuba Checker data (prepared, not yet uploaded)
+# Usuba Checker data (private Hugging Face dataset repo, release not announced)
+This card describes `osiharris/usuba-checker-data`, which exists on Hugging Face and is currently **private**; the release is prepared but not announced.
 Training and holdout rows used for the Usuba Checker reviewer model. **Each row keeps the licence of the plugin it came from** (`meta.license`: MIT, Apache-2.0, ISC);
 attribution is in `NOTICE` of https://github.com/outboundsync/usuba-checker-models and `sources/licenses/` there. Rows are not relicensed.
 No raw review text, no answer keys, no proprietary-model outputs. Third-party author e-mail addresses were replaced by `REDACTED_EMAIL`; home paths by `/home/user/`.

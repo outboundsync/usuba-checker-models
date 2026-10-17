@@ -19,4 +19,4 @@
    - Check: steps run, memory and tokens/s are reasonable, a checkpoint syncs to the box and R2, and the GGUF export works.
    - Then `fetch`, then `down`.
 4. Real run: `train/launch_vast.sh up --yes`, plus `watch` as above. Wait for `FETCH VERIFIED` in the watch log, then run `down`.
-5. Eval: `eval/hancore_holdout/run_eval.py`. Thinking is off by default, matching training. For the local GGUF: `eval/hancore_holdout/serve_llama.sh usuba-9b-Q4_K_M.gguf` (32k per slot x 4 slots = `-c 131072 -np 4 -ngl 99 --jinja`). Do not use `-c 16384` with 4 slots; see "Exam pitfall" in docs/TRAINING_PLAN.md.
+5. Eval: [`eval/hancore_holdout/run_eval.py`](https://github.com/outboundsync/usuba-checker-scripts/blob/main/eval/hancore_holdout/run_eval.py). Thinking is off by default, matching training. For the local GGUF: `eval/hancore_holdout/serve_llama.sh usuba-9b-Q4_K_M.gguf` (32k per slot x 4 slots = `-c 131072 -np 4 -ngl 99 --jinja`). Do not use `-c 16384` with 4 slots; see "Exam pitfall" in docs/TRAINING_PLAN.md.

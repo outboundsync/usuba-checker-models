@@ -11,7 +11,7 @@ Scripts named without a repo prefix are in this repository; `scripts:` means `us
 
 ## B. Source catalogue and licence gate
 - [ ] 5. `sources/clone.sh` (per-repo helper) and `sources/SOURCES.md`/`NOTICE`: verify each LICENSE text at the pinned commit; only MIT/Apache/ISC/BSD(/MPL) rows may enter training.
-- [ ] 6. `legacy/clean/registry/scan.py` : clone verified registry listings at their validated commit, classify LICENSE text, run the Checker (`scan.jsonl`, `selected_ids.json`).
+- [ ] 6. `legacy/clean/registry/scan.py` : clone verified registry listings at their validated commit, classify LICENSE text, run the Checker Scripts (`scan.jsonl`, `selected_ids.json`).
 
 ## C. Base corpus
 - [ ] 7. `scripts:build_dataset_v1.py`, `scripts:build_dataset.py` (chunking helpers) : seed `data/train.jsonl`, `data/holdout.jsonl`.

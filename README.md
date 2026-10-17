@@ -1,13 +1,15 @@
 # usuba-checker-models
 
-Training code, data policy, exam results and release notes for the **Checker model**: a local reviewer (LoRA on **Qwen3.5-9B**, Apache-2.0 base) that works ON TOP of the
-**Checker scripts** report ([`usuba-checker-scripts`](https://github.com/outboundsync/usuba-checker-scripts): deterministic static + runtime checks) for an Omarchy plugin.
-Terms, used exactly: **Checker scripts** = `usuba-checker-scripts`; **Checker model** = the LoRA on Qwen3.5-9B (`usuba-checker-models`, this repo); **System** = both.
-Scope (release 1, advisory): the Checker model TRIAGES each Checker scripts finding (confirm | dismiss with a quote), EXTENDS with findings the scripts cannot see, and EXPLAINS + FIXES
-with a concrete patch; the Checker scripts' verdict is the System verdict. Full scope: [`docs/MODEL_SCOPE.md`](docs/MODEL_SCOPE.md); what "done" means: [`docs/DEFINITION_OF_DONE.md`](docs/DEFINITION_OF_DONE.md).
-The deterministic checks, mining pipelines and exam harness live in `usuba-checker-scripts`; this repository is everything that trains, ships and reports the Checker model.
+Training code, data policy, exam results and release notes for the **Checker Model**: a local reviewer (LoRA on **Qwen3.5-9B**, Apache-2.0 base) that works ON TOP of the
+**Checker Scripts** report ([`usuba-checker-scripts`](https://github.com/outboundsync/usuba-checker-scripts): deterministic static + runtime checks) for an Omarchy plugin.
+Terms, used exactly (the website naming contract): **Usuba Checker Scripts** = `usuba-checker-scripts` (short form "the scripts"); **Usuba Checker Model** = the LoRA on Qwen3.5-9B (`usuba-checker-models`, this repo; short form "the model"); **Usuba Standard v0.1** = the rulebook; **System** = scripts and model together. Never a bare "the Checker".
+Scope (release 1, advisory): the Checker Model TRIAGES each Checker Scripts finding (confirm | dismiss with a quote), EXTENDS with findings the scripts cannot see, and EXPLAINS + FIXES
+with a concrete patch; the Checker Scripts' verdict is the System verdict. Full scope: [`docs/MODEL_SCOPE.md`](docs/MODEL_SCOPE.md); what "done" means: [`docs/DEFINITION_OF_DONE.md`](docs/DEFINITION_OF_DONE.md).
+The deterministic checks, mining pipelines and exam harness live in `usuba-checker-scripts`; this repository is everything that trains, ships and reports the Checker Model.
 
-> Naming: the results below are for earlier adapters, which were called "Usuba v1" and "Usuba v2" and were trained for the previous scope (a verdict plus findings, no triage). They are kept under those historic names.
+> Naming (read this first). **Usuba v1** and **Usuba v2** are the two earlier adapters, trained for the previous scope (a verdict plus findings, no triage); the results tables below are theirs and keep those historic names. **Run 2** is something else: the training run of 2026-10-16 (data build "r7") that produced the current final model: Qwen3.5-9B LoRA, 221 train / 23 validation rows, 28 optimizer steps, final validation loss 0.263, scored on the bf16 merge of base + adapter (the Q4_K_M file has not been scored). Run 2 is **not** "Usuba v2" (a different, earlier adapter), and "Run 1" in the launch post is the Usuba v1 training run (val loss 1.0735 at step 568). Run record: [`docs/RUN_RECORDS.md`](docs/RUN_RECORDS.md).
+
+> Hosting and release status: both Hugging Face repos exist and are **private**, under the `osiharris` account: model [`osiharris/usuba-checker-adapters`](https://huggingface.co/osiharris/usuba-checker-adapters) (Run 2 adapter and Q4_K_M GGUF) and dataset [`osiharris/usuba-checker-data`](https://huggingface.co/datasets/osiharris/usuba-checker-data). The release is prepared but **not announced**. Licences: Apache-2.0 for the model weights and adapters, MIT for code and documentation. See `docs/DATA_HOSTING.md`.
 
 > Status: research artefact, not production-ready. The numbers below are the honest ones, including the bad one.
 
@@ -77,7 +79,7 @@ Full tables: `docs/TRAINING_PLAN.md`. Raw model outputs (including all proprieta
 
 ## Training data provenance
 No proprietary-model output (Anthropic, OpenAI, Google, xAI or any closed model) was used to train Usuba. Rows come from licensed real plugins, public review findings,
-Checker reports, real upstream fix commits, and review text written by the open-weights teacher Qwen3.5-397B-A17B (Apache-2.0). Method: `train/v2/distill/METHODS.md`,
+Checker Scripts reports, real upstream fix commits, and review text written by the open-weights teacher Qwen3.5-397B-A17B (Apache-2.0). Method: `train/v2/distill/METHODS.md`,
 `train/v2/distill/TEACHER.md`, `docs/PROVENANCE.md`. Proprietary models appear only as evaluation baselines (score tables).
 
 ## Where things are
@@ -89,14 +91,14 @@ Checker reports, real upstream fix commits, and review text written by the open-
 | `legacy/` | The older Qwen2.5-Coder-era builders and runs, kept for provenance, nothing in `train/` uses them: `legacy/clean/`, `legacy/qwen25-coder-v3/` (was `v3/`, renamed so it no longer collides with the reviewer's v3), `legacy/data/`, `legacy/runs/`. See `legacy/README.md`. The dataset files themselves are on Hugging Face (`docs/DATA_HOSTING.md`; HF paths keep the old names) |
 | `sources/` | `plugin_sources.json` (repo URL + commit SHA + licence of every third-party plugin source), `fetch_plugin_sources.py`, licences, `SOURCES.md` |
 | `NOTICE`, `sources/licenses/` | Per-source attribution and licence texts that must travel with the data and model |
-| `docs/` | `MODEL_SCOPE.md`, `DEFINITION_OF_DONE.md`, `SCOPE_DATA_BUILDER_SPEC.md`, `REPLICATION.md`, `TRAINING_CHECKLIST.md`, `TRAINING_PLAN.md`, `MODEL_CARD.md`, `PROVENANCE.md`, `DATA_HOSTING.md`, method notes |
-| `hf/` | Hugging Face cards and SHA-256 manifest for datasets and adapters (datasets prepared, not uploaded; adapter weights withheld, hashes only) |
+| `docs/` | `RUN_RECORDS.md`, `MODEL_SCOPE.md`, `DEFINITION_OF_DONE.md`, `SCOPE_DATA_BUILDER_SPEC.md`, `REPLICATION.md`, `TRAINING_CHECKLIST.md`, `TRAINING_PLAN.md`, `MODEL_CARD.md`, `PROVENANCE.md`, `DATA_HOSTING.md`, method notes |
+| `hf/` | Hugging Face cards and SHA-256 manifest for datasets and adapters (dataset and adapter cards, SHA-256 manifest; both Hugging Face repos exist and are private, release not announced) |
 
 ## Replicate
 Read [`docs/REPLICATION.md`](docs/REPLICATION.md), then follow [`docs/TRAINING_CHECKLIST.md`](docs/TRAINING_CHECKLIST.md) step by step.
 
 ## Licences
-- Checker scripts, repository code and documentation: MIT (`LICENSE`).
+- Checker Scripts, repository code and documentation: MIT (`LICENSE`).
 - Usuba model weights and adapters: Apache-2.0, matching the Qwen base model (see below).
 - Datasets: each row keeps the licence of the plugin it came from (`meta.license`: MIT, Apache-2.0, ISC), with attribution in `NOTICE`. They are not relicensed.
 - Adapters and model weights: Apache-2.0, following the base model's licence. Base model Qwen3.5-9B is Apache-2.0 (verified 2026-10-15 on https://huggingface.co/Qwen/Qwen3.5-9B, `license: apache-2.0`). Earlier experiments on Qwen2.5-Coder-7B-Instruct are also Apache-2.0.
