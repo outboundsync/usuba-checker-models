@@ -1,0 +1,24 @@
+06:58 harden-grader branch: usuba/checks.py + types.json allowlist; launching calibration (eval_dell, ref49, fixer, rescore404)
+07:07 eval_dell with Usuba checks: 90/90 (registry 54/54, generated 36/36); static-only scan of the 116 Dell rows: 0 WORKS rejected, 11 BROKEN newly flagged
+07:19 fixed catastrophic-backtracking string regex (pix.bar tree); relaunched ref49 / fixer calibration / rescore404
+07:24 fixes: thread-safe file context (race caused false A02 on pix.bar), command -v fallbacks exempt from B01/B02 (scriptural xclip fallback), stub heuristics judged on the answer's own files for tree tasks; relaunched all four calibrations
+07:32 fixer calibration: 31/31 agree (17/17 rejected now fail, 14/14 kept pass). human reference: 26/49, identical per-row verdicts to the 4.0.4 grader
+07:38 resumed after interruption; eval_dell run under heavy load gave 89/90 (traffic-board rt-invisible runtime timing, not a Usuba rule) - to re-run; rescore404 at 10/21 models
+07:44 J06/H07/A07 fixes; calib_harvest 23/27 (residual: 83,566 fakes pass; 402,422 reals fail with verified evidence); rules+STANDARD regenerated
+08:28 resumed after OOM interruption; committed shell-parsing/T03 fixes; next: static calib, eval_dell (J=3), ref49, rescore404 sequentially (<=6 qs procs)
+08:31 folded review rules: USB-Q05 (QtObject children, error), USB-A08 (read-only bar facade assign, warning: 4 Dell WORKS plugins do it); static: Dell WORKS 0 false rejects, fixer 31/31, harvest 23/27 (same residuals)
+08:37 eval_dell 90/90 (final code)
+08:46 Harris change: dangerous writes/sudo/pkexec/curl|sh downgraded to warnings (USB-S01/S02 warn high/medium); only rm -rf of ~/$HOME// stays a fail (new USB-S03); runtime protected-file edits -> soft WARN[high]; tree-task runtime: known surface.tablet NativeWidget race filtered + upstream-only retry. Recalibrating.
+08:54 after dangerous->warn change: eval_dell 90/90, fixer 31/31, harvest 23/27 (unchanged residuals)
+08:58 ref49 human ref 27/49: identical to the pre-Usuba 26 except row 28 (ref writes ~/.config/hypr/looknfeel.lua, now a USB-S01 warning per Harris) -> no false rejects. Launching rescore404.
+09:00 published-bug eval (data/reviews, 50 buggy/fixed pairs): Usuba separates 1/50 (same as old grader); flags 14 buggy but 15 fixed also fail (mostly B01 third-party deps not on stock Omarchy, A04); bugs are mostly semantic/lifecycle - not merge-blocking
+09:21 rescore hand-check found 2 false rejects (gpt-5.6 #25: heredoc python + nested "$(cmd "$x")" quotes mis-parsed as commands; opus #23: `wl-copy --` end-of-options) -> fixed in B01/B06; static calib still clean (Dell WORKS 0 FR, fixer 31/31, harvest 23/27). Final pipeline: eval_dell -> ref49 -> rescore404 (bg, final.sh)
+09:34 final code: eval_dell 90/90; ref49 27/49 (only row 28 changed: S01 now a warning)
+09:50 rescore404 done; SCOREBOARD_USUBA.md written; merging to main
+09:51 merged to main (38a7fc2, no force). Uplift experiment planned in functest/UPLIFT_PLAN.md (not run).
+10:03 uplift running: ZDR added (provider zdr+data_collection deny) to runs/uplift/uplift.py and runs/fixer/loop.py, verified with one call per model (all 9 served by ZDR endpoints). Qwen2.5-Coder 7B/14B (stock) are not on OpenRouter -> skipped. Per-model budgets sum 26.5, hard stop $29.
+10:04 uplift: found a feedback gap (the reason a plugin failed to load was only in shell warnings and was never passed to the model); fixed the uplift.py feedback, moved 77 affected rows to runs/uplift/superseded/ and re-ran them (their spend stays in spend.json). export.py writes results.csv, the only source for the charts.
+10:31 uplift: first relaunch over-reserved budget (108 concurrent reservations) and stopped 14 rows/model before any fix attempt; fixed (reserve inside API slot), those rows moved to superseded/ and re-run for gpt/sonnet/kimi/qwen3.6/deepseek. Opus and Gemini hit their caps -> will be shown as missing. Spend so far $23.37.
+10:48 uplift STOPPED: the OpenRouter account ran out of credits ($140 total, $139.99 used; other jobs on the key spent ~$47 today, my ledger shows $23.95). Fix attempts returned HTTP 402; affected rows moved to runs/uplift/superseded/ (not counted). No model finished all 49 -> charts show every model as missing. Resume: add credits, then rerun runs/uplift/uplift.py (it re-runs only the missing rows).
+12:06 uplift resumed after credit top-up: 402/empty replies now retried (never graded), hit HARD_STOP $29 (ledger $28.95); 192 rows budget-stopped and left missing. All passes hand-checked (0 unchecked). Charts: missing models listed; human ref 27/49 marker added.
+13:26 uplift COMPLETE: all 9 models 49/49, ledger total $49.09 (hard stop 60), 0 API-error rows, all passes hand-checked. Charts + TABLE.md from results.csv.
