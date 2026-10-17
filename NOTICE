@@ -1,4 +1,4 @@
-usuba-checker-models: code and documents are MIT (see LICENSE). The training data below keeps each source's own licence; attribution lines follow.
+usuba-checker-models: code and documents are MIT (see LICENSE). The Usuba model weights and adapters are Apache-2.0, matching the Qwen base model (text in sources/licenses/Apache-2.0.txt). The training data below keeps each source's own licence; attribution lines follow.
 Base model: Qwen/Qwen3.5-9B, Apache-2.0 (https://huggingface.co/Qwen/Qwen3.5-9B). Teacher: Qwen/Qwen3.5-397B-A17B, Apache-2.0.
 
 NOTICE — Usuba Checker: training data attribution

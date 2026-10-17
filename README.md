@@ -96,9 +96,10 @@ Checker reports, real upstream fix commits, and review text written by the open-
 Read [`docs/REPLICATION.md`](docs/REPLICATION.md), then follow [`docs/TRAINING_CHECKLIST.md`](docs/TRAINING_CHECKLIST.md) step by step.
 
 ## Licences
-- Code and documentation: MIT (`LICENSE`).
+- Checker scripts, repository code and documentation: MIT (`LICENSE`).
+- Usuba model weights and adapters: Apache-2.0, matching the Qwen base model (see below).
 - Datasets: each row keeps the licence of the plugin it came from (`meta.license`: MIT, Apache-2.0, ISC), with attribution in `NOTICE`. They are not relicensed.
-- Adapters: follow the base model's licence. Base model Qwen3.5-9B is Apache-2.0 (verified 2026-10-15 on https://huggingface.co/Qwen/Qwen3.5-9B, `license: apache-2.0`). Earlier experiments on Qwen2.5-Coder-7B-Instruct are also Apache-2.0.
+- Adapters and model weights: Apache-2.0, following the base model's licence. Base model Qwen3.5-9B is Apache-2.0 (verified 2026-10-15 on https://huggingface.co/Qwen/Qwen3.5-9B, `license: apache-2.0`). Earlier experiments on Qwen2.5-Coder-7B-Instruct are also Apache-2.0.
 
 ## Security
 See `SECURITY.md`. CI runs gitleaks and `tools/scan_public.py`.
