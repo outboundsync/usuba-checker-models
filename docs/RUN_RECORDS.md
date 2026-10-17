@@ -7,7 +7,7 @@ Concise record of the build and training run behind the current final model. Eve
 |---|---|
 | Usuba v1 | First Qwen3.5-9B adapter, previous scope. Vast run, finished 2026-10-14, val loss 1.073459 at step 568 (`docs/TRAINING_PLAN.md` run log). The launch post calls this training run "run 1". |
 | Usuba v2 | Second, earlier adapter (prompt v2, distilled data). Scored in `holdout-v2-usuba-v2-best-q4km.json`. |
-| **Run 2** | The training run of 2026-10-16 on the r7 data build below. The current final model (Usuba Checker Model, "In Training"). **Not** Usuba v2. |
+| **Run 2** | The training run of 2026-10-16 on the r7 data build below. Released as **Usuba Checker Model v0.1.0** (tag `model-v0.1.0`, 2026-10-17). **Not** Usuba v2. |
 
 ## r7 full build (scope prompt v4 data)
 - Pipeline: `docs/R7_HISTORY_MINING.md`, `v3/r7/`, `docs/SCOPE_DATA_BUILDER_SPEC.md`. Mining covered the plugin universe of 5,149 repos (5,033 in the final mining universe); version-history fix pairs, HANCORE concrete findings, Dell-verified rows.
