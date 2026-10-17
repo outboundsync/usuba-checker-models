@@ -1,0 +1,23 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+.envrc
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+*secret*
+functest/cache/
+sources/repos/
+# non-primary adapters (155MB each; kept locally)
+runs/smoke-2026-10-11/adapter/
+runs/smoke-2026-10-11/adapter_v2/
+runs/fix/adapter_a/
+runs/fix/adapter_v2/
+# merged full weights, never commit
+**/merged*/
+runs/v3/adapter_v3.tgz
+runs/q27/adapter_q27.tgz
+dell/bugpairs/trees/
