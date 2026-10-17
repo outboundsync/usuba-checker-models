@@ -4,7 +4,7 @@
 
 Base: Qwen3.5-9B (Apache-2.0), bf16 LoRA (r=32, alpha=64, dropout 0.05, all attention and MLP projections; `train/config.yaml`), then merged and quantised to Q4_K_M GGUF for local use.
 Task of the adapters trained so far (previous scope): read an Omarchy (Quickshell/QML) plugin plus the Checker Scripts report and answer with a JSON verdict (`approve`, `changes_requested`) and a list of findings (category, file, line, explanation). Task under the settled scope: triage each Checker Scripts finding, add findings the scripts cannot see, explain and fix (see `docs/MODEL_SCOPE.md`); no adapter has been trained for that yet.
-Status: **research artefact, not production-ready, not released.** Both Hugging Face repos exist and are private (`osiharris/usuba-checker-adapters` holds the Run 2 adapter and its Q4_K_M GGUF; `osiharris/usuba-checker-data` is the dataset); the release is prepared but not announced. Weights and adapters: Apache-2.0; code and documentation: MIT. Hashes: `hf/ADAPTERS_CARD.md`.
+Status: **research artefact, not production-ready, not released.** Both Hugging Face repos are public since 2026-10-17 (`osiharris/usuba-checker-adapters` holds the Run 2 adapter and its Q4_K_M GGUF; `osiharris/usuba-checker-data` is the dataset); the release is not yet announced. Weights and adapters: Apache-2.0; code and documentation: MIT. Hashes: `hf/ADAPTERS_CARD.md`.
 
 ## Versions
 - **Usuba v1**: first adapter (prompt v1, whole-plugin text capped by the harness). Scored in `eval/hancore_holdout/results/usuba-9b-q4km.json`.

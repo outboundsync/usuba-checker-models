@@ -1,6 +1,6 @@
 # Data and weights hosting (Hugging Face, not Git LFS)
 
-This repository contains no datasets above 2 MB and no weights; there is no Git LFS. Hosted on Hugging Face under the `osiharris` account (both repos exist and are currently **private**; the release is prepared but not announced. Licences: Apache-2.0 for the model weights and adapters, MIT for code and documentation, per-row original licences for the data. The `outboundsync` namespace does not exist on Hugging Face, so the GitHub org name must not be used for HF paths):
+This repository contains no datasets above 2 MB and no weights; there is no Git LFS. Hosted on Hugging Face under the `osiharris` account (both repos are **public** since 2026-10-17; the release is not yet announced. Licences: Apache-2.0 for the model weights and adapters, MIT for code and documentation, per-row original licences for the data. The `outboundsync` namespace does not exist on Hugging Face, so the GitHub org name must not be used for HF paths):
 
 | Hugging Face repo | Content | Licence tag |
 |---|---|---|
@@ -9,7 +9,7 @@ This repository contains no datasets above 2 MB and no weights; there is no Git 
 
 `hf/MANIFEST.sha256` lists SHA-256 of every file to upload in plain `sha256sum` format; paths are relative to the dataset repo root (the first column is the digest, the second the path inside the Hugging Face dataset repo). Verify from the download directory with `sha256sum -c MANIFEST.sha256`. Adapter weights are withheld; their hashes are in `hf/ADAPTERS_CARD.md`.
 Layout used by the scripts: download the dataset into the repo root so that `clean/`, `v3/`, `data/`, `sources/` paths line up
-(`huggingface-cli download osiharris/usuba-checker-data --repo-type dataset --local-dir .`, needs access to the private repo).
+(`huggingface-cli download osiharris/usuba-checker-data --repo-type dataset --local-dir .`, public, no login needed).
 
 The Qwen3.5-9B adapter of the Usuba v1 run (`best/`, val loss 1.0735, step 568; the v2 adapter is a separate later run, and which of the two the hash in `hf/ADAPTERS_CARD.md` belongs to is unresolved, see the identity note there) and its Q4_K_M GGUF were produced on a rented GPU and archived in a private bucket. They are **not** in the adapters repo (it holds Run 2 only); whether to upload them as well is undecided. GGUF SHA-256 recorded in `docs/TRAINING_PLAN.md` run log.
 
