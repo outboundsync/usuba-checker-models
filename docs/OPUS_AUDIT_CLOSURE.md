@@ -23,7 +23,7 @@ Each item of `usuba-runs/opus-audit/VERDICTS.md` was checked against repo HEAD b
 | D2 refpaths raises ReferenceTreeMissing | CLOSED | |
 | D3-D8 | PARTIAL | only D1-D6 evidenced in 8b4b31d; D7/D8 not independently verified |
 | D7 broad `except Exception` | PARTIAL | models: the active-path swallowers are narrowed or fail loudly (checker_report: crashing LR/HV2 rules no longer give an empty report; midcheck leakage list refuses corrupt ground truth; holdout_guard, build_train_set, train_utils, build_guard_fingerprints, train_lora run-meta, llm_client, candidates narrowed; tests `test_d7_narrow_excepts.py`). Left on purpose: documented-contract catch-alls (`run_with_timeout`, now logs), retry loops around network calls, preflight (FAIL not skip), and `legacy/` scripts. scripts repo (~89) not touched |
-| D9 pardons | PARTIAL, needs Harris | opt-in `FT_STRICT_D9`; default pardons unchanged (`docs/POLICY_D9.md`) |
+| D9 pardons | PARTIAL, needs Harris | opt-in `FT_STRICT_D9`; default pardons unchanged ([`docs/POLICY_D9.md`](https://github.com/outboundsync/usuba-checker-scripts/blob/main/docs/POLICY_D9.md)) |
 | E strict attribution | CLOSED | b32af72 |
 | F1/F3/F4/F8 | CLOSED | 1dbcb80 |
 | F2 raw generations | OPEN | still 13 matches |

@@ -12,18 +12,18 @@ Usuba v2 training rows come from exactly these sources:
 - **Review text written only by an open-weights teacher**: **Qwen3.5-397B-A17B, Apache-2.0**
   (https://huggingface.co/Qwen/Qwen3.5-397B-A17B/blob/main/LICENSE), served through OpenRouter. Each teacher review is kept only if it
   agrees with the grader/hardware label, names the real bug, invents no SHAs or plugin names, and parses. Details: `train/v2/distill/METHODS.md`, `TEACHER.md`.
-- Everything else uses scripted templated targets built from the grader/Checker findings.
+- Everything else uses scripted templated targets built from the grader/Checker Scripts findings.
 
 Proprietary models appear in this repo only as **evaluation baselines** (scoreboards, judge) and never as a source of training text.
 History: an early v2 attempt used Claude Sonnet 5.5 as teacher; that data was discarded unused (quarantined outside the repo) and never trained on.
-Usuba v1 (see `docs/TRAINING_PLAN.md`) was built from real plugins, HANCORE human-written findings, Checker rules and hardware labels; our review of the
+Usuba v1 (see `docs/TRAINING_PLAN.md`) was built from real plugins, HANCORE human-written findings, Checker Scripts rules and hardware labels; our review of the
 v1 build scripts found no proprietary-model output in its training data.
 
 
 Experiment: fine-tune small open models (Qwen-coder 7B "Santoku", and a 14B) with QLoRA to write valid **Omarchy (Quattro / omarchy-shell) plugins**, and measure them honestly.
 
 ## Honest current status
-- The original "validator-style" shallow checker (manifest/static checks only) gave **invalid, inflated scores**. Do not trust any numbers derived from it (`functest/old_scores.py` exists only for comparison).
+- The original "validator-style" shallow checker (manifest/static checks only) gave **invalid, inflated scores**. Do not trust any numbers derived from it ([`functest/old_scores.py`](https://github.com/outboundsync/usuba-checker-scripts/blob/main/functest/old_scores.py) exists only for comparison).
 - On the real functional test (`functest/`, 56 holdout tasks, plugins actually loaded and exercised):
 
 | Model | Pass /56 |
@@ -53,7 +53,7 @@ python -m venv .venv && . .venv/bin/activate
 python functest/functest.py --help      # entry point
 python functest/rescore.py              # rescore generated outputs into results.json
 ```
-Needs the Omarchy shell runtime deps described in `functest/runtime.py`. API-backed generators read keys only from env vars (`OPENROUTER_API_KEY`, `XAI_API_KEY`); no keys are stored in this repo.
+Needs the Omarchy shell runtime deps described in [`functest/runtime.py`](https://github.com/outboundsync/usuba-checker-scripts/blob/main/functest/runtime.py). API-backed generators read keys only from env vars (`OPENROUTER_API_KEY`, `XAI_API_KEY`); no keys are stored in this repo.
 
 Clone with `git lfs install` first to get the adapter weights.
 
