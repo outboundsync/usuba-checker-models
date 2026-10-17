@@ -78,7 +78,7 @@ Full tables: `docs/TRAINING_PLAN.md`. Raw model outputs (including all proprieta
 ## Training data provenance
 No proprietary-model output (Anthropic, OpenAI, Google, xAI or any closed model) was used to train Usuba. Rows come from licensed real plugins, public review findings,
 Checker reports, real upstream fix commits, and review text written by the open-weights teacher Qwen3.5-397B-A17B (Apache-2.0). Method: `train/v2/distill/METHODS.md`,
-`TEACHER.md`, `docs/PROVENANCE.md`. Proprietary models appear only as evaluation baselines (score tables).
+`train/v2/distill/TEACHER.md`, `docs/PROVENANCE.md`. Proprietary models appear only as evaluation baselines (score tables).
 
 ## Where things are
 | Path | Content |
