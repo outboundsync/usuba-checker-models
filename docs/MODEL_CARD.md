@@ -1,15 +1,15 @@
-# Checker Model (Omarchy plugin reviewer; earlier adapters were called Usuba v1/v2): model card (draft, not released)
+# Checker Model (Omarchy plugin reviewer; earlier adapters were called Usuba v1/v2): model card
 
 > Scope of record: `docs/MODEL_SCOPE.md` (release 1, advisory; terms: Checker Scripts, Checker Model, System). The text below describes the adapters trained so far, which predate that scope.
 
 Base: Qwen3.5-9B (Apache-2.0), bf16 LoRA (r=32, alpha=64, dropout 0.05, all attention and MLP projections; `train/config.yaml`), then merged and quantised to Q4_K_M GGUF for local use.
 Task of the adapters trained so far (previous scope): read an Omarchy (Quickshell/QML) plugin plus the Checker Scripts report and answer with a JSON verdict (`approve`, `changes_requested`) and a list of findings (category, file, line, explanation). Task under the settled scope: triage each Checker Scripts finding, add findings the scripts cannot see, explain and fix (see `docs/MODEL_SCOPE.md`); no adapter has been trained for that yet.
-Status: **research artefact, not production-ready, not released.** Both Hugging Face repos are public since 2026-10-17 (`osiharris/usuba-checker-adapters` holds the Run 2 adapter and its Q4_K_M GGUF; `osiharris/usuba-checker-data` is the dataset); the release is not yet announced. Weights and adapters: Apache-2.0; code and documentation: MIT. Hashes: `hf/ADAPTERS_CARD.md`.
+Status: **Usuba Checker Model v0.1.0 (Run 2), released 2026-10-17** (tag `model-v0.1.0`). An early, advisory release, not production-ready. Both Hugging Face repos are public (`osiharris/usuba-checker-adapters` holds the Run 2 adapter and its Q4_K_M GGUF; `osiharris/usuba-checker-data` is the dataset). Weights and adapters: Apache-2.0; code and documentation: MIT. Hashes: `hf/ADAPTERS_CARD.md`.
 
 ## Versions
 - **Usuba v1**: first adapter (prompt v1, whole-plugin text capped by the harness). Scored in `eval/hancore_holdout/results/usuba-9b-q4km.json`.
 - **Usuba v2**: second adapter, trained on prompt v2 with the v2 distilled data. Scored in `holdout-v2-usuba-v2-best-q4km.json`.
-- **Run 2** (2026-10-16, data build r7): the current final model, **not** Usuba v2. Qwen3.5-9B LoRA on the scope prompt v4, 221 train / 23 validation rows, 28 steps, final validation loss 0.263, scored on the bf16 merge (the Q4_K_M file is unscored). Its numbers are in `docs/RUN_RECORDS.md`, not in the holdout tables below, which belong to Usuba v1/v2. Weights: private `osiharris/usuba-checker-adapters`.
+- **Run 2** (2026-10-16, data build r7): the current final model, **not** Usuba v2. Qwen3.5-9B LoRA on the scope prompt v4, 221 train / 23 validation rows, 28 steps, final validation loss 0.263, scored on the bf16 merge (the Q4_K_M file is unscored). Its numbers are in `docs/RUN_RECORDS.md`, not in the holdout tables below, which belong to Usuba v1/v2. Released as **v0.1.0**. Weights: public `osiharris/usuba-checker-adapters`.
 - Results are not comparable across prompt versions; see the README tables, which are generated from the result files.
 
 ## Intended use
