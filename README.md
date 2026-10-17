@@ -9,7 +9,7 @@ The deterministic checks, mining pipelines and exam harness live in `usuba-check
 
 > Naming (read this first). **Usuba v1** and **Usuba v2** are the two earlier adapters, trained for the previous scope (a verdict plus findings, no triage); the results tables below are theirs and keep those historic names. **Run 2** is something else: the training run of 2026-10-16 (data build "r7") that produced the current final model: Qwen3.5-9B LoRA, 221 train / 23 validation rows, 28 optimizer steps, final validation loss 0.263, scored on the bf16 merge of base + adapter (the Q4_K_M file has not been scored). Run 2 is **not** "Usuba v2" (a different, earlier adapter), and "Run 1" in the launch post is the Usuba v1 training run (val loss 1.0735 at step 568). Run record: [`docs/RUN_RECORDS.md`](docs/RUN_RECORDS.md).
 
-> Hosting and release status: both Hugging Face repos exist and are **private**, under the `osiharris` account: model [`osiharris/usuba-checker-adapters`](https://huggingface.co/osiharris/usuba-checker-adapters) (Run 2 adapter and Q4_K_M GGUF) and dataset [`osiharris/usuba-checker-data`](https://huggingface.co/datasets/osiharris/usuba-checker-data). The release is prepared but **not announced**. Licences: Apache-2.0 for the model weights and adapters, MIT for code and documentation. See `docs/DATA_HOSTING.md`.
+> Hosting and release status: both Hugging Face repos are **public** (since 2026-10-17), under the `osiharris` account: model [`osiharris/usuba-checker-adapters`](https://huggingface.co/osiharris/usuba-checker-adapters) (Run 2 adapter and Q4_K_M GGUF) and dataset [`osiharris/usuba-checker-data`](https://huggingface.co/datasets/osiharris/usuba-checker-data). The release is not yet announced; status stays research/in training. Licences: Apache-2.0 for the model weights and adapters, MIT for code and documentation. See `docs/DATA_HOSTING.md`.
 
 > Status: research artefact, not production-ready. The numbers below are the honest ones, including the bad one.
 
@@ -92,7 +92,7 @@ Checker Scripts reports, real upstream fix commits, and review text written by t
 | `sources/` | `plugin_sources.json` (repo URL + commit SHA + licence of every third-party plugin source), `fetch_plugin_sources.py`, licences, `SOURCES.md` |
 | `NOTICE`, `sources/licenses/` | Per-source attribution and licence texts that must travel with the data and model |
 | `docs/` | `RUN_RECORDS.md`, `MODEL_SCOPE.md`, `DEFINITION_OF_DONE.md`, `SCOPE_DATA_BUILDER_SPEC.md`, `REPLICATION.md`, `TRAINING_CHECKLIST.md`, `TRAINING_PLAN.md`, `MODEL_CARD.md`, `PROVENANCE.md`, `DATA_HOSTING.md`, method notes |
-| `hf/` | Hugging Face cards and SHA-256 manifest for datasets and adapters (dataset and adapter cards, SHA-256 manifest; both Hugging Face repos exist and are private, release not announced) |
+| `hf/` | Hugging Face cards and SHA-256 manifest for datasets and adapters (dataset and adapter cards, SHA-256 manifest; both Hugging Face repos are public since 2026-10-17) |
 
 ## Replicate
 Read [`docs/REPLICATION.md`](docs/REPLICATION.md), then follow [`docs/TRAINING_CHECKLIST.md`](docs/TRAINING_CHECKLIST.md) step by step.
