@@ -91,5 +91,5 @@
   "train.jsonl": "9c8e55bb55297c738b003e129b2ed8da42e71f5cd8cb419d276786c6daf431b8",
   "val.jsonl": "e4b3fba169584447b9b1bba1215c14a4e206f2115b1e9a2f5db8745f8977b061"
  },
- "note": "v2 distill final set (outboundsync/usuba-model-checker f9749f3); v1 stats above are historical"
+ "note": "v2 distill final set (pre-split outboundsync/usuba-model-checker f9749f3; history kept in this repo); v1 stats above are historical"
 }

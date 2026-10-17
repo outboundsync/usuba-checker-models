@@ -31,7 +31,7 @@ from scope import scoring as SC  # noqa: E402
 RUNS = os.environ.get("USUBA_RUNS", "/workspace/usuba-runs")
 BASE = os.path.join(RUNS, "scope-v4")
 DRAFTS = os.environ.get("SCOPE_DRAFTS", os.path.join(BASE, "drafts"))
-HOLDOUT = os.environ.get("USUBA_HOLDOUT_DIR", "/workspace/usuba-model-checker/eval/hancore_holdout")
+HOLDOUT = os.environ.get("USUBA_HOLDOUT_DIR", "/workspace/usuba-checker-scripts/eval/hancore_holdout")
 GLOBAL_CAP = 5.0
 BASE_URL = "https://openrouter.ai/api/v1"
 HARNESS = ("SOURCE.txt", "checklist.md")

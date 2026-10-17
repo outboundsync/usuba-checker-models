@@ -30,7 +30,7 @@ The plan and its reasoning are in [`docs/TRAINING_PLAN.md`](docs/TRAINING_PLAN.m
 ## Setup
 
 ```sh
-git lfs install && git clone https://github.com/outboundsync/usuba-checker-model.git
+git lfs install && git clone https://github.com/outboundsync/usuba-checker-models.git
 git clone https://github.com/outboundsync/usuba-checker-scripts.git   # the Checker, needed by eval/
 ```
 
