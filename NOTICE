@@ -1,7 +1,7 @@
 usuba-checker-models: code and documents are MIT (see LICENSE). The training data below keeps each source's own licence; attribution lines follow.
 Base model: Qwen/Qwen3.5-9B, Apache-2.0 (https://huggingface.co/Qwen/Qwen3.5-9B). Teacher: Qwen/Qwen3.5-397B-A17B, Apache-2.0.
 
-NOTICE — Omarchy Specialist seed dataset
+NOTICE — Usuba Checker: training data attribution
 
 Training text is derived from the sources below. Every source's LICENSE file was read at the pinned commit. Licences of the third-party plugin sources that ship (by repo): Apache-2.0 7, ISC 1, MIT 431. Texts: sources/licenses/ (per repo where kept; Apache-2.0.txt is the standard text that Apache-2.0 sources require us to carry).
 MIT requires the copyright notice and permission notice in all copies or substantial portions: ship this file and sources/licenses/* with the dataset and with the model.
@@ -577,7 +577,7 @@ v3-data-r4 additions (2026-10-15)
   - rdoupe-omarchy/omarchy-underpants @ 2445c70e56a5a773c1b114bfcaa7dfea4ffa8a33 — MIT — Copyright (c) 2026 douper (2 rows)
   - renanmt/switch-magic @ 30f108c0dd8b0ef1e7a690bbae4e2803347b1f4d — MIT — Copyright (c) 2026 Renan Tonheiro (1 rows)
   - ridgetopai/wobble-party @ 63ca52e93de16bc73916f21f1e4a7aed4d00c4ea — MIT — Copyright (c) 2026 Brian Ridgetopai (1 rows)
-  - robin0315/omanetease @ 415d74986ac0c89dcbb51cbecc2e3cda12b7351e — MIT — Copyright (c) 2026 Robin0315 <luobing.me@gmail.com> (2 rows)
+  - robin0315/omanetease @ 415d74986ac0c89dcbb51cbecc2e3cda12b7351e — MIT — Copyright (c) 2026 Robin0315 (2 rows)
   - roddygithub/omarseafile @ 3af477c7c1ee5b4dc12eb9a9fbc3bfa64cde4604 — MIT — Copyright (c) 2026 Roddy (1 rows)
   - rodrix2000/omarchy-reolink-cameras @ 05c2cbf23d9ec6368b96b219ebd07c4489d3f1c4 — MIT — Copyright (c) 2026 Rudy Rodriguez (2 rows)
   - rosakodu/omarchy-icons @ 9832c74d767764bc5c44d3631467879b04164ebd — MIT — Copyright (c) 2026 (1 rows)

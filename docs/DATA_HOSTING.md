@@ -9,7 +9,7 @@ This repository contains no datasets above 2 MB and no weights; there is no Git 
 
 `hf/MANIFEST.sha256` lists SHA-256 of every file to upload in plain `sha256sum` format; paths are relative to the dataset repo root (the first column is the digest, the second the path inside the Hugging Face dataset repo). Verify from the download directory with `sha256sum -c MANIFEST.sha256`. Adapter weights are withheld; their hashes are in `hf/ADAPTERS_CARD.md`.
 Layout used by the scripts: download the dataset into the repo root so that `clean/`, `v3/`, `data/`, `sources/` paths line up
-(`huggingface-cli download outboundsync/usuba-checker-data --repo-type dataset --local-dir .`).
+(`huggingface-cli download outboundsync/usuba-checker-data --repo-type dataset --local-dir .`; **not yet uploaded: this repo does not exist on Hugging Face yet**).
 
 The Qwen3.5-9B adapter of the Usuba v1 run (`best/`, val loss 1.0735, step 568; the v2 adapter is a separate later run, and which of the two the hash in `hf/ADAPTERS_CARD.md` belongs to is unresolved, see the identity note there) and its Q4_K_M GGUF were produced on a rented GPU and archived in a private bucket; they still have to be copied
 into the adapters repo (see `docs/TRAINING_CHECKLIST.md` step 12). GGUF SHA-256 recorded in `docs/TRAINING_PLAN.md` run log.
